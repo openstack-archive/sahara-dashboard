@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}{% trans "Elastic Hadoop" %}{% endblock %}
+
+{% block page_header %}
+  {% include "horizon/common/_page_header.html" with title=_("Plugins") %}
+{% endblock page_header %}
+
+{% block main %}
+
+<h3>{% trans "Plugins" %}</h3>
+
+<div class="plugins">
+    {{ plugins_table.render }}
+</div>
+
+{% endblock %}
