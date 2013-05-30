@@ -27,8 +27,7 @@ setuptools.setup(
     cmdclass=common_setup.get_cmdclass(),
     packages=setuptools.find_packages(exclude=['bin']),
     package_data={'savannadashboard': [
-        'templates/savannadashboard/*',
-        'plugins/templates/plugins/*',
+        '*.html',
     ]},
     install_requires=requires,
     dependency_links=depend_links,

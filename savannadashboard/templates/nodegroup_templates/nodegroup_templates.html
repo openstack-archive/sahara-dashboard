@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}{% trans "Savanna" %}{% endblock %}
+
+{% block page_header %}
+{% include "horizon/common/_page_header.html" with title=_("Savanna - Node group Templates") %}
+{% endblock page_header %}
+
+{% block main %}
+
+<div class="nodegroup_templates">
+    {{ nodegroup_templates_table.render }}
+</div>
+
+<script type="text/javascript">
+    addHorizonLoadEvent(function () {
+        //hide configure button. it will be triggered with scripts
+        $(".configure-nodegrouptemplate-btn").hide();
+
+        // replace form submit with ajax POST and trigger next workflow
+        horizon.modals.addModalInitFunction(function (modal) {
+            if ($(modal).find(".hidden_create_field").length > 0) {
+                var form = $(".hidden_create_field").closest("form");
+                var successful = false;
+                form.submit(function (e) {
+                    $.ajax({
+                               type: "POST",
+                               url: form.attr('action'),  // read the action attribute of the form
+                               data: form.serialize(),  // what data should go there?
+                               success: function () {
+                                   form.find(".close").click();
+                                   $(".configure-nodegrouptemplate-btn").click();
+                               }
+                           });
+                    return false;
+                });
+            }
+
+            if ($(modal).find(".hidden_configure_field").length > 0) {
+            }
+
+        });
+
+    });
+</script>
+
+{% endblock %}

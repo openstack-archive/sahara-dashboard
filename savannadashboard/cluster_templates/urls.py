@@ -15,21 +15,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from django.utils.translation import ugettext as _
 
-import horizon
+from django.conf.urls.defaults import patterns
+from django.conf.urls.defaults import url
 
+from savannadashboard.cluster_templates.views import ClusterTemplatesView
 
-class SavannaDashboard(horizon.Dashboard):
-    name = _("Savanna")
-    slug = "savanna"
-    panels = ('clusters',
-              'cluster_templates',
-              'nodegroup_templates',
-              'plugins')
-    default_panel = 'plugins'
-    nav = True
-    supports_tenants = True
-
-
-horizon.register(SavannaDashboard)
+urlpatterns = patterns('',
+                       url(r'^$', ClusterTemplatesView.as_view(),
+                           name='index'),
+                       url(r'^$', ClusterTemplatesView.as_view(),
+                           name='cluster-templates'),
+                       )

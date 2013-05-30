@@ -29,5 +29,6 @@ class PluginsView(tables.DataTableView):
     template_name = 'plugins/plugins.html'
 
     def get_data(self):
+        #todo get data from client
         plugins = []
         return plugins

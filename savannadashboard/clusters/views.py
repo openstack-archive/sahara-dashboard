@@ -15,21 +15,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from django.utils.translation import ugettext as _
 
-import horizon
+from horizon import tables
+import logging
+from savannadashboard.clusters.tables import ClustersTable
 
-
-class SavannaDashboard(horizon.Dashboard):
-    name = _("Savanna")
-    slug = "savanna"
-    panels = ('clusters',
-              'cluster_templates',
-              'nodegroup_templates',
-              'plugins')
-    default_panel = 'plugins'
-    nav = True
-    supports_tenants = True
+LOG = logging.getLogger(__name__)
 
 
-horizon.register(SavannaDashboard)
+class ClustersView(tables.DataTableView):
+    table_class = ClustersTable
+    template_name = 'clusters/clusters.html'
+
+    def get_data(self):
+        #todo get data from client
+        clusters = []
+        return clusters

@@ -15,21 +15,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from django.utils.translation import ugettext as _
+from django.utils.translation import ugettext_lazy as _
 
 import horizon
 
-
-class SavannaDashboard(horizon.Dashboard):
-    name = _("Savanna")
-    slug = "savanna"
-    panels = ('clusters',
-              'cluster_templates',
-              'nodegroup_templates',
-              'plugins')
-    default_panel = 'plugins'
-    nav = True
-    supports_tenants = True
+from savannadashboard import dashboard
 
 
-horizon.register(SavannaDashboard)
+class NodegroupTemplatesPanel(horizon.Panel):
+    name = _("Node group templates")
+    slug = 'nodegroup_templates'
+
+
+dashboard.SavannaDashboard.register(NodegroupTemplatesPanel)
