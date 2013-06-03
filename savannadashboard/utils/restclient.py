@@ -19,6 +19,7 @@
 from horizon.api.base import url_for
 import logging
 import requests
+from savannadashboard.utils.workflow_helpers import Parameter
 
 LOG = logging.getLogger(__name__)
 
@@ -38,13 +39,65 @@ def get_plugins(request):
     if resp.status_code == 200:
         raw_plugins = resp.json()["plugins"]
         plugins = []
-        LOG.warning("bean: " + str(raw_plugins))
         for raw_plugin in raw_plugins:
-            LOG.warning("bean: " + str(raw_plugin))
             bean = Bean("Plugin", **raw_plugin)
             plugins.append(bean)
-            LOG.warning("bean: " + str(bean))
         return plugins
+    else:
+        return []
+
+
+def get_general_node_configuration(request, plugin):
+    #todo request
+    return get_general_node_configuration_stub(plugin)
+
+
+def get_general_node_configuration_stub(plugin):
+    parameters = []
+    if plugin == 'vanilla':
+        parameters.append(Parameter("ulimit", "text", required=True))
+        parameters.append(Parameter("something_else", "text", required=False))
+    return parameters
+
+
+def get_node_processes(request, plugin):
+    #todo request
+    return get_node_processes_stub(plugin)
+
+
+def get_node_processes_stub(plugin):
+    if plugin == 'vanilla':
+        return [("name_node", "Name Node"),
+                ("job_tracker", "Job Tracker"),
+                ("data_node", "Data Node"),
+                ("task_tracker", "Task Tracker")]
+
+
+def get_configs_for_process(request, plugin, process):
+    #todo request
+    return get_configs_for_process_stub(plugin, process)
+
+
+def get_node_processes_configs(request, plugin):
+    processes = get_node_processes(request, plugin)
+    configs = dict()
+    for process, display_name in processes:
+        configs[process] = get_configs_for_process(request, plugin, process)
+    return configs
+
+
+def get_configs_for_process_stub(plugin, process):
+    if plugin == 'vanilla':
+        if process == 'name_node':
+            return [Parameter("heap_size", "text", required=True)]
+        if process == 'data_node':
+            return [Parameter("heap_size", "text", required=True)]
+        elif process == 'job_tracker':
+            return [Parameter("heap_size", "text", required=True),
+                    Parameter("mapred.maxattempts", "text", required=False)]
+        elif process == 'task_tracker':
+            return [Parameter("heap_size", "text", required=True),
+                    Parameter("mapred.maptasks", "text", required=False)]
     else:
         return []
 

@@ -14,6 +14,11 @@
 
 <script type="text/javascript">
     addHorizonLoadEvent(function () {
+        function get_process_tab(process) {
+            return $("a").filter(function(idx, e) {
+                return $(e).attr("data-target") && $(e).attr("data-target").indexOf(process) != -1}).closest("li");
+        }
+
         //hide configure button. it will be triggered with scripts
         $(".configure-nodegrouptemplate-btn").hide();
 
@@ -26,7 +31,7 @@
                     $.ajax({
                                type: "POST",
                                url: form.attr('action'),  // read the action attribute of the form
-                               data: form.serialize(),  // what data should go there?
+                               data: form.serialize(),
                                success: function () {
                                    form.find(".close").click();
                                    $(".configure-nodegrouptemplate-btn").click();
@@ -34,14 +39,40 @@
                            });
                     return false;
                 });
+                $(".plugin_version_choice").closest(".control-group").hide();
             }
 
             if ($(modal).find(".hidden_configure_field").length > 0) {
             }
 
-        });
+            //display version for selected plugin
+            $(document).on('change', '.plugin_name_choice', switch_versions);
+            function switch_versions() {
+                $(".plugin_version_choice").closest(".control-group").hide();
+                var plugin = $(this);
+                $("." + plugin.val() + "_version_choice").closest(".control-group").show();
+            }
+            $(".plugin_name_choice").change();
 
+            //handle node processes change
+            $("input").filter(function(idx, e) {
+                return $(e).attr("name") && $(e).attr("name").indexOf("processes") != -1})
+                    .change(function() {
+                                            var process = $(this).val();
+                                            var enabled = $(this).is(':checked');
+                                            if (enabled) {
+                                                get_process_tab(process).show();
+                                            } else {
+                                                get_process_tab(process).hide();
+                                            }
+                                        }).change();
+            //general tab should be active
+            get_process_tab("generalconfigaction").find("a").click();
+        });
     });
+
+
+
 </script>
 
 {% endblock %}

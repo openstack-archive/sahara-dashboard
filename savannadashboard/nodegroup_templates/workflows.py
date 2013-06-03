@@ -23,6 +23,12 @@ from django.utils.translation import ugettext as _
 
 from horizon import exceptions
 from horizon import workflows
+from savannadashboard.utils.restclient import get_general_node_configuration
+from savannadashboard.utils.restclient import get_node_processes
+from savannadashboard.utils.restclient import get_node_processes_configs
+from savannadashboard.utils.restclient import get_plugins
+from savannadashboard.utils.workflow_helpers import _create_step_action
+from savannadashboard.utils.workflow_helpers import build_control
 
 LOG = logging.getLogger(__name__)
 
@@ -41,18 +47,20 @@ class GeneralConfigAction(workflows.Action):
     def __init__(self, request, *args, **kwargs):
         super(GeneralConfigAction, self).__init__(request, *args, **kwargs)
 
-        #todo get processes from plugin
+        plugin = request.session.get("plugin_name")
+
+        process_choices = get_node_processes(request, plugin)
         self.fields["processes"] = forms.MultipleChoiceField(
             label=_("Processes"),
-            required=True,
+            required=False,
             widget=forms.CheckboxSelectMultiple(),
             help_text=_("Processes to be launched in node group"),
-            choices=[("name_node", "Name Node"),
-                     ("job_tracker", "Job Tracker"),
-                     ("data_node", "Data Node"),
-                     ("task_tracker", "Task Tracker")])
+            choices=process_choices)
 
-        #todo add General Node Configuration
+        node_parameters = get_general_node_configuration(request, plugin)
+
+        for param in node_parameters:
+            self.fields[param.name] = build_control(param)
 
     def populate_flavor_choices(self, request, context):
         #todo filter images by tag, taken from context
@@ -74,49 +82,19 @@ class GeneralConfigAction(workflows.Action):
 
     class Meta:
         name = _("Configure Node group Template")
-        help_text_template = ("nodegroup_templates/_create_general_help.html")
+        help_text_template = \
+            ("nodegroup_templates/_configure_general_help.html")
 
 
 class GeneralConfig(workflows.Step):
     action_class = GeneralConfigAction
 
-
-class Parameter(object):
-    def __init__(self, name, param_type, required=False, choices=None):
-        self.name = name
-        self.required = required
-        self.param_type = param_type
-        self.choices = choices
-
-
-def _create_step_action(name, title, parameters):
-    meta = type('Meta', (object, ), dict(name=title))
-
-    fields = {}
-    contributes_field = ()
-    for param in parameters:
-        contributes_field += (param.name,)
-        if param.param_type == "text":
-            fields[param.name] = forms.CharField(label=param.name,
-                                                 required=param.required)
-        elif param.param_type == "bool":
-            fields[param.name] = forms.BooleanField(label=param.name,
-                                                    required=False)
-        elif param.param_type == "dropdown":
-            fields[param.name] = forms.ChoiceField(label=param.name,
-                                                   required=param.required,
-                                                   choices=param.choices)
-    action = type(name + "Action",
-                  (workflows.Action, meta),
-                  fields)
-
-    step = type(name + 'Step',
-                (workflows.Step,),
-                dict(name=name,
-                     action_class=action,
-                     contributes=contributes_field))
-
-    return step
+    def contribute(self, data, context):
+        for k, v in data.items():
+            if "hidden" in k:
+                continue
+            context["general_" + k] = v
+        return context
 
 
 class ConfigureNodegroupTemplate(workflows.Workflow):
@@ -129,35 +107,49 @@ class ConfigureNodegroupTemplate(workflows.Workflow):
     default_steps = (GeneralConfig,)
 
     def __init__(self, request, context_seed, entry_point, *args, **kwargs):
-        #todo manage registry celeanup
+        #todo manage registry cleanup
         ConfigureNodegroupTemplate._cls_registry = set([])
 
-        #todo get tabs from api
-        LOG.warning("init on configure called")
-        step_form_api_name = "HDFS"
-        hdfs_parameters = [Parameter("heap_size", "text", True),
-                           Parameter("some_dropdown_parameter",
-                                     "dropdown",
-                                     True,
-                                     [("val1", "Value1"),
-                                      ("val2", "Value2")]),
-                           Parameter("simple_checkbox_parameter", "bool")]
+        plugin = request.session.get("plugin_name")
+        process_parameters = get_node_processes_configs(request, plugin)
 
-        test_step = _create_step_action(name=step_form_api_name,
-                                        title="Configure HDFS",
-                                        parameters=hdfs_parameters)
-
-        registry = ConfigureNodegroupTemplate._cls_registry
-        if (not test_step in registry):
-            ConfigureNodegroupTemplate.register(test_step)
+        for process, parameters in process_parameters.items():
+            step = _create_step_action(process,
+                                       title=process + " parameters",
+                                       parameters=parameters)
+            ConfigureNodegroupTemplate.register(step)
 
         super(ConfigureNodegroupTemplate, self).__init__(request,
                                                          context_seed,
                                                          entry_point,
                                                          *args, **kwargs)
 
+    def is_valid(self):
+        missing = self.depends_on - set(self.context.keys())
+        if missing:
+            raise exceptions.WorkflowValidationError(
+                "Unable to complete the workflow. The values %s are "
+                "required but not present." % ", ".join(missing))
+        checked_steps = []
+        if "general_processes" in self.context:
+            checked_steps = self.context["general_processes"]
+        LOG.info(str(checked_steps))
+
+        steps_valid = True
+        for step in self.steps:
+            if getattr(step, "process_name", None) not in checked_steps:
+                LOG.warning(getattr(step, "process_name", None))
+                continue
+            if not step.action.is_valid():
+                steps_valid = False
+                step.has_errors = True
+        if not steps_valid:
+            return steps_valid
+        return self.validate(self.context)
+
     def handle(self, request, context):
         try:
+            LOG.info("create with context:" + str(context))
             return True
         except Exception:
             exceptions.handle(request)
@@ -165,16 +157,6 @@ class ConfigureNodegroupTemplate(workflows.Workflow):
 
 
 class SelectPluginAction(workflows.Action):
-    plugin_name = forms.ChoiceField(label=_("Plugin name"),
-                                    required=True,
-                                    choices=[('Vanilla hadoop',
-                                              'Vanilla hadoop')])
-    hadoop_version = forms.ChoiceField(label=_("Hadoop version"),
-                                       required=True,
-                                       choices=[
-                                           ("1.1.1", "1.1.1"),
-                                           ("1.0.4", "1.0.4"),
-                                           ("1.0.3", "1.0.3")])
     hidden_create_field = forms.CharField(
         required=False,
         widget=forms.HiddenInput(attrs={"class": "hidden_create_field"}))
@@ -182,13 +164,42 @@ class SelectPluginAction(workflows.Action):
     def __init__(self, request, *args, **kwargs):
         super(SelectPluginAction, self).__init__(request, *args, **kwargs)
 
+        plugins = get_plugins(request)
+        plugin_choices = [(plugin.name, plugin.title) for plugin in plugins]
+
+        self.fields["plugin_name"] = forms.ChoiceField(
+            label=_("Plugin name"),
+            required=True,
+            choices=plugin_choices,
+            widget=forms.Select(attrs={"class": "plugin_name_choice"}))
+
+        for plugin in plugins:
+            field_name = plugin.name + "_version"
+            choice_field = forms.ChoiceField(
+                label=_("Hadoop version"),
+                required=True,
+                choices=[(version, version) for version in plugin.versions],
+                widget=forms.Select(
+                    attrs={"class": "plugin_version_choice "
+                                    + field_name + "_choice"})
+            )
+            self.fields[field_name] = choice_field
+
     class Meta:
-        name = _("Select plugin and version")
+        name = _("Select plugin and hadoop version")
+        help_text_template = ("nodegroup_templates/_create_general_help.html")
 
 
 class SelectPlugin(workflows.Step):
     action_class = SelectPluginAction
     contributes = ("plugin_name", "hadoop_version")
+
+    def contribute(self, data, context):
+        context = super(SelectPlugin, self).contribute(data, context)
+        context["plugin_name"] = data.get('plugin_name', None)
+        context["hadoop_version"] = \
+            data.get(context["plugin_name"] + "_version", None)
+        return context
 
 
 class CreateNodegroupTemplate(workflows.Workflow):
