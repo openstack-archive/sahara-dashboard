@@ -17,6 +17,7 @@
 
 
 from horizon.api.base import url_for
+import json
 import logging
 import requests
 from savannadashboard.utils.workflow_helpers import Parameter
@@ -27,9 +28,9 @@ LOG = logging.getLogger(__name__)
 def get_savanna_url(request):
     url = url_for(request, 'mapreduce')
     if url is None:
-        url = "http://localhost:9000/v1.0"
-    #LOG.warning("request: " + str(request))
-    return url + "/" + request.user.tenant_id
+        url = "http://localhost:9000/v1.0/" + request.user.tenant_id
+    LOG.warning("request: " + str(request))
+    return url
 
 
 def get_plugins(request):
@@ -100,6 +101,65 @@ def get_configs_for_process_stub(plugin, process):
                     Parameter("mapred.maptasks", "text", required=False)]
     else:
         return []
+
+
+def do_get_request(horizonRequest, url):
+    token = horizonRequest.user.token.id
+    return requests.get(get_savanna_url(horizonRequest) + url,
+                        headers={"x-auth-token": token})
+
+
+def do_post_request(horizonRequest, url, data):
+    token = horizonRequest.user.token.id
+    return requests.post(get_savanna_url(horizonRequest) + url, data,
+                         headers={"x-auth-token": token,
+                                  "content-type": "application/json"})
+
+
+def get_images(request):
+    resp = do_get_request(request, "/images")
+
+    if resp.status_code == 200:
+        raw_images = resp.json()["images"]
+        images = []
+        for raw_image in raw_images:
+            images.append(Bean("Image", **raw_image))
+        return images
+    else:
+        raise RuntimeError(
+            "Savanna returned non-200 response on get images request: %s"
+            % resp.status_code)
+
+
+def get_image_by_id(request, image_id):
+    resp = do_get_request(request, "/images/%s" % image_id)
+
+    if resp.status_code == 200:
+        return Bean("Image", **resp.json())
+    else:
+        raise RuntimeError(
+            "Savanna returned non-200 response on get image request: %s"
+            % resp.status_code)
+
+
+def add_image_tags(request, image_id, tags):
+    data = json.dumps({"tags": tags})
+    resp = do_post_request(request, "/images/%s/tag" % image_id, data)
+
+    if resp.status_code != 202:
+        raise RuntimeError(
+            "Savanna returned non-200 response on add image tags request: %s"
+            % resp.status_code)
+
+
+def remove_image_tags(request, image_id, tags):
+    data = json.dumps({"tags": tags})
+    resp = do_post_request(request, "/images/%s/untag" % image_id, data)
+
+    if resp.status_code != 202:
+        raise RuntimeError(
+            "Savanna returned non-200 response on add image tags request: %s"
+            % resp.status_code)
 
 
 class Bean(object):
