@@ -14,6 +14,7 @@
 # implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+from django import template
 
 import logging
 
@@ -24,11 +25,23 @@ from horizon import tables
 LOG = logging.getLogger(__name__)
 
 
+def render_versions(plugin):
+    template_name = 'plugins/_versions_list.html'
+    context = {"plugin": plugin}
+    return template.loader.render_to_string(template_name, context)
+
+
 class PluginsTable(tables.DataTable):
-    name = tables.Column("name",
-                         verbose_name=_("Plugin name"),
-                         link=("horizon:savannadashboard:plugins:"
-                               "plugin_details"))
+    title = tables.Column("title",
+                          verbose_name=_("Plugin name"),
+                          link=("horizon:savannadashboard:plugins:"
+                                "plugin_details"))
+
+    versions = tables.Column(render_versions,
+                             verbose_name=_("Supported hadoop versions"))
+
+    description = tables.Column("description",
+                                verbose_name=_("Plugin description"))
 
     class Meta:
         name = "plugins"
