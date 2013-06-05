@@ -15,34 +15,29 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from django.utils.translation import ugettext_lazy as _
 
-from horizon import tables
-from horizon import tabs
 import logging
 
+from horizon import tabs
 from savannadashboard.api import client as savannaclient
-from savannadashboard.plugins.tables import PluginsTable
-from savannadashboard.plugins.tabs import PluginDetailsTabs
 
 LOG = logging.getLogger(__name__)
 
 
-class PluginsView(tables.DataTableView):
-    table_class = PluginsTable
-    template_name = 'plugins/plugins.html'
+class DetailsTab(tabs.Tab):
+    name = _("Details")
+    slug = "plugin_details_tab"
+    template_name = ("plugins/_details.html")
 
-    def get_data(self):
-        savanna = savannaclient.Client(self.request)
-        return savanna.plugins.list()
+    def get_context_data(self, request):
+        plugin_id = self.tab_group.kwargs['plugin_id']
+        savanna = savannaclient.Client(request)
+        plugin = savanna.plugins.get(plugin_id)
+        return {"plugin": plugin}
 
 
-class PluginDetailsView(tabs.TabView):
-    tab_group_class = PluginDetailsTabs
-    template_name = 'plugins/details.html'
-
-    def get_context_data(self, **kwargs):
-        context = super(PluginDetailsView, self).get_context_data(**kwargs)
-        return context
-
-    def get_data(self):
-        pass
+class PluginDetailsTabs(tabs.TabGroup):
+    slug = "cluster_details"
+    tabs = (DetailsTab,)
+    sticky = True

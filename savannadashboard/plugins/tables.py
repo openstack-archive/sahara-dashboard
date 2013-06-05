@@ -34,8 +34,7 @@ def render_versions(plugin):
 class PluginsTable(tables.DataTable):
     title = tables.Column("title",
                           verbose_name=_("Plugin name"),
-                          link=("horizon:savannadashboard:plugins:"
-                                "plugin_details"))
+                          link=("horizon:savanna:plugins:details"))
 
     versions = tables.Column(render_versions,
                              verbose_name=_("Supported hadoop versions"))

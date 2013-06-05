@@ -19,10 +19,13 @@
 from django.conf.urls.defaults import patterns
 from django.conf.urls.defaults import url
 
+from savannadashboard.plugins.views import PluginDetailsView
 from savannadashboard.plugins.views import PluginsView
 
 
 urlpatterns = patterns('',
                        url(r'^$', PluginsView.as_view(), name='index'),
                        url(r'^$', PluginsView.as_view(), name='plugins'),
+                       url(r'^(?P<plugin_id>[^/]+)$',
+                           PluginDetailsView.as_view(), name='details'),
                        )
