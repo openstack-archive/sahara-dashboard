@@ -21,11 +21,13 @@ from django.core.urlresolvers import reverse_lazy
 from horizon import forms
 from horizon import tables
 from horizon import tabs
+from horizon import workflows
 
 from savannadashboard.api import client as savannaclient
 from savannadashboard.cluster_templates import forms as cluster_forms
 from savannadashboard.cluster_templates.tables import ClusterTemplatesTable
 import savannadashboard.cluster_templates.tabs as _tabs
+import savannadashboard.cluster_templates.workflows as _workflows
 
 LOG = logging.getLogger(__name__)
 
@@ -57,3 +59,26 @@ class UploadFileView(forms.ModalFormView):
     form_class = cluster_forms.UploadFileForm
     template_name = 'cluster_templates/upload_file.html'
     success_url = reverse_lazy('horizon:savanna:cluster_templates:index')
+
+
+class CreateClusterTemplateView(workflows.WorkflowView):
+    workflow_class = _workflows.CreateClusterTemplate
+    success_url = \
+        "horizon:savanna:cluster_templates:create-cluster-template"
+    classes = ("ajax-modal")
+    template_name = "cluster_templates/create.html"
+
+
+class ConfigureClusterTemplateView(workflows.WorkflowView):
+    workflow_class = _workflows.ConfigureClusterTemplate
+    success_url = "horizon:savanna:cluster_templates"
+    template_name = "cluster_templates/configure.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(ConfigureClusterTemplateView, self).get_context_data(
+            **kwargs)
+
+        context["plugin_name"] = self.request.session.get("plugin_name")
+        context["plugin_version"] = self.request.session.get("plugin_version")
+
+        return context

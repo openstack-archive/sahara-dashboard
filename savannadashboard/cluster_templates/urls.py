@@ -31,5 +31,10 @@ urlpatterns = patterns('',
                            name='upload_file'),
                        url(r'^(?P<template_id>[^/]+)$',
                            views.ClusterTemplateDetailsView.as_view(),
-                           name='details')
-                       )
+                           name='details'),
+                       url(r'^create-cluster-template$',
+                           views.CreateClusterTemplateView.as_view(),
+                           name='create-cluster-template'),
+                       url(r'^configure-cluster-template$',
+                           views.ConfigureClusterTemplateView.as_view(),
+                           name='configure-cluster-template'))

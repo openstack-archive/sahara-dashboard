@@ -22,7 +22,59 @@
              $("." + plugin.val() + "_version_choice").closest(".control-group").show();
          }
          $(".plugin_name_choice").change();
-    })
+
+        //hide configure button. it will be triggered with scripts
+        $(".configure-clustertemplate-btn").hide();
+
+
+
+        horizon.modals.addModalInitFunction(function (modal) {
+            $(".hidden_nodegroups_field").after("<input type='button' id='add_nodegroup' value='Add Node group'/><br/>");
+            $("#add_nodegroup").click(function() {
+                $(".hidden_nodegroups_field").val("create_nodegroup");
+                $(".hidden_configure_field").val("create_nodegroup");
+                var form = $(".hidden_nodegroups_field").closest("form");
+                form.submit();
+            });
+
+            var actions_table = $(".hidden_nodegroups_field").parent();
+            actions_table.attr("style", "width: 100%");
+            actions_table.find(".control-group").attr("style", "width: 32%; display: inline-block");
+            actions_table.find(".input").children().attr("style", "width: 80%");
+
+            $(".hidden_nodegroups_field").val("");
+            $(".hidden_configure_field").val("");
+
+            if ($(modal).find(".hidden_create_field").length > 0) {
+                var form = $(".hidden_create_field").closest("form");
+                var successful = false;
+                form.submit(function (e) {
+                    $.ajax({
+                               type: "POST",
+                               url: form.attr('action'),  // read the action attribute of the form
+                               data: form.serialize(),
+                               success: function () {
+                                   form.find(".close").click();
+                                   $(".configure-clustertemplate-btn").click();
+                               }
+                           });
+                    return false;
+                });
+                $(".plugin_version_choice").closest(".control-group").hide();
+            }
+
+            //display version for selected plugin
+            $(document).on('change', '.plugin_name_choice', switch_versions);
+            function switch_versions() {
+                $(".plugin_version_choice").closest(".control-group").hide();
+                var plugin = $(this);
+                $("." + plugin.val() + "_version_choice").closest(".control-group").show();
+            }
+            $(".plugin_name_choice").change();
+        });
+
+    });
+
 </script>
 
 {% endblock %}
