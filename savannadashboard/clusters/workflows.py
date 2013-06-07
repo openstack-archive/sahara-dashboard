@@ -1,4 +1,3 @@
-
 # vim: tabstop=4 shiftwidth=4 softtabstop=4
 
 # Copyright (c) 2013 Mirantis Inc.
@@ -16,95 +15,45 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import logging
-
-from django.contrib import messages as _messages
-from django.utils.translation import ugettext as _
-
 from horizon import exceptions
 from horizon import forms
 from horizon import workflows
 
+from horizon.api import glance
+from horizon.api import nova
+
+from django.utils.translation import ugettext as _
+
 import savannadashboard.api.api_objects as api_objects
 from savannadashboard.api import client as savannaclient
+import savannadashboard.cluster_templates.workflows as t_flows
+
+import logging
 
 LOG = logging.getLogger(__name__)
 
 
-class SelectPluginAction(workflows.Action):
-    hidden_create_field = forms.CharField(
-        required=False,
-        widget=forms.HiddenInput(attrs={"class": "hidden_create_field"}))
-
-    def __init__(self, request, *args, **kwargs):
-        super(SelectPluginAction, self).__init__(request, *args, **kwargs)
-
-        savanna = savannaclient.Client(request)
-        plugins = savanna.plugins.list()
-        plugin_choices = [(plugin.name, plugin.title) for plugin in plugins]
-
-        self.fields["plugin_name"] = forms.ChoiceField(
-            label=_("Plugin name"),
-            required=True,
-            choices=plugin_choices,
-            widget=forms.Select(attrs={"class": "plugin_name_choice"}))
-
-        for plugin in plugins:
-            field_name = plugin.name + "_version"
-            choice_field = forms.ChoiceField(
-                label=_("Hadoop version"),
-                required=True,
-                choices=[(version, version) for version in plugin.versions],
-                widget=forms.Select(
-                    attrs={"class": "plugin_version_choice "
-                                    + field_name + "_choice"})
-            )
-            self.fields[field_name] = choice_field
-
+class SelectPluginAction(t_flows.SelectPluginAction):
     class Meta:
-        name = _("Select plugin and hadoop version for cluster template")
-        help_text_template = ("cluster_templates/_create_general_help.html")
+        name = _("Select plugin and hadoop version for cluster")
+        help_text_template = ("clusters/_create_general_help.html")
 
 
-class SelectPlugin(workflows.Step):
-    action_class = SelectPluginAction
-    contributes = ("plugin_name", "hadoop_version")
-
-    def contribute(self, data, context):
-        context = super(SelectPlugin, self).contribute(data, context)
-        context["plugin_name"] = data.get('plugin_name', None)
-        context["hadoop_version"] = \
-            data.get(context["plugin_name"] + "_version", None)
-        return context
+class SelectPlugin(t_flows.SelectPlugin):
+    pass
 
 
-class CreateClusterTemplate(workflows.Workflow):
-    slug = "create_cluster_template"
-    name = _("Create Cluster Template")
-    finalize_button_name = _("Create")
-    success_message = _("Created")
-    failure_message = _("Could not create")
+class CreateCluster(t_flows.CreateClusterTemplate):
+    slug = "create_cluster"
+    name = _("Create Cluster")
     success_url = "horizon:savanna:cluster_templates:index"
-    default_steps = (SelectPlugin,)
 
     def __init__(self, request, context_seed, entry_point, *args, **kwargs):
         request.session["groups_count"] = 0
-        super(CreateClusterTemplate, self).__init__(request,
-                                                    context_seed,
-                                                    entry_point,
-                                                    *args, **kwargs)
-
-    def handle(self, request, context):
-        try:
-            request.session["plugin_name"] = context["plugin_name"]
-            request.session["hadoop_version"] = context["hadoop_version"]
-            request.session.pop("ignore_idxs", None)
-            request.session.pop("groups_count", None)
-            _messages.set_level(request, _messages.WARNING)
-            return True
-        except Exception:
-            exceptions.handle(request)
-            return False
+        super(CreateCluster, self).__init__(request,
+                                            context_seed,
+                                            entry_point,
+                                            *args, **kwargs)
 
 
 class GeneralConfigAction(workflows.Action):
@@ -116,30 +65,45 @@ class GeneralConfigAction(workflows.Action):
         required=False,
         widget=forms.HiddenInput(attrs={"class": "hidden_to_delete_field"}))
 
-    cluster_template_name = forms.CharField(label=_("Template Name"),
-                                            required=True)
+    cluster_name = forms.CharField(label=_("Cluster Name"),
+                                   required=True)
 
     description = forms.CharField(label=_("Description"),
                                   required=False,
                                   widget=forms.Textarea)
+    cluster_template = forms.ChoiceField(label=_("Cluster Template"),
+                                         initial=(None, "None"),
+                                         required=False)
 
-    #base_image = forms.ChoiceField(label=_("Base Image"),
-    #                               required=True)
+    image = forms.ChoiceField(label=_("Base Image"),
+                              required=True)
 
-    #separate_machines = forms.BooleanField(
-    #    label=_("Run data nodes on separate machines"),
-    #    required=False)
+    keypair = forms.ChoiceField(
+        label=_("Keypair"),
+        required=False,
+        help_text=_("Which keypair to use for authentication."))
 
-    #hdfs_placement = forms.ChoiceField(
-    #    label=_("HDFS Data Node storage location"),
-    #    required=True,
-    #    help_text=_("Which keypair to use for authentication."),
-    #    choices=[("ephemeral_drive", "Ephemeral Drive"),
-    #             ("cinder_volume", "Cinder Volume")])
+    def populate_image_choices(self, request, context):
+        public_images, _more = glance.image_list_detailed(request)
+        return [(image.id, image.name) for image in public_images]
 
-    #def populate_base_image_choices(self, request, context):
-    #    public_images, _more = glance.image_list_detailed(request)
-    #    return [(image.id, image.name) for image in public_images]
+    def populate_keypair_choices(self, request, context):
+        keypairs = nova.keypair_list(request)
+        keypair_list = [(kp.name, kp.name) for kp in keypairs]
+        return keypair_list
+
+    def populate_cluster_template_choices(selfs, request, context):
+        savanna = savannaclient.Client(request)
+        templates = savanna.cluster_templates.list()
+        plugin_name = request.session["plugin_name"]
+        hadoop_version = request.session["hadoop_version"]
+
+        choices = [(template.id, template.name)
+                   for template in templates
+                   if (template.hadoop_version == hadoop_version and
+                       template.plugin_name == plugin_name)]
+
+        return choices
 
     def get_help_text(self):
         extra = dict()
@@ -155,7 +119,7 @@ class GeneralConfigAction(workflows.Action):
         return cleaned_data
 
     class Meta:
-        name = _("Configure Cluster Template")
+        name = _("Configure Cluster")
         help_text_template = \
             ("cluster_templates/_configure_general_help.html")
 
@@ -170,13 +134,13 @@ class GeneralConfig(workflows.Step):
         return context
 
 
-class ConfigureNodegroupsAction(workflows.Action):
+class ConfigureClusterAction(workflows.Action):
     hidden_nodegroups_field = forms.CharField(
         required=False,
         widget=forms.HiddenInput(attrs={"class": "hidden_nodegroups_field"}))
 
     def __init__(self, request, *args, **kwargs):
-        super(ConfigureNodegroupsAction, self).\
+        super(ConfigureClusterAction, self).\
             __init__(request, *args, **kwargs)
 
         savanna = savannaclient.Client(request)
@@ -236,7 +200,7 @@ class ConfigureNodegroupsAction(workflows.Action):
             )
 
     def clean(self):
-        cleaned_data = super(ConfigureNodegroupsAction, self).clean()
+        cleaned_data = super(ConfigureClusterAction, self).clean()
         if cleaned_data.get("hidden_nodegroups_field", None) \
                 == "create_nodegroup":
             self._errors = dict()
@@ -246,8 +210,8 @@ class ConfigureNodegroupsAction(workflows.Action):
         name = _("Cluster Node groups")
 
 
-class ConfigureNodegroups(workflows.Step):
-    action_class = ConfigureNodegroupsAction
+class ConfigureClusterStep(workflows.Step):
+    action_class = ConfigureClusterAction
     contributes = ("hidden_nodegroups_field", )
 
     def contribute(self, data, context):
@@ -256,14 +220,14 @@ class ConfigureNodegroups(workflows.Step):
         return context
 
 
-class ConfigureClusterTemplate(workflows.Workflow):
-    slug = "configure_cluster_template"
-    name = _("Create Cluster Template")
+class ConfigureCluster(workflows.Workflow):
+    slug = "configure_cluster"
+    name = _("Create Cluster")
     finalize_button_name = _("Create")
     success_message = _("Created")
     failure_message = _("Could not create")
-    success_url = "horizon:savanna:cluster_templates:index"
-    default_steps = (GeneralConfig, ConfigureNodegroups, )
+    success_url = "horizon:savanna:clusters:index"
+    default_steps = (GeneralConfig, ConfigureClusterStep)
 
     def is_valid(self):
         if self.context["general_hidden_configure_field"] \
@@ -308,15 +272,16 @@ class ConfigureClusterTemplate(workflows.Workflow):
                                            count=ng_counts[key])
                 node_groups.append(ng)
 
-            #TODO(nkonovalov): Fix client to support default_image_id
-            savanna.cluster_templates.create(
-                context["general_cluster_template_name"],
-                request.session.get("plugin_name"),
-                request.session.get("hadoop_version"),
-                context["general_description"],
-                #TODO(nkonovalov, dmesheryakov): Support general configs
-                {},
-                node_groups)
+            savanna.clusters.create(context["general_cluster_name"],
+                                    request.session.get("plugin_name"),
+                                    request.session.get("hadoop_version"),
+                                    context["general_cluster_template"],
+                                    context["general_image"],
+                                    context["general_description"],
+                                    node_groups,
+                                    context["general_keypair"]
+                                    )
             return True
         except Exception:
+            exceptions.handle(request)
             return False
