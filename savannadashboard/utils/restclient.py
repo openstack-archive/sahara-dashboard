@@ -25,12 +25,28 @@ from savannadashboard.utils.workflow_helpers import Parameter
 LOG = logging.getLogger(__name__)
 
 
+def get_horizon_parameter(name, default_value):
+    import openstack_dashboard.settings
+
+    if hasattr(openstack_dashboard.settings, name):
+        return getattr(openstack_dashboard.settings, name)
+    else:
+        logging.info('Parameter %s is not found in local_settings.py, '
+                     'using default "%s"' % (name, default_value))
+        return default_value
+
+
+# Example SAVANNA_URL - http://localhost:9000/v1.0
+SAVANNA_URL = get_horizon_parameter('SAVANNA_URL', None)
+# "type" of Savanna service registered in keystone
+SAVANNA_SERVICE = get_horizon_parameter('SAVANNA_SERVICE', 'mapreduce')
+
+
 def get_savanna_url(request):
-    url = url_for(request, 'mapreduce')
-    if url is None:
-        url = "http://localhost:9000/v1.0/" + request.user.tenant_id
-    LOG.warning("request: " + str(request))
-    return url
+    if SAVANNA_URL is not None:
+        return SAVANNA_URL + "/" + request.user.tenant_id
+
+    return url_for(request, SAVANNA_SERVICE)
 
 
 def get_plugins(request):
