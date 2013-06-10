@@ -19,8 +19,9 @@
 from horizon import tables
 import logging
 
+from savannadashboard.api import client as savannaclient
 from savannadashboard.plugins.tables import PluginsTable
-from savannadashboard.utils.restclient import get_plugins
+
 
 LOG = logging.getLogger(__name__)
 
@@ -30,5 +31,6 @@ class PluginsView(tables.DataTableView):
     template_name = 'plugins/plugins.html'
 
     def get_data(self):
-        plugins = get_plugins(self.request)
-        return plugins
+        savanna = savannaclient.Client(self.request)
+
+        return savanna.plugins.list()

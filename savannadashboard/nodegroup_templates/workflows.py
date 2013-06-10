@@ -23,14 +23,19 @@ from django.utils.translation import ugettext as _
 
 from horizon import exceptions
 from horizon import workflows
-from savannadashboard.utils.restclient import get_general_node_configuration
-from savannadashboard.utils.restclient import get_node_processes
-from savannadashboard.utils.restclient import get_node_processes_configs
-from savannadashboard.utils.restclient import get_plugins
+
+from savannadashboard.api import client as savannaclient
+from savannadashboard.api import helpers
 from savannadashboard.utils.workflow_helpers import _create_step_action
 from savannadashboard.utils.workflow_helpers import build_control
 
 LOG = logging.getLogger(__name__)
+
+
+def get_plugin_and_hadoop_version(request):
+    plugin_name = request.session.get("plugin_name")
+    hadoop_version = request.session.get("hadoop_version")
+    return (plugin_name, hadoop_version)
 
 
 class GeneralConfigAction(workflows.Action):
@@ -47,9 +52,12 @@ class GeneralConfigAction(workflows.Action):
     def __init__(self, request, *args, **kwargs):
         super(GeneralConfigAction, self).__init__(request, *args, **kwargs)
 
-        plugin = request.session.get("plugin_name")
+        savanna = savannaclient.Client(request)
+        hlps = helpers.Helpers(savanna)
 
-        process_choices = get_node_processes(request, plugin)
+        plugin, hadoop_version = get_plugin_and_hadoop_version(request)
+
+        process_choices = hlps.get_node_processes(plugin, hadoop_version)
         self.fields["processes"] = forms.MultipleChoiceField(
             label=_("Processes"),
             required=False,
@@ -57,7 +65,8 @@ class GeneralConfigAction(workflows.Action):
             help_text=_("Processes to be launched in node group"),
             choices=process_choices)
 
-        node_parameters = get_general_node_configuration(request, plugin)
+        node_parameters = hlps.get_general_node_group_configs(plugin,
+                                                              hadoop_version)
 
         for param in node_parameters:
             self.fields[param.name] = build_control(param)
@@ -110,8 +119,14 @@ class ConfigureNodegroupTemplate(workflows.Workflow):
         #todo manage registry cleanup
         ConfigureNodegroupTemplate._cls_registry = set([])
 
-        plugin = request.session.get("plugin_name")
-        process_parameters = get_node_processes_configs(request, plugin)
+        savanna = savannaclient.Client(request)
+        hlps = helpers.Helpers(savanna)
+
+        plugin, hadoop_version = get_plugin_and_hadoop_version(request)
+
+        process_parameters = hlps.get_targeted_node_group_configs(
+            plugin,
+            hadoop_version)
 
         for process, parameters in process_parameters.items():
             step = _create_step_action(process,
@@ -164,7 +179,9 @@ class SelectPluginAction(workflows.Action):
     def __init__(self, request, *args, **kwargs):
         super(SelectPluginAction, self).__init__(request, *args, **kwargs)
 
-        plugins = get_plugins(request)
+        savanna = savannaclient.Client(request)
+
+        plugins = savanna.plugins.list()
         plugin_choices = [(plugin.name, plugin.title) for plugin in plugins]
 
         self.fields["plugin_name"] = forms.ChoiceField(

@@ -15,15 +15,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import json
+import logging
+
 from django.core.urlresolvers import reverse_lazy
 from horizon import forms
 from horizon import tables
-import json
-import logging
+
+from savannadashboard.api import client as savannaclient
 from savannadashboard.image_registry.forms import EditTagsForm
 from savannadashboard.image_registry.tables import ImageRegistryTable
-from savannadashboard.utils.restclient import get_image_by_id
-from savannadashboard.utils.restclient import get_images
 
 
 LOG = logging.getLogger(__name__)
@@ -40,7 +41,8 @@ class EditTagsView(forms.ModalFormView):
         return context
 
     def get_object(self):
-        return get_image_by_id(self.request, self.kwargs["image_id"])
+        savanna = savannaclient.Client(self.request)
+        return savanna.images.get(self.kwargs["image_id"])
 
     def get_initial(self):
         image = self.get_object()
@@ -52,4 +54,6 @@ class ImageRegistryView(tables.DataTableView):
     template_name = 'image_registry/image_registry.html'
 
     def get_data(self):
-        return get_images(self.request)
+        savanna = savannaclient.Client(self.request)
+
+        return savanna.images.list()

@@ -20,11 +20,10 @@ from horizon import workflows
 
 
 class Parameter(object):
-    def __init__(self, name, param_type, required=False, choices=None):
-        self.name = name
-        self.required = required
-        self.param_type = param_type
-        self.choices = choices
+    def __init__(self, config):
+        self.name = config['name']
+        self.required = not config['is_optional']
+        self.param_type = config['config_type']
 
 
 def build_control(parameter):
@@ -62,11 +61,11 @@ def _create_step_action(name, title, parameters, advanced_fields=None):
 
     action_meta = type('Meta', (object, ),
                        dict(name=title, fields=meta_fields))
-    action = type(title,
+    action = type(str(title),
                   (workflows.Action, action_meta),
                   param_fields)
     step_meta = type('Meta', (object,), dict(name=title))
-    step = type(name,
+    step = type(str(name),
                 (workflows.Step, ),
                 dict(name=name,
                      process_name=name,

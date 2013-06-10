@@ -2,9 +2,8 @@ import json
 
 from horizon import exceptions
 from horizon import forms
-from savannadashboard.utils.restclient import add_image_tags
-from savannadashboard.utils.restclient import get_image_by_id
-from savannadashboard.utils.restclient import remove_image_tags
+
+from savannadashboard.api import client as savannaclient
 
 
 class EditTagsForm(forms.SelfHandlingForm):
@@ -13,18 +12,12 @@ class EditTagsForm(forms.SelfHandlingForm):
 
     def handle(self, request, data):
         try:
-            image = get_image_by_id(request, data['image_id'])
-            oldtags = frozenset(image.tags)
-            updatedtags = frozenset(json.loads(data["tags_list"]))
+            savanna = savannaclient.Client(request)
 
-            to_add = list(updatedtags - oldtags)
-            to_remove = list(oldtags - updatedtags)
+            image_id = data['image_id']
+            image_tags = json.loads(data["tags_list"])
 
-            if (len(to_add) != 0):
-                add_image_tags(request, data['image_id'], to_add)
-
-            if (len(to_remove) != 0):
-                remove_image_tags(request, data['image_id'], to_remove)
+            savanna.images.update_tags(image_id, image_tags)
 
             return True
         except Exception:
