@@ -66,13 +66,14 @@ class ResourceManager(object):
     def _delete(self, url):
         resp = self.api.client.delete(url)
 
-        if resp.status_code == 204:
-            data = resp.json()
-            return self.resource_class(self, data)
-        else:
+        if resp.status_code != 204:
             resource_name = self.resource_class.resource_name
             raise RuntimeError('Unable to delete %s, server returned code %s' %
                                (resource_name, resp.status_code))
 
     def _plurify_resource_name(self):
         return self.resource_class.resource_name + 's'
+
+
+class APIException(Exception):
+    pass

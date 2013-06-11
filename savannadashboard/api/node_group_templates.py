@@ -31,4 +31,4 @@ class NodeGroupTemplateManager(base.ResourceManager):
                          'node_group_template')
 
     def delete(self, ng_template_id):
-        return self._delete('/node-group-templates/%s' % ng_template_id)
+        self._delete('/node-group-templates/%s' % ng_template_id)

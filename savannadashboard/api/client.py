@@ -2,6 +2,7 @@ import logging
 
 from horizon.api import base
 
+from savannadashboard.api import cluster_templates
 from savannadashboard.api import httpclient
 from savannadashboard.api import images
 from savannadashboard.api import node_group_templates
@@ -40,6 +41,7 @@ class Client(object):
         self.client = httpclient.HTTPClient(get_savanna_url(request),
                                             request.user.token.id)
 
+        self.cluster_templates = cluster_templates.ClusterTemplateManager(self)
         self.node_group_templates = (node_group_templates.
                                      NodeGroupTemplateManager(self))
         self.plugins = plugins.PluginManager(self)
