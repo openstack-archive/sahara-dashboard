@@ -20,6 +20,8 @@ from horizon import tables
 from horizon import workflows
 import logging
 
+from savannadashboard.api import client as savannaclient
+
 from savannadashboard.nodegroup_templates.tables \
     import NodegroupTemplatesTable
 from savannadashboard.nodegroup_templates.workflows \
@@ -35,8 +37,8 @@ class NodegroupTemplatesView(tables.DataTableView):
     template_name = 'nodegroup_templates/nodegroup_templates.html'
 
     def get_data(self):
-        #todo get data from client
-        nodegroup_templates = []
+        savanna = savannaclient.Client(self.request)
+        nodegroup_templates = savanna.node_group_templates.list()
         return nodegroup_templates
 
 

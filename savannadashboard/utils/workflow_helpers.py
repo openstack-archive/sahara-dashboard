@@ -27,7 +27,7 @@ class Parameter(object):
 
 
 def build_control(parameter):
-    if parameter.param_type == "text":
+    if parameter.param_type == "str":
         return forms.CharField(
             label=parameter.name,
             required=parameter.required)
@@ -44,23 +44,21 @@ def build_control(parameter):
             choices=parameter.choices)
 
 
-def _create_step_action(name, title, parameters, advanced_fields=None):
+def _create_step_action(name, title, parameters, advanced_fields=None,
+                        service=None):
     param_fields = {}
     contributes_field = ()
-    meta_fields = []
     for param in parameters:
-        field_name = name + "_" + param.name
+        field_name = "CONF:" + service + ":" + param.name
         contributes_field += (field_name,)
-        meta_fields.append(field_name)
         param_fields[field_name] = build_control(param)
 
     if advanced_fields is not None:
         for ad_field_name, ad_field_value in advanced_fields:
             param_fields[ad_field_name] = ad_field_value
-            meta_fields.append(ad_field_name)
 
     action_meta = type('Meta', (object, ),
-                       dict(name=title, fields=meta_fields))
+                       dict(name=title))
     action = type(str(title),
                   (workflows.Action, action_meta),
                   param_fields)
