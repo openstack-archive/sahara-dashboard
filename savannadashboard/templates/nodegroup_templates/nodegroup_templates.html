@@ -14,9 +14,9 @@
 
 <script type="text/javascript">
     addHorizonLoadEvent(function () {
-        function get_process_tab(process) {
+        function get_service_tab(service) {
             return $("a").filter(function(idx, e) {
-                return $(e).attr("data-target") && $(e).attr("data-target").indexOf(process) != -1}).closest("li");
+                return $(e).attr("data-target") && $(e).attr("data-target").indexOf(service.toLowerCase()) != -1}).closest("li");
         }
 
         //hide configure button. it will be triggered with scripts
@@ -58,16 +58,23 @@
             $("input").filter(function(idx, e) {
                 return $(e).attr("name") && $(e).attr("name").indexOf("processes") != -1})
                     .change(function() {
-                                            var process = $(this).val();
-                                            var enabled = $(this).is(':checked');
+                                            var process_service = $(this).val();
+                                            var service = $(this).val().split(":")[0];
+                                            var enabled = false;
+                                            $(this).closest("ul").find("input").each(function(idx, el) {
+                                                if ($(el).val().split(":")[0] != service) {
+                                                    return;
+                                                }
+                                                enabled |= $(el).is(':checked');
+                                            });
                                             if (enabled) {
-                                                get_process_tab(process).show();
+                                                get_service_tab(service).show();
                                             } else {
-                                                get_process_tab(process).hide();
+                                                get_service_tab(service).hide();
                                             }
                                         }).change();
             //general tab should be active
-            get_process_tab("generalconfigaction").find("a").click();
+            get_service_tab("generalconfigaction").find("a").click();
         });
     });
 

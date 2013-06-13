@@ -14,6 +14,7 @@
 # implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+from django import template
 
 import logging
 
@@ -38,11 +39,24 @@ class ConfigureNodegroupTemplate(tables.LinkAction):
     classes = ("ajax-modal", "btn-create", "configure-nodegrouptemplate-btn")
 
 
+def render_processes(nodegroup_template):
+    template_name = 'nodegroup_templates/_processes_list.html'
+    context = {"processes": nodegroup_template.node_processes}
+    return template.loader.render_to_string(template_name, context)
+
+
 class NodegroupTemplatesTable(tables.DataTable):
     name = tables.Column("name",
                          verbose_name=_("Node group template name"),
-                         link=("horizon:savannadashboard:nodegroup_templates:"
-                               "nodegroup_template_details"))
+                         #link=("horizon:savannadashboard:nodegroup_templates:"
+                         #      "nodegroup_template_details"),
+                         )
+    plugin_name = tables.Column("plugin_name",
+                                verbose_name=_("Plugin name"))
+    hadoop_version = tables.Column("hadoop_version",
+                                   verbose_name=_("Hadoop version"))
+    node_processes = tables.Column(render_processes,
+                                   verbose_name=_("Node processes"))
 
     class Meta:
         name = "nodegroup_templates"

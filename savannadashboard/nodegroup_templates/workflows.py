@@ -42,6 +42,10 @@ class GeneralConfigAction(workflows.Action):
     nodegroup_name = forms.CharField(label=_("Template Name"),
                                      required=True)
 
+    description = forms.CharField(label=_("Description"),
+                                  required=False,
+                                  widget=forms.Textarea)
+
     flavor = forms.ChoiceField(label=_("OpenStack Flavor"),
                                required=True)
 
@@ -56,8 +60,15 @@ class GeneralConfigAction(workflows.Action):
         hlps = helpers.Helpers(savanna)
 
         plugin, hadoop_version = get_plugin_and_hadoop_version(request)
+        process_choices = []
+        version_details = savanna.plugins.get_version_details(plugin,
+                                                              hadoop_version)
 
-        process_choices = hlps.get_node_processes(plugin, hadoop_version)
+        for service, processes in version_details.node_processes.items():
+            for process in processes:
+                process_choices.append(
+                    (str(service) + ":" + str(process), process))
+
         self.fields["processes"] = forms.MultipleChoiceField(
             label=_("Processes"),
             required=False,
@@ -67,12 +78,11 @@ class GeneralConfigAction(workflows.Action):
 
         node_parameters = hlps.get_general_node_group_configs(plugin,
                                                               hadoop_version)
-
+        LOG.warning("node_parameters " + str(node_parameters))
         for param in node_parameters:
             self.fields[param.name] = build_control(param)
 
     def populate_flavor_choices(self, request, context):
-        #todo filter images by tag, taken from context
         try:
             flavors = nova.flavor_list(request)
             flavor_list = [(flavor.id, "%s" % flavor.name)
@@ -116,7 +126,7 @@ class ConfigureNodegroupTemplate(workflows.Workflow):
     default_steps = (GeneralConfig,)
 
     def __init__(self, request, context_seed, entry_point, *args, **kwargs):
-        #todo manage registry cleanup
+        #TODO(nkonovalov) manage registry cleanup
         ConfigureNodegroupTemplate._cls_registry = set([])
 
         savanna = savannaclient.Client(request)
@@ -124,14 +134,14 @@ class ConfigureNodegroupTemplate(workflows.Workflow):
 
         plugin, hadoop_version = get_plugin_and_hadoop_version(request)
 
-        process_parameters = hlps.get_targeted_node_group_configs(
+        service_parameters = hlps.get_targeted_node_group_configs(
             plugin,
             hadoop_version)
-
-        for process, parameters in process_parameters.items():
-            step = _create_step_action(process,
-                                       title=process + " parameters",
-                                       parameters=parameters)
+        for service, parameters in service_parameters.items():
+            step = _create_step_action(service,
+                                       title=service + " parameters",
+                                       parameters=parameters,
+                                       service=service)
             ConfigureNodegroupTemplate.register(step)
 
         super(ConfigureNodegroupTemplate, self).__init__(request,
@@ -152,7 +162,7 @@ class ConfigureNodegroupTemplate(workflows.Workflow):
 
         steps_valid = True
         for step in self.steps:
-            if getattr(step, "process_name", None) not in checked_steps:
+            if not getattr(step, "process_name", None) in checked_steps:
                 LOG.warning(getattr(step, "process_name", None))
                 continue
             if not step.action.is_valid():
@@ -164,7 +174,36 @@ class ConfigureNodegroupTemplate(workflows.Workflow):
 
     def handle(self, request, context):
         try:
-            LOG.info("create with context:" + str(context))
+            savanna = savannaclient.Client(request)
+            plugin_name = request.session.get("plugin_name")
+            hadoop_version = request.session.get("hadoop_version")
+
+            processes = []
+            for service_process in context["general_processes"]:
+                processes.append(str(service_process).split(":")[1])
+
+            configs_dict = dict()
+            for key, val in context.items():
+                if not val:
+                    continue
+                if str(key).startswith("CONF"):
+                    key_split = str(key).split(":")
+                    service = key_split[1]
+                    config = key_split[2]
+                    if service not in configs_dict:
+                        configs_dict[service] = dict()
+                    configs_dict[service][config] = val
+
+            LOG.info("create with config:" + str(configs_dict))
+
+            savanna.node_group_templates.create(
+                context["general_nodegroup_name"],
+                plugin_name,
+                hadoop_version,
+                context["general_description"],
+                context["general_flavor"],
+                processes,
+                configs_dict)
             return True
         except Exception:
             exceptions.handle(request)
