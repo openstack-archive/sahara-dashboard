@@ -20,6 +20,7 @@ from django.conf.urls.defaults import patterns
 from django.conf.urls.defaults import url
 from savannadashboard.image_registry.views import EditTagsView
 from savannadashboard.image_registry.views import ImageRegistryView
+from savannadashboard.image_registry.views import RegisterImageView
 
 urlpatterns = patterns('',
                        url(r'^$', ImageRegistryView.as_view(),
@@ -29,4 +30,7 @@ urlpatterns = patterns('',
                        url(r'^edit_tags/(?P<image_id>[^/]+)/$',
                            EditTagsView.as_view(),
                            name='edit_tags'),
+                       url(r'^register/$',
+                           RegisterImageView.as_view(),
+                           name='register'),
                        )

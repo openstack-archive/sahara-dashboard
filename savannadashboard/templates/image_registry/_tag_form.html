@@ -1,0 +1,56 @@
+<script xmlns="http://www.w3.org/1999/html">
+    $("#_savanna_image_tag").keypress(function (event) {
+        if (event.keyCode == 13) {
+            add_tag_to_image();
+            return false;
+        }
+        return true;
+    });
+    function add_tag_to_image() {
+        var tag = $.trim($("#_savanna_image_tag").val());
+        if (tag.length == 0) {
+            return;
+        }
+
+        var is_new = true;
+        $("#image_tags_list span").each(function (el) {
+            if ($.trim($(this).text()) == tag) {
+                is_new = false;
+            }
+        });
+        if (!is_new) {
+            return;
+        }
+        var span = ' <span class="label label-warning" style="float: left;display: block; margin: 2px;">$tag <i class="icon-remove-sign" onclick="remove_tag(this);"></i></span>'.replace("$tag", tag)
+        $("#image_tags_list").append(span);
+        $("#_savanna_image_tag").val("");
+        update_image_tags();
+    }
+
+    function update_image_tags() {
+        var tags = []
+        $("#image_tags_list span").each(function (el) {
+            tags.push($.trim($(this).text()));
+        });
+        $("#id_tags_list").val(JSON.stringify(tags));
+    }
+
+    function remove_tag(icon) {
+        span = icon.parentNode
+        span.parentNode.removeChild(span)
+        update_image_tags()
+    }
+</script>
+<div id="image_tags_list">
+    {% for tag in image.tags %}
+        <span class="label label-info" style="float: left;display: block; margin: 2px;">{{ tag }} <i
+                class="icon-remove-sign"
+                onclick="remove_tag(this);"></i></span>
+    {% endfor %}
+</div>
+<div style="clear: both;"></div>
+<div style="margin-top: 5px;">
+    <input type="text" class="tag-input" id="_savanna_image_tag" data-original-title="" onclick=""/>
+    <a href="#" id="add_tag_btn" class="btn btn-small btn-create btn-inline" onclick="add_tag_to_image()">Add
+        tag</a>
+</div>

@@ -24,6 +24,7 @@ from horizon import tables
 
 from savannadashboard.api import client as savannaclient
 from savannadashboard.image_registry.forms import EditTagsForm
+from savannadashboard.image_registry.forms import RegisterImageForm
 from savannadashboard.image_registry.tables import ImageRegistryTable
 
 
@@ -46,7 +47,11 @@ class EditTagsView(forms.ModalFormView):
 
     def get_initial(self):
         image = self.get_object()
-        return {"image_id": image.id, "tags_list": json.dumps(image.tags)}
+        print image
+        return {"image_id": image.id,
+                "tags_list": json.dumps(image.tags),
+                "user_name": image.username,
+                "description": image.description}
 
 
 class ImageRegistryView(tables.DataTableView):
@@ -57,3 +62,9 @@ class ImageRegistryView(tables.DataTableView):
         savanna = savannaclient.Client(self.request)
 
         return savanna.images.list()
+
+
+class RegisterImageView(forms.ModalFormView):
+    form_class = RegisterImageForm
+    template_name = 'image_registry/register_image.html'
+    success_url = reverse_lazy('horizon:savanna:image_registry:index')
