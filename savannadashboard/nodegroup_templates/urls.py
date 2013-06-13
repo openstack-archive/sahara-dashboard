@@ -19,23 +19,21 @@
 from django.conf.urls.defaults import patterns
 from django.conf.urls.defaults import url
 
-from savannadashboard.nodegroup_templates.views \
-    import ConfigureNodegroupTemplateView
-from savannadashboard.nodegroup_templates.views \
-    import CreateNodegroupTemplateView
-from savannadashboard.nodegroup_templates.views \
-    import NodegroupTemplatesView
+import savannadashboard.nodegroup_templates.views as views
 
 urlpatterns = patterns('savanna.nodegroup_templates.views',
-                       url(r'^$', NodegroupTemplatesView.as_view(),
+                       url(r'^$', views.NodegroupTemplatesView.as_view(),
                            name='index'),
                        url(r'^nodegroup-templates$',
-                           NodegroupTemplatesView.as_view(),
+                           views.NodegroupTemplatesView.as_view(),
                            name='nodegroup-templates'),
                        url(r'^create-nodegroup-template$',
-                           CreateNodegroupTemplateView.as_view(),
+                           views.CreateNodegroupTemplateView.as_view(),
                            name='create-nodegroup-template'),
                        url(r'^configure-nodegroup-template$',
-                           ConfigureNodegroupTemplateView.as_view(),
-                           name='configure-nodegroup-template')
+                           views.ConfigureNodegroupTemplateView.as_view(),
+                           name='configure-nodegroup-template'),
+                       url(r'^(?P<template_id>[^/]+)$',
+                           views.NodegroupTemplateDetailsView.as_view(),
+                           name='details')
                        )

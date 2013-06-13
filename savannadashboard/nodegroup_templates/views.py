@@ -17,23 +17,21 @@
 
 
 from horizon import tables
+from horizon import tabs
 from horizon import workflows
 import logging
 
 from savannadashboard.api import client as savannaclient
 
-from savannadashboard.nodegroup_templates.tables \
-    import NodegroupTemplatesTable
-from savannadashboard.nodegroup_templates.workflows \
-    import ConfigureNodegroupTemplate
-from savannadashboard.nodegroup_templates.workflows \
-    import CreateNodegroupTemplate
+import savannadashboard.nodegroup_templates.tables as _tables
+import savannadashboard.nodegroup_templates.tabs as _tabs
+import savannadashboard.nodegroup_templates.workflows as _workflows
 
 LOG = logging.getLogger(__name__)
 
 
 class NodegroupTemplatesView(tables.DataTableView):
-    table_class = NodegroupTemplatesTable
+    table_class = _tables.NodegroupTemplatesTable
     template_name = 'nodegroup_templates/nodegroup_templates.html'
 
     def get_data(self):
@@ -42,8 +40,21 @@ class NodegroupTemplatesView(tables.DataTableView):
         return nodegroup_templates
 
 
+class NodegroupTemplateDetailsView(tabs.TabView):
+    tab_group_class = _tabs.NodegroupTemplateDetailsTabs
+    template_name = 'nodegroup_templates/details.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(NodegroupTemplateDetailsView, self)\
+            .get_context_data(**kwargs)
+        return context
+
+    def get_data(self):
+        pass
+
+
 class CreateNodegroupTemplateView(workflows.WorkflowView):
-    workflow_class = CreateNodegroupTemplate
+    workflow_class = _workflows.CreateNodegroupTemplate
     success_url = \
         "horizon:savanna:nodegroup_templates:create-nodegroup-template"
     classes = ("ajax-modal")
@@ -51,7 +62,7 @@ class CreateNodegroupTemplateView(workflows.WorkflowView):
 
 
 class ConfigureNodegroupTemplateView(workflows.WorkflowView):
-    workflow_class = ConfigureNodegroupTemplate
+    workflow_class = _workflows.ConfigureNodegroupTemplate
     success_url = "horizon:savanna:nodegroup_templates"
     template_name = "nodegroup_templates/configure.html"
 

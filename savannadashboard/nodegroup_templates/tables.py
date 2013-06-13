@@ -48,9 +48,7 @@ def render_processes(nodegroup_template):
 class NodegroupTemplatesTable(tables.DataTable):
     name = tables.Column("name",
                          verbose_name=_("Node group template name"),
-                         #link=("horizon:savannadashboard:nodegroup_templates:"
-                         #      "nodegroup_template_details"),
-                         )
+                         link=("horizon:savanna:nodegroup_templates:details"))
     plugin_name = tables.Column("plugin_name",
                                 verbose_name=_("Plugin name"))
     hadoop_version = tables.Column("hadoop_version",

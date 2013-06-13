@@ -1,0 +1,32 @@
+{% load i18n sizeformat %}
+<h3>{% trans "Template Overview" %}</h3>
+<div class="status row-fluid detail">
+    <dl>
+        <dt>{% trans "Name" %}</dt>
+        <dd>{{ template.name }}</dd>
+        <dt>{% trans "ID" %}</dt>
+        <dd>{{ template.id }}</dd>
+        <dt>{% trans "Description" %}</dt>
+        <dd>{{ template.description|default:"None" }}</dd>
+    </dl>
+    <dl>
+        <dt>{% trans "Flavor" %}</dt>
+        <dd>{{ flavor.name }}</dd>
+    </dl>
+    <dl>
+        <dt>{% trans "Plugin" %}</dt>
+        <dd><a href="/savanna/plugins/{{ template.plugin_name }}">{{ template.plugin_name }}</a></dd>
+        <dt>{% trans "Hadoop version" %}</dt>
+        <dd>{{ template.hadoop_version }}</dd>
+    </dl>
+    <dl>
+        <dt>{% trans "Node processes" %}</dt>
+        <dd>
+            <ul>
+                {% for process in template.node_processes %}
+                    <li>{{ process }}</li>
+                {% endfor %}
+            </ul>
+        </dd>
+    </dl>
+</div>
