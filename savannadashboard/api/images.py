@@ -5,6 +5,7 @@ from savannadashboard.api import base
 
 class Image(base.Resource):
     resource_name = 'Image'
+    defaults = {'description': ''}
 
 
 class ImageManager(base.ResourceManager):

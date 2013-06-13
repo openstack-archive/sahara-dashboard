@@ -3,11 +3,18 @@ import json
 
 class Resource(object):
     resource_name = 'Something'
+    defaults = {}
 
     def __init__(self, manager, info):
         self.manager = manager
         self._info = info
+        self._set_defaults(info)
         self._add_details(info)
+
+    def _set_defaults(self, info):
+        for name, value in self.defaults.iteritems():
+            if name not in info:
+                info[name] = value
 
     def _add_details(self, info):
         for (k, v) in info.iteritems():
