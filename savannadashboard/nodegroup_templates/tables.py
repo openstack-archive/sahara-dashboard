@@ -21,6 +21,7 @@ import logging
 from django.utils.translation import ugettext_lazy as _
 
 from horizon import tables
+from savannadashboard.api import client as savannaclient
 
 LOG = logging.getLogger(__name__)
 
@@ -37,6 +38,24 @@ class ConfigureNodegroupTemplate(tables.LinkAction):
     verbose_name = _("Configure Node group Template")
     url = "horizon:savanna:nodegroup_templates:configure-nodegroup-template"
     classes = ("ajax-modal", "btn-create", "configure-nodegrouptemplate-btn")
+
+
+class DeleteTemplate(tables.BatchAction):
+    name = "delete_nodegroup_template"
+    verbose_name = _("Delete")
+    classes = ("btn-terminate", "btn-danger")
+
+    action_present = _("Delete")
+    action_past = _("Deleted")
+    data_type_singular = _("Node group Template")
+    data_type_plural = _("Node group Templates")
+
+    def allowed(self, request, template):
+        return True
+
+    def action(self, request, template_id):
+        savanna = savannaclient.Client(request)
+        savanna.node_group_templates.delete(template_id)
 
 
 def render_processes(nodegroup_template):
@@ -59,5 +78,7 @@ class NodegroupTemplatesTable(tables.DataTable):
     class Meta:
         name = "nodegroup_templates"
         verbose_name = _("Node group Templates")
-        table_actions = (CreateNodegroupTemplate, ConfigureNodegroupTemplate)
-        row_actions = ()
+        table_actions = (CreateNodegroupTemplate,
+                         ConfigureNodegroupTemplate,
+                         DeleteTemplate)
+        row_actions = (DeleteTemplate,)
