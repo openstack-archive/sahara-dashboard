@@ -15,11 +15,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-
-from horizon import tables
 import logging
 
+from horizon import tables
+from horizon import tabs
+
+from savannadashboard.api import client as savannaclient
 from savannadashboard.cluster_templates.tables import ClusterTemplatesTable
+import savannadashboard.cluster_templates.tabs as _tabs
 
 LOG = logging.getLogger(__name__)
 
@@ -29,6 +32,19 @@ class ClusterTemplatesView(tables.DataTableView):
     template_name = 'cluster_templates/cluster_templates.html'
 
     def get_data(self):
-        #todo get data from client
-        cluster_templates = []
+        savanna = savannaclient.Client(self.request)
+        cluster_templates = savanna.cluster_templates.list()
         return cluster_templates
+
+
+class ClusterTemplateDetailsView(tabs.TabView):
+    tab_group_class = _tabs.ClusterTemplateDetailsTabs
+    template_name = 'cluster_templates/details.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(ClusterTemplateDetailsView, self)\
+            .get_context_data(**kwargs)
+        return context
+
+    def get_data(self):
+        pass

@@ -19,11 +19,14 @@
 from django.conf.urls.defaults import patterns
 from django.conf.urls.defaults import url
 
-from savannadashboard.cluster_templates.views import ClusterTemplatesView
+import savannadashboard.cluster_templates.views as views
 
 urlpatterns = patterns('',
-                       url(r'^$', ClusterTemplatesView.as_view(),
+                       url(r'^$', views.ClusterTemplatesView.as_view(),
                            name='index'),
-                       url(r'^$', ClusterTemplatesView.as_view(),
+                       url(r'^$', views.ClusterTemplatesView.as_view(),
                            name='cluster-templates'),
+                       url(r'^(?P<template_id>[^/]+)$',
+                           views.ClusterTemplateDetailsView.as_view(),
+                           name='details')
                        )

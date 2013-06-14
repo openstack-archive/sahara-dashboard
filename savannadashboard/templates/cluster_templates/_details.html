@@ -1,0 +1,35 @@
+{% load i18n sizeformat %}
+<h3>{% trans "Template Overview" %}</h3>
+<div class="status row-fluid detail">
+    <dl>
+        <dt>{% trans "Name" %}</dt>
+        <dd>{{ template.name }}</dd>
+        <dt>{% trans "ID" %}</dt>
+        <dd>{{ template.id }}</dd>
+        <dt>{% trans "Description" %}</dt>
+        <dd>{{ template.description|default:"None" }}</dd>
+    </dl>
+    <dl>
+        <dt>{% trans "Plugin" %}</dt>
+        <dd><a href="/savanna/plugins/{{ template.plugin_name }}">{{ template.plugin_name }}</a></dd>
+        <dt>{% trans "Hadoop version" %}</dt>
+        <dd>{{ template.hadoop_version }}</dd>
+    </dl>
+    <dl>
+    <dt>{% trans "Node Configurations" %}</dt>
+        {% if template.cluster_configs %}
+            <dd>
+                {% for service, service_conf in template.cluster_configs.items %}
+                    <h4>{{ service }}</h4>
+                    <ul>
+                    {% for conf_name, conf_value in service_conf.items %}
+                        <li>{{ conf_name }}:&nbsp{{ conf_value }}</li>
+                    {% endfor %}
+                    </ul>
+                {% endfor %}
+            </dd>
+        {% else %}
+            <dd>{% trans "Cluster configurations are not specified" %}</dd>
+        {% endif %}
+    </dl>
+</div>
