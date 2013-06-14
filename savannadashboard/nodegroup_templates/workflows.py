@@ -158,12 +158,10 @@ class ConfigureNodegroupTemplate(workflows.Workflow):
         checked_steps = []
         if "general_processes" in self.context:
             checked_steps = self.context["general_processes"]
-        LOG.info(str(checked_steps))
 
         steps_valid = True
         for step in self.steps:
-            if not getattr(step, "process_name", None) in checked_steps:
-                LOG.warning(getattr(step, "process_name", None))
+            if str(getattr(step, "process_name", None)) not in checked_steps:
                 continue
             if not step.action.is_valid():
                 steps_valid = False
