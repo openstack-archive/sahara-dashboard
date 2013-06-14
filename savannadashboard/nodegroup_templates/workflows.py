@@ -19,6 +19,7 @@ from horizon.api import nova
 from horizon import forms
 import logging
 
+from django.contrib import messages as _messages
 from django.utils.translation import ugettext as _
 
 from horizon import exceptions
@@ -269,6 +270,7 @@ class CreateNodegroupTemplate(workflows.Workflow):
         try:
             request.session["plugin_name"] = context["plugin_name"]
             request.session["hadoop_version"] = context["hadoop_version"]
+            _messages.set_level(request, _messages.WARNING)
             return True
         except Exception:
             exceptions.handle(request)
