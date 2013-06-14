@@ -24,5 +24,5 @@ urlpatterns = patterns('',
                        url(r'^$', ClustersView.as_view(),
                            name='index'),
                        url(r'^$', ClustersView.as_view(),
-                           name='nodegroup-templates'),
+                           name='clusters'),
                        )

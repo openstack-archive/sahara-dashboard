@@ -28,14 +28,14 @@ LOG = logging.getLogger(__name__)
 
 class CreateNodegroupTemplate(tables.LinkAction):
     name = "create"
-    verbose_name = _("Create Node group Template")
+    verbose_name = _("Create Node Group Template")
     url = "horizon:savanna:nodegroup_templates:create-nodegroup-template"
     classes = ("ajax-modal", "btn-create", "create-nodegrouptemplate-btn")
 
 
 class ConfigureNodegroupTemplate(tables.LinkAction):
     name = "configure"
-    verbose_name = _("Configure Node group Template")
+    verbose_name = _("Configure Node Group Template")
     url = "horizon:savanna:nodegroup_templates:configure-nodegroup-template"
     classes = ("ajax-modal", "btn-create", "configure-nodegrouptemplate-btn")
 
@@ -47,8 +47,8 @@ class DeleteTemplate(tables.BatchAction):
 
     action_present = _("Delete")
     action_past = _("Deleted")
-    data_type_singular = _("Node group Template")
-    data_type_plural = _("Node group Templates")
+    data_type_singular = _("Node Group Template")
+    data_type_plural = _("Node Group Templates")
 
     def allowed(self, request, template):
         return True
@@ -66,18 +66,18 @@ def render_processes(nodegroup_template):
 
 class NodegroupTemplatesTable(tables.DataTable):
     name = tables.Column("name",
-                         verbose_name=_("Node group template name"),
+                         verbose_name=_("Node Group Template Name"),
                          link=("horizon:savanna:nodegroup_templates:details"))
     plugin_name = tables.Column("plugin_name",
-                                verbose_name=_("Plugin name"))
+                                verbose_name=_("Plugin Name"))
     hadoop_version = tables.Column("hadoop_version",
-                                   verbose_name=_("Hadoop version"))
+                                   verbose_name=_("Hadoop Version"))
     node_processes = tables.Column(render_processes,
-                                   verbose_name=_("Node processes"))
+                                   verbose_name=_("Node Processes"))
 
     class Meta:
         name = "nodegroup_templates"
-        verbose_name = _("Node group Templates")
+        verbose_name = _("Node Group Templates")
         table_actions = (CreateNodegroupTemplate,
                          ConfigureNodegroupTemplate,
                          DeleteTemplate)

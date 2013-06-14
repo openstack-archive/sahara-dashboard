@@ -27,7 +27,7 @@ LOG = logging.getLogger(__name__)
 
 
 class GeneralTab(tabs.Tab):
-    name = _("General info")
+    name = _("General Info")
     slug = "nodegroup_template_details_tab"
     template_name = ("nodegroup_templates/_details.html")
 
@@ -40,7 +40,7 @@ class GeneralTab(tabs.Tab):
 
 
 class ConfigsTab(tabs.Tab):
-    name = _("Service configurations")
+    name = _("Service Configurations")
     slug = "nodegroup_template_service_configs_tab"
     template_name = ("nodegroup_templates/_service_confs.html")
 

@@ -26,9 +26,8 @@ LOG = logging.getLogger(__name__)
 
 class ClustersTable(tables.DataTable):
     name = tables.Column("name",
-                         verbose_name=_("Cluster name"),
-                         link=("horizon:savannadashboard:clusters:"
-                               "cluster_details"))
+                         verbose_name=_("Cluster Name"),
+                         link=("horizon:savanna:clusters:details"))
 
     class Meta:
         name = "clusters"

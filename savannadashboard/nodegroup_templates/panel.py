@@ -23,7 +23,7 @@ from savannadashboard import dashboard
 
 
 class NodegroupTemplatesPanel(horizon.Panel):
-    name = _("Node group templates")
+    name = _("Node Group Templates")
     slug = 'nodegroup_templates'
 
 

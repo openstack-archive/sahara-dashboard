@@ -29,7 +29,7 @@ LOG = logging.getLogger(__name__)
 
 class EditTagsAction(tables.LinkAction):
     name = "edit_tags"
-    verbose_name = _("Edit tags")
+    verbose_name = _("Edit Tags")
     url = "horizon:savanna:image_registry:edit_tags"
     classes = ("ajax-modal", "btn-create")
 
@@ -74,13 +74,13 @@ class RemoveImage(tables.DeleteAction):
 
 class ImageRegistryTable(tables.DataTable):
     name = tables.Column("name",
-                         verbose_name=_("Image name"))
+                         verbose_name=_("Image Name"))
     tags = tables.Column(tags_to_string,
                          verbose_name=_("Tags"))
 
     class Meta:
         name = "image_registry"
-        verbose_name = _("Image registry")
+        verbose_name = _("Image Registry")
         table_actions = ()
         table_actions = (RegisterImage, RemoveImages,)
         row_actions = (EditTagsAction, RemoveImage,)

@@ -100,7 +100,7 @@ class GeneralConfigAction(workflows.Action):
         return super(GeneralConfigAction, self).get_help_text(extra)
 
     class Meta:
-        name = _("Configure Node group Template")
+        name = _("Configure Node Group Template")
         help_text_template = \
             ("nodegroup_templates/_configure_general_help.html")
 
@@ -118,7 +118,7 @@ class GeneralConfig(workflows.Step):
 
 class ConfigureNodegroupTemplate(workflows.Workflow):
     slug = "configure_nodegroup_template"
-    name = _("Create Node group Template")
+    name = _("Create Node Group Template")
     finalize_button_name = _("Create")
     success_message = _("Created")
     failure_message = _("Could not create")
@@ -222,7 +222,7 @@ class SelectPluginAction(workflows.Action):
         plugin_choices = [(plugin.name, plugin.title) for plugin in plugins]
 
         self.fields["plugin_name"] = forms.ChoiceField(
-            label=_("Plugin name"),
+            label=_("Plugin Name"),
             required=True,
             choices=plugin_choices,
             widget=forms.Select(attrs={"class": "plugin_name_choice"}))
@@ -230,7 +230,7 @@ class SelectPluginAction(workflows.Action):
         for plugin in plugins:
             field_name = plugin.name + "_version"
             choice_field = forms.ChoiceField(
-                label=_("Hadoop version"),
+                label=_("Hadoop Version"),
                 required=True,
                 choices=[(version, version) for version in plugin.versions],
                 widget=forms.Select(
@@ -258,7 +258,7 @@ class SelectPlugin(workflows.Step):
 
 class CreateNodegroupTemplate(workflows.Workflow):
     slug = "create_nodegroup_template"
-    name = _("Create Node group Template")
+    name = _("Create Node Group Template")
     finalize_button_name = _("Create")
     success_message = _("Created")
     failure_message = _("Could not create")

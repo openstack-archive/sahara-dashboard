@@ -23,7 +23,7 @@ from savannadashboard import dashboard
 
 
 class ClusterTemplatesPanel(horizon.Panel):
-    name = _("Cluster templates")
+    name = _("Cluster Templates")
     slug = 'cluster_templates'
 
 
