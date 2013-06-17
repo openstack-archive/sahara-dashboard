@@ -72,14 +72,13 @@ class GeneralConfigAction(workflows.Action):
 
         self.fields["processes"] = forms.MultipleChoiceField(
             label=_("Processes"),
-            required=False,
+            required=True,
             widget=forms.CheckboxSelectMultiple(),
             help_text=_("Processes to be launched in node group"),
             choices=process_choices)
 
         node_parameters = hlps.get_general_node_group_configs(plugin,
                                                               hadoop_version)
-        LOG.warning("node_parameters " + str(node_parameters))
         for param in node_parameters:
             self.fields[param.name] = build_control(param)
 
@@ -114,6 +113,9 @@ class GeneralConfig(workflows.Step):
             if "hidden" in k:
                 continue
             context["general_" + k] = v
+
+        post = self.workflow.request.POST
+        context['general_processes'] = post.getlist("processes")
         return context
 
 
@@ -157,12 +159,17 @@ class ConfigureNodegroupTemplate(workflows.Workflow):
                 "Unable to complete the workflow. The values %s are "
                 "required but not present." % ", ".join(missing))
         checked_steps = []
+
         if "general_processes" in self.context:
             checked_steps = self.context["general_processes"]
+        enabled_services = set([])
+        for process_name in checked_steps:
+            enabled_services.add(str(process_name).split(":")[0])
 
         steps_valid = True
         for step in self.steps:
-            if str(getattr(step, "process_name", None)) not in checked_steps:
+            process_name = str(getattr(step, "process_name", None))
+            if not process_name and process_name not in enabled_services:
                 continue
             if not step.action.is_valid():
                 steps_valid = False
