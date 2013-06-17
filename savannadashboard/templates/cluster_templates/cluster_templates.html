@@ -12,4 +12,17 @@
     {{ cluster_templates_table.render }}
 </div>
 
+<script type="text/javascript">
+    addHorizonLoadEvent(function () {
+         //display version for selected plugin
+         $(document).on('change', '.plugin_name_choice', switch_versions);
+         function switch_versions() {
+             $(".plugin_version_choice").closest(".control-group").hide();
+             var plugin = $(this);
+             $("." + plugin.val() + "_version_choice").closest(".control-group").show();
+         }
+         $(".plugin_name_choice").change();
+    })
+</script>
+
 {% endblock %}
