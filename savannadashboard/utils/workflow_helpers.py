@@ -15,6 +15,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from django.utils.translation import ugettext as _
 from horizon import forms
 from horizon import workflows
 
@@ -72,3 +73,27 @@ def _create_step_action(name, title, parameters, advanced_fields=None,
                      Meta=step_meta))
 
     return step
+
+
+class PluginAndVersionMixin(object):
+    def _generate_plugin_version_fields(self, savanna):
+        plugins = savanna.plugins.list()
+        plugin_choices = [(plugin.name, plugin.title) for plugin in plugins]
+
+        self.fields["plugin_name"] = forms.ChoiceField(
+            label=_("Plugin Name"),
+            required=True,
+            choices=plugin_choices,
+            widget=forms.Select(attrs={"class": "plugin_name_choice"}))
+
+        for plugin in plugins:
+            field_name = plugin.name + "_version"
+            choice_field = forms.ChoiceField(
+                label=_("Hadoop Version"),
+                required=True,
+                choices=[(version, version) for version in plugin.versions],
+                widget=forms.Select(
+                    attrs={"class": "plugin_version_choice "
+                                    + field_name + "_choice"})
+            )
+            self.fields[field_name] = choice_field

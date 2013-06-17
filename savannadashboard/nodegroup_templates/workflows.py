@@ -27,8 +27,10 @@ from horizon import workflows
 
 from savannadashboard.api import client as savannaclient
 from savannadashboard.api import helpers
+from savannadashboard.utils import workflow_helpers
 from savannadashboard.utils.workflow_helpers import _create_step_action
 from savannadashboard.utils.workflow_helpers import build_control
+
 
 LOG = logging.getLogger(__name__)
 
@@ -216,7 +218,8 @@ class ConfigureNodegroupTemplate(workflows.Workflow):
             return False
 
 
-class SelectPluginAction(workflows.Action):
+class SelectPluginAction(workflows.Action,
+                         workflow_helpers.PluginAndVersionMixin):
     hidden_create_field = forms.CharField(
         required=False,
         widget=forms.HiddenInput(attrs={"class": "hidden_create_field"}))
@@ -225,27 +228,7 @@ class SelectPluginAction(workflows.Action):
         super(SelectPluginAction, self).__init__(request, *args, **kwargs)
 
         savanna = savannaclient.Client(request)
-
-        plugins = savanna.plugins.list()
-        plugin_choices = [(plugin.name, plugin.title) for plugin in plugins]
-
-        self.fields["plugin_name"] = forms.ChoiceField(
-            label=_("Plugin Name"),
-            required=True,
-            choices=plugin_choices,
-            widget=forms.Select(attrs={"class": "plugin_name_choice"}))
-
-        for plugin in plugins:
-            field_name = plugin.name + "_version"
-            choice_field = forms.ChoiceField(
-                label=_("Hadoop Version"),
-                required=True,
-                choices=[(version, version) for version in plugin.versions],
-                widget=forms.Select(
-                    attrs={"class": "plugin_version_choice "
-                                    + field_name + "_choice"})
-            )
-            self.fields[field_name] = choice_field
+        self._generate_plugin_version_fields(savanna)
 
     class Meta:
         name = _("Select plugin and hadoop version")

@@ -33,6 +33,13 @@ def render_node_groups(cluster_template):
     return template.loader.render_to_string(template_name, context)
 
 
+class UploadFile(tables.LinkAction):
+    name = 'upload_file'
+    verbose_name = _("Upload Template")
+    url = 'horizon:savanna:cluster_templates:upload_file'
+    classes = ("btn-launch", "ajax-modal")
+
+
 class DeleteTemplate(tables.BatchAction):
     name = "delete_cluster_template"
     verbose_name = _("Delete")
@@ -67,5 +74,5 @@ class ClusterTemplatesTable(tables.DataTable):
     class Meta:
         name = "cluster_templates"
         verbose_name = _("Cluster Templates")
-        table_actions = (DeleteTemplate,)
+        table_actions = (UploadFile, DeleteTemplate,)
         row_actions = (DeleteTemplate,)

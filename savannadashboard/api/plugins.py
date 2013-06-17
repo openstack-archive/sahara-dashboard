@@ -23,3 +23,12 @@ class PluginManager(base.ResourceManager):
     def get_version_details(self, plugin_name, hadoop_version):
         return self._get('/plugins/%s/%s' % (plugin_name, hadoop_version),
                          'plugin')
+
+    def convert_to_cluster_template(self, plugin_name, hadoop_version,
+                                    filecontent):
+        resp = self.api.client.post('/plugins/%s/%s/convert-config' %
+                                    (plugin_name, hadoop_version), filecontent)
+        if resp.status_code != 202:
+            raise RuntimeError('Failed to upload template file for plugin "%s"'
+                               ' and version "%s"' %
+                               (plugin_name, hadoop_version))
