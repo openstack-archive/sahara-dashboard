@@ -58,6 +58,20 @@ class DeleteTemplate(tables.BatchAction):
         savanna.cluster_templates.delete(template_id)
 
 
+class CreateClusterTemplate(tables.LinkAction):
+    name = "create"
+    verbose_name = _("Create Cluster Template")
+    url = "horizon:savanna:cluster_templates:create-cluster-template"
+    classes = ("ajax-modal", "btn-create", "create-clustertemplate-btn")
+
+
+class ConfigureClusterTemplate(tables.LinkAction):
+    name = "configure"
+    verbose_name = _("Configure Cluster Template")
+    url = "horizon:savanna:cluster_templates:configure-cluster-template"
+    classes = ("ajax-modal", "btn-create", "configure-clustertemplate-btn")
+
+
 class ClusterTemplatesTable(tables.DataTable):
     name = tables.Column("name",
                          verbose_name=_("Cluster Template Name"),
@@ -74,5 +88,8 @@ class ClusterTemplatesTable(tables.DataTable):
     class Meta:
         name = "cluster_templates"
         verbose_name = _("Cluster Templates")
-        table_actions = (UploadFile, DeleteTemplate,)
+        table_actions = (UploadFile,
+                         CreateClusterTemplate,
+                         ConfigureClusterTemplate,
+                         DeleteTemplate,)
         row_actions = (DeleteTemplate,)
