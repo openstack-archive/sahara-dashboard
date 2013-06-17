@@ -39,6 +39,7 @@ class ClusterManager(base.ResourceManager):
                                    node_groups=node_groups)
 
         self._copy_if_defined(data,
+                              cluster_template_id=cluster_template_id,
                               default_image_id=default_image_id,
                               cluster_configs=cluster_configs,
                               node_groups=node_groups,
