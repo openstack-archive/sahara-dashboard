@@ -23,26 +23,42 @@ from horizon import workflows
 class Parameter(object):
     def __init__(self, config):
         self.name = config['name']
+        self.description = config.get('description', "No description")
         self.required = not config['is_optional']
+        self.default_value = config.get('default_value', None)
         self.param_type = config['config_type']
+        self.importance = int(config.get('importance', 2))
 
 
 def build_control(parameter):
-    if parameter.param_type == "str":
+    if parameter.param_type == "string":
         return forms.CharField(
             label=parameter.name,
-            required=parameter.required)
+            required=parameter.required,
+            initial=parameter.default_value,
+            help_text=parameter.description)
+
+    if parameter.param_type == "int":
+        return forms.IntegerField(
+            label=parameter.name,
+            required=parameter.required,
+            initial=parameter.default_value,
+            help_text=parameter.description)
 
     elif parameter.param_type == "bool":
         return forms.BooleanField(
             label=parameter.name,
-            required=False)
+            required=False,
+            initial=parameter.default_value,
+            help_text=parameter.description)
 
     elif parameter.param_type == "dropdown":
         return forms.ChoiceField(
             label=parameter.name,
             required=parameter.required,
-            choices=parameter.choices)
+            choices=parameter.choices,
+            initial=parameter.default_value,
+            help_text=parameter.description)
 
 
 def _create_step_action(name, title, parameters, advanced_fields=None,
