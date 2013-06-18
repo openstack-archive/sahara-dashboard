@@ -175,7 +175,8 @@ class ConfigureNodegroupTemplate(workflows.Workflow):
         steps_valid = True
         for step in self.steps:
             process_name = str(getattr(step, "process_name", None))
-            if process_name and process_name not in enabled_services:
+            if process_name not in enabled_services and \
+                    not isinstance(step, GeneralConfig):
                 continue
             if not step.action.is_valid():
                 steps_valid = False

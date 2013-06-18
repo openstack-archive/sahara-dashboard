@@ -18,7 +18,7 @@ class Helpers(object):
 
         return self._get_node_processes(plugin)
 
-    def _extract_paramters(self, configs, scope, applicable_target):
+    def _extract_parameters(self, configs, scope, applicable_target):
         parameters = []
         for config in configs:
             if (config['scope'] == scope and
@@ -31,7 +31,7 @@ class Helpers(object):
     def get_general_node_group_configs(self, plugin_name, hadoop_version):
         plugin = self.plugins.get_version_details(plugin_name, hadoop_version)
 
-        return self._extract_paramters(plugin.configs, 'node', 'general')
+        return self._extract_parameters(plugin.configs, 'node', 'general')
 
     def get_targeted_node_group_configs(self, plugin_name, hadoop_version):
         plugin = self.plugins.get_version_details(plugin_name, hadoop_version)
@@ -39,7 +39,7 @@ class Helpers(object):
         parameters = {}
 
         for service in plugin.node_processes.keys():
-            parameters[service] = self._extract_paramters(plugin.configs,
-                                                          'node', service)
+            parameters[service] = self._extract_parameters(plugin.configs,
+                                                           'node', service)
 
         return parameters
