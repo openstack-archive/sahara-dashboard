@@ -15,7 +15,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from horizon.api import nova
 from horizon import forms
 import logging
 
@@ -27,9 +26,14 @@ from horizon import workflows
 
 from savannadashboard.api import client as savannaclient
 from savannadashboard.api import helpers
+from savannadashboard.utils import importutils
 from savannadashboard.utils import workflow_helpers
 from savannadashboard.utils.workflow_helpers import _create_step_action
 from savannadashboard.utils.workflow_helpers import build_control
+
+# horizon.api is for backward compatibility with folsom
+nova = importutils.import_any('openstack_dashboard.api.nova',
+                              'horizon.api.nova')
 
 
 LOG = logging.getLogger(__name__)

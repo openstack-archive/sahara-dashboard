@@ -1,13 +1,17 @@
 import logging
 
-from horizon.api import base
-
 from savannadashboard.api import cluster_templates
 from savannadashboard.api import clusters
 from savannadashboard.api import httpclient
 from savannadashboard.api import images
 from savannadashboard.api import node_group_templates
 from savannadashboard.api import plugins
+from savannadashboard.utils import importutils
+
+# horizon.api is for backward compatibility with folsom
+base = importutils.import_any('openstack_dashboard.api.base',
+                              'horizon.api.base')
+
 
 LOG = logging.getLogger(__name__)
 

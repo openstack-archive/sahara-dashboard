@@ -14,14 +14,19 @@
 # implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-from horizon.api import nova
-
-from django.utils.translation import ugettext_lazy as _
 
 import logging
 
+from django.utils.translation import ugettext_lazy as _
 from horizon import tabs
+
 from savannadashboard.api import client as savannaclient
+from savannadashboard.utils import importutils
+
+# horizon.api is for backward compatibility with folsom
+nova = importutils.import_any('openstack_dashboard.api.nova',
+                              'horizon.api.nova')
+
 
 LOG = logging.getLogger(__name__)
 

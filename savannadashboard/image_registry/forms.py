@@ -16,12 +16,16 @@
 # limitations under the License.
 
 from django.utils.translation import ugettext_lazy as _
-from horizon import api
 from horizon import exceptions
 from horizon import forms
 import json
 
 from savannadashboard.api import client as savannaclient
+from savannadashboard.utils import importutils
+
+# horizon.api is for backward compatibility with folsom
+glance = importutils.import_any('openstack_dashboard.api.glance',
+                                'horizon.api.glance')
 
 
 class ImageForm(forms.SelfHandlingForm):
@@ -79,7 +83,7 @@ class RegisterImageForm(ImageForm):
         public = {"is_public": True,
                   "status": "active"}
         try:
-            imgs = api.glance.image_list_detailed(request, filters=public)
+            imgs = glance.image_list_detailed(request, filters=public)
             public_images, _more = imgs
         except Exception:
             public_images = []
