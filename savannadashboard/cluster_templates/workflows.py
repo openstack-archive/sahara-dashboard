@@ -16,16 +16,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from horizon.api import glance
-from horizon.api import nova
 import logging
+
+from django.contrib import messages as _messages
+from django.utils.translation import ugettext as _
 
 from horizon import exceptions
 from horizon import forms
 from horizon import workflows
 
-from django.utils.translation import ugettext as _
-from savannadashboard.utils.restclient import get_plugins
+import savannadashboard.api.api_objects as api_objects
+from savannadashboard.api import client as savannaclient
 
 LOG = logging.getLogger(__name__)
 
@@ -38,7 +39,8 @@ class SelectPluginAction(workflows.Action):
     def __init__(self, request, *args, **kwargs):
         super(SelectPluginAction, self).__init__(request, *args, **kwargs)
 
-        plugins = get_plugins(request)
+        savanna = savannaclient.Client(request)
+        plugins = savanna.plugins.list()
         plugin_choices = [(plugin.name, plugin.title) for plugin in plugins]
 
         self.fields["plugin_name"] = forms.ChoiceField(
@@ -96,6 +98,7 @@ class CreateClusterTemplate(workflows.Workflow):
         try:
             request.session["plugin_name"] = context["plugin_name"]
             request.session["hadoop_version"] = context["hadoop_version"]
+            _messages.set_level(request, _messages.WARNING)
             return True
         except Exception:
             exceptions.handle(request)
@@ -107,36 +110,34 @@ class GeneralConfigAction(workflows.Action):
         required=False,
         widget=forms.HiddenInput(attrs={"class": "hidden_configure_field"}))
 
-    cluster_name = forms.CharField(label=_("Template Name"),
-                                   required=True)
-
-    base_image = forms.ChoiceField(label=_("Base Image"),
-                                   required=True)
-
-    separate_machines = forms.BooleanField(
-        label=_("Run data nodes on separate machines"),
-        required=False)
-
-    keypair = forms.ChoiceField(
-        label=_("Keypair"),
+    hidden_to_delete_field = forms.CharField(
         required=False,
-        help_text=_("Which keypair to use for authentication."))
+        widget=forms.HiddenInput(attrs={"class": "hidden_to_delete_field"}))
 
-    hdfs_placement = forms.ChoiceField(
-        label=_("HDFS Data Node storage location"),
-        required=True,
-        help_text=_("Which keypair to use for authentication."),
-        choices=[("ephemeral_drive", "Ephemeral Drive"),
-                 ("cinder_volume", "Cinder Volume")])
+    cluster_template_name = forms.CharField(label=_("Template Name"),
+                                            required=True)
 
-    def populate_base_image_choices(self, request, context):
-        public_images, _more = glance.image_list_detailed(request)
-        return [(image.id, image.name) for image in public_images]
+    description = forms.CharField(label=_("Description"),
+                                  required=False,
+                                  widget=forms.Textarea)
 
-    def populate_keypair_choices(self, request, context):
-        keypairs = nova.keypair_list(request)
-        keypair_list = [(kp.name, kp.name) for kp in keypairs]
-        return keypair_list
+    #base_image = forms.ChoiceField(label=_("Base Image"),
+    #                               required=True)
+
+    #separate_machines = forms.BooleanField(
+    #    label=_("Run data nodes on separate machines"),
+    #    required=False)
+
+    #hdfs_placement = forms.ChoiceField(
+    #    label=_("HDFS Data Node storage location"),
+    #    required=True,
+    #    help_text=_("Which keypair to use for authentication."),
+    #    choices=[("ephemeral_drive", "Ephemeral Drive"),
+    #             ("cinder_volume", "Cinder Volume")])
+
+    #def populate_base_image_choices(self, request, context):
+    #    public_images, _more = glance.image_list_detailed(request)
+    #    return [(image.id, image.name) for image in public_images]
 
     def get_help_text(self):
         extra = dict()
@@ -176,33 +177,60 @@ class ConfigureNodegroupsAction(workflows.Action):
         super(ConfigureNodegroupsAction, self).\
             __init__(request, *args, **kwargs)
 
-        #todo get templates form api
-        #plugin = request.session.get("plugin_name")
-        templates = []
+        savanna = savannaclient.Client(request)
+        all_templates = savanna.node_group_templates.list()
+        templates = [
+            (template.id, template.name)
+            for template in all_templates
+            if (template.plugin_name == request.session.get("plugin_name")
+                and template.hadoop_version ==
+                request.session.get("hadoop_version"))
+        ]
 
         count = int(request.session.get("groups_count", 0))
-
+        skip_values = request.session.get("ignore_idxs", [])
         for dictionary in args:
             if dictionary.get("general_hidden_configure_field", None) \
                     == "create_nodegroup":
                 count += 1
                 request.session["groups_count"] = count
-                break
+                #break
+            if dictionary.get("general_hidden_to_delete_field", None):
+                current_ignored = request.session.get("ignore_idxs", [])
+                new_ignored = [int(idx)
+                               for idx in
+                               dictionary["general_hidden_to_delete_field"]
+                               .split(",") if idx]
+                current_ignored += new_ignored
+                skip_values = current_ignored
+                request.session["ignore_idxs"] = current_ignored
 
         for idx in range(0, count, 1):
-            self.fields["group_" + str(idx) + "_name"] = forms.CharField(
-                label=_("Name"),
-                required=True)
+            if idx in skip_values:
+                continue
 
-            self.fields["group_" + str(idx) + "_template"] = forms.ChoiceField(
+            self.fields["group_name_" + str(idx)] = forms.CharField(
+                label=_("Name"),
+                required=True,
+                widget=forms.TextInput(
+                    attrs={"class": "name-field",
+                           "data-name-idx": str(idx)}))
+
+            self.fields["group_template_" + str(idx)] = forms.ChoiceField(
                 label=_("Node group template"),
                 required=True,
-                choices=templates)
+                choices=templates,
+                widget=forms.Select(
+                    attrs={"class": "ng-field",
+                           "data-ng-idx": str(idx)}))
 
-            self.fields["group_" + str(idx) + "_count"] = forms.IntegerField(
+            self.fields["group_count_" + str(idx)] = forms.IntegerField(
                 label=_("Count"),
                 required=True,
-                min_value=1
+                min_value=1,
+                widget=forms.TextInput(
+                    attrs={"class": "count-field",
+                           "data-count-idx": str(idx)})
             )
 
     def clean(self):
@@ -219,6 +247,11 @@ class ConfigureNodegroupsAction(workflows.Action):
 class ConfigureNodegroups(workflows.Step):
     action_class = ConfigureNodegroupsAction
     contributes = ("hidden_nodegroups_field", )
+
+    def contribute(self, data, context):
+        for k, v in data.items():
+            context["ng_" + k] = v
+        return context
 
 
 class ConfigureClusterTemplate(workflows.Workflow):
@@ -250,4 +283,40 @@ class ConfigureClusterTemplate(workflows.Workflow):
         return self.validate(self.context)
 
     def handle(self, request, context):
-        return True
+        try:
+            savanna = savannaclient.Client(request)
+            node_groups = []
+            ng_names = {}
+            ng_templates = {}
+            ng_counts = {}
+            for key, val in context.items():
+                if str(key).startswith("ng_"):
+                    if str(key).startswith("ng_group_name_"):
+                        idx = str(key)[len("ng_group_name_"):]
+                        ng_names[idx] = val
+                    elif str(key).startswith("ng_group_template_"):
+                        idx = str(key)[len("ng_group_template_"):]
+                        ng_templates[idx] = val
+                    elif str(key).startswith("ng_group_count_"):
+                        idx = str(key)[len("ng_group_count_"):]
+                        ng_counts[idx] = val
+            for key, val in ng_names.items():
+                ng = api_objects.NodeGroup(val,
+                                           ng_templates[key],
+                                           count=ng_counts[key])
+                node_groups.append(ng)
+
+            #TODO(nkonovalov): Fix client to support default_image_id
+            savanna.cluster_templates.create(
+                context["general_cluster_template_name"],
+                request.session.get("plugin_name"),
+                request.session.get("hadoop_version"),
+                context["general_description"],
+                #TODO(nkonovalov, dmesheryakov): Support general configs
+                {},
+                node_groups)
+            request.session.pop("ignore_idxs", None)
+            request.session.pop("groups_count", None)
+            return True
+        except Exception:
+            return False
