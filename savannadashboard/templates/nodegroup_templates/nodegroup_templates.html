@@ -8,78 +8,130 @@
 
 {% block main %}
 
-<div class="nodegroup_templates">
-    {{ nodegroup_templates_table.render }}
-</div>
+    <div class="nodegroup_templates">
+        {{ nodegroup_templates_table.render }}
+    </div>
 
-<script type="text/javascript">
-    addHorizonLoadEvent(function () {
-        function get_service_tab(service) {
-            return $("a").filter(function(idx, e) {
-                return $(e).attr("data-target") && $(e).attr("data-target").indexOf(service.toLowerCase()) != -1}).closest("li");
+    <script type="text/javascript">
+        function hide_not_important_fields(element) {
+            var fieldset = $(element).parents("fieldset")[0];
+            $("[priority='2']", fieldset).parents("div.control-group").hide();
+            $("[priority='1']", fieldset).parents("div.control-group").show();
+            var div = $(element).parents("div.field-filter")[0];
+            $("div.simple-config",div).show();
+            $("div.advance-config",div).hide();
         }
 
-        //hide configure button. it will be triggered with scripts
-        $(".configure-nodegrouptemplate-btn").hide();
+        function show_not_important_fields(element) {
+            var fieldset = $(element).parents("fieldset")[0];
+            $("[priority='2']", fieldset).parents("div.control-group").show();
+            var div = $(element).parents("div.field-filter")[0];
+            $("div.simple-config",div).hide();
+            $("div.advance-config",div).show();
+        }
 
-        // replace form submit with ajax POST and trigger next workflow
-        horizon.modals.addModalInitFunction(function (modal) {
-            if ($(modal).find(".hidden_create_field").length > 0) {
-                var form = $(".hidden_create_field").closest("form");
-                var successful = false;
-                form.submit(function (e) {
-                    $.ajax({
-                               type: "POST",
-                               url: form.attr('action'),  // read the action attribute of the form
-                               data: form.serialize(),
-                               success: function () {
-                                   form.find(".close").click();
-                                   $(".configure-nodegrouptemplate-btn").click();
-                               }
-                           });
-                    return false;
+        function create_auto_search(inpt) {
+            if (inpt.has_filter) {
+                return;
+            }
+            var input = inpt;
+            inpt.has_filter = true;
+            var oldValue = "";
+            setInterval(function () {
+                var val = $(input).val();
+                if (val == oldValue) {
+                    return;
+                }
+                oldValue = val;
+                var fieldset = $(input).parents("fieldset")[0];
+                if (val == "") {
+                    $("label", fieldset).parents("div.control-group").show();
+                } else {
+                    $("label", fieldset).filter(function (idx, e) {
+                        return $(e).text().toLowerCase().indexOf(val.toLowerCase()) == -1;
+                    }).parents("div.control-group").hide();
+                    $("label", fieldset).filter(function (idx, e) {
+                        return $(e).text().toLowerCase().indexOf(val.toLowerCase()) > -1;
+                    }).parents("div.control-group").show();
+                }
+            }, 300);
+        }
+
+        addHorizonLoadEvent(function () {
+            function get_service_tab(service) {
+                return $("a").filter(function (idx, e) {
+                    return $(e).attr("data-target") && $(e).attr("data-target").indexOf(service.toLowerCase()) != -1
+                }).closest("li");
+            }
+
+            //hide configure button. it will be triggered with scripts
+            $(".configure-nodegrouptemplate-btn").hide();
+
+            // replace form submit with ajax POST and trigger next workflow
+            horizon.modals.addModalInitFunction(function (modal) {
+                $("a.advance-config-hide").click();
+
+                $("input.field-filter").each(function () {
+                    create_auto_search(this);
                 });
-                $(".plugin_version_choice").closest(".control-group").hide();
-            }
 
-            if ($(modal).find(".hidden_configure_field").length > 0) {
-            }
+                if ($(modal).find(".hidden_create_field").length > 0) {
+                    var form = $(".hidden_create_field").closest("form");
+                    var successful = false;
+                    form.submit(function (e) {
+                        $.ajax({
+                            type: "POST",
+                            url: form.attr('action'),  // read the action attribute of the form
+                            data: form.serialize(),
+                            success: function () {
+                                form.find(".close").click();
+                                $(".configure-nodegrouptemplate-btn").click();
+                            }
+                        });
+                        return false;
+                    });
+                    $(".plugin_version_choice").closest(".control-group").hide();
+                }
 
-            //display version for selected plugin
-            $(document).on('change', '.plugin_name_choice', switch_versions);
-            function switch_versions() {
-                $(".plugin_version_choice").closest(".control-group").hide();
-                var plugin = $(this);
-                $("." + plugin.val() + "_version_choice").closest(".control-group").show();
-            }
-            $(".plugin_name_choice").change();
+                if ($(modal).find(".hidden_configure_field").length > 0) {
+                }
 
-            //handle node processes change
-            $("input").filter(function(idx, e) {
-                return $(e).attr("name") && $(e).attr("name").indexOf("processes") != -1})
-                    .change(function() {
-                                            var process_service = $(this).val();
-                                            var service = $(this).val().split(":")[0];
-                                            var enabled = false;
-                                            $(this).closest("ul").find("input").each(function(idx, el) {
-                                                if ($(el).val().split(":")[0] != service) {
-                                                    return;
-                                                }
-                                                enabled |= $(el).is(':checked');
-                                            });
-                                            if (enabled) {
-                                                get_service_tab(service).show();
-                                            } else {
-                                                get_service_tab(service).hide();
-                                            }
-                                        }).change();
-            //general tab should be active
-            get_service_tab("generalconfigaction").find("a").click();
+                //display version for selected plugin
+                $(document).on('change', '.plugin_name_choice', switch_versions);
+                function switch_versions() {
+                    $(".plugin_version_choice").closest(".control-group").hide();
+                    var plugin = $(this);
+                    $("." + plugin.val() + "_version_choice").closest(".control-group").show();
+                }
+
+                $(".plugin_name_choice").change();
+
+                //handle node processes change
+                $("input").filter(function (idx, e) {
+                    return $(e).attr("name") && $(e).attr("name").indexOf("processes") != -1
+                })
+                        .change(function () {
+                            var process_service = $(this).val();
+                            var service = $(this).val().split(":")[0];
+                            var enabled = false;
+                            $(this).closest("ul").find("input").each(function (idx, el) {
+                                if ($(el).val().split(":")[0] != service) {
+                                    return;
+                                }
+                                enabled |= $(el).is(':checked');
+                            });
+                            if (enabled) {
+                                get_service_tab(service).show();
+                            } else {
+                                get_service_tab(service).hide();
+                            }
+                        }).change();
+                //general tab should be active
+                get_service_tab("generalconfigaction").find("a").click();
+            });
         });
-    });
 
 
-
-</script>
+    </script>
 
 {% endblock %}

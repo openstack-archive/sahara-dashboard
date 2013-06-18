@@ -28,14 +28,14 @@ LOG = logging.getLogger(__name__)
 
 class CreateNodegroupTemplate(tables.LinkAction):
     name = "create"
-    verbose_name = _("Create Node Group Template")
+    verbose_name = _("Create Template")
     url = "horizon:savanna:nodegroup_templates:create-nodegroup-template"
     classes = ("ajax-modal", "btn-create", "create-nodegrouptemplate-btn")
 
 
 class ConfigureNodegroupTemplate(tables.LinkAction):
     name = "configure"
-    verbose_name = _("Configure Node Group Template")
+    verbose_name = _("Configure Template")
     url = "horizon:savanna:nodegroup_templates:configure-nodegroup-template"
     classes = ("ajax-modal", "btn-create", "configure-nodegrouptemplate-btn")
 
@@ -47,8 +47,8 @@ class DeleteTemplate(tables.BatchAction):
 
     action_present = _("Delete")
     action_past = _("Deleted")
-    data_type_singular = _("Node Group Template")
-    data_type_plural = _("Node Group Templates")
+    data_type_singular = _("Template")
+    data_type_plural = _("Templates")
 
     def allowed(self, request, template):
         return True
@@ -66,7 +66,7 @@ def render_processes(nodegroup_template):
 
 class NodegroupTemplatesTable(tables.DataTable):
     name = tables.Column("name",
-                         verbose_name=_("Node Group Template Name"),
+                         verbose_name=_("Name"),
                          link=("horizon:savanna:nodegroup_templates:details"))
     plugin_name = tables.Column("plugin_name",
                                 verbose_name=_("Plugin Name"))

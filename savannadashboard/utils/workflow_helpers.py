@@ -16,6 +16,7 @@
 # limitations under the License.
 
 from django.utils.translation import ugettext as _
+
 from horizon import forms
 from horizon import workflows
 
@@ -27,26 +28,29 @@ class Parameter(object):
         self.required = not config['is_optional']
         self.default_value = config.get('default_value', None)
         self.param_type = config['config_type']
-        self.importance = int(config.get('importance', 2))
+        self.priority = int(config.get('priority', 2))
 
 
 def build_control(parameter):
+    attrs = {"priority": parameter.priority,
+             "placeholder": parameter.default_value}
     if parameter.param_type == "string":
         return forms.CharField(
+            widget=forms.TextInput(attrs=attrs),
             label=parameter.name,
             required=parameter.required,
-            initial=parameter.default_value,
             help_text=parameter.description)
 
     if parameter.param_type == "int":
         return forms.IntegerField(
+            widget=forms.TextInput(attrs=attrs),
             label=parameter.name,
             required=parameter.required,
-            initial=parameter.default_value,
             help_text=parameter.description)
 
     elif parameter.param_type == "bool":
         return forms.BooleanField(
+            widget=forms.CheckboxInput(attrs=attrs),
             label=parameter.name,
             required=False,
             initial=parameter.default_value,
@@ -54,31 +58,35 @@ def build_control(parameter):
 
     elif parameter.param_type == "dropdown":
         return forms.ChoiceField(
+            widget=forms.CheckboxInput(attrs=attrs),
             label=parameter.name,
             required=parameter.required,
             choices=parameter.choices,
-            initial=parameter.default_value,
             help_text=parameter.description)
 
 
 def _create_step_action(name, title, parameters, advanced_fields=None,
                         service=None):
-    param_fields = {}
+    class_fields = {}
     contributes_field = ()
     for param in parameters:
         field_name = "CONF:" + service + ":" + param.name
         contributes_field += (field_name,)
-        param_fields[field_name] = build_control(param)
+        class_fields[field_name] = build_control(param)
 
     if advanced_fields is not None:
         for ad_field_name, ad_field_value in advanced_fields:
-            param_fields[ad_field_name] = ad_field_value
+            class_fields[ad_field_name] = ad_field_value
 
     action_meta = type('Meta', (object, ),
-                       dict(name=title))
+                       dict(help_text_template="nodegroup_templates/"
+                                               "_fields_help.html"))
+
+    class_fields['Meta'] = action_meta
     action = type(str(title),
-                  (workflows.Action, action_meta),
-                  param_fields)
+                  (workflows.Action,),
+                  class_fields)
+
     step_meta = type('Meta', (object,), dict(name=title))
     step = type(str(name),
                 (workflows.Step, ),
