@@ -18,19 +18,81 @@
 import logging
 
 from django.utils.translation import ugettext_lazy as _
-
 from horizon import tables
+
+from savannadashboard.api import client as savannaclient
+
 
 LOG = logging.getLogger(__name__)
 
 
+class CreateCluster(tables.LinkAction):
+    name = "create"
+    verbose_name = _("Create")
+    url = "horizon:savanna:clusters:create"
+    classes = ("btn-launch", "ajax-modal")
+
+
+class DeleteClusters(tables.BatchAction):
+    name = "delete"
+    action_present = _("Delete")
+    action_past = _("Delete cluster of")
+    data_type_singular = _("Cluster")
+    data_type_plural = _("Clusters")
+    classes = ('btn-danger', 'btn-terminate')
+
+    def action(self, request, obj_id):
+        savanna = savannaclient.Client(request)
+        savanna.clusters.delete(obj_id)
+
+
+class DeleteCluster(tables.DeleteAction):
+    name = "delete"
+    action_present = _("Delete")
+    action_past = _("Delete cluster of")
+    data_type_singular = _("Cluster")
+    data_type_plural = _("Clusters")
+    classes = ('btn-danger', 'btn-terminate')
+
+    def action(self, request, obj_id):
+        savanna = savannaclient.Client(request)
+        savanna.clusters.delete(obj_id)
+
+
+class UpdateRow(tables.Row):
+    ajax = True
+
+    def get_data(self, request, instance_id):
+        savanna = savannaclient.Client(request)
+        instance = savanna.clusters.get(instance_id)
+        return instance
+
+
+def get_instances_count(cluster):
+    return sum([len(ng["instances"])
+                for ng in cluster.node_groups])
+
+
 class ClustersTable(tables.DataTable):
+    STATUS_CHOICES = (
+        ("active", True),
+        ("error", False)
+    )
+
     name = tables.Column("name",
                          verbose_name=_("Cluster Name"),
                          link=("horizon:savanna:clusters:details"))
+    status = tables.Column("status",
+                           verbose_name=_("Status"),
+                           status=True,
+                           status_choices=STATUS_CHOICES)
+    instances_count = tables.Column(get_instances_count,
+                                    verbose_name=_("Instances Count"))
 
     class Meta:
         name = "clusters"
         verbose_name = _("Clusters")
-        table_actions = ()
-        row_actions = ()
+        row_class = UpdateRow
+        status_columns = ["status"]
+        table_actions = (CreateCluster, DeleteClusters,)
+        row_actions = (DeleteCluster,)

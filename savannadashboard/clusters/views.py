@@ -15,10 +15,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-
-from horizon import tables
 import logging
+
+from django.core.urlresolvers import reverse_lazy
+from horizon import forms
+from horizon import tables
+
+from forms import CreateClusterForm
+from savannadashboard.api import client as savannaclient
 from savannadashboard.clusters.tables import ClustersTable
+
 
 LOG = logging.getLogger(__name__)
 
@@ -28,6 +34,12 @@ class ClustersView(tables.DataTableView):
     template_name = 'clusters/clusters.html'
 
     def get_data(self):
-        #todo get data from client
-        clusters = []
+        savanna = savannaclient.Client(self.request)
+        clusters = savanna.clusters.list()
         return clusters
+
+
+class CreateCluster(forms.ModalFormView):
+    form_class = CreateClusterForm
+    template_name = 'clusters/create_cluster.html'
+    success_url = reverse_lazy('horizon:savanna:clusters:index')

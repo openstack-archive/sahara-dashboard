@@ -15,17 +15,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from horizon import exceptions
+from horizon import forms
 
-from django.conf.urls.defaults import patterns
-from django.conf.urls.defaults import url
-from savannadashboard.clusters.views import ClustersView
-from savannadashboard.clusters.views import CreateCluster
 
-urlpatterns = patterns('',
-                       url(r'^$', ClustersView.as_view(),
-                           name='index'),
-                       url(r'^$', ClustersView.as_view(),
-                           name='clusters'),
-                       url(r'^create/$', CreateCluster.as_view(),
-                           name='create'),
-                       )
+class CreateClusterForm(forms.SelfHandlingForm):
+    def handle(self, request, data):
+        try:
+            #TODO(akuznetsov): launch cluster
+            return True
+        except Exception:
+            exceptions.handle(request)
+            return False
