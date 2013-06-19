@@ -146,12 +146,18 @@ class ConfigureNodegroupTemplate(workflows.Workflow):
         service_parameters = hlps.get_targeted_node_group_configs(
             plugin,
             hadoop_version)
+
+        self.defaults = dict()
         for service, parameters in service_parameters.items():
             step = _create_step_action(service,
                                        title=service + " parameters",
                                        parameters=parameters,
                                        service=service)
             ConfigureNodegroupTemplate.register(step)
+            for param in parameters:
+                if service not in self.defaults:
+                    self.defaults[service] = dict()
+                self.defaults[service][param.name] = param.default_value
 
         super(ConfigureNodegroupTemplate, self).__init__(request,
                                                          context_seed,
@@ -205,6 +211,8 @@ class ConfigureNodegroupTemplate(workflows.Workflow):
                     config = key_split[2]
                     if service not in configs_dict:
                         configs_dict[service] = dict()
+                    if self.defaults[service][config] == val:
+                        continue
                     configs_dict[service][config] = val
 
             LOG.info("create with config:" + str(configs_dict))
