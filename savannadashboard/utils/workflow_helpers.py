@@ -38,14 +38,16 @@ def build_control(parameter):
         return forms.CharField(
             widget=forms.TextInput(attrs=attrs),
             label=parameter.name,
-            required=parameter.required,
+            required=(parameter.required and
+                      parameter.default_value is None),
             help_text=parameter.description)
 
     if parameter.param_type == "int":
         return forms.IntegerField(
             widget=forms.TextInput(attrs=attrs),
             label=parameter.name,
-            required=parameter.required,
+            required=(parameter.required and
+                      parameter.default_value is None),
             help_text=parameter.description)
 
     elif parameter.param_type == "bool":
