@@ -1,4 +1,7 @@
 import json
+import logging
+
+LOG = logging.Logger(__name__)
 
 
 class Resource(object):

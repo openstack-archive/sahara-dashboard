@@ -29,24 +29,11 @@ LOG = logging.getLogger(__name__)
 class CreateCluster(tables.LinkAction):
     name = "create"
     verbose_name = _("Create")
-    url = "horizon:savanna:clusters:create"
+    url = "horizon:savanna:clusters:create-cluster"
     classes = ("btn-launch", "ajax-modal")
 
 
-class DeleteClusters(tables.BatchAction):
-    name = "delete"
-    action_present = _("Delete")
-    action_past = _("Delete cluster of")
-    data_type_singular = _("Cluster")
-    data_type_plural = _("Clusters")
-    classes = ('btn-danger', 'btn-terminate')
-
-    def action(self, request, obj_id):
-        savanna = savannaclient.Client(request)
-        savanna.clusters.delete(obj_id)
-
-
-class DeleteCluster(tables.DeleteAction):
+class DeleteCluster(tables.BatchAction):
     name = "delete"
     action_present = _("Delete")
     action_past = _("Delete cluster of")
@@ -73,6 +60,13 @@ def get_instances_count(cluster):
                 for ng in cluster.node_groups])
 
 
+class ConfigureCluster(tables.LinkAction):
+    name = "configure"
+    verbose_name = _("Configure Cluster")
+    url = "horizon:savanna:clusters:configure-cluster"
+    classes = ("ajax-modal", "btn-create", "configure-cluster-btn")
+
+
 class ClustersTable(tables.DataTable):
     STATUS_CHOICES = (
         ("active", True),
@@ -81,7 +75,8 @@ class ClustersTable(tables.DataTable):
 
     name = tables.Column("name",
                          verbose_name=_("Cluster Name"),
-                         link=("horizon:savanna:clusters:details"))
+                         #link=("horizon:savanna:clusters:details")
+                         )
     status = tables.Column("status",
                            verbose_name=_("Status"),
                            status=True,
@@ -94,5 +89,7 @@ class ClustersTable(tables.DataTable):
         verbose_name = _("Clusters")
         row_class = UpdateRow
         status_columns = ["status"]
-        table_actions = (CreateCluster, DeleteClusters,)
+        table_actions = (CreateCluster,
+                         ConfigureCluster,
+                         DeleteCluster)
         row_actions = (DeleteCluster,)

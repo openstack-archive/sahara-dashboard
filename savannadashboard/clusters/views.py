@@ -17,13 +17,14 @@
 
 import logging
 
-from django.core.urlresolvers import reverse_lazy
-from horizon import forms
 from horizon import tables
+from horizon import workflows
 
-from forms import CreateClusterForm
 from savannadashboard.api import client as savannaclient
+
 from savannadashboard.clusters.tables import ClustersTable
+from savannadashboard.clusters.workflows import ConfigureCluster
+from savannadashboard.clusters.workflows import CreateCluster
 
 
 LOG = logging.getLogger(__name__)
@@ -39,7 +40,24 @@ class ClustersView(tables.DataTableView):
         return clusters
 
 
-class CreateCluster(forms.ModalFormView):
-    form_class = CreateClusterForm
-    template_name = 'clusters/create_cluster.html'
-    success_url = reverse_lazy('horizon:savanna:clusters:index')
+class CreateClusterView(workflows.WorkflowView):
+    workflow_class = CreateCluster
+    success_url = \
+        "horizon:savanna:clusters:create-cluster"
+    classes = ("ajax-modal")
+    template_name = "clusters/create.html"
+
+
+class ConfigureClusterView(workflows.WorkflowView):
+    workflow_class = ConfigureCluster
+    success_url = "horizon:savanna:clusters"
+    template_name = "clusters/configure.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(ConfigureClusterView, self).get_context_data(
+            **kwargs)
+
+        context["plugin_name"] = self.request.session.get("plugin_name")
+        context["plugin_version"] = self.request.session.get("plugin_version")
+
+        return context
