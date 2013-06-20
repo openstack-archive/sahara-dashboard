@@ -18,9 +18,12 @@
 from horizon import exceptions
 from horizon import forms
 from horizon import workflows
+from savannadashboard.utils import importutils
 
-from horizon.api import glance
-from horizon.api import nova
+glance = importutils.import_any('openstack_dashboard.api.glance',
+                                'horizon.api.glance')
+nova = importutils.import_any('openstack_dashboard.api.nova',
+                              'horizon.api.nova')
 
 from django.utils.translation import ugettext as _
 
