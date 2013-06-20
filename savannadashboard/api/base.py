@@ -32,11 +32,21 @@ class Resource(object):
         return '%s %s' % (self.resource_name, str(self._info))
 
 
+def _check_item(obj, searches):
+    try:
+        return all(getattr(obj, attr) == value for (attr, value) in searches)
+    except AttributeError:
+        return False
+
+
 class ResourceManager(object):
     resource_class = None
 
     def __init__(self, api):
         self.api = api
+
+    def find(self, **kwargs):
+        return [i for i in self.list() if _check_item(i, kwargs.items())]
 
     def _create(self, url, data):
         resp = self.api.client.post(url, json.dumps(data))
