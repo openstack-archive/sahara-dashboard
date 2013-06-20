@@ -27,6 +27,8 @@ from horizon import workflows
 
 import savannadashboard.api.api_objects as api_objects
 from savannadashboard.api import client as savannaclient
+from savannadashboard.api import helpers as helpers
+from savannadashboard.utils.workflow_helpers import build_control
 
 LOG = logging.getLogger(__name__)
 
@@ -170,6 +172,35 @@ class GeneralConfig(workflows.Step):
         return context
 
 
+class ConfigureGeneralParametersAction(workflows.Action):
+    def __init__(self, request, *args, **kwargs):
+        super(ConfigureGeneralParametersAction, self).\
+            __init__(request, *args, **kwargs)
+
+        savanna = savannaclient.Client(request)
+        plugin_name = request.session["plugin_name"]
+        hadoop_version = request.session["hadoop_version"]
+
+        parameters = helpers.Helpers(savanna).get_cluster_general_configs(
+            plugin_name,
+            hadoop_version)
+
+        for param in parameters:
+            self.fields[param.name] = build_control(param)
+
+    class Meta:
+        name = _("General Cluster Configurations")
+
+
+class ConfigureGeneralParameters(workflows.Step):
+    action_class = ConfigureGeneralParametersAction
+
+    def contribute(self, data, context):
+        for k, v in data.items():
+            context["cluster_" + k] = v
+        return context
+
+
 class ConfigureNodegroupsAction(workflows.Action):
     hidden_nodegroups_field = forms.CharField(
         required=False,
@@ -263,7 +294,9 @@ class ConfigureClusterTemplate(workflows.Workflow):
     success_message = _("Created")
     failure_message = _("Could not create")
     success_url = "horizon:savanna:cluster_templates:index"
-    default_steps = (GeneralConfig, ConfigureNodegroups, )
+    default_steps = (GeneralConfig,
+                     ConfigureGeneralParameters,
+                     ConfigureNodegroups, )
 
     def is_valid(self):
         if self.context["general_hidden_configure_field"] \
@@ -291,6 +324,9 @@ class ConfigureClusterTemplate(workflows.Workflow):
             ng_names = {}
             ng_templates = {}
             ng_counts = {}
+
+            general_configs = {}
+
             for key, val in context.items():
                 if str(key).startswith("ng_"):
                     if str(key).startswith("ng_group_name_"):
@@ -302,6 +338,9 @@ class ConfigureClusterTemplate(workflows.Workflow):
                     elif str(key).startswith("ng_group_count_"):
                         idx = str(key)[len("ng_group_count_"):]
                         ng_counts[idx] = val
+                elif str(key).startswith("cluster_"):
+                    general_configs[str(key)[len("cluster_"):]] = val
+
             for key, val in ng_names.items():
                 ng = api_objects.NodeGroup(val,
                                            ng_templates[key],
@@ -314,8 +353,7 @@ class ConfigureClusterTemplate(workflows.Workflow):
                 request.session.get("plugin_name"),
                 request.session.get("hadoop_version"),
                 context["general_description"],
-                #TODO(nkonovalov, dmesheryakov): Support general configs
-                {},
+                general_configs,
                 node_groups)
             return True
         except Exception:

@@ -28,6 +28,11 @@ class Helpers(object):
 
         return parameters
 
+    def get_cluster_general_configs(self, plugin_name, hadoop_version):
+        plugin = self.plugins.get_version_details(plugin_name, hadoop_version)
+
+        return self._extract_parameters(plugin.configs, 'cluster', "General")
+
     def get_general_node_group_configs(self, plugin_name, hadoop_version):
         plugin = self.plugins.get_version_details(plugin_name, hadoop_version)
 
