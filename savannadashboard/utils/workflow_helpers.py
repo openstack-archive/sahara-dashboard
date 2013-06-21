@@ -40,15 +40,16 @@ def build_control(parameter):
             label=parameter.name,
             required=(parameter.required and
                       parameter.default_value is None),
-            help_text=parameter.description)
+            help_text=parameter.description,
+            initial=parameter.default_value)
 
     if parameter.param_type == "int":
         return forms.IntegerField(
             widget=forms.TextInput(attrs=attrs),
             label=parameter.name,
-            required=(parameter.required and
-                      parameter.default_value is None),
-            help_text=parameter.description)
+            required=parameter.required,
+            help_text=parameter.description,
+            initial=parameter.default_value)
 
     elif parameter.param_type == "bool":
         return forms.BooleanField(
@@ -99,6 +100,21 @@ def _create_step_action(name, title, parameters, advanced_fields=None,
                      Meta=step_meta))
 
     return step
+
+
+def parse_configs_from_context(context, defaults):
+    configs_dict = dict()
+    for key, val in context.items():
+        if str(key).startswith("CONF"):
+            key_split = str(key).split(":")
+            service = key_split[1]
+            config = key_split[2]
+            if service not in configs_dict:
+                configs_dict[service] = dict()
+            if defaults[service][config] == val:
+                continue
+            configs_dict[service][config] = val
+    return configs_dict
 
 
 class PluginAndVersionMixin(object):

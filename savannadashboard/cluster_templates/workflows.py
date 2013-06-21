@@ -28,7 +28,7 @@ from horizon import workflows
 import savannadashboard.api.api_objects as api_objects
 from savannadashboard.api import client as savannaclient
 from savannadashboard.api import helpers as helpers
-from savannadashboard.utils.workflow_helpers import build_control
+import savannadashboard.utils.workflow_helpers as whelpers
 
 LOG = logging.getLogger(__name__)
 
@@ -186,7 +186,7 @@ class ConfigureGeneralParametersAction(workflows.Action):
             hadoop_version)
 
         for param in parameters:
-            self.fields[param.name] = build_control(param)
+            self.fields[param.name] = whelpers.build_control(param)
 
     class Meta:
         name = _("General Cluster Configurations")
@@ -295,8 +295,40 @@ class ConfigureClusterTemplate(workflows.Workflow):
     failure_message = _("Could not create")
     success_url = "horizon:savanna:cluster_templates:index"
     default_steps = (GeneralConfig,
-                     ConfigureGeneralParameters,
-                     ConfigureNodegroups, )
+                     ConfigureNodegroups,
+                     ConfigureGeneralParameters, )
+
+    def __init__(self, request, context_seed, entry_point, *args, **kwargs):
+        ConfigureClusterTemplate._cls_registry = set([])
+
+        savanna = savannaclient.Client(request)
+        hlps = helpers.Helpers(savanna)
+
+        plugin_name = request.session.get("plugin_name")
+        hadoop_version = request.session.get("hadoop_version")
+
+        service_parameters = hlps.get_targeted_cluster_configs(
+            plugin_name,
+            hadoop_version)
+
+        self.defaults = dict()
+        for service, parameters in service_parameters.items():
+            if not parameters:
+                continue
+            step = whelpers._create_step_action(service,
+                                                title=service + " parameters",
+                                                parameters=parameters,
+                                                service=service)
+            ConfigureClusterTemplate.register(step)
+            for param in parameters:
+                if service not in self.defaults:
+                    self.defaults[service] = dict()
+                self.defaults[service][param.name] = param.default_value
+
+        super(ConfigureClusterTemplate, self).__init__(request,
+                                                       context_seed,
+                                                       entry_point,
+                                                       *args, **kwargs)
 
     def is_valid(self):
         if self.context["general_hidden_configure_field"] \
@@ -325,7 +357,9 @@ class ConfigureClusterTemplate(workflows.Workflow):
             ng_templates = {}
             ng_counts = {}
 
-            general_configs = {}
+            configs_dict = whelpers.parse_configs_from_context(context,
+                                                               self.defaults)
+            configs_dict["general"] = dict()
 
             for key, val in context.items():
                 if str(key).startswith("ng_"):
@@ -339,7 +373,7 @@ class ConfigureClusterTemplate(workflows.Workflow):
                         idx = str(key)[len("ng_group_count_"):]
                         ng_counts[idx] = val
                 elif str(key).startswith("cluster_"):
-                    general_configs[str(key)[len("cluster_"):]] = val
+                    configs_dict["general"][str(key)[len("cluster_"):]] = val
 
             for key, val in ng_names.items():
                 ng = api_objects.NodeGroup(val,
@@ -353,7 +387,7 @@ class ConfigureClusterTemplate(workflows.Workflow):
                 request.session.get("plugin_name"),
                 request.session.get("hadoop_version"),
                 context["general_description"],
-                general_configs,
+                configs_dict,
                 node_groups)
             return True
         except Exception:

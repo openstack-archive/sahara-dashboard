@@ -25,11 +25,11 @@ from horizon import exceptions
 from horizon import workflows
 
 from savannadashboard.api import client as savannaclient
-from savannadashboard.api import helpers
 from savannadashboard.utils import importutils
-from savannadashboard.utils import workflow_helpers
-from savannadashboard.utils.workflow_helpers import _create_step_action
-from savannadashboard.utils.workflow_helpers import build_control
+
+import savannadashboard.api.helpers as helpers
+import savannadashboard.utils.workflow_helpers as whelpers
+
 
 # horizon.api is for backward compatibility with folsom
 nova = importutils.import_any('openstack_dashboard.api.nova',
@@ -86,7 +86,7 @@ class GeneralConfigAction(workflows.Action):
         node_parameters = hlps.get_general_node_group_configs(plugin,
                                                               hadoop_version)
         for param in node_parameters:
-            self.fields[param.name] = build_control(param)
+            self.fields[param.name] = whelpers.build_control(param)
 
     def populate_flavor_choices(self, request, context):
         try:
@@ -149,10 +149,10 @@ class ConfigureNodegroupTemplate(workflows.Workflow):
 
         self.defaults = dict()
         for service, parameters in service_parameters.items():
-            step = _create_step_action(service,
-                                       title=service + " parameters",
-                                       parameters=parameters,
-                                       service=service)
+            step = whelpers._create_step_action(service,
+                                                title=service + " parameters",
+                                                parameters=parameters,
+                                                service=service)
             ConfigureNodegroupTemplate.register(step)
             for param in parameters:
                 if service not in self.defaults:
@@ -201,21 +201,8 @@ class ConfigureNodegroupTemplate(workflows.Workflow):
             for service_process in context["general_processes"]:
                 processes.append(str(service_process).split(":")[1])
 
-            configs_dict = dict()
-            for key, val in context.items():
-                if not val:
-                    continue
-                if str(key).startswith("CONF"):
-                    key_split = str(key).split(":")
-                    service = key_split[1]
-                    config = key_split[2]
-                    if service not in configs_dict:
-                        configs_dict[service] = dict()
-                    if self.defaults[service][config] == val:
-                        continue
-                    configs_dict[service][config] = val
-
-            LOG.info("create with config:" + str(configs_dict))
+            configs_dict = whelpers.parse_configs_from_context(context,
+                                                               self.defaults)
 
             savanna.node_group_templates.create(
                 context["general_nodegroup_name"],
@@ -232,7 +219,7 @@ class ConfigureNodegroupTemplate(workflows.Workflow):
 
 
 class SelectPluginAction(workflows.Action,
-                         workflow_helpers.PluginAndVersionMixin):
+                         whelpers.PluginAndVersionMixin):
     hidden_create_field = forms.CharField(
         required=False,
         widget=forms.HiddenInput(attrs={"class": "hidden_create_field"}))

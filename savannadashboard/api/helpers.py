@@ -31,7 +31,7 @@ class Helpers(object):
     def get_cluster_general_configs(self, plugin_name, hadoop_version):
         plugin = self.plugins.get_version_details(plugin_name, hadoop_version)
 
-        return self._extract_parameters(plugin.configs, 'cluster', "General")
+        return self._extract_parameters(plugin.configs, 'cluster', "general")
 
     def get_general_node_group_configs(self, plugin_name, hadoop_version):
         plugin = self.plugins.get_version_details(plugin_name, hadoop_version)
@@ -46,5 +46,16 @@ class Helpers(object):
         for service in plugin.node_processes.keys():
             parameters[service] = self._extract_parameters(plugin.configs,
                                                            'node', service)
+
+        return parameters
+
+    def get_targeted_cluster_configs(self, plugin_name, hadoop_version):
+        plugin = self.plugins.get_version_details(plugin_name, hadoop_version)
+
+        parameters = {}
+
+        for service in plugin.node_processes.keys():
+            parameters[service] = self._extract_parameters(plugin.configs,
+                                                           'cluster', service)
 
         return parameters
