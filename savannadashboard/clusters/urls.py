@@ -19,18 +19,19 @@
 from django.conf.urls.defaults import patterns
 from django.conf.urls.defaults import url
 
-from savannadashboard.clusters.views import ClustersView
-from savannadashboard.clusters.views import ConfigureClusterView
-from savannadashboard.clusters.views import CreateClusterView
+import savannadashboard.clusters.views as views
 
 urlpatterns = patterns('',
-                       url(r'^$', ClustersView.as_view(),
+                       url(r'^$', views.ClustersView.as_view(),
                            name='index'),
-                       url(r'^$', ClustersView.as_view(),
+                       url(r'^$', views.ClustersView.as_view(),
                            name='clusters'),
                        url(r'^create-cluster$',
-                           CreateClusterView.as_view(),
+                           views.CreateClusterView.as_view(),
                            name='create-cluster'),
                        url(r'^configure-cluster$',
-                           ConfigureClusterView.as_view(),
-                           name='configure-cluster'))
+                           views.ConfigureClusterView.as_view(),
+                           name='configure-cluster'),
+                       url(r'^(?P<cluster_id>[^/]+)$',
+                           views.ClusterDetailsView.as_view(),
+                           name='details'))

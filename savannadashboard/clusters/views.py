@@ -18,11 +18,13 @@
 import logging
 
 from horizon import tables
+from horizon import tabs
 from horizon import workflows
 
 from savannadashboard.api import client as savannaclient
 
 from savannadashboard.clusters.tables import ClustersTable
+import savannadashboard.clusters.tabs as _tabs
 from savannadashboard.clusters.workflows import ConfigureCluster
 from savannadashboard.clusters.workflows import CreateCluster
 
@@ -38,6 +40,19 @@ class ClustersView(tables.DataTableView):
         savanna = savannaclient.Client(self.request)
         clusters = savanna.clusters.list()
         return clusters
+
+
+class ClusterDetailsView(tabs.TabView):
+    tab_group_class = _tabs.ClusterDetailsTabs
+    template_name = 'clusters/details.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(ClusterDetailsView, self)\
+            .get_context_data(**kwargs)
+        return context
+
+    def get_data(self):
+        pass
 
 
 class CreateClusterView(workflows.WorkflowView):
