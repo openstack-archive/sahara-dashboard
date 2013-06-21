@@ -21,43 +21,45 @@ from django.utils.translation import ugettext_lazy as _
 
 from horizon import tabs
 
-from savannadashboard.api import client as savannaclient
 from savannadashboard.utils import importutils
 nova = importutils.import_any('openstack_dashboard.api.nova',
                               'horizon.api.nova')
+
+
+from savannadashboard.api import client as savannaclient
 
 LOG = logging.getLogger(__name__)
 
 
 class GeneralTab(tabs.Tab):
     name = _("General Info")
-    slug = "cluster_template_details_tab"
-    template_name = ("cluster_templates/_details.html")
+    slug = "cluster_details_tab"
+    template_name = ("clusters/_details.html")
 
     def get_context_data(self, request):
-        template_id = self.tab_group.kwargs['template_id']
+        cluster_id = self.tab_group.kwargs['cluster_id']
         savanna = savannaclient.Client(request)
-        template = savanna.cluster_templates.get(template_id)
-        return {"template": template}
+        cluster = savanna.clusters.get(cluster_id)
+        return {"cluster": cluster}
 
 
 class NodeGroupsTab(tabs.Tab):
     name = _("Node Groups")
-    slug = "cluster_template_nodegroups_tab"
-    template_name = ("cluster_templates/_nodegroups_details.html")
+    slug = "cluster_nodegroups_tab"
+    template_name = ("clusters/_nodegroups_details.html")
 
     def get_context_data(self, request):
-        template_id = self.tab_group.kwargs['template_id']
+        cluster_id = self.tab_group.kwargs['cluster_id']
         savanna = savannaclient.Client(request)
-        template = savanna.cluster_templates.get(template_id)
-        for ng in template.node_groups:
+        cluster = savanna.clusters.get(cluster_id)
+        for ng in cluster.node_groups:
             if not ng["flavor_id"]:
                 continue
             ng["flavor_name"] = nova.flavor_get(request, ng["flavor_id"]).name
-        return {"template": template}
+        return {"cluster": cluster}
 
 
-class ClusterTemplateDetailsTabs(tabs.TabGroup):
-    slug = "cluster_template_details"
+class ClusterDetailsTabs(tabs.TabGroup):
+    slug = "cluster_details"
     tabs = (GeneralTab, NodeGroupsTab, )
     sticky = True
