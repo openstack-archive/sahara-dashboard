@@ -131,14 +131,6 @@ class GeneralConfigAction(workflows.Action):
     #separate_machines = forms.BooleanField(
     #    label=_("Run data nodes on separate machines"),
     #    required=False)
-
-    #hdfs_placement = forms.ChoiceField(
-    #    label=_("HDFS Data Node storage location"),
-    #    required=True,
-    #    help_text=_("Which keypair to use for authentication."),
-    #    choices=[("ephemeral_drive", "Ephemeral Drive"),
-    #             ("cinder_volume", "Cinder Volume")])
-
     #def populate_base_image_choices(self, request, context):
     #    public_images, _more = glance.image_list_detailed(request)
     #    return [(image.id, image.name) for image in public_images]

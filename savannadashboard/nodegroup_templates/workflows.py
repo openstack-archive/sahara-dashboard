@@ -56,6 +56,28 @@ class GeneralConfigAction(workflows.Action):
     flavor = forms.ChoiceField(label=_("OpenStack Flavor"),
                                required=True)
 
+    storage = forms.ChoiceField(
+        label=_("Storage location"),
+        required=True,
+        help_text=_("Storage"),
+        choices=[("ephemeral_drive", "Ephemeral Drive"),
+                 ("cinder_volume", "Cinder Volume")],
+        widget=forms.Select(attrs={"class": "storage_field"}))
+
+    volumes_per_node = forms.IntegerField(
+        label=_("Volumes per node"),
+        required=False,
+        initial=1,
+        widget=forms.TextInput(attrs={"class": "volume_per_node_field"})
+    )
+
+    volume_size = forms.IntegerField(
+        label=_("Volume size (GB)"),
+        required=False,
+        initial=10,
+        widget=forms.TextInput(attrs={"class": "volume_size_field"})
+    )
+
     hidden_configure_field = forms.CharField(
         required=False,
         widget=forms.HiddenInput(attrs={"class": "hidden_configure_field"}))
@@ -204,6 +226,7 @@ class ConfigureNodegroupTemplate(workflows.Workflow):
             configs_dict = whelpers.parse_configs_from_context(context,
                                                                self.defaults)
 
+            #TODO(nkonovalov) handle hdfs_placement
             savanna.node_group_templates.create(
                 context["general_nodegroup_name"],
                 plugin_name,
