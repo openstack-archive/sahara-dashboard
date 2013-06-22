@@ -1,4 +1,3 @@
-
 # vim: tabstop=4 shiftwidth=4 softtabstop=4
 
 # Copyright (c) 2013 Mirantis Inc.
@@ -20,6 +19,7 @@ import logging
 
 from django.contrib import messages as _messages
 from django.utils.translation import ugettext as _
+import json
 
 from horizon import exceptions
 from horizon import forms
@@ -166,7 +166,7 @@ class GeneralConfig(workflows.Step):
 
 class ConfigureGeneralParametersAction(workflows.Action):
     def __init__(self, request, *args, **kwargs):
-        super(ConfigureGeneralParametersAction, self).\
+        super(ConfigureGeneralParametersAction, self). \
             __init__(request, *args, **kwargs)
 
         savanna = savannaclient.Client(request)
@@ -197,66 +197,45 @@ class ConfigureNodegroupsAction(workflows.Action):
     hidden_nodegroups_field = forms.CharField(
         required=False,
         widget=forms.HiddenInput(attrs={"class": "hidden_nodegroups_field"}))
+    forms_ids = forms.CharField(
+        required=False,
+        widget=forms.HiddenInput())
 
     def __init__(self, request, *args, **kwargs):
-        super(ConfigureNodegroupsAction, self).\
+        super(ConfigureNodegroupsAction, self). \
             __init__(request, *args, **kwargs)
 
         savanna = savannaclient.Client(request)
-        all_templates = savanna.node_group_templates.list()
-        templates = [
-            (template.id, template.name)
-            for template in all_templates
-            if (template.plugin_name == request.session.get("plugin_name")
-                and template.hadoop_version ==
-                request.session.get("hadoop_version"))
-        ]
+        self.templates = savanna.node_group_templates.find(
+            plugin_name=request.session.get("plugin_name"),
+            hadoop_version=request.session.get("hadoop_version"))
 
-        count = int(request.session.get("groups_count", 0))
-        skip_values = request.session.get("ignore_idxs", [])
-        for dictionary in args:
-            if dictionary.get("general_hidden_configure_field", None) \
-                    == "create_nodegroup":
-                count += 1
-                request.session["groups_count"] = count
-                #break
-            if dictionary.get("general_hidden_to_delete_field", None):
-                current_ignored = request.session.get("ignore_idxs", [])
-                new_ignored = [int(idx)
-                               for idx in
-                               dictionary["general_hidden_to_delete_field"]
-                               .split(",") if idx]
-                current_ignored += new_ignored
-                skip_values = current_ignored
-                request.session["ignore_idxs"] = current_ignored
+        self.groups = []
+        if 'forms_ids' in request._post:
+            for id in json.loads(request._post['forms_ids']):
+                group_name = "group_name_" + str(id)
+                template_id = "template_id_" + str(id)
+                count = "count_" + str(id)
+                self.groups.append({"name": request._post[group_name],
+                                    "template_id": request._post[template_id],
+                                    "count": request._post[count],
+                                    "id": id})
 
-        for idx in range(0, count, 1):
-            if idx in skip_values:
-                continue
+                self.fields[group_name] = forms.CharField(
+                    label=_("Name"),
+                    required=True,
+                    widget=forms.TextInput())
 
-            self.fields["group_name_" + str(idx)] = forms.CharField(
-                label=_("Name"),
-                required=True,
-                widget=forms.TextInput(
-                    attrs={"class": "name-field",
-                           "data-name-idx": str(idx)}))
+                self.fields[template_id] = forms.CharField(
+                    label=_("Node group template"),
+                    required=True,
+                    widget=forms.HiddenInput())
 
-            self.fields["group_template_" + str(idx)] = forms.ChoiceField(
-                label=_("Node group template"),
-                required=True,
-                choices=templates,
-                widget=forms.Select(
-                    attrs={"class": "ng-field",
-                           "data-ng-idx": str(idx)}))
-
-            self.fields["group_count_" + str(idx)] = forms.IntegerField(
-                label=_("Count"),
-                required=True,
-                min_value=1,
-                widget=forms.TextInput(
-                    attrs={"class": "count-field",
-                           "data-count-idx": str(idx)})
-            )
+                self.fields[count] = forms.IntegerField(
+                    label=_("Count"),
+                    required=True,
+                    min_value=1,
+                    widget=forms.HiddenInput())
 
     def clean(self):
         cleaned_data = super(ConfigureNodegroupsAction, self).clean()
@@ -272,6 +251,7 @@ class ConfigureNodegroupsAction(workflows.Action):
 class ConfigureNodegroups(workflows.Step):
     action_class = ConfigureNodegroupsAction
     contributes = ("hidden_nodegroups_field", )
+    template_name = "cluster_templates/cluster_node_groups_template.html"
 
     def contribute(self, data, context):
         for k, v in data.items():
@@ -323,20 +303,15 @@ class ConfigureClusterTemplate(workflows.Workflow):
                                                        *args, **kwargs)
 
     def is_valid(self):
-        if self.context["general_hidden_configure_field"] \
-                == "create_nodegroup":
-            return False
-        missing = self.depends_on - set(self.context.keys())
-        if missing:
-            raise exceptions.WorkflowValidationError(
-                "Unable to complete the workflow. The values %s are "
-                "required but not present." % ", ".join(missing))
-
         steps_valid = True
         for step in self.steps:
             if not step.action.is_valid():
                 steps_valid = False
                 step.has_errors = True
+                errors_fields = []
+                for k, v in step.action.errors.items():
+                    errors_fields.append(k)
+                step.action.errors_fields = errors_fields
         if not steps_valid:
             return steps_valid
         return self.validate(self.context)
@@ -345,32 +320,18 @@ class ConfigureClusterTemplate(workflows.Workflow):
         try:
             savanna = savannaclient.Client(request)
             node_groups = []
-            ng_names = {}
-            ng_templates = {}
-            ng_counts = {}
-
             configs_dict = whelpers.parse_configs_from_context(context,
                                                                self.defaults)
             configs_dict["general"] = dict()
 
-            for key, val in context.items():
-                if str(key).startswith("ng_"):
-                    if str(key).startswith("ng_group_name_"):
-                        idx = str(key)[len("ng_group_name_"):]
-                        ng_names[idx] = val
-                    elif str(key).startswith("ng_group_template_"):
-                        idx = str(key)[len("ng_group_template_"):]
-                        ng_templates[idx] = val
-                    elif str(key).startswith("ng_group_count_"):
-                        idx = str(key)[len("ng_group_count_"):]
-                        ng_counts[idx] = val
-                elif str(key).startswith("cluster_"):
-                    configs_dict["general"][str(key)[len("cluster_"):]] = val
-
-            for key, val in ng_names.items():
-                ng = api_objects.NodeGroup(val,
-                                           ng_templates[key],
-                                           count=ng_counts[key])
+            ids = json.loads(context['ng_forms_ids'])
+            for id in ids:
+                name = context['ng_group_name_' + str(id)]
+                template_id = context['ng_template_id_' + str(id)]
+                count = context['ng_count_' + str(id)]
+                ng = api_objects.NodeGroup(name,
+                                           template_id,
+                                           count=count)
                 node_groups.append(ng)
 
             #TODO(nkonovalov): Fix client to support default_image_id
@@ -382,5 +343,6 @@ class ConfigureClusterTemplate(workflows.Workflow):
                 configs_dict,
                 node_groups)
             return True
-        except Exception:
+        except Exception as ex:
+            print ex
             return False
