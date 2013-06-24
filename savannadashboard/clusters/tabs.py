@@ -19,6 +19,7 @@ import logging
 
 from django.utils.translation import ugettext_lazy as _
 
+from horizon import tables
 from horizon import tabs
 
 from savannadashboard.utils import importutils
@@ -40,7 +41,17 @@ class GeneralTab(tabs.Tab):
         cluster_id = self.tab_group.kwargs['cluster_id']
         savanna = savannaclient.Client(request)
         cluster = savanna.clusters.get(cluster_id)
+
+        for info_key, info_val in cluster.info.items():
+            for key, val in info_val.items():
+                if str(val).startswith("http://"):
+                    cluster.info[info_key][key] = build_link(val)
+
         return {"cluster": cluster}
+
+
+def build_link(url):
+    return "<a href='" + url + "'>" + url + "</a>"
 
 
 class NodeGroupsTab(tabs.Tab):
@@ -59,7 +70,53 @@ class NodeGroupsTab(tabs.Tab):
         return {"cluster": cluster}
 
 
+class Instance(object):
+    def __init__(self, name=None, id=None, internal_ip=None,
+                 management_ip=None):
+        self.name = name
+        self.id = id
+        self.internal_ip = internal_ip
+        self.management_ip = management_ip
+
+
+class InstancesTable(tables.DataTable):
+    name = tables.Column("name",
+                         verbose_name=_("Instance Name"))
+
+    internal_ip = tables.Column("internal_ip",
+                                verbose_name=_("Internal IP"))
+
+    management_ip = tables.Column("management_ip",
+                                  verbose_name=_("Management IP"))
+
+    class Meta:
+        name = "cluster_instances"
+        verbose_name = _("Instances")
+
+
+class InstancesTab(tabs.TableTab):
+    name = _("Instances")
+    slug = "cluster_instances_tab"
+    template_name = ("clusters/_instances_details.html")
+    table_classes = (InstancesTable, )
+
+    def get_cluster_instances_data(self):
+        cluster_id = self.tab_group.kwargs['cluster_id']
+        savanna = savannaclient.Client(self.request)
+        cluster = savanna.clusters.get(cluster_id)
+
+        instances = []
+        for ng in cluster.node_groups:
+            for instance in ng["instances"]:
+                instances.append(Instance(
+                    name=instance["instance_name"],
+                    id=instance["instance_id"],
+                    internal_ip=instance["internal_ip"],
+                    management_ip=instance["management_ip"]))
+        return instances
+
+
 class ClusterDetailsTabs(tabs.TabGroup):
     slug = "cluster_details"
-    tabs = (GeneralTab, NodeGroupsTab, )
+    tabs = (GeneralTab, NodeGroupsTab, InstancesTab, )
     sticky = True

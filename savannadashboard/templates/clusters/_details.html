@@ -32,4 +32,13 @@
             <dd>{% trans "Cluster configurations are not specified" %}</dd>
         {% endif %}
     </dl>
+
+    <dl>
+        {% for info_key, info_val in cluster.info.items %}
+        <dt>{{ info_key }}</dt>
+            {% for key, val in info_val.items %}
+                <dd>{{ key }}:&nbsp{% autoescape off %}{{ val }}{% endautoescape %}</dd>
+            {% endfor %}
+        {% endfor %}
+    </dl>
 </div>

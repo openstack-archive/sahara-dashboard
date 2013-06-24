@@ -42,7 +42,7 @@ class UploadFile(tables.LinkAction):
 
 class DeleteTemplate(tables.BatchAction):
     name = "delete_cluster_template"
-    verbose_name = _("Delete")
+    verbose_name = _("Delete Template")
     classes = ("btn-terminate", "btn-danger")
 
     action_present = _("Delete")
@@ -60,7 +60,7 @@ class DeleteTemplate(tables.BatchAction):
 
 class CreateClusterTemplate(tables.LinkAction):
     name = "create"
-    verbose_name = _("Create Cluster Template")
+    verbose_name = _("Create Template")
     url = "horizon:savanna:cluster_templates:create-cluster-template"
     classes = ("ajax-modal", "btn-create", "create-clustertemplate-btn")
 
