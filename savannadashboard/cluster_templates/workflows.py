@@ -343,6 +343,6 @@ class ConfigureClusterTemplate(workflows.Workflow):
                 configs_dict,
                 node_groups)
             return True
-        except Exception as ex:
-            print ex
+        except Exception:
+            exceptions.handle(request)
             return False
