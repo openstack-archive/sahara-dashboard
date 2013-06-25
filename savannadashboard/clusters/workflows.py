@@ -27,7 +27,6 @@ nova = importutils.import_any('openstack_dashboard.api.nova',
 
 from django.utils.translation import ugettext as _
 
-import savannadashboard.api.api_objects as api_objects
 from savannadashboard.api import client as savannaclient
 import savannadashboard.cluster_templates.workflows as t_flows
 
@@ -137,92 +136,6 @@ class GeneralConfig(workflows.Step):
         return context
 
 
-class ConfigureClusterAction(workflows.Action):
-    hidden_nodegroups_field = forms.CharField(
-        required=False,
-        widget=forms.HiddenInput(attrs={"class": "hidden_nodegroups_field"}))
-
-    def __init__(self, request, *args, **kwargs):
-        super(ConfigureClusterAction, self).\
-            __init__(request, *args, **kwargs)
-
-        savanna = savannaclient.Client(request)
-        all_templates = savanna.node_group_templates.list()
-        templates = [
-            (template.id, template.name)
-            for template in all_templates
-            if (template.plugin_name == request.session.get("plugin_name")
-                and template.hadoop_version ==
-                request.session.get("hadoop_version"))
-        ]
-
-        count = int(request.session.get("groups_count", 0))
-        skip_values = request.session.get("ignore_idxs", [])
-        for dictionary in args:
-            if dictionary.get("general_hidden_configure_field", None) \
-                    == "create_nodegroup":
-                count += 1
-                request.session["groups_count"] = count
-                #break
-            if dictionary.get("general_hidden_to_delete_field", None):
-                current_ignored = request.session.get("ignore_idxs", [])
-                new_ignored = [int(idx)
-                               for idx in
-                               dictionary["general_hidden_to_delete_field"]
-                               .split(",") if idx]
-                current_ignored += new_ignored
-                skip_values = current_ignored
-                request.session["ignore_idxs"] = current_ignored
-
-        for idx in range(0, count, 1):
-            if idx in skip_values:
-                continue
-
-            self.fields["group_name_" + str(idx)] = forms.CharField(
-                label=_("Name"),
-                required=True,
-                widget=forms.TextInput(
-                    attrs={"class": "name-field",
-                           "data-name-idx": str(idx)}))
-
-            self.fields["group_template_" + str(idx)] = forms.ChoiceField(
-                label=_("Node group template"),
-                required=True,
-                choices=templates,
-                widget=forms.Select(
-                    attrs={"class": "ng-field",
-                           "data-ng-idx": str(idx)}))
-
-            self.fields["group_count_" + str(idx)] = forms.IntegerField(
-                label=_("Count"),
-                required=True,
-                min_value=1,
-                widget=forms.TextInput(
-                    attrs={"class": "count-field",
-                           "data-count-idx": str(idx)})
-            )
-
-    def clean(self):
-        cleaned_data = super(ConfigureClusterAction, self).clean()
-        if cleaned_data.get("hidden_nodegroups_field", None) \
-                == "create_nodegroup":
-            self._errors = dict()
-        return cleaned_data
-
-    class Meta:
-        name = _("Cluster Node groups")
-
-
-class ConfigureClusterStep(workflows.Step):
-    action_class = ConfigureClusterAction
-    contributes = ("hidden_nodegroups_field", )
-
-    def contribute(self, data, context):
-        for k, v in data.items():
-            context["ng_" + k] = v
-        return context
-
-
 class ConfigureCluster(workflows.Workflow):
     slug = "configure_cluster"
     name = _("Create Cluster")
@@ -230,7 +143,7 @@ class ConfigureCluster(workflows.Workflow):
     success_message = _("Created")
     failure_message = _("Could not create")
     success_url = "horizon:savanna:clusters:index"
-    default_steps = (GeneralConfig, ConfigureClusterStep)
+    default_steps = (GeneralConfig, )
 
     def is_valid(self):
         if self.context["general_hidden_configure_field"] \
@@ -254,26 +167,8 @@ class ConfigureCluster(workflows.Workflow):
     def handle(self, request, context):
         try:
             savanna = savannaclient.Client(request)
-            node_groups = []
-            ng_names = {}
-            ng_templates = {}
-            ng_counts = {}
-            for key, val in context.items():
-                if str(key).startswith("ng_"):
-                    if str(key).startswith("ng_group_name_"):
-                        idx = str(key)[len("ng_group_name_"):]
-                        ng_names[idx] = val
-                    elif str(key).startswith("ng_group_template_"):
-                        idx = str(key)[len("ng_group_template_"):]
-                        ng_templates[idx] = val
-                    elif str(key).startswith("ng_group_count_"):
-                        idx = str(key)[len("ng_group_count_"):]
-                        ng_counts[idx] = val
-            for key, val in ng_names.items():
-                ng = api_objects.NodeGroup(val,
-                                           ng_templates[key],
-                                           count=ng_counts[key])
-                node_groups.append(ng)
+            #TODO(nkonovalov) Implement AJAX Node Groups
+            node_groups = None
 
             savanna.clusters.create(context["general_cluster_name"],
                                     request.session.get("plugin_name"),
@@ -282,8 +177,7 @@ class ConfigureCluster(workflows.Workflow):
                                     context["general_image"],
                                     context["general_description"],
                                     node_groups,
-                                    context["general_keypair"]
-                                    )
+                                    context["general_keypair"])
             return True
         except Exception:
             exceptions.handle(request)

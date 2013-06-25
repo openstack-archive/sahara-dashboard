@@ -18,40 +18,6 @@
         $(".configure-cluster-btn").hide();
 
         horizon.modals.addModalInitFunction(function (modal) {
-            $(".hidden_nodegroups_field").after("<input type='button' id='add_nodegroup' value='Add Node group'/><br/>");
-            $("#add_nodegroup").click(function() {
-                $(".hidden_nodegroups_field").val("create_nodegroup");
-                $(".hidden_configure_field").val("create_nodegroup");
-                var form = $(".hidden_nodegroups_field").closest("form");
-                form.submit();
-            });
-
-            var actions_table = $(".hidden_nodegroups_field").parent();
-            actions_table.attr("style", "width: 100%");
-            actions_table.find(".control-group").attr("style", "width: 30%; display: inline-block");
-            actions_table.find(".input").children().attr("style", "width: 85%");
-            actions_table.find(".count-field").closest(".control-group")
-                    .after("<div style='display: inline-block' class='control-group'><div class='input'><span class='btn btn-small btn-danger ng-remove-btn'><i class='icon-remove-sign'>&nbsp&nbsp&nbsp</i></span></div></div>");
-
-            $(".ng-remove-btn").on("click", function(event) {
-                var div = $(this).closest(".control-group");
-                div.hide();
-                //count
-                var count = div.prev();
-                count.hide();
-                //template
-                var template = div.prev().prev();
-                template.hide();
-                //name
-                var name = div.prev().prev().prev();
-                name.hide();
-
-                var idx = count.find("input").attr("data-count-idx");
-                console.log(idx);
-                $(".hidden_to_delete_field").val($(".hidden_to_delete_field").val() + "," + idx);
-
-            });
-
 
             $(".hidden_nodegroups_field").val("");
             $(".hidden_configure_field").val("");
