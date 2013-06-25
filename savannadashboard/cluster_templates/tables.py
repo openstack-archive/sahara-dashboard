@@ -47,8 +47,8 @@ class DeleteTemplate(tables.BatchAction):
 
     action_present = _("Delete")
     action_past = _("Deleted")
-    data_type_singular = _("Cluster Template")
-    data_type_plural = _("Cluster Templates")
+    data_type_singular = _("Template")
+    data_type_plural = _("Templates")
 
     def allowed(self, request, template):
         return True
