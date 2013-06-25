@@ -21,11 +21,15 @@
             <dd>
                 {% for service, service_conf in template.cluster_configs.items %}
                     <h4>{{ service }}</h4>
+                    {% if service_conf %}
                     <ul>
                     {% for conf_name, conf_value in service_conf.items %}
                         <li>{{ conf_name }}:&nbsp{{ conf_value }}</li>
                     {% endfor %}
                     </ul>
+                    {% else %}
+                    <h6>No configurations</h6>
+                    {% endif %}
                 {% endfor %}
             </dd>
         {% else %}
