@@ -18,7 +18,6 @@
 from horizon import forms
 import logging
 
-from django.contrib import messages as _messages
 from django.utils.translation import ugettext as _
 
 from horizon import exceptions
@@ -40,8 +39,8 @@ LOG = logging.getLogger(__name__)
 
 
 def get_plugin_and_hadoop_version(request):
-    plugin_name = request.session.get("plugin_name")
-    hadoop_version = request.session.get("hadoop_version")
+    plugin_name = request.REQUEST["plugin_name"]
+    hadoop_version = request.REQUEST["hadoop_version"]
     return (plugin_name, hadoop_version)
 
 
@@ -105,6 +104,15 @@ class GeneralConfigAction(workflows.Action):
             help_text=_("Processes to be launched in node group"),
             choices=process_choices)
 
+        self.fields["plugin_name"] = forms.CharField(
+            widget=forms.HiddenInput(),
+            initial=plugin
+        )
+        self.fields["hadoop_version"] = forms.CharField(
+            widget=forms.HiddenInput(),
+            initial=hadoop_version
+        )
+
         node_parameters = hlps.get_general_node_group_configs(plugin,
                                                               hadoop_version)
         for param in node_parameters:
@@ -123,8 +131,9 @@ class GeneralConfigAction(workflows.Action):
 
     def get_help_text(self):
         extra = dict()
-        extra["plugin_name"] = self.request.session.get("plugin_name")
-        extra["hadoop_version"] = self.request.session.get("hadoop_version")
+        plugin, hadoop_version = get_plugin_and_hadoop_version(self.request)
+        extra["plugin_name"] = plugin
+        extra["hadoop_version"] = hadoop_version
         return super(GeneralConfigAction, self).get_help_text(extra)
 
     class Meta:
@@ -216,8 +225,6 @@ class ConfigureNodegroupTemplate(workflows.Workflow):
     def handle(self, request, context):
         try:
             savanna = savannaclient.Client(request)
-            plugin_name = request.session.get("plugin_name")
-            hadoop_version = request.session.get("hadoop_version")
 
             processes = []
             for service_process in context["general_processes"]:
@@ -226,10 +233,12 @@ class ConfigureNodegroupTemplate(workflows.Workflow):
             configs_dict = whelpers.parse_configs_from_context(context,
                                                                self.defaults)
 
+            plugin, hadoop_version = get_plugin_and_hadoop_version(request)
+
             #TODO(nkonovalov) handle hdfs_placement
             savanna.node_group_templates.create(
                 context["general_nodegroup_name"],
-                plugin_name,
+                plugin,
                 hadoop_version,
                 context["general_description"],
                 context["general_flavor"],
@@ -278,13 +287,3 @@ class CreateNodegroupTemplate(workflows.Workflow):
     failure_message = _("Could not create")
     success_url = "horizon:savanna:nodegroup_templates:index"
     default_steps = (SelectPlugin,)
-
-    def handle(self, request, context):
-        try:
-            request.session["plugin_name"] = context["plugin_name"]
-            request.session["hadoop_version"] = context["hadoop_version"]
-            _messages.set_level(request, _messages.WARNING)
-            return True
-        except Exception:
-            exceptions.handle(request)
-            return False
