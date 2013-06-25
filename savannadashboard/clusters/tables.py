@@ -74,9 +74,8 @@ class ClustersTable(tables.DataTable):
     )
 
     name = tables.Column("name",
-                         verbose_name=_("Cluster Name"),
-                         link=("horizon:savanna:clusters:details")
-                         )
+                         verbose_name=_("Name"),
+                         link=("horizon:savanna:clusters:details"))
     status = tables.Column("status",
                            verbose_name=_("Status"),
                            status=True,

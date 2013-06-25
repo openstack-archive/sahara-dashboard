@@ -42,7 +42,7 @@ def tags_to_string(image):
 
 class RegisterImage(tables.LinkAction):
     name = "register"
-    verbose_name = _("Register")
+    verbose_name = _("Register Image")
     url = "horizon:savanna:image_registry:register"
     classes = ("btn-launch", "ajax-modal")
 
@@ -74,7 +74,7 @@ class RemoveImage(tables.DeleteAction):
 
 class ImageRegistryTable(tables.DataTable):
     name = tables.Column("name",
-                         verbose_name=_("Image Name"))
+                         verbose_name=_("Image"))
     tags = tables.Column(tags_to_string,
                          verbose_name=_("Tags"))
 

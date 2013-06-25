@@ -69,7 +69,7 @@ class NodegroupTemplatesTable(tables.DataTable):
                          verbose_name=_("Name"),
                          link=("horizon:savanna:nodegroup_templates:details"))
     plugin_name = tables.Column("plugin_name",
-                                verbose_name=_("Plugin Name"))
+                                verbose_name=_("Plugin"))
     hadoop_version = tables.Column("hadoop_version",
                                    verbose_name=_("Hadoop Version"))
     node_processes = tables.Column(render_processes,

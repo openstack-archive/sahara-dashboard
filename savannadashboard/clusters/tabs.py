@@ -81,7 +81,7 @@ class Instance(object):
 
 class InstancesTable(tables.DataTable):
     name = tables.Column("name",
-                         verbose_name=_("Instance Name"))
+                         verbose_name=_("Name"))
 
     internal_ip = tables.Column("internal_ip",
                                 verbose_name=_("Internal IP"))
@@ -91,7 +91,8 @@ class InstancesTable(tables.DataTable):
 
     class Meta:
         name = "cluster_instances"
-        verbose_name = _("Instances")
+        #just ignoring the name
+        verbose_name = _(" ")
 
 
 class InstancesTab(tabs.TableTab):

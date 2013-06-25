@@ -74,10 +74,10 @@ class ConfigureClusterTemplate(tables.LinkAction):
 
 class ClusterTemplatesTable(tables.DataTable):
     name = tables.Column("name",
-                         verbose_name=_("Cluster Template Name"),
+                         verbose_name=_("Name"),
                          link=("horizon:savanna:cluster_templates:details"))
     plugin_name = tables.Column("plugin_name",
-                                verbose_name=_("Plugin Name"))
+                                verbose_name=_("Plugin"))
     hadoop_version = tables.Column("hadoop_version",
                                    verbose_name=_("Hadoop Version"))
     node_groups = tables.Column(render_node_groups,
