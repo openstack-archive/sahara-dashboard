@@ -73,12 +73,3 @@ class ConfigureClusterTemplateView(workflows.WorkflowView):
     workflow_class = _workflows.ConfigureClusterTemplate
     success_url = "horizon:savanna:cluster_templates"
     template_name = "cluster_templates/configure.html"
-
-    def get_context_data(self, **kwargs):
-        context = super(ConfigureClusterTemplateView, self).get_context_data(
-            **kwargs)
-
-        context["plugin_name"] = self.request.session.get("plugin_name")
-        context["plugin_version"] = self.request.session.get("plugin_version")
-
-        return context

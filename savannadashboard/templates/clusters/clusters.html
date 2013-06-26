@@ -26,16 +26,16 @@
                 var form = $(".hidden_create_field").closest("form");
                 var successful = false;
                 form.submit(function (e) {
-                    $.ajax({
-                               type: "POST",
-                               url: form.attr('action'),  // read the action attribute of the form
-                               data: form.serialize(),
-                               success: function () {
-                                   form.find(".close").click();
-                                   $(".configure-cluster-btn").click();
-                               }
-                           });
-                    return false;
+                        var oldHref = $(".configure-cluster-btn")[0].href;
+                        var plugin = $("#id_plugin_name option:selected").val();
+                        var version = $("#id_" + plugin + "_version option:selected").val();
+                        form.find(".close").click();
+                        $(".configure-cluster-btn")[0].href = oldHref +
+                                "?plugin_name=" + encodeURIComponent(plugin) +
+                                "&hadoop_version=" + encodeURIComponent(version);
+                        $(".configure-cluster-btn").click();
+                        $(".configure-cluster-btn")[0].href = oldHref;
+                        return false;
                 });
                 $(".plugin_version_choice").closest(".control-group").hide();
             }

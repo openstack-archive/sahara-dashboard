@@ -18,7 +18,9 @@
 from horizon import exceptions
 from horizon import forms
 from horizon import workflows
+
 from savannadashboard.utils import importutils
+import savannadashboard.utils.workflow_helpers as whelpers
 
 glance = importutils.import_any('openstack_dashboard.api.glance',
                                 'horizon.api.glance')
@@ -50,13 +52,6 @@ class CreateCluster(t_flows.CreateClusterTemplate):
     name = _("Create Cluster")
     success_url = "horizon:savanna:cluster_templates:index"
 
-    def __init__(self, request, context_seed, entry_point, *args, **kwargs):
-        request.session["groups_count"] = 0
-        super(CreateCluster, self).__init__(request,
-                                            context_seed,
-                                            entry_point,
-                                            *args, **kwargs)
-
 
 class GeneralConfigAction(workflows.Action):
     hidden_configure_field = forms.CharField(
@@ -85,6 +80,21 @@ class GeneralConfigAction(workflows.Action):
         required=False,
         help_text=_("Which keypair to use for authentication."))
 
+    def __init__(self, request, *args, **kwargs):
+        super(GeneralConfigAction, self).__init__(request, *args, **kwargs)
+
+        plugin, hadoop_version = whelpers.\
+            get_plugin_and_hadoop_version(request)
+
+        self.fields["plugin_name"] = forms.CharField(
+            widget=forms.HiddenInput(),
+            initial=plugin
+        )
+        self.fields["hadoop_version"] = forms.CharField(
+            widget=forms.HiddenInput(),
+            initial=hadoop_version
+        )
+
     def populate_image_choices(self, request, context):
         public_images, _more = glance.image_list_detailed(request)
         return [(image.id, image.name) for image in public_images]
@@ -94,23 +104,26 @@ class GeneralConfigAction(workflows.Action):
         keypair_list = [(kp.name, kp.name) for kp in keypairs]
         return keypair_list
 
-    def populate_cluster_template_choices(selfs, request, context):
+    def populate_cluster_template_choices(self, request, context):
         savanna = savannaclient.Client(request)
         templates = savanna.cluster_templates.list()
-        plugin_name = request.session["plugin_name"]
-        hadoop_version = request.session["hadoop_version"]
+
+        plugin, hadoop_version = whelpers.\
+            get_plugin_and_hadoop_version(request)
 
         choices = [(template.id, template.name)
                    for template in templates
                    if (template.hadoop_version == hadoop_version and
-                       template.plugin_name == plugin_name)]
+                       template.plugin_name == plugin)]
 
         return choices
 
     def get_help_text(self):
         extra = dict()
-        extra["plugin_name"] = self.request.session.get("plugin_name")
-        extra["hadoop_version"] = self.request.session.get("hadoop_version")
+        plugin, hadoop_version = whelpers.\
+            get_plugin_and_hadoop_version(self.request)
+        extra["plugin_name"] = plugin
+        extra["hadoop_version"] = hadoop_version
         return super(GeneralConfigAction, self).get_help_text(extra)
 
     def clean(self):
@@ -170,9 +183,12 @@ class ConfigureCluster(workflows.Workflow):
             #TODO(nkonovalov) Implement AJAX Node Groups
             node_groups = None
 
+            plugin, hadoop_version = whelpers.\
+                get_plugin_and_hadoop_version(request)
+
             savanna.clusters.create(context["general_cluster_name"],
-                                    request.session.get("plugin_name"),
-                                    request.session.get("hadoop_version"),
+                                    plugin,
+                                    hadoop_version,
                                     context["general_cluster_template"],
                                     context["general_image"],
                                     context["general_description"],

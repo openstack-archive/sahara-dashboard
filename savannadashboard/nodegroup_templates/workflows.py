@@ -38,12 +38,6 @@ nova = importutils.import_any('openstack_dashboard.api.nova',
 LOG = logging.getLogger(__name__)
 
 
-def get_plugin_and_hadoop_version(request):
-    plugin_name = request.REQUEST["plugin_name"]
-    hadoop_version = request.REQUEST["hadoop_version"]
-    return (plugin_name, hadoop_version)
-
-
 class GeneralConfigAction(workflows.Action):
     nodegroup_name = forms.CharField(label=_("Template Name"),
                                      required=True)
@@ -87,7 +81,8 @@ class GeneralConfigAction(workflows.Action):
         savanna = savannaclient.Client(request)
         hlps = helpers.Helpers(savanna)
 
-        plugin, hadoop_version = get_plugin_and_hadoop_version(request)
+        plugin, hadoop_version = whelpers.\
+            get_plugin_and_hadoop_version(request)
         process_choices = []
         version_details = savanna.plugins.get_version_details(plugin,
                                                               hadoop_version)
@@ -131,7 +126,8 @@ class GeneralConfigAction(workflows.Action):
 
     def get_help_text(self):
         extra = dict()
-        plugin, hadoop_version = get_plugin_and_hadoop_version(self.request)
+        plugin, hadoop_version = whelpers.\
+            get_plugin_and_hadoop_version(self.request)
         extra["plugin_name"] = plugin
         extra["hadoop_version"] = hadoop_version
         return super(GeneralConfigAction, self).get_help_text(extra)
@@ -172,7 +168,8 @@ class ConfigureNodegroupTemplate(workflows.Workflow):
         savanna = savannaclient.Client(request)
         hlps = helpers.Helpers(savanna)
 
-        plugin, hadoop_version = get_plugin_and_hadoop_version(request)
+        plugin, hadoop_version = whelpers.\
+            get_plugin_and_hadoop_version(request)
 
         service_parameters = hlps.get_targeted_node_group_configs(
             plugin,
@@ -233,7 +230,8 @@ class ConfigureNodegroupTemplate(workflows.Workflow):
             configs_dict = whelpers.parse_configs_from_context(context,
                                                                self.defaults)
 
-            plugin, hadoop_version = get_plugin_and_hadoop_version(request)
+            plugin, hadoop_version = whelpers.\
+                get_plugin_and_hadoop_version(request)
 
             #TODO(nkonovalov) handle hdfs_placement
             savanna.node_group_templates.create(

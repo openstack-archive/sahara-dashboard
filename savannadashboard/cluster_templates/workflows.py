@@ -17,7 +17,6 @@
 
 import logging
 
-from django.contrib import messages as _messages
 from django.utils.translation import ugettext as _
 import json
 
@@ -70,14 +69,6 @@ class SelectPluginAction(workflows.Action):
 
 class SelectPlugin(workflows.Step):
     action_class = SelectPluginAction
-    contributes = ("plugin_name", "hadoop_version")
-
-    def contribute(self, data, context):
-        context = super(SelectPlugin, self).contribute(data, context)
-        context["plugin_name"] = data.get('plugin_name', None)
-        context["hadoop_version"] = \
-            data.get(context["plugin_name"] + "_version", None)
-        return context
 
 
 class CreateClusterTemplate(workflows.Workflow):
@@ -88,25 +79,6 @@ class CreateClusterTemplate(workflows.Workflow):
     failure_message = _("Could not create")
     success_url = "horizon:savanna:cluster_templates:index"
     default_steps = (SelectPlugin,)
-
-    def __init__(self, request, context_seed, entry_point, *args, **kwargs):
-        request.session["groups_count"] = 0
-        super(CreateClusterTemplate, self).__init__(request,
-                                                    context_seed,
-                                                    entry_point,
-                                                    *args, **kwargs)
-
-    def handle(self, request, context):
-        try:
-            request.session["plugin_name"] = context["plugin_name"]
-            request.session["hadoop_version"] = context["hadoop_version"]
-            request.session.pop("ignore_idxs", None)
-            request.session.pop("groups_count", None)
-            _messages.set_level(request, _messages.WARNING)
-            return True
-        except Exception:
-            exceptions.handle(request)
-            return False
 
 
 class GeneralConfigAction(workflows.Action):
@@ -135,10 +107,27 @@ class GeneralConfigAction(workflows.Action):
     #    public_images, _more = glance.image_list_detailed(request)
     #    return [(image.id, image.name) for image in public_images]
 
+    def __init__(self, request, *args, **kwargs):
+        super(GeneralConfigAction, self).__init__(request, *args, **kwargs)
+        plugin, hadoop_version = whelpers.\
+            get_plugin_and_hadoop_version(request)
+
+        self.fields["plugin_name"] = forms.CharField(
+            widget=forms.HiddenInput(),
+            initial=plugin
+        )
+        self.fields["hadoop_version"] = forms.CharField(
+            widget=forms.HiddenInput(),
+            initial=hadoop_version
+        )
+
     def get_help_text(self):
         extra = dict()
-        extra["plugin_name"] = self.request.session.get("plugin_name")
-        extra["hadoop_version"] = self.request.session.get("hadoop_version")
+        plugin, hadoop_version = whelpers\
+            .get_plugin_and_hadoop_version(self.request)
+
+        extra["plugin_name"] = plugin
+        extra["hadoop_version"] = hadoop_version
         return super(GeneralConfigAction, self).get_help_text(extra)
 
     def clean(self):
@@ -170,11 +159,11 @@ class ConfigureGeneralParametersAction(workflows.Action):
             __init__(request, *args, **kwargs)
 
         savanna = savannaclient.Client(request)
-        plugin_name = request.session["plugin_name"]
-        hadoop_version = request.session["hadoop_version"]
+        plugin, hadoop_version = whelpers.\
+            get_plugin_and_hadoop_version(request)
 
         parameters = helpers.Helpers(savanna).get_cluster_general_configs(
-            plugin_name,
+            plugin,
             hadoop_version)
 
         for param in parameters:
@@ -206,9 +195,13 @@ class ConfigureNodegroupsAction(workflows.Action):
             __init__(request, *args, **kwargs)
 
         savanna = savannaclient.Client(request)
+
+        plugin, hadoop_version = whelpers.\
+            get_plugin_and_hadoop_version(request)
+
         self.templates = savanna.node_group_templates.find(
-            plugin_name=request.session.get("plugin_name"),
-            hadoop_version=request.session.get("hadoop_version"))
+            plugin_name=plugin,
+            hadoop_version=hadoop_version)
 
         self.groups = []
         if 'forms_ids' in request._post:
@@ -276,11 +269,11 @@ class ConfigureClusterTemplate(workflows.Workflow):
         savanna = savannaclient.Client(request)
         hlps = helpers.Helpers(savanna)
 
-        plugin_name = request.session.get("plugin_name")
-        hadoop_version = request.session.get("hadoop_version")
+        plugin, hadoop_version = whelpers.\
+            get_plugin_and_hadoop_version(request)
 
         service_parameters = hlps.get_targeted_cluster_configs(
-            plugin_name,
+            plugin,
             hadoop_version)
 
         self.defaults = dict()
@@ -334,11 +327,14 @@ class ConfigureClusterTemplate(workflows.Workflow):
                                            count=count)
                 node_groups.append(ng)
 
+            plugin, hadoop_version = whelpers.\
+                get_plugin_and_hadoop_version(request)
+
             #TODO(nkonovalov): Fix client to support default_image_id
             savanna.cluster_templates.create(
                 context["general_cluster_template_name"],
-                request.session.get("plugin_name"),
-                request.session.get("hadoop_version"),
+                plugin,
+                hadoop_version,
                 context["general_description"],
                 configs_dict,
                 node_groups)

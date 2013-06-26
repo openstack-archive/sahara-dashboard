@@ -112,8 +112,10 @@ class InstancesTab(tabs.TableTab):
                 instances.append(Instance(
                     name=instance["instance_name"],
                     id=instance["instance_id"],
-                    internal_ip=instance["internal_ip"],
-                    management_ip=instance["management_ip"]))
+                    internal_ip=instance.get("internal_ip",
+                                             "Not assigned"),
+                    management_ip=instance.get("management_ip",
+                                               "Not assigned")))
         return instances
 
 

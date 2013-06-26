@@ -117,6 +117,12 @@ def parse_configs_from_context(context, defaults):
     return configs_dict
 
 
+def get_plugin_and_hadoop_version(request):
+    plugin_name = request.REQUEST["plugin_name"]
+    hadoop_version = request.REQUEST["hadoop_version"]
+    return (plugin_name, hadoop_version)
+
+
 class PluginAndVersionMixin(object):
     def _generate_plugin_version_fields(self, savanna):
         plugins = savanna.plugins.list()
