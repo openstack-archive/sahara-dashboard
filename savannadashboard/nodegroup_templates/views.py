@@ -15,17 +15,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import logging
 
 from horizon import tables
 from horizon import tabs
 from horizon import workflows
-import logging
 
 from savannadashboard.api import client as savannaclient
 
 import savannadashboard.nodegroup_templates.tables as _tables
 import savannadashboard.nodegroup_templates.tabs as _tabs
-import savannadashboard.nodegroup_templates.workflows as _workflows
+import savannadashboard.nodegroup_templates.workflows.copy as copy_flow
+import savannadashboard.nodegroup_templates.workflows.create as create_flow
 
 LOG = logging.getLogger(__name__)
 
@@ -54,7 +55,7 @@ class NodegroupTemplateDetailsView(tabs.TabView):
 
 
 class CreateNodegroupTemplateView(workflows.WorkflowView):
-    workflow_class = _workflows.CreateNodegroupTemplate
+    workflow_class = create_flow.CreateNodegroupTemplate
     success_url = \
         "horizon:savanna:nodegroup_templates:create-nodegroup-template"
     classes = ("ajax-modal")
@@ -62,6 +63,32 @@ class CreateNodegroupTemplateView(workflows.WorkflowView):
 
 
 class ConfigureNodegroupTemplateView(workflows.WorkflowView):
-    workflow_class = _workflows.ConfigureNodegroupTemplate
+    workflow_class = create_flow.ConfigureNodegroupTemplate
     success_url = "horizon:savanna:nodegroup_templates"
     template_name = "nodegroup_templates/configure.html"
+
+
+class CopyNodegroupTemplateView(workflows.WorkflowView):
+    workflow_class = copy_flow.CopyNodegroupTemplate
+    success_url = "horizon:savanna:nodegroup_templates"
+    template_name = "nodegroup_templates/configure.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(CopyNodegroupTemplateView, self)\
+            .get_context_data(**kwargs)
+
+        context["template_id"] = kwargs["template_id"]
+        return context
+
+    def get_object(self, *args, **kwargs):
+        if not hasattr(self, "_object"):
+            template_id = self.kwargs['template_id']
+            savanna = savannaclient.Client(self.request)
+            template = savanna.node_group_templates.get(template_id)
+            self._object = template
+        return self._object
+
+    def get_initial(self):
+        initial = super(CopyNodegroupTemplateView, self).get_initial()
+        initial.update({'template_id': self.kwargs['template_id']})
+        return initial

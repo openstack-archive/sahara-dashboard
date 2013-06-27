@@ -40,6 +40,13 @@ class ConfigureNodegroupTemplate(tables.LinkAction):
     classes = ("ajax-modal", "btn-create", "configure-nodegrouptemplate-btn")
 
 
+class CopyTemplate(tables.LinkAction):
+    name = "copy"
+    verbose_name = _("Copy Template")
+    url = "horizon:savanna:nodegroup_templates:copy"
+    classes = ("ajax-modal", )
+
+
 class DeleteTemplate(tables.BatchAction):
     name = "delete_nodegroup_template"
     verbose_name = _("Delete")
@@ -81,4 +88,5 @@ class NodegroupTemplatesTable(tables.DataTable):
         table_actions = (CreateNodegroupTemplate,
                          ConfigureNodegroupTemplate,
                          DeleteTemplate)
-        row_actions = (DeleteTemplate,)
+        row_actions = (CopyTemplate,
+                       DeleteTemplate,)

@@ -64,8 +64,8 @@ class GeneralConfigAction(workflows.Action):
         widget=forms.TextInput(attrs={"class": "volume_per_node_field"})
     )
 
-    volume_size = forms.IntegerField(
-        label=_("Volume size (GB)"),
+    volumes_size = forms.IntegerField(
+        label=_("Volumes size (GB)"),
         required=False,
         initial=10,
         widget=forms.TextInput(attrs={"class": "volume_size_field"})
@@ -140,6 +140,7 @@ class GeneralConfigAction(workflows.Action):
 
 class GeneralConfig(workflows.Step):
     action_class = GeneralConfigAction
+    contributes = ("general_nodegroup_name", )
 
     def contribute(self, data, context):
         for k, v in data.items():
@@ -233,15 +234,23 @@ class ConfigureNodegroupTemplate(workflows.Workflow):
             plugin, hadoop_version = whelpers.\
                 get_plugin_and_hadoop_version(request)
 
-            #TODO(nkonovalov) handle hdfs_placement
+            volumes_per_node = None
+            volumes_size = None
+
+            if context["general_storage"] == "cinder_volume":
+                volumes_per_node = context["general_volumes_per_node"]
+                volumes_size = context["general_volumes_size"]
+
             savanna.node_group_templates.create(
-                context["general_nodegroup_name"],
-                plugin,
-                hadoop_version,
-                context["general_description"],
-                context["general_flavor"],
-                processes,
-                configs_dict)
+                name=context["general_nodegroup_name"],
+                plugin_name=plugin,
+                hadoop_version=hadoop_version,
+                description=context["general_description"],
+                flavor_id=context["general_flavor"],
+                volumes_per_node=volumes_per_node,
+                volumes_size=volumes_size,
+                node_processes=processes,
+                node_configs=configs_dict)
             return True
         except Exception:
             exceptions.handle(request)

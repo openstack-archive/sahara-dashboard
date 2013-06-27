@@ -27,6 +27,7 @@ class Parameter(object):
         self.description = config.get('description', "No description")
         self.required = not config['is_optional']
         self.default_value = config.get('default_value', None)
+        self.initial_value = self.default_value
         self.param_type = config['config_type']
         self.priority = int(config.get('priority', 2))
 
@@ -41,7 +42,7 @@ def build_control(parameter):
             required=(parameter.required and
                       parameter.default_value is None),
             help_text=parameter.description,
-            initial=parameter.default_value)
+            initial=parameter.initial_value)
 
     if parameter.param_type == "int":
         return forms.IntegerField(
@@ -49,14 +50,14 @@ def build_control(parameter):
             label=parameter.name,
             required=parameter.required,
             help_text=parameter.description,
-            initial=parameter.default_value)
+            initial=parameter.initial_value)
 
     elif parameter.param_type == "bool":
         return forms.BooleanField(
             widget=forms.CheckboxInput(attrs=attrs),
             label=parameter.name,
             required=False,
-            initial=parameter.default_value,
+            initial=parameter.initial_value,
             help_text=parameter.description)
 
     elif parameter.param_type == "dropdown":
