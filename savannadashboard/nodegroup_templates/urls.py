@@ -35,5 +35,8 @@ urlpatterns = patterns('savanna.nodegroup_templates.views',
                            name='configure-nodegroup-template'),
                        url(r'^(?P<template_id>[^/]+)$',
                            views.NodegroupTemplateDetailsView.as_view(),
-                           name='details')
+                           name='details'),
+                       url(r'^(?P<template_id>[^/]+)/copy$',
+                           views.CopyNodegroupTemplateView.as_view(),
+                           name='copy')
                        )

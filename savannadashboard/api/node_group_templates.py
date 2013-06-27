@@ -25,8 +25,9 @@ class NodeGroupTemplate(base.Resource):
 class NodeGroupTemplateManager(base.ResourceManager):
     resource_class = NodeGroupTemplate
 
-    def create(self, name, plugin_name, hadoop_version, description, flavor_id,
-               node_processes, node_configs):
+    def create(self, name, plugin_name, hadoop_version, flavor_id,
+               description=None, volumes_per_node=None, volumes_size=None,
+               node_processes=None, node_configs=None):
 
         data = {
             'name': name,
@@ -37,6 +38,10 @@ class NodeGroupTemplateManager(base.ResourceManager):
             'node_processes': node_processes,
             'node_configs': node_configs
         }
+
+        if volumes_per_node:
+            data.update({"volumes_per_node": volumes_per_node,
+                         "volumes_size": volumes_size})
 
         self._create('/node-group-templates', data)
 
