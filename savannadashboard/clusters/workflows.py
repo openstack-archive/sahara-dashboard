@@ -22,8 +22,6 @@ from horizon import workflows
 from savannadashboard.utils import importutils
 import savannadashboard.utils.workflow_helpers as whelpers
 
-glance = importutils.import_any('openstack_dashboard.api.glance',
-                                'horizon.api.glance')
 nova = importutils.import_any('openstack_dashboard.api.nova',
                               'horizon.api.nova')
 
@@ -96,8 +94,8 @@ class GeneralConfigAction(workflows.Action):
         )
 
     def populate_image_choices(self, request, context):
-        public_images, _more = glance.image_list_detailed(request)
-        return [(image.id, image.name) for image in public_images]
+        savanna = savannaclient.Client(request)
+        return [(image.id, image.name) for image in savanna.images.list()]
 
     def populate_keypair_choices(self, request, context):
         keypairs = nova.keypair_list(request)
