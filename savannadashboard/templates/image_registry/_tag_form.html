@@ -12,15 +12,12 @@
             return;
         }
 
-        var is_new = true;
         $("#image_tags_list span").each(function (el) {
             if ($.trim($(this).text()) == tag) {
-                is_new = false;
+                return;
             }
         });
-        if (!is_new) {
-            return;
-        }
+
         var span = ' <span class="label label-warning" style="float: left;display: block; margin: 2px;">$tag <i class="icon-remove-sign" onclick="remove_tag(this);"></i></span>'.replace("$tag", tag)
         $("#image_tags_list").append(span);
         $("#_savanna_image_tag").val("");

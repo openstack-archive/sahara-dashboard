@@ -13,50 +13,6 @@
     </div>
 
     <script type="text/javascript">
-        function hide_not_important_fields(element) {
-            var fieldset = $(element).parents("fieldset")[0];
-            $("[priority='2']", fieldset).parents("div.control-group").hide();
-            $("[priority='1']", fieldset).parents("div.control-group").show();
-            var div = $(element).parents("div.field-filter")[0];
-            $("div.simple-config",div).show();
-            $("div.advance-config",div).hide();
-        }
-
-        function show_not_important_fields(element) {
-            var fieldset = $(element).parents("fieldset")[0];
-            $("[priority='2']", fieldset).parents("div.control-group").show();
-            var div = $(element).parents("div.field-filter")[0];
-            $("div.simple-config",div).hide();
-            $("div.advance-config",div).show();
-        }
-
-        function create_auto_search(inpt) {
-            if (inpt.has_filter) {
-                return;
-            }
-            var input = inpt;
-            inpt.has_filter = true;
-            var oldValue = "";
-            setInterval(function () {
-                var val = $(input).val();
-                if (val == oldValue) {
-                    return;
-                }
-                oldValue = val;
-                var fieldset = $(input).parents("fieldset")[0];
-                if (val == "") {
-                    $("label", fieldset).parents("div.control-group").show();
-                } else {
-                    $("label", fieldset).filter(function (idx, e) {
-                        return $(e).text().toLowerCase().indexOf(val.toLowerCase()) == -1;
-                    }).parents("div.control-group").hide();
-                    $("label", fieldset).filter(function (idx, e) {
-                        return $(e).text().toLowerCase().indexOf(val.toLowerCase()) > -1;
-                    }).parents("div.control-group").show();
-                }
-            }, 300);
-        }
-
         addHorizonLoadEvent(function () {
             function get_service_tab(service) {
                 return $("a").filter(function (idx, e) {
@@ -69,12 +25,6 @@
 
             // replace form submit with ajax POST and trigger next workflow
             horizon.modals.addModalInitFunction(function (modal) {
-                $("a.advance-config-hide").click();
-
-                $("input.field-filter").each(function () {
-                    create_auto_search(this);
-                });
-
                 if ($(modal).find(".hidden_create_field").length > 0) {
                     var form = $(".hidden_create_field").closest("form");
                     var successful = false;
@@ -91,9 +41,6 @@
                         return false;
                     });
                     $(".plugin_version_choice").closest(".control-group").hide();
-                }
-
-                if ($(modal).find(".hidden_configure_field").length > 0) {
                 }
 
                 //display version for selected plugin
@@ -143,8 +90,6 @@
                 get_service_tab("generalconfigaction").find("a").click();
             });
         });
-
-
     </script>
 
 {% endblock %}
