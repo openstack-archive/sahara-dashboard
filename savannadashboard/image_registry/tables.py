@@ -47,27 +47,15 @@ class RegisterImage(tables.LinkAction):
     classes = ("btn-launch", "ajax-modal")
 
 
-class RemoveImages(tables.BatchAction):
-    name = "remove"
-    action_present = _("Remove")
-    action_past = _("Remove image of")
+class UnregisterImages(tables.BatchAction):
+    name = "Unregister"
+    action_present = _("Unregister")
+    action_past = _("Unregistered")
     data_type_singular = _("Image")
     data_type_plural = _("Images")
     classes = ('btn-danger', 'btn-terminate')
 
     def action(self, request, obj_id):
-        savanna = savannaclient.Client(request)
-        savanna.images.update_image(obj_id, "", "")
-
-
-class RemoveImage(tables.DeleteAction):
-    name = "remove"
-    action_present = _("Remove")
-    action_past = _("Removed")
-    data_type_singular = _("Image")
-    data_type_plural = _("Images")
-
-    def delete(self, request, obj_id):
         savanna = savannaclient.Client(request)
         savanna.images.update_image(obj_id, "", "")
 
@@ -82,5 +70,5 @@ class ImageRegistryTable(tables.DataTable):
         name = "image_registry"
         verbose_name = _("Image Registry")
         table_actions = ()
-        table_actions = (RegisterImage, RemoveImages,)
-        row_actions = (EditTagsAction, RemoveImage,)
+        table_actions = (RegisterImage, UnregisterImages,)
+        row_actions = (EditTagsAction, UnregisterImages,)

@@ -47,7 +47,7 @@ class EditTagsView(forms.ModalFormView):
 
     def get_initial(self):
         image = self.get_object()
-        print image
+
         return {"image_id": image.id,
                 "tags_list": json.dumps(image.tags),
                 "user_name": image.username,
@@ -68,3 +68,8 @@ class RegisterImageView(forms.ModalFormView):
     form_class = RegisterImageForm
     template_name = 'image_registry/register_image.html'
     success_url = reverse_lazy('horizon:savanna:image_registry:index')
+
+    def get_initial(self):
+        # need this initialization to allow registration
+        # of images without tags
+        return {"tags_list": json.dumps([])}
