@@ -20,9 +20,6 @@
                 }).closest("li");
             }
 
-            //hide configure button. it will be triggered with scripts
-            $(".configure-nodegrouptemplate-btn").hide();
-
             // replace form submit with ajax POST and trigger next workflow
             horizon.modals.addModalInitFunction(function (modal) {
                 if ($(modal).find(".hidden_create_field").length > 0) {

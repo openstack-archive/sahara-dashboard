@@ -38,6 +38,7 @@ class ConfigureNodegroupTemplate(tables.LinkAction):
     verbose_name = _("Configure Template")
     url = "horizon:savanna:nodegroup_templates:configure-nodegroup-template"
     classes = ("ajax-modal", "btn-create", "configure-nodegrouptemplate-btn")
+    attrs = {"style": "display: none"}
 
 
 class CopyTemplate(tables.LinkAction):

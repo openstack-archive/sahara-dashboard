@@ -14,9 +14,6 @@
 
 <script type="text/javascript">
     addHorizonLoadEvent(function () {
-        //hide configure button. it will be triggered with scripts
-        $(".configure-clustertemplate-btn").hide();
-
         horizon.modals.addModalInitFunction(function (modal) {
             $(".hidden_nodegroups_field").after("<input type='button' id='add_nodegroup' value='Add Node group'/><br/>");
             $("#add_nodegroup").click(function() {
