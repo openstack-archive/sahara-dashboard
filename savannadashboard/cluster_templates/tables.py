@@ -17,7 +17,9 @@
 
 import logging
 
+from django.core import urlresolvers
 from django import template
+from django.utils import http
 from django.utils.translation import ugettext_lazy as _
 
 from horizon import tables
@@ -38,6 +40,21 @@ class UploadFile(tables.LinkAction):
     verbose_name = _("Upload Template")
     url = 'horizon:savanna:cluster_templates:upload_file'
     classes = ("btn-launch", "ajax-modal")
+
+
+class CreateCluster(tables.LinkAction):
+    name = "create cluster"
+    verbose_name = _("Create Cluster")
+    url = "horizon:savanna:clusters:configure-cluster"
+    classes = ("btn-launch", "ajax-modal")
+
+    def get_link_url(self, datum):
+        base_url = urlresolvers.reverse(self.url)
+
+        params = http.urlencode({"hadoop_version": datum.hadoop_version,
+                                 "plugin_name": datum.plugin_name,
+                                 "cluster_template_id": datum.id})
+        return "?".join([base_url, params])
 
 
 class CopyTemplate(tables.LinkAction):
@@ -100,5 +117,7 @@ class ClusterTemplatesTable(tables.DataTable):
                          CreateClusterTemplate,
                          ConfigureClusterTemplate,
                          DeleteTemplate,)
-        row_actions = (CopyTemplate,
+
+        row_actions = (CreateCluster,
+                       CopyTemplate,
                        DeleteTemplate,)

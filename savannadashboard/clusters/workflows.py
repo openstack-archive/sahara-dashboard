@@ -114,6 +114,14 @@ class GeneralConfigAction(workflows.Action):
                    if (template.hadoop_version == hadoop_version and
                        template.plugin_name == plugin)]
 
+        # cluster_template_id comes from cluster templates table, when
+        # Create Cluster from template is clicked there
+        selected_template_id = request.REQUEST.get("cluster_template_id", None)
+
+        for template in templates:
+            if template.id == selected_template_id:
+                self.fields['cluster_template'].initial = template.id
+
         return choices
 
     def get_help_text(self):
