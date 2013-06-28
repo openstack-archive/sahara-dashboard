@@ -28,7 +28,7 @@ nova = importutils.import_any('openstack_dashboard.api.nova',
 from django.utils.translation import ugettext as _
 
 from savannadashboard.api import client as savannaclient
-import savannadashboard.cluster_templates.workflows as t_flows
+import savannadashboard.cluster_templates.workflows.create as t_flows
 
 import logging
 

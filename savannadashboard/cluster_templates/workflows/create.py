@@ -203,15 +203,15 @@ class ConfigureNodegroupsAction(workflows.Action):
             plugin_name=plugin,
             hadoop_version=hadoop_version)
 
-        self.groups = []
-        if 'forms_ids' in request._post:
-            for id in json.loads(request._post['forms_ids']):
+        if 'forms_ids' in request.POST:
+            self.groups = []
+            for id in json.loads(request.POST['forms_ids']):
                 group_name = "group_name_" + str(id)
                 template_id = "template_id_" + str(id)
                 count = "count_" + str(id)
-                self.groups.append({"name": request._post[group_name],
-                                    "template_id": request._post[template_id],
-                                    "count": request._post[count],
+                self.groups.append({"name": request.POST[group_name],
+                                    "template_id": request.POST[template_id],
+                                    "count": request.POST[count],
                                     "id": id})
 
                 self.fields[group_name] = forms.CharField(

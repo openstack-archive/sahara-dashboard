@@ -40,6 +40,13 @@ class UploadFile(tables.LinkAction):
     classes = ("btn-launch", "ajax-modal")
 
 
+class CopyTemplate(tables.LinkAction):
+    name = "copy"
+    verbose_name = _("Copy Template")
+    url = "horizon:savanna:cluster_templates:copy"
+    classes = ("ajax-modal", )
+
+
 class DeleteTemplate(tables.BatchAction):
     name = "delete_cluster_template"
     verbose_name = _("Delete Template")
@@ -92,4 +99,5 @@ class ClusterTemplatesTable(tables.DataTable):
                          CreateClusterTemplate,
                          ConfigureClusterTemplate,
                          DeleteTemplate,)
-        row_actions = (DeleteTemplate,)
+        row_actions = (CopyTemplate,
+                       DeleteTemplate,)
