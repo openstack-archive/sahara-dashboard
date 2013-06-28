@@ -27,7 +27,8 @@ from savannadashboard.api import client as savannaclient
 from savannadashboard.cluster_templates import forms as cluster_forms
 from savannadashboard.cluster_templates.tables import ClusterTemplatesTable
 import savannadashboard.cluster_templates.tabs as _tabs
-import savannadashboard.cluster_templates.workflows as _workflows
+import savannadashboard.cluster_templates.workflows.copy as copy_flow
+import savannadashboard.cluster_templates.workflows.create as create_flow
 
 LOG = logging.getLogger(__name__)
 
@@ -62,7 +63,7 @@ class UploadFileView(forms.ModalFormView):
 
 
 class CreateClusterTemplateView(workflows.WorkflowView):
-    workflow_class = _workflows.CreateClusterTemplate
+    workflow_class = create_flow.CreateClusterTemplate
     success_url = \
         "horizon:savanna:cluster_templates:create-cluster-template"
     classes = ("ajax-modal")
@@ -70,6 +71,32 @@ class CreateClusterTemplateView(workflows.WorkflowView):
 
 
 class ConfigureClusterTemplateView(workflows.WorkflowView):
-    workflow_class = _workflows.ConfigureClusterTemplate
+    workflow_class = create_flow.ConfigureClusterTemplate
     success_url = "horizon:savanna:cluster_templates"
     template_name = "cluster_templates/configure.html"
+
+
+class CopyClusterTemplateView(workflows.WorkflowView):
+    workflow_class = copy_flow.CopyClusterTemplate
+    success_url = "horizon:savanna:cluster_templates"
+    template_name = "cluster_templates/configure.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(CopyClusterTemplateView, self)\
+            .get_context_data(**kwargs)
+
+        context["template_id"] = kwargs["template_id"]
+        return context
+
+    def get_object(self, *args, **kwargs):
+        if not hasattr(self, "_object"):
+            template_id = self.kwargs['template_id']
+            savanna = savannaclient.Client(self.request)
+            template = savanna.cluster_templates.get(template_id)
+            self._object = template
+        return self._object
+
+    def get_initial(self):
+        initial = super(CopyClusterTemplateView, self).get_initial()
+        initial.update({'template_id': self.kwargs['template_id']})
+        return initial
