@@ -47,7 +47,7 @@ class SelectPlugin(t_flows.SelectPlugin):
 
 class CreateCluster(t_flows.CreateClusterTemplate):
     slug = "create_cluster"
-    name = _("Create Cluster")
+    name = _("Launch Cluster")
     success_url = "horizon:savanna:cluster_templates:index"
 
 
@@ -157,7 +157,7 @@ class GeneralConfig(workflows.Step):
 
 class ConfigureCluster(workflows.Workflow):
     slug = "configure_cluster"
-    name = _("Create Cluster")
+    name = _("Launch Cluster")
     finalize_button_name = _("Create")
     success_message = _("Created")
     failure_message = _("Could not create")

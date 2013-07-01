@@ -28,7 +28,7 @@ LOG = logging.getLogger(__name__)
 
 class CreateCluster(tables.LinkAction):
     name = "create"
-    verbose_name = _("Create Cluster")
+    verbose_name = _("Launch Cluster")
     url = "horizon:savanna:clusters:create-cluster"
     classes = ("btn-launch", "ajax-modal")
 
