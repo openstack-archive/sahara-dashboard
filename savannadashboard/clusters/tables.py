@@ -65,6 +65,7 @@ class ConfigureCluster(tables.LinkAction):
     verbose_name = _("Configure Cluster")
     url = "horizon:savanna:clusters:configure-cluster"
     classes = ("ajax-modal", "btn-create", "configure-cluster-btn")
+    attrs = {"style": "display: none"}
 
 
 class ClustersTable(tables.DataTable):
