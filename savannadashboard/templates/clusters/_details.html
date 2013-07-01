@@ -16,6 +16,12 @@
         <dd>{{ cluster.hadoop_version }}</dd>
     </dl>
     <dl>
+        <dt>{% trans "Base Image" %}</dt>
+        <dd>{{ base_image.name }}</dd>
+        <dt>{% trans "Keypair" %}</dt>
+        <dd>{{ cluster.user_keypair_id }}</dd>
+    </dl>
+    <dl>
     <dt>{% trans "Node Configurations" %}</dt>
         {% if cluster.cluster_configs %}
             <dd>

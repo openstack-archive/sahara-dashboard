@@ -22,9 +22,12 @@ from django.utils.translation import ugettext_lazy as _
 from horizon import tables
 from horizon import tabs
 
+from savannadashboard.utils import compatibility
 from savannadashboard.utils import importutils
 nova = importutils.import_any('openstack_dashboard.api.nova',
                               'horizon.api.nova')
+glance = importutils.import_any('openstack_dashboard.api.glance',
+                                'horizon.api.glance')
 
 
 from savannadashboard.api import client as savannaclient
@@ -47,7 +50,10 @@ class GeneralTab(tabs.Tab):
                 if str(val).startswith("http://"):
                     cluster.info[info_key][key] = build_link(val)
 
-        return {"cluster": cluster}
+        base_image = glance.image_get(request,
+                                      cluster.default_image_id)
+
+        return {"cluster": cluster, "base_image": base_image}
 
 
 def build_link(url):
@@ -67,6 +73,9 @@ class NodeGroupsTab(tabs.Tab):
             if not ng["flavor_id"]:
                 continue
             ng["flavor_name"] = nova.flavor_get(request, ng["flavor_id"]).name
+            ng["node_group_template"] = savanna.node_group_templates.get(
+                ng["node_group_template_id"])
+
         return {"cluster": cluster}
 
 
@@ -81,6 +90,8 @@ class Instance(object):
 
 class InstancesTable(tables.DataTable):
     name = tables.Column("name",
+                         link=(compatibility.convert_url(
+                               "horizon:project:instances:detail")),
                          verbose_name=_("Name"))
 
     internal_ip = tables.Column("internal_ip",

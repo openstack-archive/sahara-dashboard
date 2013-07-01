@@ -3,16 +3,16 @@
 <div class="status row-fluid detail">
     {% for node_group in cluster.node_groups %}
         <dl class="well">
-            <h4>{% trans "Node Group" %}: {{ node_group.name }}</h4>
-            <dt>{% trans "Nodes Count" %}</dt>
+            <h4>{% trans "Name" %}: {{ node_group.name }}</h4>
+            <dt>{% trans "Number of Nodes" %}</dt>
             <dd>{{ node_group.count }}</dd>
 
             <dt>{% trans "Flavor" %}</dt>
             <dd>{{ node_group.flavor_name|default:"Flavor is not specified" }}</dd>
 
-            <dt>{% trans "Node Group Template" %}</dt>
+            <dt>{% trans "Template" %}</dt>
             {% if node_group.node_group_template_id %}
-                <dd><a href="/savanna/nodegroup_templates/{{ node_group.node_group_template_id }}">{{ node_group.node_group_template_id }} </a></dd>
+                <dd><a href="/savanna/nodegroup_templates/{{ node_group.node_group_template_id }}">{{ node_group.node_group_template.name }} </a></dd>
             {% else %}
                 <dd>{% trans "Template not specified" %}</dd>
             {% endif %}
