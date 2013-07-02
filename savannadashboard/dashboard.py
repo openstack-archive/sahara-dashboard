@@ -15,9 +15,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from django.utils.translation import ugettext as _
+import logging
 
+from django.utils.translation import ugettext as _
 import horizon
+
+from savannadashboard.utils import compatibility
+
+LOG = logging.getLogger(__name__)
 
 
 class SavannaDashboard(horizon.Dashboard):
@@ -34,3 +39,6 @@ class SavannaDashboard(horizon.Dashboard):
 
 
 horizon.register(SavannaDashboard)
+
+LOG.info('Savanna recognizes Dashboard release as "%s"' %
+         compatibility.get_dashboard_release())
