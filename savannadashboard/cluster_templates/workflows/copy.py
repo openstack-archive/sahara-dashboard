@@ -21,9 +21,6 @@ from django.utils.translation import ugettext as _
 from horizon import forms
 
 from savannadashboard.api import client as savannaclient
-import savannadashboard.api.helpers as helpers
-import savannadashboard.utils.workflow_helpers as whelpers
-
 import savannadashboard.cluster_templates.workflows.create as create_flow
 
 LOG = logging.getLogger(__name__)
@@ -32,43 +29,15 @@ LOG = logging.getLogger(__name__)
 class CopyClusterTemplate(create_flow.ConfigureClusterTemplate):
 
     def __init__(self, request, context_seed, entry_point, *args, **kwargs):
-        CopyClusterTemplate._cls_registry = set([])
-
         savanna = savannaclient.Client(request)
-        hlps = helpers.Helpers(savanna)
 
         template_id = context_seed["template_id"]
         template = savanna.cluster_templates.get(template_id)
-
-        plugin = template.plugin_name
-        hadoop_version = template.hadoop_version
+        self._set_configs_to_copy(template.cluster_configs)
 
         request.GET = request.GET.copy()
-        request.GET.update({"plugin_name": plugin})
-        request.GET.update({"hadoop_version": hadoop_version})
-
-        service_parameters = hlps.get_targeted_cluster_configs(
-            plugin,
-            hadoop_version)
-
-        self.defaults = dict()
-        for service, parameters in service_parameters.items():
-            if not parameters:
-                continue
-
-            for param in parameters:
-                if service not in self.defaults:
-                    self.defaults[service] = dict()
-                self.defaults[service][param.name] = param.default_value
-                if (service in template.cluster_configs and
-                        param.name in template.cluster_configs[service]):
-                    param.initial_value = \
-                        template.cluster_configs[service][param.name]
-            step = whelpers._create_step_action(service,
-                                                title=service + " parameters",
-                                                parameters=parameters,
-                                                service=service)
-            CopyClusterTemplate.register(step)
+        request.GET.update({"plugin_name": template.plugin_name})
+        request.GET.update({"hadoop_version": template.hadoop_version})
 
         super(CopyClusterTemplate, self).__init__(request, context_seed,
                                                   entry_point, *args,

@@ -153,7 +153,7 @@ class GeneralConfig(workflows.Step):
         return context
 
 
-class ConfigureNodegroupTemplate(workflows.Workflow):
+class ConfigureNodegroupTemplate(whelpers.ServiceParametersWorkflow):
     slug = "configure_nodegroup_template"
     name = _("Create Node Group Template")
     finalize_button_name = _("Create")
@@ -163,30 +163,20 @@ class ConfigureNodegroupTemplate(workflows.Workflow):
     default_steps = (GeneralConfig,)
 
     def __init__(self, request, context_seed, entry_point, *args, **kwargs):
-        #TODO(nkonovalov) manage registry cleanup
-        ConfigureNodegroupTemplate._cls_registry = set([])
-
         savanna = savannaclient.Client(request)
         hlps = helpers.Helpers(savanna)
 
         plugin, hadoop_version = whelpers.\
             get_plugin_and_hadoop_version(request)
 
+        general_parameters = hlps.get_general_node_group_configs(
+            plugin,
+            hadoop_version)
         service_parameters = hlps.get_targeted_node_group_configs(
             plugin,
             hadoop_version)
 
-        self.defaults = dict()
-        for service, parameters in service_parameters.items():
-            step = whelpers._create_step_action(service,
-                                                title=service + " parameters",
-                                                parameters=parameters,
-                                                service=service)
-            ConfigureNodegroupTemplate.register(step)
-            for param in parameters:
-                if service not in self.defaults:
-                    self.defaults[service] = dict()
-                self.defaults[service][param.name] = param.default_value
+        self._populate_tabs(general_parameters, service_parameters)
 
         super(ConfigureNodegroupTemplate, self).__init__(request,
                                                          context_seed,

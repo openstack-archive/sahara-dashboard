@@ -18,8 +18,6 @@
 import logging
 
 from savannadashboard.api import client as savannaclient
-import savannadashboard.api.helpers as helpers
-import savannadashboard.utils.workflow_helpers as whelpers
 
 import savannadashboard.nodegroup_templates.workflows.create as create_flow
 
@@ -29,13 +27,11 @@ LOG = logging.getLogger(__name__)
 class CopyNodegroupTemplate(create_flow.ConfigureNodegroupTemplate):
 
     def __init__(self, request, context_seed, entry_point, *args, **kwargs):
-        CopyNodegroupTemplate._cls_registry = set([])
-
         savanna = savannaclient.Client(request)
-        hlps = helpers.Helpers(savanna)
 
         template_id = context_seed["template_id"]
         template = savanna.node_group_templates.get(template_id)
+        self._set_configs_to_copy(template.node_configs)
 
         plugin = template.plugin_name
         hadoop_version = template.hadoop_version
@@ -43,26 +39,6 @@ class CopyNodegroupTemplate(create_flow.ConfigureNodegroupTemplate):
         request.GET = request.GET.copy()
         request.GET.update({"plugin_name": plugin})
         request.GET.update({"hadoop_version": hadoop_version})
-
-        service_parameters = hlps.get_targeted_node_group_configs(
-            plugin,
-            hadoop_version)
-        self.defaults = dict()
-        for service, parameters in service_parameters.items():
-            for param in parameters:
-                if service not in self.defaults:
-                    self.defaults[service] = dict()
-                self.defaults[service][param.name] = param.default_value
-                if (service in template.node_configs and
-                        param.name in template.node_configs[service]):
-                    param.initial_value = \
-                        template.node_configs[service][param.name]
-
-            step = whelpers._create_step_action(service,
-                                                title=service + " parameters",
-                                                parameters=parameters,
-                                                service=service)
-            CopyNodegroupTemplate.register(step)
 
         super(CopyNodegroupTemplate, self).__init__(request, context_seed,
                                                     entry_point, *args,
