@@ -138,7 +138,7 @@ class GeneralConfigAction(workflows.Action):
         return cleaned_data
 
     class Meta:
-        name = _("Configure Cluster Template")
+        name = _("Details")
         help_text_template = \
             ("cluster_templates/_configure_general_help.html")
 
@@ -150,35 +150,6 @@ class GeneralConfig(workflows.Step):
     def contribute(self, data, context):
         for k, v in data.items():
             context["general_" + k] = v
-        return context
-
-
-class ConfigureGeneralParametersAction(workflows.Action):
-    def __init__(self, request, *args, **kwargs):
-        super(ConfigureGeneralParametersAction, self). \
-            __init__(request, *args, **kwargs)
-
-        savanna = savannaclient.Client(request)
-        plugin, hadoop_version = whelpers.\
-            get_plugin_and_hadoop_version(request)
-
-        parameters = helpers.Helpers(savanna).get_cluster_general_configs(
-            plugin,
-            hadoop_version)
-
-        for param in parameters:
-            self.fields[param.name] = whelpers.build_control(param)
-
-    class Meta:
-        name = _("General Cluster Configurations")
-
-
-class ConfigureGeneralParameters(workflows.Step):
-    action_class = ConfigureGeneralParametersAction
-
-    def contribute(self, data, context):
-        for k, v in data.items():
-            context["cluster_" + k] = v
         return context
 
 
@@ -238,7 +209,7 @@ class ConfigureNodegroupsAction(workflows.Action):
         return cleaned_data
 
     class Meta:
-        name = _("Cluster Node groups")
+        name = _("Node Groups")
 
 
 class ConfigureNodegroups(workflows.Step):
@@ -260,8 +231,7 @@ class ConfigureClusterTemplate(workflows.Workflow):
     failure_message = _("Could not create")
     success_url = "horizon:savanna:cluster_templates:index"
     default_steps = (GeneralConfig,
-                     ConfigureNodegroups,
-                     ConfigureGeneralParameters, )
+                     ConfigureNodegroups)
 
     def __init__(self, request, context_seed, entry_point, *args, **kwargs):
         ConfigureClusterTemplate._cls_registry = set([])
@@ -272,28 +242,46 @@ class ConfigureClusterTemplate(workflows.Workflow):
         plugin, hadoop_version = whelpers.\
             get_plugin_and_hadoop_version(request)
 
+        general_parameters = hlps.get_cluster_general_configs(
+            plugin,
+            hadoop_version)
         service_parameters = hlps.get_targeted_cluster_configs(
             plugin,
             hadoop_version)
 
         self.defaults = dict()
+        self.additional_steps = []
+
+        self._init_step('general', 'General Parameters', general_parameters)
+
         for service, parameters in service_parameters.items():
-            if not parameters:
-                continue
-            step = whelpers._create_step_action(service,
-                                                title=service + " parameters",
-                                                parameters=parameters,
-                                                service=service)
-            ConfigureClusterTemplate.register(step)
-            for param in parameters:
-                if service not in self.defaults:
-                    self.defaults[service] = dict()
-                self.defaults[service][param.name] = param.default_value
+            self._init_step(service, service + ' Parameters', parameters)
 
         super(ConfigureClusterTemplate, self).__init__(request,
                                                        context_seed,
                                                        entry_point,
                                                        *args, **kwargs)
+
+    def _init_step(self, service, title, parameters):
+        if not parameters:
+            return
+
+        step = whelpers._create_step_action(service, title=title,
+                                            parameters=parameters,
+                                            service=service)
+
+        ConfigureClusterTemplate.register(step)
+        self.defaults[service] = dict()
+        for param in parameters:
+            self.defaults[service][param.name] = param.default_value
+
+        self.additional_steps.append(step)
+
+    def _order_steps(self):
+        # crutch to fix https://bugs.launchpad.net/horizon/+bug/1196717
+        steps = list(self.default_steps)
+        additional = self.additional_steps
+        return steps + additional
 
     def is_valid(self):
         steps_valid = True
@@ -315,7 +303,6 @@ class ConfigureClusterTemplate(workflows.Workflow):
             node_groups = []
             configs_dict = whelpers.parse_configs_from_context(context,
                                                                self.defaults)
-            configs_dict["general"] = dict()
 
             ids = json.loads(context['ng_forms_ids'])
             for id in ids:
