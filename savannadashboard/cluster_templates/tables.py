@@ -44,7 +44,7 @@ class UploadFile(tables.LinkAction):
 
 class CreateCluster(tables.LinkAction):
     name = "create cluster"
-    verbose_name = _("Create Cluster")
+    verbose_name = _("Launch Cluster")
     url = "horizon:savanna:clusters:configure-cluster"
     classes = ("btn-launch", "ajax-modal")
 
