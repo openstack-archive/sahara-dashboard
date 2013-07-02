@@ -174,6 +174,8 @@ class ConfigureNodegroupsAction(workflows.Action):
             plugin_name=plugin,
             hadoop_version=hadoop_version)
 
+        deletable = request.REQUEST.get("deletable", dict())
+
         if 'forms_ids' in request.POST:
             self.groups = []
             for id in json.loads(request.POST['forms_ids']):
@@ -183,23 +185,14 @@ class ConfigureNodegroupsAction(workflows.Action):
                 self.groups.append({"name": request.POST[group_name],
                                     "template_id": request.POST[template_id],
                                     "count": request.POST[count],
-                                    "id": id})
+                                    "id": id,
+                                    "deletable": deletable.get(
+                                        request.POST[group_name], "true")})
 
-                self.fields[group_name] = forms.CharField(
-                    label=_("Name"),
-                    required=True,
-                    widget=forms.TextInput())
-
-                self.fields[template_id] = forms.CharField(
-                    label=_("Node group template"),
-                    required=True,
-                    widget=forms.HiddenInput())
-
-                self.fields[count] = forms.IntegerField(
-                    label=_("Count"),
-                    required=True,
-                    min_value=1,
-                    widget=forms.HiddenInput())
+                whelpers.build_node_group_fields(self,
+                                                 group_name,
+                                                 template_id,
+                                                 count)
 
     def clean(self):
         cleaned_data = super(ConfigureNodegroupsAction, self).clean()

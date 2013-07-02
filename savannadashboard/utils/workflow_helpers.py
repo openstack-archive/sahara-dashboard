@@ -103,6 +103,24 @@ def _create_step_action(name, title, parameters, advanced_fields=None,
     return step
 
 
+def build_node_group_fields(action, name, template, count):
+    action.fields[name] = forms.CharField(
+        label=_("Name"),
+        required=True,
+        widget=forms.TextInput())
+
+    action.fields[template] = forms.CharField(
+        label=_("Node group cluster"),
+        required=True,
+        widget=forms.HiddenInput())
+
+    action.fields[count] = forms.IntegerField(
+        label=_("Count"),
+        required=True,
+        min_value=1,
+        widget=forms.HiddenInput())
+
+
 def parse_configs_from_context(context, defaults):
     configs_dict = dict()
     for key, val in context.items():

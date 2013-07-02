@@ -18,7 +18,7 @@
 import json
 import logging
 
-LOG = logging.Logger(__name__)
+LOG = logging.getLogger(__name__)
 
 
 class Resource(object):
@@ -71,6 +71,13 @@ class ResourceManager(object):
         if resp.status_code != 202:
             resource_name = self.resource_class.resource_name
             raise RuntimeError('Unable to create %s, server returned code %s' %
+                               (resource_name, resp.status_code))
+
+    def _update(self, url, data):
+        resp = self.api.client.put(url, json.dumps(data))
+        if resp.status_code != 202:
+            resource_name = self.resource_class.resource_name
+            raise RuntimeError('Unable to update %s, server returned code %s' %
                                (resource_name, resp.status_code))
 
     def _list(self, url, response_key):

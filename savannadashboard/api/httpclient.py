@@ -32,6 +32,11 @@ class HTTPClient(object):
                              headers={'x-auth-token': self.token,
                                       'content-type': 'application/json'})
 
+    def put(self, url, body):
+        return requests.put(self.base_url + url, body,
+                            headers={'x-auth-token': self.token,
+                                     'content-type': 'application/json'})
+
     def delete(self, url):
         return requests.delete(self.base_url + url,
                                headers={'x-auth-token': self.token})

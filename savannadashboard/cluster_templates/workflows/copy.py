@@ -18,10 +18,10 @@
 import logging
 
 from django.utils.translation import ugettext as _
-from horizon import forms
 
 from savannadashboard.api import client as savannaclient
 import savannadashboard.cluster_templates.workflows.create as create_flow
+from savannadashboard.utils.workflow_helpers import build_node_group_fields
 
 LOG = logging.getLogger(__name__)
 
@@ -63,23 +63,13 @@ class CopyClusterTemplate(create_flow.ConfigureClusterTemplate):
                             {"name": templ_ng["name"],
                              "template_id": templ_ng["node_group_template_id"],
                              "count": templ_ng["count"],
-                             "id": id})
+                             "id": id,
+                             "deletable": "true"})
 
-                        ng_action.fields[group_name] = forms.CharField(
-                            label=_("Name"),
-                            required=True,
-                            widget=forms.TextInput())
-
-                        ng_action.fields[template_id] = forms.CharField(
-                            label=_("Node group template"),
-                            required=True,
-                            widget=forms.HiddenInput())
-
-                        ng_action.fields[count] = forms.IntegerField(
-                            label=_("Count"),
-                            required=True,
-                            min_value=1,
-                            widget=forms.HiddenInput())
+                        build_node_group_fields(ng_action,
+                                                group_name,
+                                                template_id,
+                                                count)
 
             elif isinstance(step, create_flow.GeneralConfig):
                 fields = step.action.fields

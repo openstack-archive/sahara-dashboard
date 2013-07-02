@@ -34,4 +34,7 @@ urlpatterns = patterns('',
                            name='configure-cluster'),
                        url(r'^(?P<cluster_id>[^/]+)$',
                            views.ClusterDetailsView.as_view(),
-                           name='details'))
+                           name='details'),
+                       url(r'^(?P<cluster_id>[^/]+)/scale$',
+                           views.ScaleClusterView.as_view(),
+                           name='scale'))
