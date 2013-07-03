@@ -227,8 +227,8 @@ class ConfigureClusterTemplate(whelpers.ServiceParametersWorkflow):
     slug = "configure_cluster_template"
     name = _("Create Cluster Template")
     finalize_button_name = _("Create")
-    success_message = _("Created")
-    failure_message = _("Could not create")
+    success_message = _("Created Cluster Template %s")
+    failure_message = _("Could not create Cluster Template %s")
     success_url = "horizon:savanna:cluster_templates:index"
     default_steps = (GeneralConfig,
                      ConfigureNodegroups)
@@ -269,6 +269,9 @@ class ConfigureClusterTemplate(whelpers.ServiceParametersWorkflow):
         if not steps_valid:
             return steps_valid
         return self.validate(self.context)
+
+    def format_status_message(self, message):
+        return message % self.context["general_cluster_template_name"]
 
     def handle(self, request, context):
         try:
