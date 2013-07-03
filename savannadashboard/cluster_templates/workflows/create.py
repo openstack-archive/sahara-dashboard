@@ -223,7 +223,7 @@ class ConfigureNodegroups(workflows.Step):
         return context
 
 
-class ConfigureClusterTemplate(workflows.Workflow):
+class ConfigureClusterTemplate(whelpers.ServiceParametersWorkflow):
     slug = "configure_cluster_template"
     name = _("Create Cluster Template")
     finalize_button_name = _("Create")
@@ -249,39 +249,12 @@ class ConfigureClusterTemplate(workflows.Workflow):
             plugin,
             hadoop_version)
 
-        self.defaults = dict()
-        self.additional_steps = []
-
-        self._init_step('general', 'General Parameters', general_parameters)
-
-        for service, parameters in service_parameters.items():
-            self._init_step(service, service + ' Parameters', parameters)
+        self._populate_tabs(general_parameters, service_parameters)
 
         super(ConfigureClusterTemplate, self).__init__(request,
                                                        context_seed,
                                                        entry_point,
                                                        *args, **kwargs)
-
-    def _init_step(self, service, title, parameters):
-        if not parameters:
-            return
-
-        step = whelpers._create_step_action(service, title=title,
-                                            parameters=parameters,
-                                            service=service)
-
-        ConfigureClusterTemplate.register(step)
-        self.defaults[service] = dict()
-        for param in parameters:
-            self.defaults[service][param.name] = param.default_value
-
-        self.additional_steps.append(step)
-
-    def _order_steps(self):
-        # crutch to fix https://bugs.launchpad.net/horizon/+bug/1196717
-        steps = list(self.default_steps)
-        additional = self.additional_steps
-        return steps + additional
 
     def is_valid(self):
         steps_valid = True

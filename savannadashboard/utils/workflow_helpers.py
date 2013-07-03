@@ -146,3 +146,73 @@ class PluginAndVersionMixin(object):
                                     + field_name + "_choice"})
             )
             self.fields[field_name] = choice_field
+
+
+class PatchedDynamicWorkflow(workflows.Workflow):
+    """Overrides Workflow to fix its issues."""
+
+    def _ensure_dynamic_exist(self):
+        if not hasattr(self, 'dynamic_steps'):
+            self.dynamic_steps = list()
+
+    def _register_step(self, step):
+        # Use that method instead of 'register' to register step.
+        # Note that a step could be registered in descendant class constructor
+        # only before this class constructor is invoked.
+        self._ensure_dynamic_exist()
+        self.dynamic_steps.append(step)
+
+    def _order_steps(self):
+        # overrides method of Workflow
+        # crutch to fix https://bugs.launchpad.net/horizon/+bug/1196717
+        # and another not filed issue that dynamic creation of tabs is
+        # not thread safe
+        self._ensure_dynamic_exist()
+
+        self._registry = dict([(step, step(self))
+                               for step in self.dynamic_steps])
+
+        return list(self.default_steps) + self.dynamic_steps
+
+
+class ServiceParametersWorkflow(PatchedDynamicWorkflow):
+    """Base class for Workflows having services tabs with parameters."""
+
+    def _populate_tabs(self, general_parameters, service_parameters):
+        # Populates tabs for 'general' and service parameters
+        # Also populates defaults and initial values
+        self.defaults = dict()
+
+        self._init_step('general', 'General Parameters', general_parameters)
+
+        for service, parameters in service_parameters.items():
+            self._init_step(service, service + ' Parameters', parameters)
+
+    def _init_step(self, service, title, parameters):
+        if not parameters:
+            return
+
+        self._populate_initial_values(service, parameters)
+
+        step = _create_step_action(service, title=title, parameters=parameters,
+                                   service=service)
+
+        self.defaults[service] = dict()
+        for param in parameters:
+            self.defaults[service][param.name] = param.default_value
+
+        self._register_step(step)
+
+    def _set_configs_to_copy(self, configs):
+        self.configs_to_copy = configs
+
+    def _populate_initial_values(self, service, parameters):
+        if not hasattr(self, 'configs_to_copy'):
+            return
+
+        configs = self.configs_to_copy
+
+        for param in parameters:
+            if (service in configs and
+                    param.name in configs[service]):
+                param.initial_value = configs[service][param.name]
