@@ -164,25 +164,6 @@ class ConfigureCluster(workflows.Workflow):
     success_url = "horizon:savanna:clusters:index"
     default_steps = (GeneralConfig, )
 
-    def is_valid(self):
-        if self.context["general_hidden_configure_field"] \
-                == "create_nodegroup":
-            return False
-        missing = self.depends_on - set(self.context.keys())
-        if missing:
-            raise exceptions.WorkflowValidationError(
-                "Unable to complete the workflow. The values %s are "
-                "required but not present." % ", ".join(missing))
-
-        steps_valid = True
-        for step in self.steps:
-            if not step.action.is_valid():
-                steps_valid = False
-                step.has_errors = True
-        if not steps_valid:
-            return steps_valid
-        return self.validate(self.context)
-
     def format_status_message(self, message):
         return message % self.context["general_cluster_name"]
 

@@ -25,9 +25,8 @@ from savannadashboard.api import client as savannaclient
 
 from savannadashboard.clusters.tables import ClustersTable
 import savannadashboard.clusters.tabs as _tabs
-from savannadashboard.clusters.workflows import ConfigureCluster
-from savannadashboard.clusters.workflows import CreateCluster
-
+import savannadashboard.clusters.workflows.create as create_flow
+import savannadashboard.clusters.workflows.scale as scale_flow
 
 LOG = logging.getLogger(__name__)
 
@@ -56,7 +55,7 @@ class ClusterDetailsView(tabs.TabView):
 
 
 class CreateClusterView(workflows.WorkflowView):
-    workflow_class = CreateCluster
+    workflow_class = create_flow.CreateCluster
     success_url = \
         "horizon:savanna:clusters:create-cluster"
     classes = ("ajax-modal")
@@ -64,6 +63,33 @@ class CreateClusterView(workflows.WorkflowView):
 
 
 class ConfigureClusterView(workflows.WorkflowView):
-    workflow_class = ConfigureCluster
+    workflow_class = create_flow.ConfigureCluster
     success_url = "horizon:savanna:clusters"
     template_name = "clusters/configure.html"
+
+
+class ScaleClusterView(workflows.WorkflowView):
+    workflow_class = scale_flow.ScaleCluster
+    success_url = "horizon:savanna:clusters"
+    classes = ("ajax-modal")
+    template_name = "clusters/scale.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(ScaleClusterView, self)\
+            .get_context_data(**kwargs)
+
+        context["cluster_id"] = kwargs["cluster_id"]
+        return context
+
+    def get_object(self, *args, **kwargs):
+        if not hasattr(self, "_object"):
+            template_id = self.kwargs['cluster_id']
+            savanna = savannaclient.Client(self.request)
+            template = savanna.cluster_templates.get(template_id)
+            self._object = template
+        return self._object
+
+    def get_initial(self):
+        initial = super(ScaleClusterView, self).get_initial()
+        initial.update({'cluster_id': self.kwargs['cluster_id']})
+        return initial

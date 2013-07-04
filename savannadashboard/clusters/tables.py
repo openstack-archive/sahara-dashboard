@@ -33,6 +33,16 @@ class CreateCluster(tables.LinkAction):
     classes = ("btn-launch", "ajax-modal")
 
 
+class ScaleCluster(tables.LinkAction):
+    name = "scale"
+    verbose_name = _("Scale Cluster")
+    url = "horizon:savanna:clusters:scale"
+    classes = ("ajax-modal", "btn-edit")
+
+    def allowed(self, request, cluster=None):
+        return cluster.status == "Active"
+
+
 class DeleteCluster(tables.BatchAction):
     name = "delete"
     action_present = _("Delete")
@@ -92,4 +102,5 @@ class ClustersTable(tables.DataTable):
         table_actions = (CreateCluster,
                          ConfigureCluster,
                          DeleteCluster)
-        row_actions = (DeleteCluster,)
+        row_actions = (ScaleCluster,
+                       DeleteCluster,)
