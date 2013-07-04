@@ -36,7 +36,7 @@ class CreateCluster(tables.LinkAction):
 class DeleteCluster(tables.BatchAction):
     name = "delete"
     action_present = _("Delete")
-    action_past = _("Delete cluster of")
+    action_past = _("Deleted")
     data_type_singular = _("Cluster")
     data_type_plural = _("Clusters")
     classes = ('btn-danger', 'btn-terminate')

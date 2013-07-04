@@ -159,8 +159,8 @@ class ConfigureCluster(workflows.Workflow):
     slug = "configure_cluster"
     name = _("Launch Cluster")
     finalize_button_name = _("Create")
-    success_message = _("Created")
-    failure_message = _("Could not create")
+    success_message = _("Created Cluster %s")
+    failure_message = _("Could not create Cluster %s")
     success_url = "horizon:savanna:clusters:index"
     default_steps = (GeneralConfig, )
 
@@ -182,6 +182,9 @@ class ConfigureCluster(workflows.Workflow):
         if not steps_valid:
             return steps_valid
         return self.validate(self.context)
+
+    def format_status_message(self, message):
+        return message % self.context["general_cluster_name"]
 
     def handle(self, request, context):
         try:

@@ -157,8 +157,8 @@ class ConfigureNodegroupTemplate(whelpers.ServiceParametersWorkflow):
     slug = "configure_nodegroup_template"
     name = _("Create Node Group Template")
     finalize_button_name = _("Create")
-    success_message = _("Created")
-    failure_message = _("Could not create")
+    success_message = _("Created Node Group Template %s")
+    failure_message = _("Could not create Node Group Template %s")
     success_url = "horizon:savanna:nodegroup_templates:index"
     default_steps = (GeneralConfig,)
 
@@ -182,6 +182,9 @@ class ConfigureNodegroupTemplate(whelpers.ServiceParametersWorkflow):
                                                          context_seed,
                                                          entry_point,
                                                          *args, **kwargs)
+
+    def format_status_message(self, message):
+        return message % self.context["general_nodegroup_name"]
 
     def is_valid(self):
         missing = self.depends_on - set(self.context.keys())

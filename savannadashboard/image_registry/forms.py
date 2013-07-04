@@ -15,10 +15,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import json
+
 from django.utils.translation import ugettext_lazy as _
 from horizon import exceptions
 from horizon import forms
-import json
+from horizon import messages
 
 from savannadashboard.api import client as savannaclient
 from savannadashboard.utils import importutils
@@ -50,6 +52,8 @@ class ImageForm(forms.SelfHandlingForm):
             image_tags = json.loads(data["tags_list"])
             savanna.images.update_tags(image_id, image_tags)
 
+            messages.success(request, self.message)
+
             return True
         except Exception:
             exceptions.handle(request)
@@ -57,10 +61,12 @@ class ImageForm(forms.SelfHandlingForm):
 
 
 class EditTagsForm(ImageForm):
+    message = "Image updated."
     image_id = forms.CharField(widget=forms.HiddenInput())
 
 
 class RegisterImageForm(ImageForm):
+    message = "Image registered."
     image_id = forms.ChoiceField(label=_("Image"),
                                  required=True)
 
