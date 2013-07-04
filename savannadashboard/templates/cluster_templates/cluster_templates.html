@@ -15,9 +15,9 @@
 <script type="text/javascript">
     addHorizonLoadEvent(function () {
         horizon.modals.addModalInitFunction(function (modal) {
-            if ($(modal).find(".hidden_create_field").length > 0) {
+            if ($(modal).find(".nav-tabs").find("li").size() == 1) {
                 // hide tab bar for plugin/version modal wizard
-                $('div#modal_wrapper ul.nav-tabs').hide();
+               $('div#modal_wrapper ul.nav-tabs').hide();
             }
 
             $(".hidden_nodegroups_field").after("<input type='button' id='add_nodegroup' value='Add Node group'/><br/>");
