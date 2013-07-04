@@ -54,6 +54,8 @@ class NodeGroupsTab(tabs.Tab):
             if not ng["flavor_id"]:
                 continue
             ng["flavor_name"] = nova.flavor_get(request, ng["flavor_id"]).name
+            ng["node_group_template"] = savanna.node_group_templates.get(
+                ng["node_group_template_id"])
         return {"template": template}
 
 

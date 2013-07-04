@@ -12,7 +12,7 @@
 
             <dt>{% trans "Node Group Template" %}</dt>
             {% if node_group.node_group_template_id %}
-                <dd><a href="/savanna/nodegroup_templates/{{ node_group.node_group_template_id }}">{{ node_group.node_group_template_id }} </a></dd>
+                <dd><a href="/savanna/nodegroup_templates/{{ node_group.node_group_template_id }}">{{ node_group.node_group_template.name }} </a></dd>
             {% else %}
                 <dd>{% trans "Template not specified" %}</dd>
             {% endif %}
