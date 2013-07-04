@@ -31,6 +31,35 @@ from savannadashboard.image_registry.tables import ImageRegistryTable
 LOG = logging.getLogger(__name__)
 
 
+class ImageRegistryView(tables.DataTableView):
+    table_class = ImageRegistryTable
+    template_name = 'image_registry/image_registry.html'
+
+    def get_data(self):
+        savanna = savannaclient.Client(self.request)
+
+        return savanna.images.list()
+
+
+def update_context_with_plugin_tags(request, context):
+        savanna = savannaclient.Client(request)
+        plugins = savanna.plugins.list()
+
+        plugins_object = dict()
+        for plugin in plugins:
+            plugins_object[plugin.name] = dict()
+            for version in plugin.versions:
+                plugins_object[plugin.name][version] = []
+                details = savanna.plugins.get_version_details(plugin.name,
+                                                              version)
+
+                for tag in details.required_image_tags:
+                    plugins_object[plugin.name][version].append(tag)
+
+        context["plugins"] = plugins_object
+        return context
+
+
 class EditTagsView(forms.ModalFormView):
     form_class = EditTagsForm
     template_name = 'image_registry/edit_tags.html'
@@ -39,6 +68,7 @@ class EditTagsView(forms.ModalFormView):
     def get_context_data(self, **kwargs):
         context = super(EditTagsView, self).get_context_data(**kwargs)
         context['image'] = self.get_object()
+        context = update_context_with_plugin_tags(self.request, context)
         return context
 
     def get_object(self):
@@ -54,20 +84,15 @@ class EditTagsView(forms.ModalFormView):
                 "description": image.description}
 
 
-class ImageRegistryView(tables.DataTableView):
-    table_class = ImageRegistryTable
-    template_name = 'image_registry/image_registry.html'
-
-    def get_data(self):
-        savanna = savannaclient.Client(self.request)
-
-        return savanna.images.list()
-
-
 class RegisterImageView(forms.ModalFormView):
     form_class = RegisterImageForm
     template_name = 'image_registry/register_image.html'
     success_url = reverse_lazy('horizon:savanna:image_registry:index')
+
+    def get_context_data(self, **kwargs):
+        context = super(RegisterImageView, self).get_context_data(**kwargs)
+        context = update_context_with_plugin_tags(self.request, context)
+        return context
 
     def get_initial(self):
         # need this initialization to allow registration
