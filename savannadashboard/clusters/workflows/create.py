@@ -194,15 +194,16 @@ class ConfigureCluster(workflows.Workflow):
             plugin, hadoop_version = whelpers.\
                 get_plugin_and_hadoop_version(request)
 
-            savanna.clusters.create(context["general_cluster_name"],
-                                    plugin,
-                                    hadoop_version,
-                                    context["general_cluster_template"],
-                                    context["general_image"],
-                                    context["general_description"],
-                                    node_groups,
-                                    context["general_keypair"],
-                                    context['anti_affinity_info'])
+            savanna.clusters.create(
+                context["general_cluster_name"],
+                plugin, hadoop_version,
+                cluster_template_id=context["general_cluster_template"],
+                default_image_id=context["general_image"],
+                description=context["general_description"],
+                node_groups=node_groups,
+                user_keypair_id=context["general_keypair"],
+                anti_affinity=context['anti_affinity_info'])
+
             return True
         except Exception:
             exceptions.handle(request)
