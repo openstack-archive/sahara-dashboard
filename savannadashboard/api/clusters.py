@@ -38,7 +38,8 @@ class ClusterManager(base.ResourceManager):
 
     def create(self, name, plugin_name, hadoop_version,
                cluster_template_id=None, default_image_id=None,
-               cluster_configs=None, node_groups=None, user_keypair_id=None):
+               cluster_configs=None, node_groups=None, user_keypair_id=None,
+               anti_affinity=None):
 
         # expecting node groups to be api_objects.NodeGroup
         if node_groups is not None:
@@ -60,7 +61,8 @@ class ClusterManager(base.ResourceManager):
                               default_image_id=default_image_id,
                               cluster_configs=cluster_configs,
                               node_groups=node_groups,
-                              user_keypair_id=user_keypair_id)
+                              user_keypair_id=user_keypair_id,
+                              anti_affinity=anti_affinity)
 
         self._create('/clusters', data)
 
