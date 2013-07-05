@@ -95,7 +95,16 @@ class GeneralConfigAction(workflows.Action):
 
     def populate_image_choices(self, request, context):
         savanna = savannaclient.Client(request)
-        return [(image.id, image.name) for image in savanna.images.list()]
+        all_images = savanna.images.list()
+
+        plugin, hadoop_version = whelpers.\
+            get_plugin_and_hadoop_version(request)
+
+        details = savanna.plugins.get_version_details(plugin,
+                                                      hadoop_version)
+
+        return [(image.id, image.name) for image in all_images
+                if set(details.required_image_tags).issubset(set(image.tags))]
 
     def populate_keypair_choices(self, request, context):
         keypairs = nova.keypair_list(request)
