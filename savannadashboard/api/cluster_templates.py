@@ -26,8 +26,7 @@ class ClusterTemplateManager(base.ResourceManager):
     resource_class = ClusterTemplate
 
     def create(self, name, plugin_name, hadoop_version, description,
-               cluster_configs, node_groups):
-
+               cluster_configs, node_groups, anti_affinity):
         # expecting node groups to be api_objects.NodeGroup
         data = {
             'name': name,
@@ -35,7 +34,8 @@ class ClusterTemplateManager(base.ResourceManager):
             'hadoop_version': hadoop_version,
             'description': description,
             'cluster_configs': cluster_configs,
-            'node_groups': [ng.as_dict() for ng in node_groups]
+            'node_groups': [ng.as_dict() for ng in node_groups],
+            'anti_affinity': anti_affinity
         }
 
         self._create('/cluster-templates', data)

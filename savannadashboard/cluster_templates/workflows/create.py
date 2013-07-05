@@ -27,6 +27,7 @@ from horizon import workflows
 import savannadashboard.api.api_objects as api_objects
 from savannadashboard.api import client as savannaclient
 from savannadashboard.api import helpers as helpers
+from savannadashboard.utils import anti_affinity as aa
 import savannadashboard.utils.workflow_helpers as whelpers
 
 LOG = logging.getLogger(__name__)
@@ -97,15 +98,7 @@ class GeneralConfigAction(workflows.Action):
                                   required=False,
                                   widget=forms.Textarea)
 
-    #base_image = forms.ChoiceField(label=_("Base Image"),
-    #                               required=True)
-
-    #separate_machines = forms.BooleanField(
-    #    label=_("Run data nodes on separate machines"),
-    #    required=False)
-    #def populate_base_image_choices(self, request, context):
-    #    public_images, _more = glance.image_list_detailed(request)
-    #    return [(image.id, image.name) for image in public_images]
+    anti_affinity = aa.anti_affinity_field()
 
     def __init__(self, request, *args, **kwargs):
         super(GeneralConfigAction, self).__init__(request, *args, **kwargs)
@@ -120,6 +113,8 @@ class GeneralConfigAction(workflows.Action):
             widget=forms.HiddenInput(),
             initial=hadoop_version
         )
+
+    populate_anti_affinity_choices = aa.populate_anti_affinity_choices
 
     def get_help_text(self):
         extra = dict()
@@ -150,6 +145,10 @@ class GeneralConfig(workflows.Step):
     def contribute(self, data, context):
         for k, v in data.items():
             context["general_" + k] = v
+
+        post = self.workflow.request.POST
+        context['anti_affinity_info'] = post.getlist("anti_affinity")
+
         return context
 
 
@@ -293,7 +292,8 @@ class ConfigureClusterTemplate(whelpers.ServiceParametersWorkflow):
                 hadoop_version,
                 context["general_description"],
                 configs_dict,
-                node_groups)
+                node_groups,
+                context["anti_affinity_info"])
             return True
         except Exception:
             exceptions.handle(request)
