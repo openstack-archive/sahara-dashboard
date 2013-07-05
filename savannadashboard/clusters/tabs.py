@@ -24,6 +24,7 @@ from horizon import tabs
 
 from savannadashboard.utils import compatibility
 from savannadashboard.utils import importutils
+from savannadashboard.utils import workflow_helpers as helpers
 nova = importutils.import_any('openstack_dashboard.api.nova',
                               'horizon.api.nova')
 glance = importutils.import_any('openstack_dashboard.api.glance',
@@ -38,7 +39,7 @@ LOG = logging.getLogger(__name__)
 class GeneralTab(tabs.Tab):
     name = _("General Info")
     slug = "cluster_details_tab"
-    template_name = ("clusters/_details.html")
+    template_name = "clusters/_details.html"
 
     def get_context_data(self, request):
         cluster_id = self.tab_group.kwargs['cluster_id']
@@ -53,7 +54,11 @@ class GeneralTab(tabs.Tab):
         base_image = glance.image_get(request,
                                       cluster.default_image_id)
 
-        return {"cluster": cluster, "base_image": base_image}
+        cluster_template = helpers.safe_call(savanna.cluster_templates.get,
+                                             cluster.cluster_template_id)
+
+        return {"cluster": cluster, "base_image": base_image,
+                "cluster_template": cluster_template}
 
 
 def build_link(url):
@@ -63,7 +68,7 @@ def build_link(url):
 class NodeGroupsTab(tabs.Tab):
     name = _("Node Groups")
     slug = "cluster_nodegroups_tab"
-    template_name = ("clusters/_nodegroups_details.html")
+    template_name = "clusters/_nodegroups_details.html"
 
     def get_context_data(self, request):
         cluster_id = self.tab_group.kwargs['cluster_id']
@@ -73,7 +78,8 @@ class NodeGroupsTab(tabs.Tab):
             if not ng["flavor_id"]:
                 continue
             ng["flavor_name"] = nova.flavor_get(request, ng["flavor_id"]).name
-            ng["node_group_template"] = savanna.node_group_templates.get(
+            ng["node_group_template"] = helpers.safe_call(
+                savanna.node_group_templates.get,
                 ng["node_group_template_id"])
 
         return {"cluster": cluster}
@@ -109,7 +115,7 @@ class InstancesTable(tables.DataTable):
 class InstancesTab(tabs.TableTab):
     name = _("Instances")
     slug = "cluster_instances_tab"
-    template_name = ("clusters/_instances_details.html")
+    template_name = "clusters/_instances_details.html"
     table_classes = (InstancesTable, )
 
     def get_cluster_instances_data(self):

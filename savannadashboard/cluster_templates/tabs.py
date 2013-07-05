@@ -23,6 +23,7 @@ from horizon import tabs
 
 from savannadashboard.api import client as savannaclient
 from savannadashboard.utils import importutils
+from savannadashboard.utils import workflow_helpers as helpers
 nova = importutils.import_any('openstack_dashboard.api.nova',
                               'horizon.api.nova')
 
@@ -54,7 +55,8 @@ class NodeGroupsTab(tabs.Tab):
             if not ng["flavor_id"]:
                 continue
             ng["flavor_name"] = nova.flavor_get(request, ng["flavor_id"]).name
-            ng["node_group_template"] = savanna.node_group_templates.get(
+            ng["node_group_template"] = helpers.safe_call(
+                savanna.node_group_templates.get,
                 ng["node_group_template_id"])
         return {"template": template}
 
