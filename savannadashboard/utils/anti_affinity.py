@@ -15,12 +15,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import logging
+
 from django.utils.translation import ugettext as _
 
 from horizon import forms
 
 from savannadashboard.api import client as savannaclient
 import savannadashboard.utils.workflow_helpers as whelpers
+
+
+LOG = logging.getLogger(__name__)
 
 
 def anti_affinity_field():
@@ -41,5 +46,19 @@ def populate_anti_affinity_choices(self, request, context):
     for service, processes in version_details.node_processes.items():
         for process in processes:
             process_choices.append((process, process))
+
+    cluster_template_id = request.REQUEST.get("cluster_template_id", None)
+    if cluster_template_id is None:
+        selected_processes = request.REQUEST.get("aa_groups", [])
+    else:
+        cluster_template = savanna.cluster_templates.get(cluster_template_id)
+        selected_processes = cluster_template.anti_affinity
+
+    checked_dict = dict()
+
+    for process in selected_processes:
+        checked_dict[process] = process
+
+    self.fields['anti_affinity'].initial = checked_dict
 
     return process_choices
