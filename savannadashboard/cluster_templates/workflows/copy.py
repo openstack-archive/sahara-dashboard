@@ -40,6 +40,7 @@ class CopyClusterTemplate(create_flow.ConfigureClusterTemplate):
         request.GET = request.GET.copy()
         request.GET.update({"plugin_name": template.plugin_name})
         request.GET.update({"hadoop_version": template.hadoop_version})
+        request.GET.update({"aa_groups": template.anti_affinity})
 
         super(CopyClusterTemplate, self).__init__(request, context_seed,
                                                   entry_point, *args,
