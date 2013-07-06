@@ -136,6 +136,13 @@ def parse_configs_from_context(context, defaults):
     return configs_dict
 
 
+def safe_call(func, *args, **kwargs):
+    try:
+        return func(*args, **kwargs)
+    except Exception:
+        return None
+
+
 def get_plugin_and_hadoop_version(request):
     plugin_name = request.REQUEST["plugin_name"]
     hadoop_version = request.REQUEST["hadoop_version"]

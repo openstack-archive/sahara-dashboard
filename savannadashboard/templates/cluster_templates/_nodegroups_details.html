@@ -10,7 +10,7 @@
             <dt>{% trans "Flavor" %}</dt>
             <dd>{{ node_group.flavor_id|default:"Flavor is not specified" }}</dd>
 
-            <dt>{% trans "Node Group Template" %}</dt>
+            <dt>{% trans "Template" %}</dt>
             {% if node_group.node_group_template_id %}
                 <dd><a href="/savanna/nodegroup_templates/{{ node_group.node_group_template_id }}">{{ node_group.node_group_template.name }} </a></dd>
             {% else %}

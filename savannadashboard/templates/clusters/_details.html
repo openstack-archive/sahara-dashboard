@@ -16,6 +16,12 @@
         <dd>{{ cluster.hadoop_version }}</dd>
     </dl>
     <dl>
+        <dt>{% trans "Template" %}</dt>
+        {% if cluster_template %}
+            <dd><a href="/savanna/cluster_templates/{{ cluster_template.id }}">{{ cluster_template.name }} </a></dd>
+        {% else %}
+            <dd>{% trans "Template not specified" %}</dd>
+        {% endif %}
         <dt>{% trans "Base Image" %}</dt>
         <dd>{{ base_image.name }}</dd>
         <dt>{% trans "Keypair" %}</dt>
