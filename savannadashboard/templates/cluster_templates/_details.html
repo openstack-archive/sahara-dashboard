@@ -16,6 +16,20 @@
         <dd>{{ template.hadoop_version }}</dd>
     </dl>
     <dl>
+        <dt>{% trans "Anti-affinity enabled for" %}</dt>
+        {% if template.anti_affinity %}
+            <dd>
+                <ul>
+                {% for process in template.anti_affinity %}
+                    <li>{{ process }}</li>
+                {% endfor %}
+                </ul>
+            </dd>
+        {% else %}
+            <h6>{% trans "no processes" %}</h6>
+        {% endif %}
+    </dl>
+    <dl>
     <dt>{% trans "Node Configurations" %}</dt>
         {% if template.cluster_configs %}
             <dd>
