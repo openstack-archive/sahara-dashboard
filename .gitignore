@@ -31,7 +31,6 @@ doc/build
 .coverage
 nosetests.xml
 pylint-report.txt
-AUTHORS
 ChangeLog
 cscope.out
 horizon
