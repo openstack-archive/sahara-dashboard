@@ -1,6 +1,20 @@
-<p class="well">
-    <b>Plugin name</b>: {{ plugin_name }}
-    <br/>
+<div class="well">
+<p>
+    This Cluster will be started with:
+    <br >
+    <b>Plugin</b>: {{ plugin_name }}
+    <br />
     <b>Hadoop version</b>: {{ hadoop_version }}
-    <br/>
+    <br />
 </p>
+<p>
+    Cluster can be launched using existing Cluster Templates.
+</p>
+<p>
+    The Cluster object should specify OpenStack Image to boot instances for Hadoop Cluster.
+</p>
+<p>
+    User has to choose a keypair to have access to clusters instances.
+</p>
+<p>Processes chosen here to use in anti-affinity groups will override those in Cluster Template.</p>
+</div>

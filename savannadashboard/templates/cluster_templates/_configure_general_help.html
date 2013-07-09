@@ -1,6 +1,21 @@
-<p class="well">
-    <b>Plugin name</b>: {{ plugin_name }}
-    <br/>
+<div class="well">
+<p>
+    This Cluster Template will be created for:
+    <br >
+    <b>Plugin</b>: {{ plugin_name }}
+    <br />
     <b>Hadoop version</b>: {{ hadoop_version }}
-    <br/>
+    <br />
 </p>
+<p>
+    The Cluster Template object should specify Node Group Templates that will be used to build a Hadoop Cluster.
+    You can add Node Groups using Node Group Templates on a &quotNode Groups&quot tab.
+</p>
+<p>
+    You may set <b>cluster</b> scoped Hadoop configurations on corresponding tabs.
+</p>
+<p>
+    The Cluster Template object may specify a list of processes in anti-affinity group.
+    That means these processes may not be launched more than once on a single host.
+</p>
+</div>
