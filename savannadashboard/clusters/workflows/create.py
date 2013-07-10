@@ -29,7 +29,6 @@ from django.utils.translation import ugettext as _
 
 from savannadashboard.api import client as savannaclient
 import savannadashboard.cluster_templates.workflows.create as t_flows
-from savannadashboard.utils import anti_affinity as aa
 
 import logging
 
@@ -78,8 +77,6 @@ class GeneralConfigAction(workflows.Action):
         label=_("Keypair"),
         required=False,
         help_text=_("Which keypair to use for authentication."))
-
-    anti_affinity = aa.anti_affinity_field()
 
     def __init__(self, request, *args, **kwargs):
         super(GeneralConfigAction, self).__init__(request, *args, **kwargs)
@@ -136,8 +133,6 @@ class GeneralConfigAction(workflows.Action):
 
         return choices
 
-    populate_anti_affinity_choices = aa.populate_anti_affinity_choices
-
     def get_help_text(self):
         extra = dict()
         plugin, hadoop_version = whelpers.\
@@ -166,9 +161,6 @@ class GeneralConfig(workflows.Step):
     def contribute(self, data, context):
         for k, v in data.items():
             context["general_" + k] = v
-
-        post = self.workflow.request.POST
-        context['anti_affinity_info'] = post.getlist("anti_affinity")
 
         return context
 
@@ -201,8 +193,7 @@ class ConfigureCluster(workflows.Workflow):
                 default_image_id=context["general_image"],
                 description=context["general_description"],
                 node_groups=node_groups,
-                user_keypair_id=context["general_keypair"],
-                anti_affinity=context['anti_affinity_info'])
+                user_keypair_id=context["general_keypair"])
 
             return True
         except Exception:
