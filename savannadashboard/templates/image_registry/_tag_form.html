@@ -78,12 +78,14 @@
             </td>
             <td style="width: 200px">
                 {% for plugin, version_dict in plugins.items %}
-                <label for="hadoop_version_{{ plugin }}">Version</label>
-                <select id="hadoop_version_{{ plugin }}" class="hadoop-version-choice" style="width: 100%; display: none">
-                    {% for version, tags in version_dict.items %}
-                        <option value="{{ version }}">{{ version }}</option>
-                    {% endfor %}
-                </select>
+                <div id="version_group_{{ plugin }}" class="hadoop-version-choice" >
+                    <label for="hadoop_version_{{ plugin }}">Version</label>
+                    <select id="hadoop_version_{{ plugin }}" style="width: 100%">
+                        {% for version, tags in version_dict.items %}
+                            <option value="{{ version }}">{{ version }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
                 {% endfor %}
             </td>
         </tr>
@@ -102,7 +104,7 @@
         $(".plugin-choice").change(function(e) {
             $(".hadoop-version-choice").hide();
             var val = $(this).val();
-            $("#hadoop_version_" + val).show();
+            $("#version_group_" + val).show();
         }).change();
 
         $("#add_all_btn").click(function(e) {
