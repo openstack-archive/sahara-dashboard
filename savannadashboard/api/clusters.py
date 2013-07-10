@@ -68,7 +68,7 @@ class ClusterManager(base.ResourceManager):
         self._create('/clusters', data)
 
     def scale(self, cluster_id, scale_object):
-        return self._put('/clusters/%s' % cluster_id, scale_object)
+        return self._update('/clusters/%s' % cluster_id, scale_object)
 
     def list(self):
         return self._list('/clusters', 'clusters')
