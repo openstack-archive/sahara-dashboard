@@ -1,6 +1,19 @@
-<p class="well">
-    <b>Plugin name</b>: {{ plugin_name }}
-    <br/>
+<div class="well">
+<p>
+    This Node Group Template will be created for:
+    <br >
+    <b>Plugin</b>: {{ plugin_name }}
+    <br />
     <b>Hadoop version</b>: {{ hadoop_version }}
-    <br/>
+    <br />
 </p>
+<p>
+    The Node Group Template object should specify processes that will be launched on each instance. Also an OpenStack flavor is required to boot VMs.
+</p>
+<p>
+    Savanna provides different storage location options. You may choose Ephemeral Drive or a Cinder Volume to be attached to instances.
+</p>
+<p>
+    When processes are selected, you may set <b>node</b> scoped Hadoop configurations on corresponding tabs.
+</p>
+</div>

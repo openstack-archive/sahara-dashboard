@@ -151,7 +151,7 @@ class GeneralConfigAction(workflows.Action):
     class Meta:
         name = _("Configure Cluster")
         help_text_template = \
-            ("cluster_templates/_configure_general_help.html")
+            ("clusters/_configure_general_help.html")
 
 
 class GeneralConfig(workflows.Step):
