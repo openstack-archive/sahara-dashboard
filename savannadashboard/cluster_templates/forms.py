@@ -16,7 +16,9 @@
 from django.utils.translation import ugettext_lazy as _
 from horizon import exceptions
 from horizon import forms
+from horizon import messages
 
+import savannadashboard.api.base as api_base
 from savannadashboard.api import client as savannaclient
 from savannadashboard.utils import workflow_helpers
 
@@ -48,6 +50,8 @@ class UploadFileForm(forms.SelfHandlingForm,
                                                         hadoop_version,
                                                         filecontent)
             return True
+        except api_base.APIException as e:
+            messages.error(request, str(e))
+            return False
         except Exception:
             exceptions.handle(request)
-            return False

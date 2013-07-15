@@ -27,7 +27,6 @@ LOG = logging.getLogger(__name__)
 
 class CopyNodegroupTemplate(create_flow.ConfigureNodegroupTemplate):
     success_message = _("Node Group Template copy %s created")
-    failure_message = _("Could not copy Node Group Template %s")
 
     def __init__(self, request, context_seed, entry_point, *args, **kwargs):
         savanna = savannaclient.Client(request)
