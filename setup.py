@@ -4,7 +4,7 @@ from savannadashboard.openstack.common import setup as common_setup
 
 requires = common_setup.parse_requirements()
 depend_links = common_setup.parse_dependency_links()
-project = 'savannadashboard'
+project = 'savanna-dashboard'
 
 setuptools.setup(
     name=project,
