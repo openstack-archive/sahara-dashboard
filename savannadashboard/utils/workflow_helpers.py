@@ -241,3 +241,20 @@ class ServiceParametersWorkflow(PatchedDynamicWorkflow):
             if (service in configs and
                     param.name in configs[service]):
                 param.initial_value = configs[service][param.name]
+
+
+class StatusFormatMixin(workflows.Workflow):
+    def __init__(self, request, context_seed, entry_point, *args, **kwargs):
+        super(StatusFormatMixin, self).__init__(request,
+                                                context_seed,
+                                                entry_point,
+                                                *args,
+                                                **kwargs)
+
+    def format_status_message(self, message):
+        error_description = getattr(self, 'error_description', None)
+
+        if error_description:
+            return error_description
+        else:
+            return message % self.context[self.name_property]

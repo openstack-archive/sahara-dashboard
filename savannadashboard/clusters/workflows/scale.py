@@ -21,11 +21,12 @@ import logging
 from django.utils.translation import ugettext as _
 from horizon import exceptions
 
+import savannadashboard.api.base as api_base
 from savannadashboard.api import client as savannaclient
 
 import savannadashboard.cluster_templates.workflows.create as clt_create_flow
 import savannadashboard.clusters.workflows.create as cl_create_flow
-from savannadashboard.utils.workflow_helpers import build_node_group_fields
+import savannadashboard.utils.workflow_helpers as whelpers
 
 
 LOG = logging.getLogger(__name__)
@@ -35,7 +36,8 @@ class NodeGroupsStep(clt_create_flow.ConfigureNodegroups):
     pass
 
 
-class ScaleCluster(cl_create_flow.ConfigureCluster):
+class ScaleCluster(cl_create_flow.ConfigureCluster,
+                   whelpers.StatusFormatMixin):
     slug = "scale_cluster"
     name = _("Scale Cluster")
     finalize_button_name = _("Scale")
@@ -51,7 +53,6 @@ class ScaleCluster(cl_create_flow.ConfigureCluster):
         cluster = savanna.clusters.get(cluster_id)
 
         self.success_message = "Scaling cluster started for %s" % cluster.name
-        self.failure_message = "Could not start scaling for %s" % cluster.name
 
         plugin = cluster.plugin_name
         hadoop_version = cluster.hadoop_version
@@ -92,13 +93,18 @@ class ScaleCluster(cl_create_flow.ConfigureCluster):
                              "id": id,
                              "deletable": "false"})
 
-                        build_node_group_fields(ng_action,
-                                                group_name,
-                                                template_id,
-                                                count)
+                        whelpers.build_node_group_fields(ng_action,
+                                                         group_name,
+                                                         template_id,
+                                                         count)
 
     def format_status_message(self, message):
-        return message
+        #scaling form requires special handling
+        error_description = getattr(self, 'error_description', None)
+        if error_description:
+            return message + " " + error_description
+        else:
+            return message
 
     def handle(self, request, context):
         savanna = savannaclient.Client(request)
@@ -144,6 +150,8 @@ class ScaleCluster(cl_create_flow.ConfigureCluster):
         try:
             savanna.clusters.scale(cluster_id, scale_object)
             return True
+        except api_base.APIException as e:
+            self.error_description = str(e)
+            return False
         except Exception:
             exceptions.handle(request)
-            return False

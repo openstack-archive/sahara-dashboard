@@ -25,6 +25,7 @@ from horizon import forms
 from horizon import workflows
 
 import savannadashboard.api.api_objects as api_objects
+import savannadashboard.api.base as api_base
 from savannadashboard.api import client as savannaclient
 from savannadashboard.api import helpers as helpers
 from savannadashboard.utils import anti_affinity as aa
@@ -215,12 +216,13 @@ class ConfigureNodegroups(workflows.Step):
         return context
 
 
-class ConfigureClusterTemplate(whelpers.ServiceParametersWorkflow):
+class ConfigureClusterTemplate(whelpers.ServiceParametersWorkflow,
+                               whelpers.StatusFormatMixin):
     slug = "configure_cluster_template"
     name = _("Create Cluster Template")
     finalize_button_name = _("Create")
     success_message = _("Created Cluster Template %s")
-    failure_message = _("Could not create Cluster Template %s")
+    name_property = "general_cluster_template_name"
     success_url = "horizon:savanna:cluster_templates:index"
     default_steps = (GeneralConfig,
                      ConfigureNodegroups)
@@ -262,9 +264,6 @@ class ConfigureClusterTemplate(whelpers.ServiceParametersWorkflow):
             return steps_valid
         return self.validate(self.context)
 
-    def format_status_message(self, message):
-        return message % self.context["general_cluster_template_name"]
-
     def handle(self, request, context):
         try:
             savanna = savannaclient.Client(request)
@@ -295,6 +294,8 @@ class ConfigureClusterTemplate(whelpers.ServiceParametersWorkflow):
                 node_groups,
                 context["anti_affinity_info"])
             return True
+        except api_base.APIException as e:
+            self.error_description = str(e)
+            return False
         except Exception:
             exceptions.handle(request)
-            return False

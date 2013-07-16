@@ -23,6 +23,7 @@ from django.utils.translation import ugettext as _
 from horizon import exceptions
 from horizon import workflows
 
+import savannadashboard.api.base as api_base
 from savannadashboard.api import client as savannaclient
 from savannadashboard.utils import importutils
 
@@ -153,12 +154,13 @@ class GeneralConfig(workflows.Step):
         return context
 
 
-class ConfigureNodegroupTemplate(whelpers.ServiceParametersWorkflow):
+class ConfigureNodegroupTemplate(whelpers.ServiceParametersWorkflow,
+                                 whelpers.StatusFormatMixin):
     slug = "configure_nodegroup_template"
     name = _("Create Node Group Template")
     finalize_button_name = _("Create")
     success_message = _("Created Node Group Template %s")
-    failure_message = _("Could not create Node Group Template %s")
+    name_property = "general_nodegroup_name"
     success_url = "horizon:savanna:nodegroup_templates:index"
     default_steps = (GeneralConfig,)
 
@@ -182,9 +184,6 @@ class ConfigureNodegroupTemplate(whelpers.ServiceParametersWorkflow):
                                                          context_seed,
                                                          entry_point,
                                                          *args, **kwargs)
-
-    def format_status_message(self, message):
-        return message % self.context["general_nodegroup_name"]
 
     def is_valid(self):
         missing = self.depends_on - set(self.context.keys())
@@ -245,9 +244,11 @@ class ConfigureNodegroupTemplate(whelpers.ServiceParametersWorkflow):
                 node_processes=processes,
                 node_configs=configs_dict)
             return True
+        except api_base.APIException as e:
+            self.error_description = str(e)
+            return False
         except Exception:
             exceptions.handle(request)
-            return False
 
 
 class SelectPluginAction(workflows.Action,

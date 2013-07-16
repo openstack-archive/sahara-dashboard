@@ -19,6 +19,7 @@ from horizon import exceptions
 from horizon import forms
 from horizon import workflows
 
+import savannadashboard.api.base as api_base
 from savannadashboard.utils import importutils
 import savannadashboard.utils.workflow_helpers as whelpers
 
@@ -165,17 +166,14 @@ class GeneralConfig(workflows.Step):
         return context
 
 
-class ConfigureCluster(workflows.Workflow):
+class ConfigureCluster(whelpers.StatusFormatMixin, workflows.Workflow):
     slug = "configure_cluster"
     name = _("Launch Cluster")
     finalize_button_name = _("Create")
     success_message = _("Created Cluster %s")
-    failure_message = _("Could not create Cluster %s")
+    name_property = "general_cluster_name"
     success_url = "horizon:savanna:clusters:index"
     default_steps = (GeneralConfig, )
-
-    def format_status_message(self, message):
-        return message % self.context["general_cluster_name"]
 
     def handle(self, request, context):
         try:
@@ -194,8 +192,9 @@ class ConfigureCluster(workflows.Workflow):
                 description=context["general_description"],
                 node_groups=node_groups,
                 user_keypair_id=context["general_keypair"])
-
             return True
+        except api_base.APIException as e:
+            self.error_description = str(e)
+            return False
         except Exception:
             exceptions.handle(request)
-            return False

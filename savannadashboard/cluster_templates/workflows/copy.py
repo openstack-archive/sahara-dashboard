@@ -28,7 +28,6 @@ LOG = logging.getLogger(__name__)
 
 class CopyClusterTemplate(create_flow.ConfigureClusterTemplate):
     success_message = _("Cluster Template copy %s created")
-    failure_message = _("Could not create Cluster Template copy %s")
 
     def __init__(self, request, context_seed, entry_point, *args, **kwargs):
         savanna = savannaclient.Client(request)

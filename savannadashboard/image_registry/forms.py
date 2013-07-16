@@ -22,6 +22,7 @@ from horizon import exceptions
 from horizon import forms
 from horizon import messages
 
+import savannadashboard.api.base as api_base
 from savannadashboard.api import client as savannaclient
 from savannadashboard.utils import importutils
 
@@ -55,18 +56,20 @@ class ImageForm(forms.SelfHandlingForm):
             messages.success(request, self.message)
 
             return True
+        except api_base.APIException as e:
+            messages.error(request, str(e))
+            return False
         except Exception:
             exceptions.handle(request)
-            return False
 
 
 class EditTagsForm(ImageForm):
-    message = "Image updated."
+    message = _("Image updated.")
     image_id = forms.CharField(widget=forms.HiddenInput())
 
 
 class RegisterImageForm(ImageForm):
-    message = "Image registered."
+    message = _("Image registered.")
     image_id = forms.ChoiceField(label=_("Image"),
                                  required=True)
 

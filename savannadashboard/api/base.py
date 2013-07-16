@@ -56,6 +56,7 @@ def _check_item(obj, searches):
         return False
 
 
+#TODO(nkonovalov) handle response body in case of error
 class ResourceManager(object):
     resource_class = None
 
@@ -69,16 +70,12 @@ class ResourceManager(object):
         resp = self.api.client.post(url, json.dumps(data))
 
         if resp.status_code != 202:
-            resource_name = self.resource_class.resource_name
-            raise RuntimeError('Unable to create %s, server returned code %s' %
-                               (resource_name, resp.status_code))
+            self._raise_api_exception(resp)
 
     def _update(self, url, data):
         resp = self.api.client.put(url, json.dumps(data))
         if resp.status_code != 202:
-            resource_name = self.resource_class.resource_name
-            raise RuntimeError('Unable to update %s, server returned code %s' %
-                               (resource_name, resp.status_code))
+            self._raise_api_exception(resp)
 
     def _list(self, url, response_key):
         resp = self.api.client.get(url)
@@ -89,9 +86,7 @@ class ResourceManager(object):
             return [self.resource_class(self, res)
                     for res in data]
         else:
-            plural_name = self._plurify_resource_name()
-            raise RuntimeError('Unable to list %s, server returned code %s' %
-                               (plural_name, resp.status_code))
+            self._raise_api_exception(resp)
 
     def _get(self, url, response_key=None):
         resp = self.api.client.get(url)
@@ -103,20 +98,20 @@ class ResourceManager(object):
                 data = resp.json()
             return self.resource_class(self, data)
         else:
-            resource_name = self.resource_class.resource_name
-            raise RuntimeError('Unable to get %s, server returned code %s' %
-                               (resource_name, resp.status_code))
+            self._raise_api_exception(resp)
 
     def _delete(self, url):
         resp = self.api.client.delete(url)
 
         if resp.status_code != 204:
-            resource_name = self.resource_class.resource_name
-            raise RuntimeError('Unable to delete %s, server returned code %s' %
-                               (resource_name, resp.status_code))
+            self._raise_api_exception(resp)
 
     def _plurify_resource_name(self):
         return self.resource_class.resource_name + 's'
+
+    def _raise_api_exception(self, resp):
+        error_data = resp.json()
+        raise APIException(error_data["error_message"])
 
 
 class APIException(Exception):
