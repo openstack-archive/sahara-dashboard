@@ -184,10 +184,12 @@ class ConfigureCluster(whelpers.StatusFormatMixin, workflows.Workflow):
             plugin, hadoop_version = whelpers.\
                 get_plugin_and_hadoop_version(request)
 
+            cluster_template_id = context["general_cluster_template"] or None
+
             savanna.clusters.create(
                 context["general_cluster_name"],
                 plugin, hadoop_version,
-                cluster_template_id=context["general_cluster_template"],
+                cluster_template_id=cluster_template_id,
                 default_image_id=context["general_image"],
                 description=context["general_description"],
                 node_groups=node_groups,
