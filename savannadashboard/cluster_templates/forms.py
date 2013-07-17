@@ -14,7 +14,6 @@
 # limitations under the License.
 
 from django.utils.translation import ugettext_lazy as _
-from horizon import exceptions
 from horizon import forms
 from horizon import messages
 
@@ -53,5 +52,6 @@ class UploadFileForm(forms.SelfHandlingForm,
         except api_base.APIException as e:
             messages.error(request, str(e))
             return False
-        except Exception:
-            exceptions.handle(request)
+        except Exception as e:
+            messages.error(request, str(e))
+            return True
