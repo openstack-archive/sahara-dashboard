@@ -8,7 +8,17 @@
         <dd>{{ cluster.id }}</dd>
         <dt>{% trans "Description" %}</dt>
         <dd>{{ cluster.description|default:"None" }}</dd>
+        <dt>{% trans "Status" %}</dt>
+        <dd>{{ cluster.status }}</dd>
     </dl>
+
+    {% if cluster.error_description %}
+    <h4>{% trans "Error Details" %}</h4>
+    <p class="well">
+        {{ cluster.error_description }}
+    </p>
+    {% endif %}
+
     <dl>
         <dt>{% trans "Plugin" %}</dt>
         <dd><a href="/savanna/plugins/{{ cluster.plugin_name }}">{{ cluster.plugin_name }}</a></dd>
