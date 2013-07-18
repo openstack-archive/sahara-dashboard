@@ -110,6 +110,7 @@ class GeneralConfigAction(workflows.Action):
     def populate_keypair_choices(self, request, context):
         keypairs = nova.keypair_list(request)
         keypair_list = [(kp.name, kp.name) for kp in keypairs]
+        keypair_list.insert(0, ("", "No keypair"))
         return keypair_list
 
     def populate_cluster_template_choices(self, request, context):
@@ -185,6 +186,7 @@ class ConfigureCluster(whelpers.StatusFormatMixin, workflows.Workflow):
                 get_plugin_and_hadoop_version(request)
 
             cluster_template_id = context["general_cluster_template"] or None
+            user_keypair = context["general_keypair"] or None
 
             savanna.clusters.create(
                 context["general_cluster_name"],
@@ -193,7 +195,7 @@ class ConfigureCluster(whelpers.StatusFormatMixin, workflows.Workflow):
                 default_image_id=context["general_image"],
                 description=context["general_description"],
                 node_groups=node_groups,
-                user_keypair_id=context["general_keypair"])
+                user_keypair_id=user_keypair)
             return True
         except api_base.APIException as e:
             self.error_description = str(e)
