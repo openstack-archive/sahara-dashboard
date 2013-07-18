@@ -23,6 +23,7 @@ from django.utils.translation import ugettext_lazy as _
 from horizon import tables
 
 from savannadashboard.api import client as savannaclient
+from savannadashboard.utils import compatibility
 
 LOG = logging.getLogger(__name__)
 
@@ -62,7 +63,10 @@ class UnregisterImages(tables.BatchAction):
 
 class ImageRegistryTable(tables.DataTable):
     name = tables.Column("name",
-                         verbose_name=_("Image"))
+                         verbose_name=_("Image"),
+                         link=compatibility.convert_url(
+                             "horizon:project:images_and_snapshots:"
+                             "images:detail"))
     tags = tables.Column(tags_to_string,
                          verbose_name=_("Tags"))
 
