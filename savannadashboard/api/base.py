@@ -18,6 +18,8 @@
 import json
 import logging
 
+from horizon import exceptions
+
 LOG = logging.getLogger(__name__)
 
 
@@ -126,5 +128,8 @@ def get_json(response):
         return json.loads(response.content)
 
 
-class APIException(Exception):
+class APIException(exceptions.HorizonException):
     pass
+
+
+exceptions.RECOVERABLE += (APIException,)
