@@ -54,8 +54,11 @@ class GeneralTab(tabs.Tab):
         base_image = glance.image_get(request,
                                       cluster.default_image_id)
 
-        cluster_template = helpers.safe_call(savanna.cluster_templates.get,
-                                             cluster.cluster_template_id)
+        if (getattr(cluster, 'cluster_template_id', None)):
+            cluster_template = helpers.safe_call(savanna.cluster_templates.get,
+                                                 cluster.cluster_template_id)
+        else:
+            cluster_template = None
 
         return {"cluster": cluster, "base_image": base_image,
                 "cluster_template": cluster_template}
@@ -80,7 +83,7 @@ class NodeGroupsTab(tabs.Tab):
             ng["flavor_name"] = nova.flavor_get(request, ng["flavor_id"]).name
             ng["node_group_template"] = helpers.safe_call(
                 savanna.node_group_templates.get,
-                ng["node_group_template_id"])
+                ng.get("node_group_template_id", None))
 
         return {"cluster": cluster}
 
