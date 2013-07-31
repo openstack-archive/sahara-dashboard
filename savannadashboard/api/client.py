@@ -19,8 +19,11 @@ import logging
 
 from savannadashboard.api import cluster_templates
 from savannadashboard.api import clusters
+from savannadashboard.api import data_sources
 from savannadashboard.api import httpclient
 from savannadashboard.api import images
+from savannadashboard.api import job_origins
+from savannadashboard.api import jobs
 from savannadashboard.api import node_group_templates
 from savannadashboard.api import plugins
 from savannadashboard.utils import importutils
@@ -69,3 +72,6 @@ class Client(object):
                                      NodeGroupTemplateManager(self))
         self.plugins = plugins.PluginManager(self)
         self.images = images.ImageManager(self)
+        self.jobs = jobs.JobManager(self)
+        self.job_origins = job_origins.JobOriginManager(self)
+        self.data_sources = data_sources.DataSourceManager(self)

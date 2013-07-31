@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}{% trans "Savanna" %}{% endblock %}
+
+{% block page_header %}
+  {% include "horizon/common/_page_header.html" with title=_("Savanna - Data Sources") %}
+{% endblock page_header %}
+
+{% block main %}
+
+<div class="cluster_templates">
+    {{ data_sources_table.render }}
+</div>
+
+{% endblock %}
