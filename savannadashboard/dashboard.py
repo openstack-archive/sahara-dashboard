@@ -31,6 +31,9 @@ class SavannaDashboard(horizon.Dashboard):
     panels = ('clusters',
               'cluster_templates',
               'nodegroup_templates',
+              'jobs',
+              'job_origins',
+              'data_sources',
               'image_registry',
               'plugins')
     default_panel = 'clusters'
