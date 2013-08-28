@@ -21,7 +21,13 @@ from horizon import workflows
 
 import savannadashboard.api.base as api_base
 from savannadashboard.utils import importutils
+from savannadashboard.utils import neutron_support
 import savannadashboard.utils.workflow_helpers as whelpers
+
+neutron = importutils.import_any('openstack_dashboard.api.quantum',
+                                 'openstack_dashboard.api.neutron',
+                                 'horizon.api.quantum',
+                                 'horizon.api.neutron')
 
 nova = importutils.import_any('openstack_dashboard.api.nova',
                               'horizon.api.nova')
@@ -85,6 +91,14 @@ class GeneralConfigAction(workflows.Action):
         plugin, hadoop_version = whelpers.\
             get_plugin_and_hadoop_version(request)
 
+        if savannaclient.SAVANNA_USE_NEUTRON:
+            self.fields["neutron_management_network"] = forms.ChoiceField(
+                label=_("Neutron Management Network"),
+                required=True,
+                choices=self.populate_neutron_management_network_choices(
+                    request, {})
+            )
+
         self.fields["plugin_name"] = forms.CharField(
             widget=forms.HiddenInput(),
             initial=plugin
@@ -134,6 +148,9 @@ class GeneralConfigAction(workflows.Action):
                 self.fields['cluster_template'].initial = template.id
 
         return choices
+
+    populate_neutron_management_network_choices = \
+        neutron_support.populate_neutron_management_network_choices
 
     def get_help_text(self):
         extra = dict()
@@ -195,7 +212,8 @@ class ConfigureCluster(whelpers.StatusFormatMixin, workflows.Workflow):
                 default_image_id=context["general_image"],
                 description=context["general_description"],
                 node_groups=node_groups,
-                user_keypair_id=user_keypair)
+                user_keypair_id=user_keypair,
+                net_id=context.get("general_neutron_management_network", None))
             return True
         except api_base.APIException as e:
             self.error_description = str(e)

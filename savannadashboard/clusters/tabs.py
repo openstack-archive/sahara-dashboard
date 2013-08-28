@@ -25,6 +25,9 @@ from horizon import tabs
 from savannadashboard.utils import compatibility
 from savannadashboard.utils import importutils
 from savannadashboard.utils import workflow_helpers as helpers
+
+neutron = importutils.import_any('openstack_dashboard.api.quantum',
+                                 'horizon.api.quantum')
 nova = importutils.import_any('openstack_dashboard.api.nova',
                               'horizon.api.nova')
 glance = importutils.import_any('openstack_dashboard.api.glance',
@@ -54,14 +57,24 @@ class GeneralTab(tabs.Tab):
         base_image = glance.image_get(request,
                                       cluster.default_image_id)
 
-        if (getattr(cluster, 'cluster_template_id', None)):
+        if getattr(cluster, 'cluster_template_id', None):
             cluster_template = helpers.safe_call(savanna.cluster_templates.get,
                                                  cluster.cluster_template_id)
         else:
             cluster_template = None
 
-        return {"cluster": cluster, "base_image": base_image,
-                "cluster_template": cluster_template}
+        if getattr(cluster, 'neutron_management_network', None):
+            net_id = cluster.neutron_management_network
+            network = neutron.network_get(request, net_id)
+            network.set_id_as_name_if_empty()
+            net_name = network.name
+        else:
+            net_name = None
+
+        return {"cluster": cluster,
+                "base_image": base_image,
+                "cluster_template": cluster_template,
+                "network": net_name}
 
 
 def build_link(url):

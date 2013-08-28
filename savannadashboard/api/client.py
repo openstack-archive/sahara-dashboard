@@ -47,11 +47,13 @@ def get_horizon_parameter(name, default_value):
         return default_value
 
 
-# Both parameters should be defined in Horizon's local_settings.py
+# These parameters should be defined in Horizon's local_settings.py
 # Example SAVANNA_URL - http://localhost:9000/v1.0
 SAVANNA_URL = get_horizon_parameter('SAVANNA_URL', None)
 # "type" of Savanna service registered in keystone
 SAVANNA_SERVICE = get_horizon_parameter('SAVANNA_SERVICE', 'mapreduce')
+# hint to generate additional Neutron network field
+SAVANNA_USE_NEUTRON = get_horizon_parameter('SAVANNA_USE_NEUTRON', False)
 
 
 def get_savanna_url(request):

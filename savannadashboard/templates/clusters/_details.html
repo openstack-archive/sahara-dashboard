@@ -34,6 +34,10 @@
         {% endif %}
         <dt>{% trans "Base Image" %}</dt>
         <dd>{{ base_image.name }}</dd>
+        {% if network %}
+        <dt>{% trans "Neutron Management Network" %}</dt>
+        <dd>{{ network }}</dd>
+        {% endif %}
         <dt>{% trans "Keypair" %}</dt>
         <dd>{{ cluster.user_keypair_id }}</dd>
     </dl>
