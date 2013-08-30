@@ -48,7 +48,7 @@ class GeneralTab(tabs.Tab):
 
         for info_key, info_val in cluster.info.items():
             for key, val in info_val.items():
-                if str(val).startswith("http://"):
+                if str(val).startswith(('http://', 'https://')):
                     cluster.info[info_key][key] = build_link(val)
 
         base_image = glance.image_get(request,
