@@ -14,34 +14,29 @@
 # implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
 from savannadashboard.api import base
 
 
-class JobOrigin(base.Resource):
-    resource_name = 'Job Origin'
-    defaults = {'description': ''}
+class JobBinaryInternal(base.Resource):
+    resource_name = 'Job Binary Internal'
+    defaults = {}
 
 
-class JobOriginManager(base.ResourceManager):
-    resource_class = JobOrigin
+class JobBinaryInternalManager(base.ResourceManager):
+    resource_class = JobBinaryInternal
 
-    def create(self, name, mains, libs, description):
-
-        data = {
-            'name': name,
-            'description': description,
-            'mains': mains,
-            'libs': libs  # TODO(croberts)fix when api is ready
-        }
-        self._create('/job-origins', data)
+    def create(self, name, data):
+        resp = self.api.client.put('/job-binary-internals/%s' % name, data)
+        if resp.status_code != 202:
+            self._raise_api_exception(resp)
+        return resp.json()
 
     def list(self):
-        return self._list('/job-origins', 'job_origins')
+        return self._list('/job-binary-internals', 'binaries')
 
-    def get(self, job_origin_id):
-        return self._get('/job-origins/%s' % job_origin_id,
+    def get(self, job_binary_id):
+        return self._get('/job-binary-internals/%s' % job_binary_id,
                          'resource')
 
-    def delete(self, job_origin_id):
-        self._delete('/job-origins/%s' % job_origin_id)
+    def delete(self, job_binary_id):
+        self._delete('/job-binary-internals/%s' % job_binary_id)

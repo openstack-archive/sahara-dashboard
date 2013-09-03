@@ -48,3 +48,14 @@ class JobManager(base.ResourceManager):
 
     def delete(self, job_id):
         self._delete('/jobs/%s' % job_id)
+
+    def launch(self, job_id, cluster_id, input_id, output_id, configs):
+        url = "/jobs/%s/execute" % job_id
+        data = {
+            "input_id": input_id,
+            "output_id": output_id,
+            "cluster_id": cluster_id,
+            "job_configs": configs
+        }
+
+        return self._create(url, data)

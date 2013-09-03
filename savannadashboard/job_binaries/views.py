@@ -17,43 +17,45 @@
 
 import logging
 
+from django.core.urlresolvers import reverse_lazy
+
+from horizon import forms
 from horizon import tables
 from horizon import tabs
-from horizon import workflows
 
 from savannadashboard.api import client as savannaclient
 
-from savannadashboard.data_sources.tables import DataSourcesTable
-import savannadashboard.data_sources.tabs as _tabs
-import savannadashboard.data_sources.workflows.create as create_flow
+import savannadashboard.job_binaries.forms as job_binary_forms
+from savannadashboard.job_binaries.tables import JobBinariesTable
+import savannadashboard.job_binaries.tabs as _tabs
+
 
 LOG = logging.getLogger(__name__)
 
 
-class DataSourcesView(tables.DataTableView):
-    table_class = DataSourcesTable
-    template_name = 'data_sources/data_sources.html'
+class JobBinariesView(tables.DataTableView):
+    table_class = JobBinariesTable
+    template_name = 'job_binaries/job_binaries.html'
 
     def get_data(self):
         savanna = savannaclient.Client(self.request)
-        data_sources = savanna.data_sources.list()
-        return data_sources
+        job_binaries = savanna.job_binaries.list()
+        return job_binaries
 
 
-class CreateDataSourceView(workflows.WorkflowView):
-    workflow_class = create_flow.CreateDataSource
-    success_url = \
-        "horizon:savanna:data-sources:create-data-source"
+class CreateJobBinaryView(forms.ModalFormView):
+    form_class = job_binary_forms.JobBinaryCreateForm
+    success_url = reverse_lazy('horizon:savanna:job_binaries:index')
     classes = ("ajax-modal")
-    template_name = "data_sources/create.html"
+    template_name = "job_binaries/create.html"
 
 
-class DataSourceDetailsView(tabs.TabView):
-    tab_group_class = _tabs.DataSourceDetailsTabs
-    template_name = 'data_sources/details.html'
+class JobBinaryDetailsView(tabs.TabView):
+    tab_group_class = _tabs.JobBinaryDetailsTabs
+    template_name = 'job_binaries/details.html'
 
     def get_context_data(self, **kwargs):
-        context = super(DataSourceDetailsView, self)\
+        context = super(JobBinaryDetailsView, self)\
             .get_context_data(**kwargs)
         return context
 

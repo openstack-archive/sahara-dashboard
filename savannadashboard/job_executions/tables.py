@@ -26,36 +26,37 @@ from savannadashboard.api import client as savannaclient
 LOG = logging.getLogger(__name__)
 
 
-class CreateJobOrigin(tables.LinkAction):
-    name = "create job origin"
-    verbose_name = _("Create Job Origin")
-    url = "horizon:savanna:job_origins:create-job-origin"
-    classes = ("btn-launch", "ajax-modal")
-
-
-class DeleteJobOrigin(tables.BatchAction):
+class DeleteJobExecution(tables.BatchAction):
     name = "delete"
     action_present = _("Delete")
     action_past = _("Deleted")
-    data_type_singular = _("Job origin")
-    data_type_plural = _("Job origins")
+    data_type_singular = _("Job execution")
+    data_type_plural = _("Job executions")
     classes = ('btn-danger', 'btn-terminate')
 
     def action(self, request, obj_id):
         savanna = savannaclient.Client(request)
-        savanna.job_origins.delete(obj_id)
+        savanna.job_executions.delete(obj_id)
 
 
-class JobOriginsTable(tables.DataTable):
-    name = tables.Column("name",
-                         verbose_name=_("Name"),
-                         link=("horizon:savanna:job_origins:details"))
-    description = tables.Column("description",
-                                verbose_name=_("Description"))
+class JobExecutionsTable(tables.DataTable):
+    class StatusColumn(tables.Column):
+        def get_data(self, datum):
+            return datum.info['status']
+
+    name = tables.Column("id",
+                         verbose_name=_("ID"),
+                         display_choices=(("id", "ID"), ("name", "Name")),
+                         link=("horizon:savanna:job_executions:details"))
+
+    status = StatusColumn("info",
+                          verbose_name=_("Status"))
+
+    def get_object_display(self, datum):
+        return datum.id
 
     class Meta:
-        name = "job_origins"
-        verbose_name = _("Job Origins")
-        table_actions = (CreateJobOrigin,
-                         DeleteJobOrigin)
-        row_actions = (DeleteJobOrigin,)
+        name = "job_executions"
+        verbose_name = _("Job Executions")
+        table_actions = [DeleteJobExecution]
+        row_actions = [DeleteJobExecution]

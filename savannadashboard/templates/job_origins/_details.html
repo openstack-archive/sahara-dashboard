@@ -6,14 +6,6 @@
         <dd>{{ job_origin.name }}</dd>
         <dt>{% trans "ID" %}</dt>
         <dd>{{ job_origin.id }}</dd>
-        <dt>{% trans "URL" %}</dt>
-        <dd>{{ job_origin.url }}</dd>
-        <dt>{% trans "Storage type" %}</dt>
-        <dd>{{ job_origin.storage_type }}</dd>
-        <dt>{% trans "Username" %}</dt>
-        <dd>{{ job_origin.credentials.user|default:"None" }}</dd>
-        <dt>{% trans "Password" %}</dt>
-        <dd>{{ job_origin.credentials.password|default:"None" }}</dd>
         <dt>{% trans "Description" %}</dt>
         <dd>{{ job_origin.description|default:"None" }}</dd>
         <dt>{% trans "Tenant id" %}</dt>

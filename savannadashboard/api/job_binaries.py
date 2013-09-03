@@ -18,30 +18,30 @@
 from savannadashboard.api import base
 
 
-class JobOrigin(base.Resource):
-    resource_name = 'Job Origin'
-    defaults = {'description': ''}
+class JobBinary(base.Resource):
+    resource_name = 'Job Binary'
+    defaults = {}
 
 
-class JobOriginManager(base.ResourceManager):
-    resource_class = JobOrigin
+class JobBinaryManager(base.ResourceManager):
+    resource_class = JobBinary
 
-    def create(self, name, mains, libs, description):
-
+    def create(self, name, url, description, extra):
         data = {
-            'name': name,
-            'description': description,
-            'mains': mains,
-            'libs': libs  # TODO(croberts)fix when api is ready
+            "name": name,
+            "url": url,
+            "description": description,
+            "extra": extra
         }
-        self._create('/job-origins', data)
+
+        return self._create('/job-binaries', data)
 
     def list(self):
-        return self._list('/job-origins', 'job_origins')
+        return self._list('/job-binaries', 'binaries')
 
-    def get(self, job_origin_id):
-        return self._get('/job-origins/%s' % job_origin_id,
+    def get(self, job_binary_id):
+        return self._get('/job-binaries/%s' % job_binary_id,
                          'resource')
 
-    def delete(self, job_origin_id):
-        self._delete('/job-origins/%s' % job_origin_id)
+    def delete(self, job_binary_id):
+        self._delete('/job-binaries/%s' % job_binary_id)
