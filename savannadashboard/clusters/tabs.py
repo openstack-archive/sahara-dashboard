@@ -27,7 +27,8 @@ from savannadashboard.utils import importutils
 from savannadashboard.utils import workflow_helpers as helpers
 
 neutron = importutils.import_any('openstack_dashboard.api.quantum',
-                                 'horizon.api.quantum')
+                                 'horizon.api.quantum',
+                                 'openstack_dashboard.api.neutron')
 nova = importutils.import_any('openstack_dashboard.api.nova',
                               'horizon.api.nova')
 glance = importutils.import_any('openstack_dashboard.api.glance',
