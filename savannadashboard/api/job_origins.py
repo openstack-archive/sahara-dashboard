@@ -27,7 +27,6 @@ class JobOriginManager(base.ResourceManager):
     resource_class = JobOrigin
 
     def create(self, name, mains, libs, description):
-
         data = {
             'name': name,
             'description': description,

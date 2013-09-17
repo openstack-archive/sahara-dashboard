@@ -29,8 +29,7 @@ class JobExecutionManager(base.ResourceManager):
         return self._list('/job-executions', 'job_executions')
 
     def get(self, obj_id):
-        return self._get('/job-executions/%s' % obj_id,
-                         'resource')
+        return self._get('/job-executions/%s' % obj_id, 'job_execution')
 
     def delete(self, obj_id):
         self._delete('/job-executions/%s' % obj_id)
