@@ -15,6 +15,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import urllib
+
 from savannadashboard.api import base
 
 
@@ -42,9 +44,12 @@ class PluginManager(base.ResourceManager):
                          'plugin')
 
     def convert_to_cluster_template(self, plugin_name, hadoop_version,
-                                    filecontent):
-        resp = self.api.client.post('/plugins/%s/%s/convert-config' %
-                                    (plugin_name, hadoop_version), filecontent)
+                                    template_name, filecontent):
+        resp = self.api.client.post('/plugins/%s/%s/convert-config/%s' %
+                                    (plugin_name,
+                                     hadoop_version,
+                                     urllib.quote(template_name)),
+                                    filecontent)
         if resp.status_code != 202:
             raise RuntimeError('Failed to upload template file for plugin "%s"'
                                ' and version "%s"' %
