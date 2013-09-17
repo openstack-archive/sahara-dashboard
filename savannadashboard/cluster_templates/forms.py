@@ -47,6 +47,7 @@ class UploadFileForm(forms.SelfHandlingForm,
             savanna = savannaclient.Client(request)
             savanna.plugins.convert_to_cluster_template(plugin_name,
                                                         hadoop_version,
+                                                        data['template_name'],
                                                         filecontent)
             return True
         except api_base.APIException as e:
