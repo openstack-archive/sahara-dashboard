@@ -17,8 +17,6 @@
 
 import logging
 
-from django.core import urlresolvers
-from django.utils import http
 from django.utils.translation import ugettext_lazy as _
 
 from horizon import tables
@@ -28,55 +26,38 @@ from savannadashboard.api import client as savannaclient
 LOG = logging.getLogger(__name__)
 
 
-class CreateJob(tables.LinkAction):
-    name = "create job"
-    verbose_name = _("Create Job")
-    url = "horizon:savanna:jobs:create-job"
+class CreateJobBinary(tables.LinkAction):
+    name = "create job binary"
+    verbose_name = _("Create Job Binary")
+    url = "horizon:savanna:job_binaries:create-job-binary"
     classes = ("btn-launch", "ajax-modal")
 
 
-class DeleteJob(tables.BatchAction):
+class DeleteJobBinary(tables.BatchAction):
     name = "delete"
     action_present = _("Delete")
     action_past = _("Deleted")
-    data_type_singular = _("Job")
-    data_type_plural = _("Jobs")
+    data_type_singular = _("Job binary")
+    data_type_plural = _("Job binaries")
     classes = ('btn-danger', 'btn-terminate')
 
     def action(self, request, obj_id):
         savanna = savannaclient.Client(request)
-        savanna.jobs.delete(obj_id)
+        savanna.job_binaries.delete(obj_id)
 
 
-class LaunchJob(tables.LinkAction):
-    name = "launch-job"
-    verbose_name = _("Launch Job")
-    action_present = _("Launch")
-    action_past = _("Launched")
-    data_type_singular = _("Job")
-    data_type_plural = _("Jobs")
-    url = "horizon:savanna:jobs:launch-job"
-    classes = ('ajax-modal', 'btn-launch')
-
-    def get_link_url(self, datum):
-        base_url = urlresolvers.reverse(self.url)
-
-        params = http.urlencode({"job_id": datum.id})
-        return "?".join([base_url, params])
-
-
-class JobsTable(tables.DataTable):
+class JobBinariesTable(tables.DataTable):
     name = tables.Column("name",
                          verbose_name=_("Name"),
-                         link=("horizon:savanna:jobs:details"))
-    type = tables.Column("type",
-                         verbose_name=_("Type"))
+                         link=("horizon:savanna:job_binaries:details"))
+    type = tables.Column("url",
+                         verbose_name=_("Url"))
     description = tables.Column("description",
                                 verbose_name=_("Description"))
 
     class Meta:
-        name = "jobs"
-        verbose_name = _("Jobs")
-        table_actions = (CreateJob,
-                         DeleteJob)
-        row_actions = (LaunchJob, DeleteJob,)
+        name = "job_binaries"
+        verbose_name = _("Job Binaries")
+        table_actions = (CreateJobBinary,
+                         DeleteJobBinary)
+        row_actions = (DeleteJobBinary,)

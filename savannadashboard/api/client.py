@@ -22,6 +22,9 @@ from savannadashboard.api import clusters
 from savannadashboard.api import data_sources
 from savannadashboard.api import httpclient
 from savannadashboard.api import images
+from savannadashboard.api import job_binaries
+from savannadashboard.api import job_binaries_internal
+from savannadashboard.api import job_executions
 from savannadashboard.api import job_origins
 from savannadashboard.api import jobs
 from savannadashboard.api import node_group_templates
@@ -77,3 +80,7 @@ class Client(object):
         self.jobs = jobs.JobManager(self)
         self.job_origins = job_origins.JobOriginManager(self)
         self.data_sources = data_sources.DataSourceManager(self)
+        self.job_executions = job_executions.JobExecutionManager(self)
+        self.job_binaries = job_binaries.JobBinaryManager(self)
+        self.job_binaries_internal =\
+            job_binaries_internal.JobBinaryInternalManager(self)

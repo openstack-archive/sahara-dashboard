@@ -19,41 +19,31 @@ import logging
 
 from horizon import tables
 from horizon import tabs
-from horizon import workflows
 
 from savannadashboard.api import client as savannaclient
 
-from savannadashboard.data_sources.tables import DataSourcesTable
-import savannadashboard.data_sources.tabs as _tabs
-import savannadashboard.data_sources.workflows.create as create_flow
+from savannadashboard.job_executions.tables import JobExecutionsTable
+import savannadashboard.job_executions.tabs as _tabs
 
 LOG = logging.getLogger(__name__)
 
 
-class DataSourcesView(tables.DataTableView):
-    table_class = DataSourcesTable
-    template_name = 'data_sources/data_sources.html'
+class JobExecutionsView(tables.DataTableView):
+    table_class = JobExecutionsTable
+    template_name = 'job_executions/job_executions.html'
 
     def get_data(self):
         savanna = savannaclient.Client(self.request)
-        data_sources = savanna.data_sources.list()
-        return data_sources
+        jobs = savanna.job_executions.list()
+        return jobs
 
 
-class CreateDataSourceView(workflows.WorkflowView):
-    workflow_class = create_flow.CreateDataSource
-    success_url = \
-        "horizon:savanna:data-sources:create-data-source"
-    classes = ("ajax-modal")
-    template_name = "data_sources/create.html"
-
-
-class DataSourceDetailsView(tabs.TabView):
-    tab_group_class = _tabs.DataSourceDetailsTabs
-    template_name = 'data_sources/details.html'
+class JobExecutionDetailsView(tabs.TabView):
+    tab_group_class = _tabs.JobExecutionDetailsTabs
+    template_name = 'job_executions/details.html'
 
     def get_context_data(self, **kwargs):
-        context = super(DataSourceDetailsView, self)\
+        context = super(JobExecutionDetailsView, self)\
             .get_context_data(**kwargs)
         return context
 

@@ -62,7 +62,6 @@ class GeneralConfigAction(workflows.Action):
 
 class GeneralConfig(workflows.Step):
     action_class = GeneralConfigAction
-    contributes = ("hidden_configure_field", )
 
     def contribute(self, data, context):
         for k, v in data.items():

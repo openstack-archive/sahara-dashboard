@@ -19,19 +19,13 @@
 from django.conf.urls.defaults import patterns
 from django.conf.urls.defaults import url
 
-import savannadashboard.jobs.views as views
+import savannadashboard.job_executions.views as views
 
 urlpatterns = patterns('',
-                       url(r'^$', views.JobsView.as_view(),
+                       url(r'^$', views.JobExecutionsView.as_view(),
                            name='index'),
-                       url(r'^$', views.JobsView.as_view(),
-                           name='jobs'),
-                       url(r'^create-job$',
-                           views.CreateJobView.as_view(),
-                           name='create-job'),
-                       url(r'^launch-job$',
-                           views.LaunchJobView.as_view(),
-                           name='launch-job'),
-                       url(r'^(?P<job_id>[^/]+)$',
-                           views.JobDetailsView.as_view(),
+                       url(r'^$', views.JobExecutionsView.as_view(),
+                           name='job-executions'),
+                       url(r'^(?P<job_execution_id>[^/]+)$',
+                           views.JobExecutionDetailsView.as_view(),
                            name='details'))

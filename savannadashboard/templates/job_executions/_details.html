@@ -1,0 +1,28 @@
+{% load i18n sizeformat %}
+<h3>{% trans "Job Execution Overview" %}</h3>
+<div class="status row-fluid detail">
+    <dl>
+        <dt>{% trans "Status" %}</dt>
+        <dd>{{ job_execution.info.status }}</dd>
+        <dt>{% trans "Id" %}</dt>
+        <dd>{{ job_execution.id }}</dd>
+        <dt>{% trans "Job Id" %}</dt>
+        <dd>{{ job_execution.job_id }}</dd>
+        <dt>{% trans "Input Id" %}</dt>
+        <dd>{{ job_execution.input_id }}</dd>
+        <dt>{% trans "Output Id" %}</dt>
+        <dd>{{ job_execution.output_id }}</dd>
+        <dt>{% trans "Cluster Id" %}</dt>
+        <dd>{{ job_execution.cluster_id }}</dd>
+        <dt>{% trans "Last Updated" %}</dt>
+        <dd>{{ job_execution.updated_at }}</dd>
+        <dt>{% trans "Return Code" %}</dt>
+        <dd>{{ job_execution.return_code }}</dd>
+        <dt>{% trans "Oozie Job Id" %}</dt>
+        <dd>{{ job_execution.oozie_job_id }}</dd>
+        <dt>{% trans "Created" %}</dt>
+        <dd>{{ job_execution.created_at }}</dd>
+        <dt>{% trans "Tenant Id" %}</dt>
+        <dd>{{ job_execution.tenant_id }}</dd>
+    </dl>
+</div>
