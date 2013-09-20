@@ -69,7 +69,8 @@ class JobBinaryCreateForm(forms.SelfHandlingForm):
                                               attrs={'autocomplete': 'off'}))
 
     job_binary_description = forms.CharField(label=_("Description"),
-                                             required=False)
+                                             required=False,
+                                             widget=forms.Textarea())
 
     def __init__(self, request, *args, **kwargs):
         super(JobBinaryCreateForm, self).__init__(request, *args, **kwargs)
