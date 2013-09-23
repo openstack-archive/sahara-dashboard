@@ -35,6 +35,8 @@ import savannadashboard.utils.workflow_helpers as whelpers
 nova = importutils.import_any('openstack_dashboard.api.nova',
                               'horizon.api.nova')
 
+network = importutils.import_any('openstack_dashboard.api.network',
+                                 'horizon.api.network')
 
 LOG = logging.getLogger(__name__)
 
@@ -93,6 +95,18 @@ class GeneralConfigAction(workflows.Action):
                 process_choices.append(
                     (str(service) + ":" + str(process), process))
 
+        if not savannaclient.AUTO_ASSIGNMENT_ENABLED:
+            pools = []
+            pools.append((None, "Do not assign floating IPs"))
+
+            pools_list = network.floating_ip_pools_list(request)
+            for pool in pools_list:
+                pools.append((pool.id, pool.name))
+            self.fields['floating_ip_pool'] = forms.ChoiceField(
+                label=_("Floationg IP pool"),
+                choices=pools,
+                required=False)
+
         self.fields["processes"] = forms.MultipleChoiceField(
             label=_("Processes"),
             required=True,
@@ -147,7 +161,7 @@ class GeneralConfig(workflows.Step):
         for k, v in data.items():
             if "hidden" in k:
                 continue
-            context["general_" + k] = v
+            context["general_" + k] = v if v != "None" else None
 
         post = self.workflow.request.POST
         context['general_processes'] = post.getlist("processes")
@@ -242,7 +256,8 @@ class ConfigureNodegroupTemplate(whelpers.ServiceParametersWorkflow,
                 volumes_per_node=volumes_per_node,
                 volumes_size=volumes_size,
                 node_processes=processes,
-                node_configs=configs_dict)
+                node_configs=configs_dict,
+                floating_ip_pool=context.get("general_floating_ip_pool", None))
             return True
         except api_base.APIException as e:
             self.error_description = str(e)

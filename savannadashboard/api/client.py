@@ -58,6 +58,9 @@ SAVANNA_SERVICE = get_horizon_parameter('SAVANNA_SERVICE', 'mapreduce')
 # hint to generate additional Neutron network field
 SAVANNA_USE_NEUTRON = get_horizon_parameter('SAVANNA_USE_NEUTRON', False)
 
+AUTO_ASSIGNMENT_ENABLED = get_horizon_parameter('AUTO_ASSIGNMENT_ENABLED',
+                                                True)
+
 
 def get_savanna_url(request):
     if SAVANNA_URL is not None:
