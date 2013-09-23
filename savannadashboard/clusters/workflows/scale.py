@@ -52,7 +52,8 @@ class ScaleCluster(cl_create_flow.ConfigureCluster,
         cluster_id = context_seed["cluster_id"]
         cluster = savanna.clusters.get(cluster_id)
 
-        self.success_message = "Scaling cluster started for %s" % cluster.name
+        self.success_message = "Scaling Cluster %s successfully started" \
+                               % cluster.name
 
         plugin = cluster.plugin_name
         hadoop_version = cluster.hadoop_version
@@ -99,12 +100,14 @@ class ScaleCluster(cl_create_flow.ConfigureCluster,
                                                          count)
 
     def format_status_message(self, message):
-        #scaling form requires special handling
+        # Scaling form requires special handling because it has no Cluster name
+        # in it's context
+
         error_description = getattr(self, 'error_description', None)
         if error_description:
-            return message + " " + error_description
+            return error_description
         else:
-            return message
+            return self.success_message
 
     def handle(self, request, context):
         savanna = savannaclient.Client(request)
