@@ -101,6 +101,7 @@ class GeneralConfigAction(workflows.Action):
 class JobConfigAction(workflows.Action):
     config = forms.CharField(
         label=_("Job Config"),
+        required=False,
         widget=forms.Textarea())
 
     def __init__(self, request, *args, **kwargs):
@@ -145,10 +146,15 @@ class LaunchJob(workflows.Workflow):
 
     def handle(self, request, context):
         savanna = savannaclient.Client(request)
+        job_config = context.get("job_config")
+        if not job_config:
+            job_config = {}
         savanna.jobs.launch(
             context["general_job"],
             context["general_cluster"],
             context["general_job_input"],
             context["general_job_output"],
-            context["job_config"])
+            job_config)
+
+        print job_config
         return True

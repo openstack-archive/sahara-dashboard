@@ -116,7 +116,7 @@ class JobBinaryCreateForm(forms.SelfHandlingForm):
             return False
         except Exception as e:
             messages.error(request, str(e))
-            return True
+            return False
 
     class Meta:
         name = _("Create Job Binary")
@@ -132,7 +132,7 @@ class JobBinaryCreateForm(forms.SelfHandlingForm):
                 self.get_unique_binary_name(
                     request, request.FILES["job_binary_file"].name),
                 request.FILES["job_binary_file"].read())
-            bin_id = result["resource"]["id"]
+            bin_id = result["job_binary_internal"]["id"]
 
         return "savanna-db://%s" % bin_id
 
