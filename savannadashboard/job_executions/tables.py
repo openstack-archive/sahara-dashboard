@@ -39,10 +39,26 @@ class DeleteJobExecution(tables.BatchAction):
         savanna.job_executions.delete(obj_id)
 
 
+class UpdateRow(tables.Row):
+    ajax = True
+
+    def get_data(self, request, job_execution_id):
+        savanna = savannaclient.Client(request)
+        job_execution = savanna.job_executions.get(job_execution_id)
+        return job_execution
+
+
 class JobExecutionsTable(tables.DataTable):
     class StatusColumn(tables.Column):
         def get_data(self, datum):
             return datum.info['status']
+
+    STATUS_CHOICES = (
+        ("DONEWITHERROR", False),
+        ("FAILED", False),
+        ("KILLED", False),
+        ("SUCCEEDED", True),
+    )
 
     name = tables.Column("id",
                          verbose_name=_("ID"),
@@ -50,6 +66,8 @@ class JobExecutionsTable(tables.DataTable):
                          link=("horizon:savanna:job_executions:details"))
 
     status = StatusColumn("info",
+                          status=True,
+                          status_choices=STATUS_CHOICES,
                           verbose_name=_("Status"))
 
     def get_object_display(self, datum):
@@ -57,6 +75,8 @@ class JobExecutionsTable(tables.DataTable):
 
     class Meta:
         name = "job_executions"
+        row_class = UpdateRow
+        status_columns = ["status"]
         verbose_name = _("Job Executions")
         table_actions = [DeleteJobExecution]
         row_actions = [DeleteJobExecution]
