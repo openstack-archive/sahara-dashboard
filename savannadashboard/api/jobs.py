@@ -26,15 +26,13 @@ class Job(base.Resource):
 class JobManager(base.ResourceManager):
     resource_class = Job
 
-    def create(self, name, description, job_type,
-               input_type, output_type, job_origin_id):
+    def create(self, name, type, mains, libs, description):
         data = {
             'name': name,
+            'type': type,
             'description': description,
-            'type': job_type,
-            'input_type': input_type,
-            'output_type': output_type,
-            'job_origin_id': job_origin_id
+            'mains': mains,
+            'libs': libs  # TODO(croberts)fix when api is ready
         }
 
         self._create('/jobs', data)
@@ -43,8 +41,7 @@ class JobManager(base.ResourceManager):
         return self._list('/jobs', 'jobs')
 
     def get(self, job_id):
-        return self._get('/jobs/%s' % job_id,
-                         'resource')
+        return self._get('/jobs/%s' % job_id, 'job')
 
     def delete(self, job_id):
         self._delete('/jobs/%s' % job_id)

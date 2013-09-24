@@ -3,13 +3,45 @@
 {% block title %}{% trans "Savanna" %}{% endblock %}
 
 {% block page_header %}
-  {% include "horizon/common/_page_header.html" with title=_("Savanna - Job") %}
+  {% include "horizon/common/_page_header.html" with title=_("Savanna - Jobs") %}
 {% endblock page_header %}
 
 {% block main %}
-
-<div class="jobs">
+<style type="text/css">
+  .job_origin_main, .job_origin_lib {
+    width: 200px !important; }
+  .job_binary_add_button, .job_binary_remove_button {
+    width: 80px !important;
+    margin-left: 5px; }
+</style>
+<div class="job_origins">
     {{ jobs_table.render }}
 </div>
+
+    <script type="text/javascript">
+        addHorizonLoadEvent(function () {
+            horizon.modals.addModalInitFunction(function (modal) {
+                hide_extra_fields();
+
+                 function hide_extra_fields() {
+                    for(i=2; i <= $("[name=extra_locations]").val(); i++) {
+                      $("[name=job_main_" + i + "]").closest(".control-group").hide();
+                      $("[name=job_lib_" + i + "]").closest(".control-group").hide();
+                    }
+                }
+            });
+        });
+
+        addExtraBinary = function (where_from) {
+          var loc_type = where_from.previousSibling.name.contains("main") ? "main" : "lib";
+          for(i=2; i <= $("[name=extra_locations]").val(); i++) {
+            if (!$("[name=job_" + loc_type + "_" + i + "]").closest(".control-group").is(":visible")) {
+                $("[name=job_" + loc_type + "_" + i + "]").closest(".control-group").show();
+                break;
+            }
+          }
+        };
+    </script>
+{% include "job_binaries/job_binaries_form_script.html" %}
 
 {% endblock %}

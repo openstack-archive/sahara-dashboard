@@ -69,8 +69,6 @@ class JobsTable(tables.DataTable):
     name = tables.Column("name",
                          verbose_name=_("Name"),
                          link=("horizon:savanna:jobs:details"))
-    type = tables.Column("type",
-                         verbose_name=_("Type"))
     description = tables.Column("description",
                                 verbose_name=_("Description"))
 
