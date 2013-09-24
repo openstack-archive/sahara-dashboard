@@ -1,3 +1,4 @@
+
 <script type="text/javascript">
     addHorizonLoadEvent(function () {
         horizon.modals.addModalInitFunction(function (modal) {
@@ -16,6 +17,8 @@
             var bin_url = $("[name=job_binary_url]").closest(".control-group");
             var username = $("[name=job_binary_username]").closest(".control-group");
             var password = $("[name=job_binary_password]").closest(".control-group");
+            var script_name = $("[name=job_binary_script_name]").closest(".control-group");
+            var script_text = $("[name=job_binary_script]").closest(".control-group");
             switch($(this).val()) {
               case "savanna-db":
                 label.html("savanna-db://");
@@ -24,6 +27,8 @@
                 bin_file.show();
                 bin_choice.show();
                 bin_url.hide();
+                script_name.hide();
+                script_text.hide();
                 break;
               case "swift-external":
                 username.hide();
@@ -32,6 +37,8 @@
                 bin_choice.hide();
                 bin_url.show()
                 label.html("swift-external://");
+                script_name.hide();
+                script_text.hide();
                 break;
               case "swift-internal":
                 username.show();
@@ -40,6 +47,8 @@
                 bin_choice.hide();
                 bin_url.show();
                 label.html("swift-internal://");
+                script_name.hide();
+                script_text.hide();
                 break;
             }
           });
@@ -49,12 +58,23 @@
             var bin_file = $("[name=job_binary_file]").closest(".control-group");
             var bin_choice = $("[name=job_binary_savanna_internal]").closest(".control-group");
             var bin_url = $("[name=job_binary_url]").closest(".control-group");
+            var script_name = $("[name=job_binary_script_name]").closest(".control-group");
+            var script_text = $("[name=job_binary_script]").closest(".control-group");
             switch($(this).val()) {
-              case "":
+              case "%%%NEWSCRIPT%%%":
+                bin_file.hide();
+                script_name.show();
+                script_text.show();
+                break;
+              case "%%%UPLOADFILE%%%":
                 bin_file.show();
+                script_name.hide();
+                script_text.hide();
                 break;
               default:
                 bin_file.hide();
+                script_name.hide();
+                script_text.hide();
                 break;
             }
           });
