@@ -15,6 +15,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import json
 import logging
 
 from django.utils.translation import ugettext as _
@@ -99,15 +100,25 @@ class GeneralConfigAction(workflows.Action):
 
 
 class JobConfigAction(workflows.Action):
-    config = forms.CharField(
-        label=_("Job Config"),
+    property_name = forms.ChoiceField(
         required=False,
-        widget=forms.Textarea())
+    )
+
+    conf_props = forms.CharField(
+        required=False,
+        widget=forms.HiddenInput())
 
     def __init__(self, request, *args, **kwargs):
         super(JobConfigAction, self).__init__(request, *args, **kwargs)
-        # TODO(croberts) pre-populate config with job-type
-        # appropriate config settings
+
+    def populate_property_name_choices(self, request, context):
+        client = savannaclient(request)
+        job_id = request.REQUEST.get("job_id") or request.REQUEST.get("job")
+        job_type = client.jobs.get(job_id).type
+        job_configs = client.jobs.get_configs(job_type).job_config
+        choices = [(param['value'], param['name'])
+                   for param in job_configs['configs']]
+        return choices
 
     class Meta:
         name = _("Configure")
@@ -127,11 +138,11 @@ class GeneralConfig(workflows.Step):
 
 class JobConfig(workflows.Step):
     action_class = JobConfigAction
+    template_name = 'jobs/config_template.html'
 
     def contribute(self, data, context):
-        for k, v in data.items():
-            context["job_" + k] = v
-
+        job_config = json.loads(data.get("conf_props", '{}'))
+        context["job_config"] = {"configs": job_config}
         return context
 
 
@@ -146,15 +157,11 @@ class LaunchJob(workflows.Workflow):
 
     def handle(self, request, context):
         savanna = savannaclient(request)
-        job_config = context.get("job_config")
-        if not job_config:
-            job_config = {}
         savanna.job_executions.create(
             context["general_job"],
             context["general_cluster"],
             context["general_job_input"],
             context["general_job_output"],
-            job_config)
+            context["job_config"])
 
-        print job_config
         return True
