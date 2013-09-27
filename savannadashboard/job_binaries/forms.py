@@ -45,6 +45,9 @@ class LabeledInput(widgets.Input):
 
 
 class JobBinaryCreateForm(forms.SelfHandlingForm):
+    NEW_SCRIPT = "%%%NEWSCRIPT%%%"
+    UPLOAD_BIN = "%%%UPLOADFILE%%%"
+
     job_binary_name = forms.CharField(label=_("Name"),
                                       required=True)
 
@@ -59,6 +62,13 @@ class JobBinaryCreateForm(forms.SelfHandlingForm):
 
     job_binary_file = forms.FileField(label=_("Upload File"),
                                       required=False)
+
+    job_binary_script_name = forms.CharField(label=_("Script name"),
+                                             required=False)
+
+    job_binary_script = forms.CharField(label=_("Script text"),
+                                        required=False,
+                                        widget=forms.Textarea())
 
     job_binary_username = forms.CharField(label=_("Username"),
                                           required=False)
@@ -89,7 +99,8 @@ class JobBinaryCreateForm(forms.SelfHandlingForm):
 
         choices = [(job_binary.id, job_binary.name)
                    for job_binary in job_binaries]
-        choices.insert(0, ('', 'Upload a new file'))
+        choices.insert(0, (self.NEW_SCRIPT, '*Create a script'))
+        choices.insert(0, (self.UPLOAD_BIN, '*Upload a new file'))
 
         return choices
 
@@ -125,15 +136,20 @@ class JobBinaryCreateForm(forms.SelfHandlingForm):
 
     def handle_savanna(self, request, context):
         savanna = savannaclient.Client(request)
-
+        result = ""
         bin_id = context["job_binary_savanna_internal"]
-        if(bin_id == ""):
+        if(bin_id == self.UPLOAD_BIN):
             result = savanna.job_binaries_internal.create(
                 self.get_unique_binary_name(
                     request, request.FILES["job_binary_file"].name),
                 request.FILES["job_binary_file"].read())
-            bin_id = result["job_binary_internal"]["id"]
+        elif(bin_id == self.NEW_SCRIPT):
+            result = savanna.job_binaries_internal.create(
+                self.get_unique_binary_name(
+                    request, context["job_binary_script_name"]),
+                context["job_binary_script"])
 
+        bin_id = result["resource"]["id"]
         return "savanna-db://%s" % bin_id
 
     def handle_swift_internal(self, request, context):
