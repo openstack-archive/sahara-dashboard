@@ -87,8 +87,7 @@ class JobBinaryCreateForm(forms.SelfHandlingForm):
 
         self.fields["job_binary_type"].choices =\
             [("savanna-db", "Savanna internal database"),
-             ("swift-internal", "Swift internal"),
-             ("swift-external", "Swift external")]
+             ("swift-internal", "Swift internal")]
 
         self.fields["job_binary_savanna_internal"].choices =\
             self.populate_job_binary_savanna_internal_choices(request)
@@ -112,7 +111,7 @@ class JobBinaryCreateForm(forms.SelfHandlingForm):
                                    context["job_binary_url"])
             if(context["job_binary_type"] == "savanna-db"):
                 bin_url = self.handle_savanna(request, context)
-            if(context["job_binary_type"] == "swift-internal"):
+            elif(context["job_binary_type"] == "swift-internal"):
                 extra = self.handle_swift_internal(request, context)
 
             savanna.job_binaries.create(
