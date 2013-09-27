@@ -21,8 +21,8 @@ import logging
 from django.utils.translation import ugettext as _
 from horizon import exceptions
 
-import savannadashboard.api.base as api_base
-from savannadashboard.api import client as savannaclient
+from savannadashboard.api.client import APIException
+from savannadashboard.api.client import client as savannaclient
 
 import savannadashboard.cluster_templates.workflows.create as clt_create_flow
 import savannadashboard.clusters.workflows.create as cl_create_flow
@@ -47,7 +47,7 @@ class ScaleCluster(cl_create_flow.ConfigureCluster,
     def __init__(self, request, context_seed, entry_point, *args, **kwargs):
         ScaleCluster._cls_registry = set([])
 
-        savanna = savannaclient.Client(request)
+        savanna = savannaclient(request)
 
         cluster_id = context_seed["cluster_id"]
         cluster = savanna.clusters.get(cluster_id)
@@ -110,7 +110,7 @@ class ScaleCluster(cl_create_flow.ConfigureCluster,
             return self.success_message
 
     def handle(self, request, context):
-        savanna = savannaclient.Client(request)
+        savanna = savannaclient(request)
         cluster_id = request.GET["cluster_id"]
         cluster = savanna.clusters.get(cluster_id)
 
@@ -153,7 +153,7 @@ class ScaleCluster(cl_create_flow.ConfigureCluster,
         try:
             savanna.clusters.scale(cluster_id, scale_object)
             return True
-        except api_base.APIException as e:
+        except APIException as e:
             self.error_description = str(e)
             return False
         except Exception:

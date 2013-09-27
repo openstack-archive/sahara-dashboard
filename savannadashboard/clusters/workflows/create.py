@@ -19,7 +19,6 @@ from horizon import exceptions
 from horizon import forms
 from horizon import workflows
 
-import savannadashboard.api.base as api_base
 from savannadashboard.utils import importutils
 from savannadashboard.utils import neutron_support
 import savannadashboard.utils.workflow_helpers as whelpers
@@ -34,7 +33,9 @@ nova = importutils.import_any('openstack_dashboard.api.nova',
 
 from django.utils.translation import ugettext as _
 
-from savannadashboard.api import client as savannaclient
+from savannadashboard.api.client import APIException
+from savannadashboard.api.client import client as savannaclient
+from savannadashboard.api.client import SAVANNA_USE_NEUTRON
 import savannadashboard.cluster_templates.workflows.create as t_flows
 
 import logging
@@ -91,7 +92,7 @@ class GeneralConfigAction(workflows.Action):
         plugin, hadoop_version = whelpers.\
             get_plugin_and_hadoop_version(request)
 
-        if savannaclient.SAVANNA_USE_NEUTRON:
+        if SAVANNA_USE_NEUTRON:
             self.fields["neutron_management_network"] = forms.ChoiceField(
                 label=_("Neutron Management Network"),
                 required=True,
@@ -109,7 +110,7 @@ class GeneralConfigAction(workflows.Action):
         )
 
     def populate_image_choices(self, request, context):
-        savanna = savannaclient.Client(request)
+        savanna = savannaclient(request)
         all_images = savanna.images.list()
 
         plugin, hadoop_version = whelpers.\
@@ -128,7 +129,7 @@ class GeneralConfigAction(workflows.Action):
         return keypair_list
 
     def populate_cluster_template_choices(self, request, context):
-        savanna = savannaclient.Client(request)
+        savanna = savannaclient(request)
         templates = savanna.cluster_templates.list()
 
         plugin, hadoop_version = whelpers.\
@@ -195,7 +196,7 @@ class ConfigureCluster(whelpers.StatusFormatMixin, workflows.Workflow):
 
     def handle(self, request, context):
         try:
-            savanna = savannaclient.Client(request)
+            savanna = savannaclient(request)
             #TODO(nkonovalov) Implement AJAX Node Groups
             node_groups = None
 
@@ -215,7 +216,7 @@ class ConfigureCluster(whelpers.StatusFormatMixin, workflows.Workflow):
                 user_keypair_id=user_keypair,
                 net_id=context.get("general_neutron_management_network", None))
             return True
-        except api_base.APIException as e:
+        except APIException as e:
             self.error_description = str(e)
             return False
         except Exception:

@@ -20,7 +20,7 @@ import logging
 from django.utils.translation import ugettext_lazy as _
 from horizon import tables
 
-from savannadashboard.api import client as savannaclient
+from savannadashboard.api.client import client as savannaclient
 
 
 LOG = logging.getLogger(__name__)
@@ -52,7 +52,7 @@ class DeleteCluster(tables.BatchAction):
     classes = ('btn-danger', 'btn-terminate')
 
     def action(self, request, obj_id):
-        savanna = savannaclient.Client(request)
+        savanna = savannaclient(request)
         savanna.clusters.delete(obj_id)
 
 
@@ -60,7 +60,7 @@ class UpdateRow(tables.Row):
     ajax = True
 
     def get_data(self, request, instance_id):
-        savanna = savannaclient.Client(request)
+        savanna = savannaclient(request)
         instance = savanna.clusters.get(instance_id)
         return instance
 

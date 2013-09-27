@@ -21,7 +21,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from horizon import tabs
 
-from savannadashboard.api import client as savannaclient
+from savannadashboard.api.client import client as savannaclient
 from savannadashboard.utils import importutils
 from savannadashboard.utils import workflow_helpers as helpers
 nova = importutils.import_any('openstack_dashboard.api.nova',
@@ -37,7 +37,7 @@ class GeneralTab(tabs.Tab):
 
     def get_context_data(self, request):
         template_id = self.tab_group.kwargs['template_id']
-        savanna = savannaclient.Client(request)
+        savanna = savannaclient(request)
         template = savanna.cluster_templates.get(template_id)
         return {"template": template}
 
@@ -49,7 +49,7 @@ class NodeGroupsTab(tabs.Tab):
 
     def get_context_data(self, request):
         template_id = self.tab_group.kwargs['template_id']
-        savanna = savannaclient.Client(request)
+        savanna = savannaclient(request)
         template = savanna.cluster_templates.get(template_id)
         for ng in template.node_groups:
             if not ng["flavor_id"]:

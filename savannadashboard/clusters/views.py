@@ -21,7 +21,7 @@ from horizon import tables
 from horizon import tabs
 from horizon import workflows
 
-from savannadashboard.api import client as savannaclient
+from savannadashboard.api.client import client as savannaclient
 
 from savannadashboard.clusters.tables import ClustersTable
 import savannadashboard.clusters.tabs as _tabs
@@ -36,7 +36,7 @@ class ClustersView(tables.DataTableView):
     template_name = 'clusters/clusters.html'
 
     def get_data(self):
-        savanna = savannaclient.Client(self.request)
+        savanna = savannaclient(self.request)
         clusters = savanna.clusters.list()
         return clusters
 
@@ -84,7 +84,7 @@ class ScaleClusterView(workflows.WorkflowView):
     def get_object(self, *args, **kwargs):
         if not hasattr(self, "_object"):
             template_id = self.kwargs['cluster_id']
-            savanna = savannaclient.Client(self.request)
+            savanna = savannaclient(self.request)
             template = savanna.cluster_templates.get(template_id)
             self._object = template
         return self._object

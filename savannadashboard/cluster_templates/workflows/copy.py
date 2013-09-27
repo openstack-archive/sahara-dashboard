@@ -19,7 +19,7 @@ import logging
 
 from django.utils.translation import ugettext as _
 
-from savannadashboard.api import client as savannaclient
+from savannadashboard.api.client import client as savannaclient
 import savannadashboard.cluster_templates.workflows.create as create_flow
 from savannadashboard.utils.workflow_helpers import build_node_group_fields
 
@@ -30,7 +30,7 @@ class CopyClusterTemplate(create_flow.ConfigureClusterTemplate):
     success_message = _("Cluster Template copy %s created")
 
     def __init__(self, request, context_seed, entry_point, *args, **kwargs):
-        savanna = savannaclient.Client(request)
+        savanna = savannaclient(request)
 
         template_id = context_seed["template_id"]
         template = savanna.cluster_templates.get(template_id)

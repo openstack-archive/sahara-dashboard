@@ -23,7 +23,7 @@ from django.utils.translation import ugettext as _
 from horizon import forms
 from horizon import workflows
 
-from savannadashboard.api import client as savannaclient
+from savannadashboard.api.client import client as savannaclient
 
 
 LOG = logging.getLogger(__name__)
@@ -42,7 +42,7 @@ class AdditionalLibsAction(workflows.Action):
         widget=forms.HiddenInput())
 
     def populate_lib_binaries_choices(self, request, context):
-        savanna = savannaclient.Client(request)
+        savanna = savannaclient(request)
         job_binaries = savanna.job_binaries.list()
 
         choices = [(job_binary.id, job_binary.name)
@@ -80,7 +80,7 @@ class GeneralConfigAction(workflows.Action):
         return choices
 
     def populate_main_binary_choices(self, request, context):
-        savanna = savannaclient.Client(request)
+        savanna = savannaclient(request)
         job_binaries = savanna.job_binaries.list()
 
         choices = [(job_binary.id, job_binary.name)
@@ -119,7 +119,7 @@ class CreateJob(workflows.Workflow):
     default_steps = (GeneralConfig, ConfigureLibs)
 
     def handle(self, request, context):
-        savanna = savannaclient.Client(request)
+        savanna = savannaclient(request)
         main_locations = []
         lib_locations = []
 

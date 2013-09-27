@@ -20,7 +20,7 @@ import logging
 from horizon import tables
 from horizon import tabs
 
-from savannadashboard.api import client as savannaclient
+from savannadashboard.api.client import client as savannaclient
 
 from savannadashboard.job_executions.tables import JobExecutionsTable
 import savannadashboard.job_executions.tabs as _tabs
@@ -33,7 +33,7 @@ class JobExecutionsView(tables.DataTableView):
     template_name = 'job_executions/job_executions.html'
 
     def get_data(self):
-        savanna = savannaclient.Client(self.request)
+        savanna = savannaclient(self.request)
         jobs = savanna.job_executions.list()
         return jobs
 

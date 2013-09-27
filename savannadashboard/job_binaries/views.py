@@ -23,7 +23,7 @@ from horizon import forms
 from horizon import tables
 from horizon import tabs
 
-from savannadashboard.api import client as savannaclient
+from savannadashboard.api.client import client as savannaclient
 
 import savannadashboard.job_binaries.forms as job_binary_forms
 from savannadashboard.job_binaries.tables import JobBinariesTable
@@ -38,7 +38,7 @@ class JobBinariesView(tables.DataTableView):
     template_name = 'job_binaries/job_binaries.html'
 
     def get_data(self):
-        savanna = savannaclient.Client(self.request)
+        savanna = savannaclient(self.request)
         job_binaries = savanna.job_binaries.list()
         return job_binaries
 

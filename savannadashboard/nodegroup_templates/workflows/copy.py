@@ -19,7 +19,7 @@ import logging
 
 from django.utils.translation import ugettext as _
 
-from savannadashboard.api import client as savannaclient
+from savannadashboard.api.client import client as savannaclient
 import savannadashboard.nodegroup_templates.workflows.create as create_flow
 
 LOG = logging.getLogger(__name__)
@@ -29,7 +29,7 @@ class CopyNodegroupTemplate(create_flow.ConfigureNodegroupTemplate):
     success_message = _("Node Group Template copy %s created")
 
     def __init__(self, request, context_seed, entry_point, *args, **kwargs):
-        savanna = savannaclient.Client(request)
+        savanna = savannaclient(request)
 
         template_id = context_seed["template_id"]
         template = savanna.node_group_templates.get(template_id)

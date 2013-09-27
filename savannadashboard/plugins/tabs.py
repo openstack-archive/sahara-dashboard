@@ -20,7 +20,7 @@ from django.utils.translation import ugettext_lazy as _
 import logging
 
 from horizon import tabs
-from savannadashboard.api import client as savannaclient
+from savannadashboard.api.client import client as savannaclient
 
 LOG = logging.getLogger(__name__)
 
@@ -32,7 +32,7 @@ class DetailsTab(tabs.Tab):
 
     def get_context_data(self, request):
         plugin_id = self.tab_group.kwargs['plugin_id']
-        savanna = savannaclient.Client(request)
+        savanna = savannaclient(request)
         plugin = savanna.plugins.get(plugin_id)
         return {"plugin": plugin}
 

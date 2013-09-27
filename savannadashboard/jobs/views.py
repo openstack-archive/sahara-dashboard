@@ -21,7 +21,7 @@ from horizon import tables
 from horizon import tabs
 from horizon import workflows
 
-from savannadashboard.api import client as savannaclient
+from savannadashboard.api.client import client as savannaclient
 
 import savannadashboard.jobs.tables as _tables
 import savannadashboard.jobs.tabs as _tabs
@@ -36,7 +36,7 @@ class JobsView(tables.DataTableView):
     template_name = 'jobs/jobs.html'
 
     def get_data(self):
-        savanna = savannaclient.Client(self.request)
+        savanna = savannaclient(self.request)
         jobs = savanna.jobs.list()
         return jobs
 

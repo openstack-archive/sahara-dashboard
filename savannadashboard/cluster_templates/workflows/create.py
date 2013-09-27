@@ -24,9 +24,8 @@ from horizon import exceptions
 from horizon import forms
 from horizon import workflows
 
-import savannadashboard.api.api_objects as api_objects
-import savannadashboard.api.base as api_base
-from savannadashboard.api import client as savannaclient
+from savannadashboard.api.client import APIException
+from savannadashboard.api.client import client as savannaclient
 from savannadashboard.api import helpers as helpers
 from savannadashboard.utils import anti_affinity as aa
 import savannadashboard.utils.workflow_helpers as whelpers
@@ -42,7 +41,7 @@ class SelectPluginAction(workflows.Action):
     def __init__(self, request, *args, **kwargs):
         super(SelectPluginAction, self).__init__(request, *args, **kwargs)
 
-        savanna = savannaclient.Client(request)
+        savanna = savannaclient(request)
         plugins = savanna.plugins.list()
         plugin_choices = [(plugin.name, plugin.title) for plugin in plugins]
 
@@ -165,7 +164,7 @@ class ConfigureNodegroupsAction(workflows.Action):
         super(ConfigureNodegroupsAction, self). \
             __init__(request, *args, **kwargs)
 
-        savanna = savannaclient.Client(request)
+        savanna = savannaclient(request)
 
         plugin, hadoop_version = whelpers.\
             get_plugin_and_hadoop_version(request)
@@ -230,7 +229,7 @@ class ConfigureClusterTemplate(whelpers.ServiceParametersWorkflow,
     def __init__(self, request, context_seed, entry_point, *args, **kwargs):
         ConfigureClusterTemplate._cls_registry = set([])
 
-        savanna = savannaclient.Client(request)
+        savanna = savannaclient(request)
         hlps = helpers.Helpers(savanna)
 
         plugin, hadoop_version = whelpers.\
@@ -266,7 +265,7 @@ class ConfigureClusterTemplate(whelpers.ServiceParametersWorkflow,
 
     def handle(self, request, context):
         try:
-            savanna = savannaclient.Client(request)
+            savanna = savannaclient(request)
             node_groups = []
             configs_dict = whelpers.parse_configs_from_context(context,
                                                                self.defaults)
@@ -276,9 +275,10 @@ class ConfigureClusterTemplate(whelpers.ServiceParametersWorkflow,
                 name = context['ng_group_name_' + str(id)]
                 template_id = context['ng_template_id_' + str(id)]
                 count = context['ng_count_' + str(id)]
-                ng = api_objects.NodeGroup(name,
-                                           template_id,
-                                           count=count)
+
+                ng = {"name": name,
+                      "node_group_template_id": template_id,
+                      "count": count}
                 node_groups.append(ng)
 
             plugin, hadoop_version = whelpers.\
@@ -294,7 +294,7 @@ class ConfigureClusterTemplate(whelpers.ServiceParametersWorkflow,
                 node_groups,
                 context["anti_affinity_info"])
             return True
-        except api_base.APIException as e:
+        except APIException as e:
             self.error_description = str(e)
             return False
         except Exception:

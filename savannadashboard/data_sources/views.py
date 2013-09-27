@@ -21,7 +21,7 @@ from horizon import tables
 from horizon import tabs
 from horizon import workflows
 
-from savannadashboard.api import client as savannaclient
+from savannadashboard.api.client import client as savannaclient
 
 from savannadashboard.data_sources.tables import DataSourcesTable
 import savannadashboard.data_sources.tabs as _tabs
@@ -35,7 +35,7 @@ class DataSourcesView(tables.DataTableView):
     template_name = 'data_sources/data_sources.html'
 
     def get_data(self):
-        savanna = savannaclient.Client(self.request)
+        savanna = savannaclient(self.request)
         data_sources = savanna.data_sources.list()
         return data_sources
 

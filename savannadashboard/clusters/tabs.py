@@ -35,7 +35,7 @@ glance = importutils.import_any('openstack_dashboard.api.glance',
                                 'horizon.api.glance')
 
 
-from savannadashboard.api import client as savannaclient
+from savannadashboard.api.client import client as savannaclient
 
 LOG = logging.getLogger(__name__)
 
@@ -47,7 +47,7 @@ class GeneralTab(tabs.Tab):
 
     def get_context_data(self, request):
         cluster_id = self.tab_group.kwargs['cluster_id']
-        savanna = savannaclient.Client(request)
+        savanna = savannaclient(request)
         cluster = savanna.clusters.get(cluster_id)
 
         for info_key, info_val in cluster.info.items():
@@ -89,7 +89,7 @@ class NodeGroupsTab(tabs.Tab):
 
     def get_context_data(self, request):
         cluster_id = self.tab_group.kwargs['cluster_id']
-        savanna = savannaclient.Client(request)
+        savanna = savannaclient(request)
         cluster = savanna.clusters.get(cluster_id)
         for ng in cluster.node_groups:
             if not ng["flavor_id"]:
@@ -137,7 +137,7 @@ class InstancesTab(tabs.TableTab):
 
     def get_cluster_instances_data(self):
         cluster_id = self.tab_group.kwargs['cluster_id']
-        savanna = savannaclient.Client(self.request)
+        savanna = savannaclient(self.request)
         cluster = savanna.clusters.get(cluster_id)
 
         instances = []

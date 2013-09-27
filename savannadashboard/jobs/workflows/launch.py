@@ -22,7 +22,7 @@ from django.utils.translation import ugettext as _
 from horizon import forms
 from horizon import workflows
 
-from savannadashboard.api import client as savannaclient
+from savannadashboard.api.client import client as savannaclient
 
 LOG = logging.getLogger(__name__)
 
@@ -60,7 +60,7 @@ class GeneralConfigAction(workflows.Action):
                 initial=request.REQUEST.get("job_id", None))
 
     def populate_cluster_choices(self, request, context):
-        savanna = savannaclient.Client(request)
+        savanna = savannaclient(request)
         clusters = savanna.clusters.list()
 
         choices = [(cluster.id, cluster.name)
@@ -75,7 +75,7 @@ class GeneralConfigAction(workflows.Action):
         return self.get_data_source_choices(request, context)
 
     def get_data_source_choices(self, request, context):
-        savanna = savannaclient.Client(request)
+        savanna = savannaclient(request)
         data_sources = savanna.data_sources.list()
 
         choices = [(data_source.id, data_source.name)
@@ -84,7 +84,7 @@ class GeneralConfigAction(workflows.Action):
         return choices
 
     def populate_job_choices(self, request):
-        savanna = savannaclient.Client(request)
+        savanna = savannaclient(request)
         jobs = savanna.jobs.list()
 
         choices = [(job.id, job.name)
@@ -145,7 +145,7 @@ class LaunchJob(workflows.Workflow):
     default_steps = (GeneralConfig, JobConfig)
 
     def handle(self, request, context):
-        savanna = savannaclient.Client(request)
+        savanna = savannaclient(request)
         job_config = context.get("job_config")
         if not job_config:
             job_config = {}

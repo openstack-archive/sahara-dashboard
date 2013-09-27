@@ -22,7 +22,7 @@ from django.core.urlresolvers import reverse_lazy
 from horizon import forms
 from horizon import tables
 
-from savannadashboard.api import client as savannaclient
+from savannadashboard.api.client import client as savannaclient
 from savannadashboard.image_registry.forms import EditTagsForm
 from savannadashboard.image_registry.forms import RegisterImageForm
 from savannadashboard.image_registry.tables import ImageRegistryTable
@@ -36,13 +36,13 @@ class ImageRegistryView(tables.DataTableView):
     template_name = 'image_registry/image_registry.html'
 
     def get_data(self):
-        savanna = savannaclient.Client(self.request)
+        savanna = savannaclient(self.request)
 
         return savanna.images.list()
 
 
 def update_context_with_plugin_tags(request, context):
-        savanna = savannaclient.Client(request)
+        savanna = savannaclient(request)
         plugins = savanna.plugins.list()
 
         plugins_object = dict()
@@ -72,7 +72,7 @@ class EditTagsView(forms.ModalFormView):
         return context
 
     def get_object(self):
-        savanna = savannaclient.Client(self.request)
+        savanna = savannaclient(self.request)
         return savanna.images.get(self.kwargs["image_id"])
 
     def get_initial(self):

@@ -23,7 +23,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from horizon import tables
 
-from savannadashboard.api import client as savannaclient
+from savannadashboard.api.client import client as savannaclient
 
 LOG = logging.getLogger(__name__)
 
@@ -44,7 +44,7 @@ class DeleteJob(tables.BatchAction):
     classes = ('btn-danger', 'btn-terminate')
 
     def action(self, request, obj_id):
-        savanna = savannaclient.Client(request)
+        savanna = savannaclient(request)
         savanna.jobs.delete(obj_id)
 
 

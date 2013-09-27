@@ -26,8 +26,8 @@ from django.utils.translation import ugettext as _
 from horizon import forms
 from horizon import messages
 
-import savannadashboard.api.base as api_base
-from savannadashboard.api import client as savannaclient
+from savannadashboard.api.client import APIException
+from savannadashboard.api.client import client as savannaclient
 
 import uuid
 
@@ -93,8 +93,8 @@ class JobBinaryCreateForm(forms.SelfHandlingForm):
             self.populate_job_binary_savanna_internal_choices(request)
 
     def populate_job_binary_savanna_internal_choices(self, request):
-        savanna = savannaclient.Client(request)
-        job_binaries = savanna.job_binaries_internal.list()
+        savanna = savannaclient(request)
+        job_binaries = savanna.job_binary_internals.list()
 
         choices = [(job_binary.id, job_binary.name)
                    for job_binary in job_binaries]
@@ -105,7 +105,7 @@ class JobBinaryCreateForm(forms.SelfHandlingForm):
 
     def handle(self, request, context):
         try:
-            savanna = savannaclient.Client(request)
+            savanna = savannaclient(request)
             extra = {}
             bin_url = "%s://%s" % (context["job_binary_type"],
                                    context["job_binary_url"])
@@ -121,7 +121,7 @@ class JobBinaryCreateForm(forms.SelfHandlingForm):
                 extra)
             messages.success(request, "Successfully created job binary")
             return True
-        except api_base.APIException as e:
+        except APIException as e:
             messages.error(request, str(e))
             return False
         except Exception as e:
@@ -134,21 +134,22 @@ class JobBinaryCreateForm(forms.SelfHandlingForm):
             ("job_binaries/_create_job_binary_help.html")
 
     def handle_savanna(self, request, context):
-        savanna = savannaclient.Client(request)
         result = ""
+        savanna = savannaclient(request)
+
         bin_id = context["job_binary_savanna_internal"]
         if(bin_id == self.UPLOAD_BIN):
-            result = savanna.job_binaries_internal.create(
+            result = savanna.job_binary_internals.create(
                 self.get_unique_binary_name(
                     request, request.FILES["job_binary_file"].name),
                 request.FILES["job_binary_file"].read())
         elif(bin_id == self.NEW_SCRIPT):
-            result = savanna.job_binaries_internal.create(
+            result = savanna.job_binary_internals.create(
                 self.get_unique_binary_name(
                     request, context["job_binary_script_name"]),
                 context["job_binary_script"])
 
-        bin_id = result["resource"]["id"]
+        bin_id = result.id
         return "savanna-db://%s" % bin_id
 
     def handle_swift_internal(self, request, context):
@@ -162,8 +163,8 @@ class JobBinaryCreateForm(forms.SelfHandlingForm):
         return extra
 
     def get_unique_binary_name(self, request, base_name):
-        savanna = savannaclient.Client(request)
-        internals = savanna.job_binaries_internal.list()
+        savanna = savannaclient(request)
+        internals = savanna.job_binary_internals.list()
         names = [internal.name for internal in internals]
         if base_name in names:
             return "%s_%s" % (base_name, uuid.uuid1())

@@ -21,7 +21,7 @@ from django.utils.translation import ugettext as _
 
 from horizon import forms
 
-from savannadashboard.api import client as savannaclient
+from savannadashboard.api.client import client as savannaclient
 import savannadashboard.utils.workflow_helpers as whelpers
 
 
@@ -38,7 +38,7 @@ def anti_affinity_field():
 
 
 def populate_anti_affinity_choices(self, request, context):
-    savanna = savannaclient.Client(request)
+    savanna = savannaclient(request)
     plugin, version = whelpers.get_plugin_and_hadoop_version(request)
 
     version_details = savanna.plugins.get_version_details(plugin, version)

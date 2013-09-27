@@ -21,7 +21,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from horizon import tabs
 
-from savannadashboard.api import client as savannaclient
+from savannadashboard.api.client import client as savannaclient
 
 LOG = logging.getLogger(__name__)
 
@@ -33,7 +33,7 @@ class GeneralTab(tabs.Tab):
 
     def get_context_data(self, request):
         job_execution_id = self.tab_group.kwargs['job_execution_id']
-        savanna = savannaclient.Client(request)
+        savanna = savannaclient(request)
         job_execution = savanna.job_executions.get(job_execution_id)
         return {"job_execution": job_execution}
 

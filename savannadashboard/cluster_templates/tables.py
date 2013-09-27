@@ -24,7 +24,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from horizon import tables
 
-from savannadashboard.api import client as savannaclient
+from savannadashboard.api.client import client as savannaclient
 
 LOG = logging.getLogger(__name__)
 
@@ -78,7 +78,7 @@ class DeleteTemplate(tables.BatchAction):
         return True
 
     def action(self, request, template_id):
-        savanna = savannaclient.Client(request)
+        savanna = savannaclient(request)
         savanna.cluster_templates.delete(template_id)
 
 

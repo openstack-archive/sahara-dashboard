@@ -22,7 +22,7 @@ from django.utils.translation import ugettext as _
 from horizon import forms
 from horizon import workflows
 
-from savannadashboard.api import client as savannaclient
+from savannadashboard.api.client import client as savannaclient
 
 LOG = logging.getLogger(__name__)
 
@@ -80,7 +80,7 @@ class CreateDataSource(workflows.Workflow):
     default_steps = (GeneralConfig, )
 
     def handle(self, request, context):
-        savanna = savannaclient.Client(request)
+        savanna = savannaclient(request)
         savanna.data_sources.create(
             context["general_data_source_name"],
             context["general_data_source_description"],

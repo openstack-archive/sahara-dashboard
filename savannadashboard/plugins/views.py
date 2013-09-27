@@ -20,7 +20,7 @@ from horizon import tables
 from horizon import tabs
 import logging
 
-from savannadashboard.api import client as savannaclient
+from savannadashboard.api.client import client as savannaclient
 from savannadashboard.plugins.tables import PluginsTable
 from savannadashboard.plugins.tabs import PluginDetailsTabs
 
@@ -32,7 +32,7 @@ class PluginsView(tables.DataTableView):
     template_name = 'plugins/plugins.html'
 
     def get_data(self):
-        savanna = savannaclient.Client(self.request)
+        savanna = savannaclient(self.request)
         return savanna.plugins.list()
 
 
