@@ -15,6 +15,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import json
 import logging
 
 from django.utils.translation import ugettext as _
@@ -24,68 +25,87 @@ from horizon import workflows
 
 from savannadashboard.api import client as savannaclient
 
+
 LOG = logging.getLogger(__name__)
 
 
-class GeneralConfigAction(workflows.Action):
-    job_name = forms.CharField(label=_("Job Name"),
-                               required=True)
+class AdditionalLibsAction(workflows.Action):
 
-    job_type = forms.ChoiceField(
-        label=_("Job Type"),
-        required=True,
-        choices=[("Pig", "Pig"), ("Hive", "Hive"),
-                 ("Oozie", "Oozie"), ("Jar", "Jar"),
-                 ("StreamingAPI", "Streaming API")],
-        widget=forms.Select(attrs={"class": "job_type_choice"}))
+    lib_binaries = forms.ChoiceField(label=_("Choose libraries"),
+                                     required=False,
+                                     help_text=_("Choose the binary which "
+                                                 "should be used in this "
+                                                 "Job."))
 
-    job_input_type = forms.ChoiceField(
-        label=_("Input Type"),
-        required=True,
-        choices=[("swift", "Swift")],
-        widget=forms.Select(attrs={"class": "job_input_type_choice"}))
+    lib_ids = forms.CharField(
+        required=False,
+        widget=forms.HiddenInput())
 
-    job_output_type = forms.ChoiceField(
-        label=_("Output Type"),
-        required=True,
-        choices=[("swift", "Swift")],
-        widget=forms.Select(attrs={"class": "job_output_type_choice"}))
-
-    job_origin = forms.ChoiceField(
-        label=_("Job Origin"),
-        required=True,
-        initial=(None, "None"),
-        widget=forms.Select(attrs={"class": "job_origin_choice"}))
-
-    job_description = forms.CharField(label=_("Job Description"),
-                                      required=False,
-                                      widget=forms.Textarea)
-
-    def __init__(self, request, *args, **kwargs):
-        super(GeneralConfigAction, self).__init__(request, *args, **kwargs)
-
-    def populate_job_origin_choices(self, request, context):
+    def populate_lib_binaries_choices(self, request, context):
         savanna = savannaclient.Client(request)
-        job_origins = savanna.job_origins.list()
+        job_binaries = savanna.job_binaries.list()
 
-        choices = [(job_origin.id, job_origin.name)
-                   for job_origin in job_origins]
+        choices = [(job_binary.id, job_binary.name)
+                   for job_binary in job_binaries]
+        choices.insert(0, ('', '-- not selected --'))
 
         return choices
 
     class Meta:
+        name = _("Libs")
+
+
+class GeneralConfigAction(workflows.Action):
+
+    job_name = forms.CharField(label=_("Name"),
+                               required=True)
+
+    job_type = forms.ChoiceField(label=_("Job Type"),
+                                 required=True)
+
+    job_description = forms.CharField(label=_("Description"),
+                                      required=False,
+                                      widget=forms.Textarea)
+
+    main_binary = forms.ChoiceField(label=_("Choose or create a main binary"),
+                                    required=False,
+                                    help_text=_("Choose the binary which "
+                                                "should be used in this "
+                                                "Job."))
+
+    def populate_job_type_choices(self, request, context):
+        choices = [("Pig", "Pig"), ("Hive", "Hive"),
+                   ("Oozie", "Oozie"), ("Jar", "Jar"),
+                   ("StreamingAPI", "Streaming API")]
+        return choices
+
+    def populate_main_binary_choices(self, request, context):
+        savanna = savannaclient.Client(request)
+        job_binaries = savanna.job_binaries.list()
+
+        choices = [(job_binary.id, job_binary.name)
+                   for job_binary in job_binaries]
+        choices.insert(0, ('', '-- not selected --'))
+        return choices
+
+    class Meta:
         name = _("Create Job")
-        help_text_template = \
-            ("jobs/_create_job_help.html")
+        help_text_template = "jobs/_create_job_help.html"
 
 
 class GeneralConfig(workflows.Step):
     action_class = GeneralConfigAction
+    contributes = ("job_name", "job_type", "job_description", "main_binary")
+
+
+class ConfigureLibs(workflows.Step):
+    action_class = AdditionalLibsAction
+    template_name = "jobs/library_template.html"
 
     def contribute(self, data, context):
-        for k, v in data.items():
-            context["general_" + k] = v
-
+        chosen_libs = json.loads(data.get("lib_ids", '[]'))
+        for k in xrange(len(chosen_libs)):
+            context["lib_" + str(k)] = chosen_libs[k]
         return context
 
 
@@ -96,15 +116,22 @@ class CreateJob(workflows.Workflow):
     success_message = _("Job created")
     failure_message = _("Could not create job")
     success_url = "horizon:savanna:jobs:index"
-    default_steps = (GeneralConfig, )
+    default_steps = (GeneralConfig, ConfigureLibs)
 
     def handle(self, request, context):
         savanna = savannaclient.Client(request)
+        main_locations = []
+        lib_locations = []
+
+        for k in context.keys():
+            if k.startswith('lib_'):
+                lib_locations.append(context.get(k))
+
+        main_locations.append(context["main_binary"])
         savanna.jobs.create(
-            context["general_job_name"],
-            context["general_job_description"],
-            context["general_job_type"],
-            context["general_job_input_type"],
-            context["general_job_output_type"],
-            context["general_job_origin"])
+            context["job_name"],
+            context["job_type"],
+            main_locations,
+            lib_locations,
+            context["job_description"])
         return True

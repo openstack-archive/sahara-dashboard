@@ -33,7 +33,6 @@ class SavannaDashboard(horizon.Dashboard):
               'nodegroup_templates',
               'job_executions',
               'jobs',
-              'job_origins',
               'job_binaries',
               'data_sources',
               'image_registry',
