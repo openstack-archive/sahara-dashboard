@@ -21,7 +21,9 @@ from django.utils.translation import ugettext_lazy as _
 
 from horizon import tables
 
+import savannadashboard.api.base as api_base
 from savannadashboard.api import client as savannaclient
+
 
 LOG = logging.getLogger(__name__)
 
@@ -43,6 +45,16 @@ class DeleteJobBinary(tables.BatchAction):
 
     def action(self, request, obj_id):
         savanna = savannaclient.Client(request)
+        jb = savanna.job_binaries.get(obj_id)
+        (jb_type, jb_internal_id) = jb.url.split("://")
+        if jb_type == "savanna-db":
+            try:
+                savanna.job_binaries_internal.delete(jb_internal_id)
+            except api_base.APIException:
+                # nothing to do for job-binary-internal if
+                # it does not exist.
+                pass
+
         savanna.job_binaries.delete(obj_id)
 
 
