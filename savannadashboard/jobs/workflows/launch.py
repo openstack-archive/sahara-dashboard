@@ -149,7 +149,7 @@ class LaunchJob(workflows.Workflow):
         job_config = context.get("job_config")
         if not job_config:
             job_config = {}
-        savanna.jobs.launch(
+        savanna.job_executions.create(
             context["general_job"],
             context["general_cluster"],
             context["general_job_input"],
