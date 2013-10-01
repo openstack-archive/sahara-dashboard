@@ -14,7 +14,6 @@
 # limitations under the License.
 
 import nose.plugins.attrib
-import pyvirtualdisplay
 from selenium import webdriver
 import selenium.webdriver.common.by as by
 import testtools
@@ -40,8 +39,6 @@ class UITestCase(unittest2.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.display = pyvirtualdisplay.Display(visible=0, size=(1024, 768))
-        cls.display.start()
         cls.driver = webdriver.Firefox()
         cls.driver.get(cfg.common.base_url + "/")
         cls.find_clear_send(by.By.ID, "id_username", cfg.common.user)
@@ -516,4 +513,3 @@ class UITestCase(unittest2.TestCase):
     @classmethod
     def tearDownClass(cls):
         cls.driver.quit()
-        cls.display.stop()
