@@ -32,10 +32,7 @@ LOG = logging.getLogger(__name__)
 class AdditionalLibsAction(workflows.Action):
 
     lib_binaries = forms.ChoiceField(label=_("Choose libraries"),
-                                     required=False,
-                                     help_text=_("Choose the binary which "
-                                                 "should be used in this "
-                                                 "Job."))
+                                     required=False)
 
     lib_ids = forms.CharField(
         required=False,
@@ -53,6 +50,7 @@ class AdditionalLibsAction(workflows.Action):
 
     class Meta:
         name = _("Libs")
+        help_text_template = "jobs/_create_job_libs_help.html"
 
 
 class GeneralConfigAction(workflows.Action):
@@ -63,20 +61,19 @@ class GeneralConfigAction(workflows.Action):
     job_type = forms.ChoiceField(label=_("Job Type"),
                                  required=True)
 
-    job_description = forms.CharField(label=_("Description"),
-                                      required=False,
-                                      widget=forms.Textarea)
-
     main_binary = forms.ChoiceField(label=_("Choose or create a main binary"),
                                     required=False,
                                     help_text=_("Choose the binary which "
                                                 "should be used in this "
                                                 "Job."))
 
+    job_description = forms.CharField(label=_("Description"),
+                                      required=False,
+                                      widget=forms.Textarea)
+
     def populate_job_type_choices(self, request, context):
         choices = [("Pig", "Pig"), ("Hive", "Hive"),
-                   ("Oozie", "Oozie"), ("Jar", "Jar"),
-                   ("StreamingAPI", "Streaming API")]
+                   ("Jar", "Jar")]
         return choices
 
     def populate_main_binary_choices(self, request, context):
