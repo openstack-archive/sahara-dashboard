@@ -17,6 +17,10 @@
 
 import logging
 
+from django.forms.util import flatatt
+from django.forms import widgets
+
+from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext as _
 
 from horizon import forms
@@ -25,6 +29,16 @@ from horizon import workflows
 from savannadashboard.api.client import client as savannaclient
 
 LOG = logging.getLogger(__name__)
+
+
+class LabeledInput(widgets.Input):
+    def render(self, name, values, attrs=None):
+        final_attrs = self.build_attrs(attrs, type=self.input_type, name=name)
+        output = "<span id='%s'>%s</span>%s" %\
+            ("id_%s_label" % name,
+             "swift://",
+             ('<input%s />' % flatatt(final_attrs)))
+        return mark_safe(output)
 
 
 class GeneralConfigAction(workflows.Action):
@@ -38,13 +52,14 @@ class GeneralConfigAction(workflows.Action):
         widget=forms.Select(attrs={"class": "data_source_type_choice"}))
 
     data_source_url = forms.CharField(label=_("URL"),
-                                      required=True)
+                                      required=True,
+                                      widget=LabeledInput())
 
-    data_source_credential_user = forms.CharField(label=_("Origin username"),)
+    data_source_credential_user = forms.CharField(label=_("Source username"),)
 
     data_source_credential_pass = forms.CharField(
         widget=forms.PasswordInput(attrs={'autocomplete': 'off'}),
-        label=_("Origin password"))
+        label=_("Source password"))
 
     data_source_description = forms.CharField(
         label=_("Description"),
@@ -67,6 +82,10 @@ class GeneralConfig(workflows.Step):
         for k, v in data.items():
             context["general_" + k] = v
 
+        context["source_url"] = "%s://%s" % \
+            (context["general_data_source_type"],
+             context["general_data_source_url"])
+
         return context
 
 
@@ -85,7 +104,7 @@ class CreateDataSource(workflows.Workflow):
             context["general_data_source_name"],
             context["general_data_source_description"],
             context["general_data_source_type"],
-            context["general_data_source_url"],
+            context["source_url"],
             context["general_data_source_credential_user"],
             context["general_data_source_credential_pass"])
         return True
