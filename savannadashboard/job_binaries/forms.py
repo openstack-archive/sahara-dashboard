@@ -20,6 +20,9 @@ import logging
 from django.forms.util import flatatt
 from django.forms import widgets
 
+from django import template
+from django.template.defaultfilters import linebreaks, safe
+from django.utils.encoding import force_unicode
 from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext as _
 
@@ -85,6 +88,8 @@ class JobBinaryCreateForm(forms.SelfHandlingForm):
     def __init__(self, request, *args, **kwargs):
         super(JobBinaryCreateForm, self).__init__(request, *args, **kwargs)
 
+        self.help_text_template = "job_binaries/_create_job_binary_help.html"
+
         self.fields["job_binary_type"].choices =\
             [("savanna-db", "Savanna internal database"),
              ("swift-internal", "Swift internal")]
@@ -127,6 +132,17 @@ class JobBinaryCreateForm(forms.SelfHandlingForm):
         except Exception as e:
             messages.error(request, str(e))
             return False
+
+    def get_help_text(self, extra_context=None):
+        text = ""
+        extra_context = extra_context or {}
+        if self.help_text_template:
+            tmpl = template.loader.get_template(self.help_text_template)
+            context = template.RequestContext(self.request, extra_context)
+            text += tmpl.render(context)
+        else:
+            text += linebreaks(force_unicode(self.help_text))
+        return safe(text)
 
     class Meta:
         name = _("Create Job Binary")

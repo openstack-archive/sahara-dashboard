@@ -78,14 +78,18 @@
 
 </script>
 
-{% include "horizon/common/_form_fields.html" %}
-
-<input type="hidden" value="[]" name="lib_ids" id="lib_ids">
-<div class="input">
+<div class="lib-input-div">
+  {% include "horizon/common/_form_fields.html" %}
+  <div class="input">
     <a id="add_lib_button" class="btn disabled btn-inline" onclick="add_lib();">Choose</a>
+  </div>
 </div>
+<div class="form-help-block">
+  {{ step.get_help_text }}
+</div>
+<input type="hidden" value="[]" name="lib_ids" id="lib_ids">
 <br/>
-<div id="libs">
+<div id="libs" class="job-libs-display">
     <table>
         <thead>
         <tr>
