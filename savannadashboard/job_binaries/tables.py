@@ -49,7 +49,7 @@ class DeleteJobBinary(tables.BatchAction):
         (jb_type, jb_internal_id) = jb.url.split("://")
         if jb_type == "savanna-db":
             try:
-                savanna.job_binaries_internal.delete(jb_internal_id)
+                savanna.job_binary_internals.delete(jb_internal_id)
             except APIException:
                 # nothing to do for job-binary-internal if
                 # it does not exist.
