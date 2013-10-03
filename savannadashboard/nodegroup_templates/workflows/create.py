@@ -101,11 +101,15 @@ class GeneralConfigAction(workflows.Action):
             pools.append((None, "Do not assign floating IPs"))
 
             pools_list = network.floating_ip_pools_list(request)
+            first_pool_id = None
             for pool in pools_list:
+                if not first_pool_id:
+                    first_pool_id = pool.id
                 pools.append((pool.id, pool.name))
             self.fields['floating_ip_pool'] = forms.ChoiceField(
                 label=_("Floationg IP pool"),
                 choices=pools,
+                initial=first_pool_id,
                 required=False)
 
         self.fields["processes"] = forms.MultipleChoiceField(
