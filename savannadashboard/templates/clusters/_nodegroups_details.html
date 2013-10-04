@@ -1,4 +1,8 @@
 {% load i18n sizeformat %}
+
+{% load url from future %}
+
+
 <h3>{% trans "Node Groups" %}</h3>
 <div class="status row-fluid detail">
     {% for node_group in cluster.node_groups %}
@@ -12,7 +16,7 @@
 
             <dt>{% trans "Template" %}</dt>
             {% if node_group.node_group_template_id %}
-                <dd><a href="/savanna/nodegroup_templates/{{ node_group.node_group_template_id }}">{{ node_group.node_group_template.name }} </a></dd>
+                <dd><a href="{% url 'horizon:savanna:nodegroup_templates:details' node_group.node_group_template_id %}">{{ node_group.node_group_template.name }} </a></dd>
             {% else %}
                 <dd>{% trans "Template not specified" %}</dd>
             {% endif %}
