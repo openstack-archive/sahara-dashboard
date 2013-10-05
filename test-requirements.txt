@@ -10,6 +10,6 @@ nose
 openstack.nose_plugin>=0.7
 pylint==0.25.2
 unittest2
-selenium==2.33.0
+selenium
 testtools>=0.9.32
-oslo.config>=1.1.0
+oslo.config>=1.2.0
