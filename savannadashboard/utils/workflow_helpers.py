@@ -117,7 +117,7 @@ def build_node_group_fields(action, name, template, count):
     action.fields[count] = forms.IntegerField(
         label=_("Count"),
         required=True,
-        min_value=1,
+        min_value=0,
         widget=forms.HiddenInput())
 
 

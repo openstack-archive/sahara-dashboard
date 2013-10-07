@@ -124,6 +124,7 @@
     {% endfor %}
 
      var handlers_registred;
+     var lower_limit = 1;
      $(function() {
          if (!handlers_registred) {
              handlers_registred = true;
@@ -135,7 +136,7 @@
             $(".dec-btn").live("click", function(e) {
                 var id = $(this).attr("data-count-id");
                 var val = parseInt($("#" + id).val());
-                if (val > 1) {
+                if (val > lower_limit) {
                     $("#" + id).val(val - 1);
                 }
                 $(".count-field").change();
@@ -144,7 +145,7 @@
 
          $(".count-field").live("change", function() {
              var val = $(this).val();
-             if (val > 1) {
+             if (val > lower_limit) {
                  $(this).parent("div").find(".dec-btn").removeClass("disabled");
              } else {
                  $(this).parent("div").find(".dec-btn").addClass("disabled");

@@ -24,6 +24,9 @@
             $(".hidden_nodegroups_field").val("");
             $(".hidden_configure_field").val("");
 
+            lower_limit = 0;
+            $(".count-field").change();
+
             if ($(modal).find(".hidden_create_field").length > 0) {
                 var form = $(".hidden_create_field").closest("form");
                 var successful = false;
