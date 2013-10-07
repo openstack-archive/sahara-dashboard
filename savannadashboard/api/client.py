@@ -19,6 +19,7 @@ import logging
 
 from horizon import exceptions
 
+from savannaclient.api.base import APIException
 from savannaclient.api.client import Client
 from savannadashboard.utils import importutils
 
@@ -54,10 +55,6 @@ SAVANNA_USE_NEUTRON = get_horizon_parameter('SAVANNA_USE_NEUTRON', False)
 
 AUTO_ASSIGNMENT_ENABLED = get_horizon_parameter('AUTO_ASSIGNMENT_ENABLED',
                                                 True)
-
-
-class APIException(exceptions.HorizonException):
-    pass
 
 
 exceptions.RECOVERABLE += (APIException,)
