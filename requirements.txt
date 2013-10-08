@@ -1,4 +1,4 @@
 pbr>=0.5.21,<1.0
 
--f http://tarballs.openstack.org/python-savannaclient/python-savannaclient-0.3.rc1.tar.gz#egg=python-savannaclient-0.3-rc1
-python-savannaclient>=0.3-rc1
+-f http://tarballs.openstack.org/python-savannaclient/python-savannaclient-0.3.rc2.tar.gz#egg=python-savannaclient-0.3-rc2
+python-savannaclient>=0.3-rc2
