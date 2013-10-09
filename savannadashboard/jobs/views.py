@@ -14,7 +14,9 @@
 # implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+import json
 
+from django.http import HttpResponse
 import logging
 
 from horizon import tables
@@ -65,6 +67,16 @@ class LaunchJobView(workflows.WorkflowView):
     success_url = "horizon:savanna:jobs"
     classes = ("ajax-modal")
     template_name = "jobs/launch.html"
+
+    def get(self, request, *args, **kwargs):
+        if request.is_ajax():
+            if request.REQUEST.get("json", None):
+                job_id = request.REQUEST.get("job_id")
+                savanna = savannaclient(request)
+                job_type = savanna.jobs.get(job_id).type
+                return HttpResponse(json.dumps({"job_type": job_type}),
+                                    mimetype='application/json')
+        return super(LaunchJobView, self).get(request, args, kwargs)
 
     def get_context_data(self, **kwargs):
         context = super(LaunchJobView, self).get_context_data(**kwargs)

@@ -1,80 +1,28 @@
-<script>
-    var template = '<tr id_attr="$id">' +
-            '<div class="input control-group">' +
-            '<td>' +
-            '<input style="display: inline" field="key" list="properties" placeholder="Select property name" onkeyup="trySetValue(this)" onchange="trySetValue(this)" onclick="trySetValue(this)"/></td>' +
-            '<td>' +
-            '<input style="display: inline; margin-left:10px; margin-right:10px" field="value" class="input-medium" onkeyup="set_props()" onchange="set_props()" onclick="set_props()" /></td>' +
-            '<td>' +
-            '<input style="display: inline; margin-top:-10px" type="button" class="btn btn-danger" id="delete_btn_$id" data-toggle="dropdown" onclick="delete_prop(this)" value="Remove"/></td></div>' +
-            '</tr>';
-
-    function get_next_id() {
-        var max = -1;
-        $("#props tbody tr").each(function () {
-            max = Math.max(max, parseInt($(this).attr("id_attr")));
-        });
-        return max + 1;
-    }
-
-    function set_props() {
-        var props = {};
-        var i = 0;
-        $("#props tbody tr").each(function () {
-            var key = $(this).find("td input[field=key]").val();
-            props[key] = $(this).find("td input[field=value]").val();
-        });
-        $("#conf_props").val(JSON.stringify(props));
-    }
-
-    function add_prop(id) {
-        $("#props table").show();
-        var tmp = template.
-                replace(/\$id/g, id);
-        $("#props tbody").append(tmp);
-        set_props();
-    }
-    function delete_prop(el) {
-        var tr = $(el).parents("tr")[0];
-        tr.parentNode.removeChild(tr);
-        var id = get_next_id();
-        if (id == 0) {
-            $("#props table").hide();
-        }
-        set_props();
-    }
-
-    function trySetValue(el) {
-        var prop_id = $(el).parent().parent().attr("id_attr");
-        if (properties[$(el).val()] != "undefined") {
-            $("#props").find("tbody tr[id_attr='" + prop_id + "']")
-                    .find("td input[field=value]").val(properties[$(el).val()])
-        }
-        set_props();
-    }
-
-    properties = {};
-    $("label[for=id_property_name]").hide()
-    $("#id_property_name").hide().find("option")
-            .each(function () {
-                properties[$(this).text()] = $(this).val()
-            });
-    $.each(properties, function (key, value) {
-        $("#properties")
-                .append($("<option></option>")
-                        .attr("value", key)
-                        .text(value))
-    });
-    $("#props table").hide();
+<script id="configs_template" type="text/template">
+    <tr id_attr="$id">
+        <div class="input control-group">
+            <td><input style="display: inline" field="key" list="properties" placeholder="Select property name"
+                       onkeyup="trySetValue(this)" onchange="trySetValue(this)" onclick="trySetValue(this)"/></td>
+            <td><input style="display: inline; margin-left:10px; margin-right:10px" field="value" class="input-medium"
+                       onkeyup="set_props()" onchange="set_props()" onclick="set_props()"/></td>
+            <td><input style="display: inline; margin-top:-10px" type="button" class="btn btn-danger"
+                       onclick="delete_prop(this)" value="Remove"/></td>
+        </div>
+    </tr>
 </script>
-
-{% include "horizon/common/_form_fields.html" %}
-
-<input type="hidden" value="{}" name="conf_props" id="conf_props">
-
-<datalist id="properties"></datalist>
-
-<div id="props">
+<script id="args_template" type="text/template">
+    <tr id_attr="$id">
+        <div class="input control-group">
+            <td><input style="display: inline" field="key"
+                       onkeyup="set_props()" onchange="set_props()" onclick="set_props()"/></td>
+            <td><input style="display: inline; margin-left:10px; margin-right:10px" field="value" class="input-medium"
+                       onkeyup="set_props()" onchange="set_props()" onclick="set_props()"/></td>
+            <td><input style="display: inline; margin-top:-10px" type="button" class="btn btn-danger"
+                       onclick="delete_prop(this)" value="Remove"/></td>
+        </div>
+    </tr>
+</script>
+<script id="table_template" type="text/template">
     <table>
         <thead>
         <tr>
@@ -86,6 +34,119 @@
         </tbody>
     </table>
     <div class="input">
-        <a id="add_prop_btn" class="btn btn-inline" onclick="add_prop(get_next_id());">Add</a>
+        <a class="btn btn-inline" onclick="add_prop('$target');">Add</a>
+    </div>
+</script>
+<script>
+    function get_next_id(target) {
+        var max = -1;
+        $("#" + target + " tbody tr").each(function () {
+            max = Math.max(max, parseInt($(this).attr("id_attr")));
+        });
+        return max + 1;
+    }
+
+    function set_props() {
+        $(targets).each(function (index, target) {
+            var configs = {};
+            $("#" + target + " tbody tr").each(function () {
+                var key = $(this).find("td input[field=key]").val();
+                configs[key] = $(this).find("td input[field=value]").val();
+            });
+            $("#job_" + target).val(JSON.stringify(configs));
+        });
+    }
+
+    function add_prop(target) {
+        $("#" + target + " table").show();
+        var id = get_next_id(target);
+        var tmpl_from = target == "params" ? "args" : target;
+        var template = $("#" + tmpl_from + "_template").text()
+                .replace(/\$id/g, id);
+        $("#" + target + " tbody").append(template);
+        set_props();
+    }
+    function delete_prop(el) {
+        var tr = $(el).parents("tr")[0];
+        var target = $(tr).parent().parent().parent().attr("id");
+        tr.parentNode.removeChild(tr);
+        var id = get_next_id(target);
+        if (id == 0) {
+            $("#" + target + " table").hide();
+        }
+        set_props();
+    }
+
+    function trySetValue(el) {
+        var prop_id = $(el).parent().parent().attr("id_attr");
+        if (properties[$(el).val()] != "undefined") {
+            $("#configs").find("tbody tr[id_attr='" + prop_id + "']")
+                    .find("td input[field=value]").val(properties[$(el).val()])
+        }
+        set_props();
+    }
+
+    function get_targets(job_type) {
+        var res = ["configs"];
+        if ($.inArray(job_type, ["Hive", "Pig"]) != -1) {
+            res.push("params");
+            if (job_type == "Pig") {
+                res.push("args");
+            }
+        }
+        return res;
+    }
+
+    properties = {};
+    $("label[for=id_property_name]").hide();
+    $("#id_property_name").hide().find("option")
+            .each(function () {
+                properties[$(this).text()] = $(this).val()
+            });
+    $.each(properties, function (key, value) {
+        $("#properties")
+                .append($("<option></option>")
+                        .attr("value", key)
+                        .text(value))
+    });
+    $("#job_cfg").children().hide();
+
+    var targets;
+
+    $.ajax({
+        url: "launch-job",
+        data: {"job_id": $("#id_job").val(),
+            "json": true },
+        success: function (data, textStatus, jqXHR) {
+            var job_type = data["job_type"];
+            targets = get_targets(job_type);
+        },
+        complete: function (jqXHR, textStatus) {
+            $(targets).each(function (index, target) {
+                $("#" + target).show().append($("#table_template").text()
+                        .replace(/\$target/g, target));
+            });
+            $("#job_cfg table").hide();
+        }
+    });
+</script>
+
+{% include "horizon/common/_form_fields.html" %}
+
+<input type="hidden" value="{}" name="job_configs" id="job_configs">
+<input type="hidden" value="{}" name="job_args" id="job_args">
+<input type="hidden" value="{}" name="job_params" id="job_params">
+
+<datalist id="properties"></datalist>
+
+<div id="job_cfg">
+    <div id="configs">
+        <label>Configuration</label>
+    </div>
+    <div id="params">
+        <label>Parameters</label>
+    </div>
+    <div id="args">
+        <label>Arguments</label>
     </div>
 </div>
