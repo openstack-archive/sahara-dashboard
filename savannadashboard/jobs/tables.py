@@ -32,7 +32,7 @@ class CreateJob(tables.LinkAction):
     name = "create job"
     verbose_name = _("Create Job")
     url = "horizon:savanna:jobs:create-job"
-    classes = ("btn-launch", "ajax-modal")
+    classes = ("btn-launch", "ajax-modal", "create_job_class")
 
 
 class DeleteJob(tables.BatchAction):
@@ -48,14 +48,48 @@ class DeleteJob(tables.BatchAction):
         savanna.jobs.delete(obj_id)
 
 
-class LaunchJob(tables.LinkAction):
-    name = "launch-job"
-    verbose_name = _("Launch Job")
+class LaunchJobExistingCluster(tables.LinkAction):
+    name = "launch-job-existing"
+    verbose_name = _("Launch On Existing Cluster")
     action_present = _("Launch")
     action_past = _("Launched")
     data_type_singular = _("Job")
     data_type_plural = _("Jobs")
     url = "horizon:savanna:jobs:launch-job"
+    classes = ('ajax-modal', 'btn-launch')
+
+    def get_link_url(self, datum):
+        base_url = urlresolvers.reverse(self.url)
+
+        params = http.urlencode({"job_id": datum.id})
+        return "?".join([base_url, params])
+
+
+class LaunchJobNewCluster(tables.LinkAction):
+    name = "launch-job-new"
+    verbose_name = _("Launch On Tran. Cluster")
+    action_present = _("Launch")
+    action_past = _("Launched")
+    data_type_singular = _("Job")
+    data_type_plural = _("Jobs")
+    url = "horizon:savanna:jobs:launch-job-new-cluster"
+    classes = ('ajax-modal', 'btn-launch')
+
+    def get_link_url(self, datum):
+        base_url = urlresolvers.reverse(self.url)
+
+        params = http.urlencode({"job_id": datum.id})
+        return "?".join([base_url, params])
+
+
+class ChoosePlugin(tables.LinkAction):
+    name = "launch-job-new"
+    verbose_name = _("Launch On Tran. Cluster")
+    action_present = _("Launch")
+    action_past = _("Launched")
+    data_type_singular = _("Job")
+    data_type_plural = _("Jobs")
+    url = "horizon:savanna:jobs:choose-plugin"
     classes = ('ajax-modal', 'btn-launch')
 
     def get_link_url(self, datum):
@@ -77,4 +111,4 @@ class JobsTable(tables.DataTable):
         verbose_name = _("Jobs")
         table_actions = (CreateJob,
                          DeleteJob)
-        row_actions = (LaunchJob, DeleteJob,)
+        row_actions = (ChoosePlugin, LaunchJobExistingCluster, DeleteJob,)
