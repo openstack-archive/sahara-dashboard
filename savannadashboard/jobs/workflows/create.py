@@ -61,7 +61,7 @@ class GeneralConfigAction(workflows.Action):
     job_type = forms.ChoiceField(label=_("Job Type"),
                                  required=True)
 
-    main_binary = forms.ChoiceField(label=_("Choose or create a main binary"),
+    main_binary = forms.ChoiceField(label=_("Choose a main binary"),
                                     required=False,
                                     help_text=_("Choose the binary which "
                                                 "should be used in this "
@@ -124,7 +124,9 @@ class CreateJob(workflows.Workflow):
             if k.startswith('lib_'):
                 lib_locations.append(context.get(k))
 
-        main_locations.append(context["main_binary"])
+        if context.get("main_binary", None):
+            main_locations.append(context["main_binary"])
+
         savanna.jobs.create(
             context["job_name"],
             context["job_type"],
