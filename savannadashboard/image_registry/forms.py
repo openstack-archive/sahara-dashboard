@@ -88,29 +88,38 @@ class RegisterImageForm(ImageForm):
             choices.insert(0, ("", _("No images available.")))
         self.fields['image_id'].choices = choices
 
-    def get_images(self, request):
-        public = {"is_public": True,
-                  "status": "active"}
+    def _get_images(self, request, filter):
         try:
-            imgs = glance.image_list_detailed(request, filters=public)
-            public_images, _more = imgs
+            images, _more = glance.image_list_detailed(request, filters=filter)
         except Exception:
-            public_images = []
+            images = []
             exceptions.handle(request,
-                              _("Unable to retrieve public images."))
-        self._public_images = public_images
+                              _("Unable to retrieve images with filter %s.") %
+                              filter)
+        return images
+
+    def _get_public_images(self, request):
+        filter = {"is_public": True,
+                  "status": "active"}
+        return self._get_images(request, filter)
+
+    def _get_tenant_images(self, request):
+        filter = {"owner": request.user.tenant_id,
+                  "status": "active"}
+        return self._get_images(request, filter)
 
     def _get_available_images(self, request):
 
-        if not hasattr(self, "_public_images"):
-            self.get_images(request)
+        images = self._get_tenant_images(request)
+        if request.user.is_superuser:
+            images += self._get_public_images(request)
 
         final_images = []
 
         savanna = savannaclient(request)
         image_ids = [img.id for img in savanna.images.list()]
 
-        for image in self._public_images:
+        for image in images:
             if image.id not in image_ids:
                 image_ids.append(image.id)
                 final_images.append(image)
