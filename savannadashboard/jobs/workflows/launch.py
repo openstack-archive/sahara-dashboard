@@ -104,7 +104,15 @@ class JobConfigAction(workflows.Action):
         required=False,
     )
 
-    conf_props = forms.CharField(
+    job_configs = forms.CharField(
+        required=False,
+        widget=forms.HiddenInput())
+
+    job_params = forms.CharField(
+        required=False,
+        widget=forms.HiddenInput())
+
+    job_args = forms.CharField(
         required=False,
         widget=forms.HiddenInput())
 
@@ -141,8 +149,12 @@ class JobConfig(workflows.Step):
     template_name = 'jobs/config_template.html'
 
     def contribute(self, data, context):
-        job_config = json.loads(data.get("conf_props", '{}'))
-        context["job_config"] = {"configs": job_config}
+        job_config = json.loads(data.get("job_configs", '{}'))
+        job_params = json.loads(data.get("job_params", '{}'))
+        job_args = json.loads(data.get("job_args", '{}'))
+        context["job_config"] = {"configs": job_config,
+                                 "params": job_params,
+                                 "args": job_args}
         return context
 
 
