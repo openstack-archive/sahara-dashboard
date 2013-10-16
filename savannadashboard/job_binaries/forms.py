@@ -54,7 +54,7 @@ class JobBinaryCreateForm(forms.SelfHandlingForm):
     job_binary_name = forms.CharField(label=_("Name"),
                                       required=True)
 
-    job_binary_type = forms.ChoiceField(label=_("Type"),
+    job_binary_type = forms.ChoiceField(label=_("Storage type"),
                                         required=True)
 
     job_binary_url = forms.CharField(label=_("URL"),
