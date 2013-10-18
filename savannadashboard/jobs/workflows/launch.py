@@ -24,17 +24,25 @@ from horizon import forms
 from horizon import workflows
 
 from savannadashboard.api.client import client as savannaclient
+import savannadashboard.cluster_templates.workflows.create as t_flows
+import savannadashboard.clusters.workflows.create as c_flow
+import savannadashboard.utils.workflow_helpers as whelpers
+
 
 LOG = logging.getLogger(__name__)
 
 
-class GeneralConfigAction(workflows.Action):
-    cluster = forms.ChoiceField(
-        label=_("Cluster"),
-        required=True,
-        initial=(None, "None"),
-        widget=forms.Select(attrs={"class": "cluster_choice"}))
+class SelectPluginAction(t_flows.SelectPluginAction):
+    class Meta:
+        name = _("Select plugin and hadoop version for cluster")
+        help_text_template = ("clusters/_create_general_help.html")
 
+
+class SelectPlugin(t_flows.SelectPlugin):
+    pass
+
+
+class JobExecutionGeneralConfigAction(workflows.Action):
     job_input = forms.ChoiceField(
         label=_("Input"),
         required=True,
@@ -48,7 +56,8 @@ class GeneralConfigAction(workflows.Action):
         widget=forms.Select(attrs={"class": "job_output_choice"}))
 
     def __init__(self, request, *args, **kwargs):
-        super(GeneralConfigAction, self).__init__(request, *args, **kwargs)
+        super(JobExecutionGeneralConfigAction, self). \
+            __init__(request, *args, **kwargs)
 
         if request.REQUEST.get("job_id", None) is None:
             self.fields["job"] = forms.ChoiceField(
@@ -59,15 +68,6 @@ class GeneralConfigAction(workflows.Action):
             self.fields["job"] = forms.CharField(
                 widget=forms.HiddenInput(),
                 initial=request.REQUEST.get("job_id", None))
-
-    def populate_cluster_choices(self, request, context):
-        savanna = savannaclient(request)
-        clusters = savanna.clusters.list()
-
-        choices = [(cluster.id, cluster.name)
-                   for cluster in clusters]
-
-        return choices
 
     def populate_job_input_choices(self, request, context):
         return self.get_data_source_choices(request, context)
@@ -90,6 +90,28 @@ class GeneralConfigAction(workflows.Action):
 
         choices = [(job.id, job.name)
                    for job in jobs]
+
+        return choices
+
+    class Meta:
+        name = _("Job")
+        help_text_template = \
+            ("jobs/_launch_job_help.html")
+
+
+class JobExecutionExistingGeneralConfigAction(JobExecutionGeneralConfigAction):
+    cluster = forms.ChoiceField(
+        label=_("Cluster"),
+        required=True,
+        initial=(None, "None"),
+        widget=forms.Select(attrs={"class": "cluster_choice"}))
+
+    def populate_cluster_choices(self, request, context):
+        savanna = savannaclient(request)
+        clusters = savanna.clusters.list()
+
+        choices = [(cluster.id, cluster.name)
+                   for cluster in clusters]
 
         return choices
 
@@ -134,12 +156,22 @@ class JobConfigAction(workflows.Action):
             ("jobs/_launch_job_configure_help.html")
 
 
-class GeneralConfig(workflows.Step):
-    action_class = GeneralConfigAction
+class JobExecutionGeneralConfig(workflows.Step):
+    action_class = JobExecutionGeneralConfigAction
 
     def contribute(self, data, context):
         for k, v in data.items():
-            context["general_" + k] = v
+            context["job_general_" + k] = v
+
+        return context
+
+
+class JobExecutionExistingGeneralConfig(workflows.Step):
+    action_class = JobExecutionExistingGeneralConfigAction
+
+    def contribute(self, data, context):
+        for k, v in data.items():
+            context["job_general_" + k] = v
 
         return context
 
@@ -158,6 +190,17 @@ class JobConfig(workflows.Step):
         return context
 
 
+class ClusterGeneralConfig(workflows.Step):
+    action_class = c_flow.GeneralConfigAction
+    contributes = ("hidden_configure_field", )
+
+    def contribute(self, data, context):
+        for k, v in data.items():
+            context["cluster_general_" + k] = v
+
+        return context
+
+
 class LaunchJob(workflows.Workflow):
     slug = "launch_job"
     name = _("Launch Job")
@@ -165,15 +208,87 @@ class LaunchJob(workflows.Workflow):
     success_message = _("Job launched")
     failure_message = _("Could not launch job")
     success_url = "horizon:savanna:jobs:index"
-    default_steps = (GeneralConfig, JobConfig)
+    default_steps = (JobExecutionExistingGeneralConfig, JobConfig)
 
     def handle(self, request, context):
         savanna = savannaclient(request)
         savanna.job_executions.create(
-            context["general_job"],
-            context["general_cluster"],
-            context["general_job_input"],
-            context["general_job_output"],
+            context["job_general_job"],
+            context["job_general_cluster"],
+            context["job_general_job_input"],
+            context["job_general_job_output"],
+            context["job_config"])
+
+        return True
+
+
+class SelectHadoopPluginAction(t_flows.SelectPluginAction):
+    def __init__(self, request, *args, **kwargs):
+        super(SelectHadoopPluginAction, self).\
+            __init__(request, *args, **kwargs)
+        self.fields["job_id"] = forms.ChoiceField(
+            label=_("Plugin name"),
+            required=True,
+            initial=request.GET["job_id"],
+            widget=forms.HiddenInput(attrs={"class": "hidden_create_field"}))
+
+    class Meta:
+        name = _("Select plugin and hadoop version for cluster")
+        help_text_template = ("cluster_templates/_create_general_help.html")
+
+
+class SelectHadoopPlugin(workflows.Step):
+    action_class = SelectHadoopPluginAction
+
+
+class ChosePluginVersion(workflows.Workflow):
+    slug = "lunch_job"
+    name = _("Launch Job")
+    finalize_button_name = _("Create")
+    success_message = _("Created")
+    failure_message = _("Could not create")
+    success_url = "horizon:savanna:cluster_templates:index"
+    default_steps = (SelectHadoopPlugin,)
+
+
+class LaunchJobNewCluster(workflows.Workflow):
+    slug = "launch_job"
+    name = _("Launch Job")
+    finalize_button_name = _("Launch")
+    success_message = _("Job launched")
+    failure_message = _("Could not launch job")
+    success_url = "horizon:savanna:jobs:index"
+    default_steps = (ClusterGeneralConfig,
+                     JobExecutionGeneralConfig,
+                     JobConfig)
+
+    def handle(self, request, context):
+        savanna = savannaclient(request)
+        node_groups = None
+
+        plugin, hadoop_version = whelpers. \
+            get_plugin_and_hadoop_version(request)
+
+        ct_id = context["cluster_general_cluster_template"] or None
+        user_keypair = context["cluster_general_keypair"] or None
+
+        cluster = savanna.clusters.create(
+            context["cluster_general_cluster_name"],
+            plugin, hadoop_version,
+            cluster_template_id=ct_id,
+            default_image_id=context["cluster_general_image"],
+            description=context["cluster_general_description"],
+            node_groups=node_groups,
+            user_keypair_id=user_keypair,
+            is_transient=True,
+            net_id=context.get("cluster_general_neutron_management_network",
+                               None))
+
+        savanna.job_executions.create(
+            context["job_general_job"],
+            cluster.id,
+            context["job_general_job_input"],
+            context["job_general_job_output"],
             context["job_config"])
 
         return True

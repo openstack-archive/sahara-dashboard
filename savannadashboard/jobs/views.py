@@ -81,3 +81,26 @@ class LaunchJobView(workflows.WorkflowView):
     def get_context_data(self, **kwargs):
         context = super(LaunchJobView, self).get_context_data(**kwargs)
         return context
+
+
+class LaunchJobNewClusterView(workflows.WorkflowView):
+    workflow_class = launch_flow.LaunchJobNewCluster
+    success_url = "horizon:savanna:jobs"
+    classes = ("ajax-modal")
+    template_name = "jobs/launch.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(LaunchJobNewClusterView, self).\
+            get_context_data(**kwargs)
+        return context
+
+
+class ChoosePluginView(workflows.WorkflowView):
+    workflow_class = launch_flow.ChosePluginVersion
+    success_url = "horizon:savanna:jobs"
+    classes = ("ajax-modal")
+    template_name = "jobs/launch.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(ChoosePluginView, self).get_context_data(**kwargs)
+        return context
