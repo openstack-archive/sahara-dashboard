@@ -207,7 +207,7 @@ class LaunchJob(workflows.Workflow):
     finalize_button_name = _("Launch")
     success_message = _("Job launched")
     failure_message = _("Could not launch job")
-    success_url = "horizon:savanna:jobs:index"
+    success_url = "horizon:savanna:job_executions:index"
     default_steps = (JobExecutionExistingGeneralConfig, JobConfig)
 
     def handle(self, request, context):
