@@ -29,7 +29,7 @@
     <dl>
         <dt>{% trans "Template" %}</dt>
         {% if cluster_template %}
-            <dd><a href="{% url 'horizon:savanna:cluster_templates' cluster_template.id %}">{{ cluster_template.name }} </a></dd>
+            <dd><a href="{% url 'horizon:savanna:cluster_templates:details' cluster_template.id %}">{{ cluster_template.name }} </a></dd>
         {% else %}
             <dd>{% trans "Template not specified" %}</dd>
         {% endif %}
