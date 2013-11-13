@@ -13,7 +13,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import random
+import string
 import testtools
+import traceback
 
 from savannadashboard.tests import base
 import savannadashboard.tests.configs.config as cfg
@@ -21,12 +24,20 @@ import savannadashboard.tests.configs.config as cfg
 
 class UICreateCluster(base.UITestCase):
 
-    @base.attr('cluster', 'vanilla', speed='slow')
+    @base.attr(tags=['cluster', 'vanilla'], speed='slow')
     @testtools.skipIf(cfg.vanilla.skip_plugin_tests,
                       'tests for vanilla plugin skipped')
     def test_create_vanilla_cluster(self):
+
         try:
-            self.create_node_group_template('selenium-master', ["NN", "JT"],
+            processes = ["NN", "JT"]
+            await_run = False
+
+            if not cfg.vanilla.skip_edp_test:
+                processes = ["NN", "JT", "OZ"]
+                await_run = True
+
+            self.create_node_group_template('selenium-master', processes,
                                             cfg.vanilla,
                                             storage={'type': 'Cinder Volume',
                                                      "volume_per_node": 1,
@@ -41,7 +52,7 @@ class UICreateCluster(base.UITestCase):
                                             cfg.vanilla)
             self.create_cluster_template("selenium-cl-tmpl",
                                          {'selenium-master': 1,
-                                          'selenium-worker': 2}, cfg.vanilla,
+                                          'selenium-worker': 1}, cfg.vanilla,
                                          anti_affinity_groups=["NN",
                                                                "DN", "TT"])
             self.create_cluster_template("selenium-cl-tmpl2",
@@ -50,8 +61,10 @@ class UICreateCluster(base.UITestCase):
                                          cfg.vanilla,
                                          anti_affinity_groups=
                                          ["NN", "DN", "TT", "JT"])
-            self.create_cluster('selenium-cl', 'selenium-cl-tmpl', 'vrovachev',
-                                cfg.vanilla, await_run=False)
+            self.create_cluster('selenium-cl', 'selenium-cl-tmpl',
+                                cfg.vanilla, await_run=await_run)
+            if not cfg.vanilla.skip_edp_test:
+                self.edp_helper()
             self.delete_node_group_templates(["selenium-master",
                                               "selenium-worker",
                                               "selenium-del1",
@@ -68,8 +81,90 @@ class UICreateCluster(base.UITestCase):
                                              undelete_names=[
                                                  "selenium-master",
                                                  "selenium-worker"])
+
+        except Exception as e:
+            traceback.print_exc()
+            raise e
         finally:
-            self.delete_clusters(['selenium-cl'])
-            self.delete_cluster_templates(['selenium-cl-tmpl'])
-            self.delete_node_group_templates(["selenium-master",
-                                              "selenium-worker"])
+            try:
+                self.delete_clusters(['selenium-cl'], finally_delete=True)
+            except Exception:
+                pass
+
+            try:
+                self.delete_cluster_templates(['selenium-cl-tmpl',
+                                               'selenium-cl-tmpl2'],
+                                              finally_delete=True)
+            except Exception:
+                pass
+            try:
+                self.delete_node_group_templates(["selenium-master",
+                                                  "selenium-worker",
+                                                  "selenium-del1",
+                                                  "selenium-del2"],
+                                                 finally_delete=True)
+            except Exception:
+                pass
+
+    def edp_helper(self):
+
+        try:
+
+            swift = self.connect_to_swift()
+            swift.put_container('selenium-container')
+            swift.put_object(
+                'selenium-container', 'input', ''.join(random.choice(
+                    ':' + ' ' + '\n' + string.ascii_lowercase)
+                    for x in range(10000)))
+
+            self.create_data_source(
+                'input', 'selenium-container.savanna/input')
+            self.create_data_source(
+                'output', 'selenium-container.savanna/output')
+
+            parameters_of_storage = {
+                'storage_type': 'Savanna internal database',
+                'Savanna binary': '*Upload a new file',
+                'filename': 'edp-lib.jar'}
+
+            self.create_job_binary('edp-lib.jar', parameters_of_storage)
+
+            parameters_of_storage = {
+                'storage_type': 'Savanna internal database',
+                'Savanna binary': '*Create a script',
+                'script_name': 'edp-job.pig',
+                'script_text': open('tests/resources/edp-job.pig').read()}
+
+            self.create_job_binary('edp-job.pig', parameters_of_storage)
+
+            self.create_job(
+                'selenium-job', 'Pig', 'edp-job.pig', ['edp-lib.jar'])
+            self.launch_job_on_existing_cluster(
+                'selenium-job', 'input', 'output', 'selenium-cl')
+
+        except Exception as e:
+            raise e
+
+        finally:
+            try:
+                self.delete_swift_container(swift, 'selenium-container')
+            except Exception:
+                pass
+            try:
+                self.delete_all_job_executions()
+            except Exception:
+                pass
+            try:
+                self.delete_jobs(['selenium-job'], finally_delete=True)
+            except Exception:
+                pass
+            try:
+                self.delete_job_binaries(['edp-lib.jar', 'edp-job.pig'],
+                                         finally_delete=True)
+            except Exception:
+                pass
+            try:
+                self.delete_data_sources(['input', 'output'],
+                                         finally_delete=True)
+            except Exception:
+                pass

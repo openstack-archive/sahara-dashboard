@@ -8,6 +8,7 @@ coverage>=3.6
 mock>=1.0
 nose
 openstack.nose_plugin>=0.7
+python-swiftclient>=1.5
 pylint==0.25.2
 unittest2
 selenium

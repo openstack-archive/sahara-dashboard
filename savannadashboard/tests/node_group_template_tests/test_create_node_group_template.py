@@ -21,7 +21,7 @@ import savannadashboard.tests.configs.config as cfg
 
 class UICreateNodeGroupTemplate(base.UITestCase):
 
-    @base.attr('node_group_template', 'vanilla')
+    @base.attr(tags=['node_group_template', 'vanilla'])
     @testtools.skipIf(cfg.vanilla.skip_plugin_tests,
                       'tests for vanilla plugin skipped')
     def test_create_node_group_template_vanilla(self):
@@ -44,7 +44,7 @@ class UICreateNodeGroupTemplate(base.UITestCase):
                                         message=msg)
         self.delete_node_group_templates(['selenium-vanilla'])
 
-    @base.attr('node_group_template', 'hdp')
+    @base.attr(tags=['node_group_template', 'hdp'])
     @testtools.skipIf(cfg.hdp.skip_plugin_tests,
                       'tests for hdp plugin skipped')
     def test_create_node_group_template_hdp(self):

@@ -21,7 +21,7 @@ import savannadashboard.tests.configs.config as cfg
 
 class UINegativeCreateClusterTemplateTest(base.UITestCase):
 
-    @base.attr(tags='cluster_template')
+    @base.attr(tags=['cluster_template', 'vanilla'])
     @testtools.skip
     @testtools.skipIf(cfg.vanilla.skip_plugin_tests,
                       'tests for vanilla plugin skipped')

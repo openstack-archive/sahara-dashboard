@@ -28,18 +28,42 @@ CommonGroup = [
     cfg.StrOpt('password',
                default='pass',
                help="password for keystone user"),
+    cfg.StrOpt('keypair',
+               default='public-jenkins',
+               help='keypair for create cluster'),
+    cfg.StrOpt('tenant',
+               default='admin',
+               help='keystone tenant'),
+    cfg.StrOpt('flavor',
+               default='m1.minniemouse',
+               help='OpenStack flavor name for image.'),
+    cfg.StrOpt('neutron_management_network',
+               default=None,
+               help='Private network for quantum.'
+                    'Must be specified in create cluster tab'),
+    cfg.StrOpt('floationg_ip_pool',
+               default=None,
+               help='Public network for quantum.'
+                    'Must be specified in create nodegroup template tab'),
+    cfg.StrOpt('keystone_url',
+               default='http://127.0.0.1:5000/v2.0',
+               help='url for keystone authentication'),
     cfg.IntOpt('cluster_creation_timeout',
                default=10,
                help="cluster timeout in minutes"),
     cfg.IntOpt('await_element',
-               default=10,
+               default=15,
                help="await each web element in seconds"),
     cfg.StrOpt('image_name_for_register',
                default='fedora_19',
                help='Image name for register to Savanna'),
     cfg.StrOpt('image_name_for_edit',
                default='latest-ci-image',
-               help='Image name for edit in image registry in Savanna')
+               help='Image name for edit in image registry in Savanna'),
+    cfg.IntOpt('job_launch_timeout',
+               default=5,
+               help='Timeout for job launch (in minutes); '
+                    'minimal value is 1.'),
 ]
 
 vanilla_group = cfg.OptGroup(name='vanilla', title="vanilla configs")
@@ -51,6 +75,7 @@ VanillaGroup = [
                 If this variable is True then
                 tests for vanilla will be skipped
                 """),
+    cfg.BoolOpt('skip_edp_test', default=True),
     cfg.StrOpt('plugin_name',
                default='Vanilla Apache Hadoop',
                help="plugin title, default: Vanilla Apache Hadoop"),
@@ -60,12 +85,12 @@ VanillaGroup = [
     cfg.StrOpt('hadoop_version',
                default='1.2.1',
                help="hadoop version for plugin"),
-    cfg.ListOpt('processes',
+    cfg.DictOpt('processes',
                 default={"NN": 0, "DN": 1, "SNN": 2,
                          "OZ": 3, "TT": 4, "JT": 5},
                 help='numbers of processes for vanilla in savannabashboard'),
     cfg.StrOpt('base_image',
-               default='latest-ci-image',
+               default='ubuntu_savanna_latest',
                help="image name for start vanilla cluster")
 ]
 
@@ -85,7 +110,7 @@ HdpGroup = [
                default='hdp',
                help="plugin name in overview"),
     cfg.StrOpt('hadoop_version',
-               default='1.3.0',
+               default='1.3.2',
                help="hadoop version for plugin"),
     cfg.ListOpt('processes',
                 default=
@@ -95,7 +120,7 @@ HdpGroup = [
                  "NAGIOS_SERVER": 11},
                 help='numbers of processes for hdp in savannabashboard'),
     cfg.StrOpt('base_image',
-               default='latest-ci-image',
+               default='ib-centos-6-4-64-hdp-13',
                help="image name for start hdp cluster")
 ]
 

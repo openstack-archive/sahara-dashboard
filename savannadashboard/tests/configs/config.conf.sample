@@ -2,10 +2,19 @@
 base_url = "http://127.0.0.1:8080"
 user = "admin"
 password = "admin"
+keypair = 'jenkins'
+tenant = 'admin'
+flavor = 'm1.minniemouse'
+# uncomment this parameters if quantum in OpenStack
+# neutron_management_network = ''
+# floationg_ip_pool = ''
+keystone_url = 'http://127.0.0.1:5000/v2.0'
 # in minutes
 cluster_creation_timeout = 10
 # in seconds
 await_element = 10
+# in minutes
+job_launch_timeout = 5
 image_name_for_register = 'image_name'
 image_name_for_edit = 'image_name'
 [vanilla]
@@ -13,10 +22,10 @@ skip_plugin_tests = False
 plugin_name = "Vanilla Apache Hadoop"
 plugin_overview_name = "vanilla"
 hadoop_version = "1.2.1"
-processes = {"NN": 0, "DN": 1, "SNN": 2, "OZ": 3, "TT": 4, "JT": 5}
+processes = NN: 0, DN: 1, SNN: 2, OZ: 3, TT: 4, JT: 5
 base_image = "image_name"
 [hdp]
 skip_plugin_tests = False
 plugin_name = "Hortonworks Data Platform"
-hadoop_version = "1.3.0"
+hadoop_version = "1.3.2"
 base_image = "image_name"
