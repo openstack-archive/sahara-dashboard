@@ -21,7 +21,8 @@ from django.forms.util import flatatt
 from django.forms import widgets
 
 from django import template
-from django.template.defaultfilters import linebreaks, safe
+from django.template.defaultfilters import linebreaks
+from django.template.defaultfilters import safe
 from django.utils.encoding import force_unicode
 from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext as _
