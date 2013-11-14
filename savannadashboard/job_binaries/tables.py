@@ -58,6 +58,13 @@ class DeleteJobBinary(tables.BatchAction):
         savanna.job_binaries.delete(obj_id)
 
 
+class DownloadJobBinary(tables.LinkAction):
+    name = "download job binary"
+    verbose_name = _("Download Job Binary")
+    url = "horizon:savanna:job_binaries:download"
+    classes = ("btn-edit")
+
+
 class JobBinariesTable(tables.DataTable):
     name = tables.Column("name",
                          verbose_name=_("Name"),
@@ -72,4 +79,4 @@ class JobBinariesTable(tables.DataTable):
         verbose_name = _("Job Binaries")
         table_actions = (CreateJobBinary,
                          DeleteJobBinary)
-        row_actions = (DeleteJobBinary,)
+        row_actions = (DeleteJobBinary, DownloadJobBinary)
