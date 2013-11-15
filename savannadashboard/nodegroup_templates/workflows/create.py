@@ -23,9 +23,8 @@ from django.utils.translation import ugettext as _
 from horizon import exceptions
 from horizon import workflows
 
-from savannadashboard.api.client import APIException
-from savannadashboard.api.client import AUTO_ASSIGNMENT_ENABLED
-from savannadashboard.api.client import client as savannaclient
+from savannaclient.api import base as api_base
+from savannadashboard.api import client as savannaclient
 from savannadashboard.utils import importutils
 
 import savannadashboard.api.helpers as helpers
@@ -82,7 +81,7 @@ class GeneralConfigAction(workflows.Action):
     def __init__(self, request, *args, **kwargs):
         super(GeneralConfigAction, self).__init__(request, *args, **kwargs)
 
-        savanna = savannaclient(request)
+        savanna = savannaclient.client(request)
         hlps = helpers.Helpers(savanna)
 
         plugin, hadoop_version = whelpers.\
@@ -96,7 +95,7 @@ class GeneralConfigAction(workflows.Action):
                 process_choices.append(
                     (str(service) + ":" + str(process), process))
 
-        if not AUTO_ASSIGNMENT_ENABLED:
+        if not savannaclient.AUTO_ASSIGNMENT_ENABLED:
             pools = []
             pools.append((None, "Do not assign floating IPs"))
 
@@ -184,7 +183,7 @@ class ConfigureNodegroupTemplate(whelpers.ServiceParametersWorkflow,
     default_steps = (GeneralConfig,)
 
     def __init__(self, request, context_seed, entry_point, *args, **kwargs):
-        savanna = savannaclient(request)
+        savanna = savannaclient.client(request)
         hlps = helpers.Helpers(savanna)
 
         plugin, hadoop_version = whelpers.\
@@ -233,7 +232,7 @@ class ConfigureNodegroupTemplate(whelpers.ServiceParametersWorkflow,
 
     def handle(self, request, context):
         try:
-            savanna = savannaclient(request)
+            savanna = savannaclient.client(request)
 
             processes = []
             for service_process in context["general_processes"]:
@@ -264,7 +263,7 @@ class ConfigureNodegroupTemplate(whelpers.ServiceParametersWorkflow,
                 node_configs=configs_dict,
                 floating_ip_pool=context.get("general_floating_ip_pool", None))
             return True
-        except APIException as e:
+        except api_base.APIException as e:
             self.error_description = str(e)
             return False
         except Exception:
@@ -280,7 +279,7 @@ class SelectPluginAction(workflows.Action,
     def __init__(self, request, *args, **kwargs):
         super(SelectPluginAction, self).__init__(request, *args, **kwargs)
 
-        savanna = savannaclient(request)
+        savanna = savannaclient.client(request)
         self._generate_plugin_version_fields(savanna)
 
     class Meta:
