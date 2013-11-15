@@ -17,8 +17,8 @@ from django.utils.translation import ugettext_lazy as _
 from horizon import forms
 from horizon import messages
 
-from savannadashboard.api.client import APIException
-from savannadashboard.api.client import client as savannaclient
+from savannaclient.api import base as api_base
+from savannadashboard.api import client as savannaclient
 from savannadashboard.utils import workflow_helpers
 
 
@@ -30,7 +30,7 @@ class UploadFileForm(forms.SelfHandlingForm,
     def __init__(self, request, *args, **kwargs):
         super(UploadFileForm, self).__init__(request, *args, **kwargs)
 
-        savanna = savannaclient(request)
+        savanna = savannaclient.client(request)
         self._generate_plugin_version_fields(savanna)
 
         self.fields['template_file'] = forms.FileField(label=_("Template"),
@@ -44,13 +44,13 @@ class UploadFileForm(forms.SelfHandlingForm,
             plugin_name = data['plugin_name']
             hadoop_version = data.get(plugin_name + "_version")
 
-            savanna = savannaclient(request)
+            savanna = savannaclient.client(request)
             savanna.plugins.convert_to_cluster_template(plugin_name,
                                                         hadoop_version,
                                                         data['template_name'],
                                                         filecontent)
             return True
-        except APIException as e:
+        except api_base.APIException as e:
             messages.error(request, str(e))
             return False
         except Exception as e:

@@ -24,8 +24,8 @@ from horizon import exceptions
 from horizon import forms
 from horizon import workflows
 
-from savannadashboard.api.client import APIException
-from savannadashboard.api.client import client as savannaclient
+from savannaclient.api import base as api_base
+from savannadashboard.api import client as savannaclient
 from savannadashboard.api import helpers as helpers
 from savannadashboard.utils import anti_affinity as aa
 import savannadashboard.utils.workflow_helpers as whelpers
@@ -41,7 +41,7 @@ class SelectPluginAction(workflows.Action):
     def __init__(self, request, *args, **kwargs):
         super(SelectPluginAction, self).__init__(request, *args, **kwargs)
 
-        savanna = savannaclient(request)
+        savanna = savannaclient.client(request)
         plugins = savanna.plugins.list()
         plugin_choices = [(plugin.name, plugin.title) for plugin in plugins]
 
@@ -164,7 +164,7 @@ class ConfigureNodegroupsAction(workflows.Action):
         super(ConfigureNodegroupsAction, self). \
             __init__(request, *args, **kwargs)
 
-        savanna = savannaclient(request)
+        savanna = savannaclient.client(request)
 
         plugin, hadoop_version = whelpers.\
             get_plugin_and_hadoop_version(request)
@@ -229,7 +229,7 @@ class ConfigureClusterTemplate(whelpers.ServiceParametersWorkflow,
     def __init__(self, request, context_seed, entry_point, *args, **kwargs):
         ConfigureClusterTemplate._cls_registry = set([])
 
-        savanna = savannaclient(request)
+        savanna = savannaclient.client(request)
         hlps = helpers.Helpers(savanna)
 
         plugin, hadoop_version = whelpers.\
@@ -265,7 +265,7 @@ class ConfigureClusterTemplate(whelpers.ServiceParametersWorkflow,
 
     def handle(self, request, context):
         try:
-            savanna = savannaclient(request)
+            savanna = savannaclient.client(request)
             node_groups = []
             configs_dict = whelpers.parse_configs_from_context(context,
                                                                self.defaults)
@@ -294,7 +294,7 @@ class ConfigureClusterTemplate(whelpers.ServiceParametersWorkflow,
                 node_groups,
                 context["anti_affinity_info"])
             return True
-        except APIException as e:
+        except api_base.APIException as e:
             self.error_description = str(e)
             return False
         except Exception:

@@ -30,8 +30,8 @@ from django.utils.translation import ugettext as _
 from horizon import forms
 from horizon import messages
 
-from savannadashboard.api.client import APIException
-from savannadashboard.api.client import client as savannaclient
+from savannaclient.api import base as api_base
+from savannadashboard.api import client as savannaclient
 
 import uuid
 
@@ -99,7 +99,7 @@ class JobBinaryCreateForm(forms.SelfHandlingForm):
             self.populate_job_binary_savanna_internal_choices(request)
 
     def populate_job_binary_savanna_internal_choices(self, request):
-        savanna = savannaclient(request)
+        savanna = savannaclient.client(request)
         job_binaries = savanna.job_binary_internals.list()
 
         choices = [(job_binary.id, job_binary.name)
@@ -111,7 +111,7 @@ class JobBinaryCreateForm(forms.SelfHandlingForm):
 
     def handle(self, request, context):
         try:
-            savanna = savannaclient(request)
+            savanna = savannaclient.client(request)
             extra = {}
             bin_url = "%s://%s" % (context["job_binary_type"],
                                    context["job_binary_url"])
@@ -127,7 +127,7 @@ class JobBinaryCreateForm(forms.SelfHandlingForm):
                 extra)
             messages.success(request, "Successfully created job binary")
             return True
-        except APIException as e:
+        except api_base.APIException as e:
             messages.error(request, str(e))
             return False
         except Exception as e:
@@ -152,7 +152,7 @@ class JobBinaryCreateForm(forms.SelfHandlingForm):
 
     def handle_savanna(self, request, context):
         result = ""
-        savanna = savannaclient(request)
+        savanna = savannaclient.client(request)
 
         bin_id = context["job_binary_savanna_internal"]
         if(bin_id == self.UPLOAD_BIN):
@@ -180,7 +180,7 @@ class JobBinaryCreateForm(forms.SelfHandlingForm):
         return extra
 
     def get_unique_binary_name(self, request, base_name):
-        savanna = savannaclient(request)
+        savanna = savannaclient.client(request)
         internals = savanna.job_binary_internals.list()
         names = [internal.name for internal in internals]
         if base_name in names:
