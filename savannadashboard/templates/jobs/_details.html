@@ -8,6 +8,18 @@
         <dd>{{ job.id }}</dd>
         <dt>{% trans "Description" %}</dt>
         <dd>{{ job.description|default:"None" }}</dd>
+        <dt>{% trans "Mains" %}<dt>
+        {% for main in job.mains %}
+          <dd>{{ main.name }}</dd>
+        {% empty %}
+          <dd>None</dd>
+        {% endfor %}
+        <dt>{% trans "Libs" %}<dt>
+        {% for lib in job.libs %}
+          <dd>{{ lib.name }}</dd>
+        {% empty %}
+          <dd>None</dd>
+        {% endfor %}
         <dt>{% trans "Tenant id" %}</dt>
         <dd>{{ job.tenant_id }}</dd>
         <dt>{% trans "Create time" %}</dt>
