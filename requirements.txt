@@ -1,3 +1,3 @@
 pbr>=0.5.21,<1.0
 
-python-savannaclient>=0.3
+python-savannaclient>=0.4.0
