@@ -63,6 +63,9 @@ class CopyNodegroupTemplate(create_flow.ConfigureNodegroupTemplate):
             fields["volumes_per_node"].initial = volumes_per_node
             fields["volumes_size"].initial = volumes_size
 
+            if template.floating_ip_pool:
+                fields['floating_ip_pool'].initial = template.floating_ip_pool
+
             processes_dict = dict()
             plugin_details = savanna.plugins.get_version_details(
                 plugin,

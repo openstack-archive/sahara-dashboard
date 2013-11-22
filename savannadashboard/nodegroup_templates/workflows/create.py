@@ -96,19 +96,13 @@ class GeneralConfigAction(workflows.Action):
                     (str(service) + ":" + str(process), process))
 
         if not savannaclient.AUTO_ASSIGNMENT_ENABLED:
-            pools = []
-            pools.append((None, "Do not assign floating IPs"))
+            pools = network.floating_ip_pools_list(request)
+            pool_choices = [(pool.name, pool.name) for pool in pools]
+            pool_choices.insert(0, (None, "Do not assign floating IPs"))
 
-            pools_list = network.floating_ip_pools_list(request)
-            first_pool_id = None
-            for pool in pools_list:
-                if not first_pool_id:
-                    first_pool_id = pool.id
-                pools.append((pool.id, pool.name))
             self.fields['floating_ip_pool'] = forms.ChoiceField(
                 label=_("Floationg IP pool"),
-                choices=pools,
-                initial=first_pool_id,
+                choices=pool_choices,
                 required=False)
 
         self.fields["processes"] = forms.MultipleChoiceField(
