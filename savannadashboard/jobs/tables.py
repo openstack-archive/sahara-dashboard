@@ -67,7 +67,7 @@ class LaunchJobExistingCluster(tables.LinkAction):
 
 class LaunchJobNewCluster(tables.LinkAction):
     name = "launch-job-new"
-    verbose_name = _("Launch On Tran. Cluster")
+    verbose_name = _("Launch On New Cluster")
     action_present = _("Launch")
     action_past = _("Launched")
     data_type_singular = _("Job")
@@ -84,7 +84,7 @@ class LaunchJobNewCluster(tables.LinkAction):
 
 class ChoosePlugin(tables.LinkAction):
     name = "launch-job-new"
-    verbose_name = _("Launch On Tran. Cluster")
+    verbose_name = _("Launch On New Cluster")
     action_present = _("Launch")
     action_past = _("Launched")
     data_type_singular = _("Job")
