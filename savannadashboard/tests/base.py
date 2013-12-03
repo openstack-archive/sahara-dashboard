@@ -326,7 +326,7 @@ class UITestCase(unittest2.TestCase):
         else:
             #Add existing tags in the list
             list_for_check_tags = driver.\
-                find_element(by=by.By.LINK_TEXT, value='latest-ci-image').\
+                find_element(by=by.By.LINK_TEXT, value=image_name).\
                 find_element_by_xpath('../../td[3]').text.split('\n')
             # Click "Edit Tags"
             driver.find_element(by=by.By.LINK_TEXT, value=image_name).\
@@ -385,7 +385,7 @@ class UITestCase(unittest2.TestCase):
     def choose_plugin_name(self, plugin_name, hadoop_version, name,
                            description, id_name):
         self.await_element(by.By.XPATH, "//*[@id='modal_wrapper']"
-                                        "/div/form/div[4]/input")
+                                        "/div/form/div[3]/input")
         self.driver.find_element_by_xpath(
             "//select[@id='id_plugin_name']/option[text()='%s']" %
             plugin_name).click()
