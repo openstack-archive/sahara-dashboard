@@ -58,7 +58,7 @@ class UnregisterImages(tables.BatchAction):
 
     def action(self, request, obj_id):
         savanna = savannaclient(request)
-        savanna.images.update_image(obj_id, "", "")
+        savanna.images.unregister_image(obj_id)
 
 
 class ImageRegistryTable(tables.DataTable):
