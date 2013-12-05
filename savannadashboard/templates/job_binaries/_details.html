@@ -15,4 +15,5 @@
         <dt>{% trans "Create time" %}</dt>
         <dd>{{ job_binary.created_at }}</dd>
     </dl>
+    <a href="{% url 'horizon:savanna:job_binaries:download' job_binary.id %}">{% trans "Download Job Binary" %}</a>
 </div>

@@ -17,8 +17,14 @@
 
 import logging
 
+from django.core.urlresolvers import reverse
 from django.core.urlresolvers import reverse_lazy
+from django import http
+from django.template.defaultfilters import slugify
+from django.utils.translation import ugettext_lazy as _
+from django.views.generic import View
 
+from horizon import exceptions
 from horizon import forms
 from horizon import tables
 from horizon import tabs
@@ -61,3 +67,23 @@ class JobBinaryDetailsView(tabs.TabView):
 
     def get_data(self):
         pass
+
+
+class DownloadJobBinaryView(View):
+    def get(self, request, job_binary_id=None):
+        try:
+            savanna = savannaclient(request)
+            jb = savanna.job_binaries.get(job_binary_id)
+            data = savanna.job_binaries.get_file(job_binary_id)
+        except Exception:
+            redirect = reverse('horizon:savanna:job_binaries:index')
+            exceptions.handle(self.request,
+                              _('Unable to fetch job binary: %(exc)s'),
+                              redirect=redirect)
+
+        response = http.HttpResponse(mimetype='application/binary')
+        response['Content-Disposition'] = \
+            'attachment; filename=%s' % slugify(jb.name)
+        response.write(data)
+        response['Content-Length'] = str(len(data))
+        return response

@@ -31,4 +31,7 @@ urlpatterns = patterns('',
                            name='create-job-binary'),
                        url(r'^(?P<job_binary_id>[^/]+)$',
                            views.JobBinaryDetailsView.as_view(),
-                           name='details'))
+                           name='details'),
+                       url(r'^(?P<job_binary_id>[^/]+)/download/$',
+                           views.DownloadJobBinaryView.as_view(),
+                           name='download'))
