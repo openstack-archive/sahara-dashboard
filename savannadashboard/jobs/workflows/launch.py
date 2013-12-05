@@ -190,8 +190,14 @@ class JobConfig(workflows.Step):
         return context
 
 
+class NewClusterConfigAction(c_flow.GeneralConfigAction):
+    persist_cluster = forms.BooleanField(
+        label=_("Persist cluster after job exit"),
+        required=True)
+
+
 class ClusterGeneralConfig(workflows.Step):
-    action_class = c_flow.GeneralConfigAction
+    action_class = NewClusterConfigAction
     contributes = ("hidden_configure_field", )
 
     def contribute(self, data, context):
@@ -280,7 +286,7 @@ class LaunchJobNewCluster(workflows.Workflow):
             description=context["cluster_general_description"],
             node_groups=node_groups,
             user_keypair_id=user_keypair,
-            is_transient=True,
+            is_transient=not(context["cluster_general_persist_cluster"]),
             net_id=context.get("cluster_general_neutron_management_network",
                                None))
 
