@@ -191,7 +191,12 @@ class JobConfig(workflows.Step):
 class NewClusterConfigAction(c_flow.GeneralConfigAction):
     persist_cluster = forms.BooleanField(
         label=_("Persist cluster after job exit"),
-        required=True)
+        required=False)
+
+    class Meta:
+        name = _("Configure Cluster")
+        help_text_template = \
+            ("clusters/_configure_general_help.html")
 
 
 class ClusterGeneralConfig(workflows.Step):
