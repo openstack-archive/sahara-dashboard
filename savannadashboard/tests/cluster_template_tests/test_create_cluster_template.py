@@ -52,7 +52,7 @@ class UICreateClusterTemplate(base.UITestCase):
         self.delete_node_group_templates(["selenium-master",
                                           "selenium-worker"])
 
-    @base.attr('cluster_template', 'hdp')
+    @base.attr(tags=['cluster_template', 'hdp'])
     @testtools.skipIf(cfg.hdp.skip_plugin_tests,
                       'tests for hdp plugin skipped')
     def test_create_cluster_template_for_hdp(self):

@@ -21,7 +21,7 @@ import savannadashboard.tests.configs.config as cfg
 
 class UINegativeCreateNodeGroupTemplate(base.UITestCase):
 
-    @base.attr(tags='node_group_template')
+    @base.attr(tags=['node_group_template', 'vanilla'])
     @testtools.skipIf(cfg.vanilla.skip_plugin_tests,
                       'tests for vanilla plugin skipped')
     def test_create_vanilla_node_group_template_with_wrong_parameters(self):
@@ -38,7 +38,7 @@ class UINegativeCreateNodeGroupTemplate(base.UITestCase):
                     'MapReduce Parameters:io.sort.mb:'
                     'Enter a whole number.')
 
-    @base.attr(tags='node_group_template')
+    @base.attr(tags=['node_group_template', 'vanilla'])
     @testtools.skipIf(cfg.vanilla.skip_plugin_tests,
                       'tests for vanilla plugin skipped')
     def test_create_vanilla_node_group_template_with_missing_parameters(self):

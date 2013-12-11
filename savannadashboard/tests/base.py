@@ -13,14 +13,24 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import logging
+import os
+import time
+import traceback
+
 import nose.plugins.attrib
+import selenium.common.exceptions as selenim_except
 from selenium import webdriver
 import selenium.webdriver.common.by as by
+from swiftclient import client as swift_client
 import testtools
-import time
 import unittest2
 
 import savannadashboard.tests.configs.config as cfg
+
+
+logger = logging.getLogger('swiftclient')
+logger.setLevel(logging.WARNING)
 
 
 def attr(*args, **kwargs):
@@ -39,11 +49,22 @@ class UITestCase(unittest2.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.driver = webdriver.Firefox()
-        cls.driver.get(cfg.common.base_url + "/")
-        cls.find_clear_send(by.By.ID, "id_username", cfg.common.user)
-        cls.find_clear_send(by.By.ID, "id_password", cfg.common.password)
-        cls.driver.find_element_by_xpath("//button[@type='submit']").click()
+        try:
+            cls.ifFail = False
+            cls.driver = webdriver.Firefox()
+            cls.driver.get(cfg.common.base_url + "/")
+            cls.find_clear_send(by.By.ID, "id_username", cfg.common.user)
+            cls.find_clear_send(by.By.ID, "id_password", cfg.common.password)
+            cls.driver.find_element_by_xpath(
+                "//button[@type='submit']").click()
+        except Exception:
+            traceback.print_exc()
+            cls.ifFail = True
+            pass
+
+    def setUp(self):
+        if self.ifFail:
+            self.fail("setUpClass method is fail")
 
     def image_registry(self, image_name, user_name=None, description=None,
                        tags_to_add=None, tags_to_remove=None, positive=True,
@@ -65,10 +86,12 @@ class UITestCase(unittest2.TestCase):
                                    close_window, message, 'Edit')
 
     def create_node_group_template(
-            self, name, list_processes, plugin, flavor="m1.tiny", params=None,
+            self, name, list_processes, plugin, flavor=None, params=None,
             storage={'type': 'Ephemeral Drive'}, description=None,
             positive=True, message=None, close_window=True):
         driver = self.driver
+        if not flavor:
+            flavor = cfg.common.flavor
         driver.get(cfg.common.base_url + "/savanna/nodegroup_templates/")
         self.await_element(by.By.ID, "nodegroup_templates__action_create")
         driver.find_element_by_id("nodegroup_templates__action_create").click()
@@ -84,13 +107,17 @@ class UITestCase(unittest2.TestCase):
                                  storage['volume_per_node'])
             self.find_clear_send(by.By.ID, "id_volumes_size",
                                  storage['volume_size'])
+        if cfg.common.floationg_ip_pool:
+            self.driver.find_element_by_xpath(
+                "//*[@id='id_floating_ip_pool']/option[text()='%s']"
+                % cfg.common.floationg_ip_pool).click()
         processes = []
         for process in list_processes:
             number_pr = self.search_id_processes(process, plugin)
             driver.find_element_by_id(
-                "id_processes_%d" % number_pr).click()
+                "id_processes_%s" % str(number_pr)).click()
             processes.append(driver.find_element_by_id(
-                "id_processes_%d" % number_pr).
+                "id_processes_%s" % str(number_pr)).
                 find_element_by_xpath('..').text)
         if params:
             self.config_helper(params)
@@ -119,7 +146,7 @@ class UITestCase(unittest2.TestCase):
         if anti_affinity_groups:
             for group in anti_affinity_groups:
                 driver.find_element_by_id(
-                    "id_anti_affinity_%d" % self.search_id_processes(
+                    "id_anti_affinity_%s" % self.search_id_processes(
                         group, plugin)).click()
         driver.find_element_by_link_text("Node Groups").click()
         number_to_add = 0
@@ -147,7 +174,7 @@ class UITestCase(unittest2.TestCase):
         else:
             self.error_helper(message)
 
-    def create_cluster(self, name, cluster_template, keypair, plugin,
+    def create_cluster(self, name, cluster_template, plugin, keypair=None,
                        close_window=True, description=None, positive=True,
                        await_run=True, message=None):
         driver = self.driver
@@ -162,8 +189,14 @@ class UITestCase(unittest2.TestCase):
         driver.find_element_by_xpath("//select[@id='id_image']/option"
                                      "[text()='%s']" %
                                      plugin.base_image).click()
+        if not keypair:
+            keypair = cfg.common.keypair
         driver.find_element_by_xpath("//select[@id='id_keypair']"
                                      "/option[text()='%s']" % keypair).click()
+        if cfg.common.neutron_management_network:
+            driver.find_element_by_xpath(
+                "//select[@id='id_neutron_management_network']/option[text()="
+                "'%s']" % cfg.common.neutron_management_network).click()
         driver.find_element_by_xpath("//input[@value='Create']").click()
         if not message:
             message = 'Success: Created Cluster %s' % name
@@ -174,32 +207,299 @@ class UITestCase(unittest2.TestCase):
         if await_run:
             self.await_cluster_active(name)
 
-    def delete_node_group_templates(self, names, undelete_names=None):
+    def create_data_source(self, name, url, close_window=True,
+                           description=None, positive=True, message=None):
+
+        driver = self.driver
+        driver.get(cfg.common.base_url + "/savanna/data_sources/")
+        self.await_element(by.By.ID, "data_sources__action_create data source")
+        driver.find_element_by_id(
+            "data_sources__action_create data source").click()
+
+        self.await_element(by.By.ID, "id_data_source_name")
+
+        self.find_clear_send(by.By.ID, "id_data_source_name", name)
+        self.find_clear_send(by.By.ID, "id_data_source_url", url)
+        self.find_clear_send(by.By.ID, "id_data_source_credential_user",
+                             cfg.common.user)
+        self.find_clear_send(by.By.ID, "id_data_source_credential_pass",
+                             cfg.common.password)
+        if description:
+            self.find_clear_send(by.By.ID, "id_data_source_description",
+                                 description)
+
+        driver.find_element_by_xpath("//input[@value='Create']").click()
+
+        if not message:
+            message = 'Success: Data source created'
+        if close_window:
+            self.check_create_object(name, positive, message)
+        else:
+            self.error_helper(message)
+
+    def create_job_binary(self, name, parameters_of_storage, description=None,
+                          positive=True, message=None, close_window=True):
+
+        driver = self.driver
+        storage_type = parameters_of_storage['storage_type']
+        driver.get(cfg.common.base_url + "/savanna/job_binaries/")
+        self.await_element(by.By.ID, "job_binaries__action_create job binary")
+        driver.find_element_by_id(
+            "job_binaries__action_create job binary").click()
+
+        self.await_element(by.By.ID, "id_job_binary_name")
+
+        self.find_clear_send(by.By.ID, "id_job_binary_name", name)
+        driver.find_element_by_xpath("//select[@id='id_job_binary_type']/optio"
+                                     "n[text()='%s']" % storage_type).click()
+
+        if storage_type == 'Swift internal':
+            self.find_clear_send(by.By.ID, "id_job_binary_url",
+                                 parameters_of_storage['url'])
+            self.find_clear_send(by.By.ID, "id_job_binary_username",
+                                 cfg.common.user)
+            self.find_clear_send(by.By.ID, "id_job_binary_password",
+                                 cfg.common.password)
+
+        elif storage_type == 'Savanna internal database':
+            savanna_binary = parameters_of_storage['Savanna binary']
+            driver.find_element_by_xpath(
+                "//select[@id='id_job_binary_savanna_internal']/option[text()"
+                "='%s']" % savanna_binary).click()
+            if savanna_binary == '*Upload a new file':
+                file = '%s/tests/resources/%s' % (
+                    os.getcwd(), parameters_of_storage['filename'])
+                driver.find_element_by_id('id_job_binary_file').send_keys(file)
+
+            elif savanna_binary == '*Create a script':
+                self.find_clear_send(by.By.ID, "id_job_binary_script_name",
+                                     parameters_of_storage['script_name'])
+                self.find_clear_send(by.By.ID, "id_job_binary_script",
+                                     parameters_of_storage['script_text'])
+
+        if description:
+            self.find_clear_send(by.By.ID, "id_job_binary_description",
+                                 description)
+
+        driver.find_element_by_xpath("//input[@value='Create']").click()
+
+        if not message:
+            message = 'Success: Successfully created job binary'
+        if close_window:
+            self.check_create_object(name, positive, message)
+        else:
+            self.error_helper(message)
+
+    def create_job(self, name, job_type, main=None, libs=None,
+                   close_window=True, description=None, positive=True,
+                   message=None):
+
+        driver = self.driver
+        driver.get(cfg.common.base_url + "/savanna/jobs/")
+        self.await_element(by.By.ID, "jobs__action_create job")
+        driver.find_element_by_id("jobs__action_create job").click()
+
+        self.await_element(by.By.ID, "id_job_name")
+        self.find_clear_send(by.By.ID, "id_job_name", name)
+        driver.find_element_by_xpath(
+            "//select[@id='id_job_type']/option[text()='%s']"
+            % job_type).click()
+        if main:
+            driver.find_element_by_xpath(
+                "//select[@id='id_main_binary']/option[text()='%s']"
+                % main).click()
+        if description:
+            self.find_clear_send(by.By.ID, "id_job_description", description)
+        if libs:
+            driver.find_element_by_link_text('Libs').click()
+            self.await_element(by.By.ID, "id_lib_binaries")
+            for lib in libs:
+                driver.find_element_by_xpath(
+                    "//select[@id='id_lib_binaries']/option[text()='%s']"
+                    % lib).click()
+                driver.find_element_by_id('add_lib_button').click()
+
+        driver.find_element_by_xpath("//input[@value='Create']").click()
+
+        if not message:
+            message = 'Success: Job created'
+        if close_window:
+            self.check_create_object(name, positive, message)
+        else:
+            self.error_helper(message)
+
+    def launch_job_on_existing_cluster(self, name, input, output, cluster,
+                                       configure=None, positive=True,
+                                       message=None, close_window=True,
+                                       await_launch=True):
+
+        driver = self.driver
+        driver.get(cfg.common.base_url + "/savanna/jobs/")
+        self.await_element(by.By.ID, "jobs__action_create job")
+
+        action_column = driver.find_element_by_link_text(
+            name).find_element_by_xpath('../../td[4]')
+        action_column.find_element_by_link_text('More').click()
+        action_column.find_element_by_link_text(
+            'Launch On Existing Cluster').click()
+
+        self.await_element(by.By.ID, "id_job_input")
+        driver.find_element_by_xpath(
+            "//select[@id='id_job_input']/option[text()='%s']" % input).click()
+        driver.find_element_by_xpath(
+            "//select[@id='id_job_output']/option[text()='%s']" %
+            output).click()
+        driver.find_element_by_xpath(
+            "//select[@id='id_cluster']/option[text()='%s']" % cluster).click()
+
+        if configure:
+            driver.find_element_by_link_text('Configure').click()
+            for config_part, values in configure.items():
+                config_number = 1
+                for config, value in values.items():
+                    driver.find_element_by_id(
+                        config_part).find_element_by_link_text('Add').click()
+                    driver.find_element_by_xpath(
+                        '//*[@id="%s"]/table/tbody/tr[%i]/td[1]/input' % (
+                            config_part, config_number)).send_keys(config)
+                    driver.find_element_by_xpath(
+                        '//*[@id="%s"]/table/tbody/tr[%i]/td[2]/input' % (
+                            config_part, config_number)).send_keys(value)
+                    config_number += 1
+
+        driver.find_element_by_xpath("//input[@value='Launch']").click()
+
+        if not message:
+            message = 'Success: Job launched'
+        if close_window:
+            self.check_create_object(name, positive, message,
+                                     check_create_element=False)
+        if await_launch:
+            self.await_launch_job()
+
+        else:
+            self.error_helper(message)
+
+    def delete_node_group_templates(self, names, undelete_names=None,
+                                    finally_delete=False):
         url = "/savanna/nodegroup_templates/"
         delete_button_id = 'nodegroup_templates__action_' \
                            'delete_nodegroup_template'
-        self.delete_and_validate(url, delete_button_id, names, undelete_names)
+        self.delete_and_validate(url, delete_button_id, names, undelete_names,
+                                 finally_delete)
 
-    def delete_cluster_templates(self, names, undelete_names=None):
+    def delete_cluster_templates(self, names, undelete_names=None,
+                                 finally_delete=False):
         url = "/savanna/cluster_templates/"
         delete_button_id = "cluster_templates__action_delete_cluster_template"
-        self.delete_and_validate(url, delete_button_id, names, undelete_names)
+        self.delete_and_validate(url, delete_button_id, names, undelete_names,
+                                 finally_delete)
 
-    def delete_clusters(self, names, undelete_names=None):
+    def delete_clusters(self, names, undelete_names=None,
+                        finally_delete=False):
         url = "/savanna/"
         delete_button_id = "clusters__action_delete"
         msg = "Success: Deleted Cluster"
         self.delete_and_validate(url, delete_button_id, names, undelete_names,
-                                 succes_msg=msg)
+                                 finally_delete, succes_msg=msg)
 
-    def unregister_images(self, names, undelete_names=[]):
+    def delete_data_sources(self, names, undelete_names=None,
+                            finally_delete=False):
+        url = "/savanna/data_sources/"
+        delete_button_id = "data_sources__action_delete"
+        msg = "Success: Deleted Data source"
+        err_msg = 'Error: Unable to delete data source'
+        info_msg = 'Info: Deleted Data source'
+        self.delete_and_validate(url, delete_button_id, names, undelete_names,
+                                 finally_delete, msg, err_msg, info_msg)
+
+    def delete_job_binaries(self, names, undelete_names=None,
+                            finally_delete=False):
+
+        url = "/savanna/job_binaries/"
+        delete_button_id = "job_binaries__action_delete"
+
+        msg = "Success: Deleted Job binary"
+        err_msg = 'Error: Unable to delete job binary'
+        info_msg = 'Info: Deleted Job binary'
+
+        if not undelete_names and len(names) > 1:
+            msg = "Success: Deleted Job binarie"
+
+        if undelete_names and len(names)-len(undelete_names) > 1:
+            info_msg = 'Info: Deleted Job binarie'
+
+        if undelete_names and len(undelete_names) > 1:
+            err_msg = 'Error: Unable to delete job binarie'
+
+        self.delete_and_validate(url, delete_button_id, names, undelete_names,
+                                 finally_delete, msg, err_msg, info_msg)
+
+    def delete_jobs(self, names, undelete_names=None, finally_delete=False):
+        url = "/savanna/jobs/"
+        delete_button_id = "jobs__action_delete"
+        msg = "Success: Deleted Job"
+        err_msg = 'Error: Unable to delete job'
+        info_msg = 'Info: Deleted Job'
+        self.delete_and_validate(url, delete_button_id, names, undelete_names,
+                                 finally_delete, msg, err_msg, info_msg)
+
+    def delete_all_job_executions(self):
+
+        driver = self.driver
+        driver.get(cfg.common.base_url + "/savanna/job_executions/")
+
+        delete_button_id = 'job_executions__action_delete'
+
+        self.await_element(by.By.ID, delete_button_id)
+
+        if self.does_element_present(by.By.CLASS_NAME, 'multi_select_column'):
+
+            if not driver.find_element_by_xpath(
+                    '//*[@class=\'multi_select_column\']/input').is_selected():
+
+                driver.find_element_by_class_name(
+                    'multi_select_column').click()
+
+            driver.find_element_by_id(delete_button_id).click()
+            self.await_element(by.By.LINK_TEXT, 'Delete Job executions')
+            driver.find_element_by_link_text('Delete Job executions').click()
+            self.await_element(by.By.CLASS_NAME, "alert-success")
+            message = 'Success: Deleted Job execution'
+            actual_message = self.find_alert_message(
+                "alert-success", first_character=2,
+                last_character=len(message)+2)
+            self.assertEqual(actual_message, message)
+
+    def unregister_images(self, names, undelete_names=[],
+                          finally_delete=False):
         url = '/savanna/image_registry/'
         delete_button_id = "image_registry__action_Unregister"
         msg = "Success: Unregistered Image"
         self.delete_and_validate(url, delete_button_id, names, undelete_names,
-                                 succes_msg=msg)
+                                 finally_delete, succes_msg=msg,)
 
 #-------------------------helpers_methods--------------------------------------
+
+    @staticmethod
+    def connect_to_swift():
+        return swift_client.Connection(
+            authurl=cfg.common.keystone_url,
+            user=cfg.common.user,
+            key=cfg.common.password,
+            tenant_name=cfg.common.tenant,
+            auth_version=2
+        )
+
+    @staticmethod
+    def delete_swift_container(swift, container):
+
+        objects = [obj['name'] for obj in swift.get_container(container)[1]]
+        for obj in objects:
+
+            swift.delete_object(container, obj)
+
+        swift.delete_container(container)
 
     @classmethod
     def find_clear_send(cls, by_find, find_element, send):
@@ -207,16 +507,25 @@ class UITestCase(unittest2.TestCase):
         cls.driver.find_element(by=by_find, value=find_element).send_keys(send)
 
     def delete_and_validate(self, url, delete_button_id, names, undelete_names,
+                            finally_delete,
                             succes_msg='Success: Deleted Template',
                             error_msg='Error: Unable to delete template',
                             info_msg='Info: Deleted Template'):
         driver = self.driver
+        driver.refresh()
         driver.get(cfg.common.base_url + url)
         self.await_element(by.By.ID, delete_button_id)
         for name in names:
             # choose checkbox for this element
-            driver.find_element_by_link_text("%s" % name).\
-                find_element_by_xpath("../../td[1]/input").click()
+            try:
+                driver.find_element_by_link_text("%s" % name).\
+                    find_element_by_xpath("../../td[1]/input").click()
+            except selenim_except.NoSuchElementException as e:
+                if finally_delete:
+                    pass
+                else:
+                    print ('element with name %s not found for delete' % name)
+                    raise e
         # click deletebutton
         driver.find_element_by_id(delete_button_id).click()
         # wait window to confirm the deletion
@@ -403,13 +712,13 @@ class UITestCase(unittest2.TestCase):
         if description:
             self.find_clear_send(by.By.ID, "id_description", description)
 
-    def check_alert(self, alert, message, list_obj, deleted=True):
+    def check_alert(self, alert, expected_message, list_obj, deleted=True):
         self.await_element(by.By.CLASS_NAME, alert)
-        if self.find_alert_message(alert, first_character=2,
-                                   last_character=len(message)+2) != message:
-            self.fail("%s != %s" % (alert, message))
+        actual_message = self.find_alert_message(
+            alert, first_character=2, last_character=len(expected_message)+2)
+        self.assertEqual(actual_message, expected_message)
         not_expected_objs = list(set(self.find_alert_message(
-            alert, first_character=len(message)+2).split(
+            alert, first_character=len(expected_message)+2).split(
                 ", ")).symmetric_difference(set(list_obj)))
         if not_expected_objs:
             self.fail("have deleted objects: %s" % not_expected_objs)
@@ -457,7 +766,7 @@ class UITestCase(unittest2.TestCase):
             self.fail(message)
 
     def check_create_object(self, name, positive, expected_message,
-                            check_columns=None):
+                            check_columns=None, check_create_element=True):
         driver = self.driver
         expected_alert = "alert-error"
         unexpected_alert = "alert-success"
@@ -471,13 +780,13 @@ class UITestCase(unittest2.TestCase):
                 fail_mesg = self.driver.find_element(
                     by=by.By.CLASS_NAME, value=unexpected_alert).text[2:]
                 self.fail("Result of creation %s is not expected: %s != %s"
-                          % (name, expected_alert, fail_mesg))
+                          % (name, expected_message, fail_mesg))
             time.sleep(1)
         else:
             self.fail("alert check:%s time out" % expected_alert)
         actual_message = self.driver.find_element(
             by=by.By.CLASS_NAME, value=expected_alert).text[2:]
-        if positive:
+        if check_create_element and positive:
             self.assertEqual(expected_message, str(actual_message))
             if not self.does_element_present(by.By.LINK_TEXT, name):
                 self.fail("object with name:%s not found" % name)
@@ -501,14 +810,47 @@ class UITestCase(unittest2.TestCase):
             find_element_by_xpath("../../td[3]").text
         i = 1
         while str(status) != 'Active':
+
             if i > cfg.common.cluster_creation_timeout * 6:
                 self.fail(
                     'cluster is not getting status \'Active\', '
                     'passed %d minutes' % cfg.common.cluster_creation_timeout)
+
+            if str(status) == 'Error':
+                self.fail('Cluster state == \'Error\'.')
+
             status = driver.find_element_by_link_text("selenium-cl").\
                 find_element_by_xpath("../../td[3]").text
             time.sleep(10)
             i += 1
+
+    def await_launch_job(self):
+        driver = self.driver
+        driver.get(cfg.common.base_url + "/savanna/job_executions/")
+        self.await_element(by.By.ID, 'job_executions')
+
+        job_id = driver.find_element_by_id(
+            'job_executions').find_elements_by_class_name(
+                'ajax-update')[-1].get_attribute('id')
+
+        status = driver.find_element_by_xpath(
+            '//*[@id="%s"]/td[3]' % job_id).text
+        timeout = cfg.common.job_launch_timeout * 60
+
+        while str(status) != 'SUCCEEDED':
+
+            if timeout <= 0:
+                self.fail(
+                    'Job did not return to \'SUCCEEDED\' status within '
+                    '%d minute(s).' % cfg.common.job_launch_timeout)
+
+            if status == 'KILLED':
+                self.fail('Job status == \'KILLED\'.')
+
+            status = driver.find_element_by_xpath(
+                '//*[@id="%s"]/td[3]' % job_id).text
+            time.sleep(10)
+            timeout -= 10
 
     @classmethod
     def tearDownClass(cls):
