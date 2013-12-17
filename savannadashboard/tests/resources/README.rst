@@ -44,7 +44,7 @@ Source for 'edp-lib.jar':
 https://github.com/apache/oozie/blob/branch-4.0/examples/src/main/java/org/apache/oozie/example/DateList.java
 
 
-Jar job
+MapReduce job
 -------------------------------------
 
 Description.
