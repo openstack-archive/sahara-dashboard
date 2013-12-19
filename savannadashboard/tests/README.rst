@@ -5,13 +5,13 @@ Savanna Dashboard Selenium Tests
 Main goal of Selenium Tests
 ----------
 
-Selenium tests for Savanna Dashboard are designed to check the quality of plug-in Savanna Dashboard for the Horizon.
+Selenium tests for Savanna Dashboard are designed to check the correctness of the Savanna Dashboard Horizon plug-in.
 
 
 How to run UI tests:
 ----------
 
-It's assumed that the savanna and horizon are already installed and running.
+It's assumed that savanna and horizon are already installed and running.
 
 Information about installation and start of savanna and horizon can be found on the savanna site
  http://docs.openstack.org/developer/savanna/#user-guide

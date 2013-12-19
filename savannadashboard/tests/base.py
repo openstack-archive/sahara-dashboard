@@ -811,7 +811,7 @@ class UITestCase(unittest2.TestCase):
         i = 1
         while str(status) != 'Active':
 
-            if i > cfg.common.cluster_creation_timeout * 6:
+            if i > cfg.common.cluster_creation_timeout * 60:
                 self.fail(
                     'cluster is not getting status \'Active\', '
                     'passed %d minutes' % cfg.common.cluster_creation_timeout)
@@ -821,7 +821,7 @@ class UITestCase(unittest2.TestCase):
 
             status = driver.find_element_by_link_text("selenium-cl").\
                 find_element_by_xpath("../../td[3]").text
-            time.sleep(10)
+            time.sleep(1)
             i += 1
 
     def await_launch_job(self):
@@ -849,8 +849,8 @@ class UITestCase(unittest2.TestCase):
 
             status = driver.find_element_by_xpath(
                 '//*[@id="%s"]/td[3]' % job_id).text
-            time.sleep(10)
-            timeout -= 10
+            time.sleep(1)
+            timeout -= 1
 
     @classmethod
     def tearDownClass(cls):
