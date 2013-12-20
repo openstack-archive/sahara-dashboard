@@ -13,13 +13,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from testtools import testcase
+
 from savannadashboard.tests import base
 import savannadashboard.tests.configs.config as cfg
 
 
 class UIImageRegistry(base.UITestCase):
 
-    @base.attr(tags='image_registry')
+    @testcase.attr('image_registry')
     def test_edit_tags_for_image(self):
         self.edit_tags_by_image_name(cfg.common.image_name_for_edit,
                                      tags_to_add=[
@@ -30,7 +32,7 @@ class UIImageRegistry(base.UITestCase):
                                      tags_to_add=[{'custom_tag': 'qweqwe'}],
                                      tags_to_remove=['qweqwe', 'blabla'])
 
-    @base.attr(tags='image_registry')
+    @testcase.attr('image_registry')
     def test_registry_vanilla_image(self):
         self.image_registry(cfg.common.image_name_for_register,
                             user_name='cloud_user',

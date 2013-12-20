@@ -13,7 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import testtools
+from testtools import testcase
+import unittest2
 
 from savannadashboard.tests import base
 import savannadashboard.tests.configs.config as cfg
@@ -21,8 +22,8 @@ import savannadashboard.tests.configs.config as cfg
 
 class UICreateNodeGroupTemplate(base.UITestCase):
 
-    @base.attr(tags=['node_group_template', 'vanilla'])
-    @testtools.skipIf(cfg.vanilla.skip_plugin_tests,
+    @testcase.attr('node_group_template', 'vanilla')
+    @unittest2.skipIf(cfg.vanilla.skip_plugin_tests,
                       'tests for vanilla plugin skipped')
     def test_create_node_group_template_vanilla(self):
         self.create_node_group_template(
@@ -44,8 +45,8 @@ class UICreateNodeGroupTemplate(base.UITestCase):
                                         message=msg)
         self.delete_node_group_templates(['selenium-vanilla'])
 
-    @base.attr(tags=['node_group_template', 'hdp'])
-    @testtools.skipIf(cfg.hdp.skip_plugin_tests,
+    @testcase.attr('node_group_template', 'hdp')
+    @unittest2.skipIf(cfg.hdp.skip_plugin_tests,
                       'tests for hdp plugin skipped')
     def test_create_node_group_template_hdp(self):
         self.create_node_group_template(

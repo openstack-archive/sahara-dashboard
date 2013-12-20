@@ -15,8 +15,10 @@
 
 import random
 import string
-import testtools
+from testtools import testcase
 import traceback
+import unittest2
+
 
 from savannadashboard.tests import base
 import savannadashboard.tests.configs.config as cfg
@@ -24,8 +26,8 @@ import savannadashboard.tests.configs.config as cfg
 
 class UICreateCluster(base.UITestCase):
 
-    @base.attr(tags=['cluster', 'vanilla'], speed='slow')
-    @testtools.skipIf(cfg.vanilla.skip_plugin_tests,
+    @testcase.attr('cluster', 'vanilla')
+    @unittest2.skipIf(cfg.vanilla.skip_plugin_tests,
                       'tests for vanilla plugin skipped')
     def test_create_vanilla_cluster(self):
 
@@ -133,7 +135,8 @@ class UICreateCluster(base.UITestCase):
                 'storage_type': 'Savanna internal database',
                 'Savanna binary': '*Create a script',
                 'script_name': 'edp-job.pig',
-                'script_text': open('tests/resources/edp-job.pig').read()}
+                'script_text': open('savannadashboard/tests/resources/'
+                                    'edp-job.pig').read()}
 
             self.create_job_binary('edp-job.pig', parameters_of_storage)
 

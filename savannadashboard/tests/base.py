@@ -18,12 +18,10 @@ import os
 import time
 import traceback
 
-import nose.plugins.attrib
 import selenium.common.exceptions as selenim_except
 from selenium import webdriver
 import selenium.webdriver.common.by as by
 from swiftclient import client as swift_client
-import testtools
 import unittest2
 
 import savannadashboard.tests.configs.config as cfg
@@ -31,18 +29,6 @@ import savannadashboard.tests.configs.config as cfg
 
 logger = logging.getLogger('swiftclient')
 logger.setLevel(logging.WARNING)
-
-
-def attr(*args, **kwargs):
-    def decorator(f):
-        if 'type' in kwargs and isinstance(kwargs['type'], str):
-            f = testtools.testcase.attr(kwargs['type'])(f)
-        elif 'type' in kwargs and isinstance(kwargs['type'], list):
-            for attr in kwargs['type']:
-                f = testtools.testcase.attr(attr)(f)
-        return nose.plugins.attrib.attr(*args, **kwargs)(f)
-
-    return decorator
 
 
 class UITestCase(unittest2.TestCase):
@@ -267,7 +253,7 @@ class UITestCase(unittest2.TestCase):
                 "//select[@id='id_job_binary_savanna_internal']/option[text()"
                 "='%s']" % savanna_binary).click()
             if savanna_binary == '*Upload a new file':
-                file = '%s/tests/resources/%s' % (
+                file = '%s/savannadashboard/tests/resources/%s' % (
                     os.getcwd(), parameters_of_storage['filename'])
                 driver.find_element_by_id('id_job_binary_file').send_keys(file)
 

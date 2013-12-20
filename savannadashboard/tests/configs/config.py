@@ -130,7 +130,8 @@ def register_config(config, config_group, config_opts):
     config.register_group(config_group)
     config.register_opts(config_opts, config_group)
 
-path = os.path.join("%s/tests/configs/config.conf" % os.getcwd())
+path = os.path.join("%s/savannadashboard/tests/configs/config.conf"
+                    % os.getcwd())
 
 if os.path.exists(path):
     cfg.CONF([], project='savannadashboard', default_config_files=[path])

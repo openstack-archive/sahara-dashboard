@@ -13,7 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import testtools
+from testtools import testcase
+import unittest2
 
 from savannadashboard.tests import base
 import savannadashboard.tests.configs.config as cfg
@@ -21,9 +22,9 @@ import savannadashboard.tests.configs.config as cfg
 
 class UINegativeCreateClusterTemplateTest(base.UITestCase):
 
-    @base.attr(tags=['cluster_template', 'vanilla'])
-    @testtools.skip
-    @testtools.skipIf(cfg.vanilla.skip_plugin_tests,
+    @testcase.attr('cluster_template', 'vanilla')
+    @unittest2.skip
+    @unittest2.skipIf(cfg.vanilla.skip_plugin_tests,
                       'tests for vanilla plugin skipped')
     def test_create_vanilla_cluster_template_with_wrong_fields(self):
         self.create_node_group_template('selenium-master', ["NN", "JT"],

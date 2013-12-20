@@ -32,10 +32,10 @@ Information about installation and start of savanna and horizon can be found on 
    sudo apt-get update
    sudo apt-get install firefox libstdc++5
 
-5. To run ui tests you should use the corresponding tox env: `tox -e tests`.
+5. To run ui tests you should use the corresponding tox env: `tox -e uitests`.
    If need to run only one test module, use:
 
-   tox -e tests -- -a tags='<module_name>'
+   tox -e uitests -- '<module_name>'
 
    <module_name> may be equal 'cluster', 'cluster_template', 'image_registry', 'node_group_template', 'image_registry', 'vanilla', 'hdp'
    It's full list of actual modules.
