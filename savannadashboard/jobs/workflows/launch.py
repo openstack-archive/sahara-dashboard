@@ -138,6 +138,17 @@ class JobConfigAction(workflows.Action):
 
     def __init__(self, request, *args, **kwargs):
         super(JobConfigAction, self).__init__(request, *args, **kwargs)
+        job_ex_id = request.REQUEST.get("job_execution_id")
+        if job_ex_id is not None:
+            client = savannaclient(request)
+            job_ex_id = request.REQUEST.get("job_execution_id")
+            job_configs = client.job_executions.get(job_ex_id).job_configs
+            self.fields['job_configs'].initial =\
+                json.dumps(job_configs['configs'])
+            self.fields['job_params'].initial =\
+                json.dumps(job_configs['params'])
+            self.fields['job_args'].initial =\
+                json.dumps(job_configs['args'])
 
     def populate_property_name_choices(self, request, context):
         client = savannaclient(request)
@@ -238,8 +249,43 @@ class SelectHadoopPluginAction(t_flows.SelectPluginAction):
         self.fields["job_id"] = forms.ChoiceField(
             label=_("Plugin name"),
             required=True,
-            initial=request.GET["job_id"],
+            initial=request.GET.get("job_id") or request.POST.get("job_id"),
             widget=forms.HiddenInput(attrs={"class": "hidden_create_field"}))
+
+        self.fields["job_configs"] = forms.ChoiceField(
+            label=_("Job configs"),
+            required=True,
+            widget=forms.HiddenInput(attrs={"class": "hidden_create_field"}))
+
+        self.fields["job_args"] = forms.ChoiceField(
+            label=_("Job args"),
+            required=True,
+            widget=forms.HiddenInput(attrs={"class": "hidden_create_field"}))
+
+        self.fields["job_params"] = forms.ChoiceField(
+            label=_("Job params"),
+            required=True,
+            widget=forms.HiddenInput(attrs={"class": "hidden_create_field"}))
+
+        job_ex_id = request.REQUEST.get("job_execution_id")
+        if job_ex_id is not None:
+            self.fields["job_execution_id"] = forms.ChoiceField(
+                label=_("Job Execution Id"),
+                required=True,
+                initial=request.REQUEST.get("job_execution_id"),
+                widget=forms.HiddenInput(
+                    attrs={"class": "hidden_create_field"}))
+
+            client = savannaclient(request)
+            job_ex_id = request.REQUEST.get("job_execution_id")
+            job_configs = client.job_executions.get(job_ex_id).job_configs
+
+            self.fields["job_configs"].initial =\
+                json.dumps(job_configs["configs"])
+            self.fields["job_params"].initial =\
+                json.dumps(job_configs["params"])
+            self.fields["job_args"].initial =\
+                json.dumps(job_configs["args"])
 
     class Meta:
         name = _("Select plugin and hadoop version for cluster")

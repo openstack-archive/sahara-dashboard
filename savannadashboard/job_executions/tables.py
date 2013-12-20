@@ -15,11 +15,14 @@
 
 import logging
 
+from django.core import urlresolvers
+from django.utils import http
 from django.utils.translation import ugettext_lazy as _
 
 from horizon import tables
 
 from savannadashboard.api.client import client as savannaclient
+from savannadashboard.jobs import tables as j_t
 
 LOG = logging.getLogger(__name__)
 
@@ -35,6 +38,35 @@ class DeleteJobExecution(tables.BatchAction):
     def action(self, request, obj_id):
         savanna = savannaclient(request)
         savanna.job_executions.delete(obj_id)
+
+
+class ReLaunchJobExistingCluster(j_t.ChoosePlugin):
+    name = "relaunch-job-existing"
+    verbose_name = _("Relaunch On Existing Cluster")
+    action_present = _("Launch")
+    action_past = _("Launched")
+    data_type_singular = _("Job")
+    data_type_plural = _("Jobs")
+    url = "horizon:savanna:jobs:launch-job"
+    classes = ('ajax-modal', 'btn-launch')
+
+    def get_link_url(self, datum):
+        base_url = urlresolvers.reverse(self.url)
+
+        params = http.urlencode({'job_id': datum.job_id,
+                                 'job_execution_id': datum.id})
+        return "?".join([base_url, params])
+
+
+class ReLaunchJobNewCluster(ReLaunchJobExistingCluster):
+    name = "relaunch-job-new"
+    verbose_name = _("Relaunch On New Cluster")
+    action_present = _("Launch")
+    action_past = _("Launched")
+    data_type_singular = _("Job")
+    data_type_plural = _("Jobs")
+    url = "horizon:savanna:jobs:choose-plugin"
+    classes = ('ajax-modal', 'btn-launch')
 
 
 class UpdateRow(tables.Row):
@@ -77,4 +109,6 @@ class JobExecutionsTable(tables.DataTable):
         status_columns = ["status"]
         verbose_name = _("Job Executions")
         table_actions = [DeleteJobExecution]
-        row_actions = [DeleteJobExecution]
+        row_actions = [DeleteJobExecution,
+                       ReLaunchJobExistingCluster,
+                       ReLaunchJobNewCluster]

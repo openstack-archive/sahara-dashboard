@@ -18,12 +18,18 @@ from django.conf.urls.defaults import patterns
 from django.conf.urls.defaults import url
 
 import savannadashboard.job_executions.views as views
+from savannadashboard.jobs import views as job_views
+
 
 urlpatterns = patterns('',
                        url(r'^$', views.JobExecutionsView.as_view(),
                            name='index'),
                        url(r'^$', views.JobExecutionsView.as_view(),
                            name='job-executions'),
+                       url(r'^launch-job$',
+                           job_views.LaunchJobView.as_view()),
+                       url(r'^launch-job-new-cluster$',
+                           job_views.LaunchJobNewClusterView.as_view()),
                        url(r'^(?P<job_execution_id>[^/]+)$',
                            views.JobExecutionDetailsView.as_view(),
                            name='details'))
