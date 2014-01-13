@@ -71,7 +71,8 @@ class GeneralConfigAction(workflows.Action):
 
     def populate_job_type_choices(self, request, context):
         choices = [("Pig", "Pig"), ("Hive", "Hive"),
-                   ("MapReduce", "MapReduce")]
+                   ("MapReduce", "MapReduce"),
+                   ("Java", "Java Action")]
         return choices
 
     def populate_main_binary_choices(self, request, context):

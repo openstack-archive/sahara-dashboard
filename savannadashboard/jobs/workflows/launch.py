@@ -79,6 +79,7 @@ class JobExecutionGeneralConfigAction(workflows.Action):
 
         choices = [(data_source.id, data_source.name)
                    for data_source in data_sources]
+        choices.insert(0, (None, 'None'))
 
         return choices
 
@@ -136,19 +137,45 @@ class JobConfigAction(workflows.Action):
         required=False,
         widget=forms.HiddenInput())
 
+    job_args_java = forms.CharField(
+        required=False,
+        widget=forms.HiddenInput())
+
+    job_type = forms.CharField(
+        required=False,
+        widget=forms.HiddenInput())
+
+    java_opts = forms.CharField(label=_("Java Opts"),
+                                required=False)
+
+    main_class = forms.CharField(label=_("Main Class"),
+                                 required=False)
+
     def __init__(self, request, *args, **kwargs):
         super(JobConfigAction, self).__init__(request, *args, **kwargs)
         job_ex_id = request.REQUEST.get("job_execution_id")
         if job_ex_id is not None:
             client = savannaclient(request)
             job_ex_id = request.REQUEST.get("job_execution_id")
-            job_configs = client.job_executions.get(job_ex_id).job_configs
-            self.fields['job_configs'].initial =\
-                json.dumps(job_configs['configs'])
-            self.fields['job_params'].initial =\
-                json.dumps(job_configs['params'])
-            self.fields['job_args'].initial =\
-                json.dumps(job_configs['args'])
+            job_ex = client.job_executions.get(job_ex_id)
+            job_configs = job_ex.job_configs
+
+            if 'configs' in job_configs:
+                self.fields['job_configs'].initial =\
+                    json.dumps(job_configs['configs'])
+            if 'params' in job_configs:
+                self.fields['job_params'].initial =\
+                    json.dumps(job_configs['params'])
+            job_args = json.dumps(job_configs['args'])
+            if isinstance(job_configs['args'], list):
+                self.fields['job_args_java'].initial = job_args
+            else:
+                self.fields['job_args'].initial = job_args
+
+            if job_ex.main_class:
+                self.fields['main_class'].initial = job_ex.main_class
+            if job_ex.java_opts:
+                self.fields['java_opts'].initial = job_ex.java_opts
 
     def populate_property_name_choices(self, request, context):
         client = savannaclient(request)
@@ -170,7 +197,10 @@ class JobExecutionGeneralConfig(workflows.Step):
 
     def contribute(self, data, context):
         for k, v in data.items():
-            context["job_general_" + k] = v
+            if k in ["job_input", "job_output"]:
+                context["job_general_" + k] = None if v == "None" else v
+            else:
+                context["job_general_" + k] = v
 
         return context
 
@@ -180,7 +210,10 @@ class JobExecutionExistingGeneralConfig(workflows.Step):
 
     def contribute(self, data, context):
         for k, v in data.items():
-            context["job_general_" + k] = v
+            if k in ["job_input", "job_output"]:
+                context["job_general_" + k] = None if v == "None" else v
+            else:
+                context["job_general_" + k] = v
 
         return context
 
@@ -193,9 +226,21 @@ class JobConfig(workflows.Step):
         job_config = json.loads(data.get("job_configs", '{}'))
         job_params = json.loads(data.get("job_params", '{}'))
         job_args = json.loads(data.get("job_args", '{}'))
-        context["job_config"] = {"configs": job_config,
-                                 "params": job_params,
-                                 "args": job_args}
+        job_args_java = json.loads(data.get("job_args_java", '[]'))
+        job_type = data.get("job_type", '')
+
+        context["job_type"] = job_type
+        context["job_config"] = {"configs": job_config}
+        context["extra_args"] = {}
+
+        if job_type == "Java":
+            context["job_config"]["args"] = job_args_java
+            context["extra_args"]["main_class"] = data.get("main_class", "")
+            context["extra_args"]["java_opts"] = data.get("java_opts", "")
+        else:
+            context["job_config"]["args"] = job_args
+            context["job_config"]["params"] = job_params
+
         return context
 
 
@@ -232,13 +277,14 @@ class LaunchJob(workflows.Workflow):
 
     def handle(self, request, context):
         savanna = savannaclient(request)
+
         savanna.job_executions.create(
             context["job_general_job"],
             context["job_general_cluster"],
             context["job_general_job_input"],
             context["job_general_job_output"],
-            context["job_config"])
-
+            context["job_config"],
+            context["extra_args"])
         return True
 
 
@@ -344,6 +390,7 @@ class LaunchJobNewCluster(workflows.Workflow):
             cluster.id,
             context["job_general_job_input"],
             context["job_general_job_output"],
-            context["job_config"])
+            context["job_config"],
+            context["extra_args"])
 
         return True
