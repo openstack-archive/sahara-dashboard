@@ -46,23 +46,37 @@ class GeneralConfigAction(workflows.Action):
     data_source_type = forms.ChoiceField(
         label=_("Data Source Type"),
         required=True,
-        choices=[("swift", "Swift")],
+        choices=[("swift", "Swift"), ("hdfs", "HDFS")],
         widget=forms.Select(attrs={"class": "data_source_type_choice"}))
 
     data_source_url = forms.CharField(label=_("URL"),
                                       required=True,
                                       widget=LabeledInput())
 
-    data_source_credential_user = forms.CharField(label=_("Source username"),)
+    data_source_credential_user = forms.CharField(label=_("Source username"),
+                                                  required=True)
 
     data_source_credential_pass = forms.CharField(
         widget=forms.PasswordInput(attrs={'autocomplete': 'off'}),
-        label=_("Source password"))
+        label=_("Source password"),
+        required=True)
 
     data_source_description = forms.CharField(
         label=_("Description"),
         required=False,
         widget=forms.Textarea)
+
+    def clean(self):
+        cleaned_data = super(workflows.Action, self).clean()
+        ds_type = cleaned_data.get("data_source_type", "")
+
+        if ds_type == "hdfs":
+            if "data_source_credential_user" in self._errors:
+                del self._errors["data_source_credential_user"]
+            if "data_source_credential_pass" in self._errors:
+                del self._errors["data_source_credential_pass"]
+
+        return cleaned_data
 
     def __init__(self, request, *args, **kwargs):
         super(GeneralConfigAction, self).__init__(request, *args, **kwargs)
@@ -103,6 +117,6 @@ class CreateDataSource(workflows.Workflow):
             context["general_data_source_description"],
             context["general_data_source_type"],
             context["source_url"],
-            context["general_data_source_credential_user"],
-            context["general_data_source_credential_pass"])
+            context.get("general_data_source_credential_user", None),
+            context.get("general_data_source_credential_pass", None))
         return True
