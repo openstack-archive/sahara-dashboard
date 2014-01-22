@@ -133,11 +133,7 @@ class JobConfigAction(workflows.Action):
         required=False,
         widget=forms.HiddenInput())
 
-    job_args = forms.CharField(
-        required=False,
-        widget=forms.HiddenInput())
-
-    job_args_java = forms.CharField(
+    job_args_array = forms.CharField(
         required=False,
         widget=forms.HiddenInput())
 
@@ -167,10 +163,7 @@ class JobConfigAction(workflows.Action):
                 self.fields['job_params'].initial =\
                     json.dumps(job_configs['params'])
             job_args = json.dumps(job_configs['args'])
-            if isinstance(job_configs['args'], list):
-                self.fields['job_args_java'].initial = job_args
-            else:
-                self.fields['job_args'].initial = job_args
+            self.fields['job_args_array'].initial = job_args
 
             if job_ex.main_class:
                 self.fields['main_class'].initial = job_ex.main_class
@@ -225,8 +218,7 @@ class JobConfig(workflows.Step):
     def contribute(self, data, context):
         job_config = json.loads(data.get("job_configs", '{}'))
         job_params = json.loads(data.get("job_params", '{}'))
-        job_args = json.loads(data.get("job_args", '{}'))
-        job_args_java = json.loads(data.get("job_args_java", '[]'))
+        job_args_array = json.loads(data.get("job_args_array", '[]'))
         job_type = data.get("job_type", '')
 
         context["job_type"] = job_type
@@ -234,11 +226,11 @@ class JobConfig(workflows.Step):
         context["extra_args"] = {}
 
         if job_type == "Java":
-            context["job_config"]["args"] = job_args_java
+            context["job_config"]["args"] = job_args_array
             context["extra_args"]["main_class"] = data.get("main_class", "")
             context["extra_args"]["java_opts"] = data.get("java_opts", "")
         else:
-            context["job_config"]["args"] = job_args
+            context["job_config"]["args"] = job_args_array
             context["job_config"]["params"] = job_params
 
         return context
@@ -326,12 +318,15 @@ class SelectHadoopPluginAction(t_flows.SelectPluginAction):
             job_ex_id = request.REQUEST.get("job_execution_id")
             job_configs = client.job_executions.get(job_ex_id).job_configs
 
-            self.fields["job_configs"].initial =\
-                json.dumps(job_configs["configs"])
-            self.fields["job_params"].initial =\
-                json.dumps(job_configs["params"])
-            self.fields["job_args"].initial =\
-                json.dumps(job_configs["args"])
+            if "configs" in job_configs:
+                self.fields["job_configs"].initial =\
+                    json.dumps(job_configs["configs"])
+            if "params" in job_configs:
+                self.fields["job_params"].initial =\
+                    json.dumps(job_configs["params"])
+            if "args" in job_configs:
+                self.fields["job_args"].initial =\
+                    json.dumps(job_configs["args"])
 
     class Meta:
         name = _("Select plugin and hadoop version for cluster")
