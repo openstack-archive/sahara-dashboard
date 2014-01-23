@@ -216,9 +216,12 @@ class JobConfig(workflows.Step):
     template_name = 'jobs/config_template.html'
 
     def contribute(self, data, context):
-        job_config = json.loads(data.get("job_configs", '{}'))
-        job_params = json.loads(data.get("job_params", '{}'))
-        job_args_array = json.loads(data.get("job_args_array", '[]'))
+        job_config = self.clean_configs(
+            json.loads(data.get("job_configs", '{}')))
+        job_params = self.clean_configs(
+            json.loads(data.get("job_params", '{}')))
+        job_args_array = self.clean_configs(
+            json.loads(data.get("job_args_array", '[]')))
         job_type = data.get("job_type", '')
 
         context["job_type"] = job_type
@@ -234,6 +237,18 @@ class JobConfig(workflows.Step):
             context["job_config"]["params"] = job_params
 
         return context
+
+    @staticmethod
+    def clean_configs(configs):
+        cleaned_conf = None
+        if isinstance(configs, dict):
+            cleaned_conf = dict([(k.strip(), v.strip())
+                                 for k, v in configs.items()
+                                 if len(v.strip()) > 0 and len(k.strip()) > 0])
+        elif isinstance(configs, list):
+            cleaned_conf = list([v.strip() for v in configs
+                                 if len(v.strip()) > 0])
+        return cleaned_conf
 
 
 class NewClusterConfigAction(c_flow.GeneralConfigAction):
