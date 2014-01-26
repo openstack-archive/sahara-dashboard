@@ -26,11 +26,36 @@
         </div>
     </tr>
 </script>
+<script id="args_java_template" type="text/template">
+    <tr id_attr="$id">
+        <div class="input control-group">
+            <td><input style="display: inline; margin-left:10px; margin-right:10px" field="value" class="input-medium"
+                       onkeyup="set_props()" onchange="set_props()" onclick="set_props()"
+                       value="$value"/></td>
+            <td><input style="display: inline; margin-top:-10px" type="button" class="btn btn-danger"
+                       onclick="delete_prop(this)" value="Remove"/></td>
+        </div>
+    </tr>
+</script>
 <script id="table_template" type="text/template">
     <table>
         <thead>
         <tr>
             <td><label>Name</label></td>
+            <td><label style="margin-left: 10px">Value</label></td>
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <div class="input">
+        <a class="btn btn-inline" onclick="add_prop('$target');">Add</a>
+    </div>
+</script>
+<script id="java_table_template" type="text/template">
+    <table>
+        <thead>
+        <tr>
             <td><label style="margin-left: 10px">Value</label></td>
         </tr>
         </thead>
@@ -52,12 +77,20 @@
 
     function set_props() {
         $(targets).each(function (index, target) {
+          if (target.match(/.*?java.*/) != null) {
+            var configs = [];
+            $("#" + target + " tbody tr").each(function (index) {
+                configs[index] = $(this).find("td input[field=value]").val();
+            });
+            $("#job_" + target).val(JSON.stringify(configs));
+          } else {
             var configs = {};
             $("#" + target + " tbody tr").each(function () {
                 var key = $(this).find("td input[field=key]").val();
                 configs[key] = $(this).find("td input[field=value]").val();
             });
             $("#job_" + target).val(JSON.stringify(configs));
+          }
         });
     }
 
@@ -103,15 +136,30 @@
                 res.push("args");
             }
         }
+        if (job_type == "Java") {
+          res.push("args_java");
+        }
         return res;
     }
 
     function load_prior_configs() {
       for(targ in targets) {
-        var configs = JSON.parse($("#id_job_" + targets[targ]).val());
-        for(conf in configs) {
-          add_prop(targets[targ], conf, configs[conf]);
+        if ($("#id_job_" + targets[targ]).val()!= "") {
+          var configs = JSON.parse($("#id_job_" + targets[targ]).val());
+          for(conf in configs) {
+            add_prop(targets[targ], conf, configs[conf]);
+          }
         }
+      }
+    }
+
+    function hide_unnecessary_fields() {
+      if (job_type == "Java") {
+        $("[name=job_input]").closest(".control-group").hide();
+        $("[name=job_output]").closest(".control-group").hide();
+      } else {
+        $("[name=java_opts]").closest(".control-group").hide();
+        $("[name=main_class]").closest(".control-group").hide();
       }
     }
 
@@ -130,21 +178,25 @@
     $("#job_cfg").children().hide();
 
     var targets;
+    var job_type;
 
     $.ajax({
         url: "launch-job",
         data: {"job_id": $("#id_job").val(),
             "json": true },
         success: function (data, textStatus, jqXHR) {
-            var job_type = data["job_type"];
+            job_type = data["job_type"];
+            $("#job_type").val(job_type);
             targets = get_targets(job_type);
         },
         complete: function (jqXHR, textStatus) {
             $(targets).each(function (index, target) {
-                $("#" + target).show().append($("#table_template").text()
+              var template = target == "args_java" ? "#java_table_template" : "#table_template";
+              $("#" + target).show().append($(template).text()
                         .replace(/\$target/g, target));
             });
             $("#job_cfg table").hide();
+            hide_unnecessary_fields();
             load_prior_configs();
         }
     });
@@ -154,7 +206,9 @@
 
 <input type="hidden" value="{}" name="job_configs" id="job_configs">
 <input type="hidden" value="{}" name="job_args" id="job_args">
+<input type="hidden" value="[]" name="job_args_java" id="job_args_java">
 <input type="hidden" value="{}" name="job_params" id="job_params">
+<input type="hidden" value="" name="job_type" id="job_type">
 
 <datalist id="properties"></datalist>
 
@@ -167,5 +221,8 @@
     </div>
     <div id="args">
         <label>Arguments</label>
+    </div>
+    <div id="args_java">
+        <label>Java Arguments</label>
     </div>
 </div>
