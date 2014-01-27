@@ -26,7 +26,7 @@
         </div>
     </tr>
 </script>
-<script id="args_java_template" type="text/template">
+<script id="args_array_template" type="text/template">
     <tr id_attr="$id">
         <div class="input control-group">
             <td><input style="display: inline; margin-left:10px; margin-right:10px" field="value" class="input-medium"
@@ -52,7 +52,7 @@
         <a class="btn btn-inline" onclick="add_prop('$target');">Add</a>
     </div>
 </script>
-<script id="java_table_template" type="text/template">
+<script id="array_table_template" type="text/template">
     <table>
         <thead>
         <tr>
@@ -77,7 +77,7 @@
 
     function set_props() {
         $(targets).each(function (index, target) {
-          if (target.match(/.*?java.*/) != null) {
+          if (target.match(/.*?array.*/) != null) {
             var configs = [];
             $("#" + target + " tbody tr").each(function (index) {
                 configs[index] = $(this).find("td input[field=value]").val();
@@ -132,12 +132,9 @@
         var res = ["configs"];
         if ($.inArray(job_type, ["Hive", "Pig"]) != -1) {
             res.push("params");
-            if (job_type == "Pig") {
-                res.push("args");
-            }
         }
-        if (job_type == "Java") {
-          res.push("args_java");
+        if ($.inArray(job_type, ["Java", "Pig"]) != -1) {
+          res.push("args_array");
         }
         return res;
     }
@@ -191,7 +188,7 @@
         },
         complete: function (jqXHR, textStatus) {
             $(targets).each(function (index, target) {
-              var template = target == "args_java" ? "#java_table_template" : "#table_template";
+              var template = target == "args_array" ? "#array_table_template" : "#table_template";
               $("#" + target).show().append($(template).text()
                         .replace(/\$target/g, target));
             });
@@ -205,8 +202,7 @@
 {% include "horizon/common/_form_fields.html" %}
 
 <input type="hidden" value="{}" name="job_configs" id="job_configs">
-<input type="hidden" value="{}" name="job_args" id="job_args">
-<input type="hidden" value="[]" name="job_args_java" id="job_args_java">
+<input type="hidden" value="[]" name="job_args_array" id="job_args_array">
 <input type="hidden" value="{}" name="job_params" id="job_params">
 <input type="hidden" value="" name="job_type" id="job_type">
 
@@ -219,10 +215,7 @@
     <div id="params">
         <label>Parameters</label>
     </div>
-    <div id="args">
+    <div id="args_array">
         <label>Arguments</label>
-    </div>
-    <div id="args_java">
-        <label>Java Arguments</label>
     </div>
 </div>
