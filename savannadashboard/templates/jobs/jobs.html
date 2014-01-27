@@ -77,6 +77,17 @@
                     $("." + plugin.val() + "_version_choice").closest(".control-group").show();
                 }
                 $(".plugin_name_choice").change();
+
+                $(document).on('change', '#id_job_type', switch_job_type);
+                function switch_job_type() {
+                  job_type = $("#id_job_type").val();
+                  if ($.inArray(job_type, ["MapReduce", "Java"]) != -1) {
+                    $("#id_main_binary").closest(".control-group").hide();
+                  } else {
+                    $("#id_main_binary").closest(".control-group").show();
+                  }
+                }
+                $("#id_job_type").change();
             });
         });
 

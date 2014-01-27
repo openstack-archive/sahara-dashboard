@@ -84,6 +84,15 @@ class GeneralConfigAction(workflows.Action):
         choices.insert(0, ('', '-- not selected --'))
         return choices
 
+    def clean(self):
+        cleaned_data = super(workflows.Action, self).clean()
+        job_type = cleaned_data.get("job_type", "")
+
+        if job_type in ["Java", "MapReduce"]:
+            cleaned_data['main_binary'] = None
+
+        return cleaned_data
+
     class Meta:
         name = _("Create Job")
         help_text_template = "jobs/_create_job_help.html"
