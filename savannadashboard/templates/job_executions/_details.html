@@ -24,5 +24,16 @@
         <dd>{{ job_execution.created_at }}</dd>
         <dt>{% trans "Tenant Id" %}</dt>
         <dd>{{ job_execution.tenant_id }}</dd>
+        <dt>{% trans "Job Configuration" %}</dt>
+        <dd>{% for group, vals in job_execution.job_configs.iteritems %}
+            <ul><li><span style="font-weight:bold">{{ group }}:</span>
+              {%if group == "args" %}
+                <ul>{% for val in vals %} <li>{{ val }}</li> {% endfor %}</ul>
+              {% else %}
+                <ul>{% for key, val in vals.iteritems %} <li>{{ key }} = {{ val }}</li> {% endfor %}</ul>
+              {% endif %}
+            </li></ul>
+            {% endfor %}
+        </dd>
     </dl>
 </div>
