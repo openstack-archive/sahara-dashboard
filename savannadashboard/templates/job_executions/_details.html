@@ -7,13 +7,13 @@
         <dt>{% trans "Id" %}</dt>
         <dd>{{ job_execution.id }}</dd>
         <dt>{% trans "Job Id" %}</dt>
-        <dd>{{ job_execution.job_id }}</dd>
+        <dd>{{ job_execution.job_id }} ({{ object_names.job_name }})</dd>
         <dt>{% trans "Input Id" %}</dt>
-        <dd>{{ job_execution.input_id }}</dd>
+        <dd>{{ job_execution.input_id }} ({{ object_names.input_name }})</dd>
         <dt>{% trans "Output Id" %}</dt>
-        <dd>{{ job_execution.output_id }}</dd>
+        <dd>{{ job_execution.output_id }} ({{ object_names.output_name }})</dd>
         <dt>{% trans "Cluster Id" %}</dt>
-        <dd>{{ job_execution.cluster_id }}</dd>
+        <dd>{{ job_execution.cluster_id }} ({{ object_names.cluster_name }})</dd>
         <dt>{% trans "Last Updated" %}</dt>
         <dd>{{ job_execution.updated_at }}</dd>
         <dt>{% trans "Return Code" %}</dt>
