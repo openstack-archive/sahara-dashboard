@@ -18,7 +18,7 @@ import logging
 from horizon import exceptions
 
 from savannaclient.api import base as api_base
-from savannaclient.api import client as api_client
+from savannaclient import client as api_client
 from savannadashboard.utils import importutils
 
 # horizon.api is for backward compatibility with folsom
@@ -58,7 +58,10 @@ exceptions.RECOVERABLE += (api_base.APIException,)
 
 def get_savanna_url(request):
     if SAVANNA_URL is not None:
-        return SAVANNA_URL
+        url = SAVANNA_URL.rstrip('/')
+        if url.split('/')[-1] in ['v1.0', 'v1.1']:
+            url = SAVANNA_URL + '/' + request.user.tenant_id
+        return url
 
     return base.url_for(request, SAVANNA_SERVICE)
 
@@ -67,7 +70,7 @@ def client(request):
     endpoint_type = get_horizon_parameter('OPENSTACK_ENDPOINT_TYPE',
                                           'internalURL')
     auth_url = keystone._get_endpoint_url(request, endpoint_type)
-    return api_client.Client(savanna_url=get_savanna_url(request),
+    return api_client.Client('1.1', savanna_url=get_savanna_url(request),
                              service_type=SAVANNA_SERVICE,
                              project_id=request.user.tenant_id,
                              input_auth_token=request.user.token.id,
