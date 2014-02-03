@@ -54,8 +54,9 @@ class JobExecutionGeneralConfigAction(workflows.Action):
         widget=forms.Select(attrs={"class": "job_output_choice"}))
 
     def __init__(self, request, *args, **kwargs):
-        super(JobExecutionGeneralConfigAction, self). \
-            __init__(request, *args, **kwargs)
+        super(JobExecutionGeneralConfigAction, self).__init__(request,
+                                                              *args,
+                                                              **kwargs)
 
         if request.REQUEST.get("job_id", None) is None:
             self.fields["job"] = forms.ChoiceField(
@@ -94,8 +95,7 @@ class JobExecutionGeneralConfigAction(workflows.Action):
 
     class Meta:
         name = _("Job")
-        help_text_template = \
-            ("jobs/_launch_job_help.html")
+        help_text_template = "jobs/_launch_job_help.html"
 
 
 class JobExecutionExistingGeneralConfigAction(JobExecutionGeneralConfigAction):
@@ -116,11 +116,13 @@ class JobExecutionExistingGeneralConfigAction(JobExecutionGeneralConfigAction):
 
     class Meta:
         name = _("Job")
-        help_text_template = \
-            ("jobs/_launch_job_help.html")
+        help_text_template = "jobs/_launch_job_help.html"
 
 
 class JobConfigAction(workflows.Action):
+    MAIN_CLASS = "edp.java.main_class"
+    JAVA_OPTS = "edp.java.java_opts"
+
     property_name = forms.ChoiceField(
         required=False,
     )
@@ -141,11 +143,11 @@ class JobConfigAction(workflows.Action):
         required=False,
         widget=forms.HiddenInput())
 
-    java_opts = forms.CharField(label=_("Java Opts"),
-                                required=False)
-
     main_class = forms.CharField(label=_("Main Class"),
                                  required=False)
+
+    java_opts = forms.CharField(label=_("Java Opts"),
+                                required=False)
 
     def __init__(self, request, *args, **kwargs):
         super(JobConfigAction, self).__init__(request, *args, **kwargs)
@@ -155,20 +157,26 @@ class JobConfigAction(workflows.Action):
             job_ex_id = request.REQUEST.get("job_execution_id")
             job_ex = client.job_executions.get(job_ex_id)
             job_configs = job_ex.job_configs
+            edp_configs = {}
 
             if 'configs' in job_configs:
-                self.fields['job_configs'].initial =\
-                    json.dumps(job_configs['configs'])
+                configs, edp_configs = (
+                    self.clean_edp_configs(job_configs['configs']))
+                self.fields['job_configs'].initial = (
+                    json.dumps(configs))
+
             if 'params' in job_configs:
-                self.fields['job_params'].initial =\
-                    json.dumps(job_configs['params'])
+                self.fields['job_params'].initial = (
+                    json.dumps(job_configs['params']))
             job_args = json.dumps(job_configs['args'])
             self.fields['job_args_array'].initial = job_args
 
-            if job_ex.main_class:
-                self.fields['main_class'].initial = job_ex.main_class
-            if job_ex.java_opts:
-                self.fields['java_opts'].initial = job_ex.java_opts
+            if self.MAIN_CLASS in edp_configs:
+                self.fields['main_class'].initial = (
+                    edp_configs[self.MAIN_CLASS])
+            if self.JAVA_OPTS in edp_configs:
+                self.fields['java_opts'].initial = (
+                    edp_configs[self.JAVA_OPTS])
 
     def populate_property_name_choices(self, request, context):
         client = savannaclient(request)
@@ -179,10 +187,18 @@ class JobConfigAction(workflows.Action):
                    for param in job_configs['configs']]
         return choices
 
+    def clean_edp_configs(self, configs):
+        edp_configs = {}
+        for key, value in configs.iteritems():
+            if key in [self.JAVA_OPTS, self.MAIN_CLASS]:
+                edp_configs[key] = value
+        for rmkey in edp_configs.keys():
+            del configs[rmkey]
+        return (configs, edp_configs)
+
     class Meta:
         name = _("Configure")
-        help_text_template = \
-            ("jobs/_launch_job_configure_help.html")
+        help_text_template = "jobs/_launch_job_configure_help.html"
 
 
 class JobExecutionGeneralConfig(workflows.Step):
@@ -226,14 +242,14 @@ class JobConfig(workflows.Step):
 
         context["job_type"] = job_type
         context["job_config"] = {"configs": job_config}
-        context["extra_args"] = {}
+        context["job_config"]["args"] = job_args_array
 
         if job_type == "Java":
-            context["job_config"]["args"] = job_args_array
-            context["extra_args"]["main_class"] = data.get("main_class", "")
-            context["extra_args"]["java_opts"] = data.get("java_opts", "")
+            context["job_config"]["configs"][JobConfigAction.MAIN_CLASS] = (
+                data.get("main_class", ""))
+            context["job_config"]["configs"][JobConfigAction.JAVA_OPTS] = (
+                data.get("java_opts", ""))
         else:
-            context["job_config"]["args"] = job_args_array
             context["job_config"]["params"] = job_params
 
         return context
@@ -258,8 +274,8 @@ class NewClusterConfigAction(c_flow.GeneralConfigAction):
 
     class Meta:
         name = _("Configure Cluster")
-        help_text_template = \
-            ("clusters/_configure_general_help.html")
+        help_text_template = (
+            "clusters/_configure_general_help.html")
 
 
 class ClusterGeneralConfig(workflows.Step):
@@ -290,15 +306,15 @@ class LaunchJob(workflows.Workflow):
             context["job_general_cluster"],
             context["job_general_job_input"],
             context["job_general_job_output"],
-            context["job_config"],
-            context["extra_args"])
+            context["job_config"])
         return True
 
 
 class SelectHadoopPluginAction(t_flows.SelectPluginAction):
     def __init__(self, request, *args, **kwargs):
-        super(SelectHadoopPluginAction, self).\
-            __init__(request, *args, **kwargs)
+        super(SelectHadoopPluginAction, self).__init__(request,
+                                                       *args,
+                                                       **kwargs)
         self.fields["job_id"] = forms.ChoiceField(
             label=_("Plugin name"),
             required=True,
@@ -334,14 +350,14 @@ class SelectHadoopPluginAction(t_flows.SelectPluginAction):
             job_configs = client.job_executions.get(job_ex_id).job_configs
 
             if "configs" in job_configs:
-                self.fields["job_configs"].initial =\
-                    json.dumps(job_configs["configs"])
+                self.fields["job_configs"].initial = (
+                    json.dumps(job_configs["configs"]))
             if "params" in job_configs:
-                self.fields["job_params"].initial =\
-                    json.dumps(job_configs["params"])
+                self.fields["job_params"].initial = (
+                    json.dumps(job_configs["params"]))
             if "args" in job_configs:
-                self.fields["job_args"].initial =\
-                    json.dumps(job_configs["args"])
+                self.fields["job_args"].initial = (
+                    json.dumps(job_configs["args"]))
 
     class Meta:
         name = _("Select plugin and hadoop version for cluster")
@@ -377,8 +393,8 @@ class LaunchJobNewCluster(workflows.Workflow):
         savanna = savannaclient(request)
         node_groups = None
 
-        plugin, hadoop_version = whelpers. \
-            get_plugin_and_hadoop_version(request)
+        plugin, hadoop_version = (
+            whelpers.get_plugin_and_hadoop_version(request))
 
         ct_id = context["cluster_general_cluster_template"] or None
         user_keypair = context["cluster_general_keypair"] or None
@@ -400,7 +416,6 @@ class LaunchJobNewCluster(workflows.Workflow):
             cluster.id,
             context["job_general_job_input"],
             context["job_general_job_output"],
-            context["job_config"],
-            context["extra_args"])
+            context["job_config"])
 
         return True
