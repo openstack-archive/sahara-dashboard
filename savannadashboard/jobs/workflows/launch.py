@@ -122,6 +122,9 @@ class JobExecutionExistingGeneralConfigAction(JobExecutionGeneralConfigAction):
 class JobConfigAction(workflows.Action):
     MAIN_CLASS = "edp.java.main_class"
     JAVA_OPTS = "edp.java.java_opts"
+    EDP_MAPPER = "edp.streaming.mapper"
+    EDP_REDUCER = "edp.streaming.reducer"
+    EDP_PREFIX = "edp."
 
     property_name = forms.ChoiceField(
         required=False,
@@ -148,6 +151,12 @@ class JobConfigAction(workflows.Action):
 
     java_opts = forms.CharField(label=_("Java Opts"),
                                 required=False)
+
+    streaming_mapper = forms.CharField(label=_("Mapper"),
+                                       required=True)
+
+    streaming_reducer = forms.CharField(label=_("Reducer"),
+                                        required=True)
 
     def __init__(self, request, *args, **kwargs):
         super(JobConfigAction, self).__init__(request, *args, **kwargs)
@@ -178,6 +187,25 @@ class JobConfigAction(workflows.Action):
                 self.fields['java_opts'].initial = (
                     edp_configs[self.JAVA_OPTS])
 
+            if self.EDP_MAPPER in edp_configs:
+                self.fields['streaming_mapper'].initial = (
+                    edp_configs[self.EDP_MAPPER])
+            if self.EDP_REDUCER in edp_configs:
+                self.fields['streaming_reducer'].initial = (
+                    edp_configs[self.EDP_REDUCER])
+
+    def clean(self):
+        cleaned_data = super(workflows.Action, self).clean()
+        job_type = cleaned_data.get("job_type", None)
+
+        if job_type != "MapReduce.Streaming":
+            if "streaming_mapper" in self._errors:
+                del self._errors["streaming_mapper"]
+            if "streaming_reducer" in self._errors:
+                del self._errors["streaming_reducer"]
+
+        return cleaned_data
+
     def populate_property_name_choices(self, request, context):
         client = savannaclient(request)
         job_id = request.REQUEST.get("job_id") or request.REQUEST.get("job")
@@ -190,7 +218,7 @@ class JobConfigAction(workflows.Action):
     def clean_edp_configs(self, configs):
         edp_configs = {}
         for key, value in configs.iteritems():
-            if key in [self.JAVA_OPTS, self.MAIN_CLASS]:
+            if key.startswith(self.EDP_PREFIX):
                 edp_configs[key] = value
         for rmkey in edp_configs.keys():
             del configs[rmkey]
@@ -249,6 +277,11 @@ class JobConfig(workflows.Step):
                 data.get("main_class", ""))
             context["job_config"]["configs"][JobConfigAction.JAVA_OPTS] = (
                 data.get("java_opts", ""))
+        elif job_type == "MapReduce.Streaming":
+            context["job_config"]["configs"][JobConfigAction.EDP_MAPPER] = (
+                data.get("streaming_mapper", ""))
+            context["job_config"]["configs"][JobConfigAction.EDP_REDUCER] = (
+                data.get("streaming_reducer", ""))
         else:
             context["job_config"]["params"] = job_params
 
