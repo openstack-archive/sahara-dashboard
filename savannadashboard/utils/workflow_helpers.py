@@ -128,7 +128,8 @@ def parse_configs_from_context(context, defaults):
             config = key_split[2]
             if service not in configs_dict:
                 configs_dict[service] = dict()
-            if unicode(defaults[service][config]) == unicode(val):
+            if (val is None or
+                    unicode(defaults[service][config]) == unicode(val)):
                 continue
             configs_dict[service][config] = val
     return configs_dict
