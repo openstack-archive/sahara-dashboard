@@ -158,6 +158,10 @@
         $("[name=java_opts]").closest(".control-group").hide();
         $("[name=main_class]").closest(".control-group").hide();
       }
+      if (job_type != "MapReduce.Streaming") {
+        $("[name=streaming_mapper]").closest(".control-group").hide();
+        $("[name=streaming_reducer]").closest(".control-group").hide();
+      }
     }
 
     properties = {};
