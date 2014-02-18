@@ -107,7 +107,7 @@ class UITestCase(unittest2.TestCase):
                 find_element_by_xpath('..').text)
         if params:
             self.config_helper(params)
-        driver.find_element_by_xpath("//input[@value='Create']").click()
+        self.click_visible_key("//input[@value='Create']")
         if not message:
             message = "Success: Created Node Group Template %s" % name
         if close_window:
@@ -147,7 +147,7 @@ class UITestCase(unittest2.TestCase):
             number_to_add += 1
         if params:
             self.config_helper(params)
-        driver.find_element_by_xpath("//input[@value='Create']").click()
+        self.click_visible_key("//input[@value='Create']")
         if not message:
             message = "Success: Created Cluster Template %s" % name
         if close_window:
@@ -183,7 +183,7 @@ class UITestCase(unittest2.TestCase):
             driver.find_element_by_xpath(
                 "//select[@id='id_neutron_management_network']/option[text()="
                 "'%s']" % cfg.common.neutron_management_network).click()
-        driver.find_element_by_xpath("//input[@value='Create']").click()
+        self.click_visible_key("//input[@value='Create']")
         if not message:
             message = 'Success: Created Cluster %s' % name
         if close_window:
@@ -491,6 +491,12 @@ class UITestCase(unittest2.TestCase):
     def find_clear_send(cls, by_find, find_element, send):
         cls.driver.find_element(by=by_find, value=find_element).clear()
         cls.driver.find_element(by=by_find, value=find_element).send_keys(send)
+
+    def click_visible_key(self, xpath):
+        keys = self.driver.find_elements_by_xpath(xpath)
+        for key in keys:
+            if key.is_displayed():
+                key.click()
 
     def delete_and_validate(self, url, delete_button_id, names, undelete_names,
                             finally_delete,
