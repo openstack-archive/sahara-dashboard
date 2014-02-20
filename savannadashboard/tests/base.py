@@ -239,7 +239,7 @@ class UITestCase(unittest2.TestCase):
         driver.find_element_by_xpath("//select[@id='id_job_binary_type']/optio"
                                      "n[text()='%s']" % storage_type).click()
 
-        if storage_type == 'Swift internal':
+        if storage_type == 'Swift':
             self.find_clear_send(by.By.ID, "id_job_binary_url",
                                  parameters_of_storage['url'])
             self.find_clear_send(by.By.ID, "id_job_binary_username",
