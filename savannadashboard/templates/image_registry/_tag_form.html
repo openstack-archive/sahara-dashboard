@@ -20,17 +20,25 @@
             }
         });
 
-        var span = ' <span class="label label-warning" style="float: left;display: block; margin: 2px;">$tag <i class="icon-remove-sign" onclick="remove_tag(this);"></i></span>'.replace("$tag", tag)
-        $("#image_tags_list").append(span);
-        $("#_savanna_image_tag").val("");
-        update_image_tags();
+        var tags = get_current_tags();
+        if ($.inArray(tag, tags) == -1) {
+          var span = ' <span class="label label-warning" style="float: left;display: block; margin: 2px;">$tag <i class="icon-remove-sign" onclick="remove_tag(this);"></i></span>'.replace("$tag", tag)
+          $("#image_tags_list").append(span);
+          update_image_tags();
+        }
+        $("#_savanna_image_tag").val("");        
+    }
+
+    function get_current_tags() {
+      var tags = [];
+      $("#image_tags_list span").each(function (el) {
+        tags.push($.trim($(this).text()));
+      });
+      return tags;
     }
 
     function update_image_tags() {
-        var tags = [];
-        $("#image_tags_list span").each(function (el) {
-            tags.push($.trim($(this).text()));
-        });
+        var tags = get_current_tags();
         $("#id_tags_list").val(JSON.stringify(tags));
     }
 
