@@ -55,13 +55,7 @@
     {% endfor %}
     console.log(plugin_tags_map);
 </script>
-<div id="image_tags_list" class="well">
-    {% for tag in image.tags %}
-        <span class="label label-info" style="float: left;display: block; margin: 2px;">{{ tag }} <i
-                class="icon-remove-sign"
-                onclick="remove_tag(this);"></i></span>
-    {% endfor %}
-</div>
+<div id="image_tags_list" class="well"></div>
 <div style="clear: both;"></div>
 <div id="plugin_populate_section">
     <h5>Register tags required for the Plugin with specified Hadoop Version</h5>
