@@ -51,6 +51,8 @@ class UITestCase(unittest2.TestCase):
     def setUp(self):
         if self.ifFail:
             self.fail("setUpClass method is fail")
+        self.await_element(by.By.CLASS_NAME, 'clearfix',
+                           'authorization failed')
 
     def image_registry(self, image_name, user_name=None, description=None,
                        tags_to_add=None, tags_to_remove=None, positive=True,
