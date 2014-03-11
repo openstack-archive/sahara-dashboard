@@ -1,19 +1,19 @@
-OpenStack Dashboard plugin for Savanna project
+OpenStack Dashboard plugin for Sahara project
 ==============================================
 
-Savanna project: https://github.com/stackforge/savanna
+Sahara project: https://github.com/openstack/sahara
 
-Savanna at wiki.openstack.org: https://wiki.openstack.org/wiki/Savanna
+Sahara at wiki.openstack.org: https://wiki.openstack.org/wiki/Sahara
 
-Launchpad project: https://launchpad.net/savanna
+Launchpad project: https://launchpad.net/sahara
 
-Savanna docs site: https://savanna.readthedocs.org/en/latest/index.html
+Sahara docs site: http://docs.openstack.org/developer/sahara
 
-Roadmap: https://wiki.openstack.org/wiki/Savanna/Roadmap
+Roadmap: https://wiki.openstack.org/wiki/Sahara/Roadmap
 
-Quickstart guide: https://savanna.readthedocs.org/en/latest/devref/quickstart.html
+Quickstart guide: http://docs.openstack.org/developer/sahara/devref/quickstart.html
 
-How to participate: https://savanna.readthedocs.org/en/latest/devref/how_to_participate.html
+How to participate: http://docs.openstack.org/developer/sahara/devref/how_to_participate.html
 
 
 License

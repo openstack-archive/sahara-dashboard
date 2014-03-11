@@ -3,7 +3,7 @@ include README.rst
 include ChangeLog
 include LICENSE
 
-include savannadashboard/templates/**.html
+include saharadashboard/templates/**.html
 
 exclude .gitignore
 exclude .gitreview

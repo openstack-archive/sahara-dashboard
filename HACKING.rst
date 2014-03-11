@@ -1,4 +1,4 @@
-Savanna Style Commandments
+Sahara Style Commandments
 ==========================
 
 - Step 1: Read the OpenStack Style Commandments
