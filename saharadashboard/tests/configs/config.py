@@ -56,10 +56,10 @@ CommonGroup = [
                help="await each web element in seconds"),
     cfg.StrOpt('image_name_for_register',
                default='fedora_19',
-               help='Image name for register to Savanna'),
+               help='Image name for register to Sahara'),
     cfg.StrOpt('image_name_for_edit',
                default='latest-ci-image',
-               help='Image name for edit in image registry in Savanna'),
+               help='Image name for edit in image registry in Sahara'),
     cfg.IntOpt('job_launch_timeout',
                default=5,
                help='Timeout for job launch (in minutes); '

@@ -125,15 +125,15 @@ class UICreateCluster(base.UITestCase):
                 'output', 'selenium-container.savanna/output')
 
             parameters_of_storage = {
-                'storage_type': 'Savanna internal database',
-                'Savanna binary': '*Upload a new file',
+                'storage_type': 'Internal database',
+                'Internal binary': '*Upload a new file',
                 'filename': 'edp-lib.jar'}
 
             self.create_job_binary('edp-lib.jar', parameters_of_storage)
 
             parameters_of_storage = {
-                'storage_type': 'Savanna internal database',
-                'Savanna binary': '*Create a script',
+                'storage_type': 'Internal database',
+                'Internal binary': '*Create a script',
                 'script_name': 'edp-job.pig',
                 'script_text': open('saharadashboard/tests/resources/'
                                     'edp-job.pig').read()}

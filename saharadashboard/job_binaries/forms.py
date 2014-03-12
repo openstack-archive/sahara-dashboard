@@ -59,7 +59,7 @@ class JobBinaryCreateForm(forms.SelfHandlingForm):
     job_binary_url = forms.CharField(label=_("URL"),
                                      required=False,
                                      widget=LabeledInput())
-    job_binary_savanna_internal = forms.ChoiceField(label=_("Savanna binary"),
+    job_binary_savanna_internal = forms.ChoiceField(label=_("Internal binary"),
                                                     required=False)
 
     job_binary_file = forms.FileField(label=_("Upload File"),
@@ -90,7 +90,7 @@ class JobBinaryCreateForm(forms.SelfHandlingForm):
         self.help_text_template = "job_binaries/_create_job_binary_help.html"
 
         self.fields["job_binary_type"].choices =\
-            [("savanna-db", "Savanna internal database"),
+            [("savanna-db", "Internal database"),
              ("swift", "Swift")]
 
         self.fields["job_binary_savanna_internal"].choices =\

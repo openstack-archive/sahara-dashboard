@@ -42,5 +42,5 @@ class SaharaDashboard(horizon.Dashboard):
 
 horizon.register(SaharaDashboard)
 
-LOG.info('Savanna recognizes Dashboard release as "%s"' %
+LOG.info('Sahara recognizes Dashboard release as "%s"' %
          compatibility.get_dashboard_release())

@@ -249,8 +249,8 @@ class UITestCase(unittest2.TestCase):
             self.find_clear_send(by.By.ID, "id_job_binary_password",
                                  cfg.common.password)
 
-        elif storage_type == 'Savanna internal database':
-            savanna_binary = parameters_of_storage['Savanna binary']
+        elif storage_type == 'Internal database':
+            savanna_binary = parameters_of_storage['Internal binary']
             driver.find_element_by_xpath(
                 "//select[@id='id_job_binary_savanna_internal']/option[text()"
                 "='%s']" % savanna_binary).click()
