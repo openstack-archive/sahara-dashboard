@@ -1,4 +1,4 @@
 [gerrit]
 host=review.openstack.org
 port=29418
-project=openstack/savanna-dashboard.git
+project=openstack/sahara-dashboard.git
