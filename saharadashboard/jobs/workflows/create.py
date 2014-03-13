@@ -121,7 +121,7 @@ class CreateJob(workflows.Workflow):
     finalize_button_name = _("Create")
     success_message = _("Job created")
     failure_message = _("Could not create job")
-    success_url = "horizon:savanna:jobs:index"
+    success_url = "horizon:sahara:jobs:index"
     default_steps = (GeneralConfig, ConfigureLibs)
 
     def handle(self, request, context):

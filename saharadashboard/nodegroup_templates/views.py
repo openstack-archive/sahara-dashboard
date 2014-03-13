@@ -55,20 +55,20 @@ class NodegroupTemplateDetailsView(tabs.TabView):
 class CreateNodegroupTemplateView(workflows.WorkflowView):
     workflow_class = create_flow.CreateNodegroupTemplate
     success_url = \
-        "horizon:savanna:nodegroup_templates:create-nodegroup-template"
+        "horizon:sahara:nodegroup_templates:create-nodegroup-template"
     classes = ("ajax-modal")
     template_name = "nodegroup_templates/create.html"
 
 
 class ConfigureNodegroupTemplateView(workflows.WorkflowView):
     workflow_class = create_flow.ConfigureNodegroupTemplate
-    success_url = "horizon:savanna:nodegroup_templates"
+    success_url = "horizon:sahara:nodegroup_templates"
     template_name = "nodegroup_templates/configure.html"
 
 
 class CopyNodegroupTemplateView(workflows.WorkflowView):
     workflow_class = copy_flow.CopyNodegroupTemplate
-    success_url = "horizon:savanna:nodegroup_templates"
+    success_url = "horizon:sahara:nodegroup_templates"
     template_name = "nodegroup_templates/configure.html"
 
     def get_context_data(self, **kwargs):

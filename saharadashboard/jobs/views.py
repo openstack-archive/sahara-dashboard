@@ -43,7 +43,7 @@ class JobsView(tables.DataTableView):
 
 class CreateJobView(workflows.WorkflowView):
     workflow_class = create_flow.CreateJob
-    success_url = "horizon:savanna:jobs:create-job"
+    success_url = "horizon:sahara:jobs:create-job"
     classes = ("ajax-modal")
     template_name = "jobs/create.html"
 
@@ -62,7 +62,7 @@ class JobDetailsView(tabs.TabView):
 
 class LaunchJobView(workflows.WorkflowView):
     workflow_class = launch_flow.LaunchJob
-    success_url = "horizon:savanna:jobs"
+    success_url = "horizon:sahara:jobs"
     classes = ("ajax-modal")
     template_name = "jobs/launch.html"
 
@@ -83,7 +83,7 @@ class LaunchJobView(workflows.WorkflowView):
 
 class LaunchJobNewClusterView(workflows.WorkflowView):
     workflow_class = launch_flow.LaunchJobNewCluster
-    success_url = "horizon:savanna:jobs"
+    success_url = "horizon:sahara:jobs"
     classes = ("ajax-modal")
     template_name = "jobs/launch.html"
 
@@ -95,7 +95,7 @@ class LaunchJobNewClusterView(workflows.WorkflowView):
 
 class ChoosePluginView(workflows.WorkflowView):
     workflow_class = launch_flow.ChosePluginVersion
-    success_url = "horizon:savanna:jobs"
+    success_url = "horizon:sahara:jobs"
     classes = ("ajax-modal")
     template_name = "jobs/launch.html"
 

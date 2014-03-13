@@ -171,7 +171,7 @@ class ConfigureNodegroupTemplate(whelpers.ServiceParametersWorkflow,
     finalize_button_name = _("Create")
     success_message = _("Created Node Group Template %s")
     name_property = "general_nodegroup_name"
-    success_url = "horizon:savanna:nodegroup_templates:index"
+    success_url = "horizon:sahara:nodegroup_templates:index"
     default_steps = (GeneralConfig,)
 
     def __init__(self, request, context_seed, entry_point, *args, **kwargs):
@@ -297,5 +297,5 @@ class CreateNodegroupTemplate(workflows.Workflow):
     finalize_button_name = _("Create")
     success_message = _("Created")
     failure_message = _("Could not create")
-    success_url = "horizon:savanna:nodegroup_templates:index"
+    success_url = "horizon:sahara:nodegroup_templates:index"
     default_steps = (SelectPlugin,)

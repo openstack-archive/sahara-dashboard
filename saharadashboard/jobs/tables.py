@@ -29,7 +29,7 @@ LOG = logging.getLogger(__name__)
 class CreateJob(tables.LinkAction):
     name = "create job"
     verbose_name = _("Create Job")
-    url = "horizon:savanna:jobs:create-job"
+    url = "horizon:sahara:jobs:create-job"
     classes = ("btn-launch", "ajax-modal", "create_job_class")
 
 
@@ -53,7 +53,7 @@ class LaunchJobExistingCluster(tables.LinkAction):
     action_past = _("Launched")
     data_type_singular = _("Job")
     data_type_plural = _("Jobs")
-    url = "horizon:savanna:jobs:launch-job"
+    url = "horizon:sahara:jobs:launch-job"
     classes = ('ajax-modal', 'btn-launch')
 
     def get_link_url(self, datum):
@@ -70,7 +70,7 @@ class LaunchJobNewCluster(tables.LinkAction):
     action_past = _("Launched")
     data_type_singular = _("Job")
     data_type_plural = _("Jobs")
-    url = "horizon:savanna:jobs:launch-job-new-cluster"
+    url = "horizon:sahara:jobs:launch-job-new-cluster"
     classes = ('ajax-modal', 'btn-launch')
 
     def get_link_url(self, datum):
@@ -87,7 +87,7 @@ class ChoosePlugin(tables.LinkAction):
     action_past = _("Launched")
     data_type_singular = _("Job")
     data_type_plural = _("Jobs")
-    url = "horizon:savanna:jobs:choose-plugin"
+    url = "horizon:sahara:jobs:choose-plugin"
     classes = ('ajax-modal', 'btn-launch')
 
     def get_link_url(self, datum):
@@ -100,7 +100,7 @@ class ChoosePlugin(tables.LinkAction):
 class JobsTable(tables.DataTable):
     name = tables.Column("name",
                          verbose_name=_("Name"),
-                         link=("horizon:savanna:jobs:details"))
+                         link=("horizon:sahara:jobs:details"))
     description = tables.Column("description",
                                 verbose_name=_("Description"))
 

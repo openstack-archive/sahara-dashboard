@@ -54,7 +54,7 @@ class SelectPlugin(t_flows.SelectPlugin):
 class CreateCluster(t_flows.CreateClusterTemplate):
     slug = "create_cluster"
     name = _("Launch Cluster")
-    success_url = "horizon:savanna:cluster_templates:index"
+    success_url = "horizon:sahara:cluster_templates:index"
 
 
 class GeneralConfigAction(workflows.Action):
@@ -189,7 +189,7 @@ class ConfigureCluster(whelpers.StatusFormatMixin, workflows.Workflow):
     finalize_button_name = _("Create")
     success_message = _("Created Cluster %s")
     name_property = "general_cluster_name"
-    success_url = "horizon:savanna:clusters:index"
+    success_url = "horizon:sahara:clusters:index"
     default_steps = (GeneralConfig, )
 
     def handle(self, request, context):

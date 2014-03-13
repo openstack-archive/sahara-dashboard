@@ -27,14 +27,14 @@ LOG = logging.getLogger(__name__)
 class CreateNodegroupTemplate(tables.LinkAction):
     name = "create"
     verbose_name = _("Create Template")
-    url = "horizon:savanna:nodegroup_templates:create-nodegroup-template"
+    url = "horizon:sahara:nodegroup_templates:create-nodegroup-template"
     classes = ("ajax-modal", "btn-create", "create-nodegrouptemplate-btn")
 
 
 class ConfigureNodegroupTemplate(tables.LinkAction):
     name = "configure"
     verbose_name = _("Configure Template")
-    url = "horizon:savanna:nodegroup_templates:configure-nodegroup-template"
+    url = "horizon:sahara:nodegroup_templates:configure-nodegroup-template"
     classes = ("ajax-modal", "btn-create", "configure-nodegrouptemplate-btn")
     attrs = {"style": "display: none"}
 
@@ -42,7 +42,7 @@ class ConfigureNodegroupTemplate(tables.LinkAction):
 class CopyTemplate(tables.LinkAction):
     name = "copy"
     verbose_name = _("Copy Template")
-    url = "horizon:savanna:nodegroup_templates:copy"
+    url = "horizon:sahara:nodegroup_templates:copy"
     classes = ("ajax-modal", )
 
 
@@ -73,7 +73,7 @@ def render_processes(nodegroup_template):
 class NodegroupTemplatesTable(tables.DataTable):
     name = tables.Column("name",
                          verbose_name=_("Name"),
-                         link=("horizon:savanna:nodegroup_templates:details"))
+                         link=("horizon:sahara:nodegroup_templates:details"))
     plugin_name = tables.Column("plugin_name",
                                 verbose_name=_("Plugin"))
     hadoop_version = tables.Column("hadoop_version",

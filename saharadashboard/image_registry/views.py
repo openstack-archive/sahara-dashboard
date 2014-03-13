@@ -61,7 +61,7 @@ def update_context_with_plugin_tags(request, context):
 class EditTagsView(forms.ModalFormView):
     form_class = EditTagsForm
     template_name = 'image_registry/edit_tags.html'
-    success_url = reverse_lazy('horizon:savanna:image_registry:index')
+    success_url = reverse_lazy('horizon:sahara:image_registry:index')
 
     def get_context_data(self, **kwargs):
         context = super(EditTagsView, self).get_context_data(**kwargs)
@@ -85,7 +85,7 @@ class EditTagsView(forms.ModalFormView):
 class RegisterImageView(forms.ModalFormView):
     form_class = RegisterImageForm
     template_name = 'image_registry/register_image.html'
-    success_url = reverse_lazy('horizon:savanna:image_registry:index')
+    success_url = reverse_lazy('horizon:sahara:image_registry:index')
 
     def get_context_data(self, **kwargs):
         context = super(RegisterImageView, self).get_context_data(**kwargs)

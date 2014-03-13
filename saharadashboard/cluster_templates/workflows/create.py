@@ -76,7 +76,7 @@ class CreateClusterTemplate(workflows.Workflow):
     finalize_button_name = _("Create")
     success_message = _("Created")
     failure_message = _("Could not create")
-    success_url = "horizon:savanna:cluster_templates:index"
+    success_url = "horizon:sahara:cluster_templates:index"
     default_steps = (SelectPlugin,)
 
 
@@ -220,7 +220,7 @@ class ConfigureClusterTemplate(whelpers.ServiceParametersWorkflow,
     finalize_button_name = _("Create")
     success_message = _("Created Cluster Template %s")
     name_property = "general_cluster_template_name"
-    success_url = "horizon:savanna:cluster_templates:index"
+    success_url = "horizon:sahara:cluster_templates:index"
     default_steps = (GeneralConfig,
                      ConfigureNodegroups)
 

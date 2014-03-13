@@ -328,7 +328,7 @@ class LaunchJob(workflows.Workflow):
     finalize_button_name = _("Launch")
     success_message = _("Job launched")
     failure_message = _("Could not launch job")
-    success_url = "horizon:savanna:job_executions:index"
+    success_url = "horizon:sahara:job_executions:index"
     default_steps = (JobExecutionExistingGeneralConfig, JobConfig)
 
     def handle(self, request, context):
@@ -407,7 +407,7 @@ class ChosePluginVersion(workflows.Workflow):
     finalize_button_name = _("Create")
     success_message = _("Created")
     failure_message = _("Could not create")
-    success_url = "horizon:savanna:cluster_templates:index"
+    success_url = "horizon:sahara:cluster_templates:index"
     default_steps = (SelectHadoopPlugin,)
 
 
@@ -417,7 +417,7 @@ class LaunchJobNewCluster(workflows.Workflow):
     finalize_button_name = _("Launch")
     success_message = _("Job launched")
     failure_message = _("Could not launch job")
-    success_url = "horizon:savanna:jobs:index"
+    success_url = "horizon:sahara:jobs:index"
     default_steps = (ClusterGeneralConfig,
                      JobExecutionGeneralConfig,
                      JobConfig)

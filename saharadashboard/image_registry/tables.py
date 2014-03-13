@@ -29,7 +29,7 @@ LOG = logging.getLogger(__name__)
 class EditTagsAction(tables.LinkAction):
     name = "edit_tags"
     verbose_name = _("Edit Tags")
-    url = "horizon:savanna:image_registry:edit_tags"
+    url = "horizon:sahara:image_registry:edit_tags"
     classes = ("ajax-modal", "btn-create")
 
 
@@ -42,7 +42,7 @@ def tags_to_string(image):
 class RegisterImage(tables.LinkAction):
     name = "register"
     verbose_name = _("Register Image")
-    url = "horizon:savanna:image_registry:register"
+    url = "horizon:sahara:image_registry:register"
     classes = ("btn-launch", "ajax-modal")
 
 

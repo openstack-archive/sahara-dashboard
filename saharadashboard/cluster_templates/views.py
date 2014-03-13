@@ -57,26 +57,26 @@ class ClusterTemplateDetailsView(tabs.TabView):
 class UploadFileView(forms.ModalFormView):
     form_class = cluster_forms.UploadFileForm
     template_name = 'cluster_templates/upload_file.html'
-    success_url = reverse_lazy('horizon:savanna:cluster_templates:index')
+    success_url = reverse_lazy('horizon:sahara:cluster_templates:index')
 
 
 class CreateClusterTemplateView(workflows.WorkflowView):
     workflow_class = create_flow.CreateClusterTemplate
     success_url = \
-        "horizon:savanna:cluster_templates:create-cluster-template"
+        "horizon:sahara:cluster_templates:create-cluster-template"
     classes = ("ajax-modal")
     template_name = "cluster_templates/create.html"
 
 
 class ConfigureClusterTemplateView(workflows.WorkflowView):
     workflow_class = create_flow.ConfigureClusterTemplate
-    success_url = "horizon:savanna:cluster_templates"
+    success_url = "horizon:sahara:cluster_templates"
     template_name = "cluster_templates/configure.html"
 
 
 class CopyClusterTemplateView(workflows.WorkflowView):
     workflow_class = copy_flow.CopyClusterTemplate
-    success_url = "horizon:savanna:cluster_templates"
+    success_url = "horizon:sahara:cluster_templates"
     template_name = "cluster_templates/configure.html"
 
     def get_context_data(self, **kwargs):

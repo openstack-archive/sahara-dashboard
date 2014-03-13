@@ -29,7 +29,7 @@ LOG = logging.getLogger(__name__)
 class CreateJobBinary(tables.LinkAction):
     name = "create job binary"
     verbose_name = _("Create Job Binary")
-    url = "horizon:savanna:job_binaries:create-job-binary"
+    url = "horizon:sahara:job_binaries:create-job-binary"
     classes = ("btn-launch", "ajax-modal")
 
 
@@ -59,14 +59,14 @@ class DeleteJobBinary(tables.BatchAction):
 class DownloadJobBinary(tables.LinkAction):
     name = "download job binary"
     verbose_name = _("Download Job Binary")
-    url = "horizon:savanna:job_binaries:download"
+    url = "horizon:sahara:job_binaries:download"
     classes = ("btn-edit")
 
 
 class JobBinariesTable(tables.DataTable):
     name = tables.Column("name",
                          verbose_name=_("Name"),
-                         link=("horizon:savanna:job_binaries:details"))
+                         link=("horizon:sahara:job_binaries:details"))
     type = tables.Column("url",
                          verbose_name=_("Url"))
     description = tables.Column("description",

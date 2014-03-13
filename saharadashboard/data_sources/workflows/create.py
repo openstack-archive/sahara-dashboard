@@ -107,7 +107,7 @@ class CreateDataSource(workflows.Workflow):
     finalize_button_name = _("Create")
     success_message = _("Data source created")
     failure_message = _("Could not create data source")
-    success_url = "horizon:savanna:data_sources:index"
+    success_url = "horizon:sahara:data_sources:index"
     default_steps = (GeneralConfig, )
 
     def handle(self, request, context):

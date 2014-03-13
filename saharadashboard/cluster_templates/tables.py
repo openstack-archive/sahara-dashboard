@@ -36,14 +36,14 @@ def render_node_groups(cluster_template):
 class UploadFile(tables.LinkAction):
     name = 'upload_file'
     verbose_name = _("Upload Template")
-    url = 'horizon:savanna:cluster_templates:upload_file'
+    url = 'horizon:sahara:cluster_templates:upload_file'
     classes = ("btn-launch", "ajax-modal")
 
 
 class CreateCluster(tables.LinkAction):
     name = "create cluster"
     verbose_name = _("Launch Cluster")
-    url = "horizon:savanna:clusters:configure-cluster"
+    url = "horizon:sahara:clusters:configure-cluster"
     classes = ("btn-launch", "ajax-modal")
 
     def get_link_url(self, datum):
@@ -58,7 +58,7 @@ class CreateCluster(tables.LinkAction):
 class CopyTemplate(tables.LinkAction):
     name = "copy"
     verbose_name = _("Copy Template")
-    url = "horizon:savanna:cluster_templates:copy"
+    url = "horizon:sahara:cluster_templates:copy"
     classes = ("ajax-modal", )
 
 
@@ -83,14 +83,14 @@ class DeleteTemplate(tables.BatchAction):
 class CreateClusterTemplate(tables.LinkAction):
     name = "create"
     verbose_name = _("Create Template")
-    url = "horizon:savanna:cluster_templates:create-cluster-template"
+    url = "horizon:sahara:cluster_templates:create-cluster-template"
     classes = ("ajax-modal", "btn-create", "create-clustertemplate-btn")
 
 
 class ConfigureClusterTemplate(tables.LinkAction):
     name = "configure"
     verbose_name = _("Configure Cluster Template")
-    url = "horizon:savanna:cluster_templates:configure-cluster-template"
+    url = "horizon:sahara:cluster_templates:configure-cluster-template"
     classes = ("ajax-modal", "btn-create", "configure-clustertemplate-btn")
     attrs = {"style": "display: none"}
 
@@ -98,7 +98,7 @@ class ConfigureClusterTemplate(tables.LinkAction):
 class ClusterTemplatesTable(tables.DataTable):
     name = tables.Column("name",
                          verbose_name=_("Name"),
-                         link=("horizon:savanna:cluster_templates:details"))
+                         link=("horizon:sahara:cluster_templates:details"))
     plugin_name = tables.Column("plugin_name",
                                 verbose_name=_("Plugin"))
     hadoop_version = tables.Column("hadoop_version",

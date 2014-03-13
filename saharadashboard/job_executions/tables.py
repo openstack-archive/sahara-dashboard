@@ -47,7 +47,7 @@ class ReLaunchJobExistingCluster(j_t.ChoosePlugin):
     action_past = _("Launched")
     data_type_singular = _("Job")
     data_type_plural = _("Jobs")
-    url = "horizon:savanna:jobs:launch-job"
+    url = "horizon:sahara:jobs:launch-job"
     classes = ('ajax-modal', 'btn-launch')
 
     def get_link_url(self, datum):
@@ -65,7 +65,7 @@ class ReLaunchJobNewCluster(ReLaunchJobExistingCluster):
     action_past = _("Launched")
     data_type_singular = _("Job")
     data_type_plural = _("Jobs")
-    url = "horizon:savanna:jobs:choose-plugin"
+    url = "horizon:sahara:jobs:choose-plugin"
     classes = ('ajax-modal', 'btn-launch')
 
 
@@ -93,7 +93,7 @@ class JobExecutionsTable(tables.DataTable):
     name = tables.Column("id",
                          verbose_name=_("ID"),
                          display_choices=(("id", "ID"), ("name", "Name")),
-                         link=("horizon:savanna:job_executions:details"))
+                         link=("horizon:sahara:job_executions:details"))
 
     status = StatusColumn("info",
                           status=True,

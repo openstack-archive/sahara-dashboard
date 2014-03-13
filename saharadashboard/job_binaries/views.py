@@ -49,7 +49,7 @@ class JobBinariesView(tables.DataTableView):
 
 class CreateJobBinaryView(forms.ModalFormView):
     form_class = job_binary_forms.JobBinaryCreateForm
-    success_url = reverse_lazy('horizon:savanna:job_binaries:index')
+    success_url = reverse_lazy('horizon:sahara:job_binaries:index')
     classes = ("ajax-modal")
     template_name = "job_binaries/create.html"
 
@@ -74,7 +74,7 @@ class DownloadJobBinaryView(View):
             jb = savanna.job_binaries.get(job_binary_id)
             data = savanna.job_binaries.get_file(job_binary_id)
         except Exception:
-            redirect = reverse('horizon:savanna:job_binaries:index')
+            redirect = reverse('horizon:sahara:job_binaries:index')
             exceptions.handle(self.request,
                               _('Unable to fetch job binary: %(exc)s'),
                               redirect=redirect)

@@ -5,7 +5,7 @@
 {% load i18n %}
 
 {% block form_id %}register_image_form{% endblock %}
-{% block form_action %}{% url 'horizon:savanna:image_registry:register' %}{% endblock %}
+{% block form_action %}{% url 'horizon:sahara:image_registry:register' %}{% endblock %}
 
 {% block modal-header %}{% trans "Register Image" %}{% endblock %}
 
@@ -23,5 +23,5 @@
 
 {% block modal-footer %}
     <input class="btn btn-primary pull-right" id="edit_image_tags_btn" type="submit" value="{% trans " Done" %}"/>
-    <a href="{% url 'horizon:savanna:image_registry:index' %}" class="btn secondary cancel close">{% trans "Cancel" %}</a>
+    <a href="{% url 'horizon:sahara:image_registry:index' %}" class="btn secondary cancel close">{% trans "Cancel" %}</a>
 {% endblock %}

@@ -39,7 +39,7 @@ class ScaleCluster(cl_create_flow.ConfigureCluster,
     slug = "scale_cluster"
     name = _("Scale Cluster")
     finalize_button_name = _("Scale")
-    success_url = "horizon:savanna:clusters:index"
+    success_url = "horizon:sahara:clusters:index"
     default_steps = (NodeGroupsStep, )
 
     def __init__(self, request, context_seed, entry_point, *args, **kwargs):

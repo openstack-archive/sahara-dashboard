@@ -41,7 +41,7 @@ class DataSourcesView(tables.DataTableView):
 class CreateDataSourceView(workflows.WorkflowView):
     workflow_class = create_flow.CreateDataSource
     success_url = \
-        "horizon:savanna:data-sources:create-data-source"
+        "horizon:sahara:data-sources:create-data-source"
     classes = ("ajax-modal")
     template_name = "data_sources/create.html"
 

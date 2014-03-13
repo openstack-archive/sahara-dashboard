@@ -27,7 +27,7 @@ LOG = logging.getLogger(__name__)
 class CreateDataSource(tables.LinkAction):
     name = "create data source"
     verbose_name = _("Create Data Source")
-    url = "horizon:savanna:data_sources:create-data-source"
+    url = "horizon:sahara:data_sources:create-data-source"
     classes = ("btn-launch", "ajax-modal")
 
 
@@ -47,7 +47,7 @@ class DeleteDataSource(tables.BatchAction):
 class DataSourcesTable(tables.DataTable):
     name = tables.Column("name",
                          verbose_name=_("Name"),
-                         link=("horizon:savanna:data_sources:details"))
+                         link=("horizon:sahara:data_sources:details"))
     type = tables.Column("type",
                          verbose_name=_("Type"))
     description = tables.Column("description",

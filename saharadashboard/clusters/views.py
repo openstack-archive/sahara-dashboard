@@ -55,20 +55,20 @@ class ClusterDetailsView(tabs.TabView):
 class CreateClusterView(workflows.WorkflowView):
     workflow_class = create_flow.CreateCluster
     success_url = \
-        "horizon:savanna:clusters:create-cluster"
+        "horizon:sahara:clusters:create-cluster"
     classes = ("ajax-modal")
     template_name = "clusters/create.html"
 
 
 class ConfigureClusterView(workflows.WorkflowView):
     workflow_class = create_flow.ConfigureCluster
-    success_url = "horizon:savanna:clusters"
+    success_url = "horizon:sahara:clusters"
     template_name = "clusters/configure.html"
 
 
 class ScaleClusterView(workflows.WorkflowView):
     workflow_class = scale_flow.ScaleCluster
-    success_url = "horizon:savanna:clusters"
+    success_url = "horizon:sahara:clusters"
     classes = ("ajax-modal")
     template_name = "clusters/scale.html"
 

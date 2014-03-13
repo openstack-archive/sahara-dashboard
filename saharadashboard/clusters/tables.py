@@ -27,14 +27,14 @@ LOG = logging.getLogger(__name__)
 class CreateCluster(tables.LinkAction):
     name = "create"
     verbose_name = _("Launch Cluster")
-    url = "horizon:savanna:clusters:create-cluster"
+    url = "horizon:sahara:clusters:create-cluster"
     classes = ("btn-launch", "ajax-modal")
 
 
 class ScaleCluster(tables.LinkAction):
     name = "scale"
     verbose_name = _("Scale Cluster")
-    url = "horizon:savanna:clusters:scale"
+    url = "horizon:sahara:clusters:scale"
     classes = ("ajax-modal", "btn-edit")
 
     def allowed(self, request, cluster=None):
@@ -71,7 +71,7 @@ def get_instances_count(cluster):
 class ConfigureCluster(tables.LinkAction):
     name = "configure"
     verbose_name = _("Configure Cluster")
-    url = "horizon:savanna:clusters:configure-cluster"
+    url = "horizon:sahara:clusters:configure-cluster"
     classes = ("ajax-modal", "btn-create", "configure-cluster-btn")
     attrs = {"style": "display: none"}
 
@@ -84,7 +84,7 @@ class ClustersTable(tables.DataTable):
 
     name = tables.Column("name",
                          verbose_name=_("Name"),
-                         link=("horizon:savanna:clusters:details"))
+                         link=("horizon:sahara:clusters:details"))
     status = tables.Column("status",
                            verbose_name=_("Status"),
                            status=True,
