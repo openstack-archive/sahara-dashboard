@@ -14,11 +14,14 @@
 # limitations under the License.
 
 
-from django.conf.urls.defaults import patterns
-from django.conf.urls.defaults import url
-
 from saharadashboard.plugins.views import PluginDetailsView
 from saharadashboard.plugins.views import PluginsView
+from saharadashboard.utils import importutils
+
+urls = importutils.import_any('django.conf.urls.defaults',
+                              'django.conf.urls')
+patterns = urls.patterns
+url = urls.url
 
 
 urlpatterns = patterns('',
