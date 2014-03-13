@@ -25,7 +25,7 @@ LOG = logging.getLogger(__name__)
 
 class SaharaDashboard(horizon.Dashboard):
     name = _("Sahara")
-    slug = "savanna"
+    slug = "sahara"
     panels = ('clusters',
               'cluster_templates',
               'nodegroup_templates',
