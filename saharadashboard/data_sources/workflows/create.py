@@ -24,7 +24,7 @@ from django.utils.translation import ugettext as _
 from horizon import forms
 from horizon import workflows
 
-from saharadashboard.api.client import client as savannaclient
+from saharadashboard.api.client import client as saharaclient
 
 LOG = logging.getLogger(__name__)
 
@@ -111,8 +111,8 @@ class CreateDataSource(workflows.Workflow):
     default_steps = (GeneralConfig, )
 
     def handle(self, request, context):
-        savanna = savannaclient(request)
-        savanna.data_sources.create(
+        sahara = saharaclient(request)
+        sahara.data_sources.create(
             context["general_data_source_name"],
             context["general_data_source_description"],
             context["general_data_source_type"],

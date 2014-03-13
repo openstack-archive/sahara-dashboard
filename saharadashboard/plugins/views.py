@@ -18,7 +18,7 @@ from horizon import tables
 from horizon import tabs
 import logging
 
-from saharadashboard.api.client import client as savannaclient
+from saharadashboard.api.client import client as saharaclient
 from saharadashboard.plugins.tables import PluginsTable
 from saharadashboard.plugins.tabs import PluginDetailsTabs
 
@@ -30,8 +30,8 @@ class PluginsView(tables.DataTableView):
     template_name = 'plugins/plugins.html'
 
     def get_data(self):
-        savanna = savannaclient(self.request)
-        return savanna.plugins.list()
+        sahara = saharaclient(self.request)
+        return sahara.plugins.list()
 
 
 class PluginDetailsView(tabs.TabView):

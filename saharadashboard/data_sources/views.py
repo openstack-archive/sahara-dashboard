@@ -19,7 +19,7 @@ from horizon import tables
 from horizon import tabs
 from horizon import workflows
 
-from saharadashboard.api.client import client as savannaclient
+from saharadashboard.api.client import client as saharaclient
 
 from saharadashboard.data_sources.tables import DataSourcesTable
 import saharadashboard.data_sources.tabs as _tabs
@@ -33,8 +33,8 @@ class DataSourcesView(tables.DataTableView):
     template_name = 'data_sources/data_sources.html'
 
     def get_data(self):
-        savanna = savannaclient(self.request)
-        data_sources = savanna.data_sources.list()
+        sahara = saharaclient(self.request)
+        data_sources = sahara.data_sources.list()
         return data_sources
 
 

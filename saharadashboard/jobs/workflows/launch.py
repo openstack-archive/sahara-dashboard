@@ -21,7 +21,7 @@ from django.utils.translation import ugettext as _
 from horizon import forms
 from horizon import workflows
 
-from saharadashboard.api.client import client as savannaclient
+from saharadashboard.api.client import client as saharaclient
 import saharadashboard.cluster_templates.workflows.create as t_flows
 import saharadashboard.clusters.workflows.create as c_flow
 import saharadashboard.utils.workflow_helpers as whelpers
@@ -75,8 +75,8 @@ class JobExecutionGeneralConfigAction(workflows.Action):
         return self.get_data_source_choices(request, context)
 
     def get_data_source_choices(self, request, context):
-        savanna = savannaclient(request)
-        data_sources = savanna.data_sources.list()
+        sahara = saharaclient(request)
+        data_sources = sahara.data_sources.list()
 
         choices = [(data_source.id, data_source.name)
                    for data_source in data_sources]
@@ -85,8 +85,8 @@ class JobExecutionGeneralConfigAction(workflows.Action):
         return choices
 
     def populate_job_choices(self, request):
-        savanna = savannaclient(request)
-        jobs = savanna.jobs.list()
+        sahara = saharaclient(request)
+        jobs = sahara.jobs.list()
 
         choices = [(job.id, job.name)
                    for job in jobs]
@@ -106,8 +106,8 @@ class JobExecutionExistingGeneralConfigAction(JobExecutionGeneralConfigAction):
         widget=forms.Select(attrs={"class": "cluster_choice"}))
 
     def populate_cluster_choices(self, request, context):
-        savanna = savannaclient(request)
-        clusters = savanna.clusters.list()
+        sahara = saharaclient(request)
+        clusters = sahara.clusters.list()
 
         choices = [(cluster.id, cluster.name)
                    for cluster in clusters]
@@ -162,7 +162,7 @@ class JobConfigAction(workflows.Action):
         super(JobConfigAction, self).__init__(request, *args, **kwargs)
         job_ex_id = request.REQUEST.get("job_execution_id")
         if job_ex_id is not None:
-            client = savannaclient(request)
+            client = saharaclient(request)
             job_ex_id = request.REQUEST.get("job_execution_id")
             job_ex = client.job_executions.get(job_ex_id)
             job_configs = job_ex.job_configs
@@ -207,7 +207,7 @@ class JobConfigAction(workflows.Action):
         return cleaned_data
 
     def populate_property_name_choices(self, request, context):
-        client = savannaclient(request)
+        client = saharaclient(request)
         job_id = request.REQUEST.get("job_id") or request.REQUEST.get("job")
         job_type = client.jobs.get(job_id).type
         job_configs = client.jobs.get_configs(job_type).job_config
@@ -332,9 +332,9 @@ class LaunchJob(workflows.Workflow):
     default_steps = (JobExecutionExistingGeneralConfig, JobConfig)
 
     def handle(self, request, context):
-        savanna = savannaclient(request)
+        sahara = saharaclient(request)
 
-        savanna.job_executions.create(
+        sahara.job_executions.create(
             context["job_general_job"],
             context["job_general_cluster"],
             context["job_general_job_input"],
@@ -378,7 +378,7 @@ class SelectHadoopPluginAction(t_flows.SelectPluginAction):
                 widget=forms.HiddenInput(
                     attrs={"class": "hidden_create_field"}))
 
-            client = savannaclient(request)
+            client = saharaclient(request)
             job_ex_id = request.REQUEST.get("job_execution_id")
             job_configs = client.job_executions.get(job_ex_id).job_configs
 
@@ -423,7 +423,7 @@ class LaunchJobNewCluster(workflows.Workflow):
                      JobConfig)
 
     def handle(self, request, context):
-        savanna = savannaclient(request)
+        sahara = saharaclient(request)
         node_groups = None
 
         plugin, hadoop_version = (
@@ -432,7 +432,7 @@ class LaunchJobNewCluster(workflows.Workflow):
         ct_id = context["cluster_general_cluster_template"] or None
         user_keypair = context["cluster_general_keypair"] or None
 
-        cluster = savanna.clusters.create(
+        cluster = sahara.clusters.create(
             context["cluster_general_cluster_name"],
             plugin, hadoop_version,
             cluster_template_id=ct_id,
@@ -444,7 +444,7 @@ class LaunchJobNewCluster(workflows.Workflow):
             net_id=context.get("cluster_general_neutron_management_network",
                                None))
 
-        savanna.job_executions.create(
+        sahara.job_executions.create(
             context["job_general_job"],
             cluster.id,
             context["job_general_job_input"],

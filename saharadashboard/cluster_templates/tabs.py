@@ -19,7 +19,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from horizon import tabs
 
-from saharadashboard.api.client import client as savannaclient
+from saharadashboard.api.client import client as saharaclient
 from saharadashboard.utils import importutils
 from saharadashboard.utils import workflow_helpers as helpers
 nova = importutils.import_any('openstack_dashboard.api.nova',
@@ -35,8 +35,8 @@ class GeneralTab(tabs.Tab):
 
     def get_context_data(self, request):
         template_id = self.tab_group.kwargs['template_id']
-        savanna = savannaclient(request)
-        template = savanna.cluster_templates.get(template_id)
+        sahara = saharaclient(request)
+        template = sahara.cluster_templates.get(template_id)
         return {"template": template}
 
 
@@ -47,14 +47,14 @@ class NodeGroupsTab(tabs.Tab):
 
     def get_context_data(self, request):
         template_id = self.tab_group.kwargs['template_id']
-        savanna = savannaclient(request)
-        template = savanna.cluster_templates.get(template_id)
+        sahara = saharaclient(request)
+        template = sahara.cluster_templates.get(template_id)
         for ng in template.node_groups:
             if not ng["flavor_id"]:
                 continue
             ng["flavor_name"] = nova.flavor_get(request, ng["flavor_id"]).name
             ng["node_group_template"] = helpers.safe_call(
-                savanna.node_group_templates.get,
+                sahara.node_group_templates.get,
                 ng.get("node_group_template_id", None))
         return {"template": template}
 

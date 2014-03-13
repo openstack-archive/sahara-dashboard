@@ -18,7 +18,7 @@ import logging
 from horizon import tables
 from horizon import tabs
 
-from saharadashboard.api.client import client as savannaclient
+from saharadashboard.api.client import client as saharaclient
 
 from saharadashboard.job_executions.tables import JobExecutionsTable
 import saharadashboard.job_executions.tabs as _tabs
@@ -31,8 +31,8 @@ class JobExecutionsView(tables.DataTableView):
     template_name = 'job_executions/job_executions.html'
 
     def get_data(self):
-        savanna = savannaclient(self.request)
-        jobs = savanna.job_executions.list()
+        sahara = saharaclient(self.request)
+        jobs = sahara.job_executions.list()
         return jobs
 
 

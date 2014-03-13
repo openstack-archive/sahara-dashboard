@@ -18,7 +18,7 @@ from django.utils.translation import ugettext_lazy as _
 import logging
 
 from horizon import tabs
-from saharadashboard.api.client import client as savannaclient
+from saharadashboard.api.client import client as saharaclient
 
 LOG = logging.getLogger(__name__)
 
@@ -30,8 +30,8 @@ class DetailsTab(tabs.Tab):
 
     def get_context_data(self, request):
         plugin_id = self.tab_group.kwargs['plugin_id']
-        savanna = savannaclient(request)
-        plugin = savanna.plugins.get(plugin_id)
+        sahara = saharaclient(request)
+        plugin = sahara.plugins.get(plugin_id)
         return {"plugin": plugin}
 
 

@@ -19,7 +19,7 @@ from horizon import tables
 from horizon import tabs
 from horizon import workflows
 
-from saharadashboard.api.client import client as savannaclient
+from saharadashboard.api.client import client as saharaclient
 
 import saharadashboard.nodegroup_templates.tables as _tables
 import saharadashboard.nodegroup_templates.tabs as _tabs
@@ -34,8 +34,8 @@ class NodegroupTemplatesView(tables.DataTableView):
     template_name = 'nodegroup_templates/nodegroup_templates.html'
 
     def get_data(self):
-        savanna = savannaclient(self.request)
-        nodegroup_templates = savanna.node_group_templates.list()
+        sahara = saharaclient(self.request)
+        nodegroup_templates = sahara.node_group_templates.list()
         return nodegroup_templates
 
 
@@ -81,8 +81,8 @@ class CopyNodegroupTemplateView(workflows.WorkflowView):
     def get_object(self, *args, **kwargs):
         if not hasattr(self, "_object"):
             template_id = self.kwargs['template_id']
-            savanna = savannaclient(self.request)
-            template = savanna.node_group_templates.get(template_id)
+            sahara = saharaclient(self.request)
+            template = sahara.node_group_templates.get(template_id)
             self._object = template
         return self._object
 

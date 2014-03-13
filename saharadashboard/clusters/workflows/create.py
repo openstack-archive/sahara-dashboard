@@ -31,7 +31,7 @@ nova = importutils.import_any('openstack_dashboard.api.nova',
 
 from django.utils.translation import ugettext as _
 
-from saharadashboard.api import client as savannaclient
+from saharadashboard.api import client as saharaclient
 from saharadashboard.api.client import SAVANNA_USE_NEUTRON
 import saharadashboard.cluster_templates.workflows.create as t_flows
 from savannaclient.api import base as api_base
@@ -108,14 +108,14 @@ class GeneralConfigAction(workflows.Action):
         )
 
     def populate_image_choices(self, request, context):
-        savanna = savannaclient.client(request)
-        all_images = savanna.images.list()
+        sahara = saharaclient.client(request)
+        all_images = sahara.images.list()
 
         plugin, hadoop_version = whelpers.\
             get_plugin_and_hadoop_version(request)
 
-        details = savanna.plugins.get_version_details(plugin,
-                                                      hadoop_version)
+        details = sahara.plugins.get_version_details(plugin,
+                                                     hadoop_version)
 
         return [(image.id, image.name) for image in all_images
                 if set(details.required_image_tags).issubset(set(image.tags))]
@@ -127,8 +127,8 @@ class GeneralConfigAction(workflows.Action):
         return keypair_list
 
     def populate_cluster_template_choices(self, request, context):
-        savanna = savannaclient.client(request)
-        templates = savanna.cluster_templates.list()
+        sahara = saharaclient.client(request)
+        templates = sahara.cluster_templates.list()
 
         plugin, hadoop_version = whelpers.\
             get_plugin_and_hadoop_version(request)
@@ -194,7 +194,7 @@ class ConfigureCluster(whelpers.StatusFormatMixin, workflows.Workflow):
 
     def handle(self, request, context):
         try:
-            savanna = savannaclient.client(request)
+            sahara = saharaclient.client(request)
             #TODO(nkonovalov) Implement AJAX Node Groups
             node_groups = None
 
@@ -204,7 +204,7 @@ class ConfigureCluster(whelpers.StatusFormatMixin, workflows.Workflow):
             cluster_template_id = context["general_cluster_template"] or None
             user_keypair = context["general_keypair"] or None
 
-            savanna.clusters.create(
+            sahara.clusters.create(
                 context["general_cluster_name"],
                 plugin, hadoop_version,
                 cluster_template_id=cluster_template_id,

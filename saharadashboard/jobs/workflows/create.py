@@ -21,7 +21,7 @@ from django.utils.translation import ugettext as _
 from horizon import forms
 from horizon import workflows
 
-from saharadashboard.api.client import client as savannaclient
+from saharadashboard.api.client import client as saharaclient
 
 
 LOG = logging.getLogger(__name__)
@@ -37,8 +37,8 @@ class AdditionalLibsAction(workflows.Action):
         widget=forms.HiddenInput())
 
     def populate_lib_binaries_choices(self, request, context):
-        savanna = savannaclient(request)
-        job_binaries = savanna.job_binaries.list()
+        sahara = saharaclient(request)
+        job_binaries = sahara.job_binaries.list()
 
         choices = [(job_binary.id, job_binary.name)
                    for job_binary in job_binaries]
@@ -77,8 +77,8 @@ class GeneralConfigAction(workflows.Action):
         return choices
 
     def populate_main_binary_choices(self, request, context):
-        savanna = savannaclient(request)
-        job_binaries = savanna.job_binaries.list()
+        sahara = saharaclient(request)
+        job_binaries = sahara.job_binaries.list()
 
         choices = [(job_binary.id, job_binary.name)
                    for job_binary in job_binaries]
@@ -125,7 +125,7 @@ class CreateJob(workflows.Workflow):
     default_steps = (GeneralConfig, ConfigureLibs)
 
     def handle(self, request, context):
-        savanna = savannaclient(request)
+        sahara = saharaclient(request)
         main_locations = []
         lib_locations = []
 
@@ -136,7 +136,7 @@ class CreateJob(workflows.Workflow):
         if context.get("main_binary", None):
             main_locations.append(context["main_binary"])
 
-        savanna.jobs.create(
+        sahara.jobs.create(
             context["job_name"],
             context["job_type"],
             main_locations,

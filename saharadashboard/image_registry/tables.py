@@ -20,7 +20,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from horizon import tables
 
-from saharadashboard.api.client import client as savannaclient
+from saharadashboard.api.client import client as saharaclient
 from saharadashboard.utils import compatibility
 
 LOG = logging.getLogger(__name__)
@@ -55,8 +55,8 @@ class UnregisterImages(tables.BatchAction):
     classes = ('btn-danger', 'btn-terminate')
 
     def action(self, request, obj_id):
-        savanna = savannaclient(request)
-        savanna.images.unregister_image(obj_id)
+        sahara = saharaclient(request)
+        sahara.images.unregister_image(obj_id)
 
 
 class ImageRegistryTable(tables.DataTable):

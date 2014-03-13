@@ -21,7 +21,7 @@ from horizon import tables
 from horizon import tabs
 from horizon import workflows
 
-from saharadashboard.api.client import client as savannaclient
+from saharadashboard.api.client import client as saharaclient
 from saharadashboard.cluster_templates import forms as cluster_forms
 from saharadashboard.cluster_templates.tables import ClusterTemplatesTable
 import saharadashboard.cluster_templates.tabs as _tabs
@@ -36,8 +36,8 @@ class ClusterTemplatesView(tables.DataTableView):
     template_name = 'cluster_templates/cluster_templates.html'
 
     def get_data(self):
-        savanna = savannaclient(self.request)
-        cluster_templates = savanna.cluster_templates.list()
+        sahara = saharaclient(self.request)
+        cluster_templates = sahara.cluster_templates.list()
         return cluster_templates
 
 
@@ -89,8 +89,8 @@ class CopyClusterTemplateView(workflows.WorkflowView):
     def get_object(self, *args, **kwargs):
         if not hasattr(self, "_object"):
             template_id = self.kwargs['template_id']
-            savanna = savannaclient(self.request)
-            template = savanna.cluster_templates.get(template_id)
+            sahara = saharaclient(self.request)
+            template = sahara.cluster_templates.get(template_id)
             self._object = template
         return self._object
 

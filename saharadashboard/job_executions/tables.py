@@ -21,7 +21,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from horizon import tables
 
-from saharadashboard.api.client import client as savannaclient
+from saharadashboard.api.client import client as saharaclient
 from saharadashboard.jobs import tables as j_t
 
 LOG = logging.getLogger(__name__)
@@ -36,8 +36,8 @@ class DeleteJobExecution(tables.BatchAction):
     classes = ('btn-danger', 'btn-terminate')
 
     def action(self, request, obj_id):
-        savanna = savannaclient(request)
-        savanna.job_executions.delete(obj_id)
+        sahara = saharaclient(request)
+        sahara.job_executions.delete(obj_id)
 
 
 class ReLaunchJobExistingCluster(j_t.ChoosePlugin):
@@ -73,8 +73,8 @@ class UpdateRow(tables.Row):
     ajax = True
 
     def get_data(self, request, job_execution_id):
-        savanna = savannaclient(request)
-        job_execution = savanna.job_executions.get(job_execution_id)
+        sahara = saharaclient(request)
+        job_execution = sahara.job_executions.get(job_execution_id)
         return job_execution
 
 

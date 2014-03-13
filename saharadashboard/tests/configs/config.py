@@ -21,7 +21,7 @@ common_group = cfg.OptGroup(name='common', title="common configs")
 CommonGroup = [
     cfg.StrOpt('base_url',
                default='http://127.0.0.1:8080',
-               help="savanna url"),
+               help="sahara url"),
     cfg.StrOpt('user',
                default='admin',
                help="keystone user"),
@@ -88,7 +88,7 @@ VanillaGroup = [
     cfg.DictOpt('processes',
                 default={"NN": 0, "DN": 1, "SNN": 2,
                          "OZ": 3, "TT": 4, "JT": 5},
-                help='numbers of processes for vanilla in savannabashboard'),
+                help='numbers of processes for vanilla in saharadashboard'),
     cfg.StrOpt('base_image',
                default='ubuntu_savanna_latest',
                help="image name for start vanilla cluster")

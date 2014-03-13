@@ -17,9 +17,9 @@ from saharadashboard.utils import workflow_helpers as work_helpers
 
 
 class Helpers(object):
-    def __init__(self, savanna_client):
-        self.savanna = savanna_client
-        self.plugins = self.savanna.plugins
+    def __init__(self, sahara_client):
+        self.sahara = sahara_client
+        self.plugins = self.sahara.plugins
 
     def _get_node_processes(self, plugin):
         processes = []

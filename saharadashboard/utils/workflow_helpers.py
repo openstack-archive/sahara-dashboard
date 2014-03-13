@@ -149,8 +149,8 @@ def get_plugin_and_hadoop_version(request):
 
 
 class PluginAndVersionMixin(object):
-    def _generate_plugin_version_fields(self, savanna):
-        plugins = savanna.plugins.list()
+    def _generate_plugin_version_fields(self, sahara):
+        plugins = sahara.plugins.list()
         plugin_choices = [(plugin.name, plugin.title) for plugin in plugins]
 
         self.fields["plugin_name"] = forms.ChoiceField(

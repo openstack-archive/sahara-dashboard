@@ -17,7 +17,7 @@ import logging
 
 from django.utils.translation import ugettext as _
 
-from saharadashboard.api.client import client as savannaclient
+from saharadashboard.api.client import client as saharaclient
 import saharadashboard.cluster_templates.workflows.create as create_flow
 from saharadashboard.utils.workflow_helpers import build_node_group_fields
 
@@ -28,10 +28,10 @@ class CopyClusterTemplate(create_flow.ConfigureClusterTemplate):
     success_message = _("Cluster Template copy %s created")
 
     def __init__(self, request, context_seed, entry_point, *args, **kwargs):
-        savanna = savannaclient(request)
+        sahara = saharaclient(request)
 
         template_id = context_seed["template_id"]
-        template = savanna.cluster_templates.get(template_id)
+        template = sahara.cluster_templates.get(template_id)
         self._set_configs_to_copy(template.cluster_configs)
 
         request.GET = request.GET.copy()

@@ -17,7 +17,7 @@ import logging
 
 from django.utils.translation import ugettext as _
 
-from saharadashboard.api.client import client as savannaclient
+from saharadashboard.api.client import client as saharaclient
 import saharadashboard.nodegroup_templates.workflows.create as create_flow
 
 LOG = logging.getLogger(__name__)
@@ -27,10 +27,10 @@ class CopyNodegroupTemplate(create_flow.ConfigureNodegroupTemplate):
     success_message = _("Node Group Template copy %s created")
 
     def __init__(self, request, context_seed, entry_point, *args, **kwargs):
-        savanna = savannaclient(request)
+        sahara = saharaclient(request)
 
         template_id = context_seed["template_id"]
-        template = savanna.node_group_templates.get(template_id)
+        template = sahara.node_group_templates.get(template_id)
         self._set_configs_to_copy(template.node_configs)
 
         plugin = template.plugin_name
@@ -65,7 +65,7 @@ class CopyNodegroupTemplate(create_flow.ConfigureNodegroupTemplate):
                 fields['floating_ip_pool'].initial = template.floating_ip_pool
 
             processes_dict = dict()
-            plugin_details = savanna.plugins.get_version_details(
+            plugin_details = sahara.plugins.get_version_details(
                 plugin,
                 hadoop_version)
             plugin_node_processes = plugin_details.node_processes

@@ -19,7 +19,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from horizon import tabs
 
-from saharadashboard.api.client import client as savannaclient
+from saharadashboard.api.client import client as saharaclient
 
 LOG = logging.getLogger(__name__)
 
@@ -31,8 +31,8 @@ class GeneralTab(tabs.Tab):
 
     def get_context_data(self, request):
         job_binary_id = self.tab_group.kwargs['job_binary_id']
-        savanna = savannaclient(request)
-        job_binary = savanna.job_binaries.get(job_binary_id)
+        sahara = saharaclient(request)
+        job_binary = sahara.job_binaries.get(job_binary_id)
         return {"job_binary": job_binary}
 
 

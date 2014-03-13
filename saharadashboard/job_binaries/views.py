@@ -27,7 +27,7 @@ from horizon import forms
 from horizon import tables
 from horizon import tabs
 
-from saharadashboard.api.client import client as savannaclient
+from saharadashboard.api.client import client as saharaclient
 
 import saharadashboard.job_binaries.forms as job_binary_forms
 from saharadashboard.job_binaries.tables import JobBinariesTable
@@ -42,8 +42,8 @@ class JobBinariesView(tables.DataTableView):
     template_name = 'job_binaries/job_binaries.html'
 
     def get_data(self):
-        savanna = savannaclient(self.request)
-        job_binaries = savanna.job_binaries.list()
+        sahara = saharaclient(self.request)
+        job_binaries = sahara.job_binaries.list()
         return job_binaries
 
 
@@ -70,9 +70,9 @@ class JobBinaryDetailsView(tabs.TabView):
 class DownloadJobBinaryView(View):
     def get(self, request, job_binary_id=None):
         try:
-            savanna = savannaclient(request)
-            jb = savanna.job_binaries.get(job_binary_id)
-            data = savanna.job_binaries.get_file(job_binary_id)
+            sahara = saharaclient(request)
+            jb = sahara.job_binaries.get(job_binary_id)
+            data = sahara.job_binaries.get_file(job_binary_id)
         except Exception:
             redirect = reverse('horizon:sahara:job_binaries:index')
             exceptions.handle(self.request,

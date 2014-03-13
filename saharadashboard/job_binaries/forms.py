@@ -28,7 +28,7 @@ from django.utils.translation import ugettext as _
 from horizon import forms
 from horizon import messages
 
-from saharadashboard.api import client as savannaclient
+from saharadashboard.api import client as saharaclient
 from savannaclient.api import base as api_base
 
 import uuid
@@ -59,8 +59,8 @@ class JobBinaryCreateForm(forms.SelfHandlingForm):
     job_binary_url = forms.CharField(label=_("URL"),
                                      required=False,
                                      widget=LabeledInput())
-    job_binary_savanna_internal = forms.ChoiceField(label=_("Internal binary"),
-                                                    required=False)
+    job_binary_internal = forms.ChoiceField(label=_("Internal binary"),
+                                            required=False)
 
     job_binary_file = forms.FileField(label=_("Upload File"),
                                       required=False)
@@ -93,12 +93,12 @@ class JobBinaryCreateForm(forms.SelfHandlingForm):
             [("savanna-db", "Internal database"),
              ("swift", "Swift")]
 
-        self.fields["job_binary_savanna_internal"].choices =\
-            self.populate_job_binary_savanna_internal_choices(request)
+        self.fields["job_binary_internal"].choices =\
+            self.populate_job_binary_internal_choices(request)
 
-    def populate_job_binary_savanna_internal_choices(self, request):
-        savanna = savannaclient.client(request)
-        job_binaries = savanna.job_binary_internals.list()
+    def populate_job_binary_internal_choices(self, request):
+        sahara = saharaclient.client(request)
+        job_binaries = sahara.job_binary_internals.list()
 
         choices = [(job_binary.id, job_binary.name)
                    for job_binary in job_binaries]
@@ -109,16 +109,16 @@ class JobBinaryCreateForm(forms.SelfHandlingForm):
 
     def handle(self, request, context):
         try:
-            savanna = savannaclient.client(request)
+            sahara = saharaclient.client(request)
             extra = {}
             bin_url = "%s://%s" % (context["job_binary_type"],
                                    context["job_binary_url"])
             if(context["job_binary_type"] == "savanna-db"):
-                bin_url = self.handle_savanna(request, context)
+                bin_url = self.handle_internal(request, context)
             elif(context["job_binary_type"] == "swift"):
                 extra = self.handle_swift(request, context)
 
-            savanna.job_binaries.create(
+            sahara.job_binaries.create(
                 context["job_binary_name"],
                 bin_url,
                 context["job_binary_description"],
@@ -148,18 +148,18 @@ class JobBinaryCreateForm(forms.SelfHandlingForm):
         help_text_template = \
             ("job_binaries/_create_job_binary_help.html")
 
-    def handle_savanna(self, request, context):
+    def handle_internal(self, request, context):
         result = ""
-        savanna = savannaclient.client(request)
+        sahara = saharaclient.client(request)
 
-        bin_id = context["job_binary_savanna_internal"]
+        bin_id = context["job_binary_internal"]
         if(bin_id == self.UPLOAD_BIN):
-            result = savanna.job_binary_internals.create(
+            result = sahara.job_binary_internals.create(
                 self.get_unique_binary_name(
                     request, request.FILES["job_binary_file"].name),
                 request.FILES["job_binary_file"].read())
         elif(bin_id == self.NEW_SCRIPT):
-            result = savanna.job_binary_internals.create(
+            result = sahara.job_binary_internals.create(
                 self.get_unique_binary_name(
                     request, context["job_binary_script_name"]),
                 context["job_binary_script"])
@@ -178,8 +178,8 @@ class JobBinaryCreateForm(forms.SelfHandlingForm):
         return extra
 
     def get_unique_binary_name(self, request, base_name):
-        savanna = savannaclient.client(request)
-        internals = savanna.job_binary_internals.list()
+        sahara = saharaclient.client(request)
+        internals = sahara.job_binary_internals.list()
         names = [internal.name for internal in internals]
         if base_name in names:
             return "%s_%s" % (base_name, uuid.uuid1())

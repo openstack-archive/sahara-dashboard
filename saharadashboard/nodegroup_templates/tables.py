@@ -19,7 +19,7 @@ import logging
 from django.utils.translation import ugettext_lazy as _
 
 from horizon import tables
-from saharadashboard.api.client import client as savannaclient
+from saharadashboard.api.client import client as saharaclient
 
 LOG = logging.getLogger(__name__)
 
@@ -60,8 +60,8 @@ class DeleteTemplate(tables.BatchAction):
         return True
 
     def action(self, request, template_id):
-        savanna = savannaclient(request)
-        savanna.node_group_templates.delete(template_id)
+        sahara = saharaclient(request)
+        sahara.node_group_templates.delete(template_id)
 
 
 def render_processes(nodegroup_template):

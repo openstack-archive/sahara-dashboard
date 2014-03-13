@@ -19,7 +19,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from horizon import tables
 
-from saharadashboard.api import client as savannaclient
+from saharadashboard.api import client as saharaclient
 from savannaclient.api import base as api_base
 
 
@@ -42,18 +42,18 @@ class DeleteJobBinary(tables.BatchAction):
     classes = ('btn-danger', 'btn-terminate')
 
     def action(self, request, obj_id):
-        savanna = savannaclient.client(request)
-        jb = savanna.job_binaries.get(obj_id)
+        sahara = saharaclient.client(request)
+        jb = sahara.job_binaries.get(obj_id)
         (jb_type, jb_internal_id) = jb.url.split("://")
         if jb_type == "savanna-db":
             try:
-                savanna.job_binary_internals.delete(jb_internal_id)
+                sahara.job_binary_internals.delete(jb_internal_id)
             except api_base.APIException:
                 # nothing to do for job-binary-internal if
                 # it does not exist.
                 pass
 
-        savanna.job_binaries.delete(obj_id)
+        sahara.job_binaries.delete(obj_id)
 
 
 class DownloadJobBinary(tables.LinkAction):

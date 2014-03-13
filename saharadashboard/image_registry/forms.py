@@ -20,7 +20,7 @@ from horizon import exceptions
 from horizon import forms
 from horizon import messages
 
-from saharadashboard.api import client as savannaclient
+from saharadashboard.api import client as saharaclient
 from saharadashboard.utils import importutils
 from savannaclient.api import base as api_base
 
@@ -41,15 +41,15 @@ class ImageForm(forms.SelfHandlingForm):
 
     def handle(self, request, data):
         try:
-            savanna = savannaclient.client(request)
+            sahara = saharaclient.client(request)
 
             image_id = data['image_id']
             user_name = data['user_name']
             desc = data['description']
-            savanna.images.update_image(image_id, user_name, desc)
+            sahara.images.update_image(image_id, user_name, desc)
 
             image_tags = json.loads(data["tags_list"])
-            savanna.images.update_tags(image_id, image_tags)
+            sahara.images.update_tags(image_id, image_tags)
 
             messages.success(request, self.message)
 
@@ -114,8 +114,8 @@ class RegisterImageForm(ImageForm):
 
         final_images = []
 
-        savanna = savannaclient.client(request)
-        image_ids = [img.id for img in savanna.images.list()]
+        sahara = saharaclient.client(request)
+        image_ids = [img.id for img in sahara.images.list()]
 
         for image in images:
             if image.id not in image_ids:

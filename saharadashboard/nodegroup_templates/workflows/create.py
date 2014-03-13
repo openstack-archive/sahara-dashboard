@@ -21,7 +21,7 @@ from django.utils.translation import ugettext as _
 from horizon import exceptions
 from horizon import workflows
 
-from saharadashboard.api import client as savannaclient
+from saharadashboard.api import client as saharaclient
 from saharadashboard.utils import importutils
 from savannaclient.api import base as api_base
 
@@ -79,21 +79,21 @@ class GeneralConfigAction(workflows.Action):
     def __init__(self, request, *args, **kwargs):
         super(GeneralConfigAction, self).__init__(request, *args, **kwargs)
 
-        savanna = savannaclient.client(request)
-        hlps = helpers.Helpers(savanna)
+        sahara = saharaclient.client(request)
+        hlps = helpers.Helpers(sahara)
 
         plugin, hadoop_version = whelpers.\
             get_plugin_and_hadoop_version(request)
         process_choices = []
-        version_details = savanna.plugins.get_version_details(plugin,
-                                                              hadoop_version)
+        version_details = sahara.plugins.get_version_details(plugin,
+                                                             hadoop_version)
 
         for service, processes in version_details.node_processes.items():
             for process in processes:
                 process_choices.append(
                     (str(service) + ":" + str(process), process))
 
-        if not savannaclient.AUTO_ASSIGNMENT_ENABLED:
+        if not saharaclient.AUTO_ASSIGNMENT_ENABLED:
             pools = network.floating_ip_pools_list(request)
             pool_choices = [(pool.id, pool.name) for pool in pools]
             pool_choices.insert(0, (None, "Do not assign floating IPs"))
@@ -175,8 +175,8 @@ class ConfigureNodegroupTemplate(whelpers.ServiceParametersWorkflow,
     default_steps = (GeneralConfig,)
 
     def __init__(self, request, context_seed, entry_point, *args, **kwargs):
-        savanna = savannaclient.client(request)
-        hlps = helpers.Helpers(savanna)
+        sahara = saharaclient.client(request)
+        hlps = helpers.Helpers(sahara)
 
         plugin, hadoop_version = whelpers.\
             get_plugin_and_hadoop_version(request)
@@ -224,7 +224,7 @@ class ConfigureNodegroupTemplate(whelpers.ServiceParametersWorkflow,
 
     def handle(self, request, context):
         try:
-            savanna = savannaclient.client(request)
+            sahara = saharaclient.client(request)
 
             processes = []
             for service_process in context["general_processes"]:
@@ -243,7 +243,7 @@ class ConfigureNodegroupTemplate(whelpers.ServiceParametersWorkflow,
                 volumes_per_node = context["general_volumes_per_node"]
                 volumes_size = context["general_volumes_size"]
 
-            savanna.node_group_templates.create(
+            sahara.node_group_templates.create(
                 name=context["general_nodegroup_name"],
                 plugin_name=plugin,
                 hadoop_version=hadoop_version,
@@ -271,8 +271,8 @@ class SelectPluginAction(workflows.Action,
     def __init__(self, request, *args, **kwargs):
         super(SelectPluginAction, self).__init__(request, *args, **kwargs)
 
-        savanna = savannaclient.client(request)
-        self._generate_plugin_version_fields(savanna)
+        sahara = saharaclient.client(request)
+        self._generate_plugin_version_fields(sahara)
 
     class Meta:
         name = _("Select plugin and hadoop version")

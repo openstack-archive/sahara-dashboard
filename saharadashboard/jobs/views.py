@@ -21,7 +21,7 @@ from horizon import tables
 from horizon import tabs
 from horizon import workflows
 
-from saharadashboard.api.client import client as savannaclient
+from saharadashboard.api.client import client as saharaclient
 
 import saharadashboard.jobs.tables as _tables
 import saharadashboard.jobs.tabs as _tabs
@@ -36,8 +36,8 @@ class JobsView(tables.DataTableView):
     template_name = 'jobs/jobs.html'
 
     def get_data(self):
-        savanna = savannaclient(self.request)
-        jobs = savanna.jobs.list()
+        sahara = saharaclient(self.request)
+        jobs = sahara.jobs.list()
         return jobs
 
 
@@ -70,8 +70,8 @@ class LaunchJobView(workflows.WorkflowView):
         if request.is_ajax():
             if request.REQUEST.get("json", None):
                 job_id = request.REQUEST.get("job_id")
-                savanna = savannaclient(request)
-                job_type = savanna.jobs.get(job_id).type
+                sahara = saharaclient(request)
+                job_type = sahara.jobs.get(job_id).type
                 return HttpResponse(json.dumps({"job_type": job_type}),
                                     mimetype='application/json')
         return super(LaunchJobView, self).get(request, args, kwargs)

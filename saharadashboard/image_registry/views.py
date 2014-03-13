@@ -20,7 +20,7 @@ from django.core.urlresolvers import reverse_lazy
 from horizon import forms
 from horizon import tables
 
-from saharadashboard.api.client import client as savannaclient
+from saharadashboard.api.client import client as saharaclient
 from saharadashboard.image_registry.forms import EditTagsForm
 from saharadashboard.image_registry.forms import RegisterImageForm
 from saharadashboard.image_registry.tables import ImageRegistryTable
@@ -34,22 +34,22 @@ class ImageRegistryView(tables.DataTableView):
     template_name = 'image_registry/image_registry.html'
 
     def get_data(self):
-        savanna = savannaclient(self.request)
+        sahara = saharaclient(self.request)
 
-        return savanna.images.list()
+        return sahara.images.list()
 
 
 def update_context_with_plugin_tags(request, context):
-        savanna = savannaclient(request)
-        plugins = savanna.plugins.list()
+        sahara = saharaclient(request)
+        plugins = sahara.plugins.list()
 
         plugins_object = dict()
         for plugin in plugins:
             plugins_object[plugin.name] = dict()
             for version in plugin.versions:
                 plugins_object[plugin.name][version] = []
-                details = savanna.plugins.get_version_details(plugin.name,
-                                                              version)
+                details = sahara.plugins.get_version_details(plugin.name,
+                                                             version)
 
                 for tag in details.required_image_tags:
                     plugins_object[plugin.name][version].append(tag)
@@ -70,8 +70,8 @@ class EditTagsView(forms.ModalFormView):
         return context
 
     def get_object(self):
-        savanna = savannaclient(self.request)
-        return savanna.images.get(self.kwargs["image_id"])
+        sahara = saharaclient(self.request)
+        return sahara.images.get(self.kwargs["image_id"])
 
     def get_initial(self):
         image = self.get_object()

@@ -18,7 +18,7 @@ import logging
 from django.utils.translation import ugettext_lazy as _
 from horizon import tabs
 
-from saharadashboard.api.client import client as savannaclient
+from saharadashboard.api.client import client as saharaclient
 from saharadashboard.utils import importutils
 
 # horizon.api is for backward compatibility with folsom
@@ -36,8 +36,8 @@ class GeneralTab(tabs.Tab):
 
     def get_context_data(self, request):
         template_id = self.tab_group.kwargs['template_id']
-        savanna = savannaclient(request)
-        template = savanna.node_group_templates.get(template_id)
+        sahara = saharaclient(request)
+        template = sahara.node_group_templates.get(template_id)
         flavor = nova.flavor_get(request, template.flavor_id)
         return {"template": template, "flavor": flavor}
 
@@ -49,8 +49,8 @@ class ConfigsTab(tabs.Tab):
 
     def get_context_data(self, request):
         template_id = self.tab_group.kwargs['template_id']
-        savanna = savannaclient(request)
-        template = savanna.node_group_templates.get(template_id)
+        sahara = saharaclient(request)
+        template = sahara.node_group_templates.get(template_id)
         return {"template": template}
 
 

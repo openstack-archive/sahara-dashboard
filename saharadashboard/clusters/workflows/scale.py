@@ -19,7 +19,7 @@ import logging
 from django.utils.translation import ugettext as _
 from horizon import exceptions
 
-from saharadashboard.api import client as savannaclient
+from saharadashboard.api import client as saharaclient
 from savannaclient.api import base as api_base
 
 import saharadashboard.cluster_templates.workflows.create as clt_create_flow
@@ -45,10 +45,10 @@ class ScaleCluster(cl_create_flow.ConfigureCluster,
     def __init__(self, request, context_seed, entry_point, *args, **kwargs):
         ScaleCluster._cls_registry = set([])
 
-        savanna = savannaclient.client(request)
+        sahara = saharaclient.client(request)
 
         cluster_id = context_seed["cluster_id"]
-        cluster = savanna.clusters.get(cluster_id)
+        cluster = sahara.clusters.get(cluster_id)
 
         self.success_message = "Scaling Cluster %s successfully started" \
                                % cluster.name
@@ -108,9 +108,9 @@ class ScaleCluster(cl_create_flow.ConfigureCluster,
             return self.success_message
 
     def handle(self, request, context):
-        savanna = savannaclient.client(request)
+        sahara = saharaclient.client(request)
         cluster_id = request.GET["cluster_id"]
-        cluster = savanna.clusters.get(cluster_id)
+        cluster = sahara.clusters.get(cluster_id)
 
         existing_node_groups = set([])
         for ng in cluster.node_groups:
@@ -149,7 +149,7 @@ class ScaleCluster(cl_create_flow.ConfigureCluster,
                          "count": int(count)}
                     )
         try:
-            savanna.clusters.scale(cluster_id, scale_object)
+            sahara.clusters.scale(cluster_id, scale_object)
             return True
         except api_base.APIException as e:
             self.error_description = str(e)

@@ -250,16 +250,16 @@ class UITestCase(unittest2.TestCase):
                                  cfg.common.password)
 
         elif storage_type == 'Internal database':
-            savanna_binary = parameters_of_storage['Internal binary']
+            internal_binary = parameters_of_storage['Internal binary']
             driver.find_element_by_xpath(
-                "//select[@id='id_job_binary_savanna_internal']/option[text()"
-                "='%s']" % savanna_binary).click()
-            if savanna_binary == '*Upload a new file':
+                "//select[@id='id_job_binary_internal']/option[text()"
+                "='%s']" % internal_binary).click()
+            if internal_binary == '*Upload a new file':
                 file = '%s/saharadashboard/tests/resources/%s' % (
                     os.getcwd(), parameters_of_storage['filename'])
                 driver.find_element_by_id('id_job_binary_file').send_keys(file)
 
-            elif savanna_binary == '*Create a script':
+            elif internal_binary == '*Create a script':
                 self.find_clear_send(by.By.ID, "id_job_binary_script_name",
                                      parameters_of_storage['script_name'])
                 self.find_clear_send(by.By.ID, "id_job_binary_script",

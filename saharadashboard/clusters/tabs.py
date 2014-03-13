@@ -33,7 +33,7 @@ glance = importutils.import_any('openstack_dashboard.api.glance',
                                 'horizon.api.glance')
 
 
-from saharadashboard.api.client import client as savannaclient
+from saharadashboard.api.client import client as saharaclient
 
 LOG = logging.getLogger(__name__)
 
@@ -45,8 +45,8 @@ class GeneralTab(tabs.Tab):
 
     def get_context_data(self, request):
         cluster_id = self.tab_group.kwargs['cluster_id']
-        savanna = savannaclient(request)
-        cluster = savanna.clusters.get(cluster_id)
+        sahara = saharaclient(request)
+        cluster = sahara.clusters.get(cluster_id)
 
         for info_key, info_val in cluster.info.items():
             for key, val in info_val.items():
@@ -57,7 +57,7 @@ class GeneralTab(tabs.Tab):
                                       cluster.default_image_id)
 
         if getattr(cluster, 'cluster_template_id', None):
-            cluster_template = helpers.safe_call(savanna.cluster_templates.get,
+            cluster_template = helpers.safe_call(sahara.cluster_templates.get,
                                                  cluster.cluster_template_id)
         else:
             cluster_template = None
@@ -87,14 +87,14 @@ class NodeGroupsTab(tabs.Tab):
 
     def get_context_data(self, request):
         cluster_id = self.tab_group.kwargs['cluster_id']
-        savanna = savannaclient(request)
-        cluster = savanna.clusters.get(cluster_id)
+        sahara = saharaclient(request)
+        cluster = sahara.clusters.get(cluster_id)
         for ng in cluster.node_groups:
             if not ng["flavor_id"]:
                 continue
             ng["flavor_name"] = nova.flavor_get(request, ng["flavor_id"]).name
             ng["node_group_template"] = helpers.safe_call(
-                savanna.node_group_templates.get,
+                sahara.node_group_templates.get,
                 ng.get("node_group_template_id", None))
 
         return {"cluster": cluster}
@@ -135,8 +135,8 @@ class InstancesTab(tabs.TableTab):
 
     def get_cluster_instances_data(self):
         cluster_id = self.tab_group.kwargs['cluster_id']
-        savanna = savannaclient(self.request)
-        cluster = savanna.clusters.get(cluster_id)
+        sahara = saharaclient(self.request)
+        cluster = sahara.clusters.get(cluster_id)
 
         instances = []
         for ng in cluster.node_groups:

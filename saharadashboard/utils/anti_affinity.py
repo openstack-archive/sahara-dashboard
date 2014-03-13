@@ -19,7 +19,7 @@ from django.utils.translation import ugettext as _
 
 from horizon import forms
 
-from saharadashboard.api.client import client as savannaclient
+from saharadashboard.api.client import client as saharaclient
 import saharadashboard.utils.workflow_helpers as whelpers
 
 
@@ -36,10 +36,10 @@ def anti_affinity_field():
 
 
 def populate_anti_affinity_choices(self, request, context):
-    savanna = savannaclient(request)
+    sahara = saharaclient(request)
     plugin, version = whelpers.get_plugin_and_hadoop_version(request)
 
-    version_details = savanna.plugins.get_version_details(plugin, version)
+    version_details = sahara.plugins.get_version_details(plugin, version)
     process_choices = []
     for service, processes in version_details.node_processes.items():
         for process in processes:
@@ -49,7 +49,7 @@ def populate_anti_affinity_choices(self, request, context):
     if cluster_template_id is None:
         selected_processes = request.REQUEST.get("aa_groups", [])
     else:
-        cluster_template = savanna.cluster_templates.get(cluster_template_id)
+        cluster_template = sahara.cluster_templates.get(cluster_template_id)
         selected_processes = cluster_template.anti_affinity
 
     checked_dict = dict()

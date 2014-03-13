@@ -22,7 +22,7 @@ from horizon import exceptions
 from horizon import forms
 from horizon import workflows
 
-from saharadashboard.api import client as savannaclient
+from saharadashboard.api import client as saharaclient
 from saharadashboard.api import helpers as helpers
 from saharadashboard.utils import anti_affinity as aa
 import saharadashboard.utils.workflow_helpers as whelpers
@@ -39,8 +39,8 @@ class SelectPluginAction(workflows.Action):
     def __init__(self, request, *args, **kwargs):
         super(SelectPluginAction, self).__init__(request, *args, **kwargs)
 
-        savanna = savannaclient.client(request)
-        plugins = savanna.plugins.list()
+        sahara = saharaclient.client(request)
+        plugins = sahara.plugins.list()
         plugin_choices = [(plugin.name, plugin.title) for plugin in plugins]
 
         self.fields["plugin_name"] = forms.ChoiceField(
@@ -162,12 +162,12 @@ class ConfigureNodegroupsAction(workflows.Action):
         super(ConfigureNodegroupsAction, self). \
             __init__(request, *args, **kwargs)
 
-        savanna = savannaclient.client(request)
+        sahara = saharaclient.client(request)
 
         plugin, hadoop_version = whelpers.\
             get_plugin_and_hadoop_version(request)
 
-        self.templates = savanna.node_group_templates.find(
+        self.templates = sahara.node_group_templates.find(
             plugin_name=plugin,
             hadoop_version=hadoop_version)
 
@@ -227,8 +227,8 @@ class ConfigureClusterTemplate(whelpers.ServiceParametersWorkflow,
     def __init__(self, request, context_seed, entry_point, *args, **kwargs):
         ConfigureClusterTemplate._cls_registry = set([])
 
-        savanna = savannaclient.client(request)
-        hlps = helpers.Helpers(savanna)
+        sahara = saharaclient.client(request)
+        hlps = helpers.Helpers(sahara)
 
         plugin, hadoop_version = whelpers.\
             get_plugin_and_hadoop_version(request)
@@ -263,7 +263,7 @@ class ConfigureClusterTemplate(whelpers.ServiceParametersWorkflow,
 
     def handle(self, request, context):
         try:
-            savanna = savannaclient.client(request)
+            sahara = saharaclient.client(request)
             node_groups = []
             configs_dict = whelpers.parse_configs_from_context(context,
                                                                self.defaults)
@@ -283,7 +283,7 @@ class ConfigureClusterTemplate(whelpers.ServiceParametersWorkflow,
                 get_plugin_and_hadoop_version(request)
 
             #TODO(nkonovalov): Fix client to support default_image_id
-            savanna.cluster_templates.create(
+            sahara.cluster_templates.create(
                 context["general_cluster_template_name"],
                 plugin,
                 hadoop_version,

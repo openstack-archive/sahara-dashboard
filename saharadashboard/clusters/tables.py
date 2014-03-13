@@ -18,7 +18,7 @@ import logging
 from django.utils.translation import ugettext_lazy as _
 from horizon import tables
 
-from saharadashboard.api.client import client as savannaclient
+from saharadashboard.api.client import client as saharaclient
 
 
 LOG = logging.getLogger(__name__)
@@ -50,16 +50,16 @@ class DeleteCluster(tables.BatchAction):
     classes = ('btn-danger', 'btn-terminate')
 
     def action(self, request, obj_id):
-        savanna = savannaclient(request)
-        savanna.clusters.delete(obj_id)
+        sahara = saharaclient(request)
+        sahara.clusters.delete(obj_id)
 
 
 class UpdateRow(tables.Row):
     ajax = True
 
     def get_data(self, request, instance_id):
-        savanna = savannaclient(request)
-        instance = savanna.clusters.get(instance_id)
+        sahara = saharaclient(request)
+        instance = sahara.clusters.get(instance_id)
         return instance
 
 

@@ -19,7 +19,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from horizon import tabs
 
-from saharadashboard.api.client import client as savannaclient
+from saharadashboard.api.client import client as saharaclient
 
 LOG = logging.getLogger(__name__)
 
@@ -31,9 +31,9 @@ class GeneralTab(tabs.Tab):
 
     def get_context_data(self, request):
         job_execution_id = self.tab_group.kwargs['job_execution_id']
-        savanna = savannaclient(request)
-        job_execution = savanna.job_executions.get(job_execution_id)
-        object_names = self.get_object_names(job_execution, savanna)
+        sahara = saharaclient(request)
+        job_execution = sahara.job_executions.get(job_execution_id)
+        object_names = self.get_object_names(job_execution, sahara)
 
         return {"job_execution": job_execution,
                 "object_names": object_names}
@@ -56,15 +56,15 @@ class GeneralTab(tabs.Tab):
 
         return object_names
 
-    def get_object_name(self, obj_id, savanna_obj, s_client):
+    def get_object_name(self, obj_id, sahara_obj, s_client):
         object_name = None
         try:
-            s_obj = getattr(s_client, savanna_obj)
+            s_obj = getattr(s_client, sahara_obj)
             obj = s_obj.get(obj_id)
             object_name = obj.name
         except Exception as e:
             LOG.warn("Unable to get name for %s with object_id %s (%s)" %
-                     (savanna_obj, obj_id, str(e)))
+                     (sahara_obj, obj_id, str(e)))
         return object_name
 
 
