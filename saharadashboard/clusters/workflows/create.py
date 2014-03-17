@@ -33,7 +33,7 @@ from django.utils.translation import ugettext as _
 
 from saharaclient.api import base as api_base
 from saharadashboard.api import client as saharaclient
-from saharadashboard.api.client import SAVANNA_USE_NEUTRON
+from saharadashboard.api.client import SAHARA_USE_NEUTRON
 import saharadashboard.cluster_templates.workflows.create as t_flows
 
 import logging
@@ -90,7 +90,7 @@ class GeneralConfigAction(workflows.Action):
         plugin, hadoop_version = whelpers.\
             get_plugin_and_hadoop_version(request)
 
-        if SAVANNA_USE_NEUTRON:
+        if SAHARA_USE_NEUTRON:
             self.fields["neutron_management_network"] = forms.ChoiceField(
                 label=_("Neutron Management Network"),
                 required=True,

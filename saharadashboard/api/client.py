@@ -44,12 +44,12 @@ def get_horizon_parameter(name, default_value):
 
 
 # These parameters should be defined in Horizon's local_settings.py
-# Example SAVANNA_URL - http://localhost:9000/v1.0
-SAVANNA_URL = get_horizon_parameter('SAVANNA_URL', None)
-# "type" of Savanna service registered in keystone
-SAVANNA_SERVICE = get_horizon_parameter('SAVANNA_SERVICE', 'data_processing')
+# Example SAHARA_URL - http://localhost:9000/v1.0
+SAHARA_URL = get_horizon_parameter('SAHARA_URL', None)
+# "type" of Sahara service registered in keystone
+SAHARA_SERVICE = get_horizon_parameter('SAHARA_SERVICE', 'data_processing')
 # hint to generate additional Neutron network field
-SAVANNA_USE_NEUTRON = get_horizon_parameter('SAVANNA_USE_NEUTRON', False)
+SAHARA_USE_NEUTRON = get_horizon_parameter('SAHARA_USE_NEUTRON', False)
 
 AUTO_ASSIGNMENT_ENABLED = get_horizon_parameter('AUTO_ASSIGNMENT_ENABLED',
                                                 True)
@@ -57,22 +57,22 @@ AUTO_ASSIGNMENT_ENABLED = get_horizon_parameter('AUTO_ASSIGNMENT_ENABLED',
 exceptions.RECOVERABLE += (api_base.APIException,)
 
 
-def get_savanna_url(request):
-    if SAVANNA_URL is not None:
-        url = SAVANNA_URL.rstrip('/')
+def get_sahara_url(request):
+    if SAHARA_URL is not None:
+        url = SAHARA_URL.rstrip('/')
         if url.split('/')[-1] in ['v1.0', 'v1.1']:
-            url = SAVANNA_URL + '/' + request.user.tenant_id
+            url = SAHARA_URL + '/' + request.user.tenant_id
         return url
 
-    return base.url_for(request, SAVANNA_SERVICE)
+    return base.url_for(request, SAHARA_SERVICE)
 
 
 def client(request):
     endpoint_type = get_horizon_parameter('OPENSTACK_ENDPOINT_TYPE',
                                           'internalURL')
     auth_url = keystone._get_endpoint_url(request, endpoint_type)
-    return api_client.Client('1.1', sahara_url=get_savanna_url(request),
-                             service_type=SAVANNA_SERVICE,
+    return api_client.Client('1.1', sahara_url=get_sahara_url(request),
+                             service_type=SAHARA_SERVICE,
                              project_id=request.user.tenant_id,
                              input_auth_token=request.user.token.id,
                              auth_url=auth_url)
