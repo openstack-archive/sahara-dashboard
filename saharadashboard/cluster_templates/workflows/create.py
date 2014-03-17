@@ -22,11 +22,12 @@ from horizon import exceptions
 from horizon import forms
 from horizon import workflows
 
+from saharaclient.api import base as api_base
 from saharadashboard.api import client as saharaclient
 from saharadashboard.api import helpers as helpers
 from saharadashboard.utils import anti_affinity as aa
 import saharadashboard.utils.workflow_helpers as whelpers
-from savannaclient.api import base as api_base
+
 
 LOG = logging.getLogger(__name__)
 

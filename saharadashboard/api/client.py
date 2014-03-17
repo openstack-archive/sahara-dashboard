@@ -17,9 +17,9 @@ import logging
 
 from horizon import exceptions
 
+from saharaclient.api import base as api_base
+from saharaclient import client as api_client
 from saharadashboard.utils import importutils
-from savannaclient.api import base as api_base
-from savannaclient import client as api_client
 
 
 # horizon.api is for backward compatibility with folsom
@@ -71,7 +71,7 @@ def client(request):
     endpoint_type = get_horizon_parameter('OPENSTACK_ENDPOINT_TYPE',
                                           'internalURL')
     auth_url = keystone._get_endpoint_url(request, endpoint_type)
-    return api_client.Client('1.1', savanna_url=get_savanna_url(request),
+    return api_client.Client('1.1', sahara_url=get_savanna_url(request),
                              service_type=SAVANNA_SERVICE,
                              project_id=request.user.tenant_id,
                              input_auth_token=request.user.token.id,

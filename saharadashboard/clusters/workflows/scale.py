@@ -19,8 +19,8 @@ import logging
 from django.utils.translation import ugettext as _
 from horizon import exceptions
 
+from saharaclient.api import base as api_base
 from saharadashboard.api import client as saharaclient
-from savannaclient.api import base as api_base
 
 import saharadashboard.cluster_templates.workflows.create as clt_create_flow
 import saharadashboard.clusters.workflows.create as cl_create_flow

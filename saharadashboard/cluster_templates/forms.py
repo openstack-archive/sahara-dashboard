@@ -17,9 +17,9 @@ from django.utils.translation import ugettext_lazy as _
 from horizon import forms
 from horizon import messages
 
+from saharaclient.api import base as api_base
 from saharadashboard.api import client as saharaclient
 from saharadashboard.utils import workflow_helpers
-from savannaclient.api import base as api_base
 
 
 class UploadFileForm(forms.SelfHandlingForm,
