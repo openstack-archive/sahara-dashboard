@@ -34,5 +34,5 @@ pylint-report.txt
 ChangeLog
 cscope.out
 horizon
-savannadashboard/tests/configs/config.conf
+saharadashboard/tests/configs/config.conf
 AUTHORS

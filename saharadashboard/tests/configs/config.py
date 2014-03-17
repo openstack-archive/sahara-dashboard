@@ -90,7 +90,7 @@ VanillaGroup = [
                          "OZ": 3, "TT": 4, "JT": 5},
                 help='numbers of processes for vanilla in saharadashboard'),
     cfg.StrOpt('base_image',
-               default='ubuntu_savanna_latest',
+               default='ubuntu_sahara_latest',
                help="image name for start vanilla cluster")
 ]
 
