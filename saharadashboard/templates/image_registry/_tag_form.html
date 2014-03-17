@@ -1,5 +1,5 @@
 <script xmlns="http://www.w3.org/1999/html">
-    $("#_savanna_image_tag").keypress(function (event) {
+    $("#_sahara_image_tag").keypress(function (event) {
         if (event.keyCode == 13) {
             add_tag_to_image();
             return false;
@@ -8,7 +8,7 @@
     });
     function add_tag_to_image(tag) {
         if (!tag) {
-            tag = $.trim($("#_savanna_image_tag").val());
+            tag = $.trim($("#_sahara_image_tag").val());
         }
         if (tag.length == 0) {
             return;
@@ -26,7 +26,7 @@
           $("#image_tags_list").append(span);
           update_image_tags();
         }
-        $("#_savanna_image_tag").val("");        
+        $("#_sahara_image_tag").val("");
     }
 
     function get_current_tags() {
@@ -97,7 +97,7 @@
 
 <hr />
 <div style="margin-top: 5px;">
-    <input type="text" class="tag-input" id="_savanna_image_tag" data-original-title="" onclick=""/>
+    <input type="text" class="tag-input" id="_sahara_image_tag" data-original-title="" onclick=""/>
     <a href="#" id="add_tag_btn" class="btn btn-small btn-create btn-inline" onclick="add_tag_to_image()">Add custom tag</a>
 </div>
 

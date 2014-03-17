@@ -660,7 +660,7 @@ class UITestCase(unittest2.TestCase):
                         if second not in list_for_check_tags:
                             list_for_check_tags.append(second)
                     elif first == 'custom_tag':
-                        self.find_clear_send(by.By.ID, '_savanna_image_tag',
+                        self.find_clear_send(by.By.ID, '_sahara_image_tag',
                                              second)
                         driver.find_element_by_id('add_tag_btn').click()
                         if second not in list_for_check_tags:
