@@ -20,8 +20,8 @@
             var script_name = $("[name=job_binary_script_name]").closest(".control-group");
             var script_text = $("[name=job_binary_script]").closest(".control-group");
             switch($(this).val()) {
-              case "savanna-db":
-                label.html("savanna-db://");
+              case "internal-db":
+                label.html("internal-db://");
                 username.hide();
                 password.hide();
                 bin_file.show();
