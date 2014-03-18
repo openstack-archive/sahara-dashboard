@@ -447,7 +447,7 @@ class UITestCase(unittest2.TestCase):
                     '//*[@class=\'multi_select_column\']/input').is_selected():
 
                 driver.find_element_by_class_name(
-                    'multi_select_column').click()
+                    '//*[@class=\'multi_select_column\']/input').click()
 
             driver.find_element_by_id(delete_button_id).click()
             self.await_element(by.By.LINK_TEXT, 'Delete Job executions')
