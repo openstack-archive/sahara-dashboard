@@ -21,9 +21,9 @@ from django.utils.translation import ugettext as _
 from horizon import exceptions
 from horizon import workflows
 
+from saharaclient.api import base as api_base
 from saharadashboard.api import client as saharaclient
 from saharadashboard.utils import importutils
-from savannaclient.api import base as api_base
 
 import saharadashboard.api.helpers as helpers
 import saharadashboard.utils.workflow_helpers as whelpers

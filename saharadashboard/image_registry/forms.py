@@ -20,9 +20,9 @@ from horizon import exceptions
 from horizon import forms
 from horizon import messages
 
+from saharaclient.api import base as api_base
 from saharadashboard.api import client as saharaclient
 from saharadashboard.utils import importutils
-from savannaclient.api import base as api_base
 
 # horizon.api is for backward compatibility with folsom
 glance = importutils.import_any('openstack_dashboard.api.glance',

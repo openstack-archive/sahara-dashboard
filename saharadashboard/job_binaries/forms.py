@@ -28,8 +28,8 @@ from django.utils.translation import ugettext as _
 from horizon import forms
 from horizon import messages
 
+from saharaclient.api import base as api_base
 from saharadashboard.api import client as saharaclient
-from savannaclient.api import base as api_base
 
 import uuid
 

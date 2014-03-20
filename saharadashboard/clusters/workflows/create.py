@@ -31,10 +31,10 @@ nova = importutils.import_any('openstack_dashboard.api.nova',
 
 from django.utils.translation import ugettext as _
 
+from saharaclient.api import base as api_base
 from saharadashboard.api import client as saharaclient
 from saharadashboard.api.client import SAVANNA_USE_NEUTRON
 import saharadashboard.cluster_templates.workflows.create as t_flows
-from savannaclient.api import base as api_base
 
 import logging
 
