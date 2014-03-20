@@ -800,23 +800,28 @@ class UITestCase(unittest2.TestCase):
 
     def await_cluster_active(self, name):
         driver = self.driver
-        status = driver.find_element_by_link_text(name).\
-            find_element_by_xpath("../../td[3]").text
         i = 1
-        while str(status) != 'Active':
+        while True:
 
             if i > cfg.common.cluster_creation_timeout * 60:
                 self.fail(
                     'cluster is not getting status \'Active\', '
                     'passed %d minutes' % cfg.common.cluster_creation_timeout)
 
+            try:
+                status = driver.find_element_by_link_text(
+                    "selenium-cl").find_element_by_xpath("../../td[3]").text
+            except selenim_except.StaleElementReferenceException:
+                status = 'unknown'
+
             if str(status) == 'Error':
                 self.fail('Cluster state == \'Error\'.')
 
-            status = driver.find_element_by_link_text("selenium-cl").\
-                find_element_by_xpath("../../td[3]").text
-            time.sleep(1)
-            i += 1
+            if str(status) == 'Active':
+                break
+
+            time.sleep(5)
+            i += 5
 
     def await_launch_job(self):
         driver = self.driver
