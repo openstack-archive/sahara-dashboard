@@ -23,7 +23,7 @@ patterns = urls.patterns
 url = urls.url
 
 
-urlpatterns = patterns('savanna.nodegroup_templates.views',
+urlpatterns = patterns('sahara.nodegroup_templates.views',
                        url(r'^$', views.NodegroupTemplatesView.as_view(),
                            name='index'),
                        url(r'^nodegroup-templates$',

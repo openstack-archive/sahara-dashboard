@@ -120,9 +120,9 @@ class UICreateCluster(base.UITestCase):
                     for x in range(10000)))
 
             self.create_data_source(
-                'input', 'selenium-container.savanna/input')
+                'input', 'selenium-container.sahara/input')
             self.create_data_source(
-                'output', 'selenium-container.savanna/output')
+                'output', 'selenium-container.sahara/output')
 
             parameters_of_storage = {
                 'storage_type': 'Internal database',
