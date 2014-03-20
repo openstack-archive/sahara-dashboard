@@ -41,7 +41,7 @@ class LabeledInput(widgets.Input):
         final_attrs = self.build_attrs(attrs, type=self.input_type, name=name)
         output = "<span id='%s'>%s</span>%s" %\
             ("id_%s_label" % name,
-             "savanna-db://",
+             "internal-db://",
              ('<input%s />' % flatatt(final_attrs)))
         return mark_safe(output)
 
@@ -90,7 +90,7 @@ class JobBinaryCreateForm(forms.SelfHandlingForm):
         self.help_text_template = "job_binaries/_create_job_binary_help.html"
 
         self.fields["job_binary_type"].choices =\
-            [("savanna-db", "Internal database"),
+            [("internal-db", "Internal database"),
              ("swift", "Swift")]
 
         self.fields["job_binary_internal"].choices =\
@@ -113,7 +113,7 @@ class JobBinaryCreateForm(forms.SelfHandlingForm):
             extra = {}
             bin_url = "%s://%s" % (context["job_binary_type"],
                                    context["job_binary_url"])
-            if(context["job_binary_type"] == "savanna-db"):
+            if(context["job_binary_type"] == "internal-db"):
                 bin_url = self.handle_internal(request, context)
             elif(context["job_binary_type"] == "swift"):
                 extra = self.handle_swift(request, context)
@@ -165,7 +165,7 @@ class JobBinaryCreateForm(forms.SelfHandlingForm):
                 context["job_binary_script"])
 
         bin_id = result.id
-        return "savanna-db://%s" % bin_id
+        return "internal-db://%s" % bin_id
 
     def handle_swift(self, request, context):
         username = context["job_binary_username"]

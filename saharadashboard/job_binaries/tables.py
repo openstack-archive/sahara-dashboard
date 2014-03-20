@@ -45,7 +45,7 @@ class DeleteJobBinary(tables.BatchAction):
         sahara = saharaclient.client(request)
         jb = sahara.job_binaries.get(obj_id)
         (jb_type, jb_internal_id) = jb.url.split("://")
-        if jb_type == "savanna-db":
+        if jb_type == "internal-db":
             try:
                 sahara.job_binary_internals.delete(jb_internal_id)
             except api_base.APIException:
