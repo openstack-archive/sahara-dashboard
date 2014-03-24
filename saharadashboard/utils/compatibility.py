@@ -27,11 +27,19 @@ def get_dashboard_release():
     if hasattr(horizon.version, 'HORIZON_VERSION'):
         return 'folsom'
 
-    return 'grizzly'
+    if hasattr(horizon.version, "version_info"):
+        if "2013.2" in horizon.version.version_info.version_string():
+            return "havana"
+
+    return 'icehouse'
 
 
 def _is_folsom():
     return get_dashboard_release() == 'folsom'
+
+
+def _is_havana():
+    return get_dashboard_release() == 'havana'
 
 
 def convert_url(link):
@@ -42,4 +50,8 @@ def convert_url(link):
     """
     if _is_folsom():
         return link.replace('project', 'nova', 1)
+
+    if _is_havana():
+        return link.replace(':images:', ':images_and_snapshots:', 1)
+
     return link

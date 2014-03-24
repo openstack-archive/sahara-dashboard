@@ -63,8 +63,8 @@ class ImageRegistryTable(tables.DataTable):
     name = tables.Column("name",
                          verbose_name=_("Image"),
                          link=compatibility.convert_url(
-                             "horizon:project:images_and_snapshots:"
-                             "images:detail"))
+                             "horizon:project:"
+                             "images:images:detail"))
     tags = tables.Column(tags_to_string,
                          verbose_name=_("Tags"))
 
