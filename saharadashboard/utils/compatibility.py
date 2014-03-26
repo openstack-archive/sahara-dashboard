@@ -16,7 +16,7 @@
 """Provide compatibility with various OpenStack releases.
 
 All the code which depends on OpenStack release version should be placed there.
-Folsom is the oldest recognizable release.
+Havana is the oldest recognizable release.
 """
 
 
@@ -24,9 +24,6 @@ def get_dashboard_release():
     """Return release codename of currently running Dashboard."""
 
     import horizon.version
-
-    if hasattr(horizon.version, 'HORIZON_VERSION'):
-        return 'folsom'
 
     if hasattr(horizon.version, "version_info"):
         try:
@@ -43,10 +40,6 @@ def get_dashboard_release():
     return _get_latest_release()
 
 
-def _is_folsom():
-    return get_dashboard_release() == 'folsom'
-
-
 def _is_havana():
     return get_dashboard_release() == 'havana'
 
@@ -56,13 +49,7 @@ def _get_latest_release():
 
 
 def convert_url(link):
-    """Expect grizzly url and convert it to folsom if needed
-
-    For example, 'horizon:project:instances:detail' should be converted to
-    'horizon:nova:instances:detail'
-    """
-    if _is_folsom():
-        return link.replace('project', 'nova', 1)
+    """Expect icehouse url and convert it to havana if needed."""
 
     if _is_havana():
         return link.replace(':images:', ':images_and_snapshots:', 1)
