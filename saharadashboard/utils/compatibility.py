@@ -22,16 +22,25 @@ Folsom is the oldest recognizable release.
 
 def get_dashboard_release():
     """Return release codename of currently running Dashboard."""
+
     import horizon.version
 
     if hasattr(horizon.version, 'HORIZON_VERSION'):
         return 'folsom'
 
     if hasattr(horizon.version, "version_info"):
-        if "2013.2" in horizon.version.version_info.version_string():
-            return "havana"
+        try:
+            version_string = horizon.version.version_info.version_string()
+            if "2013.2" in version_string:
+                return "havana"
 
-    return 'icehouse'
+        except Exception:
+            # This may happen if Horizon is installed using packages which do
+            # not contain any information on release. Assuming that it is the
+            # latest release.
+            pass
+
+    return _get_latest_release()
 
 
 def _is_folsom():
@@ -40,6 +49,10 @@ def _is_folsom():
 
 def _is_havana():
     return get_dashboard_release() == 'havana'
+
+
+def _get_latest_release():
+    return 'icehouse'
 
 
 def convert_url(link):
