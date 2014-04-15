@@ -50,8 +50,7 @@ class UICreateNodeGroupTemplate(base.UITestCase):
                       'tests for hdp plugin skipped')
     def test_create_node_group_template_hdp(self):
         self.create_node_group_template(
-            "sel-hdp", ["NN", "JT", "HDFS_CLIENT", "AMBARI_SERVER",
-                        "AMBARI_AGENT"], cfg.hdp,
+            "sel-hdp", ["NN", "JT", "HDFS_CLIENT", "AMBARI_SERVER"], cfg.hdp,
             flavor="m1.small", storage={'type': "Cinder Volume",
                                         'volume_per_node': '2',
                                         'volume_size': '6'},

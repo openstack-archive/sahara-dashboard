@@ -59,12 +59,11 @@ class UICreateClusterTemplate(base.UITestCase):
     def test_create_cluster_template_for_hdp(self):
         self.create_node_group_template(
             'selenium-hdp-master',
-            ["NN", "JT", "SNN", "GANGLIA_SERVER", "GANGLIA_MONITOR",
-             "NAGIOS_SERVER", "AMBARI_SERVER", "AMBARI_AGENT"], cfg.hdp)
+            ["NN", "JT", "SNN", "GANGLIA_SERVER", "NAGIOS_SERVER",
+             "AMBARI_SERVER"], cfg.hdp)
         self.create_node_group_template(
             'selenium-hdp-worker',
-            ["TT", "DN", "GANGLIA_MONITOR", "HDFS_CLIENT", "MAPREDUCE_CLIENT",
-             "AMBARI_AGENT"], cfg.hdp)
+            ["TT", "DN", "HDFS_CLIENT", "MAPREDUCE_CLIENT"], cfg.hdp)
         self.create_cluster_template(
             "selenium-hdp", {'selenium-hdp-master': 1,
                              'selenium-hdp-worker': 2}, cfg.hdp,
