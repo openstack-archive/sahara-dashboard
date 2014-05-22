@@ -15,8 +15,12 @@
 
 import logging
 
+from django.http import Http404  # noqa
 from django.utils.translation import ugettext_lazy as _
+from horizon import messages
 from horizon import tables
+
+from saharaclient.api import base as api_base
 
 from saharadashboard.api.client import client as saharaclient
 
@@ -59,8 +63,15 @@ class UpdateRow(tables.Row):
 
     def get_data(self, request, instance_id):
         sahara = saharaclient(request)
-        instance = sahara.clusters.get(instance_id)
-        return instance
+        try:
+            return sahara.clusters.get(instance_id)
+        except api_base.APIException as e:
+            if e.error_code == 404:
+                # returning 404 to the ajax call removes the
+                # row from the table on the ui
+                raise Http404
+            else:
+                messages.error(request, e)
 
 
 def get_instances_count(cluster):
