@@ -30,16 +30,6 @@ import saharadashboard.utils.workflow_helpers as whelpers
 LOG = logging.getLogger(__name__)
 
 
-class SelectPluginAction(t_flows.SelectPluginAction):
-    class Meta:
-        name = _("Select plugin and hadoop version for cluster")
-        help_text_template = ("clusters/_create_general_help.html")
-
-
-class SelectPlugin(t_flows.SelectPlugin):
-    pass
-
-
 class JobExecutionGeneralConfigAction(workflows.Action):
     job_input = forms.ChoiceField(
         label=_("Input"),
@@ -394,7 +384,7 @@ class SelectHadoopPluginAction(t_flows.SelectPluginAction):
 
     class Meta:
         name = _("Select plugin and hadoop version for cluster")
-        help_text_template = ("cluster_templates/_create_general_help.html")
+        help_text_template = ("clusters/_create_general_help.html")
 
 
 class SelectHadoopPlugin(workflows.Step):
