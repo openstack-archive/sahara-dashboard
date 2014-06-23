@@ -77,7 +77,7 @@ class GeneralConfigAction(workflows.Action):
                                   widget=forms.Textarea)
     cluster_template = forms.ChoiceField(label=_("Cluster Template"),
                                          initial=(None, "None"),
-                                         required=False)
+                                         required=True)
 
     image = forms.ChoiceField(label=_("Base Image"),
                               required=True)
