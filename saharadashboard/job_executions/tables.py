@@ -80,7 +80,7 @@ class UpdateRow(tables.Row):
 
 class JobExecutionsTable(tables.DataTable):
     class StatusColumn(tables.Column):
-        def get_data(self, datum):
+        def get_raw_data(self, datum):
             return datum.info['status']
 
     STATUS_CHOICES = (
