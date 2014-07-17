@@ -16,7 +16,6 @@
 import logging
 
 from django.utils.translation import ugettext_lazy as _
-
 from horizon import tabs
 
 from saharadashboard.api.client import client as saharaclient

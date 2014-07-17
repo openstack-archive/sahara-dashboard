@@ -13,10 +13,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import logging
+
+from django.utils.translation import ugettext as _
 from horizon import exceptions
 from horizon import forms
 from horizon import workflows
+from saharaclient.api import base as api_base
 
+from saharadashboard.api import client as saharaclient
+from saharadashboard.api.client import SAHARA_USE_NEUTRON
+import saharadashboard.cluster_templates.workflows.create as t_flows
 from saharadashboard.utils import importutils
 from saharadashboard.utils import neutron_support
 import saharadashboard.utils.workflow_helpers as whelpers
@@ -28,15 +35,6 @@ neutron = importutils.import_any('openstack_dashboard.api.quantum',
 
 nova = importutils.import_any('openstack_dashboard.api.nova',
                               'horizon.api.nova')
-
-from django.utils.translation import ugettext as _
-
-from saharaclient.api import base as api_base
-from saharadashboard.api import client as saharaclient
-from saharadashboard.api.client import SAHARA_USE_NEUTRON
-import saharadashboard.cluster_templates.workflows.create as t_flows
-
-import logging
 
 LOG = logging.getLogger(__name__)
 

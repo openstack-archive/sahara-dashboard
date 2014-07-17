@@ -18,7 +18,6 @@ import logging
 from django.core import urlresolvers
 from django.utils import http
 from django.utils.translation import ugettext_lazy as _
-
 from horizon import tables
 
 from saharadashboard.api.client import client as saharaclient

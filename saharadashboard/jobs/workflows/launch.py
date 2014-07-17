@@ -17,7 +17,6 @@ import json
 import logging
 
 from django.utils.translation import ugettext as _
-
 from horizon import forms
 from horizon import workflows
 

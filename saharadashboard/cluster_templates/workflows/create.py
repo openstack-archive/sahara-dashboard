@@ -13,16 +13,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import json
 import logging
 
 from django.utils.translation import ugettext as _
-import json
-
 from horizon import exceptions
 from horizon import forms
 from horizon import workflows
-
 from saharaclient.api import base as api_base
+
 from saharadashboard.api import client as saharaclient
 from saharadashboard.api import helpers as helpers
 from saharadashboard.utils import anti_affinity as aa

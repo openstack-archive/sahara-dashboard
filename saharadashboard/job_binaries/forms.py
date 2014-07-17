@@ -14,24 +14,21 @@
 # limitations under the License.
 
 import logging
+import uuid
 
 from django.forms.util import flatatt
 from django.forms import widgets
-
 from django import template
 from django.template.defaultfilters import linebreaks
 from django.template.defaultfilters import safe
 from django.utils.encoding import force_unicode
 from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext as _
-
 from horizon import forms
 from horizon import messages
-
 from saharaclient.api import base as api_base
-from saharadashboard.api import client as saharaclient
 
-import uuid
+from saharadashboard.api import client as saharaclient
 
 LOG = logging.getLogger(__name__)
 

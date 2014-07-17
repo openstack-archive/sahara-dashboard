@@ -20,7 +20,6 @@ from horizon import tabs
 from horizon import workflows
 
 from saharadashboard.api.client import client as saharaclient
-
 from saharadashboard.data_sources.tables import DataSourcesTable
 import saharadashboard.data_sources.tabs as _tabs
 import saharadashboard.data_sources.workflows.create as create_flow

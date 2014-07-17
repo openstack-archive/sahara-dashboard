@@ -14,6 +14,7 @@
 # limitations under the License.
 
 import os
+
 from oslo.config import cfg
 
 common_group = cfg.OptGroup(name='common', title="common configs")

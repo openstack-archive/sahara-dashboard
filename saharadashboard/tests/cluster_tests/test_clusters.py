@@ -15,10 +15,10 @@
 
 import random
 import string
-from testtools import testcase
 import traceback
-import unittest2
 
+from testtools import testcase
+import unittest2
 
 from saharadashboard.tests import base
 import saharadashboard.tests.configs.config as cfg

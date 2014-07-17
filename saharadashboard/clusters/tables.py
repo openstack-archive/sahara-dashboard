@@ -19,7 +19,6 @@ from django.http import Http404  # noqa
 from django.utils.translation import ugettext_lazy as _
 from horizon import messages
 from horizon import tables
-
 from saharaclient.api import base as api_base
 
 from saharadashboard.api.client import client as saharaclient

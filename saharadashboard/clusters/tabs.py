@@ -16,10 +16,10 @@
 import logging
 
 from django.utils.translation import ugettext_lazy as _
-
 from horizon import tables
 from horizon import tabs
 
+from saharadashboard.api.client import client as saharaclient
 from saharadashboard.utils import compatibility
 from saharadashboard.utils import importutils
 from saharadashboard.utils import workflow_helpers as helpers
@@ -31,9 +31,6 @@ nova = importutils.import_any('openstack_dashboard.api.nova',
                               'horizon.api.nova')
 glance = importutils.import_any('openstack_dashboard.api.glance',
                                 'horizon.api.glance')
-
-
-from saharadashboard.api.client import client as saharaclient
 
 LOG = logging.getLogger(__name__)
 

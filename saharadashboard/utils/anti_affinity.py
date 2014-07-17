@@ -16,7 +16,6 @@
 import logging
 
 from django.utils.translation import ugettext as _
-
 from horizon import forms
 
 from saharadashboard.api.client import client as saharaclient

@@ -21,14 +21,12 @@ from django import http
 from django.template.defaultfilters import slugify
 from django.utils.translation import ugettext_lazy as _
 from django.views.generic import View
-
 from horizon import exceptions
 from horizon import forms
 from horizon import tables
 from horizon import tabs
 
 from saharadashboard.api.client import client as saharaclient
-
 import saharadashboard.job_binaries.forms as job_binary_forms
 from saharadashboard.job_binaries.tables import JobBinariesTable
 import saharadashboard.job_binaries.tabs as _tabs

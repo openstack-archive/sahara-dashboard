@@ -13,10 +13,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import logging
 
 from horizon import tables
 from horizon import tabs
-import logging
 
 from saharadashboard.api.client import client as saharaclient
 from saharadashboard.plugins.tables import PluginsTable

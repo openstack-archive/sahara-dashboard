@@ -20,7 +20,6 @@ from horizon import tabs
 from horizon import workflows
 
 from saharadashboard.api.client import client as saharaclient
-
 from saharadashboard.clusters.tables import ClustersTable
 import saharadashboard.clusters.tabs as _tabs
 import saharadashboard.clusters.workflows.create as create_flow

@@ -12,13 +12,13 @@
 # implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-from django import template
 
 import logging
 
+from django import template
 from django.utils.translation import ugettext_lazy as _
-
 from horizon import tables
+
 from saharadashboard.api.client import client as saharaclient
 
 LOG = logging.getLogger(__name__)

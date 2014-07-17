@@ -19,7 +19,6 @@ from horizon import tables
 from horizon import tabs
 
 from saharadashboard.api.client import client as saharaclient
-
 from saharadashboard.job_executions.tables import JobExecutionsTable
 import saharadashboard.job_executions.tabs as _tabs
 

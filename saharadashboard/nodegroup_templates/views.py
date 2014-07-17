@@ -20,7 +20,6 @@ from horizon import tabs
 from horizon import workflows
 
 from saharadashboard.api.client import client as saharaclient
-
 import saharadashboard.nodegroup_templates.tables as _tables
 import saharadashboard.nodegroup_templates.tabs as _tabs
 import saharadashboard.nodegroup_templates.workflows.copy as copy_flow

@@ -12,17 +12,16 @@
 # implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-import json
 
-from django.http import HttpResponse
+import json
 import logging
 
+from django.http import HttpResponse
 from horizon import tables
 from horizon import tabs
 from horizon import workflows
 
 from saharadashboard.api.client import client as saharaclient
-
 import saharadashboard.jobs.tables as _tables
 import saharadashboard.jobs.tabs as _tabs
 import saharadashboard.jobs.workflows.create as create_flow
