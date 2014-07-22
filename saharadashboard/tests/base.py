@@ -414,7 +414,7 @@ class UITestCase(unittest2.TestCase):
         if not undelete_names and len(names) > 1:
             msg = "Success: Deleted Job binarie"
 
-        if undelete_names and len(names)-len(undelete_names) > 1:
+        if undelete_names and len(names) - len(undelete_names) > 1:
             info_msg = 'Info: Deleted Job binarie'
 
         if undelete_names and len(undelete_names) > 1:
@@ -456,7 +456,7 @@ class UITestCase(unittest2.TestCase):
             message = 'Success: Deleted Job execution'
             actual_message = self.find_alert_message(
                 "alert-success", first_character=2,
-                last_character=len(message)+2)
+                last_character=len(message) + 2)
             self.assertEqual(actual_message, message)
 
     def unregister_images(self, names, undelete_names=[],
@@ -467,7 +467,7 @@ class UITestCase(unittest2.TestCase):
         self.delete_and_validate(url, delete_button_id, names, undelete_names,
                                  finally_delete, succes_msg=msg,)
 
-#-------------------------helpers_methods--------------------------------------
+# -------------------------helpers_methods-------------------------------------
 
     @staticmethod
     def connect_to_swift():
@@ -627,7 +627,7 @@ class UITestCase(unittest2.TestCase):
             driver.find_element_by_id(
                 "image_registry__action_register").click()
         else:
-            #Add existing tags in the list
+            # Add existing tags in the list
             list_for_check_tags = driver.\
                 find_element(by=by.By.LINK_TEXT, value=image_name).\
                 find_element_by_xpath('../../td[3]').text.split('\n')
@@ -669,7 +669,7 @@ class UITestCase(unittest2.TestCase):
                         self.fail("Tag:%s, %s is unknown" % (first, second))
         if tags_to_remove:
             for tag in tags_to_remove:
-                #click "x" in tag
+                # click "x" in tag
                 driver.find_element_by_xpath(
                     "//div[@id='image_tags_list']//span[contains(.,'%s')]//i"
                     % tag).click()
@@ -709,10 +709,10 @@ class UITestCase(unittest2.TestCase):
     def check_alert(self, alert, expected_message, list_obj, deleted=True):
         self.await_element(by.By.CLASS_NAME, alert)
         actual_message = self.find_alert_message(
-            alert, first_character=2, last_character=len(expected_message)+2)
+            alert, first_character=2, last_character=len(expected_message) + 2)
         self.assertEqual(actual_message, expected_message)
         not_expected_objs = list(set(self.find_alert_message(
-            alert, first_character=len(expected_message)+2).split(
+            alert, first_character=len(expected_message) + 2).split(
                 ", ")).symmetric_difference(set(list_obj)))
         if not_expected_objs:
             self.fail("have deleted objects: %s" % not_expected_objs)

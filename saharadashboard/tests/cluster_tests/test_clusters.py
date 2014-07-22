@@ -61,8 +61,8 @@ class UICreateCluster(base.UITestCase):
                                          {'selenium-master': 1,
                                           'selenium-del2': 2},
                                          cfg.vanilla,
-                                         anti_affinity_groups=
-                                         ["NN", "DN", "TT", "JT"])
+                                         anti_affinity_groups=["NN", "DN",
+                                                               "TT", "JT"])
             self.create_cluster('selenium-cl', 'selenium-cl-tmpl',
                                 cfg.vanilla, await_run=await_run)
             if not cfg.vanilla.skip_edp_test:

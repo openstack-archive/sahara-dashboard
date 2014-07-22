@@ -70,7 +70,7 @@ class CopyNodegroupTemplate(create_flow.ConfigureNodegroupTemplate):
                 hadoop_version)
             plugin_node_processes = plugin_details.node_processes
             for process in template.node_processes:
-                #need to know the service
+                # need to know the service
                 _service = None
                 for service, processes in plugin_node_processes.items():
                     if process in processes:
