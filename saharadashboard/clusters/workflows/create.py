@@ -197,7 +197,7 @@ class ConfigureCluster(whelpers.StatusFormatMixin, workflows.Workflow):
     def handle(self, request, context):
         try:
             sahara = saharaclient.client(request)
-            #TODO(nkonovalov) Implement AJAX Node Groups
+            # TODO(nkonovalov) Implement AJAX Node Groups
             node_groups = None
 
             plugin, hadoop_version = whelpers.\

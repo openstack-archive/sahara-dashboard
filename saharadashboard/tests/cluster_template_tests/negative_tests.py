@@ -38,8 +38,8 @@ class UINegativeCreateClusterTemplateTest(base.UITestCase):
                     {"HDFS Parameters:io.file.buffer.size": "str"},
                     {"MapReduce Parameters:mapreduce.job.counters.max":
                         "str"}],
-            positive=False, close_window=False, message=
-            'Details, HDFS Parameters, MapReduce Parameters, '
+            positive=False, close_window=False,
+            message='Details, HDFS Parameters, MapReduce Parameters, '
             'Template Name:This field is required., '
             'HDFS Parameters:io.file.buffer.size:Enter a whole number., '
             'MapReduce Parameters:mapreduce.job.counters.max:'

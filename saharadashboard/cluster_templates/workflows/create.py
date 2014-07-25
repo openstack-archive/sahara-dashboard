@@ -282,7 +282,7 @@ class ConfigureClusterTemplate(whelpers.ServiceParametersWorkflow,
             plugin, hadoop_version = whelpers.\
                 get_plugin_and_hadoop_version(request)
 
-            #TODO(nkonovalov): Fix client to support default_image_id
+            # TODO(nkonovalov): Fix client to support default_image_id
             sahara.cluster_templates.create(
                 context["general_cluster_template_name"],
                 plugin,

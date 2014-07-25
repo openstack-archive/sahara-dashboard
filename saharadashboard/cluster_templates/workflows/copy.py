@@ -43,7 +43,7 @@ class CopyClusterTemplate(create_flow.ConfigureClusterTemplate):
                                                   entry_point, *args,
                                                   **kwargs)
 
-        #init Node Groups
+        # init Node Groups
 
         for step in self.steps:
             if isinstance(step, create_flow.ConfigureNodegroups):

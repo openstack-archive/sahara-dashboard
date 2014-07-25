@@ -35,10 +35,10 @@ class UICreateClusterTemplate(base.UITestCase):
         self.create_cluster_template(
             "selenium-clstr-tmpl", {'selenium-master': 1,
                                     'selenium-worker': 2},
-            cfg.vanilla, anti_affinity_groups=["NN", "DN", "TT"], params=
-            [{"General Parameters:Enable Swift": False},
-             {"HDFS Parameters:dfs.replication": 2},
-             {"MapReduce Parameters:mapred.output.compress": False}])
+            cfg.vanilla, anti_affinity_groups=["NN", "DN", "TT"],
+            params=[{"General Parameters:Enable Swift": False},
+                    {"HDFS Parameters:dfs.replication": 2},
+                    {"MapReduce Parameters:mapred.output.compress": False}])
         msg = 'Error: Cluster template with name \'selenium-clstr-tmpl\'' \
             ' already exists'
         self.create_cluster_template('selenium-clstr-tmpl',

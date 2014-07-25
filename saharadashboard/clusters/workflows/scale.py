@@ -55,7 +55,7 @@ class ScaleCluster(cl_create_flow.ConfigureCluster,
         plugin = cluster.plugin_name
         hadoop_version = cluster.hadoop_version
 
-        #init deletable nodegroups
+        # init deletable nodegroups
         deletable = dict()
         for group in cluster.node_groups:
             deletable[group["name"]] = "false"
@@ -70,7 +70,7 @@ class ScaleCluster(cl_create_flow.ConfigureCluster,
                                            entry_point, *args,
                                            **kwargs)
 
-        #init Node Groups
+        # init Node Groups
 
         for step in self.steps:
             if isinstance(step, clt_create_flow.ConfigureNodegroups):
