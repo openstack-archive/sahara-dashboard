@@ -347,7 +347,7 @@ class UITestCase(unittest2.TestCase):
 
         action_column = driver.find_element_by_link_text(
             name).find_element_by_xpath('../../td[4]')
-        action_column.find_element_by_link_text('More').click()
+        action_column.find_element_by_class_name('dropdown-toggle').click()
         action_column.find_element_by_link_text(
             'Launch On Existing Cluster').click()
 
@@ -383,7 +383,7 @@ class UITestCase(unittest2.TestCase):
             self.check_create_object(name, positive, message,
                                      check_create_element=False)
         if await_launch:
-            self.await_launch_job()
+            self.await_launch_job(name)
 
         else:
             self.error_helper(message)
@@ -453,35 +453,18 @@ class UITestCase(unittest2.TestCase):
         self.delete_and_validate(url, delete_button_id, names, undelete_names,
                                  finally_delete, msg, err_msg, info_msg)
 
-    def delete_all_job_executions(self):
-
-        driver = self.driver
-        driver.get(cfg.common.base_url +
-                   "/project/data_processing/job_executions/")
-
+    def delete_job_executions(self, names, undelete_names=None,
+                              finally_delete=False, await_delete=False):
+        url = "/project/data_processing/job_executions/"
         delete_button_id = 'job_executions__action_delete'
+        msg = "Success: Deleted Job execution"
+        err_msg = "Error: Unable to delete job execution"
+        info_msg = "Info: Deleted Job execution"
+        self.delete_and_validate(url, delete_button_id, names, undelete_names,
+                                 finally_delete, msg, err_msg, info_msg,
+                                 await_delete)
 
-        self.await_element(by.By.ID, delete_button_id)
-
-        if self.does_element_present(by.By.CLASS_NAME, 'multi_select_column'):
-
-            if not driver.find_element_by_xpath(
-                    '//*[@class=\'multi_select_column\']/input').is_selected():
-
-                driver.find_element_by_class_name(
-                    '//*[@class=\'multi_select_column\']/input').click()
-
-            driver.find_element_by_id(delete_button_id).click()
-            self.await_element(by.By.LINK_TEXT, 'Delete Job executions')
-            driver.find_element_by_link_text('Delete Job executions').click()
-            self.await_element(by.By.CLASS_NAME, "alert-success")
-            message = 'Success: Deleted Job execution'
-            actual_message = self.find_alert_message(
-                "alert-success", first_character=2,
-                last_character=len(message) + 2)
-            self.assertEqual(actual_message, message)
-
-    def unregister_images(self, names, undelete_names=[],
+    def unregister_images(self, names, undelete_names=None,
                           finally_delete=False):
         url = '/project/data_processing/data_image_registry/'
         delete_button_id = "image_registry__action_Unregister"
@@ -504,12 +487,20 @@ class UITestCase(unittest2.TestCase):
     @staticmethod
     def delete_swift_container(swift, container):
 
-        objects = [obj['name'] for obj in swift.get_container(container)[1]]
+        try:
+            objects = [obj['name'] for obj
+                       in swift.get_container(container)[1]]
+        except Exception:
+            return
+
         for obj in objects:
 
             swift.delete_object(container, obj)
 
-        swift.delete_container(container)
+        try:
+            swift.delete_container(container)
+        except Exception:
+            return
 
     @classmethod
     def find_clear_send(cls, by_find, find_element, send):
@@ -523,31 +514,52 @@ class UITestCase(unittest2.TestCase):
                 key.click()
 
     def delete_and_validate(self, url, delete_button_id, names, undelete_names,
-                            finally_delete, await_delete=False,
+                            finally_delete,
                             succes_msg='Success: Deleted Template',
                             error_msg='Error: Unable to delete template',
-                            info_msg='Info: Deleted Template'):
+                            info_msg='Info: Deleted Template',
+                            await_delete=False,):
         driver = self.driver
         driver.refresh()
         driver.get(cfg.common.base_url + url)
-        self.await_element(by.By.ID, delete_button_id)
+
+        if finally_delete:
+            try:
+                self.await_element(by.By.ID, delete_button_id, await_count=3)
+            except selenim_except.NoSuchElementException:
+                return
+        else:
+            self.await_element(by.By.ID, delete_button_id)
+
         for name in names:
             # choose checkbox for this element
-            try:
-                driver.find_element_by_link_text("%s" % name).\
-                    find_element_by_xpath("../../td[1]/input").click()
-            except selenim_except.NoSuchElementException as e:
-                if finally_delete:
-                    pass
-                else:
-                    print ('element with name %s not found for delete' % name)
-                    raise e
+            checkbox = None
+            retry_count = 0
+            while not checkbox:
+                if retry_count > 10:
+                    self.fail("id of job execution didn't obtained")
+                try:
+                    checkbox = driver.find_element_by_link_text(
+                        name).find_element_by_xpath(
+                            "../../td[1]/input")
+                except selenim_except.StaleElementReferenceException:
+                    time.sleep(1)
+                    retry_count += 1
+                except selenim_except.NoSuchElementException:
+                    if not finally_delete:
+                        print ("element with name %s not found "
+                               "for delete" % name)
+                        raise
+                if not checkbox.is_selected():
+                    checkbox.click()
         # click deletebutton
         driver.find_element_by_id(delete_button_id).click()
         # wait window to confirm the deletion
         self.await_element(by.By.CLASS_NAME, "btn-primary")
         # confirm the deletion
         driver.find_element_by_class_name("btn-primary").click()
+        if finally_delete:
+            return
         exp_del_obj = list(set(names).symmetric_difference(set(
             undelete_names if undelete_names else [])))
         if not undelete_names:
@@ -762,6 +774,7 @@ class UITestCase(unittest2.TestCase):
                 await_count = 0
                 while self.does_element_present(by.By.LINK_TEXT,
                                                 name) == deleted:
+                    self.driver.refresh()
                     time.sleep(5)
                     await_count += 1
                     if await_count > 12:
@@ -769,6 +782,17 @@ class UITestCase(unittest2.TestCase):
                 return
             if self.does_element_present(by.By.LINK_TEXT, name) == deleted:
                 self.fail(errmsg.format(name))
+        delete_attempts_count = 0
+        for name in list_obj:
+            while self.does_element_present(by.By.LINK_TEXT, name) == deleted:
+                if delete_attempts_count > cfg.common.await_element:
+                    if deleted:
+                        errmsg = "object with name:%s is not deleted" % name
+                    else:
+                        errmsg = "object with name:%s is deleted" % name
+                    self.fail(errmsg)
+                time.sleep(1)
+                delete_attempts_count += 1
 
     def find_alert_message(self, name, first_character=None,
                            last_character=None):
@@ -798,15 +822,17 @@ class UITestCase(unittest2.TestCase):
             return False
         return True
 
-    def await_element(self, by, value, message=""):
-        for i in range(cfg.common.await_element):
+    def await_element(self, by, value, message="",
+                      await_count=cfg.common.await_element):
+        for i in range(await_count):
             if self.does_element_present(by, value):
                 break
             time.sleep(1)
         else:
             if not message:
                 message = "time out for await: %s , %s" % (by, value)
-            self.fail(message)
+            print(message)
+            raise selenim_except.NoSuchElementException
 
     def check_create_object(self, name, positive, expected_message,
                             check_columns=None, check_create_element=True):
@@ -872,18 +898,45 @@ class UITestCase(unittest2.TestCase):
             time.sleep(5)
             i += 5
 
-    def await_launch_job(self):
+    def await_launch_job(self, job_name):
         driver = self.driver
         driver.get(cfg.common.base_url +
                    "/project/data_processing/job_executions/")
         self.await_element(by.By.ID, 'job_executions')
 
-        job_id = driver.find_element_by_id(
-            'job_executions').find_elements_by_class_name(
-                'ajax-update')[-1].get_attribute('id')
+        job_id = None
+        retry_count = 0
+        while not job_id:
+            if retry_count > 10:
+                self.fail("id of job execution didn't obtained")
+            try:
+                job_id = driver.find_element_by_id(
+                    'job_executions').find_elements_by_class_name(
+                        'ajax-update')[0].get_attribute('id')
+                self.job_id = job_id.split("_")[-1]
+                # TODO(vrovachev): replace find job_id on commented code
+                # after resolve bug 1391469
+                # job_id = driver.find_element_by_id(
+                #     'job_executions').find_element_by_link_text(
+                #         job_name).find_element_by_xpath(
+                #             '../..').get_attribute('id')
+            except selenim_except.StaleElementReferenceException:
+                time.sleep(1)
+                retry_count += 1
 
-        status = driver.find_element_by_xpath(
-            '//*[@id="%s"]/td[3]' % job_id).text
+        status = None
+        retry_count = 0
+        while not status:
+            if retry_count > 10:
+                self.fail("id of job execution didn't obtained")
+            try:
+                status = driver.find_element_by_id(
+                    job_id).find_element_by_xpath(
+                        "td[contains(@class, 'status_')]").text
+            except selenim_except.StaleElementReferenceException:
+                time.sleep(1)
+                retry_count += 1
+
         timeout = cfg.common.job_launch_timeout * 60
 
         while str(status) != 'SUCCEEDED':
@@ -896,8 +949,19 @@ class UITestCase(unittest2.TestCase):
             if status == 'KILLED':
                 self.fail('Job status == \'KILLED\'.')
 
-            status = driver.find_element_by_xpath(
-                '//*[@id="%s"]/td[3]' % job_id).text
+            status = None
+            retry_count = 0
+            while not status:
+                if retry_count > 10:
+                    self.fail("id of job execution didn't obtained")
+                try:
+                    status = driver.find_element_by_id(
+                        job_id).find_element_by_xpath(
+                            "td[contains(@class, 'status_')]").text
+                except selenim_except.StaleElementReferenceException:
+                    time.sleep(1)
+                    retry_count += 1
+
             time.sleep(1)
             timeout -= 1
 
