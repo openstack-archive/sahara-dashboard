@@ -58,7 +58,7 @@ class UITestCase(unittest2.TestCase):
                        tags_to_add=None, tags_to_remove=None, positive=True,
                        close_window=True, message=''):
         if positive:
-            message = 'Success: Image registered.'
+            message = 'Success: Successfully updated image.'
         self.image_registry_helper(image_name, user_name, description,
                                    tags_to_add, tags_to_remove, positive,
                                    close_window, message, 'Registry')
@@ -68,7 +68,7 @@ class UITestCase(unittest2.TestCase):
                                 positive=True, message=None, close_window=True,
                                 tags_to_remove=None):
         if positive:
-            message = 'Success: Image updated.'
+            message = 'Success: Successfully updated image.'
         self.image_registry_helper(image_name, user_name, description,
                                    tags_to_add, tags_to_remove, positive,
                                    close_window, message, 'Edit')
@@ -80,7 +80,8 @@ class UITestCase(unittest2.TestCase):
         driver = self.driver
         if not flavor:
             flavor = cfg.common.flavor
-        driver.get(cfg.common.base_url + "/sahara/nodegroup_templates/")
+        driver.get(cfg.common.base_url +
+                   "/project/data_processing/nodegroup_templates/")
         self.await_element(by.By.ID, "nodegroup_templates__action_create")
         driver.find_element_by_id("nodegroup_templates__action_create").click()
         self.choose_plugin_name(plugin.plugin_name, plugin.hadoop_version,
@@ -126,7 +127,8 @@ class UITestCase(unittest2.TestCase):
             close_window=True, anti_affinity_groups=None, positive=True,
             message=None, params=None):
         driver = self.driver
-        driver.get(cfg.common.base_url + "/sahara/cluster_templates/")
+        driver.get(cfg.common.base_url +
+                   "/project/data_processing/cluster_templates/")
         self.await_element(by.By.ID, "cluster_templates__action_create")
         driver.find_element_by_id("cluster_templates__action_create").click()
         self.choose_plugin_name(plugin.plugin_name, plugin.hadoop_version,
@@ -166,7 +168,7 @@ class UITestCase(unittest2.TestCase):
                        close_window=True, description=None, positive=True,
                        await_run=True, message=None):
         driver = self.driver
-        driver.get(cfg.common.base_url + "/sahara/")
+        driver.get(cfg.common.base_url + "/project/data_processing/clusters/")
         self.await_element(by.By.ID, "clusters__action_create")
         driver.find_element_by_id("clusters__action_create").click()
         self.choose_plugin_name(plugin.plugin_name, plugin.hadoop_version,
@@ -199,7 +201,8 @@ class UITestCase(unittest2.TestCase):
                            description=None, positive=True, message=None):
 
         driver = self.driver
-        driver.get(cfg.common.base_url + "/sahara/data_sources/")
+        driver.get(cfg.common.base_url +
+                   "/project/data_processing/data_sources/")
         self.await_element(by.By.ID, "data_sources__action_create data source")
         driver.find_element_by_id(
             "data_sources__action_create data source").click()
@@ -230,7 +233,8 @@ class UITestCase(unittest2.TestCase):
 
         driver = self.driver
         storage_type = parameters_of_storage['storage_type']
-        driver.get(cfg.common.base_url + "/sahara/job_binaries/")
+        driver.get(cfg.common.base_url +
+                   "/project/data_processing/job_binaries/")
         self.await_element(by.By.ID, "job_binaries__action_create job binary")
         driver.find_element_by_id(
             "job_binaries__action_create job binary").click()
@@ -283,7 +287,7 @@ class UITestCase(unittest2.TestCase):
                    message=None):
 
         driver = self.driver
-        driver.get(cfg.common.base_url + "/sahara/jobs/")
+        driver.get(cfg.common.base_url + "/project/data_processing/jobs/")
         self.await_element(by.By.ID, "jobs__action_create job")
         driver.find_element_by_id("jobs__action_create job").click()
 
@@ -322,7 +326,7 @@ class UITestCase(unittest2.TestCase):
                                        await_launch=True):
 
         driver = self.driver
-        driver.get(cfg.common.base_url + "/sahara/jobs/")
+        driver.get(cfg.common.base_url + "/project/data_processing/jobs/")
         self.await_element(by.By.ID, "jobs__action_create job")
 
         action_column = driver.find_element_by_link_text(
@@ -370,7 +374,7 @@ class UITestCase(unittest2.TestCase):
 
     def delete_node_group_templates(self, names, undelete_names=None,
                                     finally_delete=False):
-        url = "/sahara/nodegroup_templates/"
+        url = "/project/data_processing/nodegroup_templates/"
         delete_button_id = 'nodegroup_templates__action_' \
                            'delete_nodegroup_template'
         self.delete_and_validate(url, delete_button_id, names, undelete_names,
@@ -378,14 +382,14 @@ class UITestCase(unittest2.TestCase):
 
     def delete_cluster_templates(self, names, undelete_names=None,
                                  finally_delete=False):
-        url = "/sahara/cluster_templates/"
+        url = "/project/data_processing/cluster_templates/"
         delete_button_id = "cluster_templates__action_delete_cluster_template"
         self.delete_and_validate(url, delete_button_id, names, undelete_names,
                                  finally_delete)
 
     def delete_clusters(self, names, undelete_names=None,
                         finally_delete=False):
-        url = "/sahara/"
+        url = "/project/data_processing/"
         delete_button_id = "clusters__action_delete"
         msg = "Success: Deleted Cluster"
         self.delete_and_validate(url, delete_button_id, names, undelete_names,
@@ -393,7 +397,7 @@ class UITestCase(unittest2.TestCase):
 
     def delete_data_sources(self, names, undelete_names=None,
                             finally_delete=False):
-        url = "/sahara/data_sources/"
+        url = "/project/data_processing/data_sources/"
         delete_button_id = "data_sources__action_delete"
         msg = "Success: Deleted Data source"
         err_msg = 'Error: Unable to delete data source'
@@ -404,7 +408,7 @@ class UITestCase(unittest2.TestCase):
     def delete_job_binaries(self, names, undelete_names=None,
                             finally_delete=False):
 
-        url = "/sahara/job_binaries/"
+        url = "/project/data_processing/job_binaries/"
         delete_button_id = "job_binaries__action_delete"
 
         msg = "Success: Deleted Job binary"
@@ -424,7 +428,7 @@ class UITestCase(unittest2.TestCase):
                                  finally_delete, msg, err_msg, info_msg)
 
     def delete_jobs(self, names, undelete_names=None, finally_delete=False):
-        url = "/sahara/jobs/"
+        url = "/project/data_processing/jobs/"
         delete_button_id = "jobs__action_delete"
         msg = "Success: Deleted Job"
         err_msg = 'Error: Unable to delete job'
@@ -435,7 +439,8 @@ class UITestCase(unittest2.TestCase):
     def delete_all_job_executions(self):
 
         driver = self.driver
-        driver.get(cfg.common.base_url + "/sahara/job_executions/")
+        driver.get(cfg.common.base_url +
+                   "/project/data_processing/job_executions/")
 
         delete_button_id = 'job_executions__action_delete'
 
@@ -461,7 +466,7 @@ class UITestCase(unittest2.TestCase):
 
     def unregister_images(self, names, undelete_names=[],
                           finally_delete=False):
-        url = '/sahara/image_registry/'
+        url = '/project/data_processing/data_image_registry/'
         delete_button_id = "image_registry__action_Unregister"
         msg = "Success: Unregistered Image"
         self.delete_and_validate(url, delete_button_id, names, undelete_names,
@@ -537,7 +542,7 @@ class UITestCase(unittest2.TestCase):
             if len(undelete_names) > 1:
                 error_msg += "s"
             error_msg += ": "
-            self.check_alert("alert-error", error_msg, undelete_names,
+            self.check_alert("alert-danger", error_msg, undelete_names,
                              deleted=False)
         else:
             if len(undelete_names) > 1:
@@ -546,7 +551,7 @@ class UITestCase(unittest2.TestCase):
             if len(exp_del_obj) > 1:
                 info_msg += "s"
             info_msg += ": "
-            self.check_alert("alert-error", error_msg, undelete_names,
+            self.check_alert("alert-danger", error_msg, undelete_names,
                              deleted=False)
             self.check_alert("alert-info", info_msg, exp_del_obj, deleted=True)
         driver.refresh()
@@ -621,7 +626,8 @@ class UITestCase(unittest2.TestCase):
                               close_window, message, operation):
         driver = self.driver
         list_for_check_tags = []
-        driver.get(cfg.common.base_url + "/sahara/image_registry/")
+        driver.get(cfg.common.base_url +
+                   "/project/data_processing/data_image_registry/")
         self.await_element(by.By.ID, "image_registry__action_register")
         if operation == 'Registry':
             driver.find_element_by_id(
@@ -652,7 +658,7 @@ class UITestCase(unittest2.TestCase):
                             "//select[@id='plugin_select']/option[text()='%s']"
                             % first).click()
                         driver.find_element_by_xpath(
-                            "//select[@id='hadoop_version_%s']"
+                            "//select[@id='data_processing_version_%s']"
                             "/option[text()='%s']" % (first, second)).click()
                         driver.find_element_by_id('add_all_btn').click()
                         if first not in list_for_check_tags:
@@ -687,8 +693,7 @@ class UITestCase(unittest2.TestCase):
 
     def choose_plugin_name(self, plugin_name, hadoop_version, name,
                            description, id_name):
-        self.await_element(by.By.XPATH, "//*[@id='modal_wrapper']"
-                                        "/div/form/div[3]/input")
+        self.await_element(by.By.ID, "id_plugin_name")
         self.driver.find_element_by_xpath(
             "//select[@id='id_plugin_name']/option[text()='%s']" %
             plugin_name).click()
@@ -762,11 +767,11 @@ class UITestCase(unittest2.TestCase):
     def check_create_object(self, name, positive, expected_message,
                             check_columns=None, check_create_element=True):
         driver = self.driver
-        expected_alert = "alert-error"
+        expected_alert = "alert-danger"
         unexpected_alert = "alert-success"
         if positive:
             expected_alert = "alert-success"
-            unexpected_alert = "alert-error"
+            unexpected_alert = "alert-danger"
         for i in range(cfg.common.await_element):
             if self.does_element_present(by.By.CLASS_NAME, expected_alert):
                 break
@@ -825,7 +830,8 @@ class UITestCase(unittest2.TestCase):
 
     def await_launch_job(self):
         driver = self.driver
-        driver.get(cfg.common.base_url + "/sahara/job_executions/")
+        driver.get(cfg.common.base_url +
+                   "/project/data_processing/job_executions/")
         self.await_element(by.By.ID, 'job_executions')
 
         job_id = driver.find_element_by_id(
