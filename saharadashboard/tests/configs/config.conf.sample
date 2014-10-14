@@ -4,6 +4,8 @@ user = "admin"
 password = "admin"
 keypair = 'jenkins'
 tenant = 'admin'
+auto_security_groups = False
+security_groups = default
 flavor = 'm1.minniemouse'
 # uncomment this parameters if quantum in OpenStack
 # neutron_management_network = ''

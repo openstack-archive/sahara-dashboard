@@ -34,16 +34,24 @@ class UICreateCluster(base.UITestCase):
         try:
             processes = ["NN", "JT"]
             await_run = False
+            master_storage = {'type': 'Ephemeral Drive'}
+            anty_affinity = []
 
             if not cfg.vanilla.skip_edp_test:
                 processes = ["NN", "JT", "OZ"]
                 await_run = True
 
+            if cfg.common.cinder:
+                master_storage = {"type": "Cinder Volume",
+                                  "volume_per_node": 1,
+                                  "volume_size": 5}
+
+            if cfg.common.anty_affinity:
+                anty_affinity = "NN", "DN", "TT"
+
             self.create_node_group_template('selenium-master', processes,
                                             cfg.vanilla,
-                                            storage={'type': 'Cinder Volume',
-                                                     "volume_per_node": 1,
-                                                     'volume_size': 5})
+                                            storage=master_storage)
             self.create_node_group_template('selenium-worker', ["DN", "TT"],
                                             cfg.vanilla)
             self.create_node_group_template('selenium-del1', ["NN", "JT",
@@ -55,8 +63,7 @@ class UICreateCluster(base.UITestCase):
             self.create_cluster_template("selenium-cl-tmpl",
                                          {'selenium-master': 1,
                                           'selenium-worker': 1}, cfg.vanilla,
-                                         anti_affinity_groups=["NN",
-                                                               "DN", "TT"])
+                                         anti_affinity_groups=anty_affinity)
             self.create_cluster_template("selenium-cl-tmpl2",
                                          {'selenium-master': 1,
                                           'selenium-del2': 2},

@@ -100,6 +100,22 @@ class UITestCase(unittest2.TestCase):
             self.driver.find_element_by_xpath(
                 "//*[@id='id_floating_ip_pool']/option[text()='%s']"
                 % cfg.common.floationg_ip_pool).click()
+        if cfg.common.auto_security_groups != driver.find_element_by_id(
+                "id_autogroup").is_selected():
+            driver.find_element_by_id("id_autogroup").click()
+        if cfg.common.security_groups:
+            # create dictionary with existing security groups
+            actual_groups = {}
+            for sec_group in driver.find_elements_by_xpath(
+                    "//label[contains(@for, 'id_groups_')]"):
+                actual_groups[sec_group.text] = sec_group
+            # search specified in config file security groups of existing
+            for sec_group in cfg.common.security_groups:
+                if sec_group not in actual_groups:
+                    self.fail("Security group with name %s not "
+                              "found. Aborting." % sec_group)
+                if not actual_groups[sec_group].is_selected():
+                    actual_groups[sec_group].click()
         processes = []
         for process in list_processes:
             number_pr = self.search_id_processes(process, plugin)
@@ -389,7 +405,7 @@ class UITestCase(unittest2.TestCase):
 
     def delete_clusters(self, names, undelete_names=None,
                         finally_delete=False):
-        url = "/project/data_processing/"
+        url = "/project/data_processing/clusters/"
         delete_button_id = "clusters__action_delete"
         msg = "Success: Deleted Cluster"
         self.delete_and_validate(url, delete_button_id, names, undelete_names,
