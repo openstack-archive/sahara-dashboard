@@ -9,7 +9,7 @@ security_groups = default
 flavor = 'm1.minniemouse'
 # uncomment this parameters if quantum in OpenStack
 # neutron_management_network = ''
-# floationg_ip_pool = ''
+# floating_ip_pool = ''
 keystone_url = 'http://127.0.0.1:5000/v2.0'
 # in minutes
 cluster_creation_timeout = 10

@@ -96,10 +96,10 @@ class UITestCase(unittest2.TestCase):
                                  storage['volume_per_node'])
             self.find_clear_send(by.By.ID, "id_volumes_size",
                                  storage['volume_size'])
-        if cfg.common.floationg_ip_pool:
+        if cfg.common.floating_ip_pool:
             self.driver.find_element_by_xpath(
                 "//*[@id='id_floating_ip_pool']/option[text()='%s']"
-                % cfg.common.floationg_ip_pool).click()
+                % cfg.common.floating_ip_pool).click()
         if cfg.common.auto_security_groups != driver.find_element_by_id(
                 "id_autogroup").is_selected():
             driver.find_element_by_id("id_autogroup").click()
