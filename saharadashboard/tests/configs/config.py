@@ -36,7 +36,7 @@ CommonGroup = [
                default='admin',
                help='keystone tenant'),
     cfg.BoolOpt('auto_security_groups',
-                default=True,
+                default=False,
                 help="Security Groups for sahara cluster"),
     cfg.ListOpt('security_groups',
                 default=None,
@@ -48,7 +48,7 @@ CommonGroup = [
                default=None,
                help='Private network for quantum.'
                     'Must be specified in create cluster tab'),
-    cfg.StrOpt('floationg_ip_pool',
+    cfg.StrOpt('floating_ip_pool',
                default=None,
                help='Public network for quantum.'
                     'Must be specified in create nodegroup template tab'),
