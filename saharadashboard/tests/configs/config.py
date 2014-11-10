@@ -36,7 +36,7 @@ CommonGroup = [
                default='admin',
                help='keystone tenant'),
     cfg.BoolOpt('auto_security_groups',
-                default=True,
+                default=False,
                 help="Security Groups for sahara cluster"),
     cfg.ListOpt('security_groups',
                 default=None,

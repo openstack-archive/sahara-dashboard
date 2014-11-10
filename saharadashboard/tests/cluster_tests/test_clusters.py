@@ -95,10 +95,8 @@ class UICreateCluster(base.UITestCase):
             traceback.print_exc()
             raise e
         finally:
-            try:
-                self.delete_clusters(['selenium-cl'], finally_delete=True)
-            except Exception:
-                pass
+            self.delete_clusters(['selenium-cl'], finally_delete=False,
+                                 await_delete=True)
 
             try:
                 self.delete_cluster_templates(['selenium-cl-tmpl',

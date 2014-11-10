@@ -404,12 +404,13 @@ class UITestCase(unittest2.TestCase):
                                  finally_delete)
 
     def delete_clusters(self, names, undelete_names=None,
-                        finally_delete=False):
+                        finally_delete=False, await_delete=False):
         url = "/project/data_processing/clusters/"
         delete_button_id = "clusters__action_delete"
         msg = "Success: Deleted Cluster"
         self.delete_and_validate(url, delete_button_id, names, undelete_names,
-                                 finally_delete, succes_msg=msg)
+                                 finally_delete, succes_msg=msg,
+                                 await_delete=await_delete)
 
     def delete_data_sources(self, names, undelete_names=None,
                             finally_delete=False):
@@ -522,7 +523,7 @@ class UITestCase(unittest2.TestCase):
                 key.click()
 
     def delete_and_validate(self, url, delete_button_id, names, undelete_names,
-                            finally_delete,
+                            finally_delete, await_delete=False,
                             succes_msg='Success: Deleted Template',
                             error_msg='Error: Unable to delete template',
                             info_msg='Info: Deleted Template'):
@@ -553,7 +554,8 @@ class UITestCase(unittest2.TestCase):
             if len(names) > 1:
                 succes_msg += "s"
             succes_msg += ": "
-            self.check_alert("alert-success", succes_msg, names, deleted=True)
+            self.check_alert("alert-success", succes_msg, names, deleted=True,
+                             await_delete=await_delete)
         elif not exp_del_obj:
             if len(undelete_names) > 1:
                 error_msg += "s"
@@ -569,7 +571,8 @@ class UITestCase(unittest2.TestCase):
             info_msg += ": "
             self.check_alert("alert-danger", error_msg, undelete_names,
                              deleted=False)
-            self.check_alert("alert-info", info_msg, exp_del_obj, deleted=True)
+            self.check_alert("alert-info", info_msg, exp_del_obj, deleted=True,
+                             await_delete=await_delete)
         driver.refresh()
 
     def error_helper(self, message):
@@ -600,30 +603,42 @@ class UITestCase(unittest2.TestCase):
         for pair in config_list:
             for par, value in pair.iteritems():
                 if len(par.split(":")) > 1:
-                    driver.find_element_by_link_text(par.split(":")[0]).click()
+                    config_blog = driver.find_element_by_link_text(
+                        par.split(":")[0])
+                    config_blog.click()
+
+                    # Find class for config blog for for unambiguous
+                    # finding buttons
+                    config_class = driver.find_element_by_id(
+                        config_blog.get_attribute('data-target').lstrip("#"))
+
                     config_id = "id_CONF:%s" % par.split(":")[0].split(" ")[0]
                     if config_id == "id_CONF:General":
                         config_id = "id_CONF:general"
                     par = par.split(":")[1]
                 if par == "Show_param":
+                    show_button = config_class.find_element_by_class_name(
+                        "full-config-show")
+                    hide_button = config_class.find_element_by_class_name(
+                        "full-config-hide")
                     if value:
-
                         self.waiting_element_in_visible_state(
-                            by.By.LINK_TEXT, "Show full configuration")
-                        driver.find_element_by_link_text(
-                            "Show full configuration").click()
+                            button=show_button)
+                        show_button.click()
                         self.waiting_element_in_visible_state(
-                            by.By.LINK_TEXT, "Hide full configuration")
+                            button=hide_button)
                     else:
                         self.waiting_element_in_visible_state(
-                            by.By.LINK_TEXT, "Hide full configuration")
-                        driver.find_element_by_link_text(
-                            "Hide full configuration").click()
+                            button=hide_button)
+                        hide_button.click()
                         self.waiting_element_in_visible_state(
-                            by.By.LINK_TEXT, "Show full configuration")
+                            button=show_button)
                 elif par == "Filter":
-                    self.find_clear_send(
-                        by.By.XPATH, "//input[@class='field-filter']", value)
+                    filter_button = config_class.find_element_by_css_selector(
+                        "input.form-control.field-filter")
+                    filter_button.clear()
+                    filter_button.send_keys(value)
+
                 else:
                     self.waiting_element_in_visible_state(
                         by.By.ID, "%s:%s" % (config_id, par))
@@ -727,7 +742,8 @@ class UITestCase(unittest2.TestCase):
         if description:
             self.find_clear_send(by.By.ID, "id_description", description)
 
-    def check_alert(self, alert, expected_message, list_obj, deleted=True):
+    def check_alert(self, alert, expected_message, list_obj, deleted=True,
+                    await_delete=False):
         self.await_element(by.By.CLASS_NAME, alert)
         actual_message = self.find_alert_message(
             alert, first_character=2, last_character=len(expected_message) + 2)
@@ -737,13 +753,22 @@ class UITestCase(unittest2.TestCase):
                 ", ")).symmetric_difference(set(list_obj)))
         if not_expected_objs:
             self.fail("have deleted objects: %s" % not_expected_objs)
+        if deleted:
+            errmsg = "object with name:{} is not deleted"
+        else:
+            errmsg = "object with name:{} is deleted"
         for name in list_obj:
+            if await_delete:
+                await_count = 0
+                while self.does_element_present(by.By.LINK_TEXT,
+                                                name) == deleted:
+                    time.sleep(5)
+                    await_count += 1
+                    if await_count > 12:
+                        self.fail(errmsg.format(name))
+                return
             if self.does_element_present(by.By.LINK_TEXT, name) == deleted:
-                if deleted:
-                    errmsg = "object with name:%s is not deleted" % name
-                else:
-                    errmsg = "object with name:%s is deleted" % name
-                self.fail(errmsg)
+                self.fail(errmsg.format(name))
 
     def find_alert_message(self, name, first_character=None,
                            last_character=None):
@@ -754,9 +779,12 @@ class UITestCase(unittest2.TestCase):
     def search_id_processes(self, process, plugin):
         return plugin.processes[process]
 
-    def waiting_element_in_visible_state(self, how, what):
+    def waiting_element_in_visible_state(self, how=None, what=None,
+                                         button=None):
+        if not button:
+            button = self.driver.find_element(by=how, value=what)
         for i in range(cfg.common.await_element):
-            if self.driver.find_element(by=how, value=what).is_displayed():
+            if button.is_displayed():
                 break
             time.sleep(1)
         else:
