@@ -8,5 +8,5 @@ pylint==0.25.2
 python-swiftclient>=1.6
 selenium
 testrepository>=0.0.18
-testtools>=0.9.34
+testtools>=0.9.34,!=1.2.0,!=1.4.0
 unittest2
