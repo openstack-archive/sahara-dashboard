@@ -5,7 +5,7 @@ discover
 mock>=1.0
 oslo.config>=1.2.0,<1.5
 pylint==0.25.2
-python-swiftclient>=1.6,<2.4
+python-swiftclient>=1.6,<=2.3.1
 selenium
 testrepository>=0.0.18
 testtools>=0.9.34,!=1.2.0,!=1.4.0
