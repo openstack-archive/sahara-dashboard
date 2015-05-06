@@ -15,7 +15,7 @@
 
 import os
 
-from oslo.config import cfg
+from oslo_config import cfg
 
 common_group = cfg.OptGroup(name='common', title="common configs")
 
