@@ -187,6 +187,8 @@ class DataProcessingJobTests(test.TestCase):
             'adapt_oozie': 'on',
             'adapt_swift_spark': 'on',
             'hbase_common_lib': 'on',
+            'hbase_common_lib': 'on',
+            'datasource_substitute': 'on',
             'java_opts': '',
             'job_args_array': [[], []],
             'job_configs': [{}, {}],
