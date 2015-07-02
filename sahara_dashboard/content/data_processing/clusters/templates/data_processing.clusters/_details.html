@@ -58,28 +58,6 @@
       {% endif %}
     </dl>
   <dl class="dl-horizontal">
-    <dt>{% trans "Node Configurations" %}</dt>
-    {% if cluster.cluster_configs %}
-      <dd>
-        {% for service, service_conf in cluster.cluster_configs.items %}
-          <h4>{{ service }}</h4>
-          {% if service_conf %}
-            <ul>
-              {% for conf_name, conf_value in service_conf.items %}
-                <li>{% blocktrans %}{{ conf_name }}: {{ conf_value }}{% endblocktrans %}</li>
-              {% endfor %}
-            </ul>
-          {% else %}
-            <h6>{% trans "No configurations" %}</h6>
-          {% endif %}
-        {% endfor %}
-      </dd>
-    {% else %}
-      <dd>{% trans "Cluster configurations are not specified" %}</dd>
-    {% endif %}
-  </dl>
-
-  <dl class="dl-horizontal">
     {% for info_key, info_val in cluster.info.items %}
       <dt>{{ info_key }}</dt>
       {% for key, val in info_val.items %}
