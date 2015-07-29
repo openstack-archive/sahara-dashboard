@@ -428,13 +428,26 @@ def data(TEST):
         "url": "internal-db://abcdef56-1234-abcd-abcd-defabcdaedcb"
     }
 
+    job_binary3_dict = {
+        "created_at": "2015-10-10 13:12:15.583631",
+        "description": "Test Manila",
+        "id": "abcdef56-1234-abcd-1345-defabcdaedcb",
+        "name": "manilashared",
+        "tenant_id": "429ad8447c2d47bc8e0382d244e1d1df",
+        "updated_at": None,
+        "url": "manila://tuvwxy56-1234-abcd-abcd-defabcdaedcb/testfile.bin"
+    }
+
     job_binary1 = job_binaries.JobBinaries(
         job_binaries.JobBinariesManager(None), job_binary1_dict)
     job_binary2 = job_binaries.JobBinaries(
         job_binaries.JobBinariesManager(None), job_binary2_dict)
+    job_binary3 = job_binaries.JobBinaries(
+        job_binaries.JobBinariesManager(None), job_binary3_dict)
 
     TEST.job_binaries.add(job_binary1)
     TEST.job_binaries.add(job_binary2)
+    TEST.job_binaries.add(job_binary3)
 
     # Jobs.
     job1_dict = {

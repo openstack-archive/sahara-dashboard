@@ -12,6 +12,7 @@
 # limitations under the License.
 
 import logging
+import six
 import uuid
 
 from django.forms import widgets
@@ -20,11 +21,11 @@ from django.template import defaultfilters
 from django.utils.encoding import force_text
 from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext_lazy as _
-
 from horizon import exceptions
 from horizon import forms
 from horizon import messages
 
+from sahara_dashboard.api import manila as manilaclient
 from sahara_dashboard.api import sahara as saharaclient
 
 LOG = logging.getLogger(__name__)
@@ -70,6 +71,26 @@ class JobBinaryCreateForm(forms.SelfHandlingForm):
                     'class': 'switched',
                     'data-switch-on': 'jb_type',
                     'data-jb_type-swift': _('URL')
+                }))
+
+        self.fields["job_binary_manila_share"] = forms.ChoiceField(
+            label=_("Share"),
+            required=False,
+            widget=forms.Select(
+                attrs={
+                    'class': 'switched',
+                    'data-switch-on': 'jb_type',
+                    'data-jb_type-manila': _('Share')
+                }))
+
+        self.fields["job_binary_manila_path"] = forms.CharField(
+            label=_("Path"),
+            required=False,
+            widget=forms.TextInput(
+                attrs={
+                    'class': 'switched',
+                    'data-switch-on': 'jb_type',
+                    'data-jb_type-manila': _('Path')
                 }))
 
         self.fields["job_binary_internal"] = forms.ChoiceField(
@@ -147,6 +168,11 @@ class JobBinaryCreateForm(forms.SelfHandlingForm):
         self.fields["job_binary_internal"].choices =\
             self.populate_job_binary_internal_choices(request)
 
+        if saharaclient.base.is_service_enabled(request, 'share'):
+            self.fields["job_binary_type"].choices.append(("manila", "Manila"))
+            self.fields["job_binary_manila_share"].choices = (
+                self.populate_job_binary_manila_share_choices(request))
+
         self.load_form_values()
 
     def load_form_values(self):
@@ -156,12 +182,31 @@ class JobBinaryCreateForm(forms.SelfHandlingForm):
                 if self.FIELD_MAP[field]:
                     if field == "job_binary_url":
                         url = getattr(jb, self.FIELD_MAP[field], None)
-                        (type, loc) = url.split("://")
-                        self.fields['job_binary_type'].initial = type
-                        self.fields[field].initial = loc
+                        self.set_initial_values_by_type(url)
                     else:
                         self.fields[field].initial = (
                             getattr(jb, self.FIELD_MAP[field], None))
+
+    def set_initial_values_by_type(self, url):
+        parsed = six.moves.urllib.parse.urlparse(url)
+        self.fields["job_binary_type"].initial = parsed.scheme
+        if parsed.scheme == "manila":
+            self.fields["job_binary_manila_share"].initial = parsed.netloc
+            self.fields["job_binary_manila_path"].initial = parsed.path
+        elif parsed.scheme == "swift":
+            self.fields["job_binary_url"].initial = (
+                "{0}{1}".format(parsed.netloc, parsed.path))
+        else:
+            self.fields["job_binary_url"].initial = "{0}".format(parsed.netloc)
+
+    def populate_job_binary_manila_share_choices(self, request):
+        try:
+            shares = manilaclient.share_list(request)
+            choices = [(s.id, s.name) for s in shares]
+        except Exception:
+            exceptions.handle(request, _("Failed to get list of shares"))
+            choices = []
+        return choices
 
     def populate_job_binary_internal_choices(self, request):
         try:
@@ -181,12 +226,18 @@ class JobBinaryCreateForm(forms.SelfHandlingForm):
     def handle(self, request, context):
         try:
             extra = {}
+            jb_type = context.get("job_binary_type")
+
             bin_url = "%s://%s" % (context["job_binary_type"],
                                    context["job_binary_url"])
-            if(context["job_binary_type"] == "internal-db"):
+            if(jb_type == "internal-db"):
                 bin_url = self.handle_internal(request, context)
-            elif(context["job_binary_type"] == "swift"):
+            elif(jb_type == "swift"):
                 extra = self.handle_swift(request, context)
+            elif(jb_type == "manila"):
+                bin_url = "%s://%s%s" % (context["job_binary_type"],
+                                         context["job_binary_manila_share"],
+                                         context["job_binary_manila_path"])
 
             bin_object = saharaclient.job_binary_create(
                 request,
@@ -283,6 +334,8 @@ class JobBinaryEditForm(JobBinaryCreateForm):
         'job_binary_type': None,
         'job_binary_url': 'url',
         'job_binary_username': None,
+        'job_binary_manila_share': None,
+        'job_binary_manila_path': None,
     }
 
     def handle(self, request, context):
