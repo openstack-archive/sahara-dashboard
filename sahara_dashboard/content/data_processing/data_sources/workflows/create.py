@@ -19,9 +19,9 @@ from horizon import exceptions
 from horizon import forms
 from horizon import workflows
 
+from sahara_dashboard.api import manila as manilaclient
 from sahara_dashboard.api import sahara as saharaclient
-from sahara_dashboard.content.data_processing \
-    .utils import helpers
+from sahara_dashboard.content.data_processing.utils import helpers
 
 LOG = logging.getLogger(__name__)
 
@@ -31,13 +31,30 @@ class GeneralConfigAction(workflows.Action):
 
     data_source_type = forms.ChoiceField(
         label=_("Data Source Type"),
-        choices=[("swift", "Swift"), ("hdfs", "HDFS"), ("maprfs", "MapR FS")],
         widget=forms.Select(attrs={
             "class": "switchable",
             "data-slug": "ds_type"
         }))
 
-    data_source_url = forms.CharField(label=_("URL"))
+    data_source_manila_share = forms.ChoiceField(
+        label=_("Manila share"),
+        required=False,
+        widget=forms.Select(attrs={
+            "class": "switched",
+            "data-switch-on": "ds_type",
+            "data-ds_type-manila": _("Manila share")
+        }))
+
+    data_source_url = forms.CharField(
+        label=_("URL"),
+        widget=forms.TextInput(attrs={
+            "class": "switched",
+            "data-switch-on": "ds_type",
+            "data-ds_type-manila": _("Path on share"),
+            "data-ds_type-swift": _("URL"),
+            "data-ds_type-hdfs": _("URL"),
+            "data-ds_type-maprfs": _("URL")
+        }))
 
     data_source_credential_user = forms.CharField(
         label=_("Source username"),
@@ -66,6 +83,26 @@ class GeneralConfigAction(workflows.Action):
     def __init__(self, request, *args, **kwargs):
         super(GeneralConfigAction, self).__init__(request, *args, **kwargs)
 
+        self.fields["data_source_type"].choices = [("swift", "Swift"),
+                                                   ("hdfs", "HDFS"),
+                                                   ("maprfs", "MapR FS")]
+        # If Manila is running, enable it as a choice for a data source
+        if saharaclient.base.is_service_enabled(request, 'share'):
+            self.fields["data_source_type"].choices.append(
+                ("manila", "Manila"))
+            self.fields["data_source_manila_share"].choices = (
+                self.populate_manila_share_choices(request)
+            )
+
+    def populate_manila_share_choices(self, request):
+        try:
+            shares = manilaclient.share_list(request)
+            choices = [(s.id, s.name) for s in shares]
+        except Exception:
+            exceptions.handle(request, _("Failed to get list of shares"))
+            choices = []
+        return choices
+
     class Meta(object):
         name = _("Create Data Source")
         help_text_template = ("project/data_processing.data_sources/"
@@ -80,12 +117,17 @@ class GeneralConfig(workflows.Step):
             context["general_" + k] = v
 
         context["source_url"] = context["general_data_source_url"]
+        ds_type = context["general_data_source_type"]
 
-        if context["general_data_source_type"] == "swift":
+        if ds_type == "swift":
             if not context["general_data_source_url"].startswith("swift://"):
                 context["source_url"] = "swift://{0}".format(
                     context["general_data_source_url"])
-
+        elif ds_type == "manila":
+            context["source_url"] = "{0}://{1}{2}".format(
+                ds_type,
+                context["general_data_source_manila_share"],
+                context["general_data_source_url"])
         return context
 
 

@@ -122,3 +122,33 @@ class DataProcessingDataSourceTests(test.TestCase):
         self.assertNoFormErrors(res)
         self.assertRedirectsNoFollow(res, INDEX_URL)
         self.assertMessageCount(success=1)
+
+    @test.create_stubs({api.manila: ('share_list', ),
+                        api.sahara: ('data_source_create', ),
+                        api.sahara.base: ('is_service_enabled', )})
+    def test_create_manila(self):
+        share = self.mox.CreateMockAnything()
+        share.id = "tuvwxy56-1234-abcd-abcd-defabcdaedcb"
+        share.name = "Test Share"
+        shares = [share]
+        api.sahara.base.is_service_enabled(IsA(http.HttpRequest), IsA(str)) \
+            .AndReturn(True)
+        api.sahara.data_source_create(IsA(http.HttpRequest),
+                                      IsA(six.text_type),
+                                      IsA(six.text_type),
+                                      IsA(six.text_type),
+                                      IsA(str),
+                                      "", "").AndReturn(True)
+        api.manila.share_list(IsA(http.HttpRequest)).AndReturn(shares)
+        self.mox.ReplayAll()
+
+        form_data = {
+            "data_source_type": "manila",
+            "data_source_manila_share": share.id,
+            "data_source_url": "/testfile.bin",
+            "data_source_name": "testmanila",
+            "data_source_description": "Test manila description",
+        }
+
+        res = self.client.post(CREATE_URL, form_data)
+        self.assertNoFormErrors(res)
