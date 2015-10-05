@@ -180,7 +180,8 @@ class DataProcessingNodeGroupTests(test.TestCase):
                'auto_security_group': True,
                'availability_zone': None,
                'is_proxy_gateway': False,
-               'use_autoconfig': True}) \
+               'use_autoconfig': True,
+               'shares': []}) \
             .AndReturn(True)
 
         self.mox.ReplayAll()
@@ -203,7 +204,8 @@ class DataProcessingNodeGroupTests(test.TestCase):
              'floating_ip_pool': None,
              'security_autogroup': True,
              'processes': 'HDFS:namenode',
-             'use_autoconfig': True})
+             'use_autoconfig': True,
+             'shares': []})
 
         self.assertNoFormErrors(res)
         self.assertRedirectsNoFollow(res, INDEX_URL)
@@ -272,7 +274,8 @@ class DataProcessingNodeGroupTests(test.TestCase):
             auto_security_group=True,
             availability_zone=None,
             use_autoconfig=True,
-            is_proxy_gateway=False).AndReturn(True)
+            is_proxy_gateway=False,
+            shares=[]).AndReturn(True)
 
         self.mox.ReplayAll()
 

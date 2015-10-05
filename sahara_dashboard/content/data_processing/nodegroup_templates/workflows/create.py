@@ -15,6 +15,7 @@ import itertools
 import logging
 import uuid
 
+from django.core.exceptions import ValidationError
 from django.utils import encoding
 from django.utils import html
 from django.utils import safestring
@@ -27,11 +28,13 @@ from horizon import forms
 from horizon import workflows
 from openstack_dashboard.api import cinder
 from openstack_dashboard.api import network
+
 from openstack_dashboard.dashboards.project.instances \
     import utils as nova_utils
 from openstack_dashboard.dashboards.project.volumes \
     import utils as cinder_utils
 
+from sahara_dashboard.api import manila as manilaclient
 from sahara_dashboard.api import sahara as saharaclient
 from sahara_dashboard.content.data_processing.utils \
     import helpers
@@ -331,6 +334,94 @@ class SelectNodeProcessesAction(workflows.Action):
         help_text = _("Select node processes for the node group")
 
 
+class ShareWidget(forms.MultiWidget):
+    def __init__(self, choices=()):
+        widgets = []
+        for choice in choices:
+            widgets.append(forms.CheckboxInput(
+                attrs={
+                    "label": choice[1],
+                    "value": choice[0],
+                }))
+            widgets.append(forms.TextInput())
+            widgets.append(forms.Select(
+                choices=(("rw", _("Read/Write")), ("ro", _("Read only")))))
+        super(ShareWidget, self).__init__(widgets)
+
+    def decompress(self, value):
+        if value:
+            values = []
+            for share in value:
+                values.append(value[share]["id"])
+                values.append(value[share]["path"])
+                values.append(value[share]["access_level"])
+            return values
+        return [None] * len(self.widgets)
+
+    def format_output(self, rendered_widgets):
+        output = []
+        output.append("<table>")
+        output.append("<tr><th>Share</th><th>Enabled</th>"
+                      "<th>Path</th><th>Permissions</th></tr>")
+        for i, widget in enumerate(rendered_widgets):
+            item_widget_index = i % 3
+            if item_widget_index == 0:
+                output.append("<tr>")
+                output.append(
+                    "<td class='col-sm-2 small-padding'>{0}</td>".format(
+                        self.widgets[i].attrs["label"]))
+            # The last 2 form field td need get a larger size
+            if item_widget_index in [1, 2]:
+                size = 4
+            else:
+                size = 2
+            output.append("<td class='col-sm-{0} small-padding'>".format(size)
+                          + widget + "</td>")
+            if item_widget_index == 2:
+                output.append("</tr>")
+        output.append("</table>")
+        return safestring.mark_safe('\n'.join(output))
+
+
+class MultipleShareChoiceField(forms.MultipleChoiceField):
+    def validate(self, value):
+        if self.required and not value:
+            raise ValidationError(
+                self.error_messages['required'], code='required')
+        if not isinstance(value, list):
+            raise ValidationError(
+                _("The value of shares must be a list of values")
+            )
+
+
+class SelectNodeGroupSharesAction(workflows.Action):
+    def __init__(self, request, *args, **kwargs):
+        super(SelectNodeGroupSharesAction, self).__init__(
+            request, *args, **kwargs)
+
+        possible_shares = self.get_possible_shares(request)
+
+        self.fields["shares"] = MultipleShareChoiceField(
+            label=_("Select Shares"),
+            widget=ShareWidget(choices=possible_shares),
+            required=False,
+            choices=possible_shares
+        )
+
+    def get_possible_shares(self, request):
+        try:
+            shares = manilaclient.share_list(request)
+            choices = [(s.id, s.name) for s in shares]
+        except Exception:
+            exceptions.handle(request, _("Failed to get list of shares"))
+            choices = []
+        return choices
+
+    class Meta(object):
+        name = _("Shares")
+        help_text = _("Select the manila shares for this node group")
+
+
 class GeneralConfig(workflows.Step):
     action_class = GeneralConfigAction
     contributes = ("general_nodegroup_name", )
@@ -357,6 +448,27 @@ class SelectNodeProcesses(workflows.Step):
         return context
 
 
+class SelectNodeGroupShares(workflows.Step):
+    action_class = SelectNodeGroupSharesAction
+
+    def contribute(self, data, context):
+        post = self.workflow.request.POST
+        shares_details = []
+        for index in range(0, len(self.action.fields['shares'].choices) * 3):
+            if index % 3 == 0:
+                share = post.get("shares_{0}".format(index))
+                if share:
+                    path = post.get("shares_{0}".format(index + 1))
+                    permissions = post.get("shares_{0}".format(index + 2))
+                    shares_details.append({
+                        "id": share,
+                        "path": path,
+                        "access_level": permissions
+                    })
+        context['ngt_shares'] = shares_details
+        return context
+
+
 class ConfigureNodegroupTemplate(workflow_helpers.ServiceParametersWorkflow,
                                  workflow_helpers.StatusFormatMixin):
     slug = "configure_nodegroup_template"
@@ -365,7 +477,7 @@ class ConfigureNodegroupTemplate(workflow_helpers.ServiceParametersWorkflow,
     success_message = _("Created Node Group Template %s")
     name_property = "general_nodegroup_name"
     success_url = "horizon:project:data_processing.nodegroup_templates:index"
-    default_steps = (GeneralConfig, SelectNodeProcesses, SecurityConfig)
+    default_steps = (GeneralConfig, SelectNodeProcesses, SecurityConfig, )
 
     def __init__(self, request, context_seed, entry_point, *args, **kwargs):
         hlps = helpers.Helpers(request)
@@ -379,6 +491,10 @@ class ConfigureNodegroupTemplate(workflow_helpers.ServiceParametersWorkflow,
         service_parameters = hlps.get_targeted_node_group_configs(
             plugin,
             hadoop_version)
+
+        if saharaclient.base.is_service_enabled(request, 'share'):
+            ConfigureNodegroupTemplate._register_step(self,
+                                                      SelectNodeGroupShares)
 
         self._populate_tabs(general_parameters, service_parameters)
 
@@ -442,6 +558,8 @@ class ConfigureNodegroupTemplate(workflow_helpers.ServiceParametersWorkflow,
                 volume_local_to_instance = \
                     context["general_volume_local_to_instance"]
 
+            ngt_shares = context.get('ngt_shares', [])
+
             ngt = saharaclient.nodegroup_template_create(
                 request,
                 name=context["general_nodegroup_name"],
@@ -461,7 +579,8 @@ class ConfigureNodegroupTemplate(workflow_helpers.ServiceParametersWorkflow,
                 auto_security_group=context["security_autogroup"],
                 is_proxy_gateway=context["general_proxygateway"],
                 availability_zone=context["general_availability_zone"],
-                use_autoconfig=context['general_use_autoconfig'])
+                use_autoconfig=context['general_use_autoconfig'],
+                shares=ngt_shares)
 
             hlps = helpers.Helpers(request)
             if hlps.is_from_guide():

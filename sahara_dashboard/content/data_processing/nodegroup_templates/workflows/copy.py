@@ -48,6 +48,7 @@ class CopyNodegroupTemplate(create_flow.ConfigureNodegroupTemplate):
         g_fields = None
         snp_fields = None
         s_fields = None
+        share_fields = None
         for step in self.steps:
             if isinstance(step, create_flow.GeneralConfig):
                 g_fields = step.action.fields
@@ -55,6 +56,8 @@ class CopyNodegroupTemplate(create_flow.ConfigureNodegroupTemplate):
                 s_fields = step.action.fields
             if isinstance(step, create_flow.SelectNodeProcesses):
                 snp_fields = step.action.fields
+            if isinstance(step, create_flow.SelectNodeGroupShares):
+                share_fields = step.action.fields
 
         g_fields["nodegroup_name"].initial = self.template.name + "-copy"
         g_fields["description"].initial = self.template.description
@@ -115,3 +118,28 @@ class CopyNodegroupTemplate(create_flow.ConfigureNodegroupTemplate):
                     break
             processes_dict["%s:%s" % (_service, process)] = process
         snp_fields["processes"].initial = processes_dict
+
+        if share_fields:
+            share_fields["shares"].initial = (
+                self._get_share_defaults(share_fields))
+
+    def _get_share_defaults(self, share_fields):
+        values = dict()
+        choices = share_fields['shares'].choices
+        for i, choice in enumerate(choices):
+            share_id = choice[0]
+            s = filter(lambda s: s['id'] == share_id, self.template.shares)
+            if len(s) > 0:
+                path = s[0].get('path', '')
+                values["share_id_{0}".format(i)] = {
+                    "id": s[0]["id"],
+                    "path": path,
+                    "access_level": s[0]["access_level"]
+                }
+            else:
+                values["share_id_{0}".format(i)] = {
+                    "id": None,
+                    "path": None,
+                    "access_level": None
+                }
+        return values
