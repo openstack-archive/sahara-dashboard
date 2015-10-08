@@ -217,7 +217,8 @@ def nodegroup_template_update(request, ngt_id, name, plugin_name,
 def cluster_template_create(request, name, plugin_name, hadoop_version,
                             description=None, cluster_configs=None,
                             node_groups=None, anti_affinity=None,
-                            net_id=None, use_autoconfig=None):
+                            net_id=None, use_autoconfig=None,
+                            shares=None):
     return client(request).cluster_templates.create(
         name=name,
         plugin_name=plugin_name,
@@ -227,7 +228,8 @@ def cluster_template_create(request, name, plugin_name, hadoop_version,
         node_groups=node_groups,
         anti_affinity=anti_affinity,
         net_id=net_id,
-        use_autoconfig=use_autoconfig)
+        use_autoconfig=use_autoconfig,
+        shares=shares)
 
 
 def cluster_template_list(request, search_opts=None):
@@ -246,7 +248,7 @@ def cluster_template_update(request, ct_id, name, plugin_name,
                             hadoop_version, description=None,
                             cluster_configs=None, node_groups=None,
                             anti_affinity=None, net_id=None,
-                            use_autoconfig=None):
+                            use_autoconfig=None, shares=None):
     try:
         template = client(request).cluster_templates.update(
             cluster_template_id=ct_id,
@@ -258,7 +260,8 @@ def cluster_template_update(request, ct_id, name, plugin_name,
             node_groups=node_groups,
             anti_affinity=anti_affinity,
             net_id=net_id,
-            use_autoconfig=use_autoconfig)
+            use_autoconfig=use_autoconfig,
+            shares=shares)
 
     except APIException as e:
         raise exceptions.Conflict(e)

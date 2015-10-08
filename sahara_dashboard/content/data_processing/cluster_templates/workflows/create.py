@@ -21,14 +21,15 @@ from saharaclient.api import base as api_base
 from horizon import exceptions
 from horizon import forms
 from horizon import workflows
+
+from sahara_dashboard.api import manila as manilaclient
 from sahara_dashboard.api import sahara as saharaclient
-from sahara_dashboard.content.data_processing. \
-    utils import helpers as helpers
+
+from sahara_dashboard.content.data_processing.utils import helpers as helpers
 from sahara_dashboard.content.data_processing. \
     utils import anti_affinity as aa
 import sahara_dashboard.content.data_processing. \
     utils.workflow_helpers as whelpers
-
 
 LOG = logging.getLogger(__name__)
 
@@ -238,6 +239,60 @@ class ConfigureNodegroups(workflows.Step):
         return context
 
 
+class SelectClusterSharesAction(workflows.Action):
+    def __init__(self, request, *args, **kwargs):
+        super(SelectClusterSharesAction, self).__init__(
+            request, *args, **kwargs)
+
+        possible_shares = self.get_possible_shares(request)
+
+        self.fields["shares"] = whelpers.MultipleShareChoiceField(
+            label=_("Select Shares"),
+            widget=whelpers.ShareWidget(choices=possible_shares),
+            required=False,
+            choices=possible_shares
+        )
+
+    def get_possible_shares(self, request):
+        try:
+            shares = manilaclient.share_list(request)
+            choices = [(s.id, s.name) for s in shares]
+        except Exception:
+            exceptions.handle(request, _("Failed to get list of shares"))
+            choices = []
+        return choices
+
+    def clean(self):
+        cleaned_data = super(SelectClusterSharesAction, self).clean()
+        self._errors = dict()
+        return cleaned_data
+
+    class Meta(object):
+        name = _("Shares")
+        help_text = _("Select the manila shares for this cluster")
+
+
+class SelectClusterShares(workflows.Step):
+    action_class = SelectClusterSharesAction
+
+    def contribute(self, data, context):
+        post = self.workflow.request.POST
+        shares_details = []
+        for index in range(0, len(self.action.fields['shares'].choices) * 3):
+            if index % 3 == 0:
+                share = post.get("shares_{0}".format(index))
+                if share:
+                    path = post.get("shares_{0}".format(index + 1))
+                    permissions = post.get("shares_{0}".format(index + 2))
+                    shares_details.append({
+                        "id": share,
+                        "path": path,
+                        "access_level": permissions
+                    })
+        context['ct_shares'] = shares_details
+        return context
+
+
 class ConfigureClusterTemplate(whelpers.ServiceParametersWorkflow,
                                whelpers.StatusFormatMixin):
     slug = "configure_cluster_template"
@@ -261,6 +316,9 @@ class ConfigureClusterTemplate(whelpers.ServiceParametersWorkflow,
         service_parameters = hlps.get_targeted_cluster_configs(
             plugin,
             hadoop_version)
+
+        if saharaclient.base.is_service_enabled(request, 'share'):
+            ConfigureClusterTemplate._register_step(self, SelectClusterShares)
 
         self._populate_tabs(general_parameters, service_parameters)
 
@@ -308,6 +366,10 @@ class ConfigureClusterTemplate(whelpers.ServiceParametersWorkflow,
             plugin, hadoop_version = whelpers.\
                 get_plugin_and_hadoop_version(request)
 
+            ct_shares = []
+            if "ct_shares" in context:
+                ct_shares = context["ct_shares"]
+
             # TODO(nkonovalov): Fix client to support default_image_id
             saharaclient.cluster_template_create(
                 request,
@@ -318,7 +380,8 @@ class ConfigureClusterTemplate(whelpers.ServiceParametersWorkflow,
                 configs_dict,
                 node_groups,
                 context["anti_affinity_info"],
-                use_autoconfig=context['general_use_autoconfig']
+                use_autoconfig=context['general_use_autoconfig'],
+                shares=ct_shares
             )
 
             hlps = helpers.Helpers(request)

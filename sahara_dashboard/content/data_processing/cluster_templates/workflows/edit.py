@@ -81,6 +81,10 @@ class EditClusterTemplate(copy_flow.CopyClusterTemplate):
             plugin, hadoop_version = whelpers. \
                 get_plugin_and_hadoop_version(request)
 
+            ct_shares = []
+            if "ct_shares" in context:
+                ct_shares = context["ct_shares"]
+
             saharaclient.cluster_template_update(
                 request=request,
                 ct_id=self.cluster_template_id,
@@ -91,7 +95,8 @@ class EditClusterTemplate(copy_flow.CopyClusterTemplate):
                 cluster_configs=configs_dict,
                 node_groups=node_groups,
                 anti_affinity=context["anti_affinity_info"],
-                use_autoconfig=context['general_use_autoconfig']
+                use_autoconfig=context['general_use_autoconfig'],
+                shares=ct_shares
             )
             return True
         except exceptions.Conflict as e:
