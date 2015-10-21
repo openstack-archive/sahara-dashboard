@@ -37,10 +37,19 @@ class GeneralTab(tabs.Tab):
             return {"job_execution": job_execution}
         object_names = self.get_object_names(job_execution,
                                              request)
-        object_names['input_url'] = job_execution.data_source_urls.get(
-            job_execution.input_id)
-        object_names['output_url'] = job_execution.data_source_urls.get(
-            job_execution.output_id)
+        try:
+            object_names['input_url'] = job_execution.data_source_urls.get(
+                job_execution.input_id)
+        except Exception as e:
+            LOG.error("Unable to fetch input url: %s", e)
+            object_names["input_url"] = "None"
+
+        try:
+            object_names['output_url'] = job_execution.data_source_urls.get(
+                job_execution.output_id)
+        except Exception as e:
+            LOG.error("Unable to fetch output url: %s", e)
+            object_names["output_url"] = "None"
 
         return {"job_execution": job_execution,
                 "object_names": object_names}
