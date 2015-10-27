@@ -25,6 +25,8 @@ import sahara_dashboard.content.data_processing. \
     cluster_templates.workflows.create as t_flows
 import sahara_dashboard.content.data_processing. \
     clusters.workflows.create as c_flow
+from sahara_dashboard.content.data_processing.utils \
+    import acl as acl_utils
 import sahara_dashboard.content.data_processing. \
     utils.workflow_helpers as whelpers
 
@@ -104,6 +106,9 @@ class JobExecutionExistingGeneralConfigAction(JobExecutionGeneralConfigAction):
         label=_("Cluster"),
         initial=(None, "None"),
         widget=forms.Select(attrs={"class": "cluster_choice"}))
+
+    is_public = acl_utils.get_is_public_form(_("job"))
+    is_protected = acl_utils.get_is_protected_form(_("job"))
 
     def populate_cluster_choices(self, request, context):
         try:
@@ -501,7 +506,10 @@ class LaunchJob(workflows.Workflow):
             context["job_general_job_input"],
             context["job_general_job_output"],
             context["job_config"],
-            interface)
+            interface,
+            is_public=context['job_general_is_public'],
+            is_protected=context['job_general_is_protected']
+        )
         return True
 
 
@@ -621,7 +629,10 @@ class LaunchJobNewCluster(workflows.Workflow):
                 context["job_general_job_input"],
                 context["job_general_job_output"],
                 context["job_config"],
-                interface)
+                interface,
+                is_public=context['job_general_is_public'],
+                is_protected=context['job_general_is_protected']
+            )
         except Exception:
             exceptions.handle(request,
                               _("Unable to launch job."))

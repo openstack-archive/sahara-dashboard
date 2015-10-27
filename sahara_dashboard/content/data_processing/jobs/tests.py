@@ -54,7 +54,8 @@ class DataProcessingJobTests(test.TestCase):
         api.sahara.job_binary_list(IsA(http.HttpRequest)).AndReturn([])
         api.sahara.job_create(IsA(http.HttpRequest),
                               'test', 'Pig', [], [], 'test create',
-                              interface=[])
+                              interface=[], is_public=False,
+                              is_protected=False)
         api.sahara.job_types_list(IsA(http.HttpRequest)) \
             .AndReturn(self.job_types.list())
         self.mox.ReplayAll()
@@ -96,7 +97,9 @@ class DataProcessingJobTests(test.TestCase):
                                       "value_type": "string",
                                       "required": False,
                                       "default": "A value"
-                                  }])
+                                  }],
+                              is_public=False,
+                              is_protected=False)
         api.sahara.job_types_list(IsA(http.HttpRequest)) \
             .AndReturn(self.job_types.list())
         self.mox.ReplayAll()
@@ -173,7 +176,10 @@ class DataProcessingJobTests(test.TestCase):
                                         IsA(six.text_type),
                                         IsA(six.text_type),
                                         IsA(dict),
-                                        IsA(dict)).AndReturn(job_execution)
+                                        IsA(dict),
+                                        is_public=False,
+                                        is_protected=False).AndReturn(
+            job_execution)
         self.mox.ReplayAll()
 
         url = reverse('horizon:project:data_processing.jobs:launch-job')

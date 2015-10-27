@@ -27,6 +27,8 @@ from sahara_dashboard.api import sahara as saharaclient
 from sahara_dashboard.content.data_processing.utils import helpers as helpers
 from sahara_dashboard.content.data_processing. \
     utils import anti_affinity as aa
+from sahara_dashboard.content.data_processing.utils \
+    import acl as acl_utils
 import sahara_dashboard.content.data_processing. \
     utils.workflow_helpers as whelpers
 
@@ -107,6 +109,9 @@ class GeneralConfigAction(workflows.Action):
         widget=forms.CheckboxInput(),
         initial=True,
     )
+
+    is_public = acl_utils.get_is_public_form(_("cluster template"))
+    is_protected = acl_utils.get_is_protected_form(_("cluster template"))
 
     anti_affinity = aa.anti_affinity_field()
 
@@ -378,7 +383,9 @@ class ConfigureClusterTemplate(whelpers.ServiceParametersWorkflow,
                 node_groups,
                 context["anti_affinity_info"],
                 use_autoconfig=context['general_use_autoconfig'],
-                shares=ct_shares
+                shares=ct_shares,
+                is_public=context['general_is_public'],
+                is_protected=context['general_is_protected']
             )
 
             hlps = helpers.Helpers(request)

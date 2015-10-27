@@ -26,6 +26,8 @@ from horizon import messages
 
 from sahara_dashboard.api import manila as manilaclient
 from sahara_dashboard.api import sahara as saharaclient
+from sahara_dashboard.content.data_processing.utils \
+    import acl as acl_utils
 
 
 class LabeledInput(widgets.TextInput):
@@ -158,6 +160,11 @@ class JobBinaryCreateForm(forms.SelfHandlingForm):
                             required=False,
                             widget=forms.Textarea()))
 
+        self.fields["is_public"] = acl_utils.get_is_public_form(
+            _("job binary"))
+        self.fields["is_protected"] = acl_utils.get_is_protected_form(
+            _("job binary"))
+
         self.fields["job_binary_type"].choices =\
             [("internal-db", "Internal database"),
              ("swift", "Swift")]
@@ -241,7 +248,10 @@ class JobBinaryCreateForm(forms.SelfHandlingForm):
                 context["job_binary_name"],
                 bin_url,
                 context["job_binary_description"],
-                extra)
+                extra,
+                is_public=context['is_public'],
+                is_protected=context['is_protected']
+            )
             messages.success(request, "Successfully created job binary")
             return bin_object
         except Exception:
@@ -333,6 +343,8 @@ class JobBinaryEditForm(JobBinaryCreateForm):
         'job_binary_username': None,
         'job_binary_manila_share': None,
         'job_binary_manila_path': None,
+        'is_public': 'is_public',
+        'is_protected': 'is_protected',
     }
 
     def handle(self, request, context):
@@ -348,6 +360,8 @@ class JobBinaryEditForm(JobBinaryCreateForm):
                 "description": context["job_binary_description"],
                 "extra": extra,
                 "url": bin_url,
+                'is_public': context['is_public'],
+                'is_protected': context['is_protected']
             }
 
             bin_object = saharaclient.job_binary_update(

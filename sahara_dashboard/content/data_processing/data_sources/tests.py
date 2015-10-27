@@ -77,14 +77,18 @@ class DataProcessingDataSourceTests(test.TestCase):
                                       data_source.type,
                                       data_source.url,
                                       "",
-                                      "") \
+                                      "",
+                                      is_public=False,
+                                      is_protected=False) \
             .AndReturn(self.data_sources.first())
         self.mox.ReplayAll()
         form_data = {
             'data_source_url': data_source.url,
             'data_source_name': data_source.name,
             'data_source_description': data_source.description,
-            'data_source_type': data_source.type
+            'data_source_type': data_source.type,
+            'is_public': False,
+            'is_protected': False,
         }
         res = self.client.post(CREATE_URL, form_data)
         self.assertNoFormErrors(res)
@@ -100,7 +104,9 @@ class DataProcessingDataSourceTests(test.TestCase):
             'credentials': {'user': '', 'pass': ''},
             'type': data_source.type,
             'name': data_source.name,
-            'description': data_source.description
+            'description': data_source.description,
+            'is_public': False,
+            'is_protected': False,
         }
         api.sahara.data_source_get(IsA(http.HttpRequest),
                                    IsA(six.text_type)) \
@@ -115,7 +121,7 @@ class DataProcessingDataSourceTests(test.TestCase):
             'data_source_url': data_source.url,
             'data_source_name': data_source.name,
             'data_source_description': data_source.description,
-            'data_source_type': data_source.type
+            'data_source_type': data_source.type,
         }
         res = self.client.post(EDIT_URL, form_data)
 
@@ -138,7 +144,8 @@ class DataProcessingDataSourceTests(test.TestCase):
                                       IsA(six.text_type),
                                       IsA(six.text_type),
                                       IsA(str),
-                                      "", "").AndReturn(True)
+                                      "", "", is_public=False,
+                                      is_protected=False).AndReturn(True)
         api.manila.share_list(IsA(http.HttpRequest)).AndReturn(shares)
         self.mox.ReplayAll()
 

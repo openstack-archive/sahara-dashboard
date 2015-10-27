@@ -181,7 +181,9 @@ class DataProcessingNodeGroupTests(test.TestCase):
                'availability_zone': None,
                'is_proxy_gateway': False,
                'use_autoconfig': True,
-               'shares': []}) \
+               'shares': [],
+               'is_public': False,
+               'is_protected': False})\
             .AndReturn(True)
 
         self.mox.ReplayAll()
@@ -205,7 +207,9 @@ class DataProcessingNodeGroupTests(test.TestCase):
              'security_autogroup': True,
              'processes': 'HDFS:namenode',
              'use_autoconfig': True,
-             'shares': []})
+             'shares': [],
+             'is_public': False,
+             'is_protected': False})
 
         self.assertNoFormErrors(res)
         self.assertRedirectsNoFollow(res, INDEX_URL)
@@ -275,7 +279,10 @@ class DataProcessingNodeGroupTests(test.TestCase):
             availability_zone=None,
             use_autoconfig=True,
             is_proxy_gateway=False,
-            shares=[]).AndReturn(True)
+            shares=[],
+            is_protected=False,
+            is_public=False,
+        ).AndReturn(True)
 
         self.mox.ReplayAll()
 

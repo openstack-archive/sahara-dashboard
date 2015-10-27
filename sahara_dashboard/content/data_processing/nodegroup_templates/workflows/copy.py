@@ -82,6 +82,8 @@ class CopyNodegroupTemplate(create_flow.ConfigureNodegroupTemplate):
         g_fields['volume_local_to_instance'].initial = volume_local_to_instance
         g_fields["proxygateway"].initial = self.template.is_proxy_gateway
         g_fields["use_autoconfig"].initial = self.template.use_autoconfig
+        g_fields["is_public"].initial = self.template.is_public
+        g_fields['is_protected'].initial = self.template.is_protected
 
         if self.template.floating_ip_pool:
             g_fields['floating_ip_pool'].initial = (

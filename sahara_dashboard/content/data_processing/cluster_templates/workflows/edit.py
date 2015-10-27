@@ -93,7 +93,9 @@ class EditClusterTemplate(copy_flow.CopyClusterTemplate):
                 node_groups=node_groups,
                 anti_affinity=context["anti_affinity_info"],
                 use_autoconfig=context['general_use_autoconfig'],
-                shares=ct_shares
+                shares=ct_shares,
+                is_public=context['general_is_public'],
+                is_protected=context['general_is_protected']
             )
             return True
         except exceptions.Conflict as e:

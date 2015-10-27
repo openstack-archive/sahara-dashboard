@@ -6,8 +6,14 @@
     <dd>{{ job_execution.info.status }}</dd>
     <dt>{% trans "ID" %}</dt>
     <dd>{{ job_execution.id }}</dd>
+    <dt>{% trans "Project ID" %}</dt>
+    <dd>{{ job_execution.tenant_id }}</dd>
     <dt>{% trans "Job Template" %}</dt>
     <dd><a href="{% url 'horizon:project:data_processing.jobs:details' job_execution.job_id %}">{{ object_names.job_name }}</a></dd>
+    <dt>{% trans "Public" %}</dt>
+    <dd>{{ job_execution.is_public|yesno }}</dd>
+    <dt>{% trans "Protected" %}</dt>
+    <dd>{{ job_execution.is_protected|yesno }}</dd>
     {% if job_execution.input_id %}
       <dt>{% trans "Input Data Source" %}</dt>
       <dd><a href="{% url 'horizon:project:data_processing.data_sources:details' job_execution.input_id %}">{{ object_names.input_name }}</a> ({{ object_names.input_url }})</dd>

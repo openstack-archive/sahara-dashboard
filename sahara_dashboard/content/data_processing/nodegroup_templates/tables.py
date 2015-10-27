@@ -16,7 +16,10 @@ from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ungettext_lazy
 
 from horizon import tables
+
 from sahara_dashboard.api import sahara as saharaclient
+from sahara_dashboard.content.data_processing.utils \
+    import acl as acl_utils
 
 
 class NodeGroupTemplatesFilterAction(tables.FilterAction):
@@ -80,6 +83,40 @@ class DeleteTemplate(tables.DeleteAction):
         saharaclient.nodegroup_template_delete(request, template_id)
 
 
+def change_node_group_templates_rules_method(request, ngt_id, **kwargs):
+    ngt = saharaclient.nodegroup_template_get(request, ngt_id)
+    update_required_fields = ('name', 'plugin_name',
+                              'hadoop_version', 'flavor_id')
+    for field in update_required_fields:
+        kwargs[field] = getattr(ngt, field)
+
+    saharaclient.nodegroup_template_update(request, ngt_id, **kwargs)
+
+
+class MakePublic(acl_utils.MakePublic):
+    def change_rule_method(self, request, datum_id, **update_kwargs):
+        change_node_group_templates_rules_method(
+            request, datum_id, **update_kwargs)
+
+
+class MakePrivate(acl_utils.MakePrivate):
+    def change_rule_method(self, request, datum_id, **update_kwargs):
+        change_node_group_templates_rules_method(
+            request, datum_id, **update_kwargs)
+
+
+class MakeProtected(acl_utils.MakeProtected):
+    def change_rule_method(self, request, datum_id, **update_kwargs):
+        change_node_group_templates_rules_method(
+            request, datum_id, **update_kwargs)
+
+
+class MakeUnProtected(acl_utils.MakeUnProtected):
+    def change_rule_method(self, request, datum_id, **update_kwargs):
+        change_node_group_templates_rules_method(
+            request, datum_id, **update_kwargs)
+
+
 class NodegroupTemplatesTable(tables.DataTable):
     name = tables.Column(
         "name",
@@ -101,6 +138,9 @@ class NodegroupTemplatesTable(tables.DataTable):
                          ConfigureNodegroupTemplate,
                          DeleteTemplate,
                          NodeGroupTemplatesFilterAction,)
+        table_actions_menu = (MakePublic, MakePrivate, MakeProtected,
+                              MakeUnProtected)
         row_actions = (EditTemplate,
                        CopyTemplate,
-                       DeleteTemplate)
+                       DeleteTemplate, MakePublic, MakePrivate, MakeProtected,
+                       MakeUnProtected)

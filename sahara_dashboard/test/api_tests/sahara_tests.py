@@ -36,13 +36,17 @@ class SaharaApiTest(test.SaharaAPITestCase):
                                      net_id=None,
                                      node_groups=None,
                                      plugin_name='fake_plugin',
-                                     user_keypair_id=None) \
+                                     user_keypair_id=None,
+                                     is_public=False,
+                                     is_protected=False) \
             .AndReturn({"Clusters": ['cluster1', 'cluster2']})
         self.mox.ReplayAll()
         ret_val = api.sahara.cluster_create(self.request,
                                             'name',
                                             'fake_plugin',
                                             '1.0.0',
-                                            count=2)
+                                            count=2,
+                                            is_public=False,
+                                            is_protected=False)
 
         self.assertEqual(2, len(ret_val['Clusters']))

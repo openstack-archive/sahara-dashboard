@@ -4,10 +4,17 @@
     <dl class="dl-horizontal">
         <dt>{% trans "Name" %}</dt>
         <dd>{{ template.name }}</dd>
+        <dt>{% trans "Project Id" %}</dt>
+        <dd>{{ template.tenant_id }}</dd>
         <dt>{% trans "ID" %}</dt>
         <dd>{{ template.id }}</dd>
         <dt>{% trans "Description" %}</dt>
         <dd>{{ template.description|default:_("None") }}</dd>
+        <dt>{% trans "Public" %}</dt>
+        <dd>{{ template.is_public|yesno }}</dd>
+        <dt>{% trans "Protected" %}</dt>
+        <dd>{{ template.is_protected|yesno }}</dd>
+
     </dl>
     <dl class="dl-horizontal">
         <dt>{% trans "Flavor" %}</dt>

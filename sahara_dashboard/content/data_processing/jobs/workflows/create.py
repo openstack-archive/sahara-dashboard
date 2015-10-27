@@ -22,6 +22,8 @@ from horizon import workflows
 
 from sahara_dashboard.content.data_processing \
     .utils import helpers
+from sahara_dashboard.content.data_processing.utils \
+    import acl as acl_utils
 import sahara_dashboard.content.data_processing \
     .utils.workflow_helpers as whelpers
 from sahara_dashboard.api import sahara as saharaclient
@@ -99,6 +101,8 @@ class GeneralConfigAction(workflows.Action):
     job_description = forms.CharField(label=_("Description"),
                                       required=False,
                                       widget=forms.Textarea(attrs={'rows': 4}))
+    is_public = acl_utils.get_is_public_form(_("job"))
+    is_protected = acl_utils.get_is_protected_form(_("job"))
 
     def __init__(self, request, context, *args, **kwargs):
         super(GeneralConfigAction,
@@ -264,7 +268,10 @@ class CreateJob(workflows.Workflow):
                 main_locations,
                 lib_locations,
                 context["job_description"],
-                interface=interface)
+                interface=interface,
+                is_public=context['is_public'],
+                is_protected=context['is_protected']
+            )
 
             hlps = helpers.Helpers(request)
             if hlps.is_from_guide():

@@ -4,6 +4,8 @@
   <dl class="dl-horizontal">
     <dt>{% trans "Name" %}</dt>
     <dd>{{ cluster.name }}</dd>
+    <dt>{% trans "Project ID" %}</dt>
+    <dd>{{ cluster.tenant_id }}</dd>
     <dt>{% trans "ID" %}</dt>
     <dd>{{ cluster.id }}</dd>
     <dt>{% trans "Description" %}</dt>
@@ -48,6 +50,10 @@
     <dd>{{ cluster.user_keypair_id }}</dd>
     <dt>{% trans "Use auto-configuration" %}</dt>
     <dd>{{ cluster.use_autoconfig }}</dd>
+    <dt>{% trans "Public" %}</dt>
+    <dd>{{ cluster.is_public|yesno }}</dd>
+    <dt>{% trans "Protected" %}</dt>
+    <dd>{{ cluster.is_protected|yesno }}</dd>
   </dl>
   <dl class="dl-horizontal">
     <dt>{% trans "Anti-affinity enabled for" %}</dt>

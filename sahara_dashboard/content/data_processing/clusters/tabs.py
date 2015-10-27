@@ -43,7 +43,6 @@ class GeneralTab(tabs.Tab):
         try:
             sahara = saharaclient.client(request)
             cluster = sahara.clusters.get(cluster_id)
-
             for info_key, info_val in cluster.info.items():
                 for key, val in info_val.items():
                     if str(val).startswith(('http://', 'https://')):

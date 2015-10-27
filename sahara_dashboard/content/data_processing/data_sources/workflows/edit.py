@@ -38,6 +38,8 @@ class EditDataSource(create.CreateDataSource):
         "data_source_credential_user": None,
         "data_source_credential_pass": None,
         "data_source_manila_share": None,
+        'is_public': "is_public",
+        'is_protected': "is_protected"
     }
 
     def __init__(self, request, context_seed, entry_point, *args, **kwargs):
@@ -80,7 +82,9 @@ class EditDataSource(create.CreateDataSource):
                                         None),
                     "pass": context.get("general_data_source_credential_pass",
                                         None)
-                }
+                },
+                "is_public": context['general_is_public'],
+                "is_protected": context['general_is_protected']
             }
             return saharaclient.data_source_update(request,
                                                    self.data_source_id,

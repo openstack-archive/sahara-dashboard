@@ -21,6 +21,8 @@ from horizon import tables
 from horizon.tables import base as tables_base
 
 from sahara_dashboard.api import sahara as saharaclient
+from sahara_dashboard.content.data_processing.utils \
+    import acl as acl_utils
 
 from saharaclient.api import base as api_base
 
@@ -145,6 +147,26 @@ class ConfigureCluster(tables.LinkAction):
     attrs = {"style": "display: none"}
 
 
+class MakePublic(acl_utils.MakePublic):
+    def change_rule_method(self, request, datum_id, **update_kwargs):
+        saharaclient.cluster_update(request, datum_id, **update_kwargs)
+
+
+class MakePrivate(acl_utils.MakePrivate):
+    def change_rule_method(self, request, datum_id, **update_kwargs):
+        saharaclient.cluster_update(request, datum_id, **update_kwargs)
+
+
+class MakeProtected(acl_utils.MakeProtected):
+    def change_rule_method(self, request, datum_id, **update_kwargs):
+        saharaclient.cluster_update(request, datum_id, **update_kwargs)
+
+
+class MakeUnProtected(acl_utils.MakeUnProtected):
+    def change_rule_method(self, request, datum_id, **update_kwargs):
+        saharaclient.cluster_update(request, datum_id, **update_kwargs)
+
+
 class ClustersTable(tables.DataTable):
 
     name = tables.Column("name",
@@ -178,6 +200,9 @@ class ClustersTable(tables.DataTable):
                          ConfigureCluster,
                          DeleteCluster,
                          ClustersFilterAction)
+        table_actions_menu = (MakePublic, MakePrivate,
+                              MakeProtected, MakeUnProtected)
         row_actions = (ScaleCluster,
                        UpdateClusterShares,
-                       DeleteCluster,)
+                       DeleteCluster, MakePublic, MakePrivate,
+                       MakeProtected, MakeUnProtected)
