@@ -37,6 +37,8 @@ import sahara_dashboard.content.data_processing.clusters. \
     workflows.create as create_flow
 import sahara_dashboard.content.data_processing.clusters. \
     workflows.scale as scale_flow
+import sahara_dashboard.content.data_processing.clusters. \
+    workflows.update as update_flow
 from saharaclient.api.base import APIException
 
 LOG = logging.getLogger(__name__)
@@ -222,4 +224,37 @@ class ScaleClusterView(workflows.WorkflowView):
     def get_initial(self):
         initial = super(ScaleClusterView, self).get_initial()
         initial.update({'cluster_id': self.kwargs['cluster_id']})
+        return initial
+
+
+class UpdateClusterSharesView(workflows.WorkflowView):
+    workflow_class = update_flow.UpdateShares
+    success_url = "horizon:project:data_processing.clusters"
+    classes = ("ajax-modal",)
+    template_name = "project/data_processing.clusters/update.html"
+    page_title = _("Update Cluster Shares")
+
+    def get_context_data(self, **kwargs):
+        context = super(UpdateClusterSharesView, self)\
+            .get_context_data(**kwargs)
+        context["cluster_id"] = kwargs["cluster_id"]
+        return context
+
+    def get_object(self, *args, **kwargs):
+        if not hasattr(self, "_object"):
+            cluster_id = self.kwargs['cluster_id']
+            try:
+                cluster = saharaclient.cluster_get(self.request, cluster_id)
+            except Exception:
+                cluster = None
+                exceptions.handle(self.request,
+                                  _("Unable to fetch cluster."))
+            self._object = cluster
+        return self._object
+
+    def get_initial(self):
+        initial = super(UpdateClusterSharesView, self).get_initial()
+        initial.update({
+            'cluster_id': self.kwargs['cluster_id'],
+            'cluster': self.get_object()})
         return initial

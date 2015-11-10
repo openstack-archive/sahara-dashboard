@@ -76,6 +76,16 @@ class DeleteCluster(tables.DeleteAction):
         saharaclient.cluster_delete(request, obj_id)
 
 
+class UpdateClusterShares(tables.LinkAction):
+    name = "update_shares"
+    verbose_name = _("Update Shares")
+    url = "horizon:project:data_processing.clusters:update-shares"
+    classes = ("ajax-modal", "btn-edit")
+
+    def allowed(self, request, cluster=None):
+        return cluster.status == "Active"
+
+
 class UpdateRow(tables.Row):
     ajax = True
 
@@ -169,4 +179,5 @@ class ClustersTable(tables.DataTable):
                          DeleteCluster,
                          ClustersFilterAction)
         row_actions = (ScaleCluster,
+                       UpdateClusterShares,
                        DeleteCluster,)

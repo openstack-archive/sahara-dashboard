@@ -37,4 +37,7 @@ urlpatterns = patterns('',
                            name='events'),
                        url(r'^(?P<cluster_id>[^/]+)/scale$',
                            views.ScaleClusterView.as_view(),
-                           name='scale'))
+                           name='scale'),
+                       url(r'^(?P<cluster_id>[^/]+)/update_shares$',
+                           views.UpdateClusterSharesView.as_view(),
+                           name='update-shares'))

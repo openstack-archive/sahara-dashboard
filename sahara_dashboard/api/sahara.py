@@ -310,6 +310,16 @@ def cluster_delete(request, cluster_id):
     client(request).clusters.delete(cluster_id=cluster_id)
 
 
+def cluster_update(request, cluster_id, name=None, description=None,
+                   is_public=None, is_protected=None, shares=None):
+    return client(request).clusters.update(cluster_id,
+                                           name=name,
+                                           description=description,
+                                           is_public=is_public,
+                                           is_protected=is_protected,
+                                           shares=shares)
+
+
 def data_source_create(request, name, description, ds_type, url,
                        credential_user=None, credential_pass=None):
     return client(request).data_sources.create(
