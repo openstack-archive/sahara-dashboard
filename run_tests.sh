@@ -55,7 +55,7 @@ root=`pwd -P`
 venv=$root/.venv
 venv_env_version=$venv/environments
 with_venv=tools/with_venv.sh
-included_dirs="sahara-dashboard"
+included_dirs="sahara_dashboard"
 
 always_venv=0
 backup_env=0
@@ -165,7 +165,7 @@ function warn_on_flake8_without_venv {
 function run_pep8 {
   echo "Running flake8 ..."
   warn_on_flake8_without_venv
-  DJANGO_SETTINGS_MODULE=sahara-dashboard.test.settings ${command_wrapper} flake8
+  DJANGO_SETTINGS_MODULE=sahara_dashboard.test.settings ${command_wrapper} flake8
 }
 
 function run_pep8_changed {
@@ -178,13 +178,13 @@ function run_pep8_changed {
     files=$(git diff --name-only $base_commit | tr '\n' ' ')
     echo "Running flake8 on ${files}"
     warn_on_flake8_without_venv
-    diff -u --from-file /dev/null ${files} | DJANGO_SETTINGS_MODULE=sahara-dashboard.test.settings ${command_wrapper} flake8 --diff
+    diff -u --from-file /dev/null ${files} | DJANGO_SETTINGS_MODULE=sahara_dashboard.test.settings ${command_wrapper} flake8 --diff
     exit
 }
 
 function run_sphinx {
     echo "Building sphinx..."
-    DJANGO_SETTINGS_MODULE=sahara-dashboard.test.settings ${command_wrapper} python setup.py build_sphinx
+    DJANGO_SETTINGS_MODULE=sahara_dashboard.test.settings ${command_wrapper} python setup.py build_sphinx
     echo "Build complete."
 }
 
@@ -322,6 +322,10 @@ function run_tests {
     export SELENIUM_HEADLESS=1
   fi
 
+  # TODO(david-lyle) remove when configuration files for Sahara are not loaded
+  # by default in Horizon
+  ${command_wrapper} python tools/clean_enabled_files.py
+
   if [ -z "$testargs" ]; then
      run_tests_all
   else
@@ -335,8 +339,8 @@ function run_tests_subset {
 }
 
 function run_tests_all {
-  echo "Running Sahara-Dashboard application tests"
-  export NOSE_XUNIT_FILE=sahara-dashboard/nosetests.xml
+  echo "Running sahara_dashboard application tests"
+  export NOSE_XUNIT_FILE=sahara_dashboard/nosetests.xml
   if [ "$NOSE_WITH_HTML_OUTPUT" = '1' ]; then
     export NOSE_HTML_OUT_FILE='sahara_dashboard_nose_results.html'
   fi
@@ -344,7 +348,7 @@ function run_tests_all {
     ${command_wrapper} python -m coverage.__main__ erase
     coverage_run="python -m coverage.__main__ run -p"
   fi
-  ${command_wrapper} ${coverage_run} $root/manage.py test sahara-dashboard --settings=sahara-dashboard.test.settings $testopts
+  ${command_wrapper} ${coverage_run} $root/manage.py test sahara_dashboard --settings=sahara_dashboard.test.settings $testopts
   # get results of the Horizon tests
   SAHARA_DASHBOARD_RESULT=$?
 

@@ -33,7 +33,7 @@ STATIC_URL = '/static/'
 
 SECRET_KEY = secret_key.generate_or_read_from_file(
     os.path.join(TEST_DIR, '.secret_key_store'))
-ROOT_URLCONF = 'sahara-dashboard.test.urls'
+ROOT_URLCONF = 'sahara_dashboard.test.urls'
 TEMPLATE_DIRS = (
     os.path.join(TEST_DIR, 'templates'),
 )
@@ -80,7 +80,7 @@ from openstack_dashboard.utils import settings
 dashboard_module_names = [
     'openstack_dashboard.enabled',
     'openstack_dashboard.local.enabled',
-    'sahara-dashboard.enabled',
+    'sahara_dashboard.enabled',
 ]
 dashboard_modules = []
 # All dashboards must be enabled for the namespace to get registered, which is
@@ -149,7 +149,7 @@ LOGGING['loggers']['selenium'] = {
     'propagate': False,
 }
 
-LOGGING['loggers']['sahara-dashboard'] = {
+LOGGING['loggers']['sahara_dashboard'] = {
     'handlers': ['test'],
     'propagate': False,
 }

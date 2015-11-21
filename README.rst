@@ -1,6 +1,19 @@
 OpenStack Dashboard plugin for Sahara project
 =============================================
 
+How to use:
+-----------
+
+Use pip to install the package on the server running Horizon. Then either copy
+or link the files in sahara_dashboard/enabled to
+openstack_dashboard/local/enabled. This step will cause the Horizon service to
+pick up the Sahara plugin when it starts.
+
+To run unit tests:
+------------------
+
+./run_tests.sh
+
 NOTE:
 =====
 
