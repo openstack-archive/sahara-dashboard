@@ -1,0 +1,2 @@
+# settings file for sahara-dashboard plugin
+enable_service sahara-dashboard
