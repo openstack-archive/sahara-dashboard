@@ -10,6 +10,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from sahara_dashboard import exceptions
 
 # The slug of the panel to be added to HORIZON_CONFIG. Required.
 PANEL = 'data_processing.jobs'
@@ -25,3 +26,7 @@ ADD_JS_FILES = [
     'dashboard/project/data_processing/'
     'data_processing.job_interface_arguments.js'
 ]
+
+ADD_EXCEPTIONS = {
+    'recoverable': exceptions.RECOVERABLE
+}

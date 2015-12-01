@@ -10,6 +10,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from sahara_dashboard import exceptions
 
 # The slug of the panel to be added to HORIZON_CONFIG. Required.
 PANEL = 'data_processing.data_sources'
@@ -22,3 +23,7 @@ PANEL_GROUP = 'data_processing'
 ADD_PANEL = \
     ('sahara_dashboard.'
      'content.data_processing.data_sources.panel.DataSourcesPanel')
+
+ADD_EXCEPTIONS = {
+    'recoverable': exceptions.RECOVERABLE
+}
