@@ -48,6 +48,8 @@ class RegisterImage(tables.LinkAction):
 
 
 class UnregisterImages(tables.DeleteAction):
+    name = "unregister"
+
     @staticmethod
     def action_present(count):
         return ungettext_lazy(

@@ -24,14 +24,14 @@ class ImageregistryPage(basepage.BaseNavigationPage):
     _register_form_locator = (by.By.CSS_SELECTOR, 'div.modal-dialog')
 
     IMAGE_TABLE_NAME = "image_registry"
-    IMAGE_TABLE_ACTIONS = ("register_image", "unregister_images")
+    IMAGE_TABLE_ACTIONS = ("register", "unregister")
     IMAGE_TABLE_ROW_ACTIONS = {
         tables.ComplexActionRowRegion.PRIMARY_ACTION: "edit_tags",
         tables.ComplexActionRowRegion.SECONDARY_ACTIONS: ("unregister_image",)
     }
     TABLE_IMAGE_COLUMN = 0
 
-    REGISTER_FORM_IMAGE = "image"
+    REGISTER_FORM_IMAGE = "image_id"
     REGISTER_FORM_USER_NAME = "user_name"
     REGISTER_FORM_DESCRIPTION = "description"
     REGISTER_FORM_FIELDS = (REGISTER_FORM_IMAGE, REGISTER_FORM_USER_NAME,
@@ -69,15 +69,17 @@ class ImageregistryPage(basepage.BaseNavigationPage):
 
     def unregister_image(self, name):
         self._get_row_with_image_name(name).mark()
-        self.image_table.unregister_images.click()
+        self.image_table.unregister.click()
         self.unregister_form.submit.click()
+        self.wait_till_popups_disappear()
 
     def register_image(self, image, user_name, description):
-        self.image_table.register_image.click()
-        self.register_form.image.text = image
+        self.image_table.register.click()
+        self.register_form.image_id.text = image
         self.register_form.user_name.text = user_name
         self.register_form.description.text = description
         self.register_form.submit.click()
+        self.wait_till_popups_disappear()
 
     def wait_until_image_registered(self, name):
         self._wait_until(lambda x: self.is_image_registered(name))

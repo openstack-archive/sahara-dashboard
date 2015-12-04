@@ -27,7 +27,7 @@ LOG = logging.getLogger(__name__)
 
 
 class CreateJobBinary(tables.LinkAction):
-    name = "create_job_binary"
+    name = "create"
     verbose_name = _("Create Job Binary")
     url = "horizon:project:data_processing.job_binaries:create-job-binary"
     classes = ("ajax-modal",)

@@ -91,7 +91,7 @@ class DataProcessingImageRegistryTests(test.TestCase):
         api.sahara.image_unregister(IsA(http.HttpRequest), image.id)
         self.mox.ReplayAll()
 
-        form_data = {'action': 'image_registry__delete__%s' % image.id}
+        form_data = {'action': 'image_registry__unregister__%s' % image.id}
         res = self.client.post(INDEX_URL, form_data)
 
         self.assertNoFormErrors(res)

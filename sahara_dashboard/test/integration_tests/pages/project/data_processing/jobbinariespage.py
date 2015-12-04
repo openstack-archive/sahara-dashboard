@@ -9,7 +9,6 @@
 #    WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
 #    License for the specific language governing permissions and limitations
 #    under the License.
-import copy
 
 from selenium.webdriver.common import by
 
@@ -26,23 +25,23 @@ class JobbinariesPage(basepage.BaseNavigationPage):
         (by.By.CSS_SELECTOR, 'div.modal-dialog')
 
     JOB_BINARIES_TABLE_NAME = "job_binaries"
-    JOB_BINARIES_TABLE_ACTIONS = ("create_job_binary", "delete_job_binaries")
+    JOB_BINARIES_TABLE_ACTIONS = ("create", "delete")
     JOB_BINARIES_ROW_ACTIONS = {
         tables.ComplexActionRowRegion.PRIMARY_ACTION: "delete_job_binary",
         tables.ComplexActionRowRegion.SECONDARY_ACTIONS:
             ("download_job_binary",)
     }
 
-    BINARY_NAME = "name"
-    BINARY_STORAGE_TYPE = "storage_type"
-    BINARY_URL = "url"
-    INTERNAL_BINARY = "internal_binary"
-    BINARY_PATH = "upload_file"
-    SCRIPT_NAME = "script_name"
-    SCRIPT_TEXT = "script_text"
-    USERNAME = "username"
-    PASSWORD = "password"
-    DESCRIPTION = "description"
+    BINARY_NAME = "job_binary_name"
+    BINARY_STORAGE_TYPE = "job_binary_type"
+    BINARY_URL = "job_binary_url"
+    INTERNAL_BINARY = "job_binary_internal"
+    BINARY_PATH = "job_binary_file"
+    SCRIPT_NAME = "job_binary_script_name"
+    SCRIPT_TEXT = "job_binary_script"
+    USERNAME = "job_binary_username"
+    PASSWORD = "job_binary_password"
+    DESCRIPTION = "job_binary_description"
 
     CREATE_BINARY_FORM_FIELDS = (
         BINARY_NAME,
@@ -78,8 +77,7 @@ class JobbinariesPage(basepage.BaseNavigationPage):
                                                self.conf, src_elem,
                                                self.JOB_BINARIES_TABLE_NAME,
                                                self.JOB_BINARIES_TABLE_ACTIONS,
-                                               self.JOB_BINARIES_ROW_ACTIONS
-                                               )
+                                               self.JOB_BINARIES_ROW_ACTIONS)
 
     @property
     def create_job_binary_form(self):
@@ -95,17 +93,16 @@ class JobbinariesPage(basepage.BaseNavigationPage):
     def delete_job_binary(self, name):
         row = self._get_row_with_job_binary_name(name)
         row.mark()
-        self.job_binaries_table.delete_job_binaries.click()
+        self.job_binaries_table.delete.click()
         self.confirm_delete_job_binaries_form.submit.click()
+        self.wait_till_popups_disappear()
 
-    def create_job_binary(self, name, storage_type, url, internal_binary,
-                          upload_file, script_name, script_text, username,
-                          password, description):
-        self.job_binaries_table.create_job_binary.click()
-        job_data = copy.copy(locals())
-        del job_data["self"]
+    def create_job_binary(self, job_data):
+        self.job_binaries_table.create.click()
+
         self.create_job_binary_form.set_field_values(job_data)
         self.create_job_binary_form.submit.click()
+        self.wait_till_popups_disappear()
 
     def is_job_binary_present(self, name):
         return bool(self._get_row_with_job_binary_name(name))
