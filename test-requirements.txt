@@ -13,8 +13,11 @@ mock>=1.2
 mox3>=0.7.0
 netifaces>=0.10.4
 python-subunit>=0.0.18
+selenium
 sphinx!=1.2.0,!=1.3b1,<1.3,>=1.1.2
 oslosphinx!=3.4.0,>=2.5.0 # Apache-2.0
 testrepository>=0.0.18
 testscenarios>=0.4
 testtools>=1.4.0
+# This also needs xvfb library installed on your OS
+xvfbwrapper>=0.1.3 #license: MIT

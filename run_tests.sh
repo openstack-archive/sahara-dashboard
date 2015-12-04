@@ -383,9 +383,11 @@ function run_integration_tests {
     export SELENIUM_HEADLESS=1
   fi
 
+  export HORIZON_INTEGRATION_TESTS_CONFIG_FILE="sahara_dashboard/test/integration_tests/horizon.conf"
+
   echo "Running Horizon integration tests..."
   if [ -z "$testargs" ]; then
-      ${command_wrapper} nosetests openstack_dashboard/test/integration_tests/tests
+      ${command_wrapper} nosetests sahara_dashboard/test/integration_tests/tests
   else
       ${command_wrapper} nosetests $testargs
   fi

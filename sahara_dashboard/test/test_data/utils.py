@@ -24,7 +24,6 @@ def load_test_data(load_onto=None):
     from openstack_dashboard.test.test_data import neutron_data
     from openstack_dashboard.test.test_data import nova_data
     from openstack_dashboard.test.test_data import swift_data
-    from openstack_dashboard.test.test_data import trove_data
 
     from sahara_dashboard.test.test_data import keystone_data \
         as sahara_keystone_data
@@ -41,7 +40,6 @@ def load_test_data(load_onto=None):
         swift_data.data,
         heat_data.data,
         ceilometer_data.data,
-        trove_data.data,
         sahara_data.data,
         sahara_keystone_data.data,
     )

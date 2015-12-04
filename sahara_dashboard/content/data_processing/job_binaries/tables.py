@@ -27,7 +27,7 @@ LOG = logging.getLogger(__name__)
 
 
 class CreateJobBinary(tables.LinkAction):
-    name = "create job binary"
+    name = "create_job_binary"
     verbose_name = _("Create Job Binary")
     url = "horizon:project:data_processing.job_binaries:create-job-binary"
     classes = ("ajax-modal",)
@@ -71,14 +71,14 @@ class DeleteJobBinary(tables.DeleteAction):
 
 
 class DownloadJobBinary(tables.LinkAction):
-    name = "download job binary"
+    name = "download_job_binary"
     verbose_name = _("Download Job Binary")
     url = "horizon:project:data_processing.job_binaries:download"
     classes = ("btn-edit",)
 
 
 class EditJobBinary(tables.LinkAction):
-    name = "edit job binary"
+    name = "edit_job_binary"
     verbose_name = _("Edit Job Binary")
     url = "horizon:project:data_processing.job_binaries:edit-job-binary"
     classes = ("btn-edit", "ajax-modal",)
