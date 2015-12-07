@@ -163,6 +163,8 @@ class JobConfigAction(workflows.Action):
     EDP_HBASE_COMMON_LIB = "edp.hbase_common_lib"
     EDP_ADAPT_FOR_OOZIE = "edp.java.adapt_for_oozie"
     EDP_ADAPT_SPARK_SWIFT = "edp.spark.adapt_for_swift"
+    EDP_SUBST_DATASOURCE_NAME = "edp.substitute_data_source_for_name"
+    EDP_SUBST_DATASOURCE_UUID = "edp.substitute_data_source_for_uuid"
 
     property_name = forms.ChoiceField(
         required=False,
@@ -212,6 +214,12 @@ class JobConfigAction(workflows.Action):
                     "be dereferenced through HDFS at runtime."),
         required=False, initial=True)
 
+    datasource_substitute = forms.BooleanField(
+        label=_("Use Data Source Substitution for Names and UUIDs"),
+        help_text=_("Substitute data source objects for URLs of "
+                    "the form datasource://name or uuid."),
+        required=False, initial=True)
+
     def __init__(self, request, *args, **kwargs):
         super(JobConfigAction, self).__init__(request, *args, **kwargs)
         job_ex_id = request.REQUEST.get("job_execution_id")
@@ -258,6 +266,12 @@ class JobConfigAction(workflows.Action):
             if self.EDP_ADAPT_SPARK_SWIFT in edp_configs:
                 self.fields['adapt_spark_swift'].initial = (
                     edp_configs[self.EDP_ADAPT_SPARK_SWIFT])
+            if (self.EDP_SUBST_DATASOURCE_NAME in edp_configs or
+                    self.EDP_SUBST_DATASOURCE_UUID in edp_configs):
+                    self.fields['datasource_substitute'].initial = (
+                        edp_configs.get(self.EDP_SUBST_DATASOURCE_UUID, True)
+                        or
+                        edp_configs.get(self.EDP_SUBST_DATASOURCE_NAME, True))
 
     def clean(self):
         cleaned_data = super(workflows.Action, self).clean()
@@ -294,7 +308,9 @@ class JobConfigAction(workflows.Action):
                          self.MAIN_CLASS,
                          self.JAVA_OPTS,
                          self.EDP_ADAPT_FOR_OOZIE,
-                         self.EDP_ADAPT_SPARK_SWIFT]:
+                         self.EDP_ADAPT_SPARK_SWIFT,
+                         self.EDP_SUBST_DATASOURCE_UUID,
+                         self.EDP_SUBST_DATASOURCE_NAME, ]:
                 del configs[rmkey]
         return (configs, edp_configs)
 
@@ -346,6 +362,13 @@ class JobConfig(workflows.Step):
         context["job_type"] = job_type
         context["job_config"] = {"configs": job_config}
         context["job_config"]["args"] = job_args_array
+
+        context["job_config"]["configs"][
+            JobConfigAction.EDP_SUBST_DATASOURCE_UUID] = (
+                data.get("datasource_substitute", True))
+        context["job_config"]["configs"][
+            JobConfigAction.EDP_SUBST_DATASOURCE_NAME] = (
+                data.get("datasource_substitute", True))
 
         if job_type in ["Java", "Spark", "Storm"]:
             context["job_config"]["configs"][JobConfigAction.MAIN_CLASS] = (
