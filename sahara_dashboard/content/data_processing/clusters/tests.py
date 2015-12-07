@@ -16,7 +16,7 @@ from django import http
 from mox3.mox import IsA  # noqa
 from oslo_serialization import jsonutils
 
-from openstack_dashboard.test import helpers as test
+from sahara_dashboard.test import helpers as test
 
 from sahara_dashboard import api
 

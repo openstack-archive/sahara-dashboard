@@ -12,7 +12,7 @@
 
 from django.core.urlresolvers import reverse
 
-from openstack_dashboard.test import helpers as test
+from sahara_dashboard.test import helpers as test
 
 
 INDEX_URL = reverse(

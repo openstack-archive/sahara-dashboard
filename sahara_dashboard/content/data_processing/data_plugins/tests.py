@@ -14,7 +14,7 @@ from django.core.urlresolvers import reverse
 from django import http
 
 from mox3.mox import IsA  # noqa
-from openstack_dashboard.test import helpers as test
+from sahara_dashboard.test import helpers as test
 import six
 
 from sahara_dashboard import api

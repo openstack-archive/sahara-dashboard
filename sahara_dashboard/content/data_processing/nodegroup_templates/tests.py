@@ -23,7 +23,7 @@ from sahara_dashboard.content.data_processing.utils \
     import workflow_helpers
 from sahara_dashboard.content.data_processing.\
     nodegroup_templates.workflows import create as create_workflow
-from openstack_dashboard.test import helpers as test
+from sahara_dashboard.test import helpers as test
 
 
 INDEX_URL = reverse(

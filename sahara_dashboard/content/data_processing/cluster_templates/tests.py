@@ -21,7 +21,7 @@ from oslo_serialization import jsonutils
 import six
 
 from openstack_dashboard import api as dash_api
-from openstack_dashboard.test import helpers as test
+from sahara_dashboard.test import helpers as test
 
 from sahara_dashboard import api
 
