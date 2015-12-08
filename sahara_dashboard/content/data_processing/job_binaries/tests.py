@@ -25,6 +25,8 @@ DETAILS_URL = reverse(
     'horizon:project:data_processing.job_binaries:details', args=['id'])
 EDIT_URL = reverse('horizon:project:data_processing.job_binaries'
                    ':edit-job-binary', args=['id'])
+CREATE_URL = reverse(
+    'horizon:project:data_processing.job_binaries:create-job-binary')
 
 
 class DataProcessingJobBinaryTests(test.TestCase):
@@ -122,4 +124,27 @@ class DataProcessingJobBinaryTests(test.TestCase):
             'job_binary_script_name': ""
         }
         res = self.client.post(EDIT_URL, form_data)
+        self.assertNoFormErrors(res)
+
+    @test.create_stubs({api.manila: ('share_list', ),
+                        api.sahara.base: ('is_service_enabled', )})
+    def test_create_manila(self):
+        share = self.mox.CreateMockAnything(
+            {"id": "tuvwxy56-1234-abcd-abcd-defabcdaedcb",
+             "name": "Test share"})
+        shares = [share]
+        api.sahara.base.is_service_enabled(IsA(http.HttpRequest), IsA(str)) \
+            .AndReturn(True)
+        api.manila.share_list(IsA(http.HttpRequest)).AndReturn(shares)
+        self.mox.ReplayAll()
+
+        form_data = {
+            "job_binary_type": "manila",
+            "job_binary_manila_share": share.id,
+            "job_binary_manila_path": "/testfile.bin",
+            "job_binary_name": "testmanila",
+            "job_binary_description": "Test manila description"
+        }
+
+        res = self.client.post(CREATE_URL, form_data)
         self.assertNoFormErrors(res)
