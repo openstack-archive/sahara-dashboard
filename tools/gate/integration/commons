@@ -1,0 +1,6 @@
+#!/bin/bash
+
+set -ex
+
+export SAHARA_DASHBOARD_SCREENSHOTS_DIR="integration_tests_screenshots"
+
