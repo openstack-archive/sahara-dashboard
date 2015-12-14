@@ -119,3 +119,66 @@ class ChooseJobTypeForm(forms.SelfHandlingForm):
             exceptions.handle(request,
                               _("Unable to set job type"))
             return False
+
+
+class ChooseTemplateForm(forms.SelfHandlingForm):
+    guide_ngt = forms.ChoiceField(
+        label=_("Node Group Template"),
+        widget=forms.Select())
+
+    def __init__(self, request, *args, **kwargs):
+        super(ChooseTemplateForm, self).__init__(request, *args, **kwargs)
+        self.help_text_template = ("project/data_processing.wizard/"
+                                   "_ngt_select_help.html")
+
+        self.fields["guide_ngt"].choices = \
+            self.populate_guide_ngt_choices()
+
+        template_type = getattr(
+            self.request, self.request.method).get("guide_template_type")
+        if template_type:
+            self.fields["guide_template_type"] = forms.CharField(
+                required=False,
+                widget=forms.HiddenInput(),
+                initial=template_type)
+
+        plugin_name = getattr(
+            self.request, self.request.method).get("plugin_name")
+        if plugin_name:
+            self.fields["plugin_name"] = forms.CharField(
+                required=False,
+                widget=forms.HiddenInput(),
+                initial=plugin_name)
+
+        plugin_version = getattr(
+            self.request, self.request.method).get("hadoop_version")
+        if plugin_version:
+            self.fields["hadoop_version"] = forms.CharField(
+                required=False,
+                widget=forms.HiddenInput(),
+                initial=plugin_version)
+
+    def populate_guide_ngt_choices(self):
+        plugin = getattr(self.request, self.request.method).get("plugin_name")
+        version = getattr(
+            self.request, self.request.method).get("hadoop_version")
+        data = saharaclient.nodegroup_template_find(self.request,
+                                                    plugin_name=plugin,
+                                                    hadoop_version=version)
+        choices = [("{0}|{1}".format(ngt.name, ngt.id), ngt.name)
+                   for ngt in data]
+        return choices
+
+    def handle(self, request, context):
+        try:
+            name_key = context["guide_template_type"] + "_name"
+            id_key = context["guide_template_type"] + "_id"
+            (name, id) = context["guide_ngt"].split("|")
+            request.session[name_key] = name
+            request.session[id_key] = id
+            messages.success(request, _("Job type chosen"))
+            return True
+        except Exception:
+            exceptions.handle(request,
+                              _("Unable to set node group template"))
+            return False

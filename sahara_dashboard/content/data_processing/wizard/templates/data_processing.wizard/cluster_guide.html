@@ -55,6 +55,14 @@
                             {% if not request.session.plugin_name or not request.session.plugin_version %} disabled {% endif %}"
                             href="{% if request.session.plugin_name and request.session.plugin_version %}{% url 'horizon:project:data_processing.nodegroup_templates:configure-nodegroup-template'%}?plugin_name={{ request.session.plugin_name }}&hadoop_version={{ request.session.plugin_version }}&guide_template_type=master{% endif %}">
                             <span class="fa fa-plus"></span> {% trans "Create a Master Node Group Template" %}</a>
+                          {% if view.show_existing_templates %}
+                              {% trans " or " %}
+                              <a class="btn btn-default btn-small btn-create btn-inline ajax-modal
+                                {% if not request.session.plugin_name or not request.session.plugin_version %} disabled {% endif %}"
+                                href="{% if request.session.plugin_name and request.session.plugin_version %}{% url 'horizon:project:data_processing.wizard:ngt_select'%}?plugin_name={{ request.session.plugin_name }}&hadoop_version={{ request.session.plugin_version }}&guide_template_type=master{% endif %}">
+                                {% trans "Choose an existing Master Node Group Template" %}</a>
+                          {% endif %}
+
                     </div>
                     <div>{% trans "Current choice:" %}
                         {% if request.session.master_name %}
@@ -82,6 +90,14 @@
                             {% if not request.session.master_name %} disabled{% endif %}"
                             href="{% if request.session.plugin_name and request.session.plugin_version %}{% url 'horizon:project:data_processing.nodegroup_templates:configure-nodegroup-template'%}?plugin_name={{ request.session.plugin_name }}&hadoop_version={{ request.session.plugin_version }}&guide_template_type=worker{% endif %}">
                             <span class="fa fa-plus"></span> {% trans "Create a Worker Node Group Template" %}</a>
+                        {% if view.show_existing_templates %}
+                            {% trans " or " %}
+                            <a class="btn btn-default btn-small btn-create btn-inline ajax-modal
+                                {% if not request.session.master_name %} disabled{% endif %}"
+                                href="{% if request.session.plugin_name and request.session.plugin_version %}{% url 'horizon:project:data_processing.wizard:ngt_select'%}?plugin_name={{ request.session.plugin_name }}&hadoop_version={{ request.session.plugin_version }}&guide_template_type=worker{% endif %}">
+                                {% trans "Choose an existing Worker Node Group Template" %}</a>
+                        {% endif %}
+
                     </div>
                     <div>{% trans "Current choice:" %}
                         {% if request.session.worker_name %}
