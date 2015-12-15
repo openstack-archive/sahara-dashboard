@@ -128,7 +128,9 @@ OPENSTACK_CINDER_FEATURES = {
 }
 
 OPENSTACK_NEUTRON_NETWORK = {
-    'enable_lb': True
+    'enable_lb': False,
+    'enable_firewall': False,
+    'enable_vpn': False
 }
 
 OPENSTACK_HYPERVISOR_FEATURES = {
