@@ -1,6 +1,7 @@
 *.py[co]
 *.egg
 *.egg-info
+*.lock
 dist
 build
 eggs
@@ -33,5 +34,6 @@ pylint-report.txt
 ChangeLog
 cscope.out
 horizon
-saharadashboard/tests/configs/config.conf
+sahara_dashboard/test/.secret_key_store
+sahara_dashboard/test/configs/config.conf
 AUTHORS
