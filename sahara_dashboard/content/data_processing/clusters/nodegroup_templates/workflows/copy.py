@@ -83,6 +83,7 @@ class CopyNodegroupTemplate(create_flow.ConfigureNodegroupTemplate):
         g_fields["use_autoconfig"].initial = self.template.use_autoconfig
         g_fields["is_public"].initial = self.template.is_public
         g_fields['is_protected'].initial = self.template.is_protected
+        g_fields["image"].initial = self.template.image_id
 
         if self.template.floating_ip_pool:
             g_fields['floating_ip_pool'].initial = (

@@ -77,6 +77,8 @@ class EditNodegroupTemplate(copy_flow.CopyNodegroupTemplate):
 
             ngt_shares = context.get('ngt_shares', [])
 
+            image_id = context["general_image"] or None
+
             saharaclient.nodegroup_template_update(
                 request=request,
                 ngt_id=self.template_id,
@@ -100,7 +102,8 @@ class EditNodegroupTemplate(copy_flow.CopyNodegroupTemplate):
                 is_proxy_gateway=context["general_proxygateway"],
                 shares=ngt_shares,
                 is_public=context['general_is_public'],
-                is_protected=context['general_is_protected'])
+                is_protected=context['general_is_protected'],
+                image_id=image_id)
             return True
         except api_base.APIException as e:
             self.error_description = str(e.message)

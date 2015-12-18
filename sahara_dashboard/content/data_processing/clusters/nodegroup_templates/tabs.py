@@ -85,11 +85,22 @@ class GeneralTab(tabs.Tab):
                 exceptions.handle(request,
                                   _("Unable to fetch floating ip pools."))
 
+        base_image_name = None
+        if template.image_id:
+            try:
+                base_image_name = saharaclient.image_get(
+                    request, template.image_id).name
+            except Exception:
+                exceptions.handle(request,
+                                  _("Unable to fetch Base Image with id: %s.")
+                                  % template.image_id)
+
         security_groups = helpers.get_security_groups(
             request, template.security_groups)
 
         return {"template": template, "flavor": flavor,
                 "floating_ip_pool_name": floating_ip_pool_name,
+                "base_image_name": base_image_name,
                 "security_groups": security_groups}
 
     def _get_floating_ip_pool_name(self, request, pool_id):

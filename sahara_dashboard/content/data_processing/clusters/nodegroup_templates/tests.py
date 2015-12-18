@@ -176,6 +176,7 @@ class DataProcessingNodeGroupTests(test.TestCase):
                'node_configs': {},
                'floating_ip_pool': None,
                'security_groups': [],
+               'image_id': None,
                'auto_security_group': True,
                'availability_zone': None,
                'is_proxy_gateway': False,
@@ -281,7 +282,7 @@ class DataProcessingNodeGroupTests(test.TestCase):
             shares=[],
             is_protected=False,
             is_public=False,
-        ).AndReturn(True)
+            image_id=ngt.image_id).AndReturn(True)
 
         self.mox.ReplayAll()
 

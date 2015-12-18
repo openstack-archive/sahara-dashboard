@@ -134,6 +134,7 @@ def nodegroup_template_create(request, name, plugin_name, hadoop_version,
                               availability_zone=False,
                               volumes_availability_zone=False,
                               volume_type=None,
+                              image_id=None,
                               is_proxy_gateway=False,
                               volume_local_to_instance=False,
                               use_autoconfig=None,
@@ -156,6 +157,7 @@ def nodegroup_template_create(request, name, plugin_name, hadoop_version,
         availability_zone=availability_zone,
         volumes_availability_zone=volumes_availability_zone,
         volume_type=volume_type,
+        image_id=image_id,
         is_proxy_gateway=is_proxy_gateway,
         volume_local_to_instance=volume_local_to_instance,
         use_autoconfig=use_autoconfig,
@@ -194,7 +196,8 @@ def nodegroup_template_update(request, ngt_id, name, plugin_name,
                               use_autoconfig=None,
                               shares=None,
                               is_protected=None,
-                              is_public=None):
+                              is_public=None,
+                              image_id=None):
     return client(request).node_group_templates.update(
         ng_template_id=ngt_id,
         name=name,
@@ -217,7 +220,8 @@ def nodegroup_template_update(request, ngt_id, name, plugin_name,
         use_autoconfig=use_autoconfig,
         shares=shares,
         is_public=is_public,
-        is_protected=is_protected)
+        is_protected=is_protected,
+        image_id=image_id)
 
 
 def cluster_template_create(request, name, plugin_name, hadoop_version,

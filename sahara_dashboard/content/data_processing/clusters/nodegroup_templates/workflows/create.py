@@ -39,6 +39,8 @@ from sahara_dashboard.content.data_processing.utils \
 from sahara_dashboard.content.data_processing.utils \
     import workflow_helpers
 
+BASE_IMAGE_URL = "horizon:project:data_processing.clusters:register"
+
 
 class GeneralConfigAction(workflows.Action):
     nodegroup_name = forms.CharField(label=_("Template Name"))
@@ -120,6 +122,10 @@ class GeneralConfigAction(workflows.Action):
             "data-storage_loc-cinder_volume": _('Volumes Availability Zone')
         })
     )
+
+    image = forms.DynamicChoiceField(label=_("Base Image"),
+                                     required=False,
+                                     add_item_link=BASE_IMAGE_URL)
 
     hidden_configure_field = forms.CharField(
         required=False,
@@ -215,6 +221,10 @@ class GeneralConfigAction(workflows.Action):
                         for az in cinder_utils.availability_zone_list(request)
                         if az.zoneState['available']])
         return az_list
+
+    def populate_image_choices(self, request, context):
+        return workflow_helpers.populate_image_choices(self, request, context,
+                                                       empty_choice=True)
 
     def get_help_text(self):
         extra = dict()
@@ -500,6 +510,8 @@ class ConfigureNodegroupTemplate(workflow_helpers.ServiceParametersWorkflow,
 
             ngt_shares = context.get('ngt_shares', [])
 
+            image_id = context["general_image"] or None
+
             ngt = saharaclient.nodegroup_template_create(
                 request,
                 name=context["general_nodegroup_name"],
@@ -522,8 +534,8 @@ class ConfigureNodegroupTemplate(workflow_helpers.ServiceParametersWorkflow,
                 use_autoconfig=context['general_use_autoconfig'],
                 shares=ngt_shares,
                 is_public=context['general_is_public'],
-                is_protected=context['general_is_protected']
-            )
+                is_protected=context['general_is_protected'],
+                image_id=image_id)
 
             hlps = helpers.Helpers(request)
             if hlps.is_from_guide():

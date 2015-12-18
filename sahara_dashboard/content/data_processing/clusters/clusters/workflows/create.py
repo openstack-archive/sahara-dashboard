@@ -118,27 +118,7 @@ class GeneralConfigAction(workflows.Action):
         )
 
     def populate_image_choices(self, request, context):
-        try:
-            all_images = saharaclient.image_list(request)
-
-            plugin, hadoop_version = whelpers.\
-                get_plugin_and_hadoop_version(request)
-
-            details = saharaclient.plugin_get_version_details(request,
-                                                              plugin,
-                                                              hadoop_version)
-
-            choices = [(image.id, image.name) for image in all_images
-                       if (set(details.required_image_tags).
-                           issubset(set(image.tags)))]
-        except Exception:
-            exceptions.handle(request,
-                              _("Unable to fetch image choices."))
-            choices = []
-        if not choices:
-            choices.append(("", _("No Images Available")))
-
-        return choices
+        return whelpers.populate_image_choices(self, request, context)
 
     def populate_keypair_choices(self, request, context):
         try:
@@ -236,13 +216,13 @@ class ConfigureCluster(whelpers.StatusFormatMixin, workflows.Workflow):
 
             cluster_template_id = context["general_cluster_template"] or None
             user_keypair = context["general_keypair"] or None
-
+            image_id = context["general_image"] or None
             saharaclient.cluster_create(
                 request,
                 context["general_cluster_name"],
                 plugin, hadoop_version,
                 cluster_template_id=cluster_template_id,
-                default_image_id=context["general_image"],
+                default_image_id=image_id,
                 description=context["general_description"],
                 node_groups=node_groups,
                 user_keypair_id=user_keypair,
