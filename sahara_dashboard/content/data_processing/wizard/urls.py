@@ -38,4 +38,7 @@ urlpatterns = patterns('',
                        url(r'^job_type_select$',
                            views.JobTypeSelectView.as_view(),
                            name='job_type_select'),
+                       url(r'^ngt_select$',
+                           views.NodeGroupSelectView.as_view(),
+                           name='ngt_select'),
                        )

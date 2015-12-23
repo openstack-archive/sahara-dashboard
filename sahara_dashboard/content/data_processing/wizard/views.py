@@ -21,6 +21,7 @@ from horizon import exceptions
 from horizon import forms
 from horizon import views as horizon_views
 
+from sahara_dashboard.api import sahara as saharaclient
 from sahara_dashboard.content.data_processing.utils \
     import helpers
 import sahara_dashboard.content.data_processing.wizard \
@@ -46,6 +47,18 @@ class WizardView(horizon_views.APIView):
 class ClusterGuideView(horizon_views.APIView):
     template_name = 'project/data_processing.wizard/cluster_guide.html'
     page_title = _("Guided Cluster Creation")
+
+    def show_existing_templates(self):
+        try:
+            plugin = self.request.session.get("plugin_name", None)
+            version = self.request.session.get("plugin_version", None)
+            data = saharaclient.nodegroup_template_find(
+                self.request, plugin_name=plugin, hadoop_version=version)
+            if len(data) < 1:
+                return False
+            return True
+        except Exception:
+            return True
 
 
 class ResetClusterGuideView(generic.RedirectView):
@@ -100,3 +113,12 @@ class JobTypeSelectView(forms.ModalFormView):
     classes = ("ajax-modal")
     template_name = "project/data_processing.wizard/job_type_select.html"
     page_title = _("Choose job type")
+
+
+class NodeGroupSelectView(forms.ModalFormView):
+    form_class = wizforms.ChooseTemplateForm
+    success_url = reverse_lazy(
+        'horizon:project:data_processing.wizard:cluster_guide')
+    classes = ("ajax-modal")
+    template_name = "project/data_processing.wizard/ngt_select.html"
+    page_title = _("Choose node group template")
