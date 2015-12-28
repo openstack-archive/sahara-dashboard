@@ -49,6 +49,7 @@ class AdditionalLibsAction(workflows.Action):
                 'data-jobtype-shell': _("Choose additional files"),
                 'data-jobtype-spark': _("Choose libraries"),
                 'data-jobtype-java': _("Choose libraries"),
+                'data-jobtype-mapreduce': _("Choose libraries"),
                 'data-jobtype-mapreduce.streaming': _("Choose libraries")
             }))
 
