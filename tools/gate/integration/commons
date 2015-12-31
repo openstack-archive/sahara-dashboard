@@ -2,5 +2,5 @@
 
 set -ex
 
-export SAHARA_DASHBOARD_SCREENSHOTS_DIR="integration_tests_screenshots"
+export SAHARA_DASHBOARD_SCREENSHOTS_DIR=sahara_dashboard/.tox/py27integration/src/horizon/openstack_dashboard/test/integration_tests/integration_tests_screenshots
 
