@@ -28,7 +28,7 @@ class ImageregistryPage(basepage.BaseNavigationPage):
         tables.ComplexActionRowRegion.PRIMARY_ACTION: "edit_tags",
         tables.ComplexActionRowRegion.SECONDARY_ACTIONS: ("unregister_image",)
     }
-    TABLE_IMAGE_COLUMN = 0
+    TABLE_IMAGE_COLUMN = 'name'
 
     REGISTER_FORM_IMAGE = "image_id"
     REGISTER_FORM_USER_NAME = "user_name"

@@ -56,7 +56,7 @@ class JobbinariesPage(basepage.BaseNavigationPage):
     )
 
     # index of name column in binary jobs table
-    JOB_BINARIES_TABLE_NAME_COLUMN = 0
+    JOB_BINARIES_TABLE_NAME_COLUMN = 'name'
 
     # fields that are set via text setter
     _TEXT_FIELDS = (BINARY_NAME, BINARY_STORAGE_TYPE, INTERNAL_BINARY)
