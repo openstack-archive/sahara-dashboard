@@ -11,6 +11,7 @@
 #    under the License.
 
 from openstack_dashboard.test.integration_tests import helpers
+from openstack_dashboard.test.integration_tests.regions import messages
 
 
 IMAGE_NAME = helpers.gen_random_resource_name("image")
@@ -32,10 +33,17 @@ class TestSaharaImageRegistry(helpers.TestCase):
         image_reg_pg.wait_until_image_registered(IMAGE_NAME)
         self.assertTrue(image_reg_pg.is_image_registered(IMAGE_NAME),
                         "Image was not registered.")
-        self.assertFalse(image_reg_pg.is_error_message_present(),
-                         "Error message occurred during image creation.")
+        self.assertTrue(
+            image_reg_pg.find_message_and_dismiss(messages.SUCCESS))
+        self.assertFalse(
+            image_reg_pg.find_message_and_dismiss(messages.ERROR),
+            "Error message occurred during image creation.")
+
         image_reg_pg.unregister_image(IMAGE_NAME)
-        self.assertFalse(image_reg_pg.is_error_message_present())
+        self.assertTrue(
+            image_reg_pg.find_message_and_dismiss(messages.SUCCESS))
+        self.assertFalse(
+            image_reg_pg.find_message_and_dismiss(messages.ERROR))
         self.assertFalse(image_reg_pg.is_image_registered(IMAGE_NAME),
                          "Image was not unregistered.")
 

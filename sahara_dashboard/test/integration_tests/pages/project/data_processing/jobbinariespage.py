@@ -10,56 +10,42 @@
 #    License for the specific language governing permissions and limitations
 #    under the License.
 
-from selenium.webdriver.common import by
-
 from openstack_dashboard.test.integration_tests.pages import basepage
 from openstack_dashboard.test.integration_tests.regions import forms
 from openstack_dashboard.test.integration_tests.regions import tables
 
 
-class JobbinariesPage(basepage.BaseNavigationPage):
-
-    _create_job_binary_form_locator = (by.By.CSS_SELECTOR, 'div.modal-dialog')
-    _confirm_job_binary_deletion_form =\
-        (by.By.CSS_SELECTOR, 'div.modal-dialog')
-
-    JOB_BINARIES_TABLE_NAME = "job_binaries"
-    JOB_BINARIES_TABLE_ACTIONS = ("create", "delete")
-    JOB_BINARIES_ROW_ACTIONS = {
-        tables.ComplexActionRowRegion.PRIMARY_ACTION: "delete_job_binary",
-        tables.ComplexActionRowRegion.SECONDARY_ACTIONS:
-            ("download_job_binary",)
+class JobBinariesTable(tables.TableRegion):
+    name = 'job_binaries'
+    CREATE_BINARY_FORM_FIELDS = {
+        "name": "job_binary_name",
+        "type": "job_binary_type",
+        "url": "job_binary_url",
+        "internal": "job_binary_internal",
+        "file": "job_binary_file",
+        "script_name": "job_binary_script_name",
+        "script": "job_binary_script",
+        "username": "job_binary_username",
+        "password": "job_binary_password",
+        "description": "job_binary_description"
     }
 
-    BINARY_NAME = "job_binary_name"
-    BINARY_STORAGE_TYPE = "job_binary_type"
-    BINARY_URL = "job_binary_url"
-    INTERNAL_BINARY = "job_binary_internal"
-    BINARY_PATH = "job_binary_file"
-    SCRIPT_NAME = "job_binary_script_name"
-    SCRIPT_TEXT = "job_binary_script"
-    USERNAME = "job_binary_username"
-    PASSWORD = "job_binary_password"
-    DESCRIPTION = "job_binary_description"
+    @tables.bind_table_action('create')
+    def create_job(self, create_button):
+        create_button.click()
+        return forms.FormRegion(
+            self.driver, self.conf,
+            field_mappings=self.CREATE_BINARY_FORM_FIELDS)
 
-    CREATE_BINARY_FORM_FIELDS = (
-        BINARY_NAME,
-        BINARY_STORAGE_TYPE,
-        BINARY_URL,
-        INTERNAL_BINARY,
-        BINARY_PATH,
-        SCRIPT_NAME,
-        SCRIPT_TEXT,
-        USERNAME,
-        PASSWORD,
-        DESCRIPTION
-    )
+    @tables.bind_table_action('delete')
+    def delete_job(self, delete_button):
+        delete_button.click()
+        return forms.BaseFormRegion(self.driver, self.conf)
 
-    # index of name column in binary jobs table
+
+class JobbinariesPage(basepage.BaseNavigationPage):
+
     JOB_BINARIES_TABLE_NAME_COLUMN = 'name'
-
-    # fields that are set via text setter
-    _TEXT_FIELDS = (BINARY_NAME, BINARY_STORAGE_TYPE, INTERNAL_BINARY)
 
     def __init__(self, driver, conf):
         super(JobbinariesPage, self).__init__(driver, conf)
@@ -71,35 +57,24 @@ class JobbinariesPage(basepage.BaseNavigationPage):
 
     @property
     def job_binaries_table(self):
-        return tables.ComplexActionTableRegion(self.driver, self.conf,
-                                               self.JOB_BINARIES_TABLE_NAME,
-                                               self.JOB_BINARIES_TABLE_ACTIONS,
-                                               self.JOB_BINARIES_ROW_ACTIONS)
-
-    @property
-    def create_job_binary_form(self):
-        src_elem = self._get_element(*self._create_job_binary_form_locator)
-        return forms.FormRegion(self.driver, self.conf, src_elem,
-                                self.CREATE_BINARY_FORM_FIELDS)
-
-    @property
-    def confirm_delete_job_binaries_form(self):
-        src_elem = self._get_element(*self._confirm_job_binary_deletion_form)
-        return forms.BaseFormRegion(self.driver, self.conf, src_elem)
+        return JobBinariesTable(self.driver, self.conf)
 
     def delete_job_binary(self, name):
         row = self._get_row_with_job_binary_name(name)
         row.mark()
-        self.job_binaries_table.delete.click()
-        self.confirm_delete_job_binaries_form.submit.click()
-        self.wait_till_popups_disappear()
+        confirm_delete_form = self.job_binaries_table.delete_job()
+        confirm_delete_form.submit()
 
-    def create_job_binary(self, job_data):
-        self.job_binaries_table.create.click()
+    def create_job_binary(self, binary_name, script_name):
+        create_job_binary_form = self.job_binaries_table.create_job()
 
-        self.create_job_binary_form.set_field_values(job_data)
-        self.create_job_binary_form.submit.click()
-        self.wait_till_popups_disappear()
+        create_job_binary_form.name = binary_name
+        create_job_binary_form.type = "Internal database"
+        create_job_binary_form.url = "*Create a script"
+        create_job_binary_form.script_name = script_name
+        create_job_binary_form.script = "test_script_text"
+        create_job_binary_form.description = "test description"
+        create_job_binary_form.submit()
 
     def is_job_binary_present(self, name):
         return bool(self._get_row_with_job_binary_name(name))

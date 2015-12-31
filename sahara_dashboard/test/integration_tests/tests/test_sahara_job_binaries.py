@@ -10,51 +10,32 @@
 #    License for the specific language governing permissions and limitations
 #    under the License.
 
-import collections
-
 from openstack_dashboard.test.integration_tests import helpers
-from sahara_dashboard.test.integration_tests.pages.project.data_processing \
-    import jobbinariespage
+from openstack_dashboard.test.integration_tests.regions import messages
 
-
-# NOTE(tsufiev): beware, ordering matters here because Sahara UI shows fields
-# based on value of previous fields and for Selenium to be able to fill the
-# field it's crucial that it's visible
-JOB_BINARY_INTERNAL = collections.OrderedDict([
-    # Size of binary name is limited to 50 characters
-    (jobbinariespage.JobbinariesPage.BINARY_NAME,
-     helpers.gen_random_resource_name(resource='jobbinary',
-                                      timestamp=False)[0:50]),
-    (jobbinariespage.JobbinariesPage.BINARY_STORAGE_TYPE,
-     "Internal database"),
-    (jobbinariespage.JobbinariesPage.INTERNAL_BINARY, "*Create a script"),
-    (jobbinariespage.JobbinariesPage.BINARY_URL, None),
-    (jobbinariespage.JobbinariesPage.BINARY_PATH, None),
-    (jobbinariespage.JobbinariesPage.SCRIPT_NAME,
-     helpers.gen_random_resource_name(resource='scriptname', timestamp=False)),
-    (jobbinariespage.JobbinariesPage.SCRIPT_TEXT, "test_script_text"),
-    (jobbinariespage.JobbinariesPage.USERNAME, None),
-    (jobbinariespage.JobbinariesPage.PASSWORD, None),
-    (jobbinariespage.JobbinariesPage.DESCRIPTION, "test description")
-])
+# Size of binary name is limited to 50 characters
+BINARY_NAME = helpers.gen_random_resource_name(resource='jobbinary',
+                                               timestamp=False)[0:50]
+SCRIPT_NAME = helpers.gen_random_resource_name(resource='scriptname',
+                                               timestamp=False)
 
 
 class TestSaharaJobBinary(helpers.TestCase):
 
-    def _sahara_create_delete_job_binary(self, job_binary_template):
-        job_name = \
-            job_binary_template[jobbinariespage.JobbinariesPage.BINARY_NAME]
-
+    def _sahara_create_delete_job_binary(self, job_name):
         # create job binary
         job_binary_pg = self.home_pg.go_to_dataprocessing_jobbinariespage()
         self.assertFalse(job_binary_pg.is_job_binary_present(job_name),
                          "Job binary was present in the binaries table"
                          " before its creation.")
-        job_binary_pg.create_job_binary(job_binary_template)
+        job_binary_pg.create_job_binary(job_name, SCRIPT_NAME)
 
         # verify that job is created without problems
-        self.assertFalse(job_binary_pg.is_error_message_present(),
-                         "Error message occurred during binary job creation.")
+        self.assertTrue(
+            job_binary_pg.find_message_and_dismiss(messages.SUCCESS))
+        self.assertFalse(
+            job_binary_pg.find_message_and_dismiss(messages.ERROR),
+            "Error message occurred during binary job creation.")
         self.assertTrue(job_binary_pg.is_job_binary_present(job_name),
                         "Job binary is not in the binaries job table after"
                         " its creation.")
@@ -63,11 +44,14 @@ class TestSaharaJobBinary(helpers.TestCase):
         job_binary_pg.delete_job_binary(job_name)
 
         # verify that job was successfully deleted
-        self.assertFalse(job_binary_pg.is_error_message_present(),
-                         "Error message occurred during binary job deletion.")
+        self.assertTrue(
+            job_binary_pg.find_message_and_dismiss(messages.SUCCESS))
+        self.assertFalse(
+            job_binary_pg.find_message_and_dismiss(messages.ERROR),
+            "Error message occurred during binary job deletion.")
         self.assertFalse(job_binary_pg.is_job_binary_present(job_name),
                          "Job binary was not removed from binaries job table.")
 
     def test_sahara_create_delete_job_binary_internaldb(self):
         """Test the creation of a Job Binary in the Internal DB."""
-        self._sahara_create_delete_job_binary(JOB_BINARY_INTERNAL)
+        self._sahara_create_delete_job_binary(BINARY_NAME)
