@@ -19,7 +19,6 @@ from openstack_dashboard.test.integration_tests.regions import tables
 
 class JobbinariesPage(basepage.BaseNavigationPage):
 
-    _job_binaries_table_locator = (by.By.CSS_SELECTOR, 'table#job_binaries')
     _create_job_binary_form_locator = (by.By.CSS_SELECTOR, 'div.modal-dialog')
     _confirm_job_binary_deletion_form =\
         (by.By.CSS_SELECTOR, 'div.modal-dialog')
@@ -72,9 +71,7 @@ class JobbinariesPage(basepage.BaseNavigationPage):
 
     @property
     def job_binaries_table(self):
-        src_elem = self._get_element(*self._job_binaries_table_locator)
-        return tables.ComplexActionTableRegion(self.driver,
-                                               self.conf, src_elem,
+        return tables.ComplexActionTableRegion(self.driver, self.conf,
                                                self.JOB_BINARIES_TABLE_NAME,
                                                self.JOB_BINARIES_TABLE_ACTIONS,
                                                self.JOB_BINARIES_ROW_ACTIONS)
