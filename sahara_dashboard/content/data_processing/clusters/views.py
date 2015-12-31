@@ -79,8 +79,14 @@ class ClusterDetailsView(tabs.TabView):
 
     def get_context_data(self, **kwargs):
         context = super(ClusterDetailsView, self).get_context_data(**kwargs)
-        context['cluster'] = self.get_object()
+        cluster = self.get_object()
+        context['cluster'] = cluster
+        context['actions'] = self._get_actions(cluster)
         return context
+
+    def _get_actions(self, cluster):
+        table = c_tables.ClustersTable(self.request)
+        return table.render_row_actions(cluster)
 
 
 class ClusterEventsView(django_base.View):

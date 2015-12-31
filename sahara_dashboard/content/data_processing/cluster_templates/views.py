@@ -82,8 +82,14 @@ class ClusterTemplateDetailsView(tabs.TabView):
     def get_context_data(self, **kwargs):
         context = super(ClusterTemplateDetailsView, self)\
             .get_context_data(**kwargs)
-        context['template'] = self.get_object()
+        cluster_template = self.get_object()
+        context['template'] = cluster_template
+        context['actions'] = self._get_actions(cluster_template)
         return context
+
+    def _get_actions(self, cluster_template):
+        table = ct_tables.ClusterTemplatesTable(self.request)
+        return table.render_row_actions(cluster_template)
 
 
 class UploadFileView(forms.ModalFormView):
