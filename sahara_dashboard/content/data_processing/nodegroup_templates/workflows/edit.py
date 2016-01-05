@@ -80,6 +80,8 @@ class EditNodegroupTemplate(copy_flow.CopyNodegroupTemplate):
                 volumes_availability_zone = \
                     context["general_volumes_availability_zone"]
 
+            ngt_shares = context.get('ngt_shares', [])
+
             saharaclient.nodegroup_template_update(
                 request=request,
                 ngt_id=self.template_id,
@@ -100,7 +102,8 @@ class EditNodegroupTemplate(copy_flow.CopyNodegroupTemplate):
                 auto_security_group=context["security_autogroup"],
                 availability_zone=context["general_availability_zone"],
                 use_autoconfig=context['general_use_autoconfig'],
-                is_proxy_gateway=context["general_proxygateway"])
+                is_proxy_gateway=context["general_proxygateway"],
+                shares=ngt_shares)
             return True
         except api_base.APIException as e:
             self.error_description = str(e.message)

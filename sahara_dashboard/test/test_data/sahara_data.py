@@ -133,6 +133,7 @@ def data(TEST):
         "volumes_availability_zone": None,
         "is_proxy_gateway": False,
         "use_autoconfig": True,
+        "shares": [],
     }
 
     ngt1 = node_group_templates.NodeGroupTemplate(

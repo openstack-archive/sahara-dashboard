@@ -138,7 +138,8 @@ def nodegroup_template_create(request, name, plugin_name, hadoop_version,
                               volume_type=None,
                               is_proxy_gateway=False,
                               volume_local_to_instance=False,
-                              use_autoconfig=None):
+                              use_autoconfig=None,
+                              shares=None):
     return client(request).node_group_templates.create(
         name=name,
         plugin_name=plugin_name,
@@ -157,7 +158,8 @@ def nodegroup_template_create(request, name, plugin_name, hadoop_version,
         volume_type=volume_type,
         is_proxy_gateway=is_proxy_gateway,
         volume_local_to_instance=volume_local_to_instance,
-        use_autoconfig=use_autoconfig)
+        use_autoconfig=use_autoconfig,
+        shares=shares)
 
 
 def nodegroup_template_list(request, search_opts=None):
@@ -187,7 +189,8 @@ def nodegroup_template_update(request, ngt_id, name, plugin_name,
                               volume_type=None,
                               is_proxy_gateway=False,
                               volume_local_to_instance=False,
-                              use_autoconfig=None):
+                              use_autoconfig=None,
+                              shares=None):
     return client(request).node_group_templates.update(
         ng_template_id=ngt_id,
         name=name,
@@ -207,7 +210,8 @@ def nodegroup_template_update(request, ngt_id, name, plugin_name,
         volume_type=volume_type,
         is_proxy_gateway=is_proxy_gateway,
         volume_local_to_instance=volume_local_to_instance,
-        use_autoconfig=use_autoconfig)
+        use_autoconfig=use_autoconfig,
+        shares=shares)
 
 
 def cluster_template_create(request, name, plugin_name, hadoop_version,
