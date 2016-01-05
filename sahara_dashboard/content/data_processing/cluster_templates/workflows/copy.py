@@ -13,7 +13,6 @@
 
 import base64
 import json
-import logging
 
 from django.utils.translation import ugettext_lazy as _
 
@@ -24,8 +23,6 @@ import sahara_dashboard.content.data_processing. \
     cluster_templates.workflows.create as create_flow
 import sahara_dashboard.content.data_processing.utils. \
     workflow_helpers as wf_helpers
-
-LOG = logging.getLogger(__name__)
 
 
 class CopyClusterTemplate(create_flow.ConfigureClusterTemplate):

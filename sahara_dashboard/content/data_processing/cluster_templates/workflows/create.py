@@ -13,7 +13,6 @@
 
 import base64
 import json
-import logging
 
 from django.utils.translation import ugettext_lazy as _
 from saharaclient.api import base as api_base
@@ -30,8 +29,6 @@ from sahara_dashboard.content.data_processing. \
     utils import anti_affinity as aa
 import sahara_dashboard.content.data_processing. \
     utils.workflow_helpers as whelpers
-
-LOG = logging.getLogger(__name__)
 
 
 class SelectPluginAction(workflows.Action):

@@ -11,8 +11,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import logging
-
 from django.utils.translation import ugettext_lazy as _
 
 from horizon import exceptions
@@ -27,8 +25,6 @@ from sahara_dashboard.content.data_processing.job_executions \
     import tables as je_tables
 import sahara_dashboard.content.data_processing. \
     job_executions.tabs as _tabs
-
-LOG = logging.getLogger(__name__)
 
 
 class JobExecutionsView(tables.DataTableView):

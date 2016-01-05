@@ -10,7 +10,6 @@
 # implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-import logging
 
 from django.core.urlresolvers import reverse_lazy
 from django import http
@@ -26,9 +25,6 @@ from sahara_dashboard.content.data_processing.utils \
     import helpers
 import sahara_dashboard.content.data_processing.wizard \
     .forms as wizforms
-
-
-LOG = logging.getLogger(__name__)
 
 
 class WizardView(horizon_views.APIView):

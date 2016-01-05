@@ -11,7 +11,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import logging
 import six
 import uuid
 
@@ -27,8 +26,6 @@ from horizon import messages
 
 from sahara_dashboard.api import manila as manilaclient
 from sahara_dashboard.api import sahara as saharaclient
-
-LOG = logging.getLogger(__name__)
 
 
 class LabeledInput(widgets.TextInput):

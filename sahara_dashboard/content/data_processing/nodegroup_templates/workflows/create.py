@@ -12,7 +12,6 @@
 # limitations under the License.
 
 import itertools
-import logging
 import uuid
 
 from django.utils import encoding
@@ -39,8 +38,6 @@ from sahara_dashboard.content.data_processing.utils \
     import helpers
 from sahara_dashboard.content.data_processing.utils \
     import workflow_helpers
-
-LOG = logging.getLogger(__name__)
 
 
 class GeneralConfigAction(workflows.Action):

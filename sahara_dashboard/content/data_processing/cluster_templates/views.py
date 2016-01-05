@@ -11,8 +11,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import logging
-
 from django.core.urlresolvers import reverse_lazy
 from django.utils.translation import ugettext_lazy as _
 
@@ -37,8 +35,6 @@ import sahara_dashboard.content.data_processing. \
     cluster_templates.workflows.create as create_flow
 import sahara_dashboard.content.data_processing. \
     cluster_templates.workflows.edit as edit_flow
-
-LOG = logging.getLogger(__name__)
 
 
 class ClusterTemplatesView(tables.DataTableView):

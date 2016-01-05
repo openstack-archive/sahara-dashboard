@@ -11,8 +11,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import logging
-
 from django.utils.translation import ugettext_lazy as _
 
 from horizon import exceptions
@@ -21,9 +19,6 @@ from horizon import forms
 from sahara_dashboard.api import sahara as saharaclient
 import sahara_dashboard.content.data_processing. \
     utils.workflow_helpers as whelpers
-
-
-LOG = logging.getLogger(__name__)
 
 
 def anti_affinity_field():

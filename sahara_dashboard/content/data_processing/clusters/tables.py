@@ -11,8 +11,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import logging
-
 from django.http import Http404  # noqa
 from django.template.loader import render_to_string
 from django.utils.translation import ugettext_lazy as _
@@ -25,9 +23,6 @@ from horizon.tables import base as tables_base
 from sahara_dashboard.api import sahara as saharaclient
 
 from saharaclient.api import base as api_base
-
-
-LOG = logging.getLogger(__name__)
 
 
 class ClustersFilterAction(tables.FilterAction):

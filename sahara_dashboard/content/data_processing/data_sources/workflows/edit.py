@@ -11,8 +11,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import logging
-
 from django.utils.translation import ugettext_lazy as _
 import six
 
@@ -21,8 +19,6 @@ from horizon import exceptions
 from sahara_dashboard.api import sahara as saharaclient
 from sahara_dashboard.content.data_processing \
     .data_sources.workflows import create
-
-LOG = logging.getLogger(__name__)
 
 
 class EditDataSource(create.CreateDataSource):

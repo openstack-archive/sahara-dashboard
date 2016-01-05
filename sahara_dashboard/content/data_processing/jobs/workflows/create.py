@@ -12,7 +12,6 @@
 # limitations under the License.
 
 import json
-import logging
 
 from django.utils.translation import ugettext_lazy as _
 
@@ -27,8 +26,6 @@ import sahara_dashboard.content.data_processing \
     .utils.workflow_helpers as whelpers
 from sahara_dashboard.api import sahara as saharaclient
 
-
-LOG = logging.getLogger(__name__)
 
 JOB_BINARY_CREATE_URL = ("horizon:project:data_processing.job_binaries"
                          ":create-job-binary")

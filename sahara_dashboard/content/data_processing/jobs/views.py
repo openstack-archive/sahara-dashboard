@@ -12,7 +12,6 @@
 # limitations under the License.
 
 import json
-import logging
 
 from django import http
 from django.utils.translation import ugettext_lazy as _
@@ -34,8 +33,6 @@ import sahara_dashboard.content.data_processing.jobs. \
     workflows.create as create_flow
 import sahara_dashboard.content.data_processing.jobs. \
     workflows.launch as launch_flow
-
-LOG = logging.getLogger(__name__)
 
 
 class JobsView(tables.DataTableView):

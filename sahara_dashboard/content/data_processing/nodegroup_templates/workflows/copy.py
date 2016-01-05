@@ -11,8 +11,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import logging
-
 from django.utils.translation import ugettext_lazy as _
 
 from horizon import exceptions
@@ -21,8 +19,6 @@ from sahara_dashboard.api import sahara as saharaclient
 
 import sahara_dashboard.content.data_processing. \
     nodegroup_templates.workflows.create as create_flow
-
-LOG = logging.getLogger(__name__)
 
 
 class CopyNodegroupTemplate(create_flow.ConfigureNodegroupTemplate):

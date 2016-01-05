@@ -12,7 +12,6 @@
 # limitations under the License.
 
 import json
-import logging
 
 from django.utils.translation import ugettext_lazy as _
 import six
@@ -29,8 +28,6 @@ import sahara_dashboard.content.data_processing. \
 import sahara_dashboard.content.data_processing. \
     utils.workflow_helpers as whelpers
 
-
-LOG = logging.getLogger(__name__)
 
 DATA_SOURCE_CREATE_URL = ("horizon:project:data_processing.data_sources"
                           ":create-data-source")

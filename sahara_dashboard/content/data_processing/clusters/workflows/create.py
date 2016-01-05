@@ -29,9 +29,6 @@ import sahara_dashboard.content.data_processing. \
 
 from saharaclient.api import base as api_base
 
-import logging
-
-LOG = logging.getLogger(__name__)
 
 KEYPAIR_IMPORT_URL = "horizon:project:access_and_security:keypairs:import"
 BASE_IMAGE_URL = "horizon:project:data_processing.data_image_registry:register"

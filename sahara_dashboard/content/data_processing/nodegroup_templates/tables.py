@@ -11,16 +11,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import logging
-
 from django.template import defaultfilters as filters
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ungettext_lazy
 
 from horizon import tables
 from sahara_dashboard.api import sahara as saharaclient
-
-LOG = logging.getLogger(__name__)
 
 
 class NodeGroupTemplatesFilterAction(tables.FilterAction):

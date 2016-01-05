@@ -11,8 +11,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import logging
-
 from django.core.urlresolvers import reverse
 from django.core.urlresolvers import reverse_lazy
 from django import http
@@ -36,9 +34,6 @@ from sahara_dashboard.content.data_processing.job_binaries \
     import tables as jb_tables
 import sahara_dashboard.content.data_processing. \
     job_binaries.tabs as _tabs
-
-
-LOG = logging.getLogger(__name__)
 
 
 class JobBinariesView(tables.DataTableView):

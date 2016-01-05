@@ -11,8 +11,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import logging
-
 from django.core.urlresolvers import reverse
 from django.http import Http404  # noqa
 from django.utils import http
@@ -28,8 +26,6 @@ from horizon import tables
 from sahara_dashboard.api import sahara as saharaclient
 from sahara_dashboard.content.data_processing. \
     jobs import tables as j_t
-
-LOG = logging.getLogger(__name__)
 
 
 class JobExecutionsFilterAction(tables.FilterAction):

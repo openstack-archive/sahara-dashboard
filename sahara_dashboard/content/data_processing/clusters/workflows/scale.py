@@ -13,7 +13,6 @@
 
 import base64
 import json
-import logging
 
 from django.utils.translation import ugettext_lazy as _
 
@@ -27,8 +26,6 @@ import sahara_dashboard.content.data_processing. \
 from sahara_dashboard.content.data_processing.utils import workflow_helpers
 
 from saharaclient.api import base as api_base
-
-LOG = logging.getLogger(__name__)
 
 
 class NodeGroupsStep(clt_create_flow.ConfigureNodegroups):

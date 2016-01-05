@@ -12,7 +12,6 @@
 # limitations under the License.
 
 import json
-import logging
 
 from django.core.urlresolvers import reverse_lazy
 from django.utils.translation import ugettext_lazy as _
@@ -29,9 +28,6 @@ from sahara_dashboard.content. \
     data_processing.data_image_registry.forms import RegisterImageForm
 from sahara_dashboard.content. \
     data_processing.data_image_registry.tables import ImageRegistryTable
-
-
-LOG = logging.getLogger(__name__)
 
 
 class ImageRegistryView(tables.DataTableView):
