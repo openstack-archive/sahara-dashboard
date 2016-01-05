@@ -79,8 +79,8 @@ class GeneralTab(tabs.Tab):
             obj = s_func(request, obj_id)
             object_name = obj.name
         except Exception as e:
-            LOG.warn("Unable to get name for %s with object_id %s (%s)" %
-                     (sahara_obj, obj_id, str(e)))
+            LOG.warning("Unable to get name for %s with object_id %s (%s)"
+                        % (sahara_obj, obj_id, str(e)))
         return object_name
 
 
