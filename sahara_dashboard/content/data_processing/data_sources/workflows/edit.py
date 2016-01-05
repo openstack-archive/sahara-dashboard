@@ -14,6 +14,7 @@
 import logging
 
 from django.utils.translation import ugettext_lazy as _
+import six
 
 from horizon import exceptions
 
@@ -40,6 +41,7 @@ class EditDataSource(create.CreateDataSource):
         "data_source_url": "url",
         "data_source_credential_user": None,
         "data_source_credential_pass": None,
+        "data_source_manila_share": None,
     }
 
     def __init__(self, request, context_seed, entry_point, *args, **kwargs):
@@ -48,14 +50,27 @@ class EditDataSource(create.CreateDataSource):
                                                    self.data_source_id)
         super(EditDataSource, self).__init__(request, context_seed,
                                              entry_point, *args, **kwargs)
+
         for step in self.steps:
             if isinstance(step, create.GeneralConfig):
                 fields = step.action.fields
                 for field in fields:
                     if self.FIELD_MAP[field]:
-                        fields[field].initial = getattr(data_source,
-                                                        self.FIELD_MAP[field],
-                                                        None)
+                        if (field == "data_source_url" and
+                                data_source.type == "manila"):
+                            fields[field].initial = (
+                                six.moves.urllib.parse.urlparse(
+                                    data_source.url).path)
+                        elif (field == "data_source_manila_share"
+                              and data_source.type == "manila"):
+                            fields[field].initial = (
+                                six.moves.urllib.parse.urlparse(
+                                    data_source.url).netloc)
+                        else:
+                            fields[field].initial = (
+                                getattr(data_source,
+                                        self.FIELD_MAP[field],
+                                        None))
 
     def handle(self, request, context):
         try:
