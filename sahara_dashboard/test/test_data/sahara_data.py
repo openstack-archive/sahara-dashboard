@@ -204,6 +204,7 @@ def data(TEST):
                 "is_proxy_gateway": False
             }
         ],
+        "shares": [],
         "plugin_name": "vanilla",
         "tenant_id": "429ad8447c2d47bc8e0382d244e1d1df",
         "updated_at": None

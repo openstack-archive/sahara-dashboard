@@ -15,7 +15,6 @@ import itertools
 import logging
 import uuid
 
-from django.core.exceptions import ValidationError
 from django.utils import encoding
 from django.utils import html
 from django.utils import safestring
@@ -334,66 +333,6 @@ class SelectNodeProcessesAction(workflows.Action):
         help_text = _("Select node processes for the node group")
 
 
-class ShareWidget(forms.MultiWidget):
-    def __init__(self, choices=()):
-        widgets = []
-        for choice in choices:
-            widgets.append(forms.CheckboxInput(
-                attrs={
-                    "label": choice[1],
-                    "value": choice[0],
-                }))
-            widgets.append(forms.TextInput())
-            widgets.append(forms.Select(
-                choices=(("rw", _("Read/Write")), ("ro", _("Read only")))))
-        super(ShareWidget, self).__init__(widgets)
-
-    def decompress(self, value):
-        if value:
-            values = []
-            for share in value:
-                values.append(value[share]["id"])
-                values.append(value[share]["path"])
-                values.append(value[share]["access_level"])
-            return values
-        return [None] * len(self.widgets)
-
-    def format_output(self, rendered_widgets):
-        output = []
-        output.append("<table>")
-        output.append("<tr><th>Share</th><th>Enabled</th>"
-                      "<th>Path</th><th>Permissions</th></tr>")
-        for i, widget in enumerate(rendered_widgets):
-            item_widget_index = i % 3
-            if item_widget_index == 0:
-                output.append("<tr>")
-                output.append(
-                    "<td class='col-sm-2 small-padding'>{0}</td>".format(
-                        self.widgets[i].attrs["label"]))
-            # The last 2 form field td need get a larger size
-            if item_widget_index in [1, 2]:
-                size = 4
-            else:
-                size = 2
-            output.append("<td class='col-sm-{0} small-padding'>".format(size)
-                          + widget + "</td>")
-            if item_widget_index == 2:
-                output.append("</tr>")
-        output.append("</table>")
-        return safestring.mark_safe('\n'.join(output))
-
-
-class MultipleShareChoiceField(forms.MultipleChoiceField):
-    def validate(self, value):
-        if self.required and not value:
-            raise ValidationError(
-                self.error_messages['required'], code='required')
-        if not isinstance(value, list):
-            raise ValidationError(
-                _("The value of shares must be a list of values")
-            )
-
-
 class SelectNodeGroupSharesAction(workflows.Action):
     def __init__(self, request, *args, **kwargs):
         super(SelectNodeGroupSharesAction, self).__init__(
@@ -401,9 +340,9 @@ class SelectNodeGroupSharesAction(workflows.Action):
 
         possible_shares = self.get_possible_shares(request)
 
-        self.fields["shares"] = MultipleShareChoiceField(
+        self.fields["shares"] = workflow_helpers.MultipleShareChoiceField(
             label=_("Select Shares"),
-            widget=ShareWidget(choices=possible_shares),
+            widget=workflow_helpers.ShareWidget(choices=possible_shares),
             required=False,
             choices=possible_shares
         )

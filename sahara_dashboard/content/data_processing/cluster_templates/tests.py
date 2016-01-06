@@ -21,9 +21,10 @@ from oslo_serialization import jsonutils
 import six
 
 from openstack_dashboard import api as dash_api
-from sahara_dashboard.test import helpers as test
 
 from sahara_dashboard import api
+from sahara_dashboard.test import helpers as test
+
 
 INDEX_URL = reverse('horizon:project:data_processing.cluster_templates:index')
 DETAILS_URL = reverse(
@@ -132,7 +133,8 @@ class DataProcessingClusterTemplateTests(test.TestCase):
                                            cluster_configs=ct.cluster_configs,
                                            node_groups=ct.node_groups,
                                            anti_affinity=ct.anti_affinity,
-                                           use_autoconfig=False)\
+                                           use_autoconfig=False,
+                                           shares=ct.shares)\
             .AndReturn(new_ct)
         self.mox.ReplayAll()
 
