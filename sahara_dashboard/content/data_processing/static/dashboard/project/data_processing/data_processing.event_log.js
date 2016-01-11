@@ -37,9 +37,9 @@ horizon.event_log = {
             "<td>%started_at%</td>" +
             "<td>%duration%</td>" +
             "<td>%progress%</td>" +
-            "<td>%result%&nbsp" +
+            "<td class='step-result-cell'>%result%&nbsp" +
             "<a data-target='#events_modal' data-toggle='modal' data-step-id='%step_id%' class='show_events_btn' id='%step_id%_show_events_btn'>" +
-            gettext('Show events') + "</a>" +
+            gettext('(show events)') + "</a>" +
             "</td>" +
             "</tr>";
 
@@ -57,8 +57,16 @@ horizon.event_log = {
             .replace(/%result%/g, step.result);
 
         $("#steps_body").append(row);
+
+        $("#" + step.id + "_show_events_btn").css('cursor', 'pointer');
         if (step.successful === true) {
             $("#" + step.id + "_show_events_btn").hide();
+        }
+
+        if (step.successful === true) {
+            $("#" + step.id).find('td.step-result-cell').css('color', 'green');
+        } else {
+            $("#" + step.id).find('td.step-result-cell').css('color', 'red');
         }
     },
 
