@@ -10,6 +10,12 @@
     <dd>{{ cluster.description|default:_("None") }}</dd>
     <dt>{% trans "Status" %}</dt>
     <dd>{{ cluster.status }}</dd>
+    <dt>{% trans "Status description" %}</dt>
+    {% if cluster.status_description %}
+      <dd>{{ cluster.status_description }}</dd>
+    {% else %}
+      <dd>{% trans "No description" %}</dd>
+    {% endif %}
   </dl>
 
   {% if cluster.error_description %}
