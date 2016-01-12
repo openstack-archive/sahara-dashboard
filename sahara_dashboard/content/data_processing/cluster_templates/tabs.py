@@ -43,6 +43,23 @@ class GeneralTab(tabs.Tab):
         return {"template": template}
 
 
+class ClusterTemplateConfigsDetails(tabs.Tab):
+    name = _("Configuration Details")
+    slug = "cluster_template_configs_details_tab"
+    template_name = (
+        "project/data_processing.cluster_templates/"
+        "_cluster_template_configs_details.html")
+
+    def get_context_data(self, request):
+        template_id = self.tab_group.kwargs['template_id']
+        try:
+            template = saharaclient.cluster_template_get(request, template_id)
+        except Exception as e:
+            template = {}
+            LOG.error("Unable to fetch cluster template details: %s" % str(e))
+        return {"template": template}
+
+
 class NodeGroupsTab(tabs.Tab):
     name = _("Node Groups")
     slug = "cluster_template_nodegroups_tab"
@@ -72,5 +89,5 @@ class NodeGroupsTab(tabs.Tab):
 
 class ClusterTemplateDetailsTabs(tabs.TabGroup):
     slug = "cluster_template_details"
-    tabs = (GeneralTab, NodeGroupsTab, )
+    tabs = (GeneralTab, ClusterTemplateConfigsDetails, NodeGroupsTab, )
     sticky = True

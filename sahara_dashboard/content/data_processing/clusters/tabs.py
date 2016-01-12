@@ -76,6 +76,25 @@ class GeneralTab(tabs.Tab):
         return cluster_info
 
 
+class ClusterConfigsDetails(tabs.Tab):
+    name = _("Configuration Details")
+    slug = "cluster_configs_details_tab"
+    template_name = (
+        "project/data_processing.clusters/_cluster_configs_details.html")
+
+    def get_context_data(self, request):
+        cluster_id = self.tab_group.kwargs['cluster_id']
+        cluster = {}
+        try:
+            sahara = saharaclient.client(request)
+            cluster = sahara.clusters.get(cluster_id)
+
+        except Exception as e:
+            LOG.error("Unable to fetch cluster details: %s" % str(e))
+
+        return {'cluster': cluster}
+
+
 def build_link(url):
     return "<a href='" + url + "' target=\"_blank\">" + url + "</a>"
 
@@ -191,5 +210,6 @@ class EventLogTab(tabs.Tab):
 
 class ClusterDetailsTabs(tabs.TabGroup):
     slug = "cluster_details"
-    tabs = (GeneralTab, NodeGroupsTab, InstancesTab, EventLogTab)
+    tabs = (GeneralTab, ClusterConfigsDetails, NodeGroupsTab, InstancesTab,
+            EventLogTab)
     sticky = True
