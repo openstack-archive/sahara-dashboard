@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}{% trans "Data Processing" %}{% endblock %}
+
+{% block main %}
+
+    <div class="nodegroup_templates">
+        {{ nodegroup_templates_table.render }}
+    </div>
+
+{% endblock %}

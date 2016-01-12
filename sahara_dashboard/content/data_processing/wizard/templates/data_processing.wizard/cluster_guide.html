@@ -128,7 +128,7 @@
                     <div>
                         <a class="btn btn-default btn-small btn-create btn-inline ajax-modal
                             {% if not request.session.worker_name %} disabled{% endif %}"
-                             href="{% url 'horizon:project:data_processing.cluster_templates:configure-cluster-template' %}?plugin_name={{ request.session.plugin_name }}&hadoop_version={{ request.session.plugin_version }}&forms_ids=[0,1]&count_0=1&group_name_0={{ request.session.master_name }}&template_id_0={{ request.session.master_id }}&count_1=1&group_name_1={{ request.session.worker_name }}&template_id_1={{ request.session.worker_id }}&serialized_0=null&serialized_1=null">
+                             href="{% url 'horizon:project:data_processing.clusters:configure-cluster-template' %}?plugin_name={{ request.session.plugin_name }}&hadoop_version={{ request.session.plugin_version }}&forms_ids=[0,1]&count_0=1&group_name_0={{ request.session.master_name }}&template_id_0={{ request.session.master_id }}&count_1=1&group_name_1={{ request.session.worker_name }}&template_id_1={{ request.session.worker_id }}&serialized_0=null&serialized_1=null">
                             <span class="fa fa-plus"></span> {% trans "Create a Cluster Template" %}</a>
                     </div>
                     <div>{% trans "Current choice:" %}

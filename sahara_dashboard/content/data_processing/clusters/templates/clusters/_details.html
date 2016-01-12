@@ -1,0 +1,84 @@
+{% load i18n sizeformat %}
+
+<div class="detail">
+  <dl class="dl-horizontal">
+    <dt>{% trans "Name" %}</dt>
+    <dd>{{ cluster.name }}</dd>
+    <dt>{% trans "Project ID" %}</dt>
+    <dd>{{ cluster.tenant_id }}</dd>
+    <dt>{% trans "ID" %}</dt>
+    <dd>{{ cluster.id }}</dd>
+    <dt>{% trans "Description" %}</dt>
+    <dd>{{ cluster.description|default:_("None") }}</dd>
+    <dt>{% trans "Status" %}</dt>
+    <dd>{{ cluster.status }}</dd>
+    <dt>{% trans "Status description" %}</dt>
+    {% if cluster.status_description %}
+      <dd>{{ cluster.status_description }}</dd>
+    {% else %}
+      <dd>{% trans "No description" %}</dd>
+    {% endif %}
+  </dl>
+
+  {% if cluster.error_description %}
+    <h4>{% trans "Error Details" %}</h4>
+    <p class="well">
+        {{ cluster.error_description }}
+    </p>
+  {% endif %}
+
+  <dl class="dl-horizontal">
+    <dt>{% trans "Plugin" %}</dt>
+    <dd><a href="{% url 'horizon:project:data_processing.jobs:plugin-details' cluster.plugin_name %}">{{ cluster.plugin_name }}</a></dd>
+    <dt>{% trans "Version" %}</dt>
+    <dd>{{ cluster.hadoop_version }}</dd>
+  </dl>
+  <dl class="dl-horizontal">
+    <dt>{% trans "Template" %}</dt>
+    {% if cluster_template %}
+      <dd><a href="{% url 'horizon:project:data_processing.clusters:ct-details' cluster_template.id %}">{{ cluster_template.name }} </a></dd>
+    {% else %}
+      <dd>{% trans "Template not specified" %}</dd>
+    {% endif %}
+    {% if base_image.id %}
+      <dt>{% trans "Base Image" %}</dt>
+      <dd><a href="{% url 'horizon:project:images:images:detail' base_image.id %}">{{ base_image.name }}</a></dd>
+    {% endif %}
+    {% if network %}
+      <dt>{% trans "Neutron Management Network" %}</dt>
+      <dd>{{ network }}</dd>
+    {% endif %}
+    <dt>{% trans "Keypair" %}</dt>
+    <dd>{{ cluster.user_keypair_id }}</dd>
+    <dt>{% trans "Use auto-configuration" %}</dt>
+    <dd>{{ cluster.use_autoconfig }}</dd>
+    <dt>{% trans "Public" %}</dt>
+    <dd>{{ cluster.is_public|yesno }}</dd>
+    <dt>{% trans "Protected" %}</dt>
+    <dd>{{ cluster.is_protected|yesno }}</dd>
+  </dl>
+  <dl class="dl-horizontal">
+    <dt>{% trans "Anti-affinity enabled for" %}</dt>
+      {% if cluster.anti_affinity %}
+        <dd>
+          <ul class="list-bullet">
+          {% for process in cluster.anti_affinity %}
+            <li>{{ process }}</li>
+          {% endfor %}
+          </ul>
+        </dd>
+      {% else %}
+        <h6>{% trans "no processes" %}</h6>
+      {% endif %}
+    </dl>
+  <dl class="dl-horizontal">
+    {% for info_key, info_val in cluster.info.items %}
+      <dt>{{ info_key }}</dt>
+      {% for key, val in info_val.items %}
+        <dd>
+          {% autoescape off %}{% blocktrans %}{{ key }}: {{ val }}{% endblocktrans %}{% endautoescape %}
+        </dd>
+      {% endfor %}
+    {% endfor %}
+  </dl>
+</div>

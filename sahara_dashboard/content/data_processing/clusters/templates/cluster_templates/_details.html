@@ -1,0 +1,40 @@
+{% load i18n sizeformat %}
+
+<div class="detail">
+  <dl class="dl-horizontal">
+    <dt>{% trans "Name" %}</dt>
+    <dd>{{ template.name }}</dd>
+    <dt>{% trans "Project ID" %}</dt>
+    <dd>{{ template.tenant_id }}</dd>
+    <dt>{% trans "ID" %}</dt>
+    <dd>{{ template.id }}</dd>
+    <dt>{% trans "Description" %}</dt>
+    <dd>{{ template.description|default:_("None") }}</dd>
+  </dl>
+  <dl class="dl-horizontal">
+    <dt>{% trans "Plugin" %}</dt>
+    <dd><a href="{% url 'horizon:project:data_processing.jobs:details' template.plugin_name %}">{{ template.plugin_name }}</a></dd>
+    <dt>{% trans "Version" %}</dt>
+    <dd>{{ template.hadoop_version }}</dd>
+    <dt>{% trans "Use auto-configuration" %}</dt>
+    <dd>{{ template.use_autoconfig }}</dd>
+    <dt>{% trans "Public" %}</dt>
+    <dd>{{ template.is_public|yesno }}</dd>
+    <dt>{% trans "Protected" %}</dt>
+    <dd>{{ template.is_protected|yesno }}</dd>
+  </dl>
+  <dl class="dl-horizontal">
+    <dt>{% trans "Anti-affinity enabled for" %}</dt>
+    {% if template.anti_affinity %}
+      <dd>
+        <ul class="list-bullet">
+          {% for process in template.anti_affinity %}
+            <li>{{ process }}</li>
+          {% endfor %}
+        </ul>
+      </dd>
+    {% else %}
+      <h6>{% trans "no processes" %}</h6>
+    {% endif %}
+  </dl>
+</div>
