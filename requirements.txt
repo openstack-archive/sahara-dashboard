@@ -2,15 +2,15 @@
 # of appearance. Changing the order has an impact on the overall integration
 # process, which may cause wedges in the gate later.
 
-pbr>=1.6
+pbr>=1.6 # Apache-2.0
 # Horizon Core Requirements
-Babel>=1.3
-Django<1.9,>=1.8
-django-compressor>=1.4
-django-openstack-auth>=2.0.0
-iso8601>=0.1.9
-python-keystoneclient!=1.8.0,>=1.6.0
-python-manilaclient>=1.3.0
-python-neutronclient>=2.6.0
-python-novaclient!=2.33.0,>=2.29.0
-python-saharaclient>=0.10.0
+Babel>=1.3 # BSD
+Django<1.9,>=1.8 # BSD
+django-compressor>=1.4 # MIT
+django-openstack-auth>=2.0.0 # Apache-2.0
+iso8601>=0.1.9 # MIT
+python-keystoneclient!=1.8.0,>=1.6.0 # Apache-2.0
+python-manilaclient>=1.3.0 # Apache-2.0
+python-neutronclient>=2.6.0 # Apache-2.0
+python-novaclient!=2.33.0,>=2.29.0 # Apache-2.0
+python-saharaclient>=0.10.0 # Apache-2.0
