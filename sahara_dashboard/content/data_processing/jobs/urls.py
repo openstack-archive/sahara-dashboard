@@ -17,25 +17,66 @@ from django.conf.urls import url
 
 import sahara_dashboard.content.data_processing. \
     jobs.views as views
-
+import sahara_dashboard.content.data_processing. \
+    jobs.data_plugins.views as plugin_views
+import sahara_dashboard.content.data_processing. \
+    jobs.job_binaries.views as job_binary_views
+import sahara_dashboard.content.data_processing. \
+    jobs.data_sources.views as data_source_views
+import sahara_dashboard.content.data_processing. \
+    jobs.job_templates.views as job_templates_views
+import sahara_dashboard.content.data_processing. \
+    jobs.jobs.views as jobs_views
 
 urlpatterns = patterns('',
-                       url(r'^$', views.JobsView.as_view(),
+                       url(r'^$', views.IndexView.as_view(),
                            name='index'),
-                       url(r'^$', views.JobsView.as_view(),
+                       url(r'^$', views.IndexView.as_view(),
                            name='jobs'),
+                       url(r'^\?tab=job_tabs__jobs_tab$',
+                           views.IndexView.as_view(),
+                           name='jobs-tab'),
                        url(r'^create-job$',
-                           views.CreateJobView.as_view(),
+                           job_templates_views.CreateJobView.as_view(),
                            name='create-job'),
                        url(r'^launch-job$',
-                           views.LaunchJobView.as_view(),
+                           job_templates_views.LaunchJobView.as_view(),
                            name='launch-job'),
                        url(r'^launch-job-new-cluster$',
-                           views.LaunchJobNewClusterView.as_view(),
+                           job_templates_views.
+                           LaunchJobNewClusterView.as_view(),
                            name='launch-job-new-cluster'),
                        url(r'^choose-plugin$',
-                           views.ChoosePluginView.as_view(),
+                           job_templates_views.ChoosePluginView.as_view(),
                            name='choose-plugin'),
-                       url(r'^(?P<job_id>[^/]+)$',
-                           views.JobDetailsView.as_view(),
-                           name='details'))
+                       url(r'^job-template/(?P<job_id>[^/]+)$',
+                           job_templates_views.JobDetailsView.as_view(),
+                           name='jt-details'),
+                       url(r'^job-execution/(?P<job_execution_id>[^/]+)$',
+                           jobs_views.JobDetailsView.as_view(),
+                           name='details'),
+                       url(r'^create-job-binary$',
+                           job_binary_views.CreateJobBinaryView.as_view(),
+                           name='create-job-binary'),
+                       url(r'^job-binary/(?P<job_binary_id>[^/]+)$',
+                           job_binary_views.JobBinaryDetailsView.as_view(),
+                           name='jb-details'),
+                       url(r'^job-binary/(?P<job_binary_id>[^/]+)/edit$',
+                           job_binary_views.EditJobBinaryView.as_view(),
+                           name='edit-job-binary'),
+                       url(r'^job-binary/(?P<job_binary_id>[^/]+)/download/$',
+                           job_binary_views.DownloadJobBinaryView.as_view(),
+                           name='download'),
+                       url(r'^create-data-source$',
+                           data_source_views.CreateDataSourceView.as_view(),
+                           name='create-data-source'),
+                       url(r'^data-source/(?P<data_source_id>[^/]+)/edit$',
+                           data_source_views.EditDataSourceView.as_view(),
+                           name='edit-data-source'),
+                       url(r'^data-source/(?P<data_source_id>[^/]+)$',
+                           data_source_views.DataSourceDetailsView.as_view(),
+                           name='ds-details'),
+                       url(r'^plugin/(?P<plugin_id>[^/]+)$',
+                           plugin_views.PluginDetailsView.as_view(),
+                           name='plugin-details'),
+                       )

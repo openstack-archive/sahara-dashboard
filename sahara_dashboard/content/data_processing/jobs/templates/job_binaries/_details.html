@@ -1,0 +1,23 @@
+{% load i18n %}
+
+<div class="detail">
+  <dl class="dl-horizontal">
+    <dt>{% trans "Name" %}</dt>
+    <dd>{{ job_binary.name }}</dd>
+    <dt>{% trans "Project ID" %}</dt>
+    <dd>{{ job_binary.tenant_id }}</dd>
+    <dt>{% trans "ID" %}</dt>
+    <dd>{{ job_binary.id }}</dd>
+    <dt>{% trans "URL" %}</dt>
+    <dd>{{ job_binary.url }}</dd>
+    <dt>{% trans "Description" %}</dt>
+    <dd>{{ job_binary.description|default:_("None") }}</dd>
+    <dt>{% trans "Public" %}</dt>
+    <dd>{{ job_binary.is_public|yesno }}</dd>
+    <dt>{% trans "Protected" %}</dt>
+    <dd>{{ job_binary.is_protected|yesno }}</dd>
+    <dt>{% trans "Create time" %}</dt>
+    <dd>{{ job_binary.created_at|parse_isotime }}</dd>
+  </dl>
+  <a href="{% url 'horizon:project:data_processing.jobs:download' job_binary.id %}">{% trans "Download job binary" %}</a>
+</div>
