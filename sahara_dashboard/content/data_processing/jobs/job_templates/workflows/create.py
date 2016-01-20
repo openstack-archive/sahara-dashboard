@@ -29,7 +29,7 @@ import sahara_dashboard.content.data_processing \
 from sahara_dashboard.api import sahara as saharaclient
 
 
-JOB_BINARY_CREATE_URL = ("horizon:project:data_processing.job_binaries"
+JOB_BINARY_CREATE_URL = ("horizon:project:data_processing.jobs"
                          ":create-job-binary")
 
 

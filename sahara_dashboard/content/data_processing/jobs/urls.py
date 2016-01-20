@@ -26,6 +26,8 @@ import sahara_dashboard.content.data_processing. \
 import sahara_dashboard.content.data_processing. \
     jobs.job_templates.views as job_templates_views
 import sahara_dashboard.content.data_processing. \
+    jobs.wizard.views as job_wizard_views
+import sahara_dashboard.content.data_processing. \
     jobs.jobs.views as jobs_views
 
 urlpatterns = patterns('',
@@ -79,4 +81,13 @@ urlpatterns = patterns('',
                        url(r'^plugin/(?P<plugin_id>[^/]+)$',
                            plugin_views.PluginDetailsView.as_view(),
                            name='plugin-details'),
+                       url(r'^jobex_guide$',
+                           job_wizard_views.JobExecutionGuideView.as_view(),
+                           name='jobex_guide'),
+                       url(r'^jobex_guide/(?P<reset_jobex_guide>[^/]+)/$',
+                           job_wizard_views.ResetJobExGuideView.as_view(),
+                           name='reset_jobex_guide'),
+                       url(r'^job_type_select$',
+                           job_wizard_views.JobTypeSelectView.as_view(),
+                           name='job_type_select'),
                        )

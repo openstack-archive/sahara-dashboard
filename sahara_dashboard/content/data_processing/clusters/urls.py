@@ -24,6 +24,10 @@ import sahara_dashboard.content.data_processing.clusters.cluster_templates. \
     views as ct_views
 import sahara_dashboard.content.data_processing.clusters.clusters. \
     views as cluster_views
+import sahara_dashboard.content.data_processing.clusters.wizard. \
+    views as cluster_guide_views
+
+
 urlpatterns = patterns('',
                        url(r'^$', views.IndexView.as_view(),
                            name='index'),
@@ -97,4 +101,17 @@ urlpatterns = patterns('',
                            name='edit_tags'),
                        url(r'^register/$',
                            image_views.RegisterImageView.as_view(),
-                           name='register'))
+                           name='register'),
+                       url(r'^cluster_guide$',
+                           cluster_guide_views.ClusterGuideView.as_view(),
+                           name='cluster_guide'),
+                       url(r'^cluster_guide/(?P<reset_cluster_guide>[^/]+)/$',
+                           cluster_guide_views.ResetClusterGuideView.as_view(),
+                           name='reset_cluster_guide'),
+                       url(r'^plugin_select$',
+                           cluster_guide_views.PluginSelectView.as_view(),
+                           name='plugin_select'),
+                       url(r'^ngt_select$',
+                           cluster_guide_views.NodeGroupSelectView.as_view(),
+                           name='ngt_select'),
+                       )

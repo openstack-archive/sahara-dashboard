@@ -36,7 +36,7 @@ class ClustersFilterAction(tables.FilterAction):
 class ClusterGuide(tables.LinkAction):
     name = "cluster_guide"
     verbose_name = _("Cluster Creation Guide")
-    url = "horizon:project:data_processing.wizard:cluster_guide"
+    url = "horizon:project:data_processing.clusters:cluster_guide"
 
 
 class CreateCluster(tables.LinkAction):

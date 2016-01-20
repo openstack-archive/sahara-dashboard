@@ -89,7 +89,8 @@ class Helpers(object):
 
     def is_from_guide(self):
         referer = self.request.environ.get("HTTP_REFERER")
-        if referer and "/wizard/" in referer:
+        if referer and ("/cluster_guide" in referer
+                        or "/jobex_guide" in referer):
             return True
         return False
 
