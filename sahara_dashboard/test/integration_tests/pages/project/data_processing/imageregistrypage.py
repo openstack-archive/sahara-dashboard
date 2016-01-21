@@ -19,7 +19,6 @@ from openstack_dashboard.test.integration_tests.regions import tables
 
 class ImageregistryPage(basepage.BaseNavigationPage):
 
-    _image_table_locator = (by.By.CSS_SELECTOR, 'table#image_registry')
     _unregister_form_locator = (by.By.CSS_SELECTOR, 'div.modal-dialog')
     _register_form_locator = (by.By.CSS_SELECTOR, 'div.modal-dialog')
 
@@ -46,9 +45,7 @@ class ImageregistryPage(basepage.BaseNavigationPage):
 
     @property
     def image_table(self):
-        src_elem = self._get_element(*self._image_table_locator)
         return tables.ComplexActionTableRegion(self.driver, self.conf,
-                                               src_elem,
                                                self.IMAGE_TABLE_NAME,
                                                self.IMAGE_TABLE_ACTIONS,
                                                self.IMAGE_TABLE_ROW_ACTIONS)
