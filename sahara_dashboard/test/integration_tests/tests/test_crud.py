@@ -57,18 +57,17 @@ class TestCRUD(SaharaTestCase):
         )
 
         nodegrouptpls_pg.create(
-            PLUGIN_NAME, PLUGIN_VERSION, name=self.worker_name,
-            flavor=self.flavor_name,
-            processes=['MapReduce:tasktracker', 'HDFS:datanode'])
+            PLUGIN_NAME, PLUGIN_VERSION, nodegroup_name=self.worker_name,
+            flavor=self.flavor_name, processes=['tasktracker', 'datanode'])
         self.assertTrue(nodegrouptpls_pg.has_success_message())
         self.assertFalse(nodegrouptpls_pg.has_error_message())
         self.assertTrue(nodegrouptpls_pg.is_present(self.worker_name),
                         "Worker template was not created.")
         nodegrouptpls_pg.create(
-            PLUGIN_NAME, PLUGIN_VERSION, name=self.master_name,
+            PLUGIN_NAME, PLUGIN_VERSION, nodegroup_name=self.master_name,
             flavor=self.flavor_name,
             proxygateway=True, floating_ip_pool=self.CONFIG.sahara.ip_pool,
-            processes=['MapReduce:jobtracker', 'HDFS:namenode'])
+            processes=['jobtracker', 'namenode'])
         self.assertTrue(nodegrouptpls_pg.has_success_message())
         self.assertFalse(nodegrouptpls_pg.has_error_message())
         self.assertTrue(nodegrouptpls_pg.is_present(self.master_name),
@@ -206,3 +205,73 @@ class TestCRUD(SaharaTestCase):
         flavors_page.delete_flavor(self.flavor_name)
         self.assertFalse(flavors_page.is_flavor_present(self.flavor_name))
         super(TestCRUD, self).tearDown()
+
+
+class TestUpdateNodeGroupTemplate(SaharaTestCase):
+    def setUp(self):
+        super(TestUpdateNodeGroupTemplate, self).setUp()
+        self.old_name = self.gen_name("old-name")
+        self.new_name = self.gen_name("new-name")
+        nodegrouptpls_pg = (
+            self.home_pg.go_to_dataprocessing_clusters_nodegrouptemplatespage()
+        )
+
+        nodegrouptpls_pg.create(
+            PLUGIN_NAME, PLUGIN_VERSION, nodegroup_name=self.old_name,
+            flavor='m1.tiny', processes=['tasktracker', 'datanode'])
+        self.assertTrue(nodegrouptpls_pg.has_success_message())
+        self.assertFalse(nodegrouptpls_pg.has_error_message())
+        self.assertTrue(nodegrouptpls_pg.is_present(self.old_name),
+                        "Worker template was not created.")
+
+    def test_update(self):
+        nodegrouptpls_pg = (
+            self.home_pg.go_to_dataprocessing_clusters_nodegrouptemplatespage()
+        )
+        kwargs = {
+            'nodegroup_name': self.new_name,
+            'description': '{} description'.format(self.new_name),
+            'flavor': 'm1.small',
+            'availability_zone': 'No availability zone specified',
+            'storage': 'Cinder Volume',
+            'volumes_per_node': 2,
+            'volumes_size': 3,
+            'volume_type': 'lvmdriver-1',
+            'volume_local_to_instance': True,
+            'volumes_availability_zone': 'nova',
+            'floating_ip_pool': self.CONFIG.sahara.ip_pool,
+            'use_autoconfig': False,
+            'proxygateway': True,
+            'processes': ['jobtracker', 'namenode'],
+            'security_autogroup': False,
+            'security_groups': ['default']
+        }
+        nodegrouptpls_pg.update(group_name=self.old_name, **kwargs)
+        details = nodegrouptpls_pg.get_details(self.new_name)
+        expected = {
+            'Auto Security Group': 'False',
+            'Description': kwargs['description'],
+            'Flavor': 'm1.small',
+            'Floating IP Pool': self.CONFIG.sahara.ip_pool,
+            'Name': self.new_name,
+            'Node Processes': 'namenode\njobtracker',
+            'Plugin': 'fake',
+            'Proxy Gateway': 'True',
+            'Security Groups': 'default',
+            'Use auto-configuration': 'False',
+            'Version': '0.1',
+            'Volumes Availability Zone': 'nova',
+            'Volumes local to instance': 'True',
+            'Volumes per node': '2',
+            'Volumes size': '3',
+            'Volumes type': 'lvmdriver-1'
+        }
+        details = {k: v for k, v in details.items() if k in expected}
+        self.assertEqual(expected, details)
+
+    def tearDown(self):
+        nodegrouptpls_pg = (
+            self.home_pg.go_to_dataprocessing_clusters_nodegrouptemplatespage()
+        )
+        nodegrouptpls_pg.delete_many((self.old_name, self.new_name))
+        super(TestUpdateNodeGroupTemplate, self).tearDown()
