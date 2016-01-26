@@ -54,11 +54,17 @@ class ImageregistryPage(basepage.BaseNavigationPage):
         unregister_form = self.image_table.unregister_image()
         unregister_form.submit()
 
-    def register_image(self, image, user_name, description):
+    def register_image(self, image, user_name, description, tags=()):
         register_form = self.image_table.register_image()
         register_form.image_id.text = image
         register_form.user_name.text = user_name
         register_form.description.text = description
+        tag_input = register_form.src_elem.find_element_by_id(
+            "_sahara_image_tag")
+        tag_add_btn = register_form.src_elem.find_element_by_id("add_tag_btn")
+        for tag in tags:
+            tag_input.send_keys(tag)
+            tag_add_btn.click()
         register_form.submit()
 
     def wait_until_image_registered(self, name):
