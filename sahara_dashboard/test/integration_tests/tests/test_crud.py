@@ -275,3 +275,103 @@ class TestUpdateNodeGroupTemplate(SaharaTestCase):
         )
         nodegrouptpls_pg.delete_many((self.old_name, self.new_name))
         super(TestUpdateNodeGroupTemplate, self).tearDown()
+
+
+class TestUpdateClusterTemplate(SaharaTestCase):
+    def setUp(self):
+        super(TestUpdateClusterTemplate, self).setUp()
+        self.flavor_name = self.gen_name('flavor')
+        self.image_name = self.gen_name("image")
+
+        self.worker_name = self.gen_name("worker")
+        self.master_name = self.gen_name("master")
+        self.cluster_template_name = self.gen_name("old-name")
+        self.new_cluster_template_name = self.gen_name("new-name")
+
+        nodegrouptpls_pg = (
+            self.home_pg.go_to_dataprocessing_clusters_nodegrouptemplatespage()
+        )
+
+        nodegrouptpls_pg.create(
+            PLUGIN_NAME, PLUGIN_VERSION, nodegroup_name=self.worker_name,
+            flavor='m1.tiny', processes=['tasktracker', 'datanode'])
+        self.assertTrue(nodegrouptpls_pg.has_success_message())
+        self.assertFalse(nodegrouptpls_pg.has_error_message())
+        self.assertTrue(nodegrouptpls_pg.is_present(self.worker_name),
+                        "Worker template was not created.")
+        nodegrouptpls_pg.create(
+            PLUGIN_NAME, PLUGIN_VERSION, nodegroup_name=self.master_name,
+            flavor='m1.tiny', proxygateway=True,
+            floating_ip_pool=self.CONFIG.sahara.ip_pool,
+            processes=['jobtracker', 'namenode'])
+        self.assertTrue(nodegrouptpls_pg.has_success_message())
+        self.assertFalse(nodegrouptpls_pg.has_error_message())
+        self.assertTrue(nodegrouptpls_pg.is_present(self.master_name),
+                        "Worker template was not created.")
+        clustertpls_pg = (
+            self.home_pg.go_to_dataprocessing_clusters_clustertemplatespage())
+
+        clustertpls_pg.create(
+            PLUGIN_NAME, PLUGIN_VERSION, name=self.cluster_template_name,
+            node_group_templates=[self.worker_name])
+        self.assertTrue(clustertpls_pg.has_success_message())
+        self.assertFalse(clustertpls_pg.has_error_message())
+        self.assertTrue(clustertpls_pg.is_present(self.cluster_template_name),
+                        "Cluster template was not created.")
+
+    def test_update(self):
+        clustertpls_pg = (
+            self.home_pg.go_to_dataprocessing_clusters_clustertemplatespage())
+        kwargs = {
+            'cluster_template_name': self.new_cluster_template_name,
+            'description': '{} description'.format(
+                self.new_cluster_template_name),
+            'use_autoconfig': False,
+            'anti_affinity': ['namenode', 'datanode', 'tasktracker',
+                              'jobtracker'],
+            'node_group_templates': [self.master_name],
+            'CONF:general:Timeout for disk preparing': 152,
+            'CONF:general:Enable NTP service': False,
+            'CONF:general:URL of NTP server': 'http://ntp.org/',
+            'CONF:general:Heat Wait Condition timeout': 123,
+            'CONF:general:Enable XFS': False,
+        }
+        clustertpls_pg.update(name=self.cluster_template_name, **kwargs)
+        self.assertTrue(clustertpls_pg.has_success_message())
+        self.assertFalse(clustertpls_pg.has_error_message())
+        self.assertTrue(
+            clustertpls_pg.is_present(self.new_cluster_template_name),
+            "Cluster template was not updated.")
+        details = clustertpls_pg.get_details(self.new_cluster_template_name)
+
+        expected = {
+            'Name': self.new_cluster_template_name,
+            'Description': kwargs['description'],
+            'Plugin': 'fake',
+            'Version': '0.1',
+            'Use auto-configuration': 'False',
+            'Anti-affinity enabled for': set(['namenode', 'datanode',
+                                              'tasktracker', 'jobtracker']),
+            'Enable NTP service': 'False',
+            'Enable XFS': 'False',
+            'Heat Wait Condition timeout': '123',
+            'Timeout for disk preparing': '152',
+            'URL of NTP server': 'http://ntp.org/',
+            'node_groups': {
+                self.master_name: '1'
+            }
+        }
+        details = {k: v for k, v in details.items() if k in expected}
+        self.assertEqual(expected, details)
+
+    def tearDown(self):
+        clustertpls_pg = (
+            self.home_pg.go_to_dataprocessing_clusters_clustertemplatespage())
+        clustertpls_pg.delete_many((self.cluster_template_name,
+                                    self.new_cluster_template_name))
+
+        nodegrouptpls_pg = (
+            self.home_pg.go_to_dataprocessing_clusters_nodegrouptemplatespage()
+        )
+        nodegrouptpls_pg.delete_many((self.worker_name, self.master_name))
+        super(TestUpdateClusterTemplate, self).tearDown()

@@ -10,11 +10,11 @@
 #    License for the specific language governing permissions and limitations
 #    under the License.
 
-from openstack_dashboard.test.integration_tests.regions import forms
 from openstack_dashboard.test.integration_tests.regions import tables
 
 from sahara_dashboard.test.integration_tests.pages import basepage
 from sahara_dashboard.test.integration_tests.pages import mixins
+from sahara_dashboard.test.integration_tests.regions import forms
 
 
 CREATE_FIELD_MAPPING = (
@@ -51,35 +51,6 @@ class NodegrouptemplatesPage(mixins.PluginSelectMixin, mixins.DeleteMixin,
         return forms.TabbedFormRegion(
             self.driver, self.conf, field_mappings=CREATE_FIELD_MAPPING)
 
-    def _set_checkbox_group(self, form, group_name, values=()):
-        for el in form.src_elem.find_elements_by_xpath(
-            './/input[@name="{}"]'.format(group_name)
-        ):
-            elem_id = el.get_attribute('id')
-            label = form.src_elem.find_element_by_css_selector(
-                'label[for={}]'.format(elem_id))
-            if (label.text in values) != el.is_selected():
-                label.click()
-
-    def _fill_form(self, form, **kwargs):
-        for tab_num, fields in enumerate(CREATE_FIELD_MAPPING):
-            form.switch_to(tab_num)
-            for key in fields:
-                value = kwargs.get(key)
-                if value is None:
-                    continue
-                if isinstance(value, (list, tuple)):
-                    self._set_checkbox_group(form, key, value)
-                    continue
-                field = getattr(form, key)
-                if hasattr(field, 'mark'):
-                    if value:
-                        field.mark()
-                    else:
-                        field.unmark()
-                else:
-                    field.text = value
-
     def create(self, plugin_name, plugin_version, nodegroup_name, flavor,
                floating_ip_pool=None, availability_zone='nova',
                proxygateway=False, processes=(), **kwargs):
@@ -93,13 +64,13 @@ class NodegrouptemplatesPage(mixins.PluginSelectMixin, mixins.DeleteMixin,
             'proxygateway': proxygateway,
             'processes': processes,
         })
-        self._fill_form(form, **kwargs)
+        form.set_values(**kwargs)
         form.submit()
 
     def update(self, group_name, **kwargs):
         row = self._get_row_with_name(group_name)
         form = self.table.get_edit_form(row)
-        self._fill_form(form, **kwargs)
+        form.set_values(**kwargs)
         form.submit()
 
     def get_details(self, name):
