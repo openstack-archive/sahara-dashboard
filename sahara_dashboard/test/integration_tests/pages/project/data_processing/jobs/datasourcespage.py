@@ -18,20 +18,27 @@ from sahara_dashboard.test.integration_tests.pages import mixins
 
 
 class CreateMixin(object):
-    CREATE_FIELD_MAPPING = {
-        "data_source_name": "data_source_name",
-        "data_source_type": "data_source_type",
-        "data_source_url": "data_source_url",
-        "data_source_credential_user": "data_source_credential_user",
-        "data_source_credential_pass": "data_source_credential_pass",
-        "data_source_description": "data_source_description"
-    }
+    CREATE_FIELD_MAPPING = (
+        "data_source_name",
+        "data_source_type",
+        "data_source_url",
+        "data_source_credential_user",
+        "data_source_credential_pass",
+        "data_source_description"
+    )
 
     @tables.bind_table_action('create data source')
     def get_create_form(self, button):
         button.click()
         return forms.FormRegion(self.driver, self.conf,
                                 field_mappings=self.CREATE_FIELD_MAPPING)
+
+    @tables.bind_row_action('edit data source')
+    def get_update_form(self, button, row):
+        button.click()
+        return forms.TabbedFormRegion(
+            self.driver, self.conf, field_mappings=(self.CREATE_FIELD_MAPPING,)
+        )
 
 
 class DatasourcesPage(mixins.DeleteMixin, basepage.BaseDataProcessingPage):
@@ -48,3 +55,24 @@ class DatasourcesPage(mixins.DeleteMixin, basepage.BaseDataProcessingPage):
         form.data_source_type.text = source_type
         form.data_source_url.text = url
         form.submit()
+
+    def update(self, name, **kwargs):
+        row = self._get_row_with_name(name)
+        form = self.table.get_update_form(row)
+        for key in CreateMixin.CREATE_FIELD_MAPPING:
+            if key in kwargs:
+                getattr(form, key).text = kwargs[key]
+        form.submit()
+
+    def get_details(self, name):
+        details = {}
+        self.table.src_elem.find_element_by_link_text(name).click()
+        items = self.driver.find_elements_by_css_selector('div.detail dt')
+        for item in items:
+            key = item.text
+            value_elem = item.find_element_by_xpath('./following-sibling::*')
+            if value_elem.tag_name != "dd":
+                continue
+            value = value_elem.text
+            details[key] = value
+        return details
