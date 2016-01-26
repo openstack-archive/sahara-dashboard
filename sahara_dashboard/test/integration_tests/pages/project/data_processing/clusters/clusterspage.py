@@ -11,10 +11,29 @@
 #    under the License.
 
 from openstack_dashboard.test.integration_tests.regions import forms
+from openstack_dashboard.test.integration_tests.regions import tables
 from selenium.common.exceptions import NoSuchElementException
 
 from sahara_dashboard.test.integration_tests.pages import basepage
 from sahara_dashboard.test.integration_tests.pages import mixins
+
+
+class ScaleForm(forms.BaseFormRegion):
+    def scale(self, node_name, new_count):
+        table = self.src_elem.find_element_by_id('groups_table')
+        count_input_xpath = ('.//input[@value="{}"]/ancestor::tr//'
+                             'input[starts-with(@name, "count_")]'.format(
+                                 node_name))
+        count_input = table.find_element_by_xpath(count_input_xpath)
+        count_input.clear()
+        count_input.send_keys(str(new_count))
+
+
+class ScaleMixin(object):
+    @tables.bind_row_action('scale')
+    def get_scale_form(self, button, row):
+        button.click()
+        return ScaleForm(self.driver, self.conf)
 
 
 class ClustersPage(mixins.PluginSelectMixin, mixins.DeleteMixin,
@@ -26,6 +45,10 @@ class ClustersPage(mixins.PluginSelectMixin, mixins.DeleteMixin,
 
     TABLE_NAME_COLUMN = 'name'
 
+    @classmethod
+    def get_table_mixins(cls):
+        return super(ClustersPage, cls).get_table_mixins() + (ScaleMixin,)
+
     @property
     def create_form(self):
         return forms.FormRegion(self.driver, self.conf,
@@ -33,6 +56,8 @@ class ClustersPage(mixins.PluginSelectMixin, mixins.DeleteMixin,
 
     def is_cluster_active(self, name):
         row = self._get_row_with_name(name)
+        if not row:
+            return False
         status_cell = row.cells['status']
         if status_cell.text.startswith('Error'):
             msg = status_cell.text
@@ -46,6 +71,10 @@ class ClustersPage(mixins.PluginSelectMixin, mixins.DeleteMixin,
                 pass
             raise Exception(msg)
         return status_cell.text == "Active"
+
+    def get_cluster_instances_count(self, name):
+        row = self._get_row_with_name(name)
+        return int(row.cells['instances_count'].text)
 
     def create(self, plugin_name, plugin_version, name, description=None,
                cluster_template=None, cluster_count=1, image=None,
@@ -62,6 +91,12 @@ class ClustersPage(mixins.PluginSelectMixin, mixins.DeleteMixin,
             form.image.text = image
         if keypair is not None:
             form.keypair.text = keypair
+        form.submit()
+
+    def scale(self, cluster_name, node_name, new_count):
+        row = self._get_row_with_name(cluster_name)
+        form = self.table.get_scale_form(row)
+        form.scale(node_name, new_count)
         form.submit()
 
     def wait_until_cluster_active(self, name, timeout=None):
