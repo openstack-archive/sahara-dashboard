@@ -76,5 +76,15 @@ class JobbinariesPage(basepage.BaseNavigationPage):
         create_job_binary_form.description.text = "test description"
         create_job_binary_form.submit()
 
+    def create_job_binary_from_file(self, binary_name, path):
+        form = self.job_binaries_table.create_job()
+
+        form.name.text = binary_name
+        form.type.text = "Internal database"
+        form.internal.text = "*Upload a new file"
+        form.file.src_elem.send_keys(path)
+        form.description.text = "test description"
+        form.submit()
+
     def is_job_binary_present(self, name):
         return bool(self._get_row_with_job_binary_name(name))

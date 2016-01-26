@@ -10,12 +10,15 @@
 #    License for the specific language governing permissions and limitations
 #    under the License.
 
+from datetime import datetime
+
 from oslo_config import cfg
 
 from openstack_dashboard.test.integration_tests import helpers
 
 
 class SaharaTestCase(helpers.AdminTestCase):
+
     @classmethod
     def setUpClass(cls):
         sahara_group = cfg.OptGroup(
@@ -25,6 +28,8 @@ class SaharaTestCase(helpers.AdminTestCase):
         cls.CONFIG.register_opt(fake_http_image, group=sahara_group)
         ssh_user = cfg.StrOpt('fake_image_ssh_user')
         cls.CONFIG.register_opt(ssh_user, group=sahara_group)
+        project_name = cfg.StrOpt('project_name', default='demo')
+        cls.CONFIG.register_opt(project_name, group=sahara_group)
         ip_pool = cfg.StrOpt('ip_pool', default="public")
         cls.CONFIG.register_opt(ip_pool, group=sahara_group)
         launch_timeout = cfg.IntOpt('launch_timeout', default=1200)
@@ -43,7 +48,12 @@ class SaharaTestCase(helpers.AdminTestCase):
 
     def setUp(self):
         super(SaharaTestCase, self).setUp()
-        # switch to demo project
+        self._suffix = datetime.now().strftime('%H-%M-%S-%f')[:12]
+        # select project
         driver = self.home_pg.driver
         driver.find_element_by_css_selector('li.dropdown').click()
-        driver.find_element_by_link_text('demo').click()
+        driver.find_element_by_link_text(
+            self.CONFIG.sahara.project_name).click()
+
+    def gen_name(self, name):
+        return '{}-{}'.format(name, self._suffix)
