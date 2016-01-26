@@ -22,7 +22,6 @@ from horizon import forms
 from horizon import tables
 from horizon import tabs
 from horizon.utils import memoized
-from horizon.utils.urlresolvers import reverse  # noqa
 
 from sahara_dashboard.api import sahara as saharaclient
 

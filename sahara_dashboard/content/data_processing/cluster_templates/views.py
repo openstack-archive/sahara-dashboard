@@ -11,6 +11,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from django.core.urlresolvers import reverse
 from django.core.urlresolvers import reverse_lazy
 from django.utils.translation import ugettext_lazy as _
 
@@ -19,7 +20,6 @@ from horizon import forms
 from horizon import tables
 from horizon import tabs
 from horizon.utils import memoized
-from horizon.utils.urlresolvers import reverse  # noqa
 from horizon import workflows
 
 from sahara_dashboard.api import sahara as saharaclient

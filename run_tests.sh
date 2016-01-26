@@ -348,6 +348,9 @@ function run_tests_all {
     ${command_wrapper} python -m coverage.__main__ erase
     coverage_run="python -m coverage.__main__ run -p"
   fi
+  if [ $with_selenium -eq 0 -a $integration -eq 0 ]; then
+      testopts="$testopts --exclude-dir=sahara_dashboard/test/integration_tests"
+  fi
   ${command_wrapper} ${coverage_run} $root/manage.py test sahara_dashboard --settings=sahara_dashboard.test.settings $testopts
   # get results of the Horizon tests
   SAHARA_DASHBOARD_RESULT=$?

@@ -15,6 +15,7 @@ from datetime import datetime
 import json
 import logging
 
+from django.core.urlresolvers import reverse
 from django.http import HttpResponse
 from django.utils.translation import ugettext as _
 from django.views.generic import base as django_base
@@ -24,7 +25,6 @@ from horizon import exceptions
 from horizon import tables
 from horizon import tabs
 from horizon.utils import memoized
-from horizon.utils.urlresolvers import reverse  # noqa
 from horizon import workflows
 
 from sahara_dashboard.api import sahara as saharaclient

@@ -12,6 +12,7 @@ discover # BSD
 mock>=1.2 # BSD
 mox3>=0.7.0 # Apache-2.0
 netifaces>=0.10.4 # MIT
+nose-exclude # LGPL
 python-subunit>=0.0.18 # Apache-2.0/BSD
 selenium # Apache-2.0
 sphinx!=1.2.0,!=1.3b1,<1.3,>=1.1.2 # BSD
