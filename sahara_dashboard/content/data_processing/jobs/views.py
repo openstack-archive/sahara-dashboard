@@ -82,8 +82,14 @@ class JobDetailsView(tabs.TabView):
 
     def get_context_data(self, **kwargs):
         context = super(JobDetailsView, self).get_context_data(**kwargs)
-        context['job'] = self.get_object()
+        job = self.get_object()
+        context['job'] = job
+        context['actions'] = self._get_actions(job)
         return context
+
+    def _get_actions(self, job):
+        table = _tables.JobsTable(self.request)
+        return table.render_row_actions(job)
 
 
 class LaunchJobView(workflows.WorkflowView):

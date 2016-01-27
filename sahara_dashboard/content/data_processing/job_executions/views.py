@@ -75,5 +75,11 @@ class JobExecutionDetailsView(tabs.TabView):
     def get_context_data(self, **kwargs):
         context = super(JobExecutionDetailsView, self)\
             .get_context_data(**kwargs)
-        context['job_execution'] = self.get_object()
+        job_execution = self.get_object()
+        context['job_execution'] = job_execution
+        context['actions'] = self._get_actions(job_execution)
         return context
+
+    def _get_actions(self, job_execution):
+        table = je_tables.JobExecutionsTable(self.request)
+        return table.render_row_actions(job_execution)

@@ -117,8 +117,14 @@ class JobBinaryDetailsView(tabs.TabView):
 
     def get_context_data(self, **kwargs):
         context = super(JobBinaryDetailsView, self).get_context_data(**kwargs)
-        context['job_binary'] = self.get_object()
+        job_binary = self.get_object()
+        context['job_binary'] = job_binary
+        context['actions'] = self._get_actions(job_binary)
         return context
+
+    def _get_actions(self, job_binary):
+        table = jb_tables.JobBinariesTable(self.request)
+        return table.render_row_actions(job_binary)
 
 
 class DownloadJobBinaryView(django.views.generic.View):

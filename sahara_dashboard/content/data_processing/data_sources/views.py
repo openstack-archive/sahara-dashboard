@@ -91,5 +91,11 @@ class DataSourceDetailsView(tabs.TabView):
 
     def get_context_data(self, **kwargs):
         context = super(DataSourceDetailsView, self).get_context_data(**kwargs)
-        context['data_source'] = self.get_object()
+        data_source = self.get_object()
+        context['data_source'] = data_source
+        context['actions'] = self._get_actions(data_source)
         return context
+
+    def _get_actions(self, data_source):
+        table = ds_tables.DataSourcesTable(self.request)
+        return table.render_row_actions(data_source)

@@ -75,8 +75,14 @@ class NodegroupTemplateDetailsView(tabs.TabView):
     def get_context_data(self, **kwargs):
         context = super(NodegroupTemplateDetailsView, self)\
             .get_context_data(**kwargs)
-        context['template'] = self.get_object()
+        node_group_template = self.get_object()
+        context['template'] = node_group_template
+        context['actions'] = self._get_actions(node_group_template)
         return context
+
+    def _get_actions(self, node_group_template):
+        table = _tables.NodegroupTemplatesTable(self.request)
+        return table.render_row_actions(node_group_template)
 
 
 class CreateNodegroupTemplateView(workflows.WorkflowView):
