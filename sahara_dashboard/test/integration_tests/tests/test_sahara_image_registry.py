@@ -23,6 +23,7 @@ class TestSaharaImageRegistry(helpers.TestCase):
         super(TestSaharaImageRegistry, self).setUp()
         image_pg = self.home_pg.go_to_compute_imagespage()
         image_pg.create_image(IMAGE_NAME)
+        image_pg.find_message_and_dismiss(messages.SUCCESS)
         image_pg.wait_until_image_active(IMAGE_NAME)
 
     def test_image_register_unregister(self):

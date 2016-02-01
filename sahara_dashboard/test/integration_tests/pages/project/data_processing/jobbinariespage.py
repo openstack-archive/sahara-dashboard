@@ -68,12 +68,12 @@ class JobbinariesPage(basepage.BaseNavigationPage):
     def create_job_binary(self, binary_name, script_name):
         create_job_binary_form = self.job_binaries_table.create_job()
 
-        create_job_binary_form.name = binary_name
-        create_job_binary_form.type = "Internal database"
-        create_job_binary_form.url = "*Create a script"
-        create_job_binary_form.script_name = script_name
-        create_job_binary_form.script = "test_script_text"
-        create_job_binary_form.description = "test description"
+        create_job_binary_form.name.text = binary_name
+        create_job_binary_form.type.text = "Internal database"
+        create_job_binary_form.internal.text = "*Create a script"
+        create_job_binary_form.script_name.text = script_name
+        create_job_binary_form.script.text = "test_script_text"
+        create_job_binary_form.description.text = "test description"
         create_job_binary_form.submit()
 
     def is_job_binary_present(self, name):
