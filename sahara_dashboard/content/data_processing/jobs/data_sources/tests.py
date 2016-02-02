@@ -100,7 +100,7 @@ class DataProcessingDataSourceTests(test.TestCase):
         data_source = self.data_sources.first()
         api_data = {
             'url': data_source.url,
-            'credentials': {'user': '', 'pass': ''},
+            'credentials': {'user': '', 'password': ''},
             'type': data_source.type,
             'name': data_source.name,
             'description': data_source.description,
