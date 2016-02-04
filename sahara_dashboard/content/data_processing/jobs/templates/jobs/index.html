@@ -102,7 +102,7 @@
                         var form = $(".hidden_create_field").closest("form");
                         var successful = false;
                         form.submit(function (e) {
-                            var oldHref = $(".configure-nodegrouptemplate-btn")[0].href;
+                            var oldHref = $(".create_cluster_btn")[0].href;
                             var plugin = $("#id_plugin_name option:selected").val();
                             var version = $("#id_" + plugin + "_version option:selected").val();
                             form.find(".close").click();

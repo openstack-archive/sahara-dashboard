@@ -337,7 +337,27 @@ def data(TEST):
         "updated_at": "2014-06-04T20:02:15",
         "user_keypair_id": "stackboxkp"
     }
-
+    cluster1_dict.update({
+        'verification': {
+            'status': 'CHECKING',
+            'checks': [
+                {
+                    'status': 'CHECKING',
+                    'name': "Stupid check",
+                    'description': "Stupid description",
+                    "created_at": "2015-03-27T15:51:54",
+                    "updated_at": "2015-03-27T15:59:34",
+                },
+                {
+                    'status': 'RED',
+                    'name': "Stupid check",
+                    'description': "Houston, we have a problem",
+                    "created_at": "2015-03-27T15:51:54",
+                    "updated_at": "2015-03-27T15:59:34",
+                },
+            ]
+        }
+    })
     cluster1 = clusters.Cluster(
         clusters.ClusterManager(None), cluster1_dict)
     TEST.clusters.add(cluster1)
@@ -346,6 +366,25 @@ def data(TEST):
     cluster2_dict.update({
         "id": "cl2",
         "name": "cl2_name",
+        'verification': {
+            'status': 'RED',
+            'checks': [
+                {
+                    'status': 'GREEN',
+                    'name': "Stupid check",
+                    'description': "Stupid description",
+                    "created_at": "2015-03-27T15:51:54",
+                    "updated_at": "2015-03-27T15:59:34",
+                },
+                {
+                    'status': 'RED',
+                    'name': "Stupid check",
+                    'description': "Houston, we have a problem",
+                    "created_at": "2015-03-27T15:51:54",
+                    "updated_at": "2015-03-27T15:59:34",
+                },
+            ]
+        },
         "provision_progress": [
             {
                 "created_at": "2015-03-27T15:51:54",

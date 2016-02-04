@@ -229,8 +229,20 @@ class EventLogTab(tabs.Tab):
         return kwargs
 
 
+class HealthChecksTab(tabs.Tab):
+    name = _("Cluster health checks")
+    slug = 'cluster_health_checks'
+    template_name = "clusters/_health_checks_table.html"
+
+    def get_context_data(self, request, **kwargs):
+        cluster_id = self.tab_group.kwargs['cluster_id']
+        kwargs['cluster_id'] = cluster_id
+        kwargs['data_update_url'] = request.get_full_path()
+        return kwargs
+
+
 class ClusterDetailsTabs(tabs.TabGroup):
     slug = "cluster_details"
     tabs = (GeneralTab, ClusterConfigsDetails, NodeGroupsTab, InstancesTab,
-            EventLogTab)
+            EventLogTab, HealthChecksTab)
     sticky = True

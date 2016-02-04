@@ -524,3 +524,7 @@ def job_execution_delete(request, jex_id):
 
 def job_types_list(request):
     return client(request).job_types.list()
+
+
+def verification_update(request, cluster_id, status):
+    return client(request).clusters.verification_update(cluster_id, status)

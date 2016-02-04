@@ -77,6 +77,29 @@ class DeleteCluster(tables.DeleteAction):
         saharaclient.cluster_delete(request, obj_id)
 
 
+class CheckClusterAction(tables.BatchAction):
+    name = 'check_cluster'
+
+    @staticmethod
+    def action_present(count):
+        return ungettext_lazy(
+            u"Start Verification",
+            u"Start Verifications",
+            count
+        )
+
+    @staticmethod
+    def action_past(count):
+        return ungettext_lazy(
+            u"Started Verification",
+            u"Started Verifications",
+            count
+        )
+
+    def action(self, request, datum_id):
+        saharaclient.verification_update(request, datum_id, status='START')
+
+
 class UpdateClusterShares(tables.LinkAction):
     name = "update_shares"
     verbose_name = _("Update Shares")
@@ -165,6 +188,22 @@ class MakeUnProtected(acl_utils.MakeUnProtected):
         saharaclient.cluster_update(request, datum_id, **update_kwargs)
 
 
+def get_health_status_info(cluster):
+    try:
+        return cluster.verification['status']
+    except (AttributeError, KeyError):
+        return 'UNKNOWN'
+
+
+def get_health_filter(health):
+    mapper = {'GREEN': 'success', 'YELLOW': 'warning',
+              'RED': 'danger', 'CHECKING': 'info'}
+
+    label = mapper.get(health, 'default')
+    return render_to_string('clusters/_health_status.html',
+                            {'status': health, 'label': label})
+
+
 class ClustersTable(tables.DataTable):
 
     name = tables.Column("name",
@@ -183,6 +222,10 @@ class ClustersTable(tables.DataTable):
                            verbose_name=_("Status"),
                            status=True,
                            filters=(rich_status_filter,))
+
+    health = tables.Column(get_health_status_info,
+                           verbose_name=_("Health"),
+                           filters=(get_health_filter,))
 
     instances_count = tables.Column(get_instances_count,
                                     verbose_name=_("Instances Count"))
@@ -203,4 +246,5 @@ class ClustersTable(tables.DataTable):
         row_actions = (ScaleCluster,
                        UpdateClusterShares,
                        DeleteCluster, MakePublic, MakePrivate,
-                       MakeProtected, MakeUnProtected)
+                       MakeProtected, MakeUnProtected,
+                       CheckClusterAction)

@@ -170,6 +170,49 @@ class ClusterEventsView(django_base.View):
                             content_type='application/json')
 
 
+class ClusterHealthChecksView(django_base.View):
+    _date_format = "%Y-%m-%dT%H:%M:%S"
+    _status_in_progress = 'CHECKING'
+
+    def _get_checks(self, cluster):
+        try:
+            return cluster.verification['checks']
+        except (AttributeError, KeyError):
+            return []
+
+    def get(self, request, *args, **kwargs):
+
+        time_helpers = helpers.Helpers(request)
+        cluster_id = kwargs.get("cluster_id")
+        need_update, not_done_count, checks = False, 0, []
+        mapping_to_label_type = {'red': 'danger', 'yellow': 'warning',
+                                 'green': 'success', 'checking': 'info'}
+        try:
+            cluster = saharaclient.cluster_get(request, cluster_id)
+            for check in self._get_checks(cluster):
+                check['label'] = mapping_to_label_type.get(
+                    check['status'].lower())
+
+                if not check['description']:
+                    check['description'] = _("No description")
+
+                if check['status'] == self._status_in_progress:
+                    not_done_count += 1
+                check['duration'] = time_helpers.get_duration(
+                    check['created_at'], check['updated_at'])
+                checks.append(check)
+        except APIException:
+            need_update = False
+            checks = []
+        if not_done_count > 0:
+            need_update = True
+        context = {"checks": checks,
+                   "need_update": need_update}
+
+        return HttpResponse(json.dumps(context),
+                            content_type='application/json')
+
+
 class CreateClusterView(workflows.WorkflowView):
     workflow_class = create_flow.CreateCluster
     success_url = \

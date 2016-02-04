@@ -73,6 +73,53 @@ class DataProcessingClusterTests(test.TestCase):
         self.assertEqual(3, step_1["completed"])
         self.assertEqual(0, len(step_1["events"]))
 
+    @test.create_stubs({api.sahara: ('cluster_get', )})
+    def test_health_checks_tab_sc1(self):
+        cluster = self.clusters.list()[-1]
+        api.sahara.cluster_get(IsA(http.HttpRequest),
+                               "cl2").AndReturn(cluster)
+        self.mox.ReplayAll()
+
+        url = reverse(
+            'horizon:project:data_processing.clusters:verifications',
+            args=["cl2"])
+        res = self.client.get(url)
+        data = jsonutils.loads(res.content)
+
+        self.assertFalse(data['need_update'])
+        check0 = data['checks'][0]
+        check1 = data['checks'][1]
+        self.assertEqual('success', check0['label'])
+        self.assertEqual('danger', check1['label'])
+
+        self.assertEqual('GREEN', check0['status'])
+        self.assertEqual('RED', check1['status'])
+        self.assertEqual('0:07:40', check0['duration'])
+
+    @test.create_stubs({api.sahara: ('cluster_get', )})
+    def test_health_checks_tab_sc2(self):
+        cluster = self.clusters.list()[0]
+        cl1_id = 'ec9a0d28-5cfb-4028-a0b5-40afe23f1533'
+        api.sahara.cluster_get(IsA(http.HttpRequest),
+                               cl1_id).AndReturn(cluster)
+        self.mox.ReplayAll()
+
+        url = reverse(
+            'horizon:project:data_processing.clusters:verifications',
+            args=[cl1_id])
+        res = self.client.get(url)
+        data = jsonutils.loads(res.content)
+
+        self.assertTrue(data['need_update'])
+        check0 = data['checks'][0]
+        check1 = data['checks'][1]
+        self.assertEqual('info', check0['label'])
+        self.assertEqual('danger', check1['label'])
+
+        self.assertEqual('CHECKING', check0['status'])
+        self.assertEqual('RED', check1['status'])
+        self.assertEqual('Houston, we have a problem', check1['description'])
+
     @test.create_stubs({api.sahara: ('cluster_list',
                                      'cluster_delete')})
     def test_delete(self):

@@ -415,8 +415,7 @@ class NewClusterConfigAction(c_flow.GeneralConfigAction):
 
     class Meta(object):
         name = _("Configure Cluster")
-        help_text_template = (
-            "data_processing.clusters/_configure_general_help.html")
+        help_text_template = "clusters/_configure_general_help.html"
 
 
 class ClusterGeneralConfig(workflows.Step):

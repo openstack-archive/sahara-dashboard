@@ -29,7 +29,8 @@ ADD_INSTALLED_APPS = \
      "sahara_dashboard.content.data_processing.clusters", ]
 
 ADD_JS_FILES = [
-    'dashboard/project/data_processing/data_processing.event_log.js'
+    'dashboard/project/data_processing/data_processing.event_log.js',
+    'dashboard/project/data_processing/data_processing.verifications.js'
 ]
 
 ADD_EXCEPTIONS = {
