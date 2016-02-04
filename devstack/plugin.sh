@@ -3,11 +3,11 @@
 SAHARA_DASH_DIR=$(cd $(dirname $BASH_SOURCE)/.. && pwd)
 
 function install_sahara_dashboard {
-    sudo pip install --upgrade ${SAHARA_DASH_DIR}
+    setup_develop --upgrade ${SAHARA_DASH_DIR}
+}
 
-    cp -a ${SAHARA_DASH_DIR}/sahara_dashboard/enabled/* ${DEST}/horizon/openstack_dashboard/enabled/
-    python ${DEST}/horizon/manage.py collectstatic --noinput
-    python ${DEST}/horizon/manage.py compress --force
+function configure_sahara_dashboard {
+    cp -a ${SAHARA_DASH_DIR}/sahara_dashboard/enabled/* ${DEST}/horizon/openstack_dashboard/local/enabled/
 }
 
 # check for service enabled
@@ -20,13 +20,13 @@ if is_service_enabled sahara-dashboard; then
 
     elif [[ "$1" == "stack" && "$2" == "install"  ]]; then
         # Perform installation of service source
-        # no-op
-        :
+        echo_summary "Installing Sahara Dashboard"
+        install_sahara_dashboard
 
     elif [[ "$1" == "stack" && "$2" == "post-config"  ]]; then
         # Configure after the other layer 1 and 2 services have been configured
-        echo_summary "Installing Sahara Dashboard"
-        install_sahara_dashboard
+        echo_summary "Configuring Sahara Dashboard"
+        configure_sahara_dashboard
 
     elif [[ "$1" == "stack" && "$2" == "extra"  ]]; then
         # Initialize and start the app-catalog-ui service
