@@ -103,7 +103,7 @@ def data(TEST):
 
     # Nodegroup_Templates.
     ngt1_dict = {
-        "created_at": "2014-06-04 14:01:03.701243",
+        "created_at": "2014-06-04T14:01:03",
         "description": None,
         "flavor_id": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
         "availability_zone": None,
@@ -145,7 +145,7 @@ def data(TEST):
     ct1_dict = {
         "anti_affinity": [],
         "cluster_configs": {},
-        "created_at": "2014-06-04 14:01:06.460711",
+        "created_at": "2014-06-04T14:01:06",
         "default_image_id": None,
         "description": "Sample description",
         "hadoop_version": "1.2.1",
@@ -156,7 +156,7 @@ def data(TEST):
         "node_groups": [
             {
                 "count": 1,
-                "created_at": "2014-06-04 14:01:06.462512",
+                "created_at": "2014-06-04T14:01:06",
                 "flavor_id": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
                 "floating_ip_pool": None,
                 "image_id": None,
@@ -182,7 +182,7 @@ def data(TEST):
             },
             {
                 "count": 2,
-                "created_at": "2014-06-04 14:01:06.463214",
+                "created_at": "2014-06-04T14:01:06",
                 "flavor_id": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
                 "floating_ip_pool": None,
                 "image_id": None,
@@ -219,7 +219,7 @@ def data(TEST):
         "anti_affinity": [],
         "cluster_configs": {},
         "cluster_template_id": "a2c3743f-31a2-4919-8d02-792138a87a98",
-        "created_at": "2014-06-04 20:02:14.051328",
+        "created_at": "2014-06-04T20:02:14",
         "default_image_id": "9eb4643c-dca8-4ea7-92d2-b773f88a8dc6",
         "description": "",
         "hadoop_version": "1.2.1",
@@ -233,13 +233,13 @@ def data(TEST):
         "node_groups": [
             {
                 "count": 1,
-                "created_at": "2014-06-04 20:02:14.053153",
+                "created_at": "2014-06-04T20:02:14",
                 "flavor_id": "0",
                 "floating_ip_pool": None,
                 "image_id": None,
                 "instances": [
                     {
-                        "created_at": "2014-06-04 20:02:14.834529",
+                        "created_at": "2014-06-04T20:02:14",
                         "id": "c3b8004b-7063-4b99-a082-820cdc6e961c",
                         "instance_id": "a45f5495-4a10-4f17-8fae",
                         "instance_name": "cercluster-master-001",
@@ -259,7 +259,7 @@ def data(TEST):
                     "hiveserver",
                     "oozie"
                 ],
-                "updated_at": "2014-06-04 20:02:14.841760",
+                "updated_at": "2014-06-04T20:02:14",
                 "volume_mount_prefix": "/volumes/disk",
                 "volumes_per_node": 0,
                 "volumes_size": 0,
@@ -273,13 +273,13 @@ def data(TEST):
             },
             {
                 "count": 2,
-                "created_at": "2014-06-04 20:02:14.053849",
+                "created_at": "2014-06-04T20:02:14",
                 "flavor_id": "0",
                 "floating_ip_pool": None,
                 "image_id": None,
                 "instances": [
                     {
-                        "created_at": "2014-06-04 20:02:15.097655",
+                        "created_at": "2014-06-04T20:02:15",
                         "id": "6a8ae0b1-bb28-4de2-bfbb-bdd3fd2d72b2",
                         "instance_id": "38bf8168-fb30-483f-8d52",
                         "instance_name": "cercluster-workers-001",
@@ -289,7 +289,7 @@ def data(TEST):
                         "volumes": []
                     },
                     {
-                        "created_at": "2014-06-04 20:02:15.344515",
+                        "created_at": "2014-06-04T20:02:15",
                         "id": "17b98ed3-a776-467a-90cf-9f46a841790b",
                         "instance_id": "85606938-8e53-46a5-a50b",
                         "instance_name": "cercluster-workers-002",
@@ -306,7 +306,7 @@ def data(TEST):
                     "datanode",
                     "tasktracker"
                 ],
-                "updated_at": "2014-06-04 20:02:15.355745",
+                "updated_at": "2014-06-04T20:02:15",
                 "volume_mount_prefix": "/volumes/disk",
                 "volumes_per_node": 0,
                 "volumes_size": 0,
@@ -324,7 +324,7 @@ def data(TEST):
         "status_description": "",
         "tenant_id": "429ad8447c2d47bc8e0382d244e1d1df",
         "trust_id": None,
-        "updated_at": "2014-06-04 20:02:15.446087",
+        "updated_at": "2014-06-04T20:02:15",
         "user_keypair_id": "stackboxkp"
     }
 
@@ -381,7 +381,7 @@ def data(TEST):
 
     # Data Sources.
     data_source1_dict = {
-        "created_at": "2014-06-04 14:01:10.371562",
+        "created_at": "2014-06-04T14:01:10",
         "description": "sample output",
         "id": "426fb01c-5c7e-472d-bba2-b1f0fe7e0ede",
         "name": "sampleOutput",
@@ -392,7 +392,7 @@ def data(TEST):
     }
 
     data_source2_dict = {
-        "created_at": "2014-06-05 15:01:12.331361",
+        "created_at": "2014-06-05T15:01:12",
         "description": "second sample output",
         "id": "ab3413-adfb-bba2-123456785675",
         "name": "sampleOutput2",
@@ -411,7 +411,7 @@ def data(TEST):
 
     # Job Binaries.
     job_binary1_dict = {
-        "created_at": "2014-06-05 18:15:15.581285",
+        "created_at": "2014-06-05T18:15:15",
         "description": "",
         "id": "3f3a07ac-7d6f-49e8-8669-40b25ee891b7",
         "name": "example.pig",
@@ -421,7 +421,7 @@ def data(TEST):
     }
 
     job_binary2_dict = {
-        "created_at": "2014-10-10 13:12:15.583631",
+        "created_at": "2014-10-10T13:12:15",
         "description": "Test for spaces in name",
         "id": "abcdef56-1234-abcd-abcd-defabcdaedcb",
         "name": "example with spaces.pig",
@@ -431,7 +431,7 @@ def data(TEST):
     }
 
     job_binary3_dict = {
-        "created_at": "2015-10-10 13:12:15.583631",
+        "created_at": "2015-10-10T13:12:15",
         "description": "Test Manila",
         "id": "abcdef56-1234-abcd-1345-defabcdaedcb",
         "name": "manilashared",
@@ -453,12 +453,12 @@ def data(TEST):
 
     # Jobs.
     job1_dict = {
-        "created_at": "2014-06-05 19:23:59.637165",
+        "created_at": "2014-06-05T19:23:59",
         "description": "",
         "id": "a077b851-46be-4ad7-93c3-2d83894546ef",
         "libs": [
             {
-                "created_at": "2014-06-05 19:23:42.742057",
+                "created_at": "2014-06-05T19:23:42",
                 "description": "",
                 "id": "ab140807-59f8-4235-b4f2-e03daf946256",
                 "name": "udf.jar",
@@ -469,7 +469,7 @@ def data(TEST):
         ],
         "mains": [
             {
-                "created_at": "2014-06-05 18:15:15.581285",
+                "created_at": "2014-06-05T18:15:15",
                 "description": "",
                 "id": "3f3a07ac-7d6f-49e8-8669-40b25ee891b7",
                 "name": "example.pig",
@@ -492,7 +492,7 @@ def data(TEST):
     # Job Executions.
     jobex1_dict = {
         "cluster_id": "ec9a0d28-5cfb-4028-a0b5-40afe23f1533",
-        "created_at": "2014-06-05 20:03:06.195937",
+        "created_at": "2014-06-05T20:03:06",
         "end_time": None,
         "id": "4b6c1cbf-c713-49d3-8025-808a87c514a6",
         "info": {
@@ -572,7 +572,7 @@ def data(TEST):
         "return_code": None,
         "start_time": "2014-06-05T16:03:32",
         "tenant_id": "429ad8447c2d47bc8e0382d244e1d1df",
-        "updated_at": "2014-06-05 20:03:46.438248",
+        "updated_at": "2014-06-05T20:03:46",
         "cluster_name_set": True,
         "job_name_set": True,
         "cluster_name": "cluster-1",
