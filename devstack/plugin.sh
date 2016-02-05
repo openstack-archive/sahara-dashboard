@@ -3,7 +3,7 @@
 SAHARA_DASH_DIR=$(cd $(dirname $BASH_SOURCE)/.. && pwd)
 
 function install_sahara_dashboard {
-    setup_develop --upgrade ${SAHARA_DASH_DIR}
+    setup_develop ${SAHARA_DASH_DIR}
 }
 
 function configure_sahara_dashboard {
