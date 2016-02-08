@@ -32,6 +32,7 @@ VENV = os.path.join(ROOT, '.venv')
 WITH_VENV = os.path.join(ROOT, 'tools', 'with_venv.sh')
 PIP_REQUIRES = os.path.join(ROOT, 'requirements.txt')
 TEST_REQUIRES = os.path.join(ROOT, 'test-requirements.txt')
+PIP_INSTALL_WRAPPER = os.path.join(ROOT, 'tools', 'pip_install.sh')
 
 
 def die(message, *args):
@@ -113,11 +114,16 @@ def pip_install(*args):
     run_command(args, redirect_output=False)
 
 
+def pip_install_with_horizon(*args):
+    args = [WITH_VENV, PIP_INSTALL_WRAPPER, 'unconstrained'] + list(args)
+    run_command(args, redirect_output=False)
+
+
 def install_dependencies(venv=VENV):
     print "Installing dependencies..."
     print "(This may take several minutes, don't panic)"
-    pip_install('-r', TEST_REQUIRES)
-    pip_install('-r', PIP_REQUIRES)
+    pip_install_with_horizon('-r', TEST_REQUIRES)
+    pip_install_with_horizon('-r', PIP_REQUIRES)
 
     # Tell the virtual env how to "import dashboard"
     py = 'python%d.%d' % (sys.version_info[0], sys.version_info[1])
