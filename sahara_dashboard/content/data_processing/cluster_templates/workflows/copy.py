@@ -91,11 +91,17 @@ class CopyClusterTemplate(create_flow.ConfigureClusterTemplate):
                     fields['use_autoconfig'].initial = (
                         self.template.use_autoconfig)
                     fields["description"].initial = self.template.description
+
                 elif isinstance(step, create_flow.SelectClusterShares):
                     fields = step.action.fields
                     fields["shares"].initial = (
                         self._get_share_defaults(fields["shares"].choices)
                     )
+                    fields['is_public'].initial = (
+                        self.template.is_public)
+                    fields['is_protected'].initial = (
+                        self.template.is_protected)
+
         except Exception:
             exceptions.handle(request,
                               _("Unable to fetch template to copy."))

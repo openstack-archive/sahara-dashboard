@@ -35,6 +35,8 @@ from openstack_dashboard.dashboards.project.volumes \
 from sahara_dashboard.api import manila as manilaclient
 from sahara_dashboard.api import sahara as saharaclient
 from sahara_dashboard.content.data_processing.utils \
+    import acl as acl_utils
+from sahara_dashboard.content.data_processing.utils \
     import helpers
 from sahara_dashboard.content.data_processing.utils \
     import workflow_helpers
@@ -160,6 +162,11 @@ class GeneralConfigAction(workflows.Action):
             help_text=_("Sahara will use instances of this node group to "
                         "access other cluster instances."),
             required=False)
+
+        self.fields['is_public'] = acl_utils.get_is_public_form(
+            _("node group template"))
+        self.fields['is_protected'] = acl_utils.get_is_protected_form(
+            _("node group template"))
 
         self.fields["plugin_name"] = forms.CharField(
             widget=forms.HiddenInput(),
@@ -516,7 +523,10 @@ class ConfigureNodegroupTemplate(workflow_helpers.ServiceParametersWorkflow,
                 is_proxy_gateway=context["general_proxygateway"],
                 availability_zone=context["general_availability_zone"],
                 use_autoconfig=context['general_use_autoconfig'],
-                shares=ngt_shares)
+                shares=ngt_shares,
+                is_public=context['general_is_public'],
+                is_protected=context['general_is_protected']
+            )
 
             hlps = helpers.Helpers(request)
             if hlps.is_from_guide():

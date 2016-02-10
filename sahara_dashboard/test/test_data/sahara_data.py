@@ -134,6 +134,8 @@ def data(TEST):
         "is_proxy_gateway": False,
         "use_autoconfig": True,
         "shares": [],
+        'is_public': False,
+        'is_protected': False,
     }
 
     ngt1 = node_group_templates.NodeGroupTemplate(
@@ -153,6 +155,8 @@ def data(TEST):
         "name": "sample-cluster-template",
         "neutron_management_network": None,
         "use_autoconfig": True,
+        'is_public': False,
+        'is_protected': False,
         "node_groups": [
             {
                 "count": 1,
@@ -179,6 +183,8 @@ def data(TEST):
                 "volumes_availability_zone": None,
                 "use_autoconfig": True,
                 "is_proxy_gateway": False,
+                'is_public': False,
+                'is_protected': False,
             },
             {
                 "count": 2,
@@ -201,7 +207,9 @@ def data(TEST):
                 "volume_local_to_instance": False,
                 "volumes_availability_zone": None,
                 "use_autoconfig": True,
-                "is_proxy_gateway": False
+                "is_proxy_gateway": False,
+                'is_public': False,
+                'is_protected': False,
             }
         ],
         "shares": [],
@@ -230,6 +238,8 @@ def data(TEST):
         "name": "cercluster",
         "neutron_management_network": None,
         "use_autoconfig": True,
+        "is_public": False,
+        "is_protected": False,
         "node_groups": [
             {
                 "count": 1,
@@ -388,7 +398,9 @@ def data(TEST):
         "tenant_id": "429ad8447c2d47bc8e0382d244e1d1df",
         "type": "swift",
         "updated_at": None,
-        "url": "swift://example.sahara/output"
+        "url": "swift://example.sahara/output",
+        'is_public': False,
+        'is_protected': False
     }
 
     data_source2_dict = {
@@ -399,7 +411,9 @@ def data(TEST):
         "tenant_id": "429ad8447c2d47bc8e0382d244e1d1df",
         "type": "hdfs",
         "updated_at": None,
-        "url": "hdfs://example.sahara/output"
+        "url": "hdfs://example.sahara/output",
+        'is_public': False,
+        'is_protected': False
     }
 
     data_source1 = data_sources.DataSources(
@@ -417,7 +431,9 @@ def data(TEST):
         "name": "example.pig",
         "tenant_id": "429ad8447c2d47bc8e0382d244e1d1df",
         "updated_at": None,
-        "url": "internal-db://80121dea-f8bd-4ad3-bcc7-096f4bfc722d"
+        "url": "internal-db://80121dea-f8bd-4ad3-bcc7-096f4bfc722d",
+        'is_public': False,
+        'is_protected': False
     }
 
     job_binary2_dict = {
@@ -427,7 +443,9 @@ def data(TEST):
         "name": "example with spaces.pig",
         "tenant_id": "429ad8447c2d47bc8e0382d244e1d1df",
         "updated_at": None,
-        "url": "internal-db://abcdef56-1234-abcd-abcd-defabcdaedcb"
+        "url": "internal-db://abcdef56-1234-abcd-abcd-defabcdaedcb",
+        'is_public': False,
+        'is_protected': False
     }
 
     job_binary3_dict = {

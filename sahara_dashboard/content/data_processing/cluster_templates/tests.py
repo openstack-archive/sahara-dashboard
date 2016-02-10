@@ -134,7 +134,9 @@ class DataProcessingClusterTemplateTests(test.TestCase):
                                            node_groups=ct.node_groups,
                                            anti_affinity=ct.anti_affinity,
                                            use_autoconfig=False,
-                                           shares=ct.shares)\
+                                           shares=ct.shares,
+                                           is_public=False,
+                                           is_protected=False) \
             .AndReturn(new_ct)
         self.mox.ReplayAll()
 

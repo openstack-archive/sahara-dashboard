@@ -17,6 +17,8 @@ from django.utils.translation import ungettext_lazy
 from horizon import tables
 
 from sahara_dashboard.api import sahara as saharaclient
+from sahara_dashboard.content.data_processing.utils \
+    import acl as acl_utils
 
 
 class CreateDataSource(tables.LinkAction):
@@ -55,6 +57,30 @@ class EditDataSource(tables.LinkAction):
     classes = ("ajax-modal",)
 
 
+class MakePublic(acl_utils.MakePublic):
+    def change_rule_method(self, request, datum_id, **update_kwargs):
+        saharaclient.data_source_update(
+            request, datum_id, update_kwargs)
+
+
+class MakePrivate(acl_utils.MakePrivate):
+    def change_rule_method(self, request, datum_id, **update_kwargs):
+        saharaclient.data_source_update(
+            request, datum_id, update_kwargs)
+
+
+class MakeProtected(acl_utils.MakeProtected):
+    def change_rule_method(self, request, datum_id, **update_kwargs):
+        saharaclient.data_source_update(
+            request, datum_id, update_kwargs)
+
+
+class MakeUnProtected(acl_utils.MakeUnProtected):
+    def change_rule_method(self, request, datum_id, **update_kwargs):
+        saharaclient.data_source_update(
+            request, datum_id, update_kwargs)
+
+
 class DataSourcesTable(tables.DataTable):
     name = tables.Column("name",
                          verbose_name=_("Name"),
@@ -70,5 +96,13 @@ class DataSourcesTable(tables.DataTable):
         verbose_name = _("Data Sources")
         table_actions = (CreateDataSource,
                          DeleteDataSource)
+        table_actions_menu = (MakePublic,
+                              MakePrivate,
+                              MakeProtected,
+                              MakeUnProtected)
         row_actions = (DeleteDataSource,
-                       EditDataSource,)
+                       EditDataSource,
+                       MakePublic,
+                       MakePrivate,
+                       MakeProtected,
+                       MakeUnProtected)

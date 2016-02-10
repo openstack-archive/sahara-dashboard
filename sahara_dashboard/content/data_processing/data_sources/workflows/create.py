@@ -19,7 +19,11 @@ from horizon import workflows
 
 from sahara_dashboard.api import manila as manilaclient
 from sahara_dashboard.api import sahara as saharaclient
-from sahara_dashboard.content.data_processing.utils import helpers
+
+from sahara_dashboard.content.data_processing.utils \
+    import acl as acl_utils
+from sahara_dashboard.content.data_processing \
+    .utils import helpers
 
 
 class GeneralConfigAction(workflows.Action):
@@ -75,6 +79,9 @@ class GeneralConfigAction(workflows.Action):
         label=_("Description"),
         required=False,
         widget=forms.Textarea(attrs={'rows': 4}))
+
+    is_public = acl_utils.get_is_public_form(_("data source"))
+    is_protected = acl_utils.get_is_protected_form(_("data source"))
 
     def __init__(self, request, *args, **kwargs):
         super(GeneralConfigAction, self).__init__(request, *args, **kwargs)
@@ -145,7 +152,10 @@ class CreateDataSource(workflows.Workflow):
                 context["general_data_source_type"],
                 context["source_url"],
                 context.get("general_data_source_credential_user", None),
-                context.get("general_data_source_credential_pass", None))
+                context.get("general_data_source_credential_pass", None),
+                is_public=context['general_is_public'],
+                is_protected=context['general_is_protected']
+            )
 
             hlps = helpers.Helpers(request)
             if hlps.is_from_guide():

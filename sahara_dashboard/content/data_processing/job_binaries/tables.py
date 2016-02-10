@@ -17,6 +17,8 @@ from django.utils.translation import ungettext_lazy
 from horizon import tables
 
 from sahara_dashboard.api import sahara as saharaclient
+from sahara_dashboard.content.data_processing.utils \
+    import acl as acl_utils
 
 from saharaclient.api import base as api_base
 
@@ -79,6 +81,26 @@ class EditJobBinary(tables.LinkAction):
     classes = ("btn-edit", "ajax-modal",)
 
 
+class MakePublic(acl_utils.MakePublic):
+    def change_rule_method(self, request, datum_id, **update_kwargs):
+        saharaclient.job_binary_update(request, datum_id, update_kwargs)
+
+
+class MakePrivate(acl_utils.MakePrivate):
+    def change_rule_method(self, request, datum_id, **update_kwargs):
+        saharaclient.job_binary_update(request, datum_id, update_kwargs)
+
+
+class MakeProtected(acl_utils.MakeProtected):
+    def change_rule_method(self, request, datum_id, **update_kwargs):
+        saharaclient.job_binary_update(request, datum_id, update_kwargs)
+
+
+class MakeUnProtected(acl_utils.MakeUnProtected):
+    def change_rule_method(self, request, datum_id, **update_kwargs):
+        saharaclient.job_binary_update(request, datum_id, update_kwargs)
+
+
 class JobBinariesTable(tables.DataTable):
     name = tables.Column(
         "name",
@@ -93,5 +115,11 @@ class JobBinariesTable(tables.DataTable):
         name = "job_binaries"
         verbose_name = _("Job Binaries")
         table_actions = (CreateJobBinary,
-                         DeleteJobBinary)
-        row_actions = (DeleteJobBinary, DownloadJobBinary, EditJobBinary)
+                         DeleteJobBinary,)
+        table_actions_menu = (MakePublic,
+                              MakePrivate,
+                              MakeProtected,
+                              MakeUnProtected)
+        row_actions = (DeleteJobBinary, DownloadJobBinary, EditJobBinary,
+                       MakePublic, MakePrivate, MakeProtected,
+                       MakeUnProtected)

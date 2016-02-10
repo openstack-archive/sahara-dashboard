@@ -17,6 +17,8 @@ from horizon import workflows
 
 from openstack_dashboard.api import nova
 
+from sahara_dashboard.content.data_processing.utils \
+    import acl as acl_utils
 from sahara_dashboard.content.data_processing.utils import neutron_support
 import sahara_dashboard.content.data_processing.utils. \
     workflow_helpers as whelpers
@@ -103,6 +105,11 @@ class GeneralConfigAction(workflows.Action):
                 choices=self.populate_neutron_management_network_choices(
                     request, {})
             )
+
+        self.fields['is_public'] = acl_utils.get_is_public_form(
+            _("cluster"))
+        self.fields['is_protected'] = acl_utils.get_is_protected_form(
+            _("cluster"))
 
         self.fields["plugin_name"] = forms.CharField(
             widget=forms.HiddenInput(),
@@ -244,7 +251,10 @@ class ConfigureCluster(whelpers.StatusFormatMixin, workflows.Workflow):
                 node_groups=node_groups,
                 user_keypair_id=user_keypair,
                 count=context['general_cluster_count'],
-                net_id=context.get("general_neutron_management_network", None))
+                net_id=context.get("general_neutron_management_network", None),
+                is_public=context['general_is_public'],
+                is_protected=context['general_is_protected']
+            )
             return True
         except api_base.APIException as e:
             self.error_description = str(e)

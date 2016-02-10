@@ -4,12 +4,18 @@
   <dl class="dl-horizontal">
       <dt>{% trans "Name" %}</dt>
       <dd>{{ job.name }}</dd>
+      <dt>{% trans "Project ID" %}</dt>
+      <dd>{{ job.tenant_id }}</dd>
       <dt>{% trans "ID" %}</dt>
       <dd>{{ job.id }}</dd>
       <dt>{% trans "Type" %}</dt>
       <dd>{{ job.type }}</dd>
       <dt>{% trans "Description" %}</dt>
       <dd>{{ job.description|default:_("None") }}</dd>
+      <dt>{% trans "Public" %}</dt>
+      <dd>{{ job.is_public|yesno }}</dd>
+      <dt>{% trans "Protected" %}</dt>
+      <dd>{{ job.is_protected|yesno }}</dd>
       <dt>{% trans "Mains" %}</dt>
       {% for main in job.mains %}
         <dd><a href="{% url 'horizon:project:data_processing.job_binaries:details' main.id  %}">{{ main.name }}</a></dd>

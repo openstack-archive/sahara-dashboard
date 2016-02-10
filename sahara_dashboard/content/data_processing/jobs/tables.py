@@ -19,6 +19,8 @@ from django.utils.translation import ungettext_lazy
 from horizon import tables
 
 from sahara_dashboard.api import sahara as saharaclient
+from sahara_dashboard.content.data_processing.utils \
+    import acl as acl_utils
 
 
 class JobsFilterAction(tables.FilterAction):
@@ -96,6 +98,26 @@ class ChoosePlugin(tables.LinkAction):
         return "?".join([base_url, params])
 
 
+class MakePublic(acl_utils.MakePublic):
+    def change_rule_method(self, request, datum_id, **update_kwargs):
+        saharaclient.job_update(request, datum_id, **update_kwargs)
+
+
+class MakePrivate(acl_utils.MakePrivate):
+    def change_rule_method(self, request, datum_id, **update_kwargs):
+        saharaclient.job_update(request, datum_id, **update_kwargs)
+
+
+class MakeProtected(acl_utils.MakeProtected):
+    def change_rule_method(self, request, datum_id, **update_kwargs):
+        saharaclient.job_update(request, datum_id, **update_kwargs)
+
+
+class MakeUnProtected(acl_utils.MakeUnProtected):
+    def change_rule_method(self, request, datum_id, **update_kwargs):
+        saharaclient.job_update(request, datum_id, **update_kwargs)
+
+
 class JobsTable(tables.DataTable):
     name = tables.Column("name",
                          verbose_name=_("Name"),
@@ -109,4 +131,8 @@ class JobsTable(tables.DataTable):
         name = "jobs"
         verbose_name = _("Job Templates")
         table_actions = (CreateJob, DeleteJob, JobsFilterAction,)
-        row_actions = (LaunchJobExistingCluster, ChoosePlugin, DeleteJob,)
+        table_actions_menu = [MakePublic, MakePrivate, MakeProtected,
+                              MakeUnProtected]
+        row_actions = (LaunchJobExistingCluster, ChoosePlugin, DeleteJob,
+                       MakePublic, MakePrivate, MakeProtected,
+                       MakeUnProtected)
