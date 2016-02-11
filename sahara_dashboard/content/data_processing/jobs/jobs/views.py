@@ -37,7 +37,7 @@ class JobDetailsView(tabs.TabView):
             return saharaclient.job_execution_get(self.request, jex_id)
         except Exception:
             msg = _('Unable to retrieve details for job "%s".') % jex_id
-            redirect = reverse("horizon:project:data_processing.jobs:jobs-tab")
+            redirect = self.get_redirect_url()
             exceptions.handle(self.request, msg, redirect=redirect)
 
     def get_context_data(self, **kwargs):
@@ -45,9 +45,14 @@ class JobDetailsView(tabs.TabView):
             .get_context_data(**kwargs)
         job_execution = self.get_object()
         context['job_execution'] = job_execution
+        context['url'] = self.get_redirect_url()
         context['actions'] = self._get_actions(job_execution)
         return context
 
     def _get_actions(self, job_execution):
         table = je_tables.JobsTable(self.request)
         return table.render_row_actions(job_execution)
+
+    @staticmethod
+    def get_redirect_url():
+        return reverse("horizon:project:data_processing.jobs:jobs-tab")

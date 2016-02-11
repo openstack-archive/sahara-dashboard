@@ -53,8 +53,7 @@ class JobTemplateDetailsView(tabs.TabView):
             return saharaclient.job_get(self.request, j_id)
         except Exception:
             msg = _('Unable to retrieve details for job template "%s".') % j_id
-            redirect = reverse(
-                "horizon:project:data_processing.jobs:jobs")
+            redirect = self.get_redirect_url()
             exceptions.handle(self.request, msg, redirect=redirect)
 
     def get_context_data(self, **kwargs):
@@ -62,12 +61,17 @@ class JobTemplateDetailsView(tabs.TabView):
             get_context_data(**kwargs)
         job_template = self.get_object()
         context['job'] = job_template
+        context['url'] = self.get_redirect_url()
         context['actions'] = self._get_actions(job_template)
         return context
 
     def _get_actions(self, job_template):
         table = jt_tables.JobTemplatesTable(self.request)
         return table.render_row_actions(job_template)
+
+    @staticmethod
+    def get_redirect_url():
+        return reverse("horizon:project:data_processing.jobs:jobs")
 
 
 class LaunchJobView(workflows.WorkflowView):

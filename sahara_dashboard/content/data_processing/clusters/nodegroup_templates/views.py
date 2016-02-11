@@ -66,8 +66,7 @@ class NodegroupTemplateDetailsView(tabs.TabView):
         except Exception:
             msg = _('Unable to retrieve details for '
                     'node group template "%s".') % ngt_id
-            redirect = reverse("horizon:project:data_processing."
-                               "clusters:nodegroup-templates-tab")
+            redirect = self.get_redirect_url()
             exceptions.handle(self.request, msg, redirect=redirect)
 
     def get_context_data(self, **kwargs):
@@ -75,12 +74,18 @@ class NodegroupTemplateDetailsView(tabs.TabView):
             .get_context_data(**kwargs)
         node_group_template = self.get_object()
         context['template'] = node_group_template
+        context['url'] = self.get_redirect_url()
         context['actions'] = self._get_actions(node_group_template)
         return context
 
     def _get_actions(self, node_group_template):
         table = _tables.NodegroupTemplatesTable(self.request)
         return table.render_row_actions(node_group_template)
+
+    @staticmethod
+    def get_redirect_url():
+        return reverse("horizon:project:data_processing."
+                       "clusters:nodegroup-templates-tab")
 
 
 class CreateNodegroupTemplateView(workflows.WorkflowView):
