@@ -8,6 +8,16 @@ function install_sahara_dashboard {
 
 function configure_sahara_dashboard {
     cp -a ${SAHARA_DASH_DIR}/sahara_dashboard/enabled/* ${DEST}/horizon/openstack_dashboard/local/enabled/
+    # compile message catalogs
+    # NOTE: "python manage.py compilemessages does not work"
+    # so we compile translation catalogs directly.
+    if [ -d sahara_dashboard/locale ]; then
+        for domain in django djangojs; do
+            if find sahara_dashboard/locale -type f | grep -q "${domain}.po$"; then
+                pybabel compile -D ${domain} -d sahara_dashboard/locale
+            fi
+        done
+    fi
 }
 
 # check for service enabled
