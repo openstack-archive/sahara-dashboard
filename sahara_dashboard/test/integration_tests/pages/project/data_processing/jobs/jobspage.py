@@ -28,10 +28,15 @@ class JobsPage(mixins.DeleteMixin, basepage.BaseDataProcessingPage):
             raise Exception('Job {} status is {}'.format(name, status))
         return status == "Succeeded"
 
-    def delete(self, name):
-        row = self._get_row_by_template_name(name)
-        row.mark()
+    def delete_many(self, names=()):
+        for name in names:
+            row = self._get_row_by_template_name(name)
+            if row is not None:
+                row.mark()
         self.table.get_delete_form().submit()
+
+    def delete(self, name):
+        self.delete_many([name])
 
     def wait_until_job_succeeded(self, name, timeout=None):
         self._wait_until(lambda x: self.is_job_succeeded(name),

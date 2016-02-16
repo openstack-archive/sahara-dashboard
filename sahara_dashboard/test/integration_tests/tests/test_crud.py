@@ -55,7 +55,9 @@ class TestCRUDBase(SaharaTestCase):
         image_pg = self.home_pg.go_to_compute_imagespage()
         image_pg.create_image(self.image_name,
                               location=self.CONFIG.sahara.fake_http_image)
-        image_pg.wait_until_image_active(self.image_name)
+        image_pg._wait_until(
+            lambda x: image_pg.is_image_active(self.image_name),
+            timeout=10 * 60)
 
     def delete_image(self):
         image_pg = self.home_pg.go_to_compute_imagespage()
@@ -254,6 +256,51 @@ class TestCRUD(TestCRUDBase):
         self.create_image()
         self.register_image()
 
+    def run_many_edp_jobs(self):
+        jobtemplates_pg = (
+            self.home_pg.go_to_dataprocessing_jobs_jobtemplatespage())
+        job_names = {}
+        for job_type in ("Hive", "Java", "MapReduce", "Streaming MapReduce",
+                         "Pig", "Shell", "Spark", "Storm"):
+            job_name = "{0}-{1}".format(self.jobtemplate_name, job_type)
+            job_name = job_name.replace(' ', '-')
+            job_names[job_type] = job_name
+            binary_name = self.job_binary_name
+            libs = []
+            if job_type in ("Java", "MapReduce", "Streaming MapReduce"):
+                binary_name = None
+                libs.append(self.job_binary_name)
+            jobtemplates_pg.create(name=job_name, job_type=job_type,
+                                   binary_name=binary_name, libs=libs)
+
+        for job_type, job_name in job_names.items():
+            jobtemplates_pg = (
+                self.home_pg.go_to_dataprocessing_jobs_jobtemplatespage())
+            input_name = self.ds_input_name
+            output_name = self.ds_output_name
+            mapper = None
+            reducer = None
+            if job_type in ("Java", "Shell", "Storm", "Spark"):
+                input_name = None
+                output_name = None
+            if job_type == "Streaming MapReduce":
+                mapper = "mapper"
+                reducer = "reducer"
+            jobtemplates_pg.launch_on_exists(job_name=job_name,
+                                             input_name=input_name,
+                                             output_name=output_name,
+                                             cluster_name=self.cluster_name,
+                                             mapper=mapper,
+                                             reducer=reducer)
+            jobs_pg = self.home_pg.go_to_dataprocessing_jobs_jobspage()
+            jobs_pg.wait_until_job_succeeded(job_name)
+
+        jobs_pg.delete_many(job_names.values())
+
+        jobtemplates_pg = (
+            self.home_pg.go_to_dataprocessing_jobs_jobtemplatespage())
+        jobtemplates_pg.delete_many(job_names.values())
+
     def test_cluster_operate(self):
         self.create_cluster()
         self.create_datasources()
@@ -263,6 +310,7 @@ class TestCRUD(TestCRUDBase):
         self.delete_job()
         self.run_edp_job_with_parameters()
         self.delete_job()
+        self.run_many_edp_jobs()
         self.delete_job_template()
         self.delete_job_binary()
         self.delete_datasources()
