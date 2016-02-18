@@ -65,7 +65,7 @@ horizon.event_log = {
 
         if (step.successful === true) {
             $("#" + step.id).find('td.step-result-cell').css('color', 'green');
-        } else {
+        } else if (step.successful === false) {
             $("#" + step.id).find('td.step-result-cell').css('color', 'red');
         }
     },
