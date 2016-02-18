@@ -28,7 +28,8 @@ class TestSaharaImageRegistry(helpers.TestCase):
 
     def test_image_register_unregister(self):
         """Test the image registration in Sahara."""
-        image_reg_pg = self.home_pg.go_to_dataprocessing_imageregistrypage()
+        image_reg_pg = \
+            self.home_pg.go_to_dataprocessing_clusters_dataimageregistrypage()
         image_reg_pg.register_image(IMAGE_NAME, self.CONFIG.scenario.ssh_user,
                                     "Test description")
         image_reg_pg.wait_until_image_registered(IMAGE_NAME)
