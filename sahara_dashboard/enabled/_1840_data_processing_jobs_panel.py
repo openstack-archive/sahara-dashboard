@@ -19,6 +19,9 @@ PANEL_DASHBOARD = 'project'
 # The slug of the panel group the PANEL is associated with.
 PANEL_GROUP = 'data_processing'
 
+ADD_INSTALLED_APPS = \
+    ["sahara_dashboard.content.data_processing.jobs", ]
+
 # Python panel class of the PANEL to be added.
 ADD_PANEL = ('sahara_dashboard.content.data_processing.jobs.panel.JobsPanel')
 
