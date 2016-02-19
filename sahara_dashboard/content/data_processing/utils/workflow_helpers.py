@@ -89,9 +89,7 @@ def _create_step_action(name, title, parameters, advanced_fields=None,
             class_fields[ad_field_name] = ad_field_value
 
     action_meta = type('Meta', (object, ),
-                       dict(help_text_template=("project"
-                                                "/data_processing."
-                                                "nodegroup_templates/"
+                       dict(help_text_template=("nodegroup_templates/"
                                                 "_fields_help.html")))
 
     class_fields['Meta'] = action_meta

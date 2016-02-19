@@ -21,10 +21,10 @@ from horizon import forms
 from horizon import workflows
 
 from sahara_dashboard.api import sahara as saharaclient
-import sahara_dashboard.content.data_processing. \
+import sahara_dashboard.content.data_processing.clusters. \
     cluster_templates.workflows.create as t_flows
 import sahara_dashboard.content.data_processing. \
-    clusters.workflows.create as c_flow
+    clusters.clusters.workflows.create as c_flow
 from sahara_dashboard.content.data_processing.utils \
     import acl as acl_utils
 import sahara_dashboard.content.data_processing. \
