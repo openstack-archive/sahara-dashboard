@@ -41,7 +41,7 @@ class JobsFilterAction(tables.FilterAction):
 class JobExecutionGuide(tables.LinkAction):
     name = "jobex_guide"
     verbose_name = _("Job Guide")
-    url = "horizon:project:data_processing.wizard:jobex_guide"
+    url = "horizon:project:data_processing.jobs:jobex_guide"
 
 
 class DeleteJob(tables.DeleteAction):

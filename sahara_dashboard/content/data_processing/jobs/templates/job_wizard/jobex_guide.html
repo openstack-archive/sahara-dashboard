@@ -16,7 +16,7 @@
                     </div>
                     <div>
                         <a class="btn btn-default btn-small btn-create btn-inline ajax-modal"
-                           href="{% url 'horizon:project:data_processing.wizard:job_type_select' %}">
+                           href="{% url 'horizon:project:data_processing.jobs:job_type_select' %}">
                             <span class="fa fa-plus"></span> {% trans "Select type" %}
                         </a>
                     </div>
@@ -47,7 +47,7 @@
                         </div>
                         <div>
                             <a class="btn btn-default btn-small btn-create btn-inline ajax-modal"
-                               href="{% url 'horizon:project:data_processing.data_sources:create-data-source' %}">
+                               href="{% url 'horizon:project:data_processing.jobs:create-data-source' %}">
                                 <span class="fa fa-plus"></span> {% trans "Create a data source" %}
                             </a>
                         </div>
@@ -105,7 +105,7 @@
             <a id="reset_cluster_guide_btn"
                class=" btn btn-default btn-small btn-create btn-inline btn-danger"
                title="{% trans "Reset Job Execution Guide" %}"
-               href="{% url 'horizon:project:data_processing.wizard:reset_jobex_guide' True %}">
+               href="{% url 'horizon:project:data_processing.jobs:reset_jobex_guide' True %}">
                 {% trans "Reset Job Execution Guide" %}
             </a>
         </div>

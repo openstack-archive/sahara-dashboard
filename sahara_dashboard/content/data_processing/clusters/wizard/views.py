@@ -16,32 +16,18 @@ from django import http
 from django.utils.translation import ugettext_lazy as _
 from django.views import generic
 
-from horizon import exceptions
 from horizon import forms
 from horizon import views as horizon_views
 
 from sahara_dashboard.api import sahara as saharaclient
 from sahara_dashboard.content.data_processing.utils \
     import helpers
-import sahara_dashboard.content.data_processing.wizard \
+import sahara_dashboard.content.data_processing.clusters.wizard \
     .forms as wizforms
 
 
-class WizardView(horizon_views.APIView):
-    template_name = 'project/data_processing.wizard/wizard.html'
-    page_title = _("Data Processing Guides")
-
-    def get_data(self, request, context, *args, **kwargs):
-        try:
-            context["test"] = "test data"
-        except Exception:
-            msg = _('Unable to show guides')
-            exceptions.handle(self.request, msg)
-        return context
-
-
 class ClusterGuideView(horizon_views.APIView):
-    template_name = 'project/data_processing.wizard/cluster_guide.html'
+    template_name = 'cluster_wizard/cluster_guide.html'
     page_title = _("Guided Cluster Creation")
 
     def show_existing_templates(self):
@@ -58,7 +44,7 @@ class ClusterGuideView(horizon_views.APIView):
 
 
 class ResetClusterGuideView(generic.RedirectView):
-    pattern_name = 'horizon:project:data_processing.wizard:cluster_guide'
+    pattern_name = 'horizon:project:data_processing.clusters:cluster_guide'
     permanent = True
 
     def get(self, request, *args, **kwargs):
@@ -68,53 +54,19 @@ class ResetClusterGuideView(generic.RedirectView):
         return http.HttpResponseRedirect(reverse_lazy(self.pattern_name))
 
 
-class JobExecutionGuideView(horizon_views.APIView):
-    template_name = 'project/data_processing.wizard/jobex_guide.html'
-    page_title = _("Guided Job Execution")
-
-    def show_data_sources(self):
-        try:
-            if self.request.session["guide_job_type"] in ["Spark", "Storm",
-                                                          "Java"]:
-                return False
-            return True
-        except Exception:
-            return True
-
-
-class ResetJobExGuideView(generic.RedirectView):
-    pattern_name = 'horizon:project:data_processing.wizard:jobex_guide'
-    permanent = True
-
-    def get(self, request, *args, **kwargs):
-        if kwargs["reset_jobex_guide"]:
-            hlps = helpers.Helpers(request)
-            hlps.reset_job_guide()
-        return http.HttpResponseRedirect(reverse_lazy(self.pattern_name))
-
-
 class PluginSelectView(forms.ModalFormView):
     form_class = wizforms.ChoosePluginForm
     success_url = reverse_lazy(
-        'horizon:project:data_processing.wizard:cluster_guide')
+        'horizon:project:data_processing.clusters:cluster_guide')
     classes = ("ajax-modal")
-    template_name = "project/data_processing.wizard/plugin_select.html"
+    template_name = "cluster_wizard/plugin_select.html"
     page_title = _("Choose plugin and version")
-
-
-class JobTypeSelectView(forms.ModalFormView):
-    form_class = wizforms.ChooseJobTypeForm
-    success_url = reverse_lazy(
-        'horizon:project:data_processing.wizard:jobex_guide')
-    classes = ("ajax-modal")
-    template_name = "project/data_processing.wizard/job_type_select.html"
-    page_title = _("Choose job type")
 
 
 class NodeGroupSelectView(forms.ModalFormView):
     form_class = wizforms.ChooseTemplateForm
     success_url = reverse_lazy(
-        'horizon:project:data_processing.wizard:cluster_guide')
+        'horizon:project:data_processing.clusters:cluster_guide')
     classes = ("ajax-modal")
-    template_name = "project/data_processing.wizard/ngt_select.html"
+    template_name = "cluster_wizard/ngt_select.html"
     page_title = _("Choose node group template")

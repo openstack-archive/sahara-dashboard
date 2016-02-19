@@ -534,7 +534,7 @@ class ConfigureNodegroupTemplate(workflow_helpers.ServiceParametersWorkflow,
                     context["general_nodegroup_name"])
                 request.session[guide_type + "_id"] = ngt.id
                 self.success_url = (
-                    "horizon:project:data_processing.wizard:cluster_guide")
+                    "horizon:project:data_processing.clusters:cluster_guide")
 
             return True
         except api_base.APIException as e:

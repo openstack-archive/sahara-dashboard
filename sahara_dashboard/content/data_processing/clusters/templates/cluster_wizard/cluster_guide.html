@@ -19,7 +19,7 @@
                     to your desired cluster type.{% endblocktrans %}
                     </div>
                     <a class="btn btn-default btn-small btn-create btn-inline ajax-modal" href="
-                      {% url 'horizon:project:data_processing.wizard:plugin_select' %}">{% trans "Choose plugin" %}</a>
+                      {% url 'horizon:project:data_processing.clusters:plugin_select' %}">{% trans "Choose plugin" %}</a>
                     <div>{% trans "Current choice:" %}
                         {% if request.session.plugin_name and request.session.plugin_version %}
                             <span class="text-success">
@@ -53,13 +53,13 @@
                     <div>
                           <a class="btn btn-default btn-small btn-create btn-inline ajax-modal
                             {% if not request.session.plugin_name or not request.session.plugin_version %} disabled {% endif %}"
-                            href="{% if request.session.plugin_name and request.session.plugin_version %}{% url 'horizon:project:data_processing.nodegroup_templates:configure-nodegroup-template'%}?plugin_name={{ request.session.plugin_name }}&hadoop_version={{ request.session.plugin_version }}&guide_template_type=master{% endif %}">
+                            href="{% if request.session.plugin_name and request.session.plugin_version %}{% url 'horizon:project:data_processing.clusters:configure-nodegroup-template'%}?plugin_name={{ request.session.plugin_name }}&hadoop_version={{ request.session.plugin_version }}&guide_template_type=master{% endif %}">
                             <span class="fa fa-plus"></span> {% trans "Create a Master Node Group Template" %}</a>
                           {% if view.show_existing_templates %}
                               {% trans " or " %}
                               <a class="btn btn-default btn-small btn-create btn-inline ajax-modal
                                 {% if not request.session.plugin_name or not request.session.plugin_version %} disabled {% endif %}"
-                                href="{% if request.session.plugin_name and request.session.plugin_version %}{% url 'horizon:project:data_processing.wizard:ngt_select'%}?plugin_name={{ request.session.plugin_name }}&hadoop_version={{ request.session.plugin_version }}&guide_template_type=master{% endif %}">
+                                href="{% if request.session.plugin_name and request.session.plugin_version %}{% url 'horizon:project:data_processing.clusters:ngt_select'%}?plugin_name={{ request.session.plugin_name }}&hadoop_version={{ request.session.plugin_version }}&guide_template_type=master{% endif %}">
                                 {% trans "Choose an existing Master Node Group Template" %}</a>
                           {% endif %}
 
@@ -88,13 +88,13 @@
                     <div>
                         <a class="btn btn-default btn-small btn-create btn-inline ajax-modal
                             {% if not request.session.master_name %} disabled{% endif %}"
-                            href="{% if request.session.plugin_name and request.session.plugin_version %}{% url 'horizon:project:data_processing.nodegroup_templates:configure-nodegroup-template'%}?plugin_name={{ request.session.plugin_name }}&hadoop_version={{ request.session.plugin_version }}&guide_template_type=worker{% endif %}">
+                            href="{% if request.session.plugin_name and request.session.plugin_version %}{% url 'horizon:project:data_processing.clusters:configure-nodegroup-template'%}?plugin_name={{ request.session.plugin_name }}&hadoop_version={{ request.session.plugin_version }}&guide_template_type=worker{% endif %}">
                             <span class="fa fa-plus"></span> {% trans "Create a Worker Node Group Template" %}</a>
                         {% if view.show_existing_templates %}
                             {% trans " or " %}
                             <a class="btn btn-default btn-small btn-create btn-inline ajax-modal
                                 {% if not request.session.master_name %} disabled{% endif %}"
-                                href="{% if request.session.plugin_name and request.session.plugin_version %}{% url 'horizon:project:data_processing.wizard:ngt_select'%}?plugin_name={{ request.session.plugin_name }}&hadoop_version={{ request.session.plugin_version }}&guide_template_type=worker{% endif %}">
+                                href="{% if request.session.plugin_name and request.session.plugin_version %}{% url 'horizon:project:data_processing.clusters:ngt_select'%}?plugin_name={{ request.session.plugin_name }}&hadoop_version={{ request.session.plugin_version }}&guide_template_type=worker{% endif %}">
                                 {% trans "Choose an existing Worker Node Group Template" %}</a>
                         {% endif %}
 
@@ -170,7 +170,7 @@
             <a id="reset_cluster_guide_btn"
                class=" btn btn-default btn-small btn-create btn-inline btn-danger"
                title="{% trans "Reset Cluster Guide" %}"
-               href="{% url 'horizon:project:data_processing.wizard:reset_cluster_guide' True %}">
+               href="{% url 'horizon:project:data_processing.clusters:reset_cluster_guide' True %}">
                 {% trans "Reset Cluster Creation Guide" %}
             </a>
         </div>

@@ -5,11 +5,11 @@
 
 {% block form_id %}create-job-binary{% endblock %}
 {% block form_action %}
-    {% url 'horizon:project:data_processing.wizard:plugin_select' %}
+    {% url 'horizon:project:data_processing.jobs:job_type_select' %}
 {% endblock %}
 {% block form_attrs %}enctype="multipart/form-data"{% endblock %}
 
-{% block modal-header %}{% trans "Choose plugin and version" %}{% endblock %}
+{% block modal-header %}{% trans "Choose job type" %}{% endblock %}
 
 {% block modal-body %}
     <div class="left">
@@ -25,6 +25,6 @@
 {% block modal-footer %}
     <input class="btn btn-primary pull-right" id="plugin_select_btn"
            type="submit" value="{% trans "Select" %}"/>
-    <a href="{% url 'horizon:project:data_processing.wizard:cluster_guide' %}"
+    <a href="{% url 'horizon:project:data_processing.jobs:jobex_guide' %}"
        class="btn btn-default secondary cancel close">{% trans "Cancel" %}</a>
 {% endblock %}

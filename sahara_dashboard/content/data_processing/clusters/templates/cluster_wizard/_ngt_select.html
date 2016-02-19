@@ -5,7 +5,7 @@
 
 {% block form_id %}create-job-binary{% endblock %}
 {% block form_action %}
-    {% url 'horizon:project:data_processing.wizard:ngt_select' %}
+    {% url 'horizon:project:data_processing.clusters:ngt_select' %}
 {% endblock %}
 {% block form_attrs %}enctype="multipart/form-data"{% endblock %}
 
@@ -25,6 +25,6 @@
 {% block modal-footer %}
     <input class="btn btn-primary pull-right" id="ngt_select_btn"
            type="submit" value="{% trans "Select" %}"/>
-    <a href="{% url 'horizon:project:data_processing.wizard:cluster_guide' %}"
+    <a href="{% url 'horizon:project:data_processing.clusters:cluster_guide' %}"
        class="btn btn-default secondary cancel close">{% trans "Cancel" %}</a>
 {% endblock %}

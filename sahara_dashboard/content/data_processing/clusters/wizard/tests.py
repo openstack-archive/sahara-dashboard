@@ -15,45 +15,21 @@ from django.core.urlresolvers import reverse
 from sahara_dashboard.test import helpers as test
 
 
-INDEX_URL = reverse(
-    'horizon:project:data_processing.wizard:index')
 CLUSTER_GUIDE_URL = reverse(
-    'horizon:project:data_processing.wizard:cluster_guide')
+    'horizon:project:data_processing.clusters:cluster_guide')
 CLUSTER_GUIDE_RESET_URL = reverse(
-    'horizon:project:data_processing.wizard:reset_cluster_guide',
+    'horizon:project:data_processing.clusters:reset_cluster_guide',
     kwargs={"reset_cluster_guide": "true"})
-JOB_GUIDE_URL = reverse(
-    'horizon:project:data_processing.wizard:jobex_guide')
-JOB_GUIDE_RESET_URL = reverse(
-    'horizon:project:data_processing.wizard:reset_jobex_guide',
-    kwargs={"reset_jobex_guide": "true"})
 
 
 class DataProcessingClusterGuideTests(test.TestCase):
-    def test_index(self):
-        res = self.client.get(INDEX_URL)
-        self.assertTemplateUsed(
-            res, 'project/data_processing.wizard/wizard.html')
-        self.assertContains(res, 'Data Processing Guides')
-        self.assertContains(res, 'Cluster Creation Guide')
-
     def test_cluster_guide(self):
         res = self.client.get(CLUSTER_GUIDE_URL)
         self.assertTemplateUsed(
-            res, 'project/data_processing.wizard/cluster_guide.html')
+            res, 'cluster_wizard/cluster_guide.html')
         self.assertContains(res, 'Guided Cluster Creation')
         self.assertContains(res, 'Current choice')
 
     def test_cluster_guide_reset(self):
         res = self.client.get(CLUSTER_GUIDE_RESET_URL)
         self.assertRedirectsNoFollow(res, CLUSTER_GUIDE_URL)
-
-    def test_jobex_guide(self):
-        res = self.client.get(JOB_GUIDE_URL)
-        self.assertTemplateUsed(
-            res, 'project/data_processing.wizard/jobex_guide.html')
-        self.assertContains(res, 'Guided Job Execution')
-
-    def test_jobex_guide_reset(self):
-        res = self.client.get(JOB_GUIDE_RESET_URL)
-        self.assertRedirectsNoFollow(res, JOB_GUIDE_URL)

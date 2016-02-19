@@ -397,7 +397,7 @@ class ConfigureClusterTemplate(whelpers.ServiceParametersWorkflow,
                 request.session["guide_cluster_template_name"] = (
                     context["general_cluster_template_name"])
                 self.success_url = (
-                    "horizon:project:data_processing.wizard:cluster_guide")
+                    "horizon:project:data_processing.clusters:cluster_guide")
             return True
         except api_base.APIException as e:
             self.error_description = str(e)
