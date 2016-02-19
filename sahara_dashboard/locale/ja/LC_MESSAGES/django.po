@@ -1,0 +1,1841 @@
+# Akihiro Motoki <amotoki@gmail.com>, 2016. #zanata
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2016-02-18 14:31+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2016-02-18 07:08+0000\n"
+"Last-Translator: Akihiro Motoki <amotoki@gmail.com>\n"
+"Language-Team: Japanese\n"
+"Language: ja\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"X-Generator: Zanata 3.7.3\n"
+
+msgid ""
+"\n"
+"                  In order to run a Data Processing job, you need to make\n"
+"                  the files for your program available to the\n"
+"                  Data Processing system, define where the input and output\n"
+"                  need to go and create a Job Template that describes\n"
+"                  how to run your job.  Each of those steps can be done\n"
+"                  manually or you can follow this guide to help take you\n"
+"                  through the steps to run a job on an existing cluster.\n"
+"            "
+msgstr ""
+"\n"
+"データ処理のジョブを実行するには、\n"
+"データ処理システムに対して提供することのできる\n"
+"プログラムのファイルを作成し、\n"
+"入力先/出力先を定義してジョブの実行方法を説明する\n"
+"ジョブテンプレートを作成する必要があります。\n"
+"これらの各ステップは、手動で実行することができます。\n"
+"もしくは、このガイドに従って既存のクラスターで\n"
+"ジョブを実行するステップを段階的に進めることもできます。"
+
+msgid ""
+"\n"
+"                 Each of the Data Processing frameworks require a cluster of "
+"machines\n"
+"                 in order to do the work they are assigned.  A cluster is\n"
+"                 formed by creating a set of Node Group Templates, "
+"combining\n"
+"                 those into a Cluster Template and then launching a "
+"Cluster.\n"
+"                 You can do each of those steps manually, or you can follow\n"
+"                 this guide to help take you through the steps of\n"
+"                 Cluster creation.\n"
+"             "
+msgstr ""
+"\n"
+"各データ処理フレームワークが割り当てられた作業を処理するには、\n"
+"マシンのクラスターが必要です。\n"
+"クラスターを編成するには、ノードグループテンプレートのセットを作成し、\n"
+"それらをクラスターテンプレートに統合してからクラスターを起動します。\n"
+"これらのステップはそれぞれ手動で実行することができます。\n"
+"もしくは、このガイドに従ってクラスターの作成ステップを\n"
+"段階的に進めることもできます。\n"
+"             "
+
+msgid " Done"
+msgstr " 完了"
+
+#, python-format
+msgid "%(conf_name)s: %(conf_val)s"
+msgstr "%(conf_name)s: %(conf_val)s"
+
+#, python-format
+msgid "%(conf_name)s: %(conf_value)s"
+msgstr "%(conf_name)s: %(conf_value)s"
+
+#, python-format
+msgid "%(group)s:"
+msgstr "%(group)s:"
+
+#, python-format
+msgid "%(key)s: %(val)s"
+msgstr "%(key)s: %(val)s"
+
+#, python-format
+msgid "%s processes: "
+msgstr "%s プロセス: "
+
+msgid "-- not selected --"
+msgstr "-- 選択されていません --"
+
+msgid ""
+"<b>Important</b>:  The name that you give your job binary will be the name "
+"used in your job execution.\n"
+"  If your binary requires a particular name or extension (ie: \".jar\"), be "
+"sure to include it here."
+msgstr ""
+"<b>重要</b>:  ジョブバイナリーに付けた名前はジョブ実行の名前として使用されま"
+"す。\n"
+"ジョブバイナリーが特定の拡張子 (つまり \".jar\") や名前を必要とする場合は、必"
+"ずその拡張子または名前を付けてください。"
+
+msgid "Adapt For Oozie"
+msgstr "Oozie 向けの調整"
+
+msgid "Add"
+msgstr "追加"
+
+msgid "Add Node Group"
+msgstr "ノードグループの追加"
+
+msgid "Add custom tag"
+msgstr "カスタムタグの追加"
+
+msgid "Add libraries to your job template."
+msgstr "ジョブテンプレートにライブラリーを追加します。"
+
+msgid "Add plugin tags"
+msgstr "プラグインタグの追加"
+
+msgid "Anti-affinity enabled for"
+msgstr "anti-affinity の指定"
+
+msgid "Arguments"
+msgstr "引数"
+
+msgid "Auto Security Group"
+msgstr "自動セキュリティーグループ"
+
+msgid "Auto-configure"
+msgstr "自動設定"
+
+msgid ""
+"Automatically modify the Hadoop configuration so that job config values are "
+"set and so that Oozie will handle exit codes correctly."
+msgstr ""
+"Hadoop の設定を自動的に変更し、ジョブの設定値が設定され、Oozie が終了コードを"
+"正しく処理するようにします。"
+
+msgid "Availability Zone"
+msgstr "アベイラビリティーゾーン"
+
+msgid "Base Image"
+msgstr "ベースイメージ"
+
+msgid "Cancel"
+msgstr "取り消し"
+
+msgid "Choose"
+msgstr "選択"
+
+msgid "Choose a main binary"
+msgstr "メインバイナリーを選択してください"
+
+msgid "Choose a shell script"
+msgstr "シェルスクリプトを選択してください"
+
+msgid "Choose a storage location"
+msgstr "ストレージの場所を選択してください"
+
+msgid "Choose additional files"
+msgstr "追加ファイルの選択"
+
+msgid "Choose an existing Master Node Group Template"
+msgstr "既存のマスターノードグループテンプレートを選択してください"
+
+msgid "Choose an existing Worker Node Group Template"
+msgstr "既存のワーカーノードグループテンプレートを選択してください"
+
+msgid "Choose an existing file"
+msgstr "既存のファイルを選択"
+
+msgid ""
+"Choose from the list of binaries and click \"choose\" to add the library to "
+"your job template.  This can be repeated for additional libraries."
+msgstr ""
+"ライブラリーをジョブテンプレートに追加するには、バイナリーの一覧から選択し"
+"「選択」をクリックします。追加するライブラリーの分だけ繰り返すことができま"
+"す。"
+
+msgid "Choose job type"
+msgstr "ジョブ種別を選択します"
+
+msgid "Choose libraries"
+msgstr "ライブラリーの選択"
+
+msgid "Choose node group template"
+msgstr "ノードグループテンプレートを選択してください"
+
+msgid ""
+"Choose or create your main binary.  Additional libraries can be added from "
+"the \"Libs\" tab."
+msgstr ""
+"メインバイナリーを選択するか、作成してください。追加のライブラリーは「ライブ"
+"ラリー」タブから追加できます。"
+
+msgid "Choose plugin"
+msgstr "プラグインの選択"
+
+msgid "Choose plugin and version"
+msgstr "プラグインとバージョンを選択してください"
+
+msgid "Choose plugin type and version"
+msgstr "プラグイン種別とバージョンを選択します"
+
+msgid "Choose the Input Data Source (n/a for Java and Shell jobs)."
+msgstr ""
+"入力データソースを選択してください (Java ジョブとシェルジョブでは利用できませ"
+"ん)"
+
+msgid "Choose the Output Data Source (n/a for Java and Shell jobs)."
+msgstr ""
+"出力データソースを選択してください (Java ジョブとシェルジョブでは利用できませ"
+"ん)"
+
+msgid "Choose the binary which should be used in this Job."
+msgstr "このジョブで使用するバイナリーを選択してください。"
+
+msgid "Choose the cluster to use for the job."
+msgstr "ジョブで使用するクラスターを選択してください。"
+
+msgid "Chosen Libraries"
+msgstr "選択ライブラリー"
+
+msgid "Cinder volumes"
+msgstr "Cinder ボリューム"
+
+msgid "Cluster"
+msgstr "クラスター"
+
+msgid "Cluster Configuration Overview"
+msgstr "クラスター設定の概要"
+
+msgid "Cluster Count"
+msgstr "クラスター数"
+
+msgid "Cluster Creation Guide"
+msgstr "クラスター作成のガイド"
+
+msgid "Cluster Events"
+msgstr "クラスターのイベント"
+
+msgid "Cluster Guide"
+msgstr "クラスターのガイド"
+
+msgid "Cluster Instances"
+msgstr "クラスターインスタンス"
+
+msgid "Cluster Name"
+msgstr "クラスター名"
+
+msgid "Cluster Template"
+msgstr "クラスターテンプレート"
+
+#, python-format
+msgid "Cluster Template %s updated"
+msgstr " クラスターテンプレート %s が更新されました。"
+
+msgid "Cluster Template Configuration Overview"
+msgstr "クラスターテンプレート設定の概要"
+
+msgid "Cluster Template Name"
+msgstr "クラスターテンプレート名"
+
+#, python-format
+msgid "Cluster Template copy %s created"
+msgstr "クラスターテンプレートのコピー %s が作成されました"
+
+msgid "Cluster Templates"
+msgstr "クラスターテンプレート"
+
+msgid "Cluster can be launched using existing Cluster Templates."
+msgstr "既存のクラスターテンプレートを使ってクラスターを起動できます。"
+
+msgid "Cluster configurations are not specified"
+msgstr "クラスター設定は指定されていません"
+
+msgid "Cluster provision steps"
+msgstr "クラスターのプロビジョニング手順"
+
+msgid "Cluster template creation failed"
+msgstr "クラスターテンプレートの作成に失敗しました"
+
+msgid "Cluster template update failed"
+msgstr "クラスターテンプレートの更新に失敗しました。"
+
+msgid "Cluster type chosen"
+msgstr "選択したクラスター種別"
+
+msgid "Clusters"
+msgstr "クラスター"
+
+msgid "Completed Successfully"
+msgstr "正常に完了しました。"
+
+msgid "Configuration"
+msgstr "設定"
+
+msgid "Configuration Details"
+msgstr "設定の詳細"
+
+msgid "Configuration Value"
+msgstr "設定値"
+
+msgid "Configure"
+msgstr "設定"
+
+msgid "Configure Cluster"
+msgstr "クラスターの設定"
+
+msgid "Configure Cluster Template"
+msgstr "クラスターテンプレートの設定"
+
+msgid "Configure Node Group Template"
+msgstr "ノードグループテンプレートの設定"
+
+msgid "Configure Template"
+msgstr "テンプレートの設定"
+
+msgid "Control access to instances of the node group."
+msgstr "ノードグループのインスタンスへのアクセスを制御します。"
+
+msgid "Copy Cluster Template"
+msgstr "クラスターテンプレートのコピー"
+
+msgid "Copy Template"
+msgstr "テンプレートのコピー"
+
+msgid "Could not create"
+msgstr "作成できませんでした"
+
+msgid "Could not create data source"
+msgstr "データソースを作成できませんでした"
+
+msgid "Could not create job template"
+msgstr "ジョブテンプレートを作成できません"
+
+msgid "Could not launch job"
+msgstr "ジョブを起動できません"
+
+msgid "Could not update data source"
+msgstr "データソースを更新できませんでした"
+
+msgid "Count"
+msgstr "数"
+
+msgid "Create"
+msgstr "作成"
+
+msgid "Create Cluster Template"
+msgstr "クラスターテンプレートの作成"
+
+msgid "Create Data Source"
+msgstr "データソースの作成"
+
+msgid "Create Job Binary"
+msgstr "ジョブバイナリーの作成"
+
+msgid "Create Job Template"
+msgstr "ジョブテンプレートの作成"
+
+msgid "Create Node Group Template"
+msgstr "ノードグループテンプレートの作成"
+
+msgid "Create Template"
+msgstr "テンプレートの作成"
+
+msgid "Create a Cluster Template"
+msgstr "クラスターテンプレートの作成"
+
+msgid "Create a Data Source with a specified name."
+msgstr "指定した名前でデータソースを作成します。"
+
+msgid "Create a Master Node Group Template"
+msgstr "マスターノードグループテンプレートの作成"
+
+msgid "Create a Worker Node Group Template"
+msgstr "ワーカーノードグループテンプレートの作成"
+
+msgid "Create a data source"
+msgstr "データソースの作成"
+
+msgid "Create a job template"
+msgstr "ジョブテンプレートの作成"
+
+msgid "Create a job template with a specified name."
+msgstr "指定した名前でジョブテンプレートを作成します。"
+
+msgid "Create a script to be uploaded dynamically"
+msgstr "スクリプトを作成し、その場でアップロードする"
+
+msgid "Create security group for this Node Group."
+msgstr "このノードグループに対してセキュリティーグループを作成します。"
+
+msgid "Create time"
+msgstr "作成日時"
+
+msgid "Create volumes in this availability zone."
+msgstr "このアベイラビリティーゾーンにボリュームを作成します。"
+
+msgid "Created"
+msgstr "作成時刻"
+
+#, python-format
+msgid "Created Cluster Template %s"
+msgstr "クラスターテンプレート %s を作成しました"
+
+#, python-format
+msgid "Created Node Group Template %s"
+msgstr "ノードグループテンプレート %s を作成しました"
+
+msgid "Created time"
+msgstr "作成日時"
+
+msgid "Current choice:"
+msgstr "現在の選択項目:"
+
+msgid "Current type:"
+msgstr "現在の種別:"
+
+msgid "Data Processing"
+msgstr "データ処理"
+
+msgid "Data Processing Guides"
+msgstr "データ処理のガイド"
+
+msgid "Data Processing Plugin Details"
+msgstr "データ処理プラグインの詳細"
+
+msgid "Data Processing Plugins"
+msgstr "データ処理プラグイン"
+
+msgid "Data Processing internal database"
+msgstr "データ処理基盤の内部データベース"
+
+msgid ""
+"Data Processing provides different storage location options. You may choose "
+"Ephemeral Drive or a Cinder Volume to be attached to instances."
+msgstr ""
+"データ処理基盤ではストレージの場所を選択できます。一時ドライブか、インスタン"
+"スに接続する Cinder ボリュームを選択できます。"
+
+msgid "Data Source"
+msgstr "データソース"
+
+msgid "Data Source Type"
+msgstr "データソース種別"
+
+msgid "Data Sources"
+msgstr "データソース"
+
+msgid ""
+"Data Sources are what your\n"
+"                            job uses for input and output.  Depending on the "
+"type\n"
+"                            of job you will be running, you may need to "
+"define one\n"
+"                            or more data sources.  You can create multiple "
+"data\n"
+"                            sources by repeating this step.\n"
+"                        "
+msgstr ""
+"データソースとは、\n"
+"ジョブが出入力に使用するものです。\n"
+"ジョブの種別により、\n"
+"データソースを 1 つ以上定義する必要がある場合があります。\n"
+"このステップを繰り返すことで\n"
+"複数のデータソースを作成できます。"
+
+msgid "Data source created"
+msgstr "データソースが作成されました"
+
+msgid "Data source updated"
+msgstr "データソースが更新されました"
+
+msgid "Default Value"
+msgstr "デフォルト値"
+
+msgid ""
+"Define your Job Template.\n"
+"                        This is where you choose the type of job that you\n"
+"                        want to run (Pig, Java Action, Spark, etc) and "
+"choose\n"
+"                        or upload the files necessary to run it.  The "
+"inputs\n"
+"                        and outputs will be defined later.\n"
+"                    "
+msgstr ""
+"ジョブテンプレートを定義します。\n"
+"実行するジョブ種別 (Pig、Java Action、Spark など) の\n"
+"選択およびそれを実行するのに必要な\n"
+"ファイルの選択とアップロードは\n"
+"ここで行います。\n"
+"出入力は後で定義されます。"
+
+msgid "Delete Cluster"
+msgid_plural "Delete Clusters"
+msgstr[0] "クラスターの削除"
+
+msgid "Delete Data Source"
+msgid_plural "Delete Data Sources"
+msgstr[0] "データソースの削除"
+
+msgid "Delete Job"
+msgid_plural "Delete Jobs"
+msgstr[0] "ジョブの削除"
+
+msgid "Delete Job Binary"
+msgid_plural "Delete Job Binaries"
+msgstr[0] "ジョブバイナリーの削除"
+
+msgid "Delete Job Template"
+msgid_plural "Delete Job Templates"
+msgstr[0] "ジョブテンプレートの削除"
+
+msgid "Delete Template"
+msgid_plural "Delete Templates"
+msgstr[0] "テンプレートの削除"
+
+msgid "Deleted Cluster"
+msgid_plural "Deleted Clusters"
+msgstr[0] "クラスターを削除しました"
+
+msgid "Deleted Data Source"
+msgid_plural "Deleted Data Sources"
+msgstr[0] "データソースを削除しました"
+
+msgid "Deleted Job"
+msgid_plural "Deleted Jobs"
+msgstr[0] "ジョブを削除しました"
+
+msgid "Deleted Job Binary"
+msgid_plural "Deleted Job Binaries"
+msgstr[0] "ジョブバイナリーを削除しました"
+
+msgid "Deleted Job Template"
+msgid_plural "Deleted Jobs Templates"
+msgstr[0] "ジョブテンプレートを削除しました"
+
+msgid "Deleted Template"
+msgid_plural "Deleted Templates"
+msgstr[0] "テンプレートを削除しました"
+
+msgid "Description"
+msgstr "説明"
+
+msgid "Details"
+msgstr "詳細"
+
+msgid "Done"
+msgstr "完了"
+
+msgctxt "Current status of a Job"
+msgid "Done with Error"
+msgstr "エラー終了"
+
+msgid "Download Job Binary"
+msgstr "ジョブバイナリーのダウンロード"
+
+msgid "Download job binary"
+msgstr "ジョブバイナリーのダウンロード"
+
+msgid "Duration"
+msgstr "継続時間"
+
+msgid "Edit Cluster Template"
+msgstr "クラスターテンプレートの編集"
+
+msgid "Edit Data Source"
+msgstr "データソースの編集"
+
+msgid "Edit Image Tags"
+msgstr "イメージタグの編集"
+
+msgid "Edit Job Binary"
+msgstr "ジョブバイナリーの編集"
+
+msgid "Edit Node Group Template"
+msgstr "ノードグループテンプレートの編集"
+
+msgid "Edit Tags"
+msgstr "タグの編集"
+
+msgid "Edit Template"
+msgstr "テンプレートの編集"
+
+msgid "Enable Swift Paths"
+msgstr "Swift のパス指定を有効にする"
+
+msgid "Ended"
+msgstr "終了時刻"
+
+msgid "Enter any custom configuration required for your job's execution."
+msgstr "ジョブ実行で必要なカスタム設定をここで入力してください。"
+
+msgid "Enter the URL for the file"
+msgstr "ファイルの URL"
+
+msgid "Enter the username and password required to access that file"
+msgstr "そのファイルにアクセスするのに必要なユーザー名とパスワード"
+
+msgid "Ephemeral drive"
+msgstr "一時ドライブ"
+
+msgid "Error Details"
+msgstr "エラー詳細"
+
+msgid "Event time"
+msgstr "イベント時刻"
+
+msgid "Failed"
+msgstr "失敗"
+
+msgctxt "Current status of a Job"
+msgid "Failed"
+msgstr "失敗"
+
+msgid "Failed to fetch internal binary list"
+msgstr "内部バイナリーの一覧を取得できません"
+
+msgid "Failed to get list of internal binaries."
+msgstr "内部バイナリーの一覧を取得できません"
+
+msgid "Failed to update image."
+msgstr "イメージのアップロードに失敗しました。"
+
+msgid "Filter"
+msgstr "フィルター"
+
+msgid ""
+"First, select which type of job that\n"
+"                            you want to run.  This choice will determine "
+"which\n"
+"                            other steps are required\n"
+"                        "
+msgstr ""
+"まず最初に、実行するジョブ種別を選択します。\n"
+"この選択により、\n"
+"他の必要なステップが\n"
+"決定されます。"
+
+msgid "Flavor"
+msgstr "フレーバー"
+
+msgid "Flavor is not specified"
+msgstr "フレーバーは指定されていません"
+
+msgid "Floating IP Pool"
+msgstr "Floating IP プール"
+
+msgid ""
+"For Data Processing internal job binaries, you may choose from the following:"
+msgstr ""
+"データ処理基盤の内部データベース用のジョブバイナリーは、以下から選択する必要"
+"があります。"
+
+msgid ""
+"For MapReduce or Java Action jobs, \"mains\" are not applicable.  You are "
+"required to add one\n"
+"  or more \"libs\" for these jobs."
+msgstr ""
+"MapReduce と Java アクションのジョブでは、「メイン」は利用できません。\n"
+"これらのジョブで使用するライブラリーを 1 つ以上指定する必要があります。"
+
+msgid "For Object Store job binaries, you must:"
+msgstr ""
+"オブジェクトストア用のジョブバイナリーでは、以下を入力する必要があります。"
+
+msgid ""
+"For Shell Action jobs, any required files beyond the main script may be "
+"added as \"libraries\"."
+msgstr ""
+"シェルアクションジョブでは、メインスクリプト以外で必要なファイルは「ライブラ"
+"リー」として追加できます。"
+
+msgid ""
+"For Spark and Shell jobs, only a main is required, \"libs\" are optional."
+msgstr ""
+"Spark ジョブとシェルジョブでは、「メイン」のみが必須で、ライブラリーは省略可"
+"能です。"
+
+msgid "General Info"
+msgstr "一般情報"
+
+msgid "Guided Cluster Creation"
+msgstr "ガイド付きクラスター作成"
+
+msgid "Guided Job Execution"
+msgstr "ガイド付きジョブ実行"
+
+msgid "Guides"
+msgstr "ガイド"
+
+msgid "HDFS placement"
+msgstr "HDFS 置き場"
+
+msgid "Hide full configuration"
+msgstr "詳細設定を表示しない"
+
+msgid "Hive"
+msgstr "Hive"
+
+msgid "ID"
+msgstr "ID"
+
+msgid ""
+"If selected, instances of a cluster will be automatically configured during "
+"creation. Otherwise you should manually specify configuration values"
+msgstr ""
+"自動設定を選択すると、クラスターのインスタンスは作成中に自動で設定されます。"
+"選択しなかった場合には、設定値を手動で指定する必要があります。"
+
+msgid ""
+"If selected, instances of a node group will be automatically configured "
+"during cluster creation. Otherwise you should manually specify configuration "
+"values."
+msgstr ""
+"選択すると、ノードグループのインスタンスはクラスター作成時に自動的に設定され"
+"ます。選択しない場合は、設定値を手動で指定する必要があります。"
+
+msgid "Image"
+msgstr "イメージ"
+
+msgid "Image Registry"
+msgstr "イメージレジストリー"
+
+msgid ""
+"Image Registry is used to provide additional information about images for "
+"Data Processing."
+msgstr ""
+"イメージレジストリーは、データ処理用のイメージに関する追加の情報を提供するの"
+"に使用されます。"
+
+msgid "Image Registry tool:"
+msgstr "イメージレジストリーツール:"
+
+msgid "In progress"
+msgstr "進行中"
+
+msgid "Info"
+msgstr "情報"
+
+msgid "Input"
+msgstr "入力"
+
+msgid "Input Data Source"
+msgstr "入力データソース"
+
+msgid "Instance"
+msgstr "インスタンス"
+
+msgid "Instance and attached volumes will be created on the same physical host"
+msgstr "インスタンスと接続されるボリュームが同じ物理ホストに作成されます。"
+
+msgid "Instances"
+msgstr "インスタンス"
+
+msgid "Instances Count"
+msgstr "インスタンス数"
+
+msgid "Interface Arguments"
+msgstr "インターフェース引数"
+
+msgid "Internal Binary"
+msgstr "内部バイナリー"
+
+msgid "Internal IP"
+msgstr "内部用 IP"
+
+msgid "Internal binary"
+msgstr "内部バイナリー"
+
+msgid "Java"
+msgstr "Java"
+
+msgid "Java Action"
+msgstr "Java アクション"
+
+msgid "Java Opts"
+msgstr "Java オプション"
+
+msgid "Job"
+msgstr "ジョブ"
+
+msgid "Job Binaries"
+msgstr "ジョブバイナリー"
+
+msgid "Job Configuration"
+msgstr "ジョブ設定"
+
+msgid "Job Execution Guide"
+msgstr "ジョブ実行のガイド"
+
+msgid "Job Execution ID"
+msgstr "ジョブ実行 ID"
+
+msgid "Job Guide"
+msgstr "ジョブのガイド"
+
+msgid "Job Template"
+msgstr "ジョブテンプレート"
+
+msgid "Job Templates"
+msgstr "ジョブテンプレート"
+
+msgid "Job Type"
+msgstr "ジョブ種別"
+
+msgid "Job args"
+msgstr "ジョブ引数"
+
+msgid "Job configs"
+msgstr "ジョブ設定"
+
+msgid "Job created"
+msgstr "ジョブが作成されました"
+
+msgid "Job launched"
+msgstr "ジョブを起動しました"
+
+msgid "Job params"
+msgstr "ジョブパラメーター"
+
+msgid "Job template:"
+msgstr "ジョブテンプレート:"
+
+msgid "Job type chosen"
+msgstr "ジョブ種別を選択しました"
+
+msgid "Jobs"
+msgstr "ジョブ"
+
+msgid "Keypair"
+msgstr "キーペア"
+
+msgctxt "Current status of a Job"
+msgid "Killed"
+msgstr "強制終了"
+
+msgid "Last Updated"
+msgstr "最終更新"
+
+msgid "Launch"
+msgstr "起動"
+
+msgid "Launch Cluster"
+msgstr "クラスターの起動"
+
+msgid "Launch Job"
+msgid_plural "Launch Jobs"
+msgstr[0] "ジョブの起動"
+
+msgid "Launch On Existing Cluster"
+msgstr "既存のクラスターで起動"
+
+msgid "Launch On New Cluster"
+msgstr "新規のクラスターで起動"
+
+msgid "Launch a Cluster"
+msgstr "クラスターの起動"
+
+msgid "Launch instances in these security groups."
+msgstr "これらのセキュリティーグループでインスタンスを起動します。"
+
+msgid "Launch instances in this availability zone."
+msgstr "指定したアベイラビリティーゾーンでインスタンスを起動します。"
+
+msgid "Launch job"
+msgstr "ジョブの起動"
+
+msgid "Launch the given job template on a cluster."
+msgstr "指定されたジョブテンプレートをクラスターで起動します。"
+
+msgid ""
+"Launch your job.  When\n"
+"                        launching, you may need to choose your input and\n"
+"                        output data sources.  This is where you would also\n"
+"                        add any special configuration values, parameters,\n"
+"                        or arguments that you need to pass along\n"
+"                        to your job.\n"
+"                        "
+msgstr ""
+"ジョブを起動します。\n"
+"起動中には、\n"
+"入力と出力のデータソースを\n"
+"選択する必要がある場合があります。\n"
+"また、ジョブに渡す必要のある\n"
+"特別な設定値、パラメーター、引数も\n"
+"ここで追加します。 "
+
+#, python-format
+msgid "Launched Cluster %s"
+msgstr "クラスター %s を起動しました"
+
+msgid "Launched Job"
+msgid_plural "Launched Jobs"
+msgstr[0] "ジョブを起動しました"
+
+msgid "Libs"
+msgstr "ライブラリー"
+
+msgid "Location"
+msgstr "場所"
+
+msgid "Main Class"
+msgstr "Main クラス"
+
+msgid "Mains"
+msgstr "メイン"
+
+msgid "Management IP"
+msgstr "管理 IP"
+
+msgid "MapReduce"
+msgstr "MapReduce"
+
+msgid "Mapper"
+msgstr "Mapper"
+
+msgid "Mapping Type"
+msgstr "マッピング種別"
+
+msgid "Master Node Group Template:"
+msgstr "マスターノードグループテンプレート:"
+
+msgid ""
+"Modify the configuration so that swift URLs can be dereferenced through HDFS "
+"at runtime."
+msgstr "設定を変更し、Swift の URL が実行時に HDFS で展開できるようにします。"
+
+msgid "Name"
+msgstr "名前"
+
+#, python-format
+msgid "Name: %(node_group_name)s"
+msgstr "名前: %(node_group_name)s"
+
+msgid "Named Parameter"
+msgstr "名前付きパラメーター"
+
+msgid "Neutron Management Network"
+msgstr "Neutron 管理ネットワーク"
+
+msgid "Never"
+msgstr "なし"
+
+msgid "Next"
+msgstr "次へ"
+
+msgid ""
+"Next, you need to define the different\n"
+"                        types of machines in your cluster.  This is done by\n"
+"                        defining a Node Group Template for each type of\n"
+"                        machine.  A very common case is where you\n"
+"                        need to have one or more machines running a \"master"
+"\"\n"
+"                        set of processes while another set of machines need\n"
+"                        to be running the \"worker\" processes.  Here,\n"
+"                        you will define the Node Group Template for your\n"
+"                        \"master\" node(s).\n"
+"                     "
+msgstr ""
+"次にクラスター内のマシンの種別を定義します。\n"
+"これは、マシン種別ごとにノードグループテンプレートを\n"
+"定義することによって行います。\n"
+"ごく一般的なのは、プロセスの「マスター」セットを\n"
+"実行するマシンが 1 台または複数必要なのに加えて、\n"
+"「ワーカー」プロセスを実行する\n"
+"他のマシンセットも\n"
+"必要とされるケースです。\n"
+"ここでは、「マスター」ノード用に\n"
+"ノードグループテンプレートを定義します。            "
+
+msgid "No Cluster Template Created"
+msgstr "クラスターテンプレートが作成されていません"
+
+msgid "No Images Available"
+msgstr "利用可能なイメージがありません"
+
+msgid "No Master Node Group Template Created"
+msgstr "マスターノードグループテンプレートが作成されていません"
+
+msgid "No Templates Available"
+msgstr "利用可能なテンプレートがありません"
+
+msgid "No Worker Node Group Template Created"
+msgstr "ワーカーノードグループテンプレートが作成されていません"
+
+msgid "No availability zone specified"
+msgstr "アベイラビリティーゾーンの指定なし"
+
+msgid "No configurations"
+msgstr "設定なし"
+
+msgid "No description"
+msgstr "説明なし"
+
+msgid "No images available."
+msgstr "利用可能なイメージがありません。"
+
+msgid "No info available"
+msgstr "情報はありません。"
+
+msgid "No job template created"
+msgstr "ジョブテンプレートが作成されていません"
+
+msgid "No keypair"
+msgstr "キーペアがありません"
+
+msgid "No plugin chosen"
+msgstr "プラグインが選択されていません"
+
+msgid "No type chosen"
+msgstr "種別が選択されていません"
+
+msgid "No volume type"
+msgstr "ボリューム種別の指定なし"
+
+msgid "Node Group"
+msgstr "ノードグループ"
+
+#, python-format
+msgid "Node Group Name: %(node_group_name)s"
+msgstr "ノードグループ名: %(node_group_name)s"
+
+msgid "Node Group Template"
+msgstr "ノードグループテンプレート"
+
+#, python-format
+msgid "Node Group Template %s updated"
+msgstr "ノードグループテンプレート %s が更新されました。"
+
+#, python-format
+msgid "Node Group Template copy %s created"
+msgstr "ノードグループテンプレートのコピー %s を作成しました"
+
+msgid "Node Group Templates"
+msgstr "ノードグループテンプレート"
+
+#, python-format
+msgid "Node Group: %(node_group_name)s"
+msgstr "ノードグループ: %(node_group_name)s"
+
+msgid "Node Groups"
+msgstr "ノードグループ"
+
+msgid "Node Groups Configuration Overview"
+msgstr "ノードグループ設定の概要"
+
+msgid "Node Processes"
+msgstr "ノードプロセス"
+
+msgid "Node group cluster"
+msgstr "ノードグループクラスター"
+
+msgid "Node group configurations are not specified"
+msgstr "ノードグループ設定は指定されていません"
+
+msgid "Node processes are not specified"
+msgstr "ノードプロセスは指定されていません"
+
+msgid "Nodes Count"
+msgstr "ノード数"
+
+msgid "None"
+msgstr "なし"
+
+msgid "Not available"
+msgstr "利用できません"
+
+msgid ""
+"Now you need to set the layout of your\n"
+"                        cluster.  By\n"
+"                        creating a Cluster Template, you will be choosing "
+"the\n"
+"                        number of instances of each Node Group Template "
+"that\n"
+"                        will appear in your cluster.  Additionally,\n"
+"                        you will have a chance to set any cluster-specific\n"
+"                        configuration items in the additional tabs on the\n"
+"                        create Cluster Template form."
+msgstr ""
+"次にクラスターのレイアウトを設定する必要があります。\n"
+"クラスターテンプレートを作成して、\n"
+"クラスター内に表示される\n"
+"各ノードグループテンプレートの\n"
+"インスタンス数を選択します。\n"
+"また、クラスターテンプレート作成の\n"
+"フォームの追加のタブで、\n"
+"クラスター固有の設定項目を指定することもできます。"
+
+msgid "Number"
+msgstr "数字"
+
+msgid "Number of Nodes"
+msgstr "ノード数"
+
+msgid "Number of clusters to launch."
+msgstr "起動するクラスター数。"
+
+msgid "Oozie Job ID"
+msgstr "Oozie ジョブ ID"
+
+msgid "OpenStack Flavor"
+msgstr "OpenStack フレーバー"
+
+msgid "Output"
+msgstr "出力"
+
+msgid "Output Data Source"
+msgstr "出力データソース"
+
+msgid "Parameters"
+msgstr "パラメーター"
+
+msgid "Password"
+msgstr "パスワード"
+
+msgid "Path"
+msgstr "パス"
+
+msgid "Persist cluster after job exit"
+msgstr "ジョブ終了後もクラスターを保持する"
+
+msgid "Pig"
+msgstr "Pig"
+
+msgid "Plugin"
+msgstr "プラグイン"
+
+msgid "Plugin Name"
+msgstr "プラグイン名"
+
+msgid "Plugin name"
+msgstr "プラグイン名"
+
+msgid "Plugin:"
+msgstr "プラグイン:"
+
+msgid "Plugins"
+msgstr "プラグイン"
+
+msgid "Positional Argument"
+msgstr "位置指定引数 (Positional Argument)"
+
+msgid "Progress"
+msgstr "進捗"
+
+msgid "Project ID"
+msgstr "プロジェクト ID"
+
+msgid "Project Id"
+msgstr "プロジェクト ID"
+
+msgid "Protected"
+msgstr "保護"
+
+msgid "Proxy Gateway"
+msgstr "プロキシーゲートウェイ"
+
+msgid "Public"
+msgstr "パブリック"
+
+msgid "Reducer"
+msgstr "Reducer"
+
+msgid "Register Image"
+msgstr "イメージの登録"
+
+msgid ""
+"Register tags required for the Plugin with specified Data Processing Version"
+msgstr ""
+"必要なプラグインとデータ処理基盤の特定のバージョンのタグを登録してください"
+
+msgid "Relaunch On Existing Cluster"
+msgstr "既存のクラスターで再起動"
+
+msgid "Relaunch On New Cluster"
+msgstr "新規のクラスターで再起動"
+
+msgid "Remove"
+msgstr "削除"
+
+msgid ""
+"Repeat the Node Group Template\n"
+"                        creation process, but this time you are creating\n"
+"                        your \"worker\" Node Group Template."
+msgstr ""
+"ノードグループテンプレート作成のプロセスを再度実行しますが、\n"
+"今回は「ワーカー」ノードグループテンプレートを\n"
+"作成します。"
+
+msgid "Required"
+msgstr "必須"
+
+msgid "Reset Cluster Creation Guide"
+msgstr "クラスター作成のガイドのリセット"
+
+msgid "Reset Cluster Guide"
+msgstr "クラスターのガイドのリセット"
+
+msgid "Reset Job Execution Guide"
+msgstr "ジョブ実行のガイドのリセット"
+
+msgid "Return Code"
+msgstr "リターンコード"
+
+msgid "Run HBase EDP Jobs with common HBase library on HDFS"
+msgstr ""
+"HDFS 上の共通の HBase ライブラリーを使用して HBase EDP ジョブを実行する"
+
+msgid ""
+"Sahara will use instances of this node group to access other cluster "
+"instances."
+msgstr ""
+"Sahara は、このノードグループのインスタンスを使用して他のクラスターインスタン"
+"スにアクセスします。"
+
+msgid "Scale"
+msgstr "サイズ調整"
+
+msgid "Scale Cluster"
+msgstr "クラスターのサイズ調整"
+
+msgid "Scale cluster operation failed"
+msgstr "クラスターのサイズ調整操作に失敗しました"
+
+msgid "Scaled cluster successfully started."
+msgstr "サイズ調整後のクラスターを正常に開始しました"
+
+msgid "Script name"
+msgstr "スクリプト名"
+
+msgid "Script text"
+msgstr "スクリプト本文"
+
+msgid "Security"
+msgstr "セキュリティー"
+
+msgid "Security Groups"
+msgstr "セキュリティーグループ"
+
+msgid "Select"
+msgstr "選択"
+
+msgid "Select Image"
+msgstr "イメージを選択してください"
+
+msgid "Select Node Group Processes"
+msgstr "ノードグループプロセスを選択してください"
+
+msgid "Select a Node Group Template to add:"
+msgstr "追加するノードグループテンプレートを選択してください:"
+
+msgid "Select a Value Type for your next argument:"
+msgstr "次の引数の値の型を選択してください:"
+
+msgid "Select a plugin and version for a new Cluster template."
+msgstr ""
+"作成するクラスターテンプレートで使用するプラグインとバージョンを選択してくだ"
+"さい。"
+
+msgid "Select a plugin and version for a new Cluster."
+msgstr "新しいクラスターで使用するプラグインとバージョンを選択してください。"
+
+msgid "Select a plugin and version for the new Node Group template."
+msgstr "新規ノードグループテンプレートのプラグインとバージョンを選択します。"
+
+msgid ""
+"Select an existing node group template.\n"
+"    "
+msgstr ""
+"既存のノードグループテンプレートを選択してください。\n"
+"    "
+
+msgid "Select node processes for the node group"
+msgstr "このノードグループのノードプロセスを選択してください"
+
+msgid "Select plugin and hadoop version"
+msgstr "プラグインと Hadoop バージョンを選択してください"
+
+msgid "Select plugin and hadoop version for cluster"
+msgstr "このクラスターのプラグインと Hadoop バージョンを選択してください"
+
+msgid "Select plugin and hadoop version for cluster template"
+msgstr ""
+"クラスターテンプレートのプラグインと Hadoop バージョンを選択してください"
+
+msgid "Select property name"
+msgstr "プロパティー名を選択してください"
+
+msgid "Select the storage type for your job binary."
+msgstr "ジョブバイナリーのストレージ種別を選択してください。"
+
+msgid "Select the type of your Data Source."
+msgstr "データソース種別を選択してください。"
+
+msgid "Select the type of your job:"
+msgstr "ジョブの種別を選択してください。"
+
+msgid "Select type"
+msgstr "種別の選択"
+
+msgid ""
+"Select which plugin and version that you\n"
+"    want to use to create your cluster."
+msgstr ""
+"クラスターの作成に使用するプラグインと\n"
+"バージョンを選択します。"
+
+msgid ""
+"Select which type of job that you want to run.\n"
+"      This choice will dictate which steps are required to successfully\n"
+"      execute your job.\n"
+"    "
+msgstr ""
+"実行するジョブの種別を選択します。\n"
+"この選択により、ジョブを正常に\n"
+"実行するために必要なステップが\n"
+"決定されます。"
+
+msgid "Service Configurations"
+msgstr "サービス設定"
+
+msgid "Share"
+msgstr "共有"
+
+msgid "Shell"
+msgstr "シェル"
+
+msgid "Shell Action"
+msgstr "シェルアクション"
+
+msgid "Show full configuration"
+msgstr "詳細設定を表示する"
+
+msgid "Source password"
+msgstr "データソースのパスワード"
+
+msgid "Source username"
+msgstr "データソースのユーザー名"
+
+msgid "Spark"
+msgstr "Spark"
+
+msgid ""
+"Specified User Name will be used by Data Processing to apply configs and "
+"manage processes on instances."
+msgstr ""
+"指定されたユーザー名は、設定を適用したり、インスタンス上のプロセスを管理した"
+"りするのに使用されます。"
+
+msgid "Started"
+msgstr "開始時刻"
+
+msgid "Started at"
+msgstr "開始時刻"
+
+msgid "Status"
+msgstr "ステータス"
+
+msgid "Step Description"
+msgstr "説明"
+
+msgid "Storage location"
+msgstr "ストレージの場所"
+
+msgid "Storage type"
+msgstr "ストレージ種別"
+
+msgid "Storm"
+msgstr "Storm"
+
+msgid "Streaming MapReduce"
+msgstr "ストリーミング MapReduce"
+
+msgid "String"
+msgstr "文字列"
+
+msgctxt "Current status of a Job"
+msgid "Succeeded"
+msgstr "正常終了"
+
+msgid "Successfully updated image."
+msgstr "イメージを正常にアップロードしました。"
+
+msgid "Supported Versions"
+msgstr "対応バージョン"
+
+msgid "Swift"
+msgstr "Swift"
+
+msgid "Tags"
+msgstr "タグ"
+
+msgid ""
+"Tags are used for filtering images suitable for each plugin and each Data "
+"Processing version.\n"
+"        To add required tags, select a plugin and a Data Processing version "
+"and click &quot;Add plugin tags&quot; button."
+msgstr ""
+"タグは、各プラグイン、各データ処理基盤のバージョンに適したイメージを絞り込む"
+"のに使用されます。\n"
+"必要なタグを追加するには、プラグインとデータ処理基盤のバージョンを選択して"
+"「プラグインタグの追加」をクリックしてください。"
+
+msgid "Template"
+msgstr "テンプレート"
+
+msgid "Template Name"
+msgstr "テンプレート名"
+
+msgid "Template not specified"
+msgstr "テンプレートは指定されていません"
+
+msgid ""
+"The Cluster Template object may specify a list of processes in anti-affinity "
+"group.\n"
+"    That means these processes may not be launched more than once on a "
+"single host."
+msgstr ""
+"クラスターテンプレートでは anti-affinity グループでプロセスリストを指定できま"
+"す。\n"
+"この設定により、指定したプロセスは、同時に 1 つのホストでは起動されないように"
+"なります。"
+
+msgid ""
+"The Cluster Template object should specify Node Group Templates that will be "
+"used to build a Cluster.\n"
+"    You can add Node Groups using Node Group Templates on a &quot;Node "
+"Groups&quot; tab."
+msgstr ""
+"クラスターテンプレートのオブジェクトでは、クラスターの作成に使用するノードグ"
+"ループテンプレートを指定する必要があります。\n"
+"また、「ノードグループ」タブでノードグループテンプレートを使用してノードグ"
+"ループを追加できます。"
+
+msgid ""
+"The Cluster object should specify OpenStack Image to boot instances for "
+"Cluster."
+msgstr ""
+"クラスターオブジェクトでは、クラスター用のインスタンスを起動するのに使う "
+"OpenStack イメージを指定する必要があります。"
+
+msgid ""
+"The Node Group Template object specifies the processes\n"
+"        that will be launched on each instance. Check one or more "
+"processes.\n"
+"        When processes are selected, you may set <b>node</b> scoped\n"
+"        configurations on corresponding tabs."
+msgstr ""
+"ノードグループテンプレートオブジェクトは各インスタンスで起動されるプロセスを"
+"指定します。\n"
+"1 つまたは複数のプロセスをチェックしてください。\n"
+"プロセスが選択されたら、\n"
+"対応するタブで<b>ノード</b>を対象とする構成を設定することができます。"
+
+msgid ""
+"The first step is to determine which type of\n"
+"                    cluster you want to run.  You may have several choices\n"
+"                    available depending on the configuration of your "
+"system.\n"
+"                    Click on \"choose plugin\" to bring up the list of data\n"
+"                    processing plugins.  There you will be able to choose "
+"the\n"
+"                    data processing plugin along with the version number.\n"
+"                    Choosing this up front will allow the rest of the "
+"cluster\n"
+"                    creation steps to focus only on options that are "
+"pertinent\n"
+"                    to your desired cluster type."
+msgstr ""
+"まず最初に、実行するクラスターの種別を決定します。\n"
+"システムの構成に応じて複数の選択肢がある場合があります。\n"
+"「プラグインの選択」をクリックするとデータ処理プラグインの\n"
+"一覧が表示され、データ処理プラグインとバージョン番号を\n"
+"選択することができます。\n"
+"この設定をあらかじめ行っておくと、\n"
+"以降のクラスターの作成ステップでは、\n"
+"希望するクラスター種別に適切なオプションのみに\n"
+"集中することができます。"
+
+msgid "This Cluster Template will be created for:"
+msgstr "以下のプラグイン用のクラスターテンプレートを作成します。"
+
+msgid "This Cluster will be started with:"
+msgstr "このクラスターは以下のプラグインで開始されます。"
+
+msgid "This Node Group Template will be created for:"
+msgstr "以下のプラグイン用のノードグループテンプレートを作成します。"
+
+msgid "Title"
+msgstr "タイトル"
+
+msgid "Type"
+msgstr "種別"
+
+msgid "URL"
+msgstr "URL"
+
+msgid "Unable to create job binary"
+msgstr "ジョブバイナリーを作成できません"
+
+msgid "Unable to create new cluster for job."
+msgstr "ジョブ用の新しいクラスターを作成できません"
+
+msgid "Unable to create the cluster"
+msgstr "クラスターを作成できません"
+
+msgid "Unable to fetch available images."
+msgstr "利用可能なイメージ一覧を取得できません。"
+
+msgid "Unable to fetch cluster list"
+msgstr "クラスターの一覧を取得できません。"
+
+msgid "Unable to fetch cluster template list"
+msgstr "クラスターテンプレートの一覧を取得できません"
+
+msgid "Unable to fetch cluster template."
+msgstr "クラスターテンプレートを取得できません。"
+
+msgid "Unable to fetch cluster to scale"
+msgstr "サイズ調整を行うクラスターを取得できません"
+
+msgid "Unable to fetch cluster to scale."
+msgstr "サイズ調整を行うクラスターを取得できません"
+
+msgid "Unable to fetch clusters."
+msgstr "クラスターの一覧を取得できません"
+
+msgid "Unable to fetch data sources."
+msgstr "データソースの一覧を取得できません"
+
+msgid "Unable to fetch flavor for template."
+msgstr "テンプレート用のフレーバーを取得できません。"
+
+msgid "Unable to fetch floating ip pools."
+msgstr "Floating IP プールを取得できません。"
+
+msgid "Unable to fetch image choices."
+msgstr "イメージの選択肢を取得できません。"
+
+msgid "Unable to fetch instance details."
+msgstr "インスタンスの詳細を取得できません。"
+
+msgid "Unable to fetch job binary list."
+msgstr "ジョブバイナリーの一覧を取得できません"
+
+#, python-format
+msgid "Unable to fetch job binary: %(exc)s"
+msgstr "ジョブバイナリーを取得できません: %(exc)s"
+
+msgid "Unable to fetch job executions."
+msgstr "ジョブ実行の一覧を取得できません。"
+
+msgid "Unable to fetch jobs."
+msgstr "ジョブ一覧を取得できません"
+
+msgid "Unable to fetch keypair choices."
+msgstr "キーペアの選択肢を取得できません"
+
+msgid "Unable to fetch node group details."
+msgstr "ノードグループの詳細を取得できません。"
+
+msgid "Unable to fetch node group template list."
+msgstr "ノードグループテンプレートの一覧を取得できません"
+
+msgid "Unable to fetch plugin details."
+msgstr "プラグインの詳細を取得できません"
+
+msgid "Unable to fetch plugin list."
+msgstr "プラグイン一覧を取得できません"
+
+msgid "Unable to fetch template object."
+msgstr "テンプレートオブジェクトを取得できません"
+
+msgid "Unable to fetch template to copy."
+msgstr "コピーするテンプレートを取得できません"
+
+msgid "Unable to fetch template to edit."
+msgstr "編集するテンプレートを取得できませんでした。"
+
+msgid "Unable to fetch the image details"
+msgstr "イメージ詳細を取得できません"
+
+msgid "Unable to generate process choices."
+msgstr "プロセスの選択肢を生成できません"
+
+msgid "Unable to get node group details."
+msgstr "ノードグループの詳細を取得できません。"
+
+msgid "Unable to get security group list."
+msgstr "セキュリティーグループの一覧を取得できません。"
+
+msgid "Unable to get volume type list."
+msgstr "ボリューム種別の一覧を取得できません。"
+
+msgid "Unable to launch job."
+msgstr "ジョブを起動できません"
+
+msgid "Unable to populate anti-affinity processes."
+msgstr "anti-affinity グループのプロセスを起動できません。"
+
+msgid "Unable to process plugin tags"
+msgstr "プラグインタグを処理できません"
+
+msgid "Unable to retrieve data processing plugins."
+msgstr "データ処理プラグイン一覧を取得できません。"
+
+#, python-format
+msgid "Unable to retrieve details for cluster \"%s\"."
+msgstr "クラスター \"%s\" の詳細を取得できません。"
+
+#, python-format
+msgid "Unable to retrieve details for cluster template \"%s\"."
+msgstr "クラスターテンプレート \"%s\" の詳細を取得できません。"
+
+#, python-format
+msgid "Unable to retrieve details for data source \"%s\"."
+msgstr "データソース \"%s\" の詳細を取得できません。"
+
+#, python-format
+msgid "Unable to retrieve details for job \"%s\"."
+msgstr "ジョブ \"%s\" の詳細を取得できません。"
+
+#, python-format
+msgid "Unable to retrieve details for job binary \"%s\"."
+msgstr "ジョブバイナリー \"%s\" の詳細を取得できません。"
+
+#, python-format
+msgid "Unable to retrieve details for job template \"%s\"."
+msgstr "ジョブテンプレート \"%s\" の詳細を取得できません。"
+
+#, python-format
+msgid "Unable to retrieve details for node group template \"%s\"."
+msgstr "ノードグループテンプレート \"%s\" の詳細を取得できません。"
+
+msgid "Unable to retrieve image list"
+msgstr "イメージ一覧を取得できません"
+
+#, python-format
+msgid "Unable to retrieve images with filter %s."
+msgstr "フィルター %s でイメージ一覧を取得できませんでした"
+
+#, python-format
+msgid "Unable to retrieve job binary \"%s\"."
+msgstr "ジョブバイナリー \"%s\" を取得できません。"
+
+msgid "Unable to retrieve networks."
+msgstr "ネットワーク一覧を取得できません。"
+
+msgid "Unable to retrieve plugin."
+msgstr "プラグインを取得できません"
+
+#, python-format
+msgid "Unable to retrieve security group %(group)s."
+msgstr "セキュリティーグループ %(group)s を取得できません。"
+
+msgid "Unable to set cluster type"
+msgstr "クラスター種別を設定できません"
+
+msgid "Unable to set job type"
+msgstr "ジョブ種別を設定できません"
+
+msgid "Unable to set node group template"
+msgstr "ノードグループテンプレートを設定できません"
+
+msgid "Unable to show guides"
+msgstr "ガイドを表示できません"
+
+msgid "Unable to update job binary"
+msgstr "ジョブバイナリーを更新できません。"
+
+msgid "Unable to update row"
+msgstr "行を更新できません"
+
+msgid "Unable to upload cluster template file"
+msgstr "クラスターテンプレートファイルをアップロードできませんでした"
+
+msgid "Unable to upload job binary"
+msgstr "ジョブバイナリーをアップロードできません"
+
+msgid "Unknown"
+msgstr "不明"
+
+msgid "Unnecessary tags may be removed by clicking a cross near tag's name."
+msgstr "不要なタグは、タグ名の横の ☓ 印をクリックすると削除できます。"
+
+msgid "Unregister Image"
+msgid_plural "Unregister Images"
+msgstr[0] "イメージの登録削除"
+
+msgid "Unregistered Image"
+msgid_plural "Unregistered Images"
+msgstr[0] "イメージの登録を削除しました"
+
+msgid "Update"
+msgstr "更新"
+
+msgid "Updated"
+msgstr "更新日時"
+
+msgid "Updated time"
+msgstr "更新日時"
+
+msgid "Upload"
+msgstr "アップロード"
+
+msgid "Upload File"
+msgstr "ファイルのアップロード"
+
+msgid "Upload Template"
+msgstr "テンプレートのアップロード"
+
+msgid "Upload a new file"
+msgstr "新しいファイルをアップロード"
+
+msgid "Url"
+msgstr "URL"
+
+msgid "Use HBase Common library"
+msgstr "HBase 共通ライブラリーを使用"
+
+msgid "Use anti-affinity groups for processes"
+msgstr "プロセスに対して anti-affinity グループを使用します"
+
+msgid "Use anti-affinity groups for: "
+msgstr "anti-affinity グループを使用するプロセス:"
+
+msgid "Use auto-configuration"
+msgstr "自動設定を使用"
+
+msgid "User Name"
+msgstr "ユーザー名"
+
+msgid "User has to choose a keypair to have access to clusters instances."
+msgstr ""
+"クラスターのインスタンスにアクセスするためのキーペアを選択してください。"
+
+msgid "Username"
+msgstr "ユーザー名"
+
+msgid "Value"
+msgstr "値"
+
+msgid "Value Type"
+msgstr "値の型"
+
+msgid "Version"
+msgstr "バージョン"
+
+msgid "Version:"
+msgstr "バージョン:"
+
+msgid "Volume local to instance"
+msgstr "ボリュームをインスタンスと同じホストに配置"
+
+msgid "Volumes Availability Zone"
+msgstr "ボリュームアベイラビリティゾーン"
+
+msgid "Volumes local to instance"
+msgstr "ボリュームをインスタンスと同じホストに配置"
+
+msgid "Volumes per node"
+msgstr "ノード当たりのボリューム数"
+
+msgid "Volumes size"
+msgstr "ボリュームサイズ"
+
+msgid "Volumes size (GB)"
+msgstr "ボリュームサイズ (GB)"
+
+msgid "Volumes type"
+msgstr "ボリューム種別"
+
+msgid "Which keypair to use for authentication."
+msgstr "認証に使用するキーペアを選択してください。"
+
+msgid "Worker Node Group Template:"
+msgstr "ワーカーノードグループテンプレート:"
+
+msgid ""
+"You are now ready to\n"
+"                        launch your cluster.  When you click on the link\n"
+"                        below, you will need to give your cluster a name,\n"
+"                        choose the Cluster Template to use and choose which\n"
+"                        image to use to build your instances.  After you\n"
+"                        click on \"Create\", your instances will begin to\n"
+"                        spawn.  Your cluster should be operational in a few\n"
+"                        minutes."
+msgstr ""
+"これでクラスターを起動できる準備が整いました。\n"
+"以下のリンクをクリックして、\n"
+"クラスターの名前を指定し、\n"
+"使用するクラスターテンプレートとインスタンスのビルドに\n"
+"使用するイメージを選択する必要があります。\n"
+"「作成」をクリックした後には、\n"
+"インスタンスの起動が開始します。\n"
+"クラスターは数分後には稼働状態となるはずです。"
+
+msgid "You may also add any custom tag."
+msgstr "任意のカスタムタグを追加できます。"
+
+msgid "You may also enter an optional description for your Data Source."
+msgstr "またオプションで、データソースの説明を入力することもできます。"
+
+msgid "You may also enter an optional description for your job binary."
+msgstr "またオプションで、ジョブバイナリーの説明を入力することもできます。"
+
+msgid "You may also enter an optional description for your job template."
+msgstr "またオプションで、ジョブテンプレートの説明を入力することもできます。"
+
+msgid "You may need to enter the username and password for your Data Source."
+msgstr "データソースのユーザー名とパスワードを入力する必要があります。"
+
+msgid "You may set <b>cluster</b> scoped configurations on corresponding tabs."
+msgstr "対応するタブで<b>クラスター</b>毎の設定を行うことができます。"
+
+msgid ""
+"You must choose a flavor to determine the size (VCPUs, memory and storage) "
+"of all launched VMs."
+msgstr ""
+"起動する全仮想マシンのサイズ (仮想 CPU、メモリー、ストレージ) を決定するため"
+"のフレーバーを選択する必要があります。"
+
+msgid "cluster"
+msgstr "クラスター"
+
+msgid "cluster template"
+msgstr "クラスターテンプレート"
+
+msgid "data source"
+msgstr "データソース"
+
+msgid "job"
+msgstr "ジョブ"
+
+msgid "job binary"
+msgstr "ジョブバイナリー"
+
+msgid "no processes"
+msgstr "指定されたプロセスはありません"
+
+msgid "node group template"
+msgstr "ノードグループテンプレート"

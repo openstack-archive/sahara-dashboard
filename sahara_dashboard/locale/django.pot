@@ -1,0 +1,2718 @@
+# Translations template for PROJECT.
+# Copyright (C) 2016 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2016-02-19 06:30+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.2.0\n"
+
+#: sahara_dashboard/content/data_processing/cluster_templates/forms.py:27
+msgid "Cluster Template Name"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/forms.py:35
+#: sahara_dashboard/content/data_processing/cluster_templates/templates/data_processing.cluster_templates/_nodegroups_details.html:13
+#: sahara_dashboard/content/data_processing/clusters/templates/data_processing.clusters/_details.html:37
+#: sahara_dashboard/content/data_processing/clusters/templates/data_processing.clusters/_nodegroups_details.html:19
+msgid "Template"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/forms.py:53
+msgid "Unable to upload cluster template file"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/panel.py:22
+#: sahara_dashboard/content/data_processing/cluster_templates/tables.py:169
+#: sahara_dashboard/content/data_processing/cluster_templates/views.py:44
+msgid "Cluster Templates"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/tables.py:29
+#: sahara_dashboard/content/data_processing/cluster_templates/tables.py:153
+#: sahara_dashboard/content/data_processing/cluster_templates/templates/data_processing.cluster_templates/_details.html:5
+#: sahara_dashboard/content/data_processing/clusters/tables.py:32
+#: sahara_dashboard/content/data_processing/clusters/tables.py:173
+#: sahara_dashboard/content/data_processing/clusters/tabs.py:154
+#: sahara_dashboard/content/data_processing/clusters/templates/data_processing.clusters/_details.html:5
+#: sahara_dashboard/content/data_processing/data_plugins/templates/data_processing.data_plugins/_details.html:5
+#: sahara_dashboard/content/data_processing/data_sources/tables.py:86
+#: sahara_dashboard/content/data_processing/data_sources/templates/data_processing.data_sources/_details.html:5
+#: sahara_dashboard/content/data_processing/data_sources/workflows/create.py:30
+#: sahara_dashboard/content/data_processing/job_binaries/forms.py:55
+#: sahara_dashboard/content/data_processing/job_binaries/tables.py:107
+#: sahara_dashboard/content/data_processing/job_binaries/templates/data_processing.job_binaries/_details.html:5
+#: sahara_dashboard/content/data_processing/jobs/tables.py:28
+#: sahara_dashboard/content/data_processing/jobs/tables.py:123
+#: sahara_dashboard/content/data_processing/jobs/templates/data_processing.jobs/_details.html:5
+#: sahara_dashboard/content/data_processing/jobs/templates/data_processing.jobs/config_template.html:54
+#: sahara_dashboard/content/data_processing/jobs/workflows/create.py:75
+#: sahara_dashboard/content/data_processing/nodegroup_templates/tables.py:27
+#: sahara_dashboard/content/data_processing/nodegroup_templates/tables.py:123
+#: sahara_dashboard/content/data_processing/nodegroup_templates/templates/data_processing.nodegroup_templates/_details.html:5
+#: sahara_dashboard/content/data_processing/utils/workflow_helpers.py:116
+#: sahara_dashboard/content/data_processing/utils/workflow_helpers.py:135
+msgid "Name"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/tables.py:30
+#: sahara_dashboard/content/data_processing/cluster_templates/tables.py:157
+#: sahara_dashboard/content/data_processing/cluster_templates/templates/data_processing.cluster_templates/_configure_general_help.html:6
+#: sahara_dashboard/content/data_processing/cluster_templates/templates/data_processing.cluster_templates/_details.html:15
+#: sahara_dashboard/content/data_processing/clusters/tables.py:178
+#: sahara_dashboard/content/data_processing/clusters/templates/data_processing.clusters/_configure_general_help.html:6
+#: sahara_dashboard/content/data_processing/clusters/templates/data_processing.clusters/_details.html:31
+#: sahara_dashboard/content/data_processing/data_image_registry/templates/data_processing.data_image_registry/_tag_form.html:7
+#: sahara_dashboard/content/data_processing/nodegroup_templates/tables.py:28
+#: sahara_dashboard/content/data_processing/nodegroup_templates/tables.py:126
+#: sahara_dashboard/content/data_processing/nodegroup_templates/templates/data_processing.nodegroup_templates/_configure_general_help.html:6
+#: sahara_dashboard/content/data_processing/nodegroup_templates/templates/data_processing.nodegroup_templates/_details.html:36
+msgid "Plugin"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/tables.py:31
+#: sahara_dashboard/content/data_processing/cluster_templates/tables.py:159
+#: sahara_dashboard/content/data_processing/cluster_templates/templates/data_processing.cluster_templates/_configure_general_help.html:8
+#: sahara_dashboard/content/data_processing/cluster_templates/templates/data_processing.cluster_templates/_details.html:17
+#: sahara_dashboard/content/data_processing/cluster_templates/workflows/create.py:60
+#: sahara_dashboard/content/data_processing/clusters/tables.py:181
+#: sahara_dashboard/content/data_processing/clusters/templates/data_processing.clusters/_configure_general_help.html:8
+#: sahara_dashboard/content/data_processing/clusters/templates/data_processing.clusters/_details.html:33
+#: sahara_dashboard/content/data_processing/data_image_registry/templates/data_processing.data_image_registry/_tag_form.html:8
+#: sahara_dashboard/content/data_processing/nodegroup_templates/tables.py:29
+#: sahara_dashboard/content/data_processing/nodegroup_templates/tables.py:128
+#: sahara_dashboard/content/data_processing/nodegroup_templates/templates/data_processing.nodegroup_templates/_configure_general_help.html:8
+#: sahara_dashboard/content/data_processing/nodegroup_templates/templates/data_processing.nodegroup_templates/_details.html:38
+#: sahara_dashboard/content/data_processing/utils/workflow_helpers.py:235
+#: sahara_dashboard/content/data_processing/wizard/forms.py:64
+msgid "Version"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/tables.py:32
+#: sahara_dashboard/content/data_processing/cluster_templates/tables.py:165
+#: sahara_dashboard/content/data_processing/cluster_templates/templates/data_processing.cluster_templates/_details.html:11
+#: sahara_dashboard/content/data_processing/cluster_templates/workflows/create.py:99
+#: sahara_dashboard/content/data_processing/clusters/templates/data_processing.clusters/_details.html:11
+#: sahara_dashboard/content/data_processing/clusters/workflows/create.py:73
+#: sahara_dashboard/content/data_processing/data_image_registry/forms.py:30
+#: sahara_dashboard/content/data_processing/data_plugins/tables.py:32
+#: sahara_dashboard/content/data_processing/data_plugins/templates/data_processing.data_plugins/_details.html:9
+#: sahara_dashboard/content/data_processing/data_sources/tables.py:92
+#: sahara_dashboard/content/data_processing/data_sources/templates/data_processing.data_sources/_details.html:15
+#: sahara_dashboard/content/data_processing/data_sources/workflows/create.py:79
+#: sahara_dashboard/content/data_processing/job_binaries/forms.py:159
+#: sahara_dashboard/content/data_processing/job_binaries/tables.py:112
+#: sahara_dashboard/content/data_processing/job_binaries/templates/data_processing.job_binaries/_details.html:13
+#: sahara_dashboard/content/data_processing/jobs/tables.py:30
+#: sahara_dashboard/content/data_processing/jobs/tables.py:128
+#: sahara_dashboard/content/data_processing/jobs/templates/data_processing.jobs/_details.html:13
+#: sahara_dashboard/content/data_processing/jobs/workflows/create.py:101
+#: sahara_dashboard/content/data_processing/nodegroup_templates/templates/data_processing.nodegroup_templates/_details.html:11
+#: sahara_dashboard/content/data_processing/nodegroup_templates/workflows/create.py:48
+#: sahara_dashboard/content/data_processing/utils/workflow_helpers.py:139
+msgid "Description"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/tables.py:37
+#: sahara_dashboard/content/data_processing/cluster_templates/views.py:97
+#: sahara_dashboard/content/data_processing/cluster_templates/templates/data_processing.cluster_templates/_upload_file.html:10
+#: sahara_dashboard/content/data_processing/cluster_templates/templates/data_processing.cluster_templates/upload_file.html:3
+msgid "Upload Template"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/tables.py:45
+#: sahara_dashboard/content/data_processing/clusters/tables.py:44
+#: sahara_dashboard/content/data_processing/clusters/views.py:188
+#: sahara_dashboard/content/data_processing/clusters/templates/data_processing.clusters/_create_cluster.html:9
+#: sahara_dashboard/content/data_processing/clusters/templates/data_processing.clusters/configure.html:3
+#: sahara_dashboard/content/data_processing/clusters/templates/data_processing.clusters/create.html:3
+#: sahara_dashboard/content/data_processing/clusters/templates/data_processing.clusters/create_cluster.html:3
+#: sahara_dashboard/content/data_processing/clusters/workflows/create.py:54
+#: sahara_dashboard/content/data_processing/clusters/workflows/create.py:226
+msgid "Launch Cluster"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/tables.py:61
+#: sahara_dashboard/content/data_processing/nodegroup_templates/tables.py:53
+msgid "Copy Template"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/tables.py:68
+#: sahara_dashboard/content/data_processing/nodegroup_templates/tables.py:60
+msgid "Edit Template"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/tables.py:76
+#: sahara_dashboard/content/data_processing/nodegroup_templates/tables.py:68
+msgid "Delete Template"
+msgid_plural "Delete Templates"
+msgstr[0] ""
+msgstr[1] ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/tables.py:84
+#: sahara_dashboard/content/data_processing/nodegroup_templates/tables.py:76
+msgid "Deleted Template"
+msgid_plural "Deleted Templates"
+msgstr[0] ""
+msgstr[1] ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/tables.py:96
+#: sahara_dashboard/content/data_processing/nodegroup_templates/tables.py:34
+msgid "Create Template"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/tables.py:105
+#: sahara_dashboard/content/data_processing/cluster_templates/views.py:113
+msgid "Configure Cluster Template"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/tables.py:161
+#: sahara_dashboard/content/data_processing/cluster_templates/tabs.py:64
+#: sahara_dashboard/content/data_processing/cluster_templates/workflows/create.py:229
+#: sahara_dashboard/content/data_processing/clusters/tabs.py:102
+msgid "Node Groups"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/tabs.py:31
+#: sahara_dashboard/content/data_processing/clusters/tabs.py:36
+#: sahara_dashboard/content/data_processing/data_sources/tabs.py:26
+#: sahara_dashboard/content/data_processing/job_binaries/tabs.py:26
+#: sahara_dashboard/content/data_processing/job_executions/tabs.py:26
+#: sahara_dashboard/content/data_processing/jobs/tabs.py:26
+#: sahara_dashboard/content/data_processing/nodegroup_templates/tabs.py:33
+msgid "General Info"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/tabs.py:47
+#: sahara_dashboard/content/data_processing/clusters/tabs.py:79
+msgid "Configuration Details"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/tabs.py:86
+msgid "Unable to fetch node group details."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/views.py:57
+msgid "Unable to fetch cluster template list"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/views.py:72
+#, python-format
+msgid "Unable to retrieve details for cluster template \"%s\"."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/views.py:106
+#: sahara_dashboard/content/data_processing/cluster_templates/templates/data_processing.cluster_templates/configure.html:3
+#: sahara_dashboard/content/data_processing/cluster_templates/workflows/create.py:80
+#: sahara_dashboard/content/data_processing/cluster_templates/workflows/create.py:301
+msgid "Create Cluster Template"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/views.py:120
+msgid "Copy Cluster Template"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/views.py:138
+#: sahara_dashboard/content/data_processing/clusters/views.py:226
+msgid "Unable to fetch cluster template."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/templates/data_processing.cluster_templates/_cluster_template_configs_details.html:3
+msgid "Cluster Template Configuration Overview"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/templates/data_processing.cluster_templates/_cluster_template_configs_details.html:13
+#: sahara_dashboard/content/data_processing/cluster_templates/templates/data_processing.cluster_templates/_cluster_template_configs_details.html:38
+#: sahara_dashboard/content/data_processing/clusters/templates/data_processing.clusters/_cluster_configs_details.html:13
+#: sahara_dashboard/content/data_processing/clusters/templates/data_processing.clusters/_cluster_configs_details.html:38
+#, python-format
+msgid "%(conf_name)s: %(conf_value)s"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/templates/data_processing.cluster_templates/_cluster_template_configs_details.html:17
+#: sahara_dashboard/content/data_processing/cluster_templates/templates/data_processing.cluster_templates/_cluster_template_configs_details.html:42
+#: sahara_dashboard/content/data_processing/clusters/templates/data_processing.clusters/_cluster_configs_details.html:17
+#: sahara_dashboard/content/data_processing/clusters/templates/data_processing.clusters/_cluster_configs_details.html:42
+#: sahara_dashboard/content/data_processing/nodegroup_templates/templates/data_processing.nodegroup_templates/_service_confs.html:17
+msgid "No configurations"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/templates/data_processing.cluster_templates/_cluster_template_configs_details.html:22
+#: sahara_dashboard/content/data_processing/clusters/templates/data_processing.clusters/_cluster_configs_details.html:22
+msgid "Cluster configurations are not specified"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/templates/data_processing.cluster_templates/_cluster_template_configs_details.html:26
+#: sahara_dashboard/content/data_processing/clusters/templates/data_processing.clusters/_cluster_configs_details.html:26
+msgid "Node Groups Configuration Overview"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/templates/data_processing.cluster_templates/_cluster_template_configs_details.html:30
+#: sahara_dashboard/content/data_processing/clusters/templates/data_processing.clusters/_cluster_configs_details.html:30
+#, python-format
+msgid "Node Group Name: %(node_group_name)s"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/templates/data_processing.cluster_templates/_cluster_template_configs_details.html:47
+#: sahara_dashboard/content/data_processing/clusters/templates/data_processing.clusters/_cluster_configs_details.html:47
+msgid "Node group configurations are not specified"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/templates/data_processing.cluster_templates/_configure_general_help.html:4
+msgid "This Cluster Template will be created for:"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/templates/data_processing.cluster_templates/_configure_general_help.html:13
+msgid ""
+"The Cluster Template object should specify Node Group Templates that will"
+" be used to build a Cluster.\n"
+"    You can add Node Groups using Node Group Templates on a &quot;Node "
+"Groups&quot; tab."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/templates/data_processing.cluster_templates/_configure_general_help.html:16
+msgid "You may set <b>cluster</b> scoped configurations on corresponding tabs."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/templates/data_processing.cluster_templates/_configure_general_help.html:20
+msgid ""
+"The Cluster Template object may specify a list of processes in anti-"
+"affinity group.\n"
+"    That means these processes may not be launched more than once on a "
+"single host."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/templates/data_processing.cluster_templates/_create_general_help.html:3
+msgid "Select a plugin and version for a new Cluster template."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/templates/data_processing.cluster_templates/_details.html:7
+#: sahara_dashboard/content/data_processing/clusters/templates/data_processing.clusters/_details.html:7
+#: sahara_dashboard/content/data_processing/data_sources/templates/data_processing.data_sources/_details.html:7
+#: sahara_dashboard/content/data_processing/job_binaries/templates/data_processing.job_binaries/_details.html:7
+#: sahara_dashboard/content/data_processing/job_executions/templates/data_processing.job_executions/_details.html:9
+#: sahara_dashboard/content/data_processing/jobs/templates/data_processing.jobs/_details.html:7
+msgid "Project ID"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/templates/data_processing.cluster_templates/_details.html:9
+#: sahara_dashboard/content/data_processing/clusters/templates/data_processing.clusters/_details.html:9
+#: sahara_dashboard/content/data_processing/data_sources/templates/data_processing.data_sources/_details.html:9
+#: sahara_dashboard/content/data_processing/job_binaries/templates/data_processing.job_binaries/_details.html:9
+#: sahara_dashboard/content/data_processing/job_executions/tables.py:35
+#: sahara_dashboard/content/data_processing/job_executions/tables.py:204
+#: sahara_dashboard/content/data_processing/job_executions/templates/data_processing.job_executions/_details.html:7
+#: sahara_dashboard/content/data_processing/jobs/templates/data_processing.jobs/_details.html:9
+#: sahara_dashboard/content/data_processing/nodegroup_templates/templates/data_processing.nodegroup_templates/_details.html:9
+msgid "ID"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/templates/data_processing.cluster_templates/_details.html:12
+#: sahara_dashboard/content/data_processing/clusters/templates/data_processing.clusters/_details.html:12
+#: sahara_dashboard/content/data_processing/data_sources/templates/data_processing.data_sources/_details.html:16
+#: sahara_dashboard/content/data_processing/job_binaries/templates/data_processing.job_binaries/_details.html:14
+#: sahara_dashboard/content/data_processing/jobs/templates/data_processing.jobs/_details.html:14
+#: sahara_dashboard/content/data_processing/jobs/templates/data_processing.jobs/_details.html:23
+#: sahara_dashboard/content/data_processing/jobs/templates/data_processing.jobs/_details.html:29
+#: sahara_dashboard/content/data_processing/nodegroup_templates/templates/data_processing.nodegroup_templates/_details.html:12
+msgid "None"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/templates/data_processing.cluster_templates/_details.html:19
+#: sahara_dashboard/content/data_processing/cluster_templates/templates/data_processing.cluster_templates/_nodegroups_details.html:25
+#: sahara_dashboard/content/data_processing/clusters/templates/data_processing.clusters/_details.html:51
+#: sahara_dashboard/content/data_processing/clusters/templates/data_processing.clusters/_nodegroups_details.html:26
+#: sahara_dashboard/content/data_processing/nodegroup_templates/templates/data_processing.nodegroup_templates/_details.html:43
+msgid "Use auto-configuration"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/templates/data_processing.cluster_templates/_details.html:21
+#: sahara_dashboard/content/data_processing/clusters/templates/data_processing.clusters/_details.html:53
+#: sahara_dashboard/content/data_processing/data_sources/templates/data_processing.data_sources/_details.html:17
+#: sahara_dashboard/content/data_processing/job_binaries/templates/data_processing.job_binaries/_details.html:15
+#: sahara_dashboard/content/data_processing/job_executions/templates/data_processing.job_executions/_details.html:13
+#: sahara_dashboard/content/data_processing/jobs/templates/data_processing.jobs/_details.html:15
+#: sahara_dashboard/content/data_processing/nodegroup_templates/templates/data_processing.nodegroup_templates/_details.html:13
+#: sahara_dashboard/content/data_processing/utils/acl.py:124
+msgid "Public"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/templates/data_processing.cluster_templates/_details.html:23
+#: sahara_dashboard/content/data_processing/clusters/templates/data_processing.clusters/_details.html:55
+#: sahara_dashboard/content/data_processing/data_sources/templates/data_processing.data_sources/_details.html:19
+#: sahara_dashboard/content/data_processing/job_binaries/templates/data_processing.job_binaries/_details.html:17
+#: sahara_dashboard/content/data_processing/job_executions/templates/data_processing.job_executions/_details.html:15
+#: sahara_dashboard/content/data_processing/jobs/templates/data_processing.jobs/_details.html:17
+#: sahara_dashboard/content/data_processing/nodegroup_templates/templates/data_processing.nodegroup_templates/_details.html:15
+#: sahara_dashboard/content/data_processing/utils/acl.py:135
+msgid "Protected"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/templates/data_processing.cluster_templates/_details.html:27
+#: sahara_dashboard/content/data_processing/clusters/templates/data_processing.clusters/_details.html:59
+msgid "Anti-affinity enabled for"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/templates/data_processing.cluster_templates/_details.html:37
+#: sahara_dashboard/content/data_processing/clusters/templates/data_processing.clusters/_details.html:69
+msgid "no processes"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/templates/data_processing.cluster_templates/_nodegroups_details.html:6
+#, python-format
+msgid "Node Group: %(node_group_name)s"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/templates/data_processing.cluster_templates/_nodegroups_details.html:7
+msgid "Nodes Count"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/templates/data_processing.cluster_templates/_nodegroups_details.html:10
+#: sahara_dashboard/content/data_processing/clusters/templates/data_processing.clusters/_nodegroups_details.html:11
+#: sahara_dashboard/content/data_processing/nodegroup_templates/templates/data_processing.nodegroup_templates/_details.html:20
+msgid "Flavor"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/templates/data_processing.cluster_templates/_nodegroups_details.html:11
+#: sahara_dashboard/content/data_processing/clusters/templates/data_processing.clusters/_nodegroups_details.html:12
+msgid "Flavor is not specified"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/templates/data_processing.cluster_templates/_nodegroups_details.html:17
+#: sahara_dashboard/content/data_processing/clusters/templates/data_processing.clusters/_details.html:41
+#: sahara_dashboard/content/data_processing/clusters/templates/data_processing.clusters/_nodegroups_details.html:23
+msgid "Template not specified"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/templates/data_processing.cluster_templates/_nodegroups_details.html:21
+#: sahara_dashboard/content/data_processing/nodegroup_templates/templates/data_processing.nodegroup_templates/_details.html:25
+#: sahara_dashboard/content/data_processing/nodegroup_templates/workflows/create.py:55
+msgid "Availability Zone"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/templates/data_processing.cluster_templates/_nodegroups_details.html:28
+#: sahara_dashboard/content/data_processing/clusters/templates/data_processing.clusters/_nodegroups_details.html:29
+#: sahara_dashboard/content/data_processing/nodegroup_templates/templates/data_processing.nodegroup_templates/_details.html:47
+#: sahara_dashboard/content/data_processing/nodegroup_templates/workflows/create.py:160
+msgid "Proxy Gateway"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/templates/data_processing.cluster_templates/_nodegroups_details.html:31
+#: sahara_dashboard/content/data_processing/clusters/templates/data_processing.clusters/_nodegroups_details.html:32
+#: sahara_dashboard/content/data_processing/nodegroup_templates/templates/data_processing.nodegroup_templates/_details.html:52
+#: sahara_dashboard/content/data_processing/nodegroup_templates/workflows/create.py:241
+msgid "Auto Security Group"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/templates/data_processing.cluster_templates/_nodegroups_details.html:34
+#: sahara_dashboard/content/data_processing/clusters/templates/data_processing.clusters/_nodegroups_details.html:35
+#: sahara_dashboard/content/data_processing/nodegroup_templates/templates/data_processing.nodegroup_templates/_details.html:57
+#: sahara_dashboard/content/data_processing/nodegroup_templates/workflows/create.py:256
+msgid "Security Groups"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/templates/data_processing.cluster_templates/_nodegroups_details.html:47
+#: sahara_dashboard/content/data_processing/clusters/templates/data_processing.clusters/_nodegroups_details.html:48
+#: sahara_dashboard/content/data_processing/nodegroup_templates/tables.py:130
+#: sahara_dashboard/content/data_processing/nodegroup_templates/templates/data_processing.nodegroup_templates/_details.html:72
+#: sahara_dashboard/content/data_processing/nodegroup_templates/workflows/create.py:336
+msgid "Node Processes"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/templates/data_processing.cluster_templates/_nodegroups_details.html:57
+#: sahara_dashboard/content/data_processing/clusters/templates/data_processing.clusters/_nodegroups_details.html:58
+msgid "Node processes are not specified"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/templates/data_processing.cluster_templates/_upload_file.html:21
+msgid "Upload"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/templates/data_processing.cluster_templates/_upload_file.html:22
+#: sahara_dashboard/content/data_processing/clusters/templates/data_processing.clusters/_create_cluster.html:21
+#: sahara_dashboard/content/data_processing/data_image_registry/templates/data_processing.data_image_registry/_edit_tags.html:27
+#: sahara_dashboard/content/data_processing/data_image_registry/templates/data_processing.data_image_registry/_register_image.html:25
+#: sahara_dashboard/content/data_processing/job_binaries/templates/data_processing.job_binaries/_create.html:25
+#: sahara_dashboard/content/data_processing/wizard/templates/data_processing.wizard/_job_type_select.html:29
+#: sahara_dashboard/content/data_processing/wizard/templates/data_processing.wizard/_ngt_select.html:29
+#: sahara_dashboard/content/data_processing/wizard/templates/data_processing.wizard/_plugin_select.html:29
+msgid "Cancel"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/templates/data_processing.cluster_templates/cluster_node_groups_template.html:95
+msgid "Select a Node Group Template to add:"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/templates/data_processing.cluster_templates/cluster_templates.html:3
+#: sahara_dashboard/content/data_processing/clusters/templates/data_processing.clusters/clusters.html:3
+#: sahara_dashboard/content/data_processing/data_image_registry/templates/data_processing.data_image_registry/image_registry.html:3
+#: sahara_dashboard/content/data_processing/data_plugins/templates/data_processing.data_plugins/plugins.html:3
+#: sahara_dashboard/content/data_processing/data_sources/templates/data_processing.data_sources/data_sources.html:3
+#: sahara_dashboard/content/data_processing/job_binaries/templates/data_processing.job_binaries/job_binaries.html:3
+#: sahara_dashboard/content/data_processing/job_executions/templates/data_processing.job_executions/job_executions.html:3
+#: sahara_dashboard/content/data_processing/jobs/templates/data_processing.jobs/jobs.html:3
+#: sahara_dashboard/content/data_processing/nodegroup_templates/templates/data_processing.nodegroup_templates/nodegroup_templates.html:3
+#: sahara_dashboard/content/data_processing/wizard/templates/data_processing.wizard/cluster_guide.html:3
+#: sahara_dashboard/content/data_processing/wizard/templates/data_processing.wizard/jobex_guide.html:3
+#: sahara_dashboard/content/data_processing/wizard/templates/data_processing.wizard/wizard.html:3
+#: sahara_dashboard/enabled/_1810_data_processing_panel_group.py:6
+msgid "Data Processing"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/templates/data_processing.cluster_templates/cluster_templates.html:19
+msgid "Add Node Group"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/workflows/copy.py:29
+#, python-format
+msgid "Cluster Template copy %s created"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/workflows/copy.py:107
+msgid "Unable to fetch template to copy."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/workflows/create.py:49
+msgid "Unable to fetch plugin list."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/workflows/create.py:53
+#: sahara_dashboard/content/data_processing/jobs/workflows/launch.py:522
+msgid "Plugin name"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/workflows/create.py:69
+msgid "Select plugin and hadoop version for cluster template"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/workflows/create.py:81
+#: sahara_dashboard/content/data_processing/nodegroup_templates/workflows/create.py:581
+msgid "Next"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/workflows/create.py:82
+#: sahara_dashboard/content/data_processing/job_executions/templates/data_processing.job_executions/_details.html:37
+#: sahara_dashboard/content/data_processing/jobs/workflows/launch.py:574
+#: sahara_dashboard/content/data_processing/nodegroup_templates/workflows/create.py:582
+msgid "Created"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/workflows/create.py:83
+#: sahara_dashboard/content/data_processing/jobs/workflows/launch.py:575
+#: sahara_dashboard/content/data_processing/nodegroup_templates/workflows/create.py:583
+msgid "Could not create"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/workflows/create.py:97
+#: sahara_dashboard/content/data_processing/nodegroup_templates/workflows/create.py:46
+msgid "Template Name"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/workflows/create.py:104
+#: sahara_dashboard/content/data_processing/nodegroup_templates/workflows/create.py:149
+msgid "Auto-configure"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/workflows/create.py:105
+msgid ""
+"If selected, instances of a cluster will be automatically configured "
+"during creation. Otherwise you should manually specify configuration "
+"values"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/workflows/create.py:113
+#: sahara_dashboard/content/data_processing/cluster_templates/workflows/create.py:114
+msgid "cluster template"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/workflows/create.py:151
+#: sahara_dashboard/content/data_processing/data_plugins/tabs.py:26
+msgid "Details"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/workflows/create.py:252
+#: sahara_dashboard/content/data_processing/clusters/workflows/update.py:46
+#: sahara_dashboard/content/data_processing/nodegroup_templates/workflows/create.py:348
+msgid "Select Shares"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/workflows/create.py:263
+#: sahara_dashboard/content/data_processing/clusters/workflows/update.py:83
+#: sahara_dashboard/content/data_processing/data_sources/workflows/create.py:105
+#: sahara_dashboard/content/data_processing/job_binaries/forms.py:211
+#: sahara_dashboard/content/data_processing/nodegroup_templates/workflows/create.py:359
+msgid "Failed to get list of shares"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/workflows/create.py:273
+#: sahara_dashboard/content/data_processing/clusters/workflows/update.py:93
+#: sahara_dashboard/content/data_processing/nodegroup_templates/workflows/create.py:364
+msgid "Shares"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/workflows/create.py:274
+#: sahara_dashboard/content/data_processing/clusters/workflows/update.py:94
+msgid "Select the manila shares for this cluster"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/workflows/create.py:302
+#: sahara_dashboard/content/data_processing/data_sources/workflows/create.py:140
+#: sahara_dashboard/content/data_processing/job_binaries/views.py:62
+#: sahara_dashboard/content/data_processing/jobs/workflows/create.py:230
+#: sahara_dashboard/content/data_processing/jobs/workflows/launch.py:573
+#: sahara_dashboard/content/data_processing/nodegroup_templates/workflows/create.py:419
+msgid "Create"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/workflows/create.py:303
+#, python-format
+msgid "Created Cluster Template %s"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/workflows/create.py:403
+msgid "Cluster template creation failed"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/workflows/edit.py:32
+#, python-format
+msgid "Cluster Template %s updated"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/workflows/edit.py:34
+#: sahara_dashboard/content/data_processing/data_sources/workflows/edit.py:27
+#: sahara_dashboard/content/data_processing/job_binaries/views.py:82
+#: sahara_dashboard/content/data_processing/nodegroup_templates/workflows/edit.py:32
+msgid "Update"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/workflows/edit.py:35
+msgid "Edit Cluster Template"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/workflows/edit.py:53
+msgid "Unable to fetch template to edit."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/cluster_templates/workflows/edit.py:106
+msgid "Cluster template update failed"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/clusters/panel.py:22
+#: sahara_dashboard/content/data_processing/clusters/tables.py:194
+#: sahara_dashboard/content/data_processing/clusters/views.py:50
+msgid "Clusters"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/clusters/tables.py:33
+#: sahara_dashboard/content/data_processing/clusters/tables.py:185
+#: sahara_dashboard/content/data_processing/clusters/templates/data_processing.clusters/_details.html:13
+#: sahara_dashboard/content/data_processing/clusters/templates/data_processing.clusters/_event_log.html:11
+#: sahara_dashboard/content/data_processing/clusters/templates/data_processing.clusters/_event_log.html:34
+#: sahara_dashboard/content/data_processing/job_executions/tables.py:38
+#: sahara_dashboard/content/data_processing/job_executions/tables.py:223
+#: sahara_dashboard/content/data_processing/job_executions/templates/data_processing.job_executions/_details.html:5
+msgid "Status"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/clusters/tables.py:38
+#: sahara_dashboard/content/data_processing/wizard/templates/data_processing.wizard/wizard.html:26
+msgid "Cluster Creation Guide"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/clusters/tables.py:52
+#: sahara_dashboard/content/data_processing/clusters/views.py:208
+#: sahara_dashboard/content/data_processing/clusters/templates/data_processing.clusters/scale.html:3
+#: sahara_dashboard/content/data_processing/clusters/workflows/scale.py:38
+msgid "Scale Cluster"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/clusters/tables.py:63
+msgid "Delete Cluster"
+msgid_plural "Delete Clusters"
+msgstr[0] ""
+msgstr[1] ""
+
+#: sahara_dashboard/content/data_processing/clusters/tables.py:71
+msgid "Deleted Cluster"
+msgid_plural "Deleted Clusters"
+msgstr[0] ""
+msgstr[1] ""
+
+#: sahara_dashboard/content/data_processing/clusters/tables.py:83
+msgid "Update Shares"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/clusters/tables.py:102
+#: sahara_dashboard/content/data_processing/job_executions/tables.py:130
+msgid "Unable to update row"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/clusters/tables.py:143
+#: sahara_dashboard/content/data_processing/clusters/views.py:195
+#: sahara_dashboard/content/data_processing/clusters/workflows/create.py:208
+#: sahara_dashboard/content/data_processing/jobs/workflows/launch.py:420
+msgid "Configure Cluster"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/clusters/tables.py:190
+msgid "Instances Count"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/clusters/tabs.py:131
+msgid "Unable to get node group details."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/clusters/tabs.py:157
+msgid "Internal IP"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/clusters/tabs.py:160
+msgid "Management IP"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/clusters/tabs.py:164
+msgid "Cluster Instances"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/clusters/tabs.py:168
+msgid "Instances"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/clusters/tabs.py:193
+msgid "Unable to fetch instance details."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/clusters/tabs.py:198
+msgid "Cluster Events"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/clusters/views.py:62
+msgid "Unable to fetch cluster list"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/clusters/views.py:77
+#, python-format
+msgid "Unable to retrieve details for cluster \"%s\"."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/clusters/views.py:134
+msgid "Unknown"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/clusters/views.py:137
+#: sahara_dashboard/content/data_processing/clusters/views.py:162
+msgid "Completed Successfully"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/clusters/views.py:139
+#: sahara_dashboard/content/data_processing/clusters/views.py:164
+msgid "Failed"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/clusters/views.py:144
+msgid "No info available"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/clusters/views.py:157
+msgid "In progress"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/clusters/views.py:241
+#: sahara_dashboard/content/data_processing/clusters/templates/data_processing.clusters/update.html:3
+#: sahara_dashboard/content/data_processing/clusters/workflows/update.py:121
+msgid "Update Cluster Shares"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/clusters/views.py:257
+msgid "Unable to fetch cluster."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/clusters/templates/data_processing.clusters/_cluster_configs_details.html:3
+msgid "Cluster Configuration Overview"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/clusters/templates/data_processing.clusters/_configure_general_help.html:4
+msgid "This Cluster will be started with:"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/clusters/templates/data_processing.clusters/_configure_general_help.html:12
+msgid "Cluster can be launched using existing Cluster Templates."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/clusters/templates/data_processing.clusters/_configure_general_help.html:15
+msgid ""
+"The Cluster object should specify OpenStack Image to boot instances for "
+"Cluster."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/clusters/templates/data_processing.clusters/_configure_general_help.html:18
+msgid "User has to choose a keypair to have access to clusters instances."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/clusters/templates/data_processing.clusters/_create_cluster.html:20
+msgid " Done"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/clusters/templates/data_processing.clusters/_create_general_help.html:3
+msgid "Select a plugin and version for a new Cluster."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/clusters/templates/data_processing.clusters/_details.html:15
+msgid "Status description"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/clusters/templates/data_processing.clusters/_details.html:19
+msgid "No description"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/clusters/templates/data_processing.clusters/_details.html:24
+msgid "Error Details"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/clusters/templates/data_processing.clusters/_details.html:43
+#: sahara_dashboard/content/data_processing/clusters/workflows/create.py:87
+msgid "Base Image"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/clusters/templates/data_processing.clusters/_details.html:46
+#: sahara_dashboard/content/data_processing/clusters/workflows/create.py:104
+msgid "Neutron Management Network"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/clusters/templates/data_processing.clusters/_details.html:49
+#: sahara_dashboard/content/data_processing/clusters/workflows/create.py:91
+msgid "Keypair"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/clusters/templates/data_processing.clusters/_details.html:77
+#, python-format
+msgid "%(key)s: %(val)s"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/clusters/templates/data_processing.clusters/_event_log.html:3
+msgid "Cluster provision steps"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/clusters/templates/data_processing.clusters/_event_log.html:7
+msgid "Step Description"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/clusters/templates/data_processing.clusters/_event_log.html:8
+msgid "Started at"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/clusters/templates/data_processing.clusters/_event_log.html:9
+msgid "Duration"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/clusters/templates/data_processing.clusters/_event_log.html:10
+msgid "Progress"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/clusters/templates/data_processing.clusters/_event_log.html:30
+msgid "Node Group"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/clusters/templates/data_processing.clusters/_event_log.html:31
+msgid "Instance"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/clusters/templates/data_processing.clusters/_event_log.html:32
+msgid "Event time"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/clusters/templates/data_processing.clusters/_event_log.html:33
+msgid "Info"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/clusters/templates/data_processing.clusters/_nodegroups_details.html:7
+#, python-format
+msgid "Name: %(node_group_name)s"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/clusters/templates/data_processing.clusters/_nodegroups_details.html:8
+msgid "Number of Nodes"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/clusters/templates/data_processing.clusters/_nodegroups_details.html:15
+#: sahara_dashboard/content/data_processing/nodegroup_templates/templates/data_processing.nodegroup_templates/_details.html:31
+#: sahara_dashboard/content/data_processing/nodegroup_templates/workflows/create.py:144
+msgid "Floating IP Pool"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/clusters/workflows/create.py:43
+#: sahara_dashboard/content/data_processing/jobs/workflows/launch.py:561
+msgid "Select plugin and hadoop version for cluster"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/clusters/workflows/create.py:71
+msgid "Cluster Name"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/clusters/workflows/create.py:76
+msgid "Cluster Template"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/clusters/workflows/create.py:82
+msgid "Cluster Count"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/clusters/workflows/create.py:85
+msgid "Number of clusters to launch."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/clusters/workflows/create.py:93
+msgid "Which keypair to use for authentication."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/clusters/workflows/create.py:110
+#: sahara_dashboard/content/data_processing/clusters/workflows/create.py:112
+msgid "cluster"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/clusters/workflows/create.py:139
+msgid "Unable to fetch image choices."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/clusters/workflows/create.py:142
+msgid "No Images Available"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/clusters/workflows/create.py:152
+msgid "Unable to fetch keypair choices."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/clusters/workflows/create.py:154
+msgid "No keypair"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/clusters/workflows/create.py:170
+msgid "No Templates Available"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/clusters/workflows/create.py:227
+#: sahara_dashboard/content/data_processing/jobs/workflows/launch.py:490
+#: sahara_dashboard/content/data_processing/jobs/workflows/launch.py:583
+msgid "Launch"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/clusters/workflows/create.py:228
+#, python-format
+msgid "Launched Cluster %s"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/clusters/workflows/create.py:264
+msgid "Unable to create the cluster"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/clusters/workflows/scale.py:39
+msgid "Scale"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/clusters/workflows/scale.py:46
+msgid "Scaled cluster successfully started."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/clusters/workflows/scale.py:103
+msgid "Unable to fetch cluster to scale"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/clusters/workflows/scale.py:158
+msgid "Unable to fetch cluster to scale."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/clusters/workflows/scale.py:168
+msgid "Scale cluster operation failed"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/clusters/workflows/update.py:122
+msgid "Updated"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/clusters/workflows/update.py:123
+msgid "Could not update cluster shares"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/clusters/workflows/update.py:138
+msgid "Cluster share update failed."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/data_image_registry/forms.py:28
+msgid "User Name"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/data_image_registry/forms.py:45
+msgid "Successfully updated image."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/data_image_registry/forms.py:49
+msgid "Failed to update image."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/data_image_registry/forms.py:58
+#: sahara_dashboard/content/data_processing/data_image_registry/tables.py:70
+msgid "Image"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/data_image_registry/forms.py:70
+msgid "Select Image"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/data_image_registry/forms.py:72
+msgid "No images available."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/data_image_registry/forms.py:82
+#, python-format
+msgid "Unable to retrieve images with filter %s."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/data_image_registry/forms.py:109
+msgid "Unable to fetch available images."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/data_image_registry/panel.py:22
+#: sahara_dashboard/content/data_processing/data_image_registry/tables.py:78
+#: sahara_dashboard/content/data_processing/data_image_registry/views.py:37
+msgid "Image Registry"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/data_image_registry/tables.py:25
+msgid "Edit Tags"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/data_image_registry/tables.py:39
+#: sahara_dashboard/content/data_processing/data_image_registry/views.py:115
+#: sahara_dashboard/content/data_processing/data_image_registry/templates/data_processing.data_image_registry/_register_image.html:9
+#: sahara_dashboard/content/data_processing/data_image_registry/templates/data_processing.data_image_registry/register_image.html:3
+msgid "Register Image"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/data_image_registry/tables.py:50
+msgid "Unregister Image"
+msgid_plural "Unregister Images"
+msgstr[0] ""
+msgstr[1] ""
+
+#: sahara_dashboard/content/data_processing/data_image_registry/tables.py:58
+msgid "Unregistered Image"
+msgid_plural "Unregistered Images"
+msgstr[0] ""
+msgstr[1] ""
+
+#: sahara_dashboard/content/data_processing/data_image_registry/tables.py:74
+msgid "Tags"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/data_image_registry/views.py:44
+msgid "Unable to retrieve image list"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/data_image_registry/views.py:54
+#: sahara_dashboard/content/data_processing/data_image_registry/views.py:69
+msgid "Unable to process plugin tags"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/data_image_registry/views.py:81
+#: sahara_dashboard/content/data_processing/data_image_registry/templates/data_processing.data_image_registry/_edit_tags.html:9
+#: sahara_dashboard/content/data_processing/data_image_registry/templates/data_processing.data_image_registry/edit_tags.html:3
+msgid "Edit Image Tags"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/data_image_registry/views.py:96
+msgid "Unable to fetch the image details"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/data_image_registry/templates/data_processing.data_image_registry/_edit_tags.html:26
+#: sahara_dashboard/content/data_processing/data_image_registry/templates/data_processing.data_image_registry/_register_image.html:24
+msgid "Done"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/data_image_registry/templates/data_processing.data_image_registry/_help.html:3
+msgid "Image Registry tool:"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/data_image_registry/templates/data_processing.data_image_registry/_help.html:6
+msgid ""
+"Image Registry is used to provide additional information about images for"
+" Data Processing."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/data_image_registry/templates/data_processing.data_image_registry/_help.html:9
+msgid ""
+"Specified User Name will be used by Data Processing to apply configs and "
+"manage processes on instances."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/data_image_registry/templates/data_processing.data_image_registry/_help.html:13
+msgid ""
+"Tags are used for filtering images suitable for each plugin and each Data"
+" Processing version.\n"
+"        To add required tags, select a plugin and a Data Processing "
+"version and click &quot;Add plugin tags&quot; button."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/data_image_registry/templates/data_processing.data_image_registry/_help.html:16
+msgid "You may also add any custom tag."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/data_image_registry/templates/data_processing.data_image_registry/_help.html:19
+msgid "Unnecessary tags may be removed by clicking a cross near tag's name."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/data_image_registry/templates/data_processing.data_image_registry/_tag_form.html:5
+msgid ""
+"Register tags required for the Plugin with specified Data Processing "
+"Version"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/data_image_registry/templates/data_processing.data_image_registry/_tag_form.html:30
+msgid "Add plugin tags"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/data_image_registry/templates/data_processing.data_image_registry/_tag_form.html:38
+msgid "Add custom tag"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/data_plugins/panel.py:22
+#: sahara_dashboard/content/data_processing/data_plugins/tables.py:36
+msgid "Plugins"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/data_plugins/tables.py:22
+#: sahara_dashboard/content/data_processing/data_plugins/templates/data_processing.data_plugins/_details.html:7
+msgid "Title"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/data_plugins/tables.py:27
+#: sahara_dashboard/content/data_processing/data_plugins/templates/data_processing.data_plugins/_details.html:11
+msgid "Supported Versions"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/data_plugins/tabs.py:39
+msgid "Unable to retrieve plugin."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/data_plugins/views.py:30
+msgid "Data Processing Plugins"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/data_plugins/views.py:37
+msgid "Unable to retrieve data processing plugins."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/data_plugins/views.py:45
+msgid "Data Processing Plugin Details"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/data_sources/panel.py:22
+#: sahara_dashboard/content/data_processing/data_sources/tables.py:96
+#: sahara_dashboard/content/data_processing/data_sources/views.py:38
+msgid "Data Sources"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/data_sources/tables.py:26
+#: sahara_dashboard/content/data_processing/data_sources/views.py:56
+#: sahara_dashboard/content/data_processing/data_sources/templates/data_processing.data_sources/create.html:3
+#: sahara_dashboard/content/data_processing/data_sources/workflows/create.py:110
+#: sahara_dashboard/content/data_processing/data_sources/workflows/create.py:139
+msgid "Create Data Source"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/data_sources/tables.py:35
+msgid "Delete Data Source"
+msgid_plural "Delete Data Sources"
+msgstr[0] ""
+msgstr[1] ""
+
+#: sahara_dashboard/content/data_processing/data_sources/tables.py:43
+msgid "Deleted Data Source"
+msgid_plural "Deleted Data Sources"
+msgstr[0] ""
+msgstr[1] ""
+
+#: sahara_dashboard/content/data_processing/data_sources/tables.py:55
+#: sahara_dashboard/content/data_processing/data_sources/views.py:61
+#: sahara_dashboard/content/data_processing/data_sources/workflows/edit.py:26
+msgid "Edit Data Source"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/data_sources/tables.py:90
+#: sahara_dashboard/content/data_processing/data_sources/templates/data_processing.data_sources/_details.html:11
+#: sahara_dashboard/content/data_processing/jobs/tables.py:29
+#: sahara_dashboard/content/data_processing/jobs/tables.py:126
+#: sahara_dashboard/content/data_processing/jobs/templates/data_processing.jobs/_details.html:11
+msgid "Type"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/data_sources/views.py:46
+#: sahara_dashboard/content/data_processing/jobs/workflows/launch.py:77
+msgid "Unable to fetch data sources."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/data_sources/views.py:87
+#, python-format
+msgid "Unable to retrieve details for data source \"%s\"."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/data_sources/templates/data_processing.data_sources/_create_data_source_help.html:4
+msgid "Create a Data Source with a specified name."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/data_sources/templates/data_processing.data_sources/_create_data_source_help.html:7
+msgid "Select the type of your Data Source."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/data_sources/templates/data_processing.data_sources/_create_data_source_help.html:10
+msgid "You may need to enter the username and password for your Data Source."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/data_sources/templates/data_processing.data_sources/_create_data_source_help.html:13
+msgid ""
+"For Data Sources on a Manila share, choose the share and enter the path "
+"relative to the share (example: /outputdir/myinputfile.txt)"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/data_sources/templates/data_processing.data_sources/_create_data_source_help.html:16
+msgid "You may also enter an optional description for your Data Source."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/data_sources/templates/data_processing.data_sources/_details.html:13
+#: sahara_dashboard/content/data_processing/data_sources/workflows/create.py:49
+#: sahara_dashboard/content/data_processing/data_sources/workflows/create.py:54
+#: sahara_dashboard/content/data_processing/data_sources/workflows/create.py:55
+#: sahara_dashboard/content/data_processing/data_sources/workflows/create.py:56
+#: sahara_dashboard/content/data_processing/job_binaries/forms.py:66
+#: sahara_dashboard/content/data_processing/job_binaries/forms.py:72
+#: sahara_dashboard/content/data_processing/job_binaries/templates/data_processing.job_binaries/_details.html:11
+msgid "URL"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/data_sources/templates/data_processing.data_sources/_details.html:21
+#: sahara_dashboard/content/data_processing/job_binaries/templates/data_processing.job_binaries/_details.html:19
+msgid "Create time"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/data_sources/workflows/create.py:33
+msgid "Data Source Type"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/data_sources/workflows/create.py:40
+#: sahara_dashboard/content/data_processing/data_sources/workflows/create.py:45
+msgid "Manila share"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/data_sources/workflows/create.py:53
+msgid "Path on share"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/data_sources/workflows/create.py:60
+#: sahara_dashboard/content/data_processing/data_sources/workflows/create.py:65
+msgid "Source username"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/data_sources/workflows/create.py:72
+#: sahara_dashboard/content/data_processing/data_sources/workflows/create.py:75
+msgid "Source password"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/data_sources/workflows/create.py:83
+#: sahara_dashboard/content/data_processing/data_sources/workflows/create.py:84
+msgid "data source"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/data_sources/workflows/create.py:141
+msgid "Data source created"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/data_sources/workflows/create.py:142
+msgid "Could not create data source"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/data_sources/workflows/edit.py:28
+msgid "Data source updated"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/data_sources/workflows/edit.py:29
+msgid "Could not update data source"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/job_binaries/forms.py:58
+msgid "Storage type"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/job_binaries/forms.py:76
+#: sahara_dashboard/content/data_processing/job_binaries/forms.py:82
+msgid "Share"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/job_binaries/forms.py:86
+#: sahara_dashboard/content/data_processing/job_binaries/forms.py:92
+msgid "Path"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/job_binaries/forms.py:96
+msgid "Internal binary"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/job_binaries/forms.py:103
+msgid "Internal Binary"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/job_binaries/forms.py:107
+#: sahara_dashboard/content/data_processing/job_binaries/forms.py:113
+msgid "Upload File"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/job_binaries/forms.py:117
+#: sahara_dashboard/content/data_processing/job_binaries/forms.py:123
+msgid "Script name"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/job_binaries/forms.py:127
+#: sahara_dashboard/content/data_processing/job_binaries/forms.py:134
+msgid "Script text"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/job_binaries/forms.py:138
+#: sahara_dashboard/content/data_processing/job_binaries/forms.py:144
+msgid "Username"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/job_binaries/forms.py:148
+#: sahara_dashboard/content/data_processing/job_binaries/forms.py:155
+msgid "Password"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/job_binaries/forms.py:164
+#: sahara_dashboard/content/data_processing/job_binaries/forms.py:166
+msgid "job binary"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/job_binaries/forms.py:220
+msgid "Failed to get list of internal binaries."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/job_binaries/forms.py:259
+#: sahara_dashboard/content/data_processing/job_binaries/forms.py:304
+msgid "Unable to create job binary"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/job_binaries/forms.py:274
+#: sahara_dashboard/content/data_processing/job_binaries/tables.py:28
+#: sahara_dashboard/content/data_processing/job_binaries/views.py:59
+#: sahara_dashboard/content/data_processing/job_binaries/templates/data_processing.job_binaries/create.html:3
+msgid "Create Job Binary"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/job_binaries/forms.py:292
+msgid "Unable to upload job binary"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/job_binaries/forms.py:325
+msgid "Failed to fetch internal binary list"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/job_binaries/forms.py:374
+msgid "Unable to update job binary"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/job_binaries/panel.py:22
+#: sahara_dashboard/content/data_processing/job_binaries/tables.py:116
+#: sahara_dashboard/content/data_processing/job_binaries/views.py:41
+msgid "Job Binaries"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/job_binaries/tables.py:37
+msgid "Delete Job Binary"
+msgid_plural "Delete Job Binaries"
+msgstr[0] ""
+msgstr[1] ""
+
+#: sahara_dashboard/content/data_processing/job_binaries/tables.py:45
+msgid "Deleted Job Binary"
+msgid_plural "Deleted Job Binaries"
+msgstr[0] ""
+msgstr[1] ""
+
+#: sahara_dashboard/content/data_processing/job_binaries/tables.py:72
+msgid "Download Job Binary"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/job_binaries/tables.py:79
+#: sahara_dashboard/content/data_processing/job_binaries/views.py:79
+msgid "Edit Job Binary"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/job_binaries/tables.py:110
+msgid "Url"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/job_binaries/views.py:49
+msgid "Unable to fetch job binary list."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/job_binaries/views.py:90
+#, python-format
+msgid "Unable to retrieve job binary \"%s\"."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/job_binaries/views.py:113
+#, python-format
+msgid "Unable to retrieve details for job binary \"%s\"."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/job_binaries/views.py:139
+#, python-format
+msgid "Unable to fetch job binary: %(exc)s"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/job_binaries/templates/data_processing.job_binaries/_create_job_binary_help.html:5
+msgid ""
+"<b>Important</b>:  The name that you give your job binary will be the "
+"name used in your job execution.\n"
+"  If your binary requires a particular name or extension (ie: \".jar\"), "
+"be sure to include it here."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/job_binaries/templates/data_processing.job_binaries/_create_job_binary_help.html:8
+msgid "Select the storage type for your job binary."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/job_binaries/templates/data_processing.job_binaries/_create_job_binary_help.html:10
+msgid "Data Processing internal database"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/job_binaries/templates/data_processing.job_binaries/_create_job_binary_help.html:11
+msgid "Swift"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/job_binaries/templates/data_processing.job_binaries/_create_job_binary_help.html:15
+msgid ""
+"For Data Processing internal job binaries, you may choose from the "
+"following:"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/job_binaries/templates/data_processing.job_binaries/_create_job_binary_help.html:17
+msgid "Choose an existing file"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/job_binaries/templates/data_processing.job_binaries/_create_job_binary_help.html:18
+msgid "Upload a new file"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/job_binaries/templates/data_processing.job_binaries/_create_job_binary_help.html:19
+msgid "Create a script to be uploaded dynamically"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/job_binaries/templates/data_processing.job_binaries/_create_job_binary_help.html:23
+msgid "For Object Store job binaries, you must:"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/job_binaries/templates/data_processing.job_binaries/_create_job_binary_help.html:25
+msgid "Enter the URL for the file"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/job_binaries/templates/data_processing.job_binaries/_create_job_binary_help.html:26
+msgid "Enter the username and password required to access that file"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/job_binaries/templates/data_processing.job_binaries/_create_job_binary_help.html:30
+msgid "You may also enter an optional description for your job binary."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/job_binaries/templates/data_processing.job_binaries/_details.html:22
+msgid "Download job binary"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/job_executions/panel.py:22
+#: sahara_dashboard/content/data_processing/job_executions/tables.py:232
+#: sahara_dashboard/content/data_processing/job_executions/views.py:37
+msgid "Jobs"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/job_executions/tables.py:36
+#: sahara_dashboard/content/data_processing/jobs/workflows/launch.py:58
+#: sahara_dashboard/content/data_processing/jobs/workflows/launch.py:99
+#: sahara_dashboard/content/data_processing/jobs/workflows/launch.py:127
+msgid "Job"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/job_executions/tables.py:37
+#: sahara_dashboard/content/data_processing/job_executions/tables.py:216
+#: sahara_dashboard/content/data_processing/job_executions/templates/data_processing.job_executions/_details.html:25
+#: sahara_dashboard/content/data_processing/jobs/workflows/launch.py:106
+msgid "Cluster"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/job_executions/tables.py:43
+msgid "Job Guide"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/job_executions/tables.py:50
+msgid "Delete Job"
+msgid_plural "Delete Jobs"
+msgstr[0] ""
+msgstr[1] ""
+
+#: sahara_dashboard/content/data_processing/job_executions/tables.py:58
+msgid "Deleted Job"
+msgid_plural "Deleted Jobs"
+msgstr[0] ""
+msgstr[1] ""
+
+#: sahara_dashboard/content/data_processing/job_executions/tables.py:71
+#: sahara_dashboard/content/data_processing/job_executions/tables.py:100
+#: sahara_dashboard/content/data_processing/jobs/views.py:100
+#: sahara_dashboard/content/data_processing/jobs/views.py:121
+#: sahara_dashboard/content/data_processing/jobs/views.py:134
+#: sahara_dashboard/content/data_processing/jobs/templates/data_processing.jobs/launch.html:3
+#: sahara_dashboard/content/data_processing/jobs/workflows/launch.py:489
+#: sahara_dashboard/content/data_processing/jobs/workflows/launch.py:572
+#: sahara_dashboard/content/data_processing/jobs/workflows/launch.py:582
+msgid "Launch Job"
+msgid_plural "Launch Jobs"
+msgstr[0] ""
+msgstr[1] ""
+
+#: sahara_dashboard/content/data_processing/job_executions/tables.py:79
+#: sahara_dashboard/content/data_processing/job_executions/tables.py:108
+msgid "Launched Job"
+msgid_plural "Launched Jobs"
+msgstr[0] ""
+msgstr[1] ""
+
+#: sahara_dashboard/content/data_processing/job_executions/tables.py:86
+msgid "Relaunch On Existing Cluster"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/job_executions/tables.py:115
+msgid "Relaunch On New Cluster"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/job_executions/tables.py:169
+#: sahara_dashboard/content/data_processing/job_executions/tables.py:184
+msgid "Not available"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/job_executions/tables.py:193
+msgctxt "Current status of a Job"
+msgid "Done with Error"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/job_executions/tables.py:195
+msgctxt "Current status of a Job"
+msgid "Failed"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/job_executions/tables.py:197
+msgctxt "Current status of a Job"
+msgid "Killed"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/job_executions/tables.py:199
+msgctxt "Current status of a Job"
+msgid "Succeeded"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/job_executions/tables.py:211
+#: sahara_dashboard/content/data_processing/job_executions/templates/data_processing.job_executions/_details.html:11
+msgid "Job Template"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/job_executions/views.py:55
+msgid "Unable to fetch job executions."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/job_executions/views.py:70
+#, python-format
+msgid "Unable to retrieve details for job \"%s\"."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/job_executions/templates/data_processing.job_executions/_details.html:18
+msgid "Input Data Source"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/job_executions/templates/data_processing.job_executions/_details.html:22
+msgid "Output Data Source"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/job_executions/templates/data_processing.job_executions/_details.html:27
+msgid "Last Updated"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/job_executions/templates/data_processing.job_executions/_details.html:29
+msgid "Started"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/job_executions/templates/data_processing.job_executions/_details.html:31
+msgid "Ended"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/job_executions/templates/data_processing.job_executions/_details.html:33
+msgid "Return Code"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/job_executions/templates/data_processing.job_executions/_details.html:35
+msgid "Oozie Job ID"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/job_executions/templates/data_processing.job_executions/_details.html:39
+msgid "Job Configuration"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/job_executions/templates/data_processing.job_executions/_details.html:41
+#, python-format
+msgid "%(group)s:"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/jobs/panel.py:22
+#: sahara_dashboard/content/data_processing/jobs/tables.py:132
+#: sahara_dashboard/content/data_processing/jobs/views.py:41
+msgid "Job Templates"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/jobs/tables.py:35
+#: sahara_dashboard/content/data_processing/jobs/views.py:64
+#: sahara_dashboard/content/data_processing/jobs/templates/data_processing.jobs/create.html:3
+#: sahara_dashboard/content/data_processing/jobs/workflows/create.py:142
+#: sahara_dashboard/content/data_processing/jobs/workflows/create.py:229
+msgid "Create Job Template"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/jobs/tables.py:44
+msgid "Delete Job Template"
+msgid_plural "Delete Job Templates"
+msgstr[0] ""
+msgstr[1] ""
+
+#: sahara_dashboard/content/data_processing/jobs/tables.py:52
+msgid "Deleted Job Template"
+msgid_plural "Deleted Jobs Templates"
+msgstr[0] ""
+msgstr[1] ""
+
+#: sahara_dashboard/content/data_processing/jobs/tables.py:64
+msgid "Launch On Existing Cluster"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/jobs/tables.py:77
+#: sahara_dashboard/content/data_processing/jobs/tables.py:90
+msgid "Launch On New Cluster"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/jobs/views.py:53
+#: sahara_dashboard/content/data_processing/jobs/workflows/launch.py:91
+msgid "Unable to fetch jobs."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/jobs/views.py:78
+#, python-format
+msgid "Unable to retrieve details for job template \"%s\"."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/jobs/templates/data_processing.jobs/_create_job_help.html:4
+msgid "Create a job template with a specified name."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/jobs/templates/data_processing.jobs/_create_job_help.html:7
+msgid "Select the type of your job:"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/jobs/templates/data_processing.jobs/_create_job_help.html:9
+#: sahara_dashboard/content/data_processing/utils/helpers.py:126
+msgid "Pig"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/jobs/templates/data_processing.jobs/_create_job_help.html:10
+#: sahara_dashboard/content/data_processing/utils/helpers.py:127
+msgid "Hive"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/jobs/templates/data_processing.jobs/_create_job_help.html:11
+#: sahara_dashboard/content/data_processing/utils/helpers.py:128
+msgid "Spark"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/jobs/templates/data_processing.jobs/_create_job_help.html:12
+#: sahara_dashboard/content/data_processing/utils/helpers.py:129
+msgid "Storm"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/jobs/templates/data_processing.jobs/_create_job_help.html:13
+#: sahara_dashboard/content/data_processing/utils/helpers.py:130
+msgid "MapReduce"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/jobs/templates/data_processing.jobs/_create_job_help.html:14
+msgid "Java Action"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/jobs/templates/data_processing.jobs/_create_job_help.html:15
+msgid "Shell Action"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/jobs/templates/data_processing.jobs/_create_job_help.html:19
+msgid ""
+"Choose or create your main binary.  Additional libraries can be added "
+"from the \"Libs\" tab."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/jobs/templates/data_processing.jobs/_create_job_help.html:22
+msgid "For Spark and Shell jobs, only a main is required, \"libs\" are optional."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/jobs/templates/data_processing.jobs/_create_job_help.html:26
+msgid ""
+"For MapReduce or Java Action jobs, \"mains\" are not applicable.  You are"
+" required to add one\n"
+"  or more \"libs\" for these jobs."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/jobs/templates/data_processing.jobs/_create_job_help.html:29
+msgid "You may also enter an optional description for your job template."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/jobs/templates/data_processing.jobs/_create_job_libs_help.html:4
+msgid "Add libraries to your job template."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/jobs/templates/data_processing.jobs/_create_job_libs_help.html:7
+msgid ""
+"Choose from the list of binaries and click \"choose\" to add the library "
+"to your job template.  This can be repeated for additional libraries."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/jobs/templates/data_processing.jobs/_create_job_libs_help.html:10
+msgid ""
+"For Shell Action jobs, any required files beyond the main script may be "
+"added as \"libraries\"."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/jobs/templates/data_processing.jobs/_details.html:19
+msgid "Mains"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/jobs/templates/data_processing.jobs/_details.html:25
+#: sahara_dashboard/content/data_processing/jobs/workflows/create.py:69
+msgid "Libs"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/jobs/templates/data_processing.jobs/_details.html:31
+msgid "Created time"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/jobs/templates/data_processing.jobs/_details.html:33
+msgid "Updated time"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/jobs/templates/data_processing.jobs/_details.html:34
+msgid "Never"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/jobs/templates/data_processing.jobs/_launch_job_configure_help.html:4
+msgid "Enter any custom configuration required for your job's execution."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/jobs/templates/data_processing.jobs/_launch_job_help.html:4
+msgid "Launch the given job template on a cluster."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/jobs/templates/data_processing.jobs/_launch_job_help.html:7
+msgid "Choose the cluster to use for the job."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/jobs/templates/data_processing.jobs/_launch_job_help.html:10
+msgid "Choose the Input Data Source (n/a for Java and Shell jobs)."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/jobs/templates/data_processing.jobs/_launch_job_help.html:13
+msgid "Choose the Output Data Source (n/a for Java and Shell jobs)."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/jobs/templates/data_processing.jobs/config_template.html:5
+msgid "Select property name"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/jobs/templates/data_processing.jobs/config_template.html:16
+#: sahara_dashboard/content/data_processing/jobs/templates/data_processing.jobs/config_template.html:34
+#: sahara_dashboard/content/data_processing/jobs/templates/data_processing.jobs/config_template.html:47
+#: sahara_dashboard/content/data_processing/jobs/templates/data_processing.jobs/library_template.html:3
+msgid "Remove"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/jobs/templates/data_processing.jobs/config_template.html:55
+#: sahara_dashboard/content/data_processing/jobs/templates/data_processing.jobs/config_template.html:65
+msgid "Value"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/jobs/templates/data_processing.jobs/config_template.html:59
+#: sahara_dashboard/content/data_processing/jobs/templates/data_processing.jobs/config_template.html:69
+msgid "Add"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/jobs/templates/data_processing.jobs/config_template.html:236
+msgid "Configuration"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/jobs/templates/data_processing.jobs/config_template.html:239
+msgid "Parameters"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/jobs/templates/data_processing.jobs/config_template.html:242
+msgid "Arguments"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/jobs/templates/data_processing.jobs/job_interface_arguments_template.html:3
+msgid "Select a Value Type for your next argument:"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/jobs/templates/data_processing.jobs/job_interface_arguments_template.html:7
+#: sahara_dashboard/content/data_processing/wizard/templates/data_processing.wizard/_job_type_select.html:27
+#: sahara_dashboard/content/data_processing/wizard/templates/data_processing.wizard/_ngt_select.html:27
+#: sahara_dashboard/content/data_processing/wizard/templates/data_processing.wizard/_plugin_select.html:27
+msgid "Select"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/jobs/templates/data_processing.jobs/job_interface_arguments_template.html:8
+#: sahara_dashboard/content/data_processing/utils/workflow_helpers.py:157
+msgid "String"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/jobs/templates/data_processing.jobs/job_interface_arguments_template.html:9
+#: sahara_dashboard/content/data_processing/utils/workflow_helpers.py:158
+msgid "Number"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/jobs/templates/data_processing.jobs/job_interface_arguments_template.html:10
+#: sahara_dashboard/content/data_processing/utils/workflow_helpers.py:159
+msgid "Data Source"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/jobs/templates/data_processing.jobs/library_template.html:86
+msgid "Choose"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/jobs/templates/data_processing.jobs/library_template.html:98
+msgid "Chosen Libraries"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/jobs/workflows/create.py:39
+#: sahara_dashboard/content/data_processing/jobs/workflows/create.py:46
+#: sahara_dashboard/content/data_processing/jobs/workflows/create.py:47
+#: sahara_dashboard/content/data_processing/jobs/workflows/create.py:49
+#: sahara_dashboard/content/data_processing/jobs/workflows/create.py:50
+#: sahara_dashboard/content/data_processing/jobs/workflows/create.py:51
+#: sahara_dashboard/content/data_processing/jobs/workflows/create.py:52
+msgid "Choose libraries"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/jobs/workflows/create.py:48
+msgid "Choose additional files"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/jobs/workflows/create.py:64
+#: sahara_dashboard/content/data_processing/jobs/workflows/create.py:129
+msgid "-- not selected --"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/jobs/workflows/create.py:77
+#: sahara_dashboard/content/data_processing/wizard/forms.py:91
+msgid "Job Type"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/jobs/workflows/create.py:84
+#: sahara_dashboard/content/data_processing/jobs/workflows/create.py:93
+#: sahara_dashboard/content/data_processing/jobs/workflows/create.py:94
+#: sahara_dashboard/content/data_processing/jobs/workflows/create.py:96
+#: sahara_dashboard/content/data_processing/jobs/workflows/create.py:97
+#: sahara_dashboard/content/data_processing/jobs/workflows/create.py:98
+msgid "Choose a main binary"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/jobs/workflows/create.py:86
+msgid "Choose the binary which should be used in this Job."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/jobs/workflows/create.py:95
+msgid "Choose a shell script"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/jobs/workflows/create.py:104
+#: sahara_dashboard/content/data_processing/jobs/workflows/create.py:105
+#: sahara_dashboard/content/data_processing/jobs/workflows/launch.py:110
+#: sahara_dashboard/content/data_processing/jobs/workflows/launch.py:111
+msgid "job"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/jobs/workflows/create.py:188
+#: sahara_dashboard/content/data_processing/jobs/workflows/launch.py:475
+msgid "Interface Arguments"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/jobs/workflows/create.py:231
+msgid "Job created"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/jobs/workflows/create.py:232
+msgid "Could not create job template"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/jobs/workflows/launch.py:40
+msgid "Input"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/jobs/workflows/launch.py:46
+msgid "Output"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/jobs/workflows/launch.py:119
+msgid "Unable to fetch clusters."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/jobs/workflows/launch.py:191
+msgid "Main Class"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/jobs/workflows/launch.py:194
+msgid "Java Opts"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/jobs/workflows/launch.py:197
+msgid "Mapper"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/jobs/workflows/launch.py:199
+msgid "Reducer"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/jobs/workflows/launch.py:202
+msgid "Use HBase Common library"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/jobs/workflows/launch.py:203
+msgid "Run HBase EDP Jobs with common HBase library on HDFS"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/jobs/workflows/launch.py:207
+msgid "Adapt For Oozie"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/jobs/workflows/launch.py:208
+msgid ""
+"Automatically modify the Hadoop configuration so that job config values "
+"are set and so that Oozie will handle exit codes correctly."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/jobs/workflows/launch.py:214
+msgid "Enable Swift Paths"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/jobs/workflows/launch.py:215
+msgid ""
+"Modify the configuration so that swift URLs can be dereferenced through "
+"HDFS at runtime."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/jobs/workflows/launch.py:220
+msgid "Use Data Source Substitution for Names and UUIDs"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/jobs/workflows/launch.py:221
+msgid ""
+"Substitute data source objects for URLs of the form datasource://name or "
+"uuid."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/jobs/workflows/launch.py:320
+msgid "Configure"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/jobs/workflows/launch.py:416
+msgid "Persist cluster after job exit"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/jobs/workflows/launch.py:491
+#: sahara_dashboard/content/data_processing/jobs/workflows/launch.py:584
+msgid "Job launched"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/jobs/workflows/launch.py:492
+#: sahara_dashboard/content/data_processing/jobs/workflows/launch.py:585
+msgid "Could not launch job"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/jobs/workflows/launch.py:527
+msgid "Job configs"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/jobs/workflows/launch.py:531
+msgid "Job args"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/jobs/workflows/launch.py:535
+msgid "Job params"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/jobs/workflows/launch.py:541
+msgid "Job Execution ID"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/jobs/workflows/launch.py:621
+msgid "Unable to create new cluster for job."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/jobs/workflows/launch.py:638
+msgid "Unable to launch job."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/nodegroup_templates/panel.py:22
+#: sahara_dashboard/content/data_processing/nodegroup_templates/tables.py:136
+#: sahara_dashboard/content/data_processing/nodegroup_templates/views.py:41
+msgid "Node Group Templates"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/nodegroup_templates/tables.py:43
+msgid "Configure Template"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/nodegroup_templates/tabs.py:54
+msgid "Unable to fetch flavor for template."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/nodegroup_templates/tabs.py:63
+msgid "Unable to fetch floating ip pools."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/nodegroup_templates/tabs.py:80
+#: sahara_dashboard/content/data_processing/nodegroup_templates/templates/data_processing.nodegroup_templates/_service_confs.html:2
+msgid "Service Configurations"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/nodegroup_templates/views.py:54
+msgid "Unable to fetch node group template list."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/nodegroup_templates/views.py:69
+#, python-format
+msgid "Unable to retrieve details for node group template \"%s\"."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/nodegroup_templates/views.py:95
+#: sahara_dashboard/content/data_processing/nodegroup_templates/views.py:103
+#: sahara_dashboard/content/data_processing/nodegroup_templates/templates/data_processing.nodegroup_templates/configure.html:3
+#: sahara_dashboard/content/data_processing/nodegroup_templates/workflows/create.py:418
+#: sahara_dashboard/content/data_processing/nodegroup_templates/workflows/create.py:580
+msgid "Create Node Group Template"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/nodegroup_templates/views.py:133
+msgid "Unable to fetch template object."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/nodegroup_templates/templates/data_processing.nodegroup_templates/_configure_general_help.html:4
+msgid "This Node Group Template will be created for:"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/nodegroup_templates/templates/data_processing.nodegroup_templates/_configure_general_help.html:15
+msgid ""
+"The Node Group Template object specifies the processes\n"
+"        that will be launched on each instance. Check one or more "
+"processes.\n"
+"        When processes are selected, you may set <b>node</b> scoped\n"
+"        configurations on corresponding tabs."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/nodegroup_templates/templates/data_processing.nodegroup_templates/_configure_general_help.html:18
+msgid ""
+"You must choose a flavor to determine the size (VCPUs, memory and "
+"storage) of all launched VMs."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/nodegroup_templates/templates/data_processing.nodegroup_templates/_configure_general_help.html:21
+msgid ""
+"Data Processing provides different storage location options. You may "
+"choose Ephemeral Drive or a Cinder Volume to be attached to instances."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/nodegroup_templates/templates/data_processing.nodegroup_templates/_create_general_help.html:3
+msgid "Select a plugin and version for the new Node Group template."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/nodegroup_templates/templates/data_processing.nodegroup_templates/_details.html:7
+msgid "Project Id"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/nodegroup_templates/templates/data_processing.nodegroup_templates/_details.html:82
+msgid "HDFS placement"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/nodegroup_templates/templates/data_processing.nodegroup_templates/_details.html:84
+msgid "Cinder volumes"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/nodegroup_templates/templates/data_processing.nodegroup_templates/_details.html:85
+#: sahara_dashboard/content/data_processing/nodegroup_templates/workflows/create.py:72
+#: sahara_dashboard/content/data_processing/nodegroup_templates/workflows/create.py:78
+msgid "Volumes per node"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/nodegroup_templates/templates/data_processing.nodegroup_templates/_details.html:87
+msgid "Volumes size"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/nodegroup_templates/templates/data_processing.nodegroup_templates/_details.html:89
+#: sahara_dashboard/content/data_processing/nodegroup_templates/workflows/create.py:94
+#: sahara_dashboard/content/data_processing/nodegroup_templates/workflows/create.py:99
+msgid "Volumes type"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/nodegroup_templates/templates/data_processing.nodegroup_templates/_details.html:91
+msgid "Volumes local to instance"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/nodegroup_templates/templates/data_processing.nodegroup_templates/_details.html:94
+#: sahara_dashboard/content/data_processing/nodegroup_templates/workflows/create.py:116
+#: sahara_dashboard/content/data_processing/nodegroup_templates/workflows/create.py:122
+msgid "Volumes Availability Zone"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/nodegroup_templates/templates/data_processing.nodegroup_templates/_details.html:98
+msgid "Ephemeral drive"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/nodegroup_templates/templates/data_processing.nodegroup_templates/_fields_help.html:3
+msgid "Filter"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/nodegroup_templates/templates/data_processing.nodegroup_templates/_fields_help.html:4
+msgid "Show full configuration"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/nodegroup_templates/templates/data_processing.nodegroup_templates/_fields_help.html:5
+msgid "Hide full configuration"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/nodegroup_templates/templates/data_processing.nodegroup_templates/_service_confs.html:12
+#, python-format
+msgid "%(conf_name)s: %(conf_val)s"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/nodegroup_templates/workflows/copy.py:25
+#, python-format
+msgid "Node Group Template copy %s created"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/nodegroup_templates/workflows/copy.py:109
+msgid "Unable to fetch plugin details."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/nodegroup_templates/workflows/create.py:52
+msgid "OpenStack Flavor"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/nodegroup_templates/workflows/create.py:56
+msgid "Launch instances in this availability zone."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/nodegroup_templates/workflows/create.py:62
+msgid "Storage location"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/nodegroup_templates/workflows/create.py:63
+msgid "Choose a storage location"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/nodegroup_templates/workflows/create.py:83
+#: sahara_dashboard/content/data_processing/nodegroup_templates/workflows/create.py:89
+msgid "Volumes size (GB)"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/nodegroup_templates/workflows/create.py:104
+#: sahara_dashboard/content/data_processing/nodegroup_templates/workflows/create.py:111
+msgid "Volume local to instance"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/nodegroup_templates/workflows/create.py:106
+msgid "Instance and attached volumes will be created on the same physical host"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/nodegroup_templates/workflows/create.py:117
+msgid "Create volumes in this availability zone."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/nodegroup_templates/workflows/create.py:150
+msgid ""
+"If selected, instances of a node group will be automatically configured "
+"during cluster creation. Otherwise you should manually specify "
+"configuration values."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/nodegroup_templates/workflows/create.py:162
+msgid ""
+"Sahara will use instances of this node group to access other cluster "
+"instances."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/nodegroup_templates/workflows/create.py:167
+#: sahara_dashboard/content/data_processing/nodegroup_templates/workflows/create.py:169
+msgid "node group template"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/nodegroup_templates/workflows/create.py:194
+msgid "Unable to get volume type list."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/nodegroup_templates/workflows/create.py:196
+msgid "No volume type"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/nodegroup_templates/workflows/create.py:208
+#: sahara_dashboard/content/data_processing/nodegroup_templates/workflows/create.py:215
+msgid "No availability zone specified"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/nodegroup_templates/workflows/create.py:230
+msgid "Configure Node Group Template"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/nodegroup_templates/workflows/create.py:243
+msgid "Create security group for this Node Group."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/nodegroup_templates/workflows/create.py:251
+msgid "Unable to get security group list."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/nodegroup_templates/workflows/create.py:258
+msgid "Launch instances in these security groups."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/nodegroup_templates/workflows/create.py:263
+msgid "Security"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/nodegroup_templates/workflows/create.py:264
+msgid "Control access to instances of the node group."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/nodegroup_templates/workflows/create.py:282
+#, python-format
+msgid "%s processes: "
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/nodegroup_templates/workflows/create.py:322
+msgid "Unable to generate process choices."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/nodegroup_templates/workflows/create.py:330
+msgid "Select Node Group Processes"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/nodegroup_templates/workflows/create.py:337
+msgid "Select node processes for the node group"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/nodegroup_templates/workflows/create.py:365
+msgid "Select the manila shares for this node group"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/nodegroup_templates/workflows/create.py:420
+#, python-format
+msgid "Created Node Group Template %s"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/nodegroup_templates/workflows/create.py:561
+msgid "Select plugin and hadoop version"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/nodegroup_templates/workflows/edit.py:31
+#, python-format
+msgid "Node Group Template %s updated"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/nodegroup_templates/workflows/edit.py:33
+msgid "Edit Node Group Template"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/utils/acl.py:125
+msgid "If selected, {object_type} will be shared across the tenants"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/utils/acl.py:136
+msgid ""
+"If selected, {object_type} will be protected from modifications until "
+"this will be unselected"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/utils/anti_affinity.py:26
+msgid "Use anti-affinity groups for: "
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/utils/anti_affinity.py:28
+msgid "Use anti-affinity groups for processes"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/utils/anti_affinity.py:61
+msgid "Unable to populate anti-affinity processes."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/utils/helpers.py:131
+msgid "Streaming MapReduce"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/utils/helpers.py:133
+msgid "Java"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/utils/helpers.py:134
+msgid "Shell"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/utils/neutron_support.py:31
+msgid "Unable to retrieve networks."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/utils/workflow_helpers.py:120
+msgid "Node group cluster"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/utils/workflow_helpers.py:124
+msgid "Count"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/utils/workflow_helpers.py:143
+msgid "Mapping Type"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/utils/workflow_helpers.py:146
+msgid "Positional Argument"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/utils/workflow_helpers.py:147
+msgid "Configuration Value"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/utils/workflow_helpers.py:148
+msgid "Named Parameter"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/utils/workflow_helpers.py:150
+msgid "Location"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/utils/workflow_helpers.py:154
+msgid "Value Type"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/utils/workflow_helpers.py:162
+msgid "Required"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/utils/workflow_helpers.py:166
+msgid "Default Value"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/utils/workflow_helpers.py:195
+#, python-format
+msgid "Unable to retrieve security group %(group)s."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/utils/workflow_helpers.py:228
+#: sahara_dashboard/content/data_processing/wizard/forms.py:56
+msgid "Plugin Name"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/utils/workflow_helpers.py:342
+msgid "Read/Write"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/utils/workflow_helpers.py:342
+msgid "Read only"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/utils/workflow_helpers.py:387
+msgid "The value of shares must be a list of values"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/wizard/forms.py:43
+msgid "Cluster type chosen"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/wizard/forms.py:47
+msgid "Unable to set cluster type"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/wizard/forms.py:86
+msgid "Choose plugin type and version"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/wizard/forms.py:116
+#: sahara_dashboard/content/data_processing/wizard/forms.py:179
+msgid "Job type chosen"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/wizard/forms.py:120
+msgid "Unable to set job type"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/wizard/forms.py:126
+msgid "Node Group Template"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/wizard/forms.py:183
+msgid "Unable to set node group template"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/wizard/panel.py:22
+msgid "Guides"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/wizard/views.py:32
+msgid "Data Processing Guides"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/wizard/views.py:38
+msgid "Unable to show guides"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/wizard/views.py:45
+msgid "Guided Cluster Creation"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/wizard/views.py:73
+msgid "Guided Job Execution"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/wizard/views.py:102
+#: sahara_dashboard/content/data_processing/wizard/templates/data_processing.wizard/_plugin_select.html:12
+#: sahara_dashboard/content/data_processing/wizard/templates/data_processing.wizard/plugin_select.html:3
+msgid "Choose plugin and version"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/wizard/views.py:111
+#: sahara_dashboard/content/data_processing/wizard/templates/data_processing.wizard/_job_type_select.html:12
+#: sahara_dashboard/content/data_processing/wizard/templates/data_processing.wizard/job_type_select.html:3
+msgid "Choose job type"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/wizard/views.py:120
+#: sahara_dashboard/content/data_processing/wizard/templates/data_processing.wizard/_ngt_select.html:12
+#: sahara_dashboard/content/data_processing/wizard/templates/data_processing.wizard/ngt_select.html:3
+msgid "Choose node group template"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/wizard/templates/data_processing.wizard/_job_type_select_help.html:6
+msgid ""
+"Select which type of job that you want to run.\n"
+"      This choice will dictate which steps are required to successfully\n"
+"      execute your job.\n"
+"    "
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/wizard/templates/data_processing.wizard/_ngt_select_help.html:4
+msgid ""
+"Select an existing node group template.\n"
+"    "
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/wizard/templates/data_processing.wizard/_plugin_select_help.html:4
+msgid ""
+"Select which plugin and version that you\n"
+"    want to use to create your cluster."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/wizard/templates/data_processing.wizard/cluster_guide.html:19
+msgid ""
+"The first step is to determine which type of\n"
+"                    cluster you want to run.  You may have several "
+"choices\n"
+"                    available depending on the configuration of your "
+"system.\n"
+"                    Click on \"choose plugin\" to bring up the list of "
+"data\n"
+"                    processing plugins.  There you will be able to choose"
+" the\n"
+"                    data processing plugin along with the version number."
+"\n"
+"                    Choosing this up front will allow the rest of the "
+"cluster\n"
+"                    creation steps to focus only on options that are "
+"pertinent\n"
+"                    to your desired cluster type."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/wizard/templates/data_processing.wizard/cluster_guide.html:22
+msgid "Choose plugin"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/wizard/templates/data_processing.wizard/cluster_guide.html:23
+#: sahara_dashboard/content/data_processing/wizard/templates/data_processing.wizard/cluster_guide.html:67
+#: sahara_dashboard/content/data_processing/wizard/templates/data_processing.wizard/cluster_guide.html:102
+#: sahara_dashboard/content/data_processing/wizard/templates/data_processing.wizard/cluster_guide.html:134
+msgid "Current choice:"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/wizard/templates/data_processing.wizard/cluster_guide.html:26
+msgid "Plugin:"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/wizard/templates/data_processing.wizard/cluster_guide.html:28
+msgid "Version:"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/wizard/templates/data_processing.wizard/cluster_guide.html:33
+msgid "No plugin chosen"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/wizard/templates/data_processing.wizard/cluster_guide.html:51
+msgid ""
+"Next, you need to define the different\n"
+"                        types of machines in your cluster.  This is done "
+"by\n"
+"                        defining a Node Group Template for each type of\n"
+"                        machine.  A very common case is where you\n"
+"                        need to have one or more machines running a "
+"\"master\"\n"
+"                        set of processes while another set of machines "
+"need\n"
+"                        to be running the \"worker\" processes.  Here,\n"
+"                        you will define the Node Group Template for your\n"
+"                        \"master\" node(s).\n"
+"                     "
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/wizard/templates/data_processing.wizard/cluster_guide.html:57
+msgid "Create a Master Node Group Template"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/wizard/templates/data_processing.wizard/cluster_guide.html:59
+#: sahara_dashboard/content/data_processing/wizard/templates/data_processing.wizard/cluster_guide.html:94
+msgid " or "
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/wizard/templates/data_processing.wizard/cluster_guide.html:63
+msgid "Choose an existing Master Node Group Template"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/wizard/templates/data_processing.wizard/cluster_guide.html:70
+msgid "Master Node Group Template:"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/wizard/templates/data_processing.wizard/cluster_guide.html:75
+msgid "No Master Node Group Template Created"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/wizard/templates/data_processing.wizard/cluster_guide.html:86
+msgid ""
+"Repeat the Node Group Template\n"
+"                        creation process, but this time you are creating\n"
+"                        your \"worker\" Node Group Template."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/wizard/templates/data_processing.wizard/cluster_guide.html:92
+msgid "Create a Worker Node Group Template"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/wizard/templates/data_processing.wizard/cluster_guide.html:98
+msgid "Choose an existing Worker Node Group Template"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/wizard/templates/data_processing.wizard/cluster_guide.html:105
+#: sahara_dashboard/content/data_processing/wizard/templates/data_processing.wizard/cluster_guide.html:137
+msgid "Worker Node Group Template:"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/wizard/templates/data_processing.wizard/cluster_guide.html:110
+msgid "No Worker Node Group Template Created"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/wizard/templates/data_processing.wizard/cluster_guide.html:126
+msgid ""
+"Now you need to set the layout of your\n"
+"                        cluster.  By\n"
+"                        creating a Cluster Template, you will be choosing"
+" the\n"
+"                        number of instances of each Node Group Template "
+"that\n"
+"                        will appear in your cluster.  Additionally,\n"
+"                        you will have a chance to set any cluster-"
+"specific\n"
+"                        configuration items in the additional tabs on the"
+"\n"
+"                        create Cluster Template form."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/wizard/templates/data_processing.wizard/cluster_guide.html:132
+msgid "Create a Cluster Template"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/wizard/templates/data_processing.wizard/cluster_guide.html:142
+msgid "No Cluster Template Created"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/wizard/templates/data_processing.wizard/cluster_guide.html:158
+msgid ""
+"You are now ready to\n"
+"                        launch your cluster.  When you click on the link\n"
+"                        below, you will need to give your cluster a name,"
+"\n"
+"                        choose the Cluster Template to use and choose "
+"which\n"
+"                        image to use to build your instances.  After you\n"
+"                        click on \"Create\", your instances will begin to"
+"\n"
+"                        spawn.  Your cluster should be operational in a "
+"few\n"
+"                        minutes."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/wizard/templates/data_processing.wizard/cluster_guide.html:164
+msgid "Launch a Cluster"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/wizard/templates/data_processing.wizard/cluster_guide.html:172
+msgid "Reset Cluster Guide"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/wizard/templates/data_processing.wizard/cluster_guide.html:174
+msgid "Reset Cluster Creation Guide"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/wizard/templates/data_processing.wizard/jobex_guide.html:15
+msgid ""
+"First, select which type of job that\n"
+"                            you want to run.  This choice will determine "
+"which\n"
+"                            other steps are required\n"
+"                        "
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/wizard/templates/data_processing.wizard/jobex_guide.html:20
+msgid "Select type"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/wizard/templates/data_processing.wizard/jobex_guide.html:23
+msgid "Current type:"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/wizard/templates/data_processing.wizard/jobex_guide.html:30
+msgid "No type chosen"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/wizard/templates/data_processing.wizard/jobex_guide.html:46
+msgid ""
+"Data Sources are what your\n"
+"                            job uses for input and output.  Depending on "
+"the type\n"
+"                            of job you will be running, you may need to "
+"define one\n"
+"                            or more data sources.  You can create "
+"multiple data\n"
+"                            sources by repeating this step.\n"
+"                        "
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/wizard/templates/data_processing.wizard/jobex_guide.html:51
+msgid "Create a data source"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/wizard/templates/data_processing.wizard/jobex_guide.html:65
+msgid ""
+"Define your Job Template.\n"
+"                        This is where you choose the type of job that you"
+"\n"
+"                        want to run (Pig, Java Action, Spark, etc) and "
+"choose\n"
+"                        or upload the files necessary to run it.  The "
+"inputs\n"
+"                        and outputs will be defined later.\n"
+"                    "
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/wizard/templates/data_processing.wizard/jobex_guide.html:70
+msgid "Create a job template"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/wizard/templates/data_processing.wizard/jobex_guide.html:72
+msgid "Job template:"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/wizard/templates/data_processing.wizard/jobex_guide.html:79
+msgid "No job template created"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/wizard/templates/data_processing.wizard/jobex_guide.html:94
+msgid ""
+"Launch your job.  When\n"
+"                        launching, you may need to choose your input and\n"
+"                        output data sources.  This is where you would "
+"also\n"
+"                        add any special configuration values, parameters,"
+"\n"
+"                        or arguments that you need to pass along\n"
+"                        to your job.\n"
+"                        "
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/wizard/templates/data_processing.wizard/jobex_guide.html:98
+msgid "Launch job"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/wizard/templates/data_processing.wizard/jobex_guide.html:107
+#: sahara_dashboard/content/data_processing/wizard/templates/data_processing.wizard/jobex_guide.html:109
+msgid "Reset Job Execution Guide"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/wizard/templates/data_processing.wizard/wizard.html:19
+msgid ""
+"\n"
+"                 Each of the Data Processing frameworks require a cluster"
+" of machines\n"
+"                 in order to do the work they are assigned.  A cluster is"
+"\n"
+"                 formed by creating a set of Node Group Templates, "
+"combining\n"
+"                 those into a Cluster Template and then launching a "
+"Cluster.\n"
+"                 You can do each of those steps manually, or you can "
+"follow\n"
+"                 this guide to help take you through the steps of\n"
+"                 Cluster creation.\n"
+"             "
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/wizard/templates/data_processing.wizard/wizard.html:24
+msgid "Cluster Guide"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/wizard/templates/data_processing.wizard/wizard.html:41
+msgid ""
+"\n"
+"                  In order to run a Data Processing job, you need to make"
+"\n"
+"                  the files for your program available to the\n"
+"                  Data Processing system, define where the input and "
+"output\n"
+"                  need to go and create a Job Template that describes\n"
+"                  how to run your job.  Each of those steps can be done\n"
+"                  manually or you can follow this guide to help take you\n"
+"                  through the steps to run a job on an existing cluster.\n"
+"            "
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/wizard/templates/data_processing.wizard/wizard.html:46
+#: sahara_dashboard/content/data_processing/wizard/templates/data_processing.wizard/wizard.html:48
+msgid "Job Execution Guide"
+msgstr ""
+

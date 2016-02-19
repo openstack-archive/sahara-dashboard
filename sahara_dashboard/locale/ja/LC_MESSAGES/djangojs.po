@@ -1,0 +1,85 @@
+# Akihiro Motoki <amotoki@gmail.com>, 2016. #zanata
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2016-02-18 14:31+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2016-02-18 06:59+0000\n"
+"Last-Translator: Akihiro Motoki <amotoki@gmail.com>\n"
+"Language-Team: Japanese\n"
+"Language: ja\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"X-Generator: Zanata 3.7.3\n"
+
+msgid "(show events)"
+msgstr "(イベントの表示)"
+
+msgid "Configuration Value"
+msgstr "設定値"
+
+msgid "Data Source"
+msgstr "データソース"
+
+msgid "Default Value"
+msgstr "デフォルト値"
+
+msgid "Description"
+msgstr "説明"
+
+msgid "Event log is not available."
+msgstr "イベントログはありません。"
+
+msgid ""
+"For configs and params, type the key name; for args, type the index as an "
+"integer, starting from 0."
+msgstr ""
+"設定とパラメーターにはキー名を、引数には 0 から始まる整数を入力してください。"
+
+msgid ""
+"For data sources, use a data source UUID or a path (as per data source "
+"creation.)"
+msgstr ""
+"データソースには、 UUID または (作成時に指定した) パスを使用してください"
+
+msgid "Location"
+msgstr "場所"
+
+msgid "Mapping Type"
+msgstr "マッピング種別"
+
+msgid "Name"
+msgstr "名前"
+
+msgid "Named Parameter"
+msgstr "名前付きパラメーター"
+
+msgid "Number"
+msgstr "数字"
+
+msgid "Positional Argument"
+msgstr "位置指定引数 (Positional Argument)"
+
+msgid "Remove"
+msgstr "削除"
+
+msgid "Required?"
+msgstr "必須？"
+
+msgid ""
+"See http://docs.openstack.org/developer/sahara/userdoc/edp.html for "
+"definitions."
+msgstr ""
+"定義は http://docs.openstack.org/developer/sahara/userdoc/edp.html を参照して"
+"ください。"
+
+msgid "String"
+msgstr "文字列"
+
+msgid "The step has completed successfully. No events to display."
+msgstr "手順が正常に完了しました。表示するイベントはありません。"
+
+msgid "Value Type"
+msgstr "値の型"

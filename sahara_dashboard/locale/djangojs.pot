@@ -1,0 +1,105 @@
+# Translations template for PROJECT.
+# Copyright (C) 2016 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2016-02-19 06:30+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.2.0\n"
+
+#: sahara_dashboard/content/data_processing/static/dashboard/project/data_processing/data_processing.event_log.js:15
+msgid "Event log is not available."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/static/dashboard/project/data_processing/data_processing.event_log.js:42
+msgid "(show events)"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/static/dashboard/project/data_processing/data_processing.event_log.js:115
+msgid "The step has completed successfully. No events to display."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/static/dashboard/project/data_processing/data_processing.job_interface_arguments.js:8
+msgid "Remove"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/static/dashboard/project/data_processing/data_processing.job_interface_arguments.js:12
+msgid "Name"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/static/dashboard/project/data_processing/data_processing.job_interface_arguments.js:21
+msgid "Description"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/static/dashboard/project/data_processing/data_processing.job_interface_arguments.js:30
+msgid "Mapping Type"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/static/dashboard/project/data_processing/data_processing.job_interface_arguments.js:31
+msgid ""
+"See http://docs.openstack.org/developer/sahara/userdoc/edp.html for "
+"definitions."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/static/dashboard/project/data_processing/data_processing.job_interface_arguments.js:37
+msgid "Positional Argument"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/static/dashboard/project/data_processing/data_processing.job_interface_arguments.js:38
+msgid "Named Parameter"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/static/dashboard/project/data_processing/data_processing.job_interface_arguments.js:39
+msgid "Configuration Value"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/static/dashboard/project/data_processing/data_processing.job_interface_arguments.js:46
+msgid "Location"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/static/dashboard/project/data_processing/data_processing.job_interface_arguments.js:47
+msgid ""
+"For configs and params, type the key name; for args, type the index as an"
+" integer, starting from 0."
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/static/dashboard/project/data_processing/data_processing.job_interface_arguments.js:58
+msgid "Value Type"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/static/dashboard/project/data_processing/data_processing.job_interface_arguments.js:62
+msgid "String"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/static/dashboard/project/data_processing/data_processing.job_interface_arguments.js:63
+msgid "Number"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/static/dashboard/project/data_processing/data_processing.job_interface_arguments.js:64
+msgid "Data Source"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/static/dashboard/project/data_processing/data_processing.job_interface_arguments.js:71
+msgid "Required?"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/static/dashboard/project/data_processing/data_processing.job_interface_arguments.js:80
+msgid "Default Value"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/static/dashboard/project/data_processing/data_processing.job_interface_arguments.js:81
+msgid ""
+"For data sources, use a data source UUID or a path (as per data source "
+"creation.)"
+msgstr ""
+
