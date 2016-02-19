@@ -24,7 +24,8 @@ class TestSaharaJobBinary(helpers.TestCase):
 
     def _sahara_create_delete_job_binary(self, job_name):
         # create job binary
-        job_binary_pg = self.home_pg.go_to_dataprocessing_jobbinariespage()
+        job_binary_pg = (
+            self.home_pg.go_to_dataprocessing_jobs_jobbinariespage())
         self.assertFalse(job_binary_pg.is_job_binary_present(job_name),
                          "Job binary was present in the binaries table"
                          " before its creation.")
