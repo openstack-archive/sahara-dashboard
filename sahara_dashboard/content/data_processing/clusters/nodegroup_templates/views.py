@@ -68,7 +68,7 @@ class NodegroupTemplateDetailsView(tabs.TabView):
             msg = _('Unable to retrieve details for '
                     'node group template "%s".') % ngt_id
             redirect = reverse("horizon:project:data_processing."
-                               "clusters:nodegroup-templates")
+                               "clusters:nodegroup-templates-tab")
             exceptions.handle(self.request, msg, redirect=redirect)
 
     def get_context_data(self, **kwargs):
