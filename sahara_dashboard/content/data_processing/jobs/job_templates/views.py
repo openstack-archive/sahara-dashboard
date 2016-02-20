@@ -24,6 +24,8 @@ from horizon import workflows
 
 from sahara_dashboard.api import sahara as saharaclient
 
+import sahara_dashboard.content.data_processing.jobs.job_templates.tables \
+    as jt_tables
 import sahara_dashboard.content.data_processing.jobs.job_templates.tabs \
     as _tabs
 import sahara_dashboard.content.data_processing.jobs.job_templates \
@@ -59,8 +61,14 @@ class JobTemplateDetailsView(tabs.TabView):
     def get_context_data(self, **kwargs):
         context = super(JobTemplateDetailsView, self).\
             get_context_data(**kwargs)
-        context['job'] = self.get_object()
+        job_template = self.get_object()
+        context['job'] = job_template
+        context['actions'] = self._get_actions(job_template)
         return context
+
+    def _get_actions(self, job_template):
+        table = jt_tables.JobTemplatesTable(self.request)
+        return table.render_row_actions(job_template)
 
 
 class LaunchJobView(workflows.WorkflowView):
