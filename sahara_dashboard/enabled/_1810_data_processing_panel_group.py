@@ -6,3 +6,5 @@ PANEL_GROUP = 'data_processing'
 PANEL_GROUP_NAME = _('Data Processing')
 # The slug of the dashboard the PANEL_GROUP associated with. Required.
 PANEL_GROUP_DASHBOARD = 'project'
+
+ADD_INSTALLED_APPS = ['sahara_dashboard']
