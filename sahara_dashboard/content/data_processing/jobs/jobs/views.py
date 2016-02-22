@@ -15,7 +15,6 @@ from django.core.urlresolvers import reverse
 from django.utils.translation import ugettext_lazy as _
 
 from horizon import exceptions
-from horizon import tables
 from horizon import tabs
 from horizon.utils import memoized
 
@@ -25,34 +24,6 @@ from sahara_dashboard.content.data_processing.jobs.jobs \
     import tables as je_tables
 import sahara_dashboard.content.data_processing \
     .jobs.jobs.tabs as _tabs
-
-
-class JobsView(tables.DataTableView):
-    SEARCH_MAPPING = {"cluster": "cluster.name",
-                      "job": "job.name"}
-
-    table_class = je_tables.JobsTable
-    template_name = 'jobs/job_executions.html'
-    page_title = _("Jobs")
-
-    def get_data(self):
-        try:
-            search_opts = {}
-            filter = self.get_server_filter_info(self.request)
-            if filter['value'] and filter['field']:
-                if filter['field'] in self.SEARCH_MAPPING:
-                    # Handle special cases for cluster and job
-                    # since they are in different database tables.
-                    search_opts = {
-                        self.SEARCH_MAPPING[filter['field']]: filter['value']}
-                else:
-                    search_opts = {filter['field']: filter['value']}
-            jobs = saharaclient.job_execution_list(self.request, search_opts)
-        except Exception:
-            jobs = []
-            exceptions.handle(self.request,
-                              _("Unable to fetch job executions."))
-        return jobs
 
 
 class JobDetailsView(tabs.TabView):

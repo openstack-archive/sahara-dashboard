@@ -32,6 +32,8 @@ class JobsTab(sahara_tabs.SaharaTableTab):
     name = _("Jobs")
     slug = "jobs_tab"
     template_name = "horizon/common/_detail_table.html"
+    SEARCH_MAPPING = {"cluster": "cluster.name",
+                      "job": "job.name"}
 
     def get_jobs_data(self):
         try:
@@ -39,7 +41,13 @@ class JobsTab(sahara_tabs.SaharaTableTab):
             search_opts = {}
             filter = self.get_server_filter_info(table.request, table)
             if filter['value'] and filter['field']:
-                search_opts = {filter['field']: filter['value']}
+                if filter['field'] in self.SEARCH_MAPPING:
+                    # Handle special cases for cluster and job
+                    # since they are in different database tables.
+                    search_opts = {
+                        self.SEARCH_MAPPING[filter['field']]: filter['value']}
+                else:
+                    search_opts = {filter['field']: filter['value']}
             jobs = saharaclient.job_execution_list(self.request, search_opts)
         except Exception:
             jobs = []
