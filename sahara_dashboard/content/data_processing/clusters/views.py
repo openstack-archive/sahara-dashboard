@@ -18,8 +18,8 @@ from sahara_dashboard.content.data_processing.clusters.cluster_templates \
     import tabs as cluster_templates_tabs
 from sahara_dashboard.content.data_processing.clusters.clusters \
     import tabs as clusters_tabs
-from sahara_dashboard.content.data_processing.clusters.data_image_registry \
-    import tabs as data_image_registry_tabs
+from sahara_dashboard.content.data_processing.clusters.image_registry \
+    import tabs as image_registry_tabs
 from sahara_dashboard.content.data_processing.clusters.nodegroup_templates \
     import tabs as node_group_templates_tabs
 
@@ -29,7 +29,7 @@ class ClusterTabs(tabs.TabGroup):
     tabs = (clusters_tabs.ClustersTab,
             cluster_templates_tabs.ClusterTemplatesTab,
             node_group_templates_tabs.NodeGroupTemplatesTab,
-            data_image_registry_tabs.DataImageRegistryTab,)
+            image_registry_tabs.ImageRegistryTab,)
     sticky = True
 
 

@@ -16,7 +16,7 @@ from django.conf.urls import patterns
 from django.conf.urls import url
 
 import sahara_dashboard.content.data_processing.clusters.views as views
-import sahara_dashboard.content.data_processing.clusters.data_image_registry. \
+import sahara_dashboard.content.data_processing.clusters.image_registry. \
     views as image_views
 import sahara_dashboard.content.data_processing.clusters.nodegroup_templates. \
     views as ngt_views
@@ -31,7 +31,7 @@ import sahara_dashboard.content.data_processing.clusters.wizard. \
 urlpatterns = patterns('',
                        url(r'^$', views.IndexView.as_view(),
                            name='index'),
-                       url(r'^\?tab=cluster_tabs__data_image_registry_tab$',
+                       url(r'^\?tab=cluster_tabs__image_registry_tab$',
                            views.IndexView.as_view(),
                            name='image-registry-tab'),
                        url(r'^\?tab=cluster_tabs__node_group_templates_tab$',

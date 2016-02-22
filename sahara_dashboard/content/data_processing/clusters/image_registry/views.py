@@ -18,31 +18,13 @@ from django.utils.translation import ugettext_lazy as _
 
 from horizon import exceptions
 from horizon import forms
-from horizon import tables
 from horizon.utils import memoized
 
 from sahara_dashboard.api import sahara as saharaclient
 from sahara_dashboard.content. \
-    data_processing.clusters.data_image_registry.forms import EditTagsForm
+    data_processing.clusters.image_registry.forms import EditTagsForm
 from sahara_dashboard.content. \
-    data_processing.clusters.data_image_registry.forms import RegisterImageForm
-from sahara_dashboard.content.data_processing. \
-    clusters.data_image_registry.tables import ImageRegistryTable
-
-
-class ImageRegistryView(tables.DataTableView):
-    table_class = ImageRegistryTable
-    template_name = 'data_image_registry/image_registry.html'
-    page_title = _("Image Registry")
-
-    def get_data(self):
-        try:
-            images = saharaclient.image_list(self.request)
-        except Exception:
-            images = []
-            msg = _('Unable to retrieve image list')
-            exceptions.handle(self.request, msg)
-        return images
+    data_processing.clusters.image_registry.forms import RegisterImageForm
 
 
 def update_context_with_plugin_tags(request, context):
@@ -73,7 +55,7 @@ def update_context_with_plugin_tags(request, context):
 
 class EditTagsView(forms.ModalFormView):
     form_class = EditTagsForm
-    template_name = 'data_image_registry/edit_tags.html'
+    template_name = 'image_registry/edit_tags.html'
     success_url = reverse_lazy(
         'horizon:project:data_processing.clusters:image-registry-tab')
     page_title = _("Edit Image Tags")
@@ -106,7 +88,7 @@ class EditTagsView(forms.ModalFormView):
 
 class RegisterImageView(forms.ModalFormView):
     form_class = RegisterImageForm
-    template_name = 'data_image_registry/register_image.html'
+    template_name = 'image_registry/register_image.html'
     success_url = reverse_lazy(
         'horizon:project:data_processing.clusters:image-registry-tab')
     page_title = _("Register Image")

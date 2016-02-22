@@ -20,17 +20,16 @@ from horizon import tabs
 
 from sahara_dashboard.api import sahara as saharaclient
 
-
-from sahara_dashboard.content.data_processing.clusters.data_image_registry \
-    import tables as data_image_registry_tables
+from sahara_dashboard.content.data_processing.clusters.image_registry \
+    import tables as image_registry_tables
 
 LOG = logging.getLogger(__name__)
 
 
-class DataImageRegistryTab(tabs.TableTab):
-    table_classes = (data_image_registry_tables.ImageRegistryTable, )
-    name = _("Data Image Registry")
-    slug = "data_image_registry_tab"
+class ImageRegistryTab(tabs.TableTab):
+    table_classes = (image_registry_tables.ImageRegistryTable, )
+    name = _("Image Registry")
+    slug = "image_registry_tab"
     template_name = "horizon/common/_detail_table.html"
 
     def get_image_registry_data(self):
