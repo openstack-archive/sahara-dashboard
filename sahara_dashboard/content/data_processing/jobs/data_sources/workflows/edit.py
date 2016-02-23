@@ -80,8 +80,8 @@ class EditDataSource(create.CreateDataSource):
                 "credentials": {
                     "user": context.get("general_data_source_credential_user",
                                         None),
-                    "pass": context.get("general_data_source_credential_pass",
-                                        None)
+                    "password": context.get(
+                        "general_data_source_credential_pass", None)
                 },
                 "is_public": context['general_is_public'],
                 "is_protected": context['general_is_protected']
