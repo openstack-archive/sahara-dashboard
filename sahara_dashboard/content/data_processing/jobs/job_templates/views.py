@@ -36,11 +36,11 @@ class CreateJobView(workflows.WorkflowView):
     workflow_class = create_flow.CreateJob
     success_url = "horizon:project:data_processing.jobs:create-job"
     classes = ("ajax-modal",)
-    template_name = "job_templatess/create.html"
+    template_name = "job_templates/create.html"
     page_title = _("Create Job Template")
 
 
-class JobDetailsView(tabs.TabView):
+class JobTemplateDetailsView(tabs.TabView):
     tab_group_class = _tabs.JobDetailsTabs
     template_name = 'horizon/common/_detail.html'
     page_title = "{{ job.name|default:job.id }}"
@@ -57,7 +57,8 @@ class JobDetailsView(tabs.TabView):
             exceptions.handle(self.request, msg, redirect=redirect)
 
     def get_context_data(self, **kwargs):
-        context = super(JobDetailsView, self).get_context_data(**kwargs)
+        context = super(JobTemplateDetailsView, self).\
+            get_context_data(**kwargs)
         context['job'] = self.get_object()
         return context
 
