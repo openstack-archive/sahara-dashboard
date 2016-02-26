@@ -17,7 +17,6 @@ from django.utils import http
 from django.utils.translation import pgettext_lazy
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ungettext_lazy
-
 from saharaclient.api import base as api_base
 
 from horizon import messages

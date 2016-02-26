@@ -18,6 +18,7 @@ from django.http import HttpResponse
 from django.utils.translation import ugettext as _
 from django.views.generic import base as django_base
 from oslo_utils import timeutils
+from saharaclient.api.base import APIException
 
 from horizon import exceptions
 from horizon import tables
@@ -26,7 +27,6 @@ from horizon.utils import memoized
 from horizon import workflows
 
 from sahara_dashboard.api import sahara as saharaclient
-
 import sahara_dashboard.content.data_processing.clusters.clusters. \
     tables as c_tables
 import sahara_dashboard.content.data_processing.clusters.clusters. \
@@ -38,7 +38,6 @@ import sahara_dashboard.content.data_processing.clusters.clusters. \
 import sahara_dashboard.content.data_processing.clusters.clusters. \
     workflows.update as update_flow
 import sahara_dashboard.content.data_processing.utils.helpers as helpers
-from saharaclient.api.base import APIException
 
 
 class ClustersView(tables.DataTableView):

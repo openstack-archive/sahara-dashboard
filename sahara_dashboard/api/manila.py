@@ -19,16 +19,13 @@
 #    under the License.
 
 from __future__ import absolute_import
-
 import logging
 
 from django.conf import settings
-
 from manilaclient.v1 import client as manila_client
 
 from horizon import exceptions
 from horizon.utils.memoized import memoized  # noqa
-
 from openstack_dashboard.api import base
 
 LOG = logging.getLogger(__name__)

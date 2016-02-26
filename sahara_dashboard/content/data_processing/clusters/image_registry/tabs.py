@@ -19,7 +19,6 @@ from horizon import exceptions
 from horizon import tabs
 
 from sahara_dashboard.api import sahara as saharaclient
-
 from sahara_dashboard.content.data_processing.clusters.image_registry \
     import tables as image_registry_tables
 

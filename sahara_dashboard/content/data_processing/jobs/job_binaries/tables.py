@@ -13,14 +13,13 @@
 
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ungettext_lazy
+from saharaclient.api import base as api_base
 
 from horizon import tables
 
 from sahara_dashboard.api import sahara as saharaclient
 from sahara_dashboard.content.data_processing.utils \
     import acl as acl_utils
-
-from saharaclient.api import base as api_base
 
 
 class CreateJobBinary(tables.LinkAction):

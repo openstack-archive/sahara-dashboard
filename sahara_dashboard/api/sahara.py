@@ -14,14 +14,12 @@
 import logging
 
 from django.conf import settings
+from saharaclient.api.base import APIException
+from saharaclient import client as api_client
 
 from horizon import exceptions
 from horizon.utils.memoized import memoized  # noqa
 from openstack_dashboard.api import base
-
-from saharaclient.api.base import APIException
-from saharaclient import client as api_client
-
 
 LOG = logging.getLogger(__name__)
 

@@ -16,7 +16,6 @@ from django.utils.translation import ugettext_lazy as _
 from horizon import exceptions
 
 from sahara_dashboard.api import sahara as saharaclient
-
 import sahara_dashboard.content.data_processing.clusters. \
     nodegroup_templates.workflows.create as create_flow
 

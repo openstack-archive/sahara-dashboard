@@ -23,7 +23,6 @@ from horizon.utils import memoized
 from horizon import workflows
 
 from sahara_dashboard.api import sahara as saharaclient
-
 import sahara_dashboard.content.data_processing.jobs.job_templates.tables \
     as jt_tables
 import sahara_dashboard.content.data_processing.jobs.job_templates.tabs \

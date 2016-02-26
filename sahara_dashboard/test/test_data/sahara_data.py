@@ -12,8 +12,6 @@
 
 import copy
 
-from openstack_dashboard.test.test_data import utils
-
 from saharaclient.api import cluster_templates
 from saharaclient.api import clusters
 from saharaclient.api import data_sources
@@ -23,6 +21,8 @@ from saharaclient.api import job_types
 from saharaclient.api import jobs
 from saharaclient.api import node_group_templates
 from saharaclient.api import plugins
+
+from openstack_dashboard.test.test_data import utils
 
 
 def data(TEST):

@@ -24,7 +24,6 @@ from horizon import tabs
 from horizon.utils import memoized
 
 from sahara_dashboard.api import sahara as saharaclient
-
 from sahara_dashboard.content.data_processing.utils \
     import helpers
 from sahara_dashboard.content.data_processing.jobs. \

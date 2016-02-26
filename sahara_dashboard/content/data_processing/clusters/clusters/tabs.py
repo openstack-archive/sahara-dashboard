@@ -14,10 +14,15 @@
 import logging
 
 from django.utils.translation import ugettext_lazy as _
+from sahara_dashboard.api import sahara as saharaclient
 
 from horizon import exceptions
 from horizon import tables
 from horizon import tabs
+from openstack_dashboard.api import glance
+from openstack_dashboard.api import network
+from openstack_dashboard.api import neutron
+from openstack_dashboard.api import nova
 
 from sahara_dashboard.content.data_processing.clusters.clusters \
     import tables as cluster_tables
@@ -25,13 +30,6 @@ from sahara_dashboard.content.data_processing \
     import tabs as sahara_tabs
 from sahara_dashboard.content.data_processing.utils \
     import workflow_helpers as helpers
-
-from openstack_dashboard.api import glance
-from openstack_dashboard.api import network
-from openstack_dashboard.api import neutron
-from openstack_dashboard.api import nova
-
-from sahara_dashboard.api import sahara as saharaclient
 
 LOG = logging.getLogger(__name__)
 

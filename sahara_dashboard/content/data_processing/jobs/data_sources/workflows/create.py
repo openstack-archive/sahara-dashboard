@@ -19,7 +19,6 @@ from horizon import workflows
 
 from sahara_dashboard.api import manila as manilaclient
 from sahara_dashboard.api import sahara as saharaclient
-
 from sahara_dashboard.content.data_processing.utils \
     import acl as acl_utils
 from sahara_dashboard.content.data_processing \

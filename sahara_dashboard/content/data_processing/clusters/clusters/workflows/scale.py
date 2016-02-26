@@ -15,6 +15,7 @@ import base64
 import json
 
 from django.utils.translation import ugettext_lazy as _
+from saharaclient.api import base as api_base
 
 from horizon import exceptions
 
@@ -24,8 +25,6 @@ import sahara_dashboard.content.data_processing.clusters. \
 import sahara_dashboard.content.data_processing.clusters. \
     clusters.workflows.create as cl_create_flow
 from sahara_dashboard.content.data_processing.utils import workflow_helpers
-
-from saharaclient.api import base as api_base
 
 
 class NodeGroupsStep(clt_create_flow.ConfigureNodegroups):

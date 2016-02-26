@@ -17,11 +17,10 @@ from django.utils.translation import ugettext_lazy as _
 
 from horizon import exceptions
 from horizon import tabs
-
 from openstack_dashboard.api import network
 from openstack_dashboard.api import nova
-from sahara_dashboard.api import sahara as saharaclient
 
+from sahara_dashboard.api import sahara as saharaclient
 from sahara_dashboard.content.data_processing \
     import tabs as sahara_tabs
 from sahara_dashboard.content. \

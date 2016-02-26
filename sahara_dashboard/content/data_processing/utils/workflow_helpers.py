@@ -10,17 +10,16 @@
 # implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+
 import logging
 
 from django.core.exceptions import ValidationError
 from django.utils import safestring
 from django.utils.translation import ugettext_lazy as _
-
 import six
 
 from horizon import forms
 from horizon import workflows
-
 from openstack_dashboard.api import network
 
 LOG = logging.getLogger(__name__)

@@ -15,6 +15,7 @@ from django.http import Http404  # noqa
 from django.template.loader import render_to_string
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ungettext_lazy
+from saharaclient.api import base as api_base
 
 from horizon import messages
 from horizon import tables
@@ -23,8 +24,6 @@ from horizon.tables import base as tables_base
 from sahara_dashboard.api import sahara as saharaclient
 from sahara_dashboard.content.data_processing.utils \
     import acl as acl_utils
-
-from saharaclient.api import base as api_base
 
 
 class ClustersFilterAction(tables.FilterAction):

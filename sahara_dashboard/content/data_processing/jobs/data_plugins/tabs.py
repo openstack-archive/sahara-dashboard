@@ -17,6 +17,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from horizon import exceptions
 from horizon import tabs
+
 from sahara_dashboard.api import sahara as saharaclient
 from sahara_dashboard.content.data_processing.jobs.data_plugins \
     import tables as plugin_tables

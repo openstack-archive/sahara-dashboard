@@ -11,7 +11,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import six
 import uuid
 
 from django.forms import widgets
@@ -20,6 +19,8 @@ from django.template import defaultfilters
 from django.utils.encoding import force_text
 from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext_lazy as _
+import six
+
 from horizon import exceptions
 from horizon import forms
 from horizon import messages

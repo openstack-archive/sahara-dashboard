@@ -18,7 +18,6 @@ from django.utils import encoding
 from django.utils import html
 from django.utils import safestring
 from django.utils.translation import ugettext_lazy as _
-
 from saharaclient.api import base as api_base
 
 from horizon import exceptions
@@ -26,7 +25,6 @@ from horizon import forms
 from horizon import workflows
 from openstack_dashboard.api import cinder
 from openstack_dashboard.api import network
-
 from openstack_dashboard.dashboards.project.instances \
     import utils as nova_utils
 from openstack_dashboard.dashboards.project.volumes \

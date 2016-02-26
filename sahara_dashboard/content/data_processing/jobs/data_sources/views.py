@@ -21,7 +21,6 @@ from horizon.utils import memoized
 from horizon import workflows
 
 from sahara_dashboard.api import sahara as saharaclient
-
 import sahara_dashboard.content.data_processing.jobs. \
     data_sources.tables as ds_tables
 import sahara_dashboard.content.data_processing.jobs. \

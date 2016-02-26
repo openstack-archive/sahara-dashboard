@@ -12,13 +12,11 @@
 
 from django.core.urlresolvers import reverse
 from django import http
-
 from mox3.mox import IsA  # noqa
 from oslo_serialization import jsonutils
 
-from sahara_dashboard.test import helpers as test
-
 from sahara_dashboard import api
+from sahara_dashboard.test import helpers as test
 
 
 INDEX_URL = reverse('horizon:project:data_processing.clusters:clusters-tab')

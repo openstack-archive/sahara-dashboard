@@ -17,7 +17,6 @@ import six
 
 import sahara_dashboard.content.data_processing. \
     utils.workflow_helpers as work_helpers
-
 from sahara_dashboard.api import sahara as saharaclient
 
 

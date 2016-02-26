@@ -12,6 +12,7 @@
 # limitations under the License.
 
 from django.utils.translation import ugettext_lazy as _
+
 from horizon import tabs
 
 from sahara_dashboard.content.data_processing.clusters.cluster_templates \

@@ -12,12 +12,12 @@
 
 from django.core.urlresolvers import reverse
 from django import http
-
 from mox3.mox import IgnoreArg  # noqa
 from mox3.mox import IsA  # noqa
 import six
 
 from openstack_dashboard import api as dash_api
+
 from sahara_dashboard import api
 from sahara_dashboard.content.data_processing.utils \
     import workflow_helpers

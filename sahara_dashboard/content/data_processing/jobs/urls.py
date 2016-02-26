@@ -11,7 +11,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-
 from django.conf.urls import patterns
 from django.conf.urls import url
 
@@ -29,6 +28,7 @@ import sahara_dashboard.content.data_processing. \
     jobs.wizard.views as job_wizard_views
 import sahara_dashboard.content.data_processing. \
     jobs.jobs.views as jobs_views
+
 
 urlpatterns = patterns('',
                        url(r'^$', views.IndexView.as_view(),
