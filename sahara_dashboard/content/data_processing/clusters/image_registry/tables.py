@@ -28,7 +28,7 @@ class EditTagsAction(tables.LinkAction):
 
 
 def tags_to_string(image):
-    template_name = 'data_image_registry/_list_tags.html'
+    template_name = 'image_registry/_list_tags.html'
     context = {"image": image}
     return template.loader.render_to_string(template_name, context)
 

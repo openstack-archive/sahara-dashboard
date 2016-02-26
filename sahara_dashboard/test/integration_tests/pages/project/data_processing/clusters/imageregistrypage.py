@@ -31,12 +31,12 @@ class ImageRegistryTable(tables.TableRegion):
         return forms.BaseFormRegion(self.driver, self.conf)
 
 
-class DataimageregistryPage(basepage.BaseNavigationPage):
+class ImageregistryPage(basepage.BaseNavigationPage):
 
     TABLE_IMAGE_COLUMN = 'name'
 
     def __init__(self, driver, conf):
-        super(DataimageregistryPage, self).__init__(driver, conf)
+        super(ImageregistryPage, self).__init__(driver, conf)
         self._page_title = "Clusters"
 
     def _get_row_with_image_name(self, name):

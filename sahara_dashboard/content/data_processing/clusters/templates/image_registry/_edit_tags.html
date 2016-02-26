@@ -3,20 +3,22 @@
 
 {% load i18n %}
 
-{% block form_id %}register_image_form{% endblock %}
-{% block form_action %}{% url 'horizon:project:data_processing.clusters:register' %}{% endblock %}
+{% block form_id %}edit_tags_form{% endblock %}
+{% block form_action %}{% url 'horizon:project:data_processing.clusters:edit_tags' image.id %}{% endblock %}
 
-{% block modal-header %}{% trans "Register Image" %}{% endblock %}
+{% block modal-header %}{% trans "Edit Image Tags" %}{% endblock %}
 
 {% block modal-body %}
+
+
     <div class="left">
         <fieldset>
             {% include "horizon/common/_form_fields.html" %}
-            {% include 'data_image_registry/_tag_form.html' %}
         </fieldset>
+        {% include 'image_registry/_tag_form.html' %}
     </div>
     <div class="right">
-        {% include 'data_image_registry/_help.html' %}
+        {% include 'image_registry/_help.html' %}
     </div>
 {% endblock %}
 
