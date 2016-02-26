@@ -28,6 +28,7 @@ from sahara_dashboard.content.data_processing.jobs.job_templates \
     import tables as j_t
 from sahara_dashboard.content.data_processing.utils \
     import acl as acl_utils
+from sahara_dashboard.content.data_processing.utils import helpers
 
 
 class JobsFilterAction(tables.FilterAction):
@@ -184,6 +185,18 @@ class JobsTable(tables.DataTable):
         def get_data(self, job_execution):
             return job_execution.cluster_name or _("Not available")
 
+    class DurationColumn(tables.Column):
+
+        def get_data(self, job_execution):
+            status = job_execution.info["status"]
+
+            end_time = None
+            if status in [k for k, v in JobsTable.STATUS_CHOICES]:
+                end_time = job_execution.updated_at
+
+            return helpers.Helpers(None).get_duration(job_execution.created_at,
+                                                      end_time)
+
     STATUS_CHOICES = (
         ("DONEWITHERROR", False),
         ("FAILED", False),
@@ -222,6 +235,9 @@ class JobsTable(tables.DataTable):
                           status_choices=STATUS_CHOICES,
                           display_choices=STATUS_DISPLAY_CHOICES,
                           verbose_name=_("Status"))
+
+    duration = DurationColumn("duration",
+                              verbose_name=_("Duration"))
 
     def get_object_display(self, datum):
         return datum.id
