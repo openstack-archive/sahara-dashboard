@@ -24,6 +24,7 @@ from horizon.tables import base as tables_base
 from sahara_dashboard.api import sahara as saharaclient
 from sahara_dashboard.content.data_processing.utils \
     import acl as acl_utils
+from sahara_dashboard.content.data_processing.utils import helpers
 
 
 class ClustersFilterAction(tables.FilterAction):
@@ -217,6 +218,10 @@ def get_health_filter(health):
 
 class ClustersTable(tables.DataTable):
 
+    class UptimeColumn(tables.Column):
+        def get_data(self, cluster):
+            return helpers.Helpers(None).get_duration(cluster.created_at)
+
     name = tables.Column("name",
                          verbose_name=_("Name"),
                          link=("horizon:project:data_processing."
@@ -239,6 +244,9 @@ class ClustersTable(tables.DataTable):
 
     instances_count = tables.Column(get_instances_count,
                                     verbose_name=_("Instances Count"))
+
+    uptime = UptimeColumn("uptime",
+                          verbose_name=_("Uptime"))
 
     class Meta(object):
         name = "clusters"
