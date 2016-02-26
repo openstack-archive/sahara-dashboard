@@ -11,14 +11,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from datetime import datetime
 import json
 
 from django.core.urlresolvers import reverse
 from django.http import HttpResponse
 from django.utils.translation import ugettext as _
 from django.views.generic import base as django_base
-import six
+from oslo_utils import timeutils
 
 from horizon import exceptions
 from horizon import tables
@@ -38,6 +37,7 @@ import sahara_dashboard.content.data_processing.clusters.clusters. \
     workflows.scale as scale_flow
 import sahara_dashboard.content.data_processing.clusters.clusters. \
     workflows.update as update_flow
+import sahara_dashboard.content.data_processing.utils.helpers as helpers
 from saharaclient.api.base import APIException
 
 
@@ -90,16 +90,14 @@ class ClusterDetailsView(tabs.TabView):
 
 class ClusterEventsView(django_base.View):
 
-    _date_format = "%Y-%m-%dT%H:%M:%S"
-
     @staticmethod
     def _created_at_key(obj):
-        return datetime.strptime(obj["created_at"],
-                                 ClusterEventsView._date_format)
+        return timeutils.parse_isotime(obj["created_at"])
 
     def get(self, request, *args, **kwargs):
 
         cluster_id = kwargs.get("cluster_id")
+        time_helpers = helpers.Helpers(request)
 
         try:
             cluster = saharaclient.cluster_get(request, cluster_id,
@@ -140,16 +138,9 @@ class ClusterEventsView(django_base.View):
                     if not event["event_info"]:
                         event["event_info"] = _("No info available")
 
-                start_time = datetime.strptime(step["created_at"],
-                                               self._date_format)
-                end_time = datetime.now()
-                # Clear out microseconds. There is no need for that precision.
-                end_time = end_time.replace(microsecond=0)
-                if step["successful"] is not None:
-                    updated_at = step["updated_at"]
-                    end_time = datetime.strptime(updated_at,
-                                                 self._date_format)
-                step["duration"] = six.text_type(end_time - start_time)
+                step["duration"] = time_helpers.get_duration(
+                    step["created_at"],
+                    step["updated_at"])
 
                 result = _("In progress")
                 step["completed"] = successful_events_count
