@@ -71,20 +71,24 @@ class ClusterDetailsView(tabs.TabView):
             return saharaclient.cluster_get(self.request, cl_id)
         except Exception:
             msg = _('Unable to retrieve details for cluster "%s".') % cl_id
-            redirect = reverse(
-                "horizon:project:data_processing.clusters:clusters-tab")
+            redirect = self.get_redirect_url()
             exceptions.handle(self.request, msg, redirect=redirect)
 
     def get_context_data(self, **kwargs):
         context = super(ClusterDetailsView, self).get_context_data(**kwargs)
         cluster = self.get_object()
         context['cluster'] = cluster
+        context['url'] = self.get_redirect_url()
         context['actions'] = self._get_actions(cluster)
         return context
 
     def _get_actions(self, cluster):
         table = c_tables.ClustersTable(self.request)
         return table.render_row_actions(cluster)
+
+    @staticmethod
+    def get_redirect_url():
+        return reverse("horizon:project:data_processing.clusters:clusters-tab")
 
 
 class ClusterEventsView(django_base.View):

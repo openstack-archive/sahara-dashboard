@@ -84,17 +84,21 @@ class DataSourceDetailsView(tabs.TabView):
             return saharaclient.data_source_get(self.request, ds_id)
         except Exception:
             msg = _('Unable to retrieve details for data source "%s".') % ds_id
-            redirect = reverse(
-                "horizon:project:data_processing.jobs:index")
+            redirect = self.get_redirect_url()
             exceptions.handle(self.request, msg, redirect=redirect)
 
     def get_context_data(self, **kwargs):
         context = super(DataSourceDetailsView, self).get_context_data(**kwargs)
         data_source = self.get_object()
         context['data_source'] = data_source
+        context['url'] = self.get_redirect_url()
         context['actions'] = self._get_actions(data_source)
         return context
 
     def _get_actions(self, data_source):
         table = ds_tables.DataSourcesTable(self.request)
         return table.render_row_actions(data_source)
+
+    @staticmethod
+    def get_redirect_url():
+        return reverse("horizon:project:data_processing.jobs:index")

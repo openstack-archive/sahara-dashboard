@@ -56,8 +56,7 @@ class ClusterTemplateDetailsView(tabs.TabView):
         except Exception:
             msg = _('Unable to retrieve details for '
                     'cluster template "%s".') % ct_id
-            redirect = reverse("horizon:project:data_processing."
-                               "clusters:cluster-templates-tab")
+            redirect = self.get_redirect_url()
             exceptions.handle(self.request, msg, redirect=redirect)
 
     def get_context_data(self, **kwargs):
@@ -65,12 +64,18 @@ class ClusterTemplateDetailsView(tabs.TabView):
             .get_context_data(**kwargs)
         cluster_template = self.get_object()
         context['template'] = cluster_template
+        context['url'] = self.get_redirect_url()
         context['actions'] = self._get_actions(cluster_template)
         return context
 
     def _get_actions(self, cluster_template):
         table = ct_tables.ClusterTemplatesTable(self.request)
         return table.render_row_actions(cluster_template)
+
+    @staticmethod
+    def get_redirect_url():
+        return reverse("horizon:project:data_processing."
+                       "clusters:cluster-templates-tab")
 
 
 class UploadFileView(forms.ModalFormView):

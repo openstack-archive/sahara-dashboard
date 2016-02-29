@@ -110,20 +110,24 @@ class JobBinaryDetailsView(tabs.TabView):
             return saharaclient.job_binary_get(self.request, jb_id)
         except Exception:
             msg = _('Unable to retrieve details for job binary "%s".') % jb_id
-            redirect = reverse(
-                "horizon:project:data_processing.jobs:index")
+            redirect = self.get_redirect_url()
             exceptions.handle(self.request, msg, redirect=redirect)
 
     def get_context_data(self, **kwargs):
         context = super(JobBinaryDetailsView, self).get_context_data(**kwargs)
         job_binary = self.get_object()
         context['job_binary'] = job_binary
+        context['url'] = self.get_redirect_url()
         context['actions'] = self._get_actions(job_binary)
         return context
 
     def _get_actions(self, job_binary):
         table = jb_tables.JobBinariesTable(self.request)
         return table.render_row_actions(job_binary)
+
+    @staticmethod
+    def get_redirect_url():
+        return reverse("horizon:project:data_processing.jobs:index")
 
 
 class DownloadJobBinaryView(django.views.generic.View):
