@@ -116,35 +116,27 @@ def render_node_groups(cluster_template):
     return node_groups
 
 
-def change_cluster_templates_rules_method(request, clt_id, **kwargs):
-    clt = saharaclient.cluster_template_get(request, clt_id)
-    update_required_fields = ('name', 'plugin_name', 'hadoop_version')
-    for field in update_required_fields:
-        kwargs[field] = getattr(clt, field)
-    saharaclient.cluster_template_update(request, clt_id, **kwargs)
-
-
 class MakePublic(acl_utils.MakePublic):
     def change_rule_method(self, request, datum_id, **update_kwargs):
-        change_cluster_templates_rules_method(
+        saharaclient.cluster_template_update_acl_rules(
             request, datum_id, **update_kwargs)
 
 
 class MakePrivate(acl_utils.MakePrivate):
     def change_rule_method(self, request, datum_id, **update_kwargs):
-        change_cluster_templates_rules_method(
+        saharaclient.cluster_template_update_acl_rules(
             request, datum_id, **update_kwargs)
 
 
 class MakeProtected(acl_utils.MakeProtected):
     def change_rule_method(self, request, datum_id, **update_kwargs):
-        change_cluster_templates_rules_method(
+        saharaclient.cluster_template_update_acl_rules(
             request, datum_id, **update_kwargs)
 
 
 class MakeUnProtected(acl_utils.MakeUnProtected):
     def change_rule_method(self, request, datum_id, **update_kwargs):
-        change_cluster_templates_rules_method(
+        saharaclient.cluster_template_update_acl_rules(
             request, datum_id, **update_kwargs)
 
 

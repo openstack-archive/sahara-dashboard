@@ -174,22 +174,26 @@ class ConfigureCluster(tables.LinkAction):
 
 class MakePublic(acl_utils.MakePublic):
     def change_rule_method(self, request, datum_id, **update_kwargs):
-        saharaclient.cluster_update(request, datum_id, **update_kwargs)
+        saharaclient.cluster_update_acl_rules(
+            request, datum_id, **update_kwargs)
 
 
 class MakePrivate(acl_utils.MakePrivate):
     def change_rule_method(self, request, datum_id, **update_kwargs):
-        saharaclient.cluster_update(request, datum_id, **update_kwargs)
+        saharaclient.cluster_update_acl_rules(
+            request, datum_id, **update_kwargs)
 
 
 class MakeProtected(acl_utils.MakeProtected):
     def change_rule_method(self, request, datum_id, **update_kwargs):
-        saharaclient.cluster_update(request, datum_id, **update_kwargs)
+        saharaclient.cluster_update_acl_rules(
+            request, datum_id, **update_kwargs)
 
 
 class MakeUnProtected(acl_utils.MakeUnProtected):
     def change_rule_method(self, request, datum_id, **update_kwargs):
-        saharaclient.cluster_update(request, datum_id, **update_kwargs)
+        saharaclient.cluster_update_acl_rules(
+            request, datum_id, **update_kwargs)
 
 
 def get_health_status_info(cluster):
