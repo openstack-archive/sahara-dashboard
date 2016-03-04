@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2016-02-19 06:30+0000\n"
+"POT-Creation-Date: 2016-03-04 06:05+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -101,5 +101,9 @@ msgstr ""
 msgid ""
 "For data sources, use a data source UUID or a path (as per data source "
 "creation.)"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/static/dashboard/project/data_processing/data_processing.verifications.js:10
+msgid "Verification is not available."
 msgstr ""
 
