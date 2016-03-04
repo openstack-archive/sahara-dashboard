@@ -135,11 +135,14 @@ class RichErrorCell(tables_base.Cell):
         # The error cell values becomes quite complex and cannot be handled
         # correctly with STATUS_CHOICES. Handling that explicitly.
         status = self.datum.status.lower()
+        health = get_health_status_info(self.datum).lower()
+        # error status always terminal
         if status == "error":
             return False
-        elif status == "active":
+        if health == 'checking' or health == 'unknown':
+            return None
+        if status == "active":
             return True
-
         return None
 
 
@@ -151,12 +154,13 @@ def get_rich_status_info(cluster):
 
 
 def rich_status_filter(status_dict):
+    if status_dict['status'].lower() not in ['error', 'active']:
+        return render_to_string("clusters/_in_progress.html", status_dict)
     # Render the status "as is" if no description is provided.
-    if not status_dict["status_description"]:
-        return status_dict["status"]
-
-    # Error is rendered with a template containing an error description.
-    return render_to_string("clusters/_rich_status.html", status_dict)
+    if status_dict["status_description"]:
+        # Error is rendered with a template containing an error description.
+        return render_to_string("clusters/_rich_status.html", status_dict)
+    return status_dict["status"]
 
 
 class ConfigureCluster(tables.LinkAction):
@@ -196,6 +200,9 @@ def get_health_status_info(cluster):
 
 
 def get_health_filter(health):
+    if health == 'CHECKING':
+        return render_to_string("clusters/_in_progress.html", {
+            'status': _("Checking")})
     mapper = {'GREEN': 'success', 'YELLOW': 'warning',
               'RED': 'danger', 'CHECKING': 'info'}
 
@@ -220,7 +227,6 @@ class ClustersTable(tables.DataTable):
     # Status field need the whole cluster object to build the rich status.
     status = tables.Column(get_rich_status_info,
                            verbose_name=_("Status"),
-                           status=True,
                            filters=(rich_status_filter,))
 
     health = tables.Column(get_health_status_info,
@@ -235,7 +241,7 @@ class ClustersTable(tables.DataTable):
         verbose_name = _("Clusters")
         row_class = UpdateRow
         cell_class = RichErrorCell
-        status_columns = ["status"]
+        status_columns = ["status", "health"]
         table_actions = (ClusterGuide,
                          CreateCluster,
                          ConfigureCluster,
