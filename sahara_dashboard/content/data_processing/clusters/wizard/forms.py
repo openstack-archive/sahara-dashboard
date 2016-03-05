@@ -130,7 +130,7 @@ class ChooseTemplateForm(forms.SelfHandlingForm):
         data = saharaclient.nodegroup_template_find(self.request,
                                                     plugin_name=plugin,
                                                     hadoop_version=version)
-        choices = [("{0}|{1}".format(ngt.name, ngt.id), ngt.name)
+        choices = [("%s|%s" % (ngt.name, ngt.id), ngt.name)
                    for ngt in data]
         return choices
 

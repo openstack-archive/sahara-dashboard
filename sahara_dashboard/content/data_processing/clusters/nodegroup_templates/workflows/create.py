@@ -288,8 +288,7 @@ class CheckboxSelectMultiple(forms.CheckboxSelectMultiple):
                 service_description = _("%s processes: ") % current_service
                 service_description = html.conditional_escape(
                     encoding.force_text(service_description))
-                output.append(
-                    "<label>{0}</label>".format(service_description))
+                output.append("<label>%s</label>" % service_description)
                 initial_service = current_service
                 output.append(encoding.force_text("<ul>"))
             if has_id:
@@ -305,8 +304,8 @@ class CheckboxSelectMultiple(forms.CheckboxSelectMultiple):
             option_label = html.conditional_escape(
                 encoding.force_text(option_label))
             output.append(
-                '<li><label{0}>{1} {2}</label></li>'.format(
-                    label_for, rendered_cb, option_label))
+                '<li><label%s>%s %s</label></li>' %
+                (label_for, rendered_cb, option_label))
         output.append('</ul>')
         return safestring.mark_safe('\n'.join(output))
 

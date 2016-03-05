@@ -386,14 +386,14 @@ class ShareWidget(forms.MultiWidget):
             if item_widget_index == 0:
                 output.append("<tr>")
                 output.append(
-                    "<td class='col-sm-2 small-padding'>{0}</td>".format(
-                        self.widgets[i].attrs["label"]))
+                    "<td class='col-sm-2 small-padding'>%s</td>" %
+                    self.widgets[i].attrs["label"])
             # The last 2 form field td need get a larger size
             if item_widget_index in [1, 2]:
                 size = 4
             else:
                 size = 2
-            output.append("<td class='col-sm-{0} small-padding'>".format(size)
+            output.append("<td class='col-sm-%s small-padding'>" % size
                           + widget + "</td>")
             if item_widget_index == 2:
                 output.append("</tr>")

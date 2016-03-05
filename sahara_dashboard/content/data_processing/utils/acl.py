@@ -122,8 +122,8 @@ class MakeUnProtected(RuleChangeAction):
 def get_is_public_form(object_type):
     return forms.BooleanField(
         label=_("Public"),
-        help_text=_("If selected, {object_type} will be shared across the "
-                    "tenants").format(object_type=object_type),
+        help_text=_("If selected, %s will be shared across the "
+                    "tenants") % object_type,
         required=False,
         widget=forms.CheckboxInput(),
         initial=False,
@@ -133,9 +133,8 @@ def get_is_public_form(object_type):
 def get_is_protected_form(object_type):
     return forms.BooleanField(
         label=_("Protected"),
-        help_text=_("If selected, {object_type} will be protected from "
-                    "modifications until this will be unselected").format(
-            object_type=object_type),
+        help_text=_("If selected, %s will be protected from modifications "
+                    "until this will be unselected") % object_type,
         required=False,
         widget=forms.CheckboxInput(),
         initial=False)
