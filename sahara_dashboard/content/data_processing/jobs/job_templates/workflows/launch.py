@@ -48,6 +48,9 @@ class JobExecutionGeneralConfigAction(workflows.Action):
         add_item_link=DATA_SOURCE_CREATE_URL,
         required=False)
 
+    is_public = acl_utils.get_is_public_form(_("job"))
+    is_protected = acl_utils.get_is_protected_form(_("job"))
+
     def __init__(self, request, *args, **kwargs):
         super(JobExecutionGeneralConfigAction, self).__init__(request,
                                                               *args,
@@ -555,8 +558,7 @@ class SelectHadoopPluginAction(t_flows.SelectPluginAction):
 
     class Meta(object):
         name = _("Select plugin and hadoop version for cluster")
-        help_text_template = ("data_processing.clusters/"
-                              "_create_general_help.html")
+        help_text_template = "clusters/_create_general_help.html"
 
 
 class SelectHadoopPlugin(workflows.Step):
@@ -564,7 +566,7 @@ class SelectHadoopPlugin(workflows.Step):
 
 
 class ChosePluginVersion(workflows.Workflow):
-    slug = "lunch_job"
+    slug = "launch_job"
     name = _("Launch Job")
     finalize_button_name = _("Create")
     success_message = _("Created")
