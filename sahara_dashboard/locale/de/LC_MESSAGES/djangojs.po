@@ -1,0 +1,90 @@
+# Andreas Jaeger <jaegerandi@gmail.com>, 2016. #zanata
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2016-03-02 21:13+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2016-03-06 09:07+0000\n"
+"Last-Translator: Andreas Jaeger <jaegerandi@gmail.com>\n"
+"Language-Team: German\n"
+"Language: de\n"
+"X-Generator: Zanata 3.7.3\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+
+msgid "(show events)"
+msgstr "(zeige Ergebnisse)"
+
+msgid "Configuration Value"
+msgstr "Konfigurationswert"
+
+msgid "Data Source"
+msgstr "Datenquelle"
+
+msgid "Default Value"
+msgstr "Voreingestellter Wert"
+
+msgid "Description"
+msgstr "Beschreibung"
+
+msgid "Event log is not available."
+msgstr "Ereignisprotokoll ist nicht verfügbar."
+
+msgid ""
+"For configs and params, type the key name; for args, type the index as an "
+"integer, starting from 0."
+msgstr ""
+"Für Konfigurationen und Parameter geben Sie den Schlüsselnamen an. Für "
+"Argumente geben Sie den Index als Ganzzahl an, beginnend mit der 0."
+
+msgid ""
+"For data sources, use a data source UUID or a path (as per data source "
+"creation.)"
+msgstr ""
+"Für Datenquellen verwenden Sie eine Datenquellen-UUID oder einen Pfad (wie "
+"bei der Datenquellenerstellung)."
+
+msgid "Location"
+msgstr "Ort"
+
+msgid "Mapping Type"
+msgstr "Abbildungstyp"
+
+msgid "Name"
+msgstr "Name"
+
+msgid "Named Parameter"
+msgstr "Bezeichneter Parameter"
+
+msgid "Number"
+msgstr "Zahl"
+
+msgid "Positional Argument"
+msgstr "Stellungsargument"
+
+msgid "Remove"
+msgstr "Entfernen"
+
+msgid "Required?"
+msgstr "Erforderlich?"
+
+msgid ""
+"See http://docs.openstack.org/developer/sahara/userdoc/edp.html for "
+"definitions."
+msgstr ""
+"Definitionen finden Sie unter http://docs.openstack.org/developer/sahara/"
+"userdoc/edp.html"
+
+msgid "String"
+msgstr "Zeichenkette"
+
+msgid "The step has completed successfully. No events to display."
+msgstr "Der Schritt wurde erfolgreich beendet. Keine Ereignisse zum Anzeigen."
+
+msgid "Value Type"
+msgstr "Werttyp"
+
+msgid "Verification is not available."
+msgstr "Überprüfung ist nicht verfügbar."
