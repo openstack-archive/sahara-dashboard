@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2016-03-04 06:05+0000\n"
+"POT-Creation-Date: 2016-03-08 06:04+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,7 +19,7 @@ msgstr ""
 
 #: sahara_dashboard/content/data_processing/clusters/panel.py:21
 #: sahara_dashboard/content/data_processing/clusters/views.py:40
-#: sahara_dashboard/content/data_processing/clusters/clusters/tables.py:235
+#: sahara_dashboard/content/data_processing/clusters/clusters/tables.py:241
 #: sahara_dashboard/content/data_processing/clusters/clusters/tabs.py:39
 #: sahara_dashboard/content/data_processing/clusters/clusters/views.py:46
 #: sahara_dashboard/content/data_processing/clusters/templates/clusters/index.html:3
@@ -44,7 +44,7 @@ msgstr ""
 #: sahara_dashboard/content/data_processing/clusters/cluster_templates/tables.py:29
 #: sahara_dashboard/content/data_processing/clusters/cluster_templates/tables.py:153
 #: sahara_dashboard/content/data_processing/clusters/clusters/tables.py:31
-#: sahara_dashboard/content/data_processing/clusters/clusters/tables.py:210
+#: sahara_dashboard/content/data_processing/clusters/clusters/tables.py:217
 #: sahara_dashboard/content/data_processing/clusters/clusters/tabs.py:176
 #: sahara_dashboard/content/data_processing/clusters/nodegroup_templates/tables.py:27
 #: sahara_dashboard/content/data_processing/clusters/nodegroup_templates/tables.py:123
@@ -71,7 +71,7 @@ msgstr ""
 
 #: sahara_dashboard/content/data_processing/clusters/cluster_templates/tables.py:30
 #: sahara_dashboard/content/data_processing/clusters/cluster_templates/tables.py:157
-#: sahara_dashboard/content/data_processing/clusters/clusters/tables.py:215
+#: sahara_dashboard/content/data_processing/clusters/clusters/tables.py:222
 #: sahara_dashboard/content/data_processing/clusters/nodegroup_templates/tables.py:28
 #: sahara_dashboard/content/data_processing/clusters/nodegroup_templates/tables.py:126
 #: sahara_dashboard/content/data_processing/clusters/templates/cluster_templates/_configure_general_help.html:6
@@ -87,7 +87,7 @@ msgstr ""
 #: sahara_dashboard/content/data_processing/clusters/cluster_templates/tables.py:31
 #: sahara_dashboard/content/data_processing/clusters/cluster_templates/tables.py:159
 #: sahara_dashboard/content/data_processing/clusters/cluster_templates/workflows/create.py:60
-#: sahara_dashboard/content/data_processing/clusters/clusters/tables.py:218
+#: sahara_dashboard/content/data_processing/clusters/clusters/tables.py:225
 #: sahara_dashboard/content/data_processing/clusters/nodegroup_templates/tables.py:29
 #: sahara_dashboard/content/data_processing/clusters/nodegroup_templates/tables.py:128
 #: sahara_dashboard/content/data_processing/clusters/templates/cluster_templates/_configure_general_help.html:8
@@ -253,7 +253,7 @@ msgid "Unable to fetch plugin list."
 msgstr ""
 
 #: sahara_dashboard/content/data_processing/clusters/cluster_templates/workflows/create.py:53
-#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:518
+#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:521
 msgid "Plugin name"
 msgstr ""
 
@@ -262,19 +262,19 @@ msgid "Select plugin and hadoop version for cluster template"
 msgstr ""
 
 #: sahara_dashboard/content/data_processing/clusters/cluster_templates/workflows/create.py:81
-#: sahara_dashboard/content/data_processing/clusters/nodegroup_templates/workflows/create.py:589
+#: sahara_dashboard/content/data_processing/clusters/nodegroup_templates/workflows/create.py:588
 msgid "Next"
 msgstr ""
 
 #: sahara_dashboard/content/data_processing/clusters/cluster_templates/workflows/create.py:82
-#: sahara_dashboard/content/data_processing/clusters/nodegroup_templates/workflows/create.py:590
-#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:570
+#: sahara_dashboard/content/data_processing/clusters/nodegroup_templates/workflows/create.py:589
+#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:572
 msgid "Created"
 msgstr ""
 
 #: sahara_dashboard/content/data_processing/clusters/cluster_templates/workflows/create.py:83
-#: sahara_dashboard/content/data_processing/clusters/nodegroup_templates/workflows/create.py:591
-#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:571
+#: sahara_dashboard/content/data_processing/clusters/nodegroup_templates/workflows/create.py:590
+#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:573
 msgid "Could not create"
 msgstr ""
 
@@ -307,13 +307,13 @@ msgstr ""
 
 #: sahara_dashboard/content/data_processing/clusters/cluster_templates/workflows/create.py:254
 #: sahara_dashboard/content/data_processing/clusters/clusters/workflows/update.py:44
-#: sahara_dashboard/content/data_processing/clusters/nodegroup_templates/workflows/create.py:354
+#: sahara_dashboard/content/data_processing/clusters/nodegroup_templates/workflows/create.py:353
 msgid "Select Shares"
 msgstr ""
 
 #: sahara_dashboard/content/data_processing/clusters/cluster_templates/workflows/create.py:265
 #: sahara_dashboard/content/data_processing/clusters/clusters/workflows/update.py:81
-#: sahara_dashboard/content/data_processing/clusters/nodegroup_templates/workflows/create.py:365
+#: sahara_dashboard/content/data_processing/clusters/nodegroup_templates/workflows/create.py:364
 #: sahara_dashboard/content/data_processing/jobs/data_sources/workflows/create.py:104
 #: sahara_dashboard/content/data_processing/jobs/job_binaries/forms.py:211
 msgid "Failed to get list of shares"
@@ -321,7 +321,7 @@ msgstr ""
 
 #: sahara_dashboard/content/data_processing/clusters/cluster_templates/workflows/create.py:275
 #: sahara_dashboard/content/data_processing/clusters/clusters/workflows/update.py:91
-#: sahara_dashboard/content/data_processing/clusters/nodegroup_templates/workflows/create.py:370
+#: sahara_dashboard/content/data_processing/clusters/nodegroup_templates/workflows/create.py:369
 msgid "Shares"
 msgstr ""
 
@@ -331,11 +331,11 @@ msgid "Select the manila shares for this cluster"
 msgstr ""
 
 #: sahara_dashboard/content/data_processing/clusters/cluster_templates/workflows/create.py:304
-#: sahara_dashboard/content/data_processing/clusters/nodegroup_templates/workflows/create.py:425
+#: sahara_dashboard/content/data_processing/clusters/nodegroup_templates/workflows/create.py:424
 #: sahara_dashboard/content/data_processing/jobs/data_sources/workflows/create.py:138
 #: sahara_dashboard/content/data_processing/jobs/job_binaries/views.py:61
 #: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/create.py:227
-#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:569
+#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:571
 msgid "Create"
 msgstr ""
 
@@ -373,7 +373,7 @@ msgid "Cluster template update failed"
 msgstr ""
 
 #: sahara_dashboard/content/data_processing/clusters/clusters/tables.py:32
-#: sahara_dashboard/content/data_processing/clusters/clusters/tables.py:222
+#: sahara_dashboard/content/data_processing/clusters/clusters/tables.py:229
 #: sahara_dashboard/content/data_processing/clusters/templates/clusters/_details.html:13
 #: sahara_dashboard/content/data_processing/clusters/templates/clusters/_event_log.html:11
 #: sahara_dashboard/content/data_processing/clusters/templates/clusters/_event_log.html:34
@@ -428,18 +428,22 @@ msgstr ""
 msgid "Unable to update row"
 msgstr ""
 
-#: sahara_dashboard/content/data_processing/clusters/clusters/tables.py:164
+#: sahara_dashboard/content/data_processing/clusters/clusters/tables.py:168
 #: sahara_dashboard/content/data_processing/clusters/clusters/views.py:229
 #: sahara_dashboard/content/data_processing/clusters/clusters/workflows/create.py:185
-#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:417
+#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:420
 msgid "Configure Cluster"
 msgstr ""
 
-#: sahara_dashboard/content/data_processing/clusters/clusters/tables.py:227
+#: sahara_dashboard/content/data_processing/clusters/clusters/tables.py:205
+msgid "Checking"
+msgstr ""
+
+#: sahara_dashboard/content/data_processing/clusters/clusters/tables.py:233
 msgid "Health"
 msgstr ""
 
-#: sahara_dashboard/content/data_processing/clusters/clusters/tables.py:231
+#: sahara_dashboard/content/data_processing/clusters/clusters/tables.py:237
 msgid "Instances Count"
 msgstr ""
 
@@ -524,7 +528,7 @@ msgid "Unable to fetch cluster."
 msgstr ""
 
 #: sahara_dashboard/content/data_processing/clusters/clusters/workflows/create.py:41
-#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:557
+#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:560
 msgid "Select plugin and hadoop version for cluster"
 msgstr ""
 
@@ -583,8 +587,8 @@ msgid "No Templates Available"
 msgstr ""
 
 #: sahara_dashboard/content/data_processing/clusters/clusters/workflows/create.py:203
-#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:486
-#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:579
+#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:489
+#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:581
 msgid "Launch"
 msgstr ""
 
@@ -719,7 +723,7 @@ msgid "Configure Template"
 msgstr ""
 
 #: sahara_dashboard/content/data_processing/clusters/nodegroup_templates/tables.py:130
-#: sahara_dashboard/content/data_processing/clusters/nodegroup_templates/workflows/create.py:342
+#: sahara_dashboard/content/data_processing/clusters/nodegroup_templates/workflows/create.py:341
 #: sahara_dashboard/content/data_processing/clusters/templates/cluster_templates/_nodegroups_details.html:47
 #: sahara_dashboard/content/data_processing/clusters/templates/clusters/_nodegroups_details.html:48
 #: sahara_dashboard/content/data_processing/clusters/templates/nodegroup_templates/_details.html:78
@@ -765,8 +769,8 @@ msgstr ""
 
 #: sahara_dashboard/content/data_processing/clusters/nodegroup_templates/views.py:98
 #: sahara_dashboard/content/data_processing/clusters/nodegroup_templates/views.py:106
-#: sahara_dashboard/content/data_processing/clusters/nodegroup_templates/workflows/create.py:424
-#: sahara_dashboard/content/data_processing/clusters/nodegroup_templates/workflows/create.py:588
+#: sahara_dashboard/content/data_processing/clusters/nodegroup_templates/workflows/create.py:423
+#: sahara_dashboard/content/data_processing/clusters/nodegroup_templates/workflows/create.py:587
 #: sahara_dashboard/content/data_processing/clusters/templates/nodegroup_templates/configure.html:3
 msgid "Create Node Group Template"
 msgstr ""
@@ -929,28 +933,28 @@ msgstr ""
 msgid "%s processes: "
 msgstr ""
 
-#: sahara_dashboard/content/data_processing/clusters/nodegroup_templates/workflows/create.py:328
+#: sahara_dashboard/content/data_processing/clusters/nodegroup_templates/workflows/create.py:327
 msgid "Unable to generate process choices."
 msgstr ""
 
-#: sahara_dashboard/content/data_processing/clusters/nodegroup_templates/workflows/create.py:336
+#: sahara_dashboard/content/data_processing/clusters/nodegroup_templates/workflows/create.py:335
 msgid "Select Node Group Processes"
 msgstr ""
 
-#: sahara_dashboard/content/data_processing/clusters/nodegroup_templates/workflows/create.py:343
+#: sahara_dashboard/content/data_processing/clusters/nodegroup_templates/workflows/create.py:342
 msgid "Select node processes for the node group"
 msgstr ""
 
-#: sahara_dashboard/content/data_processing/clusters/nodegroup_templates/workflows/create.py:371
+#: sahara_dashboard/content/data_processing/clusters/nodegroup_templates/workflows/create.py:370
 msgid "Select the manila shares for this node group"
 msgstr ""
 
-#: sahara_dashboard/content/data_processing/clusters/nodegroup_templates/workflows/create.py:426
+#: sahara_dashboard/content/data_processing/clusters/nodegroup_templates/workflows/create.py:425
 #, python-format
 msgid "Created Node Group Template %s"
 msgstr ""
 
-#: sahara_dashboard/content/data_processing/clusters/nodegroup_templates/workflows/create.py:570
+#: sahara_dashboard/content/data_processing/clusters/nodegroup_templates/workflows/create.py:569
 msgid "Select plugin and hadoop version"
 msgstr ""
 
@@ -1703,7 +1707,7 @@ msgid "Unable to fetch data source list"
 msgstr ""
 
 #: sahara_dashboard/content/data_processing/jobs/data_sources/views.py:45
-#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:77
+#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:80
 msgid "Unable to fetch data sources."
 msgstr ""
 
@@ -1947,9 +1951,9 @@ msgstr ""
 #: sahara_dashboard/content/data_processing/jobs/job_templates/views.py:82
 #: sahara_dashboard/content/data_processing/jobs/job_templates/views.py:103
 #: sahara_dashboard/content/data_processing/jobs/job_templates/views.py:116
-#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:485
-#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:568
-#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:578
+#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:488
+#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:570
+#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:580
 #: sahara_dashboard/content/data_processing/jobs/jobs/tables.py:71
 #: sahara_dashboard/content/data_processing/jobs/jobs/tables.py:100
 #: sahara_dashboard/content/data_processing/jobs/templates/job_templates/launch.html:3
@@ -2006,13 +2010,15 @@ msgstr ""
 
 #: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/create.py:103
 #: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/create.py:104
-#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:109
-#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:110
+#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:51
+#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:52
+#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:112
+#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:113
 msgid "job"
 msgstr ""
 
 #: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/create.py:186
-#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:471
+#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:474
 msgid "Interface Arguments"
 msgstr ""
 
@@ -2032,121 +2038,121 @@ msgstr ""
 msgid "Output"
 msgstr ""
 
-#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:58
-#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:99
-#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:126
+#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:61
+#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:102
+#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:129
 #: sahara_dashboard/content/data_processing/jobs/jobs/tables.py:36
 msgid "Job"
 msgstr ""
 
-#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:91
+#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:94
 msgid "Unable to fetch jobs."
 msgstr ""
 
-#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:105
+#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:108
 #: sahara_dashboard/content/data_processing/jobs/jobs/tables.py:37
 #: sahara_dashboard/content/data_processing/jobs/jobs/tables.py:229
 #: sahara_dashboard/content/data_processing/jobs/templates/jobs/_details.html:25
 msgid "Cluster"
 msgstr ""
 
-#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:118
+#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:121
 msgid "Unable to fetch clusters."
 msgstr ""
 
-#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:189
+#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:192
 msgid "Main Class"
 msgstr ""
 
-#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:192
+#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:195
 msgid "Java Opts"
 msgstr ""
 
-#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:195
+#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:198
 msgid "Mapper"
 msgstr ""
 
-#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:197
+#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:200
 msgid "Reducer"
 msgstr ""
 
-#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:200
+#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:203
 msgid "Use HBase Common library"
 msgstr ""
 
-#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:201
+#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:204
 msgid "Run HBase EDP Jobs with common HBase library on HDFS"
 msgstr ""
 
-#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:205
+#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:208
 msgid "Adapt For Oozie"
 msgstr ""
 
-#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:206
+#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:209
 msgid ""
 "Automatically modify the Hadoop configuration so that job config values "
 "are set and so that Oozie will handle exit codes correctly."
 msgstr ""
 
-#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:212
+#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:215
 msgid "Enable Swift Paths"
 msgstr ""
 
-#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:213
+#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:216
 msgid ""
 "Modify the configuration so that swift URLs can be dereferenced through "
 "HDFS at runtime."
 msgstr ""
 
-#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:218
+#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:221
 msgid "Use Data Source Substitution for Names and UUIDs"
 msgstr ""
 
-#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:219
+#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:222
 msgid ""
 "Substitute data source objects for URLs of the form datasource://name or "
 "uuid."
 msgstr ""
 
-#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:318
+#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:321
 msgid "Configure"
 msgstr ""
 
-#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:413
+#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:416
 msgid "Persist cluster after job exit"
 msgstr ""
 
-#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:487
-#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:580
+#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:490
+#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:582
 msgid "Job launched"
 msgstr ""
 
-#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:488
-#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:581
+#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:491
+#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:583
 msgid "Could not launch job"
 msgstr ""
 
-#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:523
+#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:526
 msgid "Job configs"
 msgstr ""
 
-#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:527
+#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:530
 msgid "Job args"
 msgstr ""
 
-#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:531
+#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:534
 msgid "Job params"
 msgstr ""
 
-#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:537
+#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:540
 msgid "Job Execution ID"
 msgstr ""
 
-#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:617
+#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:619
 msgid "Unable to create new cluster for job."
 msgstr ""
 
-#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:634
+#: sahara_dashboard/content/data_processing/jobs/job_templates/workflows/launch.py:636
 msgid "Unable to launch job."
 msgstr ""
 
@@ -2631,13 +2637,15 @@ msgid "Guided Job Execution"
 msgstr ""
 
 #: sahara_dashboard/content/data_processing/utils/acl.py:125
-msgid "If selected, {object_type} will be shared across the tenants"
+#, python-format
+msgid "If selected, %s will be shared across the tenants"
 msgstr ""
 
 #: sahara_dashboard/content/data_processing/utils/acl.py:136
+#, python-format
 msgid ""
-"If selected, {object_type} will be protected from modifications until "
-"this will be unselected"
+"If selected, %s will be protected from modifications until this will be "
+"unselected"
 msgstr ""
 
 #: sahara_dashboard/content/data_processing/utils/anti_affinity.py:26

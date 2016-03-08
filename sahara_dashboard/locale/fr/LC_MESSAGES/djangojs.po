@@ -1,0 +1,90 @@
+# Gérald LONLAS <g.lonlas@gmail.com>, 2016. #zanata
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2016-03-07 20:43+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2016-03-07 06:57+0000\n"
+"Last-Translator: Gérald LONLAS <g.lonlas@gmail.com>\n"
+"Language-Team: French\n"
+"Language: fr\n"
+"X-Generator: Zanata 3.7.3\n"
+"Plural-Forms: nplurals=2; plural=(n > 1)\n"
+
+msgid "(show events)"
+msgstr "(Afficher les événements)"
+
+msgid "Configuration Value"
+msgstr "Valeur de configuration"
+
+msgid "Data Source"
+msgstr "Source de données"
+
+msgid "Default Value"
+msgstr "Valeur par défaut"
+
+msgid "Description"
+msgstr "Description"
+
+msgid "Event log is not available."
+msgstr "Le journal des événements n'est pas disponible."
+
+msgid ""
+"For configs and params, type the key name; for args, type the index as an "
+"integer, starting from 0."
+msgstr ""
+"Pour configurer et paramétrer;  saisir le nom de la clé; Pour les args, "
+"saisir un entier pour l'index, en commençant par 0."
+
+msgid ""
+"For data sources, use a data source UUID or a path (as per data source "
+"creation.)"
+msgstr ""
+"Pour les sources de données, utiliser l'UUID de la source de données ou un "
+"chemin (tel que celui utilisé pour la création)"
+
+msgid "Location"
+msgstr "Emplacement"
+
+msgid "Mapping Type"
+msgstr "Type de mappage"
+
+msgid "Name"
+msgstr "Nom"
+
+msgid "Named Parameter"
+msgstr "Paramètre nommé"
+
+msgid "Number"
+msgstr "Nombre"
+
+msgid "Positional Argument"
+msgstr "Argument positionnel"
+
+msgid "Remove"
+msgstr "Supprimer"
+
+msgid "Required?"
+msgstr "Obligatoire ?"
+
+msgid ""
+"See http://docs.openstack.org/developer/sahara/userdoc/edp.html for "
+"definitions."
+msgstr ""
+"Lire http://docs.openstack.org/developer/sahara/userdoc/edp.html pour les "
+"définitions."
+
+msgid "String"
+msgstr "Chaîne de caractères"
+
+msgid "The step has completed successfully. No events to display."
+msgstr "L'étape s'est terminée avec succès. Aucun événement à afficher."
+
+msgid "Value Type"
+msgstr "Type de valeur"
+
+msgid "Verification is not available."
+msgstr "La vérification n'est pas disponible."
