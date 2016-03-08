@@ -79,6 +79,15 @@ def client(request):
                              cacert=cacert)
 
 
+def prepare_acl_update_dict(is_public=None, is_protected=None):
+    data = dict(is_public=is_public, is_protected=is_protected)
+    result = {}
+    for key in data:
+        if data[key] is not None:
+            result[key] = data[key]
+    return result
+
+
 def image_list(request, search_opts=None):
     return client(request).images.list(search_opts=search_opts)
 
@@ -224,6 +233,12 @@ def nodegroup_template_update(request, ngt_id, name, plugin_name,
         image_id=image_id)
 
 
+def nodegroup_update_acl_rules(request, nid,
+                               is_public=None, is_protected=None):
+    return client(request).node_group_templates.update(
+        nid, **prepare_acl_update_dict(is_public, is_protected))
+
+
 def cluster_template_create(request, name, plugin_name, hadoop_version,
                             description=None, cluster_configs=None,
                             node_groups=None, anti_affinity=None,
@@ -285,6 +300,12 @@ def cluster_template_update(request, ct_id, name, plugin_name,
     return template
 
 
+def cluster_template_update_acl_rules(request, ct_id,
+                                      is_public=None, is_protected=None):
+    return client(request).cluster_templates.update(
+        ct_id, **prepare_acl_update_dict(is_public, is_protected))
+
+
 def cluster_create(request, name, plugin_name, hadoop_version,
                    cluster_template_id=None, default_image_id=None,
                    is_transient=None, description=None, cluster_configs=None,
@@ -338,6 +359,16 @@ def cluster_update(request, cluster_id, name=None, description=None,
                                            is_public=is_public,
                                            is_protected=is_protected,
                                            shares=shares)
+
+
+def cluster_update_shares(request, cl_id, shares):
+    return client(request).clusters.update(cl_id, shares)
+
+
+def cluster_update_acl_rules(request, cl_id, is_public=None,
+                             is_protected=None):
+    return client(request).clusters.update(
+        cl_id, **prepare_acl_update_dict(is_public, is_protected))
 
 
 def data_source_create(request, name, description, ds_type, url,
@@ -438,8 +469,8 @@ def job_create(request, name, j_type, mains, libs, description, interface,
 
 
 def job_update(request, job_id, is_public=None, is_protected=None):
-    return client(request).jobs.update(job_id=job_id, is_public=is_public,
-                                       is_protected=is_protected)
+    return client(request).jobs.update(
+        job_id=job_id, **prepare_acl_update_dict(is_public, is_protected))
 
 
 def job_list(request, search_opts=None):
@@ -475,8 +506,8 @@ def job_execution_create(request, job_id, cluster_id,
 
 def job_execution_update(request, jbe_id, is_public=None, is_protected=None):
     return client(request).job_executions.update(job_execution_id=jbe_id,
-                                                 is_public=is_public,
-                                                 is_protected=is_protected)
+                                                 **prepare_acl_update_dict(
+                                                     is_public, is_protected))
 
 
 def _resolve_job_execution_names(job_execution, cluster=None,

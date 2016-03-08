@@ -124,9 +124,8 @@ class UpdateShares(workflows.Workflow):
 
     def handle(self, request, context):
         try:
-            saharaclient.cluster_update(request,
-                                        context["cluster_id"],
-                                        shares=context["cluster_shares"])
+            saharaclient.cluster_update_shares(
+                request, context["cluster_id"], context["cluster_shares"])
             return True
         except api_base.APIException as e:
             self.error_description = str(e)
