@@ -7,7 +7,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2016-03-07 12:43+0000\n"
+"PO-Revision-Date: 2016-03-09 11:59+0000\n"
 "Last-Translator: Akihiro Motoki <amotoki@gmail.com>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -659,6 +659,17 @@ msgstr "Hive"
 msgid "ID"
 msgstr "ID"
 
+#, python-format
+msgid ""
+"If selected, %s will be protected from modifications until this will be "
+"unselected"
+msgstr ""
+"このオプションを選択すると、 %s は選択を解除するまでは変更できなくなります。"
+
+#, python-format
+msgid "If selected, %s will be shared across the tenants"
+msgstr "このオプションを選択すると、 %s はプロジェクト間で共有されます。"
+
 msgid ""
 "If selected, instances of a cluster will be automatically configured during "
 "creation. Otherwise you should manually specify configuration values"
@@ -947,6 +958,9 @@ msgstr "設定なし"
 
 msgid "No description"
 msgstr "説明なし"
+
+msgid "No image specified"
+msgstr "イメージが指定されていません。"
 
 msgid "No images available."
 msgstr "利用可能なイメージがありません。"

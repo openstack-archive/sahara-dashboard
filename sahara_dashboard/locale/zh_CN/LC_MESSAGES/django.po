@@ -1,0 +1,1891 @@
+# Gaoxiao Zhu <zhu.gaoxiao@h3c.com>, 2016. #zanata
+# Shengjing Zhu <zsj950618@gmail.com>, 2016. #zanata
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2016-03-07 20:43+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2016-03-09 10:45+0000\n"
+"Last-Translator: Shengjing Zhu <zsj950618@gmail.com>\n"
+"Language-Team: Chinese (China)\n"
+"Language: zh-CN\n"
+"X-Generator: Zanata 3.7.3\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+
+msgid " Done"
+msgstr "完成"
+
+msgid " or "
+msgstr "或者"
+
+#, python-format
+msgid "%(conf_name)s: %(conf_val)s"
+msgstr "%(conf_name)s: %(conf_val)s"
+
+#, python-format
+msgid "%(conf_name)s: %(conf_value)s"
+msgstr "%(conf_name)s: %(conf_value)s"
+
+#, python-format
+msgid "%(group)s:"
+msgstr "%(group)s："
+
+#, python-format
+msgid "%(key)s: %(val)s"
+msgstr "%(key)s: %(val)s"
+
+#, python-format
+msgid "%s processes: "
+msgstr "%s 进程: "
+
+msgid "-- not selected --"
+msgstr "-- 未选择 --"
+
+msgid ""
+"<b>Important</b>:  The name that you give your job binary will be the name "
+"used in your job execution.\n"
+"  If your binary requires a particular name or extension (ie: \".jar\"), be "
+"sure to include it here."
+msgstr ""
+"<b>重要</b>：你的任务的二进制文件名就是任务执行用的名字。\n"
+"如果你的二进制文件需要一个特别的名字或者后缀(如“.jar”)，请确保包含在内。"
+
+msgid "Adapt For Oozie"
+msgstr "适应 Oozie"
+
+msgid "Add"
+msgstr "添加"
+
+msgid "Add Node Group"
+msgstr "增加节点组"
+
+msgid "Add custom tag"
+msgstr "添加自定义标签"
+
+msgid "Add libraries to your job template."
+msgstr "为您的任务模板添加类库。"
+
+msgid "Add plugin tags"
+msgstr "增加插件标签"
+
+msgid "Anti-affinity enabled for"
+msgstr "Anti-affinity 已启用在"
+
+msgid "Arguments"
+msgstr "参数"
+
+msgid "Auto Security Group"
+msgstr "自动安全组"
+
+msgid "Auto-configure"
+msgstr "自动配置"
+
+msgid ""
+"Automatically modify the Hadoop configuration so that job config values are "
+"set and so that Oozie will handle exit codes correctly."
+msgstr ""
+"自动修改 Hadoop 的配置，以修改任务的设置值，这样的话 Oozie 能正确处理任务的退"
+"出代码。"
+
+msgid "Availability Zone"
+msgstr "可用域"
+
+msgid "Base Image"
+msgstr "基础镜像"
+
+msgid "Cancel"
+msgstr "取消"
+
+msgid "Checking"
+msgstr "检查"
+
+msgid "Choose"
+msgstr "选择"
+
+msgid "Choose a main binary"
+msgstr "选择一个主要的二进制文件"
+
+msgid "Choose a shell script"
+msgstr "选择一个 shell 脚本"
+
+msgid "Choose a storage location"
+msgstr "选择一个存储位置"
+
+msgid "Choose additional files"
+msgstr "选择其他文件"
+
+msgid "Choose an existing Master Node Group Template"
+msgstr "选择一个存在的主节点组模板"
+
+msgid "Choose an existing Worker Node Group Template"
+msgstr "选择一个存在的工作节点组模板"
+
+msgid "Choose an existing file"
+msgstr "选择一个现有的文件"
+
+msgid ""
+"Choose from the list of binaries and click \"choose\" to add the library to "
+"your job template.  This can be repeated for additional libraries."
+msgstr ""
+"在二进制文件列表中进行选择，然后点击“选择”将该文件加到您的任务模板中。这里可"
+"以多次添加额外的类库。"
+
+msgid "Choose job type"
+msgstr "选择任务类型"
+
+msgid "Choose libraries"
+msgstr "选择库文件"
+
+msgid "Choose node group template"
+msgstr "选择节点组模板"
+
+msgid ""
+"Choose or create your main binary.  Additional libraries can be added from "
+"the \"Libs\" tab."
+msgstr "选择或创建你的主要的二进制文件。额外的库可以在“库”选项卡里添加。"
+
+msgid "Choose plugin"
+msgstr "选择插件"
+
+msgid "Choose plugin and version"
+msgstr "选择插件和版本"
+
+msgid "Choose plugin type and version"
+msgstr "选择插件类型和版本"
+
+msgid "Choose the Input Data Source (n/a for Java and Shell jobs)."
+msgstr "选择输入数据源（Java 和 Shell 任务请选择 n/a）"
+
+msgid "Choose the Output Data Source (n/a for Java and Shell jobs)."
+msgstr "选择输出数据源（Java 和 Shell 任务请选择 n/a）"
+
+msgid "Choose the binary which should be used in this Job."
+msgstr "选择任务使用的二进制文件。"
+
+msgid "Choose the cluster to use for the job."
+msgstr "选择用于任务的集群"
+
+msgid "Chosen Libraries"
+msgstr "选择库文件"
+
+msgid "Cinder volumes"
+msgstr "Cinder 卷"
+
+msgid "Cluster"
+msgstr "集群"
+
+msgid "Cluster Configuration Overview"
+msgstr "集群配置概览"
+
+msgid "Cluster Count"
+msgstr "集群数量"
+
+msgid "Cluster Creation Guide"
+msgstr "集群创建向导"
+
+msgid "Cluster Events"
+msgstr "集群事件"
+
+msgid "Cluster Instances"
+msgstr "集群实例"
+
+msgid "Cluster Name"
+msgstr "集群名称"
+
+msgid "Cluster Template"
+msgstr "集群模板"
+
+#, python-format
+msgid "Cluster Template %s updated"
+msgstr "集群模板 %s 已更新"
+
+msgid "Cluster Template Configuration Overview"
+msgstr "集群模板配置概览"
+
+msgid "Cluster Template Name"
+msgstr "集群模板"
+
+#, python-format
+msgid "Cluster Template copy %s created"
+msgstr "已创建集群模板副本 %s"
+
+msgid "Cluster Templates"
+msgstr "集群模板"
+
+msgid "Cluster can be launched using existing Cluster Templates."
+msgstr "集群可以通过已有的模板来创建。"
+
+msgid "Cluster configurations are not specified"
+msgstr "没有指定集群配置"
+
+msgid "Cluster health checks"
+msgstr "集群健康监控"
+
+msgid "Cluster provision steps"
+msgstr "集群配置步骤"
+
+msgid "Cluster share update failed."
+msgstr "集群共享共享失败。"
+
+msgid "Cluster template creation failed"
+msgstr "集群模板创建失败"
+
+msgid "Cluster template update failed"
+msgstr "集群模板更新失败"
+
+msgid "Cluster type chosen"
+msgstr "选择集群类型"
+
+msgid "Clusters"
+msgstr "集群"
+
+msgid "Completed Successfully"
+msgstr "成功完成"
+
+msgid "Configuration"
+msgstr "配置"
+
+msgid "Configuration Details"
+msgstr "配置详情"
+
+msgid "Configuration Value"
+msgstr "配置值"
+
+msgid "Configure"
+msgstr "配置"
+
+msgid "Configure Cluster"
+msgstr "配置集群"
+
+msgid "Configure Cluster Template"
+msgstr "配置集群模板"
+
+msgid "Configure Node Group Template"
+msgstr "配置节点组模板"
+
+msgid "Configure Template"
+msgstr "配置模板"
+
+msgid "Control access to instances of the node group."
+msgstr "节点组实例访问控制。"
+
+msgid "Copy Cluster Template"
+msgstr "复制集群模板"
+
+msgid "Copy Template"
+msgstr "复制模板"
+
+msgid "Could not create"
+msgstr "无法创建"
+
+msgid "Could not create data source"
+msgstr "无法创建数据源"
+
+msgid "Could not create job template"
+msgstr "无法创建任务模板"
+
+msgid "Could not launch job"
+msgstr "无法启动任务"
+
+msgid "Could not update cluster shares"
+msgstr "无法更新集群共享"
+
+msgid "Could not update data source"
+msgstr "无法更新数据源"
+
+msgid "Count"
+msgstr "数量"
+
+msgid "Create"
+msgstr "创建"
+
+msgid "Create Cluster Template"
+msgstr "创建集群模板"
+
+msgid "Create Data Source"
+msgstr "创建数据源"
+
+msgid "Create Job Binary"
+msgstr "创建任务的二进制文件"
+
+msgid "Create Job Template"
+msgstr "创建任务模板"
+
+msgid "Create Node Group Template"
+msgstr "创建节点组模板"
+
+msgid "Create Template"
+msgstr "创建模板"
+
+msgid "Create a Cluster Template"
+msgstr "创建一个集群模板"
+
+msgid "Create a Data Source with a specified name."
+msgstr "通过指定的名字创建数据源。"
+
+msgid "Create a Master Node Group Template"
+msgstr "创建一个主节点组模板"
+
+msgid "Create a Worker Node Group Template"
+msgstr "创建一个工作节点组的模板"
+
+msgid "Create a data source"
+msgstr "创建一个数据源"
+
+msgid "Create a job template"
+msgstr "创建一个任务模板"
+
+msgid "Create a job template with a specified name."
+msgstr "指定一个名字来创建任务模板。"
+
+msgid "Create a script to be uploaded dynamically"
+msgstr "创建一个可以动态上传的脚本"
+
+msgid "Create security group for this Node Group."
+msgstr "为该节点组创建安全组"
+
+msgid "Create time"
+msgstr "创建时间"
+
+msgid "Create volumes in this availability zone."
+msgstr "在此可用域创建卷。"
+
+msgid "Created"
+msgstr "已创建"
+
+msgctxt "Created time"
+msgid "Created"
+msgstr "已创建"
+
+#, python-format
+msgid "Created Cluster Template %s"
+msgstr "创建集群模板 %s"
+
+#, python-format
+msgid "Created Node Group Template %s"
+msgstr "创建节点组模板%s"
+
+msgid "Created time"
+msgstr "创建时间"
+
+msgid "Current choice:"
+msgstr "当前选择："
+
+msgid "Current type:"
+msgstr "当前类型："
+
+msgid "Data Processing"
+msgstr "数据处理"
+
+msgid "Data Processing Plugin Details"
+msgstr "数据处理插件的详细信息"
+
+msgid "Data Processing Plugins"
+msgstr "数据处理插件"
+
+#, fuzzy
+msgid "Data Processing internal database"
+msgstr "数据处理内部数据库"
+
+msgid ""
+"Data Processing provides different storage location options. You may choose "
+"Ephemeral Drive or a Cinder Volume to be attached to instances."
+msgstr ""
+"数据处理可以使用不同的存储路径。你可以选择临时驱动或者实例绑定的 Cinder 卷"
+
+msgid "Data Source"
+msgstr "数据源"
+
+msgid "Data Source Type"
+msgstr "数据源类型"
+
+msgid "Data Sources"
+msgstr "数据源"
+
+msgid ""
+"Data Sources are what your\n"
+"                            job uses for input and output.  Depending on the "
+"type\n"
+"                            of job you will be running, you may need to "
+"define one\n"
+"                            or more data sources.  You can create multiple "
+"data\n"
+"                            sources by repeating this step.\n"
+"                        "
+msgstr ""
+"数据源是您的任务要用到的输入和\n"
+"                            输出。根据您的任务的类型，你可\n"
+"                            能需要定义一个或多个数据源。你\n"
+"                            可以重复这个步骤来创建多个数据\n"
+"                            源。\n"
+"                            "
+
+msgid "Data source created"
+msgstr "数据源已创建"
+
+msgid "Data source updated"
+msgstr "数据源已更新"
+
+msgid "Default Value"
+msgstr "默认值"
+
+msgid ""
+"Define your Job Template.\n"
+"                        This is where you choose the type of job that you\n"
+"                        want to run (Pig, Java Action, Spark, etc) and "
+"choose\n"
+"                        or upload the files necessary to run it.  The "
+"inputs\n"
+"                        and outputs will be defined later.\n"
+"                    "
+msgstr ""
+"定义您的任务模板。\n"
+"                        这里你可以决定要运行的任务类\n"
+"                        型（如 Pig、Java 任务、Spark 等），\n"
+"                        然后选择或上传运行任务所需的文件。\n"
+"                        之后再定义输入和输出。\n"
+"                        "
+
+msgid "Delete Cluster"
+msgid_plural "Delete Clusters"
+msgstr[0] "删除集群"
+
+msgid "Delete Data Source"
+msgid_plural "Delete Data Sources"
+msgstr[0] "删除数据源"
+
+msgid "Delete Job"
+msgid_plural "Delete Jobs"
+msgstr[0] "删除任务"
+
+msgid "Delete Job Binary"
+msgid_plural "Delete Job Binaries"
+msgstr[0] "删除任务的二进制文件"
+
+msgid "Delete Job Template"
+msgid_plural "Delete Job Templates"
+msgstr[0] "删除任务模板"
+
+msgid "Delete Template"
+msgid_plural "Delete Templates"
+msgstr[0] "删除模板"
+
+msgid "Deleted Cluster"
+msgid_plural "Deleted Clusters"
+msgstr[0] "已删除的集群"
+
+msgid "Deleted Data Source"
+msgid_plural "Deleted Data Sources"
+msgstr[0] "已删除的数据源"
+
+msgid "Deleted Job"
+msgid_plural "Deleted Jobs"
+msgstr[0] "已删除的任务"
+
+msgid "Deleted Job Binary"
+msgid_plural "Deleted Job Binaries"
+msgstr[0] "已删除任务的二进制文件"
+
+msgid "Deleted Job Template"
+msgid_plural "Deleted Jobs Templates"
+msgstr[0] "已删除的任务模板"
+
+msgid "Deleted Template"
+msgid_plural "Deleted Templates"
+msgstr[0] "已删除的模板"
+
+msgid "Description"
+msgstr "描述"
+
+msgid "Details"
+msgstr "详情"
+
+msgid "Done"
+msgstr "完成"
+
+msgctxt "Current status of a Job"
+msgid "Done with Error"
+msgstr "完成但有错误发生"
+
+msgid "Download Job Binary"
+msgstr "下载任务的二进制文件"
+
+msgid "Download job binary"
+msgstr "下载任务的二进制文件"
+
+msgid "Duration"
+msgstr "持续时间"
+
+msgid "Edit Cluster Template"
+msgstr "编辑集群模板"
+
+msgid "Edit Data Source"
+msgstr "编辑数据源"
+
+msgid "Edit Image Tags"
+msgstr "编辑镜像标签"
+
+msgid "Edit Job Binary"
+msgstr "编辑任务的二进制文件"
+
+msgid "Edit Node Group Template"
+msgstr "编辑节点组模板"
+
+msgid "Edit Tags"
+msgstr "编辑标签"
+
+msgid "Edit Template"
+msgstr "编辑模板"
+
+msgid "Enable Swift Paths"
+msgstr "启用 Swift 路径"
+
+msgctxt "End time"
+msgid "Ended"
+msgstr "已结束"
+
+msgid "Enter any custom configuration required for your job's execution."
+msgstr "输入执行您的任务需要的自定义配置。"
+
+msgid "Enter the URL for the file"
+msgstr "输入文件的 URL"
+
+msgid "Enter the username and password required to access that file"
+msgstr "输入获取文件所需的用户名和密码"
+
+msgid "Ephemeral drive"
+msgstr "临时驱动"
+
+msgid "Error Details"
+msgstr "错误详情"
+
+msgid "Event time"
+msgstr "事件时间"
+
+msgid "Failed"
+msgstr "失败"
+
+msgctxt "Current status of a Job"
+msgid "Failed"
+msgstr "已失败"
+
+msgid "Failed to fetch internal binary list"
+msgstr "获取内部二进制文件列表失败"
+
+msgid "Failed to get list of internal binaries."
+msgstr "获取内部二进制文件列表失败。"
+
+#, fuzzy
+msgid "Failed to get list of shares"
+msgstr "无法获取共享列表"
+
+msgid "Failed to update image."
+msgstr "更新镜像失败。"
+
+msgid "Filter"
+msgstr "过滤"
+
+msgid ""
+"First, select which type of job that\n"
+"                            you want to run.  This choice will determine "
+"which\n"
+"                            other steps are required\n"
+"                        "
+msgstr ""
+"首先，选择您希望运行的任务的\n"
+"                            类型。这个选项会决定所需的剩\n"
+"                            余步骤。\n"
+"                            "
+
+msgid "Flavor"
+msgstr "云主机类型"
+
+msgid "Flavor is not specified"
+msgstr "没有指定云主机类型"
+
+msgid "Floating IP Pool"
+msgstr "浮动 IP 池"
+
+msgid ""
+"For Data Processing internal job binaries, you may choose from the following:"
+msgstr "数据处理的内部二进制文件，你可以选择："
+
+msgid ""
+"For Data Sources on a Manila share, choose the share and enter the path "
+"relative to the share (example: /outputdir/myinputfile.txt)"
+msgstr ""
+"对于使用 Manila 共享系统的数据源，请选择共享系统并输入共享的相对路径。（如 /"
+"outputdir/myinputfile.txt）"
+
+msgid ""
+"For MapReduce or Java Action jobs, \"mains\" are not applicable.  You are "
+"required to add one\n"
+"  or more \"libs\" for these jobs."
+msgstr ""
+"“main”对于 MapReduce 或 Java 任务不适用。你必须为\n"
+"这些任务增加一个或更多的“库”。"
+
+#, fuzzy
+msgid "For Object Store job binaries, you must:"
+msgstr "对于对象存储上的任务的二进制文件，你必须："
+
+msgid ""
+"For Shell Action jobs, any required files beyond the main script may be "
+"added as \"libraries\"."
+msgstr "对于 Shell 任务，除主脚本之外的文件都可以作为库添加。"
+
+msgid ""
+"For Spark and Shell jobs, only a main is required, \"libs\" are optional."
+msgstr "对于 Spark 和 Shell 任务，只需要“main”，“libs”是可选的。"
+
+msgid "General Info"
+msgstr "一般信息"
+
+msgid "Guided Cluster Creation"
+msgstr "创建集群向导"
+
+msgid "Guided Job Execution"
+msgstr "任务执行向导"
+
+msgid "HDFS placement"
+msgstr "HDFS 位置"
+
+msgid "Health"
+msgstr "健康"
+
+msgid "Hide full configuration"
+msgstr "隐藏所有配置项"
+
+msgid "Hive"
+msgstr "Hive"
+
+msgid "ID"
+msgstr "ID"
+
+#, python-format
+msgid ""
+"If selected, %s will be protected from modifications until this will be "
+"unselected"
+msgstr "如果选择，%s会被保护而不能再修改，除非不再选择这个。"
+
+#, python-format
+msgid "If selected, %s will be shared across the tenants"
+msgstr "如果选择，%s会在所有租户之间共享。"
+
+msgid ""
+"If selected, instances of a cluster will be automatically configured during "
+"creation. Otherwise you should manually specify configuration values"
+msgstr "选择后，将在创建集群实例时进行自动配置，否则你需要手动配置。"
+
+msgid ""
+"If selected, instances of a node group will be automatically configured "
+"during cluster creation. Otherwise you should manually specify configuration "
+"values."
+msgstr ""
+"如果已选择，节点组的实例将自动在集群创建的时候被配置。否则你需要手动配置。"
+
+msgid "Image"
+msgstr "镜像"
+
+#, fuzzy
+msgid "Image Registry"
+msgstr "镜像注册"
+
+msgid ""
+"Image Registry is used to provide additional information about images for "
+"Data Processing."
+msgstr "镜像注册是用来为数据处理提供镜像的额外信息。"
+
+msgid "Image Registry tool:"
+msgstr "镜像注册工具："
+
+msgid "In progress"
+msgstr "进行中"
+
+msgid "Info"
+msgstr "信息"
+
+msgid "Input"
+msgstr "输入"
+
+msgid "Input Data Source"
+msgstr "输入数据源"
+
+msgid "Instance"
+msgstr "实例"
+
+msgid "Instance and attached volumes will be created on the same physical host"
+msgstr "实例和它所挂载的卷将被创建在同一台物理主机上"
+
+msgid "Instances"
+msgstr "实例"
+
+msgid "Instances Count"
+msgstr "实例数量"
+
+msgid "Interface Arguments"
+msgstr "接口参数"
+
+#, fuzzy
+msgid "Internal Binary"
+msgstr "内部二进制文件"
+
+msgid "Internal IP"
+msgstr "内网 IP"
+
+#, fuzzy
+msgid "Internal binary"
+msgstr "内部二进制文件"
+
+msgid "Java"
+msgstr "Java"
+
+msgid "Java Action"
+msgstr "Java 命令"
+
+msgid "Java Opts"
+msgstr "Java 参数"
+
+msgid "Job"
+msgstr "任务"
+
+msgid "Job Binaries"
+msgstr "任务二进制"
+
+msgid "Job Configuration"
+msgstr "任务配置"
+
+msgid "Job Execution ID"
+msgstr "任务执行 ID"
+
+msgid "Job Guide"
+msgstr "任务指南"
+
+msgid "Job Template"
+msgstr "任务模板"
+
+msgid "Job Templates"
+msgstr "任务模板"
+
+msgid "Job Type"
+msgstr "任务类型"
+
+msgid "Job args"
+msgstr "任务参数"
+
+msgid "Job configs"
+msgstr "任务配置"
+
+msgid "Job created"
+msgstr "任务已创建"
+
+msgid "Job launched"
+msgstr "任务已启动"
+
+msgid "Job params"
+msgstr "任务参数"
+
+msgid "Job template:"
+msgstr "任务模板："
+
+msgid "Job type chosen"
+msgstr "任务类型选择"
+
+msgid "Jobs"
+msgstr "任务"
+
+msgid "Keypair"
+msgstr "密钥对"
+
+msgctxt "Current status of a Job"
+msgid "Killed"
+msgstr "已杀死"
+
+msgid "Last Updated"
+msgstr "最近更新"
+
+msgid "Launch"
+msgstr "启动"
+
+msgid "Launch Cluster"
+msgstr "启动集群"
+
+msgid "Launch Job"
+msgid_plural "Launch Jobs"
+msgstr[0] "启动任务"
+
+msgid "Launch On Existing Cluster"
+msgstr "在已存在集群上启动"
+
+msgid "Launch On New Cluster"
+msgstr "在新集群上启动"
+
+msgid "Launch a Cluster"
+msgstr "启动一个集群"
+
+msgid "Launch instances in these security groups."
+msgstr "在这些安全组中启动云主机。"
+
+msgid "Launch instances in this availability zone."
+msgstr "在此可用域中启动实例。"
+
+msgid "Launch job"
+msgstr "启动任务"
+
+msgid "Launch the given job template on a cluster."
+msgstr "在一个集群上启动给定的任务模板。"
+
+msgid ""
+"Launch your job.  When\n"
+"                        launching, you may need to choose your input and\n"
+"                        output data sources.  This is where you would also\n"
+"                        add any special configuration values, parameters,\n"
+"                        or arguments that you need to pass along\n"
+"                        to your job.\n"
+"                        "
+msgstr ""
+"启动您的任务。\n"
+"                        当启动时，您需要选择输\n"
+"                        入输出的数据源。这里您\n"
+"                        可以添加其他特殊的配置、\n"
+"                        参数，以及需要给您的任\n"
+"                        务传递的参数。\n"
+"                        "
+
+#, python-format
+msgid "Launched Cluster %s"
+msgstr "启动集群 %s"
+
+msgid "Launched Job"
+msgid_plural "Launched Jobs"
+msgstr[0] "已启动的任务"
+
+#, fuzzy
+msgid "Libs"
+msgstr "Libs"
+
+msgid "Location"
+msgstr "位置"
+
+msgid "Main Class"
+msgstr "主类"
+
+#, fuzzy
+msgid "Mains"
+msgstr "Mains"
+
+msgid "Management IP"
+msgstr "管理网络 IP"
+
+msgid "Manila share"
+msgstr "共享系统(Manila)"
+
+msgid "MapReduce"
+msgstr "MapReduce"
+
+#, fuzzy
+msgid "Mapper"
+msgstr "Mapper"
+
+msgid "Mapping Type"
+msgstr "映射类型"
+
+msgid "Master Node Group Template:"
+msgstr "主节点组模板："
+
+msgid ""
+"Modify the configuration so that swift URLs can be dereferenced through HDFS "
+"at runtime."
+msgstr "更改配置，使得在运行时通过 HDFS 不再引用 swift 的 URL。"
+
+msgid "Name"
+msgstr "名称"
+
+#, python-format
+msgid "Name: %(node_group_name)s"
+msgstr "名称：%(node_group_name)s"
+
+msgid "Named Parameter"
+msgstr "命名参数"
+
+msgid "Neutron Management Network"
+msgstr "Neutron 管理网络"
+
+msgid "Never"
+msgstr "从不"
+
+msgid "Next"
+msgstr "下一步"
+
+msgid ""
+"Next, you need to define the different\n"
+"                        types of machines in your cluster.  This is done by\n"
+"                        defining a Node Group Template for each type of\n"
+"                        machine.  A very common case is where you\n"
+"                        need to have one or more machines running a \"master"
+"\"\n"
+"                        set of processes while another set of machines need\n"
+"                        to be running the \"worker\" processes.  Here,\n"
+"                        you will define the Node Group Template for your\n"
+"                        \"master\" node(s).\n"
+"                     "
+msgstr ""
+"下一步，需要在集群中定义\n"
+"                        不同的机器类型。这个可以\n"
+"                       通过为每种机器类型定义节\n"
+"                       点组模板来实现。通常情况\n"
+"                       需要有一个或多个机器运行\n"
+"                       主进程(master)，另外一些机\n"
+"                       器运行工作进程(worker)。现\n"
+"                       在，您将要为主进程的节点定\n"
+"                       义节点组模板。\n"
+"                     "
+
+msgid "No Cluster Template Created"
+msgstr "没有创建集群模板"
+
+msgid "No Images Available"
+msgstr "没有可用的镜像"
+
+msgid "No Master Node Group Template Created"
+msgstr "没有创建主节点组模板"
+
+msgid "No Templates Available"
+msgstr "没有可用的模板"
+
+msgid "No Worker Node Group Template Created"
+msgstr "没有创建工作节点组模板"
+
+msgid "No availability zone specified"
+msgstr "未指定可用域"
+
+msgid "No configurations"
+msgstr "没有配置"
+
+msgid "No description"
+msgstr "没有可用的描述"
+
+msgid "No image specified"
+msgstr "未指定镜像"
+
+msgid "No images available."
+msgstr "没有可用的镜像。"
+
+msgid "No info available"
+msgstr "没有可用的信息"
+
+msgid "No job template created"
+msgstr "没有创建任务模板"
+
+msgid "No keypair"
+msgstr "没有密钥对"
+
+msgid "No plugin chosen"
+msgstr "没有选择插件"
+
+msgid "No type chosen"
+msgstr "没有选择类型"
+
+msgid "No volume type"
+msgstr "未设置卷类型"
+
+msgid "Node Group"
+msgstr "节点组"
+
+#, python-format
+msgid "Node Group Name: %(node_group_name)s"
+msgstr "节点组名称：%(node_group_name)s"
+
+msgid "Node Group Template"
+msgstr "节点组模板"
+
+#, python-format
+msgid "Node Group Template %s updated"
+msgstr "节点组模板 %s 已更新"
+
+#, python-format
+msgid "Node Group Template copy %s created"
+msgstr "已创建节点组模板副本 %s"
+
+msgid "Node Group Templates"
+msgstr "节点组模板"
+
+#, python-format
+msgid "Node Group: %(node_group_name)s"
+msgstr "节点组：%(node_group_name)s"
+
+msgid "Node Groups"
+msgstr "节点组"
+
+msgid "Node Groups Configuration Overview"
+msgstr "节点组配置概览"
+
+#, fuzzy
+msgid "Node Processes"
+msgstr "节点处理"
+
+msgid "Node group cluster"
+msgstr "节点组集群"
+
+msgid "Node group configurations are not specified"
+msgstr "没有指定节点组配置"
+
+msgid "Node processes are not specified"
+msgstr "没有指定结点进程"
+
+msgid "Nodes Count"
+msgstr "节点数量"
+
+msgid "None"
+msgstr "无"
+
+msgid "Not available"
+msgstr "不可用"
+
+msgid ""
+"Now you need to set the layout of your\n"
+"                        cluster.  By\n"
+"                        creating a Cluster Template, you will be choosing "
+"the\n"
+"                        number of instances of each Node Group Template "
+"that\n"
+"                        will appear in your cluster.  Additionally,\n"
+"                        you will have a chance to set any cluster-specific\n"
+"                        configuration items in the additional tabs on the\n"
+"                        create Cluster Template form."
+msgstr ""
+"现在你需要设置你的集\n"
+"                       群格局。通过创建集群\n"
+"                       模板，你可以决定每个\n"
+"                       节点组模板的实例数。\n"
+"                       而且，在创建集群模板\n"
+"                       的表单中，你还可以在\n"
+"                       额外的选项卡中设置集\n"
+"                       群专属的配置项。"
+
+msgid "Number"
+msgstr "数字"
+
+msgid "Number of Nodes"
+msgstr "节点数量"
+
+msgid "Number of clusters to launch."
+msgstr "启动集群的数量。"
+
+msgid "Oozie Job ID"
+msgstr "Oozie 任务 ID"
+
+msgid "OpenStack Flavor"
+msgstr "OpenStack 虚拟机类型"
+
+msgid "Output"
+msgstr "输出"
+
+msgid "Output Data Source"
+msgstr "输出数据源"
+
+msgid "Parameters"
+msgstr "参数"
+
+msgid "Password"
+msgstr "密码"
+
+msgid "Path"
+msgstr "路径"
+
+msgid "Path on share"
+msgstr "共享路径"
+
+msgid "Persist cluster after job exit"
+msgstr "任务退出后保留集群"
+
+msgid "Pig"
+msgstr "Pig"
+
+msgid "Plugin"
+msgstr "插件"
+
+msgid "Plugin Name"
+msgstr "插件名称"
+
+msgid "Plugin name"
+msgstr "插件名称"
+
+msgid "Plugin:"
+msgstr "插件："
+
+msgid "Plugins"
+msgstr "插件"
+
+msgid "Positional Argument"
+msgstr "位置参数"
+
+msgid "Progress"
+msgstr "进行"
+
+msgid "Project ID"
+msgstr "项目ID"
+
+msgid "Project Id"
+msgstr "项目ID"
+
+msgid "Protected"
+msgstr "受保护的"
+
+msgid "Proxy Gateway"
+msgstr "网关代理"
+
+msgid "Public"
+msgstr "公有"
+
+msgid "Read only"
+msgstr "只读"
+
+msgid "Read/Write"
+msgstr "读/写"
+
+#, fuzzy
+msgid "Reducer"
+msgstr "Reducer"
+
+msgid "Register Image"
+msgstr "注册镜像"
+
+msgid ""
+"Register tags required for the Plugin with specified Data Processing Version"
+msgstr "指定版本的数据处理插件必须要注册标签"
+
+msgid "Relaunch On Existing Cluster"
+msgstr "在现有的集群上重新启动"
+
+msgid "Relaunch On New Cluster"
+msgstr "在新的集群上重新启动"
+
+msgid "Remove"
+msgstr "移除"
+
+msgid ""
+"Repeat the Node Group Template\n"
+"                        creation process, but this time you are creating\n"
+"                        your \"worker\" Node Group Template."
+msgstr ""
+"重复创建节点组模板的步骤，\n"
+"                       但是这次，您创建的是工作节\n"
+"                        点组的模板。"
+
+msgid "Required"
+msgstr "必须"
+
+msgid "Reset Cluster Creation Guide"
+msgstr "重置集群创建向导"
+
+msgid "Reset Cluster Guide"
+msgstr "重置集群向导"
+
+msgid "Reset Job Execution Guide"
+msgstr "重置任务执行向导"
+
+msgid "Return Code"
+msgstr "返回代码"
+
+#, fuzzy
+msgid "Run HBase EDP Jobs with common HBase library on HDFS"
+msgstr "在 HDFS 上使用 HBase 公共库来运行 HBase EDP 任务"
+
+msgid ""
+"Sahara will use instances of this node group to access other cluster "
+"instances."
+msgstr "Sahara 将使用这个节点组中的实例以访问其它集群中的实例。"
+
+#, fuzzy
+msgid "Scale"
+msgstr "规模"
+
+#, fuzzy
+msgid "Scale Cluster"
+msgstr "扩展集群"
+
+#, fuzzy
+msgid "Scale cluster operation failed"
+msgstr "扩展集群失败"
+
+#, fuzzy
+msgid "Scaled cluster successfully started."
+msgstr "集群扩展成功。"
+
+msgid "Script name"
+msgstr "脚本名称"
+
+msgid "Script text"
+msgstr "脚本文本"
+
+msgid "Security"
+msgstr "安全"
+
+msgid "Security Groups"
+msgstr "安全组"
+
+msgid "Select"
+msgstr "选择"
+
+msgid "Select Image"
+msgstr "选择镜像"
+
+msgid "Select Node Group Processes"
+msgstr "选择节点组进程"
+
+#, fuzzy
+msgid "Select Shares"
+msgstr "选择共享的"
+
+msgid "Select a Node Group Template to add:"
+msgstr "选择一个节点组模板来使用："
+
+msgid "Select a Value Type for your next argument:"
+msgstr "选择你下一个参数值的类型："
+
+msgid "Select a plugin and version for a new Cluster template."
+msgstr "为新的集群模板选择插件和版本。"
+
+msgid "Select a plugin and version for a new Cluster."
+msgstr "为新的集群选择插件和版本。"
+
+msgid "Select a plugin and version for the new Node Group template."
+msgstr "为新的节点组模板选择插件和版本"
+
+msgid ""
+"Select an existing node group template.\n"
+"    "
+msgstr ""
+"选择一个存在的节点组模板。\n"
+"  "
+
+msgid "Select node processes for the node group"
+msgstr "为节点组选择节点进程"
+
+msgid "Select plugin and hadoop version"
+msgstr "选择插件和 Hadoop 的版本"
+
+msgid "Select plugin and hadoop version for cluster"
+msgstr "为集群选择插件和 Hadoop 的版本"
+
+msgid "Select plugin and hadoop version for cluster template"
+msgstr "为集群模板选择插件和 Hadoop 的版本"
+
+msgid "Select property name"
+msgstr "选择属性名称"
+
+msgid "Select the manila shares for this cluster"
+msgstr "为集群选择文件共享(manila)"
+
+msgid "Select the manila shares for this node group"
+msgstr "为节点组选择文件共享(manila)"
+
+msgid "Select the storage type for your job binary."
+msgstr "为你的任务的二进制文件选择存储类型。"
+
+msgid "Select the type of your Data Source."
+msgstr "选择你的数据源类型。"
+
+msgid "Select the type of your job:"
+msgstr "请选择你的任务类型："
+
+msgid "Select type"
+msgstr "选择类型"
+
+msgid ""
+"Select which plugin and version that you\n"
+"    want to use to create your cluster."
+msgstr ""
+"您希望使用哪个插件和版本来\n"
+"   创建集群。"
+
+msgid ""
+"Select which type of job that you want to run.\n"
+"      This choice will dictate which steps are required to successfully\n"
+"      execute your job.\n"
+"    "
+msgstr ""
+"选择您希望运行的任务的类型。\n"
+"      任务的类型将决定要成功完成任务\n"
+"      所需的步骤。\n"
+"      "
+
+msgid "Service Configurations"
+msgstr "服务配置"
+
+#, fuzzy
+msgid "Share"
+msgstr "共享"
+
+msgid "Shares"
+msgstr "共享"
+
+msgid "Shell"
+msgstr "Shell"
+
+msgid "Shell Action"
+msgstr "Shell 命令"
+
+msgid "Show full configuration"
+msgstr "显示所有配置项"
+
+msgid "Source password"
+msgstr "源密码"
+
+msgid "Source username"
+msgstr "源用户名"
+
+msgid "Spark"
+msgstr "Spark"
+
+msgid ""
+"Specified User Name will be used by Data Processing to apply configs and "
+"manage processes on instances."
+msgstr "数据处理过程中，用户名会被用在实例的配置和任务管理上。"
+
+#, fuzzy
+msgid "Start Verification"
+msgid_plural "Start Verifications"
+msgstr[0] "开始验证"
+
+msgctxt "Start time"
+msgid "Started"
+msgstr "已开始"
+
+#, fuzzy
+msgid "Started Verification"
+msgid_plural "Started Verifications"
+msgstr[0] "已开始的验证"
+
+msgid "Started at"
+msgstr "开始于"
+
+msgid "Status"
+msgstr "状态"
+
+msgid "Status description"
+msgstr "状态说明"
+
+msgid "Step Description"
+msgstr "步骤说明"
+
+msgid "Storage location"
+msgstr "存储位置"
+
+msgid "Storage type"
+msgstr "存储类型"
+
+msgid "Storm"
+msgstr "Storm"
+
+msgid "Streaming MapReduce"
+msgstr "MapReduce 流"
+
+msgid "String"
+msgstr "字符串"
+
+msgid ""
+"Substitute data source objects for URLs of the form datasource://name or "
+"uuid."
+msgstr "使用数据源对象来代替 datasource://name 格式的 URL 和 UUID。"
+
+msgctxt "Current status of a Job"
+msgid "Succeeded"
+msgstr "已成功"
+
+msgid "Successfully updated image."
+msgstr "成功更新了镜像。"
+
+msgid "Supported Versions"
+msgstr "支持的版本"
+
+msgid "Swift"
+msgstr "Swift"
+
+msgid "Tags"
+msgstr "标签"
+
+msgid ""
+"Tags are used for filtering images suitable for each plugin and each Data "
+"Processing version.\n"
+"        To add required tags, select a plugin and a Data Processing version "
+"and click &quot;Add plugin tags&quot; button."
+msgstr ""
+"标签可以用来过滤合适的插件和数据处理版本的镜像。\n"
+"        如要增加标签，选择一个插件和一个数据处理版本，并点击“增加插件标签”按"
+"钮。"
+
+msgid "Template"
+msgstr "模板"
+
+msgid "Template Name"
+msgstr "模板名称"
+
+msgid "Template not specified"
+msgstr "没有指定模板"
+
+msgid ""
+"The Cluster Template object may specify a list of processes in anti-affinity "
+"group.\n"
+"    That means these processes may not be launched more than once on a "
+"single host."
+msgstr ""
+"集群模板对象可以在 anti-affinity 组上指定一系列任务。\n"
+"这样这些任务就不会在同一个物理主机上启动多个。"
+
+msgid ""
+"The Cluster Template object should specify Node Group Templates that will be "
+"used to build a Cluster.\n"
+"    You can add Node Groups using Node Group Templates on a &quot;Node "
+"Groups&quot; tab."
+msgstr ""
+"集群模板对象需要指定用于创建集群的节点组模板。\n"
+"你可以使用“节点组”选项卡上的“节点组模板”来增加节点组。"
+
+msgid ""
+"The Cluster object should specify OpenStack Image to boot instances for "
+"Cluster."
+msgstr "集群对象应该指定用于创建集群中实例的 OpenStack 镜像。"
+
+msgid ""
+"The Node Group Template object specifies the processes\n"
+"        that will be launched on each instance. Check one or more "
+"processes.\n"
+"        When processes are selected, you may set <b>node</b> scoped\n"
+"        configurations on corresponding tabs."
+msgstr ""
+"节点组模板对像指定了每个实例上运行的\n"
+"        数据处理任务，可以指定一个或者多个处\n"
+"        理任务。选择任务后，可以在相应选项卡\n"
+"        的<b>节点</b>配置里进行设置。"
+
+msgid ""
+"The first step is to determine which type of\n"
+"                    cluster you want to run.  You may have several choices\n"
+"                    available depending on the configuration of your "
+"system.\n"
+"                    Click on \"choose plugin\" to bring up the list of data\n"
+"                    processing plugins.  There you will be able to choose "
+"the\n"
+"                    data processing plugin along with the version number.\n"
+"                    Choosing this up front will allow the rest of the "
+"cluster\n"
+"                    creation steps to focus only on options that are "
+"pertinent\n"
+"                    to your desired cluster type."
+msgstr ""
+"第一步是确定您要运行的集\n"
+"                   群的类型。根据系统配置会\n"
+"                   有几种集群类型供您选择。\n"
+"                   点击“选择插件”会打开数据\n"
+"                   处理插件列表，您可以选择\n"
+"                   插件及其对应的版本。在创\n"
+"                   建集群的后续步骤中，您可\n"
+"                   以只关注和所选集群类型相\n"
+"                   关的选项。"
+
+#, fuzzy
+msgid "The value of shares must be a list of values"
+msgstr "共享的值必须是列表值"
+
+msgid "This Cluster Template will be created for:"
+msgstr "这个集群模板将被创建给："
+
+#, fuzzy
+msgid "This Cluster will be started with:"
+msgstr "这个集群将开始运行："
+
+msgid "This Node Group Template will be created for:"
+msgstr "这个节点组模板将被创建给："
+
+msgid "Title"
+msgstr "标题"
+
+msgid "Type"
+msgstr "类型"
+
+msgid "URL"
+msgstr "URL"
+
+msgid "Unable to create job binary"
+msgstr "无法创建任务的二进制文件"
+
+msgid "Unable to create new cluster for job."
+msgstr "无法为任务创建新的集群。"
+
+msgid "Unable to create the cluster"
+msgstr "无法创建集群"
+
+#, python-format
+msgid "Unable to fetch Base Image with id: %s."
+msgstr "无法获取 id 为 %s 的基础镜像。"
+
+msgid "Unable to fetch available images."
+msgstr "无法获取可用的镜像。"
+
+msgid "Unable to fetch cluster list"
+msgstr "无法获取集群列表"
+
+msgid "Unable to fetch cluster template list"
+msgstr "无法获取集群模板列表"
+
+msgid "Unable to fetch cluster template."
+msgstr "无法获取集群模板。"
+
+#, fuzzy
+msgid "Unable to fetch cluster to scale"
+msgstr "无法获取集群进行扩展"
+
+#, fuzzy
+msgid "Unable to fetch cluster to scale."
+msgstr "无法获取集群进行扩展。"
+
+msgid "Unable to fetch cluster."
+msgstr "无法获取集群。"
+
+msgid "Unable to fetch clusters."
+msgstr "无法获取集群。"
+
+msgid "Unable to fetch data source list"
+msgstr "无法获取数据源列表"
+
+msgid "Unable to fetch data sources."
+msgstr "无法获取数据源。"
+
+msgid "Unable to fetch flavor for template."
+msgstr "无法获取模板的实例类型。"
+
+msgid "Unable to fetch floating ip pools."
+msgstr "无法获取浮动 IP 池。"
+
+msgid "Unable to fetch image choices."
+msgstr "无法获取镜像选项。"
+
+msgid "Unable to fetch instance details."
+msgstr "无法获取实例的详细信息。"
+
+msgid "Unable to fetch job binary list"
+msgstr "无法获取任务的二进制文件列表"
+
+msgid "Unable to fetch job binary list."
+msgstr "无法获取任务的二进制文件列表。"
+
+#, python-format
+msgid "Unable to fetch job binary: %(exc)s"
+msgstr "无法获取任务的二进制文件： %(exc)s"
+
+msgid "Unable to fetch job list"
+msgstr "无法获取任务列表"
+
+msgid "Unable to fetch job template list"
+msgstr "无法获取任务模板列表"
+
+msgid "Unable to fetch jobs."
+msgstr "无法获取任务。"
+
+msgid "Unable to fetch keypair choices."
+msgstr "无法获取密钥对的选项。"
+
+msgid "Unable to fetch node group details."
+msgstr "无法获取节点组的详细信息。"
+
+msgid "Unable to fetch node group template list"
+msgstr "无法获取节点组模板列表"
+
+msgid "Unable to fetch node group template list."
+msgstr "无法获取节点组模板列表。"
+
+msgid "Unable to fetch plugin details."
+msgstr "无法获取插件的详细信息。"
+
+msgid "Unable to fetch plugin list"
+msgstr "无法获取插件列表"
+
+msgid "Unable to fetch plugin list."
+msgstr "无法获取插件列表。"
+
+msgid "Unable to fetch template object."
+msgstr "无法获取模板对象。"
+
+msgid "Unable to fetch template to copy."
+msgstr "无法获取模板进行复制。"
+
+msgid "Unable to fetch template to edit."
+msgstr "无法获取模板进行编辑。"
+
+msgid "Unable to fetch the image details"
+msgstr "无法获取镜像的详细信息"
+
+msgid "Unable to generate process choices."
+msgstr "无法生成处理选项。"
+
+msgid "Unable to get node group details."
+msgstr "无法获取节点组的详细信息。"
+
+msgid "Unable to get security group list."
+msgstr "无法获取安全组列表。"
+
+msgid "Unable to get volume type list."
+msgstr "无法获取卷类型列表"
+
+msgid "Unable to launch job."
+msgstr "无法启动任务。"
+
+#, fuzzy
+msgid "Unable to populate anti-affinity processes."
+msgstr "无法给任务启用 anti-affinity。"
+
+msgid "Unable to process plugin tags"
+msgstr "无法编辑插件标签"
+
+msgid "Unable to retrieve data processing plugins."
+msgstr "无法获取数据处理插件。"
+
+#, python-format
+msgid "Unable to retrieve details for cluster \"%s\"."
+msgstr "无法获取集群 \"%s\" 的详细信息。"
+
+#, python-format
+msgid "Unable to retrieve details for cluster template \"%s\"."
+msgstr "无法获取集群模板\"%s\"的详细信息。"
+
+#, python-format
+msgid "Unable to retrieve details for data source \"%s\"."
+msgstr "无法获取数据源“%s”的详细信息。"
+
+#, python-format
+msgid "Unable to retrieve details for job \"%s\"."
+msgstr "无法获取任务“%s”的详细信息。"
+
+#, python-format
+msgid "Unable to retrieve details for job binary \"%s\"."
+msgstr "无法获取任务的二进制文件 \"%s\" 的详细信息。"
+
+#, python-format
+msgid "Unable to retrieve details for job template \"%s\"."
+msgstr "无法获取任务模板“%s”的详细信息。"
+
+#, python-format
+msgid "Unable to retrieve details for node group template \"%s\"."
+msgstr "无法获取节点组模板 \"%s\" 的详细信息。"
+
+msgid "Unable to retrieve image list"
+msgstr "无法获取镜像列表"
+
+#, python-format
+msgid "Unable to retrieve images with filter %s."
+msgstr "过滤器 %s  匹配不到任何镜像。"
+
+#, python-format
+msgid "Unable to retrieve job binary \"%s\"."
+msgstr "无法获取任务的二进制文件 \"%s\"。"
+
+msgid "Unable to retrieve networks."
+msgstr "无法获取网络。"
+
+msgid "Unable to retrieve plugin."
+msgstr "无法获取插件。"
+
+#, python-format
+msgid "Unable to retrieve security group %(group)s."
+msgstr "无法获取安全组 %(group)s。"
+
+msgid "Unable to set cluster type"
+msgstr "无法设置集群类型"
+
+msgid "Unable to set job type"
+msgstr "无法设置任务类型"
+
+msgid "Unable to set node group template"
+msgstr "无法设置节点组模板"
+
+msgid "Unable to update job binary"
+msgstr "无法更新任务的二进制文件"
+
+#, fuzzy
+msgid "Unable to update row"
+msgstr "无法更新行"
+
+msgid "Unable to upload cluster template file"
+msgstr "无法上传集群模板文件"
+
+msgid "Unable to upload job binary"
+msgstr "无法上传任务的二进制文件"
+
+msgid "Unknown"
+msgstr "未知"
+
+msgid "Unnecessary tags may be removed by clicking a cross near tag's name."
+msgstr "不必要的标签可以通过点击标签名称旁边的“×”来删除。"
+
+msgid "Unregister Image"
+msgid_plural "Unregister Images"
+msgstr[0] "注销镜像"
+
+msgid "Unregistered Image"
+msgid_plural "Unregistered Images"
+msgstr[0] "已注销的镜像"
+
+msgid "Update"
+msgstr "更新"
+
+msgid "Update Cluster Shares"
+msgstr "更新集群共享"
+
+msgid "Update Shares"
+msgstr "更新共享"
+
+msgid "Updated"
+msgstr "已更新"
+
+msgid "Updated time"
+msgstr "更新时间"
+
+msgid "Upload"
+msgstr "上传"
+
+msgid "Upload File"
+msgstr "上传文件"
+
+msgid "Upload Template"
+msgstr "上传模板"
+
+msgid "Upload a new file"
+msgstr "上传新文件"
+
+msgid "Url"
+msgstr "Url"
+
+#, fuzzy
+msgid "Use Data Source Substitution for Names and UUIDs"
+msgstr "使用数据源来代替名称和 UUID"
+
+msgid "Use HBase Common library"
+msgstr "使用 HBase 公共库"
+
+#, fuzzy
+msgid "Use anti-affinity groups for processes"
+msgstr "为任务使用 anti-affinity 组"
+
+msgid "Use anti-affinity groups for: "
+msgstr "使用 anti-affinity 组："
+
+msgid "Use auto-configuration"
+msgstr "使用自动配置"
+
+msgid "User Name"
+msgstr "用户名"
+
+msgid "User has to choose a keypair to have access to clusters instances."
+msgstr "用户必须选择一个密钥对去连接集群中的实例。"
+
+msgid "Username"
+msgstr "用户名"
+
+msgid "Value"
+msgstr "值"
+
+msgid "Value Type"
+msgstr "值类型"
+
+msgid "Version"
+msgstr "版本"
+
+msgid "Version:"
+msgstr "版本："
+
+msgid "Volume local to instance"
+msgstr "实例的本地卷"
+
+msgid "Volumes Availability Zone"
+msgstr "卷的可用域"
+
+#, fuzzy
+msgid "Volumes local to instance"
+msgstr "实例的本地卷"
+
+#, fuzzy
+msgid "Volumes per node"
+msgstr "卷/节点"
+
+msgid "Volumes size"
+msgstr "卷大小"
+
+msgid "Volumes size (GB)"
+msgstr "卷大小 (GB)"
+
+msgid "Volumes type"
+msgstr "卷类型"
+
+msgid "Which keypair to use for authentication."
+msgstr "使用哪个密钥对进行认证？"
+
+msgid "Worker Node Group Template:"
+msgstr "工作节点组模板："
+
+msgid ""
+"You are now ready to\n"
+"                        launch your cluster.  When you click on the link\n"
+"                        below, you will need to give your cluster a name,\n"
+"                        choose the Cluster Template to use and choose which\n"
+"                        image to use to build your instances.  After you\n"
+"                        click on \"Create\", your instances will begin to\n"
+"                        spawn.  Your cluster should be operational in a few\n"
+"                        minutes."
+msgstr ""
+"现在你可以启动你的集群了。\n"
+"                        当你点击下面链接时，你需\n"
+"                        要给集群命名，选择要使用\n"
+"                        的集群模板，设定实例所用\n"
+"                        的镜像。在你点击“创建”之\n"
+"                        后，将开始创建实例。数分\n"
+"                        钟之后，你的集群就开始运\n"
+"                        行了。"
+
+msgid "You may also add any custom tag."
+msgstr "你还可以增加任意的自定义标签。"
+
+msgid "You may also enter an optional description for your Data Source."
+msgstr "你还可以为你的数据源输入描述。"
+
+msgid "You may also enter an optional description for your job binary."
+msgstr "你还可以为你的任务的二进制文件添加描述。"
+
+msgid "You may also enter an optional description for your job template."
+msgstr "你还可以输入你的任务模板的描述。"
+
+msgid "You may need to enter the username and password for your Data Source."
+msgstr "你要为你的数据源输入用户名和密码。"
+
+msgid "You may set <b>cluster</b> scoped configurations on corresponding tabs."
+msgstr "你可以在相应的选项卡中设置 <b>集群</b>辖域的配置。"
+
+msgid ""
+"You must choose a flavor to determine the size (VCPUs, memory and storage) "
+"of all launched VMs."
+msgstr "您必须对所有的虚拟机的实例类型进行配置（虚拟 CPU 、内存、存储）。"
+
+msgid "cluster"
+msgstr "集群"
+
+msgid "cluster template"
+msgstr "集群模板"
+
+msgid "data source"
+msgstr "数据源"
+
+msgid "job"
+msgstr "任务"
+
+msgid "job binary"
+msgstr "任务二进制文件"
+
+msgid "no processes"
+msgstr "没有进程"
+
+msgid "node group template"
+msgstr "节点组模板"
