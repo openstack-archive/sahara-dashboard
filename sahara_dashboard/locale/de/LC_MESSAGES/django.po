@@ -1,0 +1,1949 @@
+# Frank Kloeker <eumel@arcor.de>, 2016. #zanata
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2016-03-07 20:43+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2016-03-12 06:47+0000\n"
+"Last-Translator: Frank Kloeker <eumel@arcor.de>\n"
+"Language-Team: German\n"
+"Language: de\n"
+"X-Generator: Zanata 3.7.3\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+
+msgid " Done"
+msgstr "Fertig"
+
+msgid " or "
+msgstr "oder"
+
+#, python-format
+msgid "%(conf_name)s: %(conf_val)s"
+msgstr "%(conf_name)s: %(conf_val)s"
+
+#, python-format
+msgid "%(conf_name)s: %(conf_value)s"
+msgstr "%(conf_name)s: %(conf_value)s"
+
+#, python-format
+msgid "%(group)s:"
+msgstr "%(group)s:"
+
+#, python-format
+msgid "%(key)s: %(val)s"
+msgstr "%(key)s: %(val)s"
+
+#, python-format
+msgid "%s processes: "
+msgstr "%s Prozesse:"
+
+msgid "-- not selected --"
+msgstr "-- nicht ausgewählt --"
+
+msgid ""
+"<b>Important</b>:  The name that you give your job binary will be the name "
+"used in your job execution.\n"
+"  If your binary requires a particular name or extension (ie: \".jar\"), be "
+"sure to include it here."
+msgstr ""
+"<b>Wichtig</b>: Der Name, den Sie ihrem Aufgaben-Binärprogramm geben, wird "
+"für die Ausführung des Jobs genutzt.\n"
+"Falls ihr Binärprogramm einen speziellen Namen oder Erweiterung benötigt (z."
+"B. \".jar\"), muss das hier angegeben werden."
+
+msgid "Adapt For Oozie"
+msgstr "Angepasst für Oozie"
+
+msgid "Add"
+msgstr "Hinzufügen"
+
+msgid "Add Node Group"
+msgstr "Knoten-Gruppe hinzufügen"
+
+msgid "Add custom tag"
+msgstr "Benutzerspezifische Schlagwörter hinzufügen"
+
+msgid "Add libraries to your job template."
+msgstr "Fügen Sie Bibliotheken zu Ihrer Aufgabenvorlage hinzu."
+
+msgid "Add plugin tags"
+msgstr "Schlagwörter für Plugins hinzufügen"
+
+msgid "Anti-affinity enabled for"
+msgstr "Anti-Affinität erlaubt für"
+
+msgid "Arguments"
+msgstr "Argumente"
+
+msgid "Auto Security Group"
+msgstr "Auto Sicherheitsgruppe"
+
+msgid "Auto-configure"
+msgstr "Auto-Konfigurieren"
+
+msgid ""
+"Automatically modify the Hadoop configuration so that job config values are "
+"set and so that Oozie will handle exit codes correctly."
+msgstr ""
+"Automatisches Modifizieren der Hadoop Konfiguration, so das Werte der Job-"
+"Konfiguration gesetzt werden und  Oozie Exit-Codes korrekt behandelt."
+
+msgid "Availability Zone"
+msgstr "Verfügbarkeitszone"
+
+msgid "Base Image"
+msgstr "Basis-Abbild"
+
+msgid "Cancel"
+msgstr "Abbrechen"
+
+msgid "Checking"
+msgstr "Prüfe"
+
+msgid "Choose"
+msgstr "Auswählen"
+
+msgid "Choose a main binary"
+msgstr "Wählen Sie ein Haupt-Binärprogramm"
+
+msgid "Choose a shell script"
+msgstr "Wählen Sie ein Shell-Skript aus"
+
+msgid "Choose a storage location"
+msgstr "Storage Lokation auswählen"
+
+msgid "Choose additional files"
+msgstr "Wählen Sie zusätzliche Dateien aus"
+
+msgid "Choose an existing Master Node Group Template"
+msgstr "Wählen Sie eine bestehende Master Knoten-Gruppenvorlage."
+
+msgid "Choose an existing Worker Node Group Template"
+msgstr "Wählen Sie eine bestehende Knoten-Gruppenvorlage."
+
+msgid "Choose an existing file"
+msgstr "Wählen Sie eine vorhandene Datei aus"
+
+msgid ""
+"Choose from the list of binaries and click \"choose\" to add the library to "
+"your job template.  This can be repeated for additional libraries."
+msgstr ""
+"Wählen Sie aus der Liste von Binärprogrammen und klicken Sie \"auswählen\", "
+"um die Bibliothek Ihrer Aufgabenvorlage hinzuzufügen. Wiederholen Sie diesen "
+"Schritt für weitere Bibliotheken."
+
+msgid "Choose job type"
+msgstr "Wähle Aufgabentyp"
+
+msgid "Choose libraries"
+msgstr "Bibliotheken wählen"
+
+msgid "Choose node group template"
+msgstr "Knoten-Gruppenvorlage wählen"
+
+msgid ""
+"Choose or create your main binary.  Additional libraries can be added from "
+"the \"Libs\" tab."
+msgstr ""
+"Wählen oder erstellen Sie Ihr Hauptbinärprogamm. Zusätzliche Bibliotheken "
+"können unter dem \"Libs\" Reiter hinzugefügt werden."
+
+msgid "Choose plugin"
+msgstr "Plugin auswählen"
+
+msgid "Choose plugin and version"
+msgstr "Plugin und Version auswählen"
+
+msgid "Choose plugin type and version"
+msgstr "Wählen Sie Plugin-Typ und Version"
+
+msgid "Choose the Input Data Source (n/a for Java and Shell jobs)."
+msgstr "Wähle die Eingangsdatenquelle (n/a für Java und Shell Aufgaben)."
+
+msgid "Choose the Output Data Source (n/a for Java and Shell jobs)."
+msgstr "Wähle die Ausgangsdatenquelle (n/a für Java und Shell Aufgaben)."
+
+msgid "Choose the binary which should be used in this Job."
+msgstr ""
+"Wählen Sie ein Binärprogramm, welches für diese Aufgabe benutzt werden soll."
+
+msgid "Choose the cluster to use for the job."
+msgstr "Wählen Sie den zu verwendenden Cluster für die Aufgabe."
+
+msgid "Chosen Libraries"
+msgstr "Bibliotheken wählen"
+
+msgid "Cinder volumes"
+msgstr "Cinder Datenträger"
+
+msgid "Cluster"
+msgstr "Cluster"
+
+msgid "Cluster Configuration Overview"
+msgstr "Cluster Konfigurationsübersicht"
+
+msgid "Cluster Count"
+msgstr "Anzahl Cluster"
+
+msgid "Cluster Creation Guide"
+msgstr "Clustererstellungsassistent"
+
+msgid "Cluster Events"
+msgstr "Cluster-Ereignisse"
+
+msgid "Cluster Instances"
+msgstr "Cluster Instanzen"
+
+msgid "Cluster Name"
+msgstr "Clustername"
+
+msgid "Cluster Template"
+msgstr "Clustervorlage"
+
+#, python-format
+msgid "Cluster Template %s updated"
+msgstr "Clustervorlage %s aktualisiert"
+
+msgid "Cluster Template Configuration Overview"
+msgstr "Konfigurationsübersicht Clustervorlage"
+
+msgid "Cluster Template Name"
+msgstr "Name der Clustervorlage"
+
+#, python-format
+msgid "Cluster Template copy %s created"
+msgstr "Clustervorlagenkopie %s erstellt"
+
+msgid "Cluster Templates"
+msgstr "Clustervorlagen"
+
+msgid "Cluster can be launched using existing Cluster Templates."
+msgstr ""
+"Der Cluster kann mit Hilfe der existierenden Clustervorlagen gestartet "
+"werden."
+
+msgid "Cluster configurations are not specified"
+msgstr "Clusterkonfigurationen wurden nicht angegeben."
+
+msgid "Cluster health checks"
+msgstr "Cluster Gesundheits-Checks"
+
+msgid "Cluster provision steps"
+msgstr "Cluster Provisionierungsschritte"
+
+msgid "Cluster share update failed."
+msgstr "Aktualisieren der Cluster-Freigabe fehlgeschlagen."
+
+msgid "Cluster template creation failed"
+msgstr "Clustervorlagenerstellung fehlgeschlagen"
+
+msgid "Cluster template update failed"
+msgstr "Aktualisieren der Clustervorlage fehlgeschlagen"
+
+msgid "Cluster type chosen"
+msgstr "Ausgewählter Clustertyp"
+
+msgid "Clusters"
+msgstr "Cluster"
+
+msgid "Completed Successfully"
+msgstr "Erfolgreich abgeschlossen"
+
+msgid "Configuration"
+msgstr "Konfiguration"
+
+msgid "Configuration Details"
+msgstr "Konfigurationsdetails"
+
+msgid "Configuration Value"
+msgstr "Konfigurationswert"
+
+msgid "Configure"
+msgstr "Konfigurieren"
+
+msgid "Configure Cluster"
+msgstr "Cluster Konfigurieren"
+
+msgid "Configure Cluster Template"
+msgstr "Clustervorlage konfigurieren"
+
+msgid "Configure Node Group Template"
+msgstr "Knoten-Gruppenvorlage konfigurieren"
+
+msgid "Configure Template"
+msgstr "Vorlage konfigurieren"
+
+msgid "Control access to instances of the node group."
+msgstr "Zugriff auf Instanzen der Knoten-Gruppe verwalten."
+
+msgid "Copy Cluster Template"
+msgstr "Clustervorlage kopieren"
+
+msgid "Copy Template"
+msgstr "Vorlage kopieren"
+
+msgid "Could not create"
+msgstr "Erstellen nicht möglich"
+
+msgid "Could not create data source"
+msgstr "Kann Datenquelle nicht erstellen"
+
+msgid "Could not create job template"
+msgstr "Aufgabenvorlage konnte nicht erstellt werden"
+
+msgid "Could not launch job"
+msgstr "Aufgabe konnte nicht gestartet werden"
+
+msgid "Could not update cluster shares"
+msgstr "Cluster-Freigaben konnten nicht aktualisiert werden"
+
+msgid "Could not update data source"
+msgstr "Datenquelle konnte nicht aktualisiert werden"
+
+msgid "Count"
+msgstr "Anzahl"
+
+msgid "Create"
+msgstr "Erstellen"
+
+msgid "Create Cluster Template"
+msgstr "Clustervorlage erstellen"
+
+msgid "Create Data Source"
+msgstr "Datenquelle erstellen"
+
+msgid "Create Job Binary"
+msgstr "Aufgaben-Binärprogramm erzeugen"
+
+msgid "Create Job Template"
+msgstr "Aufgabenvorlage erstellen"
+
+msgid "Create Node Group Template"
+msgstr "Knoten-Gruppenvorlage erstellen"
+
+msgid "Create Template"
+msgstr "Vorlage erzeugen"
+
+msgid "Create a Cluster Template"
+msgstr "Erstellen einer Clustervorlage"
+
+msgid "Create a Data Source with a specified name."
+msgstr "Datenquelle mit spezifischem Namen erzeugen."
+
+msgid "Create a Master Node Group Template"
+msgstr "Erstellen einer Master-Knoten Gruppenvorlage"
+
+msgid "Create a Worker Node Group Template"
+msgstr "Erstellen einer Worker Knoten-Gruppenvorlage"
+
+msgid "Create a data source"
+msgstr "Erzeugen einer Datenquelle"
+
+msgid "Create a job template"
+msgstr "Aufgabenvorlage erstellen"
+
+msgid "Create a job template with a specified name."
+msgstr "Aufgabenvorlage mit angegebenem Namen erstellen."
+
+msgid "Create a script to be uploaded dynamically"
+msgstr "Erzeugen Sie ein Skript für das dynamische Hochladen"
+
+msgid "Create security group for this Node Group."
+msgstr "Sicherheitsgruppe für diese Knoten-Gruppe erstellen."
+
+msgid "Create time"
+msgstr "Erstellungszeit"
+
+msgid "Create volumes in this availability zone."
+msgstr "Datenträger in dieser Verfügbarkeitszone erstellen."
+
+msgid "Created"
+msgstr "Erstellt"
+
+msgctxt "Created time"
+msgid "Created"
+msgstr "Erstellt"
+
+#, python-format
+msgid "Created Cluster Template %s"
+msgstr "Clustervorlage %s erstellt"
+
+#, python-format
+msgid "Created Node Group Template %s"
+msgstr "Knoten-Gruppenvorlagen %s erstellt"
+
+msgid "Created time"
+msgstr "Erstellungszeit"
+
+msgid "Current choice:"
+msgstr "Im Moment gewählt:"
+
+msgid "Current type:"
+msgstr "Aktueller Typ:"
+
+msgid "Data Processing"
+msgstr "Datenverarbeitung"
+
+msgid "Data Processing Plugin Details"
+msgstr "Datenverarbeitungsplugins Details"
+
+msgid "Data Processing Plugins"
+msgstr "Datenverarbeitungsplugins"
+
+msgid "Data Processing internal database"
+msgstr "Datenverarbeitung interne Datenbank"
+
+msgid ""
+"Data Processing provides different storage location options. You may choose "
+"Ephemeral Drive or a Cinder Volume to be attached to instances."
+msgstr ""
+"Die Datenverarbeitung bietet Optionen für verschiedene Speicherorte an. Sie "
+"können ein Flüchtiges Laufwerk oder einen Cinder-Datenträger mit Instanzen "
+"verbinden."
+
+msgid "Data Source"
+msgstr "Datenquelle"
+
+msgid "Data Source Type"
+msgstr "Datenquellentyp"
+
+msgid "Data Sources"
+msgstr "Datenquellen"
+
+msgid ""
+"Data Sources are what your\n"
+"                            job uses for input and output.  Depending on the "
+"type\n"
+"                            of job you will be running, you may need to "
+"define one\n"
+"                            or more data sources.  You can create multiple "
+"data\n"
+"                            sources by repeating this step.\n"
+"                        "
+msgstr ""
+"Datenquellen werden von Ihren Aufgaben \n"
+"zur Ein- und Ausgabe verwendet. Abhängig vom Aufgabentyp \n"
+"müssen Sie eine oder mehrere Datenquellen definieren. \n"
+"Sie können weitere Datenquellen erzeugen, \n"
+"in dem Sie diesen Schritt wiederholen.\n"
+" "
+
+msgid "Data source created"
+msgstr "Datenquelle erstellt"
+
+msgid "Data source updated"
+msgstr "Datenquelle aktualisiert"
+
+msgid "Default Value"
+msgstr "Voreingestellter Wert"
+
+msgid ""
+"Define your Job Template.\n"
+"                        This is where you choose the type of job that you\n"
+"                        want to run (Pig, Java Action, Spark, etc) and "
+"choose\n"
+"                        or upload the files necessary to run it.  The "
+"inputs\n"
+"                        and outputs will be defined later.\n"
+"                    "
+msgstr ""
+"Definieren Sie Ihre Aufgabenvorlage. \n"
+"Hier wählen Sie, welche Art von Aufgabe Sie \n"
+"ausführen wollen (Pig, Java Action, Spark u.s.w.) \n"
+"und laden die zur Ausführung nötigen Daten hoch \n"
+"oder wählen sie aus. Eingaben und Ausgaben werden später festgelegt.\n"
+" "
+
+msgid "Delete Cluster"
+msgid_plural "Delete Clusters"
+msgstr[0] "Cluster löschen"
+msgstr[1] "Cluster löschen"
+
+msgid "Delete Data Source"
+msgid_plural "Delete Data Sources"
+msgstr[0] "Datenquelle löschen"
+msgstr[1] "Datenquellen löschen"
+
+msgid "Delete Job"
+msgid_plural "Delete Jobs"
+msgstr[0] "Aufgabe löschen"
+msgstr[1] "Aufgaben löschen"
+
+msgid "Delete Job Binary"
+msgid_plural "Delete Job Binaries"
+msgstr[0] "Aufgaben-Binärprogramm löschen"
+msgstr[1] "Aufgaben-Binärprogramme löschen"
+
+msgid "Delete Job Template"
+msgid_plural "Delete Job Templates"
+msgstr[0] "Aufgabenvorlage löschen"
+msgstr[1] "Aufgabenvorlagen löschen"
+
+msgid "Delete Template"
+msgid_plural "Delete Templates"
+msgstr[0] "Vorlage löschen"
+msgstr[1] "Vorlagen löschen"
+
+msgid "Deleted Cluster"
+msgid_plural "Deleted Clusters"
+msgstr[0] "Gelöschte Cluster"
+msgstr[1] "Gelöschte Cluster"
+
+msgid "Deleted Data Source"
+msgid_plural "Deleted Data Sources"
+msgstr[0] "Gelöschte Datenquelle"
+msgstr[1] "Gelöschte Datenquellen"
+
+msgid "Deleted Job"
+msgid_plural "Deleted Jobs"
+msgstr[0] "Gelöschte Aufgabe"
+msgstr[1] "Gelöschte Aufgaben"
+
+msgid "Deleted Job Binary"
+msgid_plural "Deleted Job Binaries"
+msgstr[0] "Aufgaben-Binärprogramm gelöscht"
+msgstr[1] "Aufgaben-Binärprogramme gelöscht"
+
+msgid "Deleted Job Template"
+msgid_plural "Deleted Jobs Templates"
+msgstr[0] "Gelöschte Aufgabenvorlage"
+msgstr[1] "Gelöschte Aufgabenvorlagen"
+
+msgid "Deleted Template"
+msgid_plural "Deleted Templates"
+msgstr[0] "Gelöschte Vorlage"
+msgstr[1] "Gelöschte Vorlagen"
+
+msgid "Description"
+msgstr "Beschreibung"
+
+msgid "Details"
+msgstr "Details"
+
+msgid "Done"
+msgstr "Fertig"
+
+msgctxt "Current status of a Job"
+msgid "Done with Error"
+msgstr "Mit Fehler erledigt"
+
+msgid "Download Job Binary"
+msgstr "Aufgaben-Binärprogramm herunterladen"
+
+msgid "Download job binary"
+msgstr "Aufgaben-Binärprogramm herunterladen"
+
+msgid "Duration"
+msgstr "Dauer"
+
+msgid "Edit Cluster Template"
+msgstr "Clustervorlage bearbeiten"
+
+msgid "Edit Data Source"
+msgstr "Datenquelle bearbeiten"
+
+msgid "Edit Image Tags"
+msgstr "Abbildschlagwörter bearbeiten"
+
+msgid "Edit Job Binary"
+msgstr "Aufgaben-Binärprogramm bearbeiten"
+
+msgid "Edit Node Group Template"
+msgstr "Knoten-Gruppenvorlage bearbeiten"
+
+msgid "Edit Tags"
+msgstr "Schlagwörter bearbeiten"
+
+msgid "Edit Template"
+msgstr "Vorlage editieren"
+
+msgid "Enable Swift Paths"
+msgstr "Swift-Pfade aktivieren"
+
+msgctxt "End time"
+msgid "Ended"
+msgstr "Beendet"
+
+msgid "Enter any custom configuration required for your job's execution."
+msgstr ""
+"Geben Sie die benutzerspezifische Konfiguration an, die für die "
+"Aufgabenausführung erforderlich ist."
+
+msgid "Enter the URL for the file"
+msgstr "Geben Sie die URL für die Datei an"
+
+msgid "Enter the username and password required to access that file"
+msgstr ""
+"Geben Sie Benutzername und Passwort an, die für den Zugriff auf die Datei "
+"benötigt werden"
+
+msgid "Ephemeral drive"
+msgstr "Flüchtiges Laufwerk"
+
+msgid "Error Details"
+msgstr "Fehlerdetails"
+
+msgid "Event time"
+msgstr "Ereigniszeit"
+
+msgid "Failed"
+msgstr "Fehlgeschlagen"
+
+msgctxt "Current status of a Job"
+msgid "Failed"
+msgstr "Fehlgeschlagen"
+
+msgid "Failed to fetch internal binary list"
+msgstr "Liste der internen Binärprogramme konnte nicht abgerufen werden."
+
+msgid "Failed to get list of internal binaries."
+msgstr "Liste der internen Binärprogramme konnte nicht abgerufen werden."
+
+msgid "Failed to get list of shares"
+msgstr "Fehler beim Abruf der Freigabenliste"
+
+msgid "Failed to update image."
+msgstr "Aktualisierung des Abbilds fehlgeschlagen."
+
+msgid "Filter"
+msgstr "Filter"
+
+msgid ""
+"First, select which type of job that\n"
+"                            you want to run.  This choice will determine "
+"which\n"
+"                            other steps are required\n"
+"                        "
+msgstr ""
+"Wählen Sie zuerst den Aufgabentyp, \n"
+"den Sie starten wollen. Diese Auswahl bestimmt, \n"
+"welche weiteren Schritte notwendig sind.\n"
+" "
+
+msgid "Flavor"
+msgstr "Variante"
+
+msgid "Flavor is not specified"
+msgstr "Variante nicht angegeben"
+
+msgid "Floating IP Pool"
+msgstr "Floating IP Pool"
+
+msgid ""
+"For Data Processing internal job binaries, you may choose from the following:"
+msgstr ""
+"Sie können aus den folgenden internen Binärprogrammen für die "
+"Datenverarbeitung auswählen:"
+
+msgid ""
+"For Data Sources on a Manila share, choose the share and enter the path "
+"relative to the share (example: /outputdir/myinputfile.txt)"
+msgstr ""
+"Für Datenquellen an Manila Freigaben wählen Sie die Freigabe und geben den "
+"Pfad relativ zur Freigabe ein (Beispiel: /outputdir/myinputfile.txt)"
+
+msgid ""
+"For MapReduce or Java Action jobs, \"mains\" are not applicable.  You are "
+"required to add one\n"
+"  or more \"libs\" for these jobs."
+msgstr ""
+"Für MapReduce oder Java Action Aufgaben sind \"Mains\" nicht zulässig. Es "
+"müssen eine \n"
+"oder mehrere \"libs\" zu diesen Aufgaben hinzugefügt werden."
+
+msgid "For Object Store job binaries, you must:"
+msgstr "Für Objektspeicher Aufgaben-Binärprogramme müssen Sie:"
+
+msgid ""
+"For Shell Action jobs, any required files beyond the main script may be "
+"added as \"libraries\"."
+msgstr ""
+"Für Shell-Aktion Aufgaben sind alle Dateien hinter dem Hauptskript "
+"\"Bibliotheken\"."
+
+msgid ""
+"For Spark and Shell jobs, only a main is required, \"libs\" are optional."
+msgstr ""
+"Für Spark und Shell Aufgaben ist nur der Hauptteil erforderlich, \"libs\" "
+"sind optional."
+
+msgid "General Info"
+msgstr "Allgemeine Informationen"
+
+msgid "Guided Cluster Creation"
+msgstr "Clustererstellungsassistent"
+
+msgid "Guided Job Execution"
+msgstr "Aufgabenausführungsassistent"
+
+msgid "HDFS placement"
+msgstr "HDFS Platzierung"
+
+msgid "Health"
+msgstr "Gesundheitszustand"
+
+msgid "Hide full configuration"
+msgstr "Verstecke gesamte Konfiguration"
+
+msgid "Hive"
+msgstr "Hive"
+
+msgid "ID"
+msgstr "ID"
+
+#, python-format
+msgid ""
+"If selected, %s will be protected from modifications until this will be "
+"unselected"
+msgstr ""
+"Angabe, ob %s vor Veränderungen geschützt werden soll, solange es nicht "
+"ausgewählt ist."
+
+#, python-format
+msgid "If selected, %s will be shared across the tenants"
+msgstr "Angabe, ob %s von allen Nutzern gemeinsam verwendet werden soll."
+
+msgid ""
+"If selected, instances of a cluster will be automatically configured during "
+"creation. Otherwise you should manually specify configuration values"
+msgstr ""
+"Wenn ausgewählt, werden Instanzen eines Clusters während des Erstellens "
+"automatisch konfiguriert. Sonst sollte manuelle Konfiguration gewählt werden."
+
+msgid ""
+"If selected, instances of a node group will be automatically configured "
+"during cluster creation. Otherwise you should manually specify configuration "
+"values."
+msgstr ""
+"Wenn ausgewählt, werden Instanzen einer Node-Gruppe während der Cluster-"
+"Konfiguration automatisch konfiguriert. Andernfalls sollte manuelle "
+"Konfiguration gewählt werden."
+
+msgid "Image"
+msgstr "Abbild"
+
+msgid "Image Registry"
+msgstr "Abbild-Registrierung"
+
+msgid ""
+"Image Registry is used to provide additional information about images for "
+"Data Processing."
+msgstr ""
+"Die Abbild-Registrierung wird benutzt, um zusätzliche Informationen über "
+"Abbilder für die Datenverarbeitung bereitzustellen."
+
+msgid "Image Registry tool:"
+msgstr "Abbild Registrierungstool:"
+
+msgid "In progress"
+msgstr "In Bearbeitung"
+
+msgid "Info"
+msgstr "Info"
+
+msgid "Input"
+msgstr "Eingabe"
+
+msgid "Input Data Source"
+msgstr "Eingabe Datenquelle"
+
+msgid "Instance"
+msgstr "Instanz"
+
+msgid "Instance and attached volumes will be created on the same physical host"
+msgstr ""
+"Instanz und angehängte Datenträger werden auf demselben physikalischen Host "
+"erstellt."
+
+msgid "Instances"
+msgstr "Instanzen"
+
+msgid "Instances Count"
+msgstr "Instanz Anzahl"
+
+msgid "Interface Arguments"
+msgstr "Schnittstellenargumente"
+
+msgid "Internal Binary"
+msgstr "Internes Binärprogramm"
+
+msgid "Internal IP"
+msgstr "Interne IP"
+
+msgid "Internal binary"
+msgstr "Intern binar"
+
+msgid "Java"
+msgstr "Java"
+
+msgid "Java Action"
+msgstr "Java Action"
+
+msgid "Java Opts"
+msgstr "Java Opts"
+
+msgid "Job"
+msgstr "Aufgabe"
+
+msgid "Job Binaries"
+msgstr "Aufgaben-Binärprogramme"
+
+msgid "Job Configuration"
+msgstr "Aufgaben Konfiguration"
+
+msgid "Job Execution ID"
+msgstr "Aufgaben Ausführungs-ID"
+
+msgid "Job Guide"
+msgstr "Aufgabenassistent"
+
+msgid "Job Template"
+msgstr "Aufgabenvorlage"
+
+msgid "Job Templates"
+msgstr "Aufgabenvorlagen"
+
+msgid "Job Type"
+msgstr "Aufgabentyp"
+
+msgid "Job args"
+msgstr "Aufgaben Argumente"
+
+msgid "Job configs"
+msgstr "Aufgaben Konfigurationen"
+
+msgid "Job created"
+msgstr "Aufgabe erstellt"
+
+msgid "Job launched"
+msgstr "Aufgabe gestartet"
+
+msgid "Job params"
+msgstr "Aufgaben Parameter"
+
+msgid "Job template:"
+msgstr "Aufgabenvorlage:"
+
+msgid "Job type chosen"
+msgstr "Ausgewählter Aufgabentyp"
+
+msgid "Jobs"
+msgstr "Aufgaben"
+
+msgid "Keypair"
+msgstr "Schlüsselpaar"
+
+msgctxt "Current status of a Job"
+msgid "Killed"
+msgstr "Beendet"
+
+msgid "Last Updated"
+msgstr "Letzte Aktualisierung"
+
+msgid "Launch"
+msgstr "Start"
+
+msgid "Launch Cluster"
+msgstr "Cluster starten"
+
+msgid "Launch Job"
+msgid_plural "Launch Jobs"
+msgstr[0] "Aufgabe starten"
+msgstr[1] "Aufgaben starten"
+
+msgid "Launch On Existing Cluster"
+msgstr "Auf existierendem Cluster starten"
+
+msgid "Launch On New Cluster"
+msgstr "Auf neuem Cluster starten"
+
+msgid "Launch a Cluster"
+msgstr "Einen Cluster starten"
+
+msgid "Launch instances in these security groups."
+msgstr "Instanzen innerhalb dieser Sicherheitsgruppen starten."
+
+msgid "Launch instances in this availability zone."
+msgstr "Instanzen in dieser Verfügbarkeitszone starten"
+
+msgid "Launch job"
+msgstr "Aufgabe starten"
+
+msgid "Launch the given job template on a cluster."
+msgstr "Starte die angegebene Aufgabenvorlage in einem Cluster."
+
+msgid ""
+"Launch your job.  When\n"
+"                        launching, you may need to choose your input and\n"
+"                        output data sources.  This is where you would also\n"
+"                        add any special configuration values, parameters,\n"
+"                        or arguments that you need to pass along\n"
+"                        to your job.\n"
+"                        "
+msgstr ""
+"Starten Sie Ihre Aufgabe. \n"
+"Während des Starts müssen Sie ggf. Datenquellen für \n"
+"Eingaben und Ausgaben auswählen. \n"
+"Hierbei würden Sie auch spezielle Konfigurationswerte, \n"
+"Parameter oder Argumente angeben, \n"
+"um Sie der Aufgabe zu übergeben.\n"
+" "
+
+#, python-format
+msgid "Launched Cluster %s"
+msgstr "Cluster %s gestartet"
+
+msgid "Launched Job"
+msgid_plural "Launched Jobs"
+msgstr[0] "Gestartete Aufgabe"
+msgstr[1] "Gestartete Aufgaben"
+
+msgid "Libs"
+msgstr "Libs"
+
+msgid "Location"
+msgstr "Ort"
+
+msgid "Main Class"
+msgstr "Main Class"
+
+msgid "Mains"
+msgstr "Mains"
+
+msgid "Management IP"
+msgstr "Management IP"
+
+msgid "Manila share"
+msgstr "Manila-Freigabe"
+
+msgid "MapReduce"
+msgstr "MapReduce"
+
+msgid "Mapper"
+msgstr "Mapper"
+
+msgid "Mapping Type"
+msgstr "Abbildungstyp"
+
+msgid "Master Node Group Template:"
+msgstr "Master Knoten-Gruppenvorlage:"
+
+msgid ""
+"Modify the configuration so that swift URLs can be dereferenced through HDFS "
+"at runtime."
+msgstr ""
+"Ändern Sie die Konfiguration, so dass die Swift URL während der Laufzeit "
+"durch HDFS zurückverfolgt werden kann."
+
+msgid "Name"
+msgstr "Name"
+
+#, python-format
+msgid "Name: %(node_group_name)s"
+msgstr "Name: %(node_group_name)s"
+
+msgid "Named Parameter"
+msgstr "Bezeichneter Parameter"
+
+msgid "Neutron Management Network"
+msgstr "Neutron Verwaltungsnetzwerk"
+
+msgid "Never"
+msgstr "Niemals"
+
+msgid "Next"
+msgstr "Weiter"
+
+msgid ""
+"Next, you need to define the different\n"
+"                        types of machines in your cluster.  This is done by\n"
+"                        defining a Node Group Template for each type of\n"
+"                        machine.  A very common case is where you\n"
+"                        need to have one or more machines running a \"master"
+"\"\n"
+"                        set of processes while another set of machines need\n"
+"                        to be running the \"worker\" processes.  Here,\n"
+"                        you will define the Node Group Template for your\n"
+"                        \"master\" node(s).\n"
+"                     "
+msgstr ""
+"Als nächstes müssen Sie die verschiedenen \n"
+"Typen von Maschinen in Ihrem Cluster definieren. Dies wird durch \n"
+"die Definition einer Knoten-Gruppenvorlage für jeden Typ von \n"
+"Maschine erreicht. Ein üblicher Fall ist, eine oder mehrere \n"
+"Maschinen zu haben, \n"
+"auf denen ein Satz von \"Master\" Prozessen läuft, \n"
+"während auf anderen Maschinen die \"Worker\" Prozesse laufen. Hier\n"
+"definieren Sie Knoten-Gruppenvorlage für Ihre Master-Knoten.\n"
+" \n"
+" "
+
+msgid "No Cluster Template Created"
+msgstr "Keine Clustervorlage erstellt"
+
+msgid "No Images Available"
+msgstr "Keine Abbilder verfügbar"
+
+msgid "No Master Node Group Template Created"
+msgstr "Keine Master Knoten-Gruppenvorlage erstellt"
+
+msgid "No Templates Available"
+msgstr "Keine Vorlagen verfügbar"
+
+msgid "No Worker Node Group Template Created"
+msgstr "Keine Worker Knoten-Gruppenvorlage erstellt"
+
+msgid "No availability zone specified"
+msgstr "Keine Verfügbarkeitszone angegeben"
+
+msgid "No configurations"
+msgstr "Keine Konfigurationen"
+
+msgid "No description"
+msgstr "Keine Beschreibung"
+
+msgid "No image specified"
+msgstr "Kein Abbild angegeben"
+
+msgid "No images available."
+msgstr "Keine Abbilder verfügbar."
+
+msgid "No info available"
+msgstr "Keine Info verfügbar"
+
+msgid "No job template created"
+msgstr "Keine Aufgabenvorlage erstellt"
+
+msgid "No keypair"
+msgstr "Kein Schlüsselpaar"
+
+msgid "No plugin chosen"
+msgstr "Kein Plugin ausgewählt"
+
+msgid "No type chosen"
+msgstr "Kein Typ ausgewählt"
+
+msgid "No volume type"
+msgstr "Kein Datenträgertyp"
+
+msgid "Node Group"
+msgstr "Knoten-Gruppe"
+
+#, python-format
+msgid "Node Group Name: %(node_group_name)s"
+msgstr "Knoten-Gruppenname: %(node_group_name)s"
+
+msgid "Node Group Template"
+msgstr "Knoten-Gruppenvorlage"
+
+#, python-format
+msgid "Node Group Template %s updated"
+msgstr "Knoten-Gruppenvorlage %s aktualisiert"
+
+#, python-format
+msgid "Node Group Template copy %s created"
+msgstr "Kopie der Knoten-Gruppenvorlage %s erstellt"
+
+msgid "Node Group Templates"
+msgstr "Knoten-Gruppenvorlagen"
+
+#, python-format
+msgid "Node Group: %(node_group_name)s"
+msgstr "Knoten-Gruppe:%(node_group_name)s"
+
+msgid "Node Groups"
+msgstr "Knotengruppen"
+
+msgid "Node Groups Configuration Overview"
+msgstr "Konfigurationsübersicht Knoten-Gruppen"
+
+msgid "Node Processes"
+msgstr "Knotenprozesse"
+
+msgid "Node group cluster"
+msgstr "Knotengruppencluster"
+
+msgid "Node group configurations are not specified"
+msgstr "Konfigurationen der KNoten-Gruppen nicht angegeben"
+
+msgid "Node processes are not specified"
+msgstr "Knoten-Prozesse nicht angegeben"
+
+msgid "Nodes Count"
+msgstr "Knotenanzahl"
+
+msgid "None"
+msgstr "Keine"
+
+msgid "Not available"
+msgstr "Nicht verfügbar"
+
+msgid ""
+"Now you need to set the layout of your\n"
+"                        cluster.  By\n"
+"                        creating a Cluster Template, you will be choosing "
+"the\n"
+"                        number of instances of each Node Group Template "
+"that\n"
+"                        will appear in your cluster.  Additionally,\n"
+"                        you will have a chance to set any cluster-specific\n"
+"                        configuration items in the additional tabs on the\n"
+"                        create Cluster Template form."
+msgstr ""
+"Sie müssen jetzt das Layout Ihres Clusters festlegen. \n"
+"Durch die Erstellung einer Clustervorlage wählen Sie \n"
+"die Anzahl an Instanzen für jede Knoten-Gruppenvorlage, \n"
+"die im Cluster erscheinen. \n"
+"Zusätzlich haben Sie die Möglichkeit, clusterspezifische \n"
+"Konfigurationseinstellungen in den zusätzlichen Reitern \n"
+"der Clustervorlagenmaske vorzunehmen.\n"
+" "
+
+msgid "Number"
+msgstr "Zahl"
+
+msgid "Number of Nodes"
+msgstr "Anzahl der Knoten"
+
+msgid "Number of clusters to launch."
+msgstr "Anzahl der zu startenden Cluster."
+
+msgid "Oozie Job ID"
+msgstr "Oozie Aufgaben ID"
+
+msgid "OpenStack Flavor"
+msgstr "OpenStack Variante"
+
+msgid "Output"
+msgstr "Ausgabe"
+
+msgid "Output Data Source"
+msgstr "Ausgabe Datenquelle"
+
+msgid "Parameters"
+msgstr "Parameter"
+
+msgid "Password"
+msgstr "Passwort"
+
+msgid "Path"
+msgstr "Pfad"
+
+msgid "Path on share"
+msgstr "Freigabepfad"
+
+msgid "Persist cluster after job exit"
+msgstr "Cluster nach Beendigung der Aufgabe bestehen lassen."
+
+msgid "Pig"
+msgstr "Pig"
+
+msgid "Plugin"
+msgstr "Plugin"
+
+msgid "Plugin Name"
+msgstr "Pluginname"
+
+msgid "Plugin name"
+msgstr "Plugin Name"
+
+msgid "Plugin:"
+msgstr "Plugin:"
+
+msgid "Plugins"
+msgstr "Plugins"
+
+msgid "Positional Argument"
+msgstr "Stellungsargument"
+
+msgid "Progress"
+msgstr "Fortschritt"
+
+msgid "Project ID"
+msgstr "Projekt-ID"
+
+msgid "Project Id"
+msgstr "Projekt-ID"
+
+msgid "Protected"
+msgstr "Geschützt"
+
+msgid "Proxy Gateway"
+msgstr "Proxy Gateway"
+
+msgid "Public"
+msgstr "Öffentlich"
+
+msgid "Read only"
+msgstr "Nur Lesen"
+
+msgid "Read/Write"
+msgstr "Lesen/Schreiben"
+
+msgid "Reducer"
+msgstr "Reducer"
+
+msgid "Register Image"
+msgstr "Abbild registrieren"
+
+msgid ""
+"Register tags required for the Plugin with specified Data Processing Version"
+msgstr ""
+"Registrieren von Schlagwörtern für das Plugin mit der angegebenen "
+"Datenverarbeitungsversion."
+
+msgid "Relaunch On Existing Cluster"
+msgstr "Auf existierendem Cluster neu starten"
+
+msgid "Relaunch On New Cluster"
+msgstr "Auf neuem Cluster neu starten"
+
+msgid "Remove"
+msgstr "Entfernen"
+
+msgid ""
+"Repeat the Node Group Template\n"
+"                        creation process, but this time you are creating\n"
+"                        your \"worker\" Node Group Template."
+msgstr ""
+"Wiederholen des Knoten-Gruppenvorlagen \n"
+"Erstellungsprozess, aber diesmal für die \n"
+"\"Worker\" Knoten-Gruppenvorlagen."
+
+msgid "Required"
+msgstr "Erforderlich"
+
+msgid "Reset Cluster Creation Guide"
+msgstr "Clustererstellungsassistent zurücksetzen"
+
+msgid "Reset Cluster Guide"
+msgstr "Clusterassistent zurücksetzen"
+
+msgid "Reset Job Execution Guide"
+msgstr "Aufgabenausführungsassistent zurücksetzen"
+
+msgid "Return Code"
+msgstr "Rückgabecode"
+
+msgid "Run HBase EDP Jobs with common HBase library on HDFS"
+msgstr ""
+"HBase EDP Aufgaben mit der allgemeinen HBase Bibliothek auf HDFS laufen "
+"lassen"
+
+msgid ""
+"Sahara will use instances of this node group to access other cluster "
+"instances."
+msgstr ""
+"Sahara wird Instanzen dieser Knoten-Gruppe verwenden, um auf andere "
+"Clusterinstanzen zuzugreifen."
+
+msgid "Scale"
+msgstr "Skalierung"
+
+msgid "Scale Cluster"
+msgstr "Cluster skalieren"
+
+msgid "Scale cluster operation failed"
+msgstr "Cluster-Skalierungsoperation fehlgeschlagen"
+
+msgid "Scaled cluster successfully started."
+msgstr "Skalierter Cluster erfolgreich gestartet."
+
+msgid "Script name"
+msgstr "Skriptname"
+
+msgid "Script text"
+msgstr "Skripttext"
+
+msgid "Security"
+msgstr "Sicherheit"
+
+msgid "Security Groups"
+msgstr "Sicherheitsgruppen"
+
+msgid "Select"
+msgstr "Auswählen"
+
+msgid "Select Image"
+msgstr "Abbild auswählen"
+
+msgid "Select Node Group Processes"
+msgstr "Wähle Knotengruppenprozess"
+
+msgid "Select Shares"
+msgstr "Freigaben auswählen"
+
+msgid "Select a Node Group Template to add:"
+msgstr "Knoten-Gruppenvorlage zum Hinzufügen wählen:"
+
+msgid "Select a Value Type for your next argument:"
+msgstr "Wählen Sie einen Werttetyp für Ihr nächstes Argument:"
+
+msgid "Select a plugin and version for a new Cluster template."
+msgstr "Wählen Sie ein Plugin und eine Version für eine neue Clustervorlage."
+
+msgid "Select a plugin and version for a new Cluster."
+msgstr "Wählen Sie ein Plugin und eine Version für einen neuen Cluster."
+
+msgid "Select a plugin and version for the new Node Group template."
+msgstr ""
+"Wählen Sie ein Plugin und eine Version für die neue Knoten-Gruppenvorlage."
+
+msgid ""
+"Select an existing node group template.\n"
+"    "
+msgstr ""
+"Wählen Sie eine bestehende Knoten-Gruppenvorlage.\n"
+" "
+
+msgid "Select node processes for the node group"
+msgstr "Wähle Knotenprozess für die Knotengruppe"
+
+msgid "Select plugin and hadoop version"
+msgstr "Wählen Sie Plugin und Hadoop Version"
+
+msgid "Select plugin and hadoop version for cluster"
+msgstr "Wählen Sie die Plugin und Hadoop Version für den Cluster"
+
+msgid "Select plugin and hadoop version for cluster template"
+msgstr "Wählen Sie die Plugin und Hadoop Version für die Clustervorlage."
+
+msgid "Select property name"
+msgstr "Wähle Eigenschaft Name"
+
+msgid "Select the manila shares for this cluster"
+msgstr "Manila-Freigaben für dieses Cluster auswählen"
+
+msgid "Select the manila shares for this node group"
+msgstr "Manila-Freigaben für diese Knoten-Gruppe auswählen"
+
+msgid "Select the storage type for your job binary."
+msgstr "Wählen Sie den Speichertyp für Ihr Aufgaben-Binärprogramm."
+
+msgid "Select the type of your Data Source."
+msgstr "Typ der Datenquelle auswählen."
+
+msgid "Select the type of your job:"
+msgstr "Wählen Sie den Typ Ihrer Aufgabe:"
+
+msgid "Select type"
+msgstr "Typ auswählen"
+
+msgid ""
+"Select which plugin and version that you\n"
+"    want to use to create your cluster."
+msgstr ""
+"Wählen Sie Plugin und Version womit Sie\n"
+"    das Cluster erstellen möchten."
+
+msgid ""
+"Select which type of job that you want to run.\n"
+"      This choice will dictate which steps are required to successfully\n"
+"      execute your job.\n"
+"    "
+msgstr ""
+"Wählen Sie den Aufgabentyp, den Sie ausführen wollen. \n"
+"Diese Auswahl legt fest, welche Schritte erforderlich sind, \n"
+"um die Aufgabe erfolgreich auszuführen.\n"
+" "
+
+msgid "Service Configurations"
+msgstr "Dienstkonfigurationen"
+
+msgid "Share"
+msgstr "Freigabe"
+
+msgid "Shares"
+msgstr "Freigaben"
+
+msgid "Shell"
+msgstr "Shell"
+
+msgid "Shell Action"
+msgstr "Shell-Aktion"
+
+msgid "Show full configuration"
+msgstr "Zeige gesamte Konfiguration"
+
+msgid "Source password"
+msgstr "Quelle Passwort"
+
+msgid "Source username"
+msgstr "Quelle Benutzername"
+
+msgid "Spark"
+msgstr "Spark"
+
+msgid ""
+"Specified User Name will be used by Data Processing to apply configs and "
+"manage processes on instances."
+msgstr ""
+"Der angegebene Benutzername wird von der Datenverarbeitung verwendet, um "
+"Konfigurationen anzuwenden sowie Prozesse und Instanzen zu kontrollieren."
+
+msgid "Start Verification"
+msgid_plural "Start Verifications"
+msgstr[0] "Verifizierung starten"
+msgstr[1] "Verifizierungen starten"
+
+msgctxt "Start time"
+msgid "Started"
+msgstr "Gestartet"
+
+msgid "Started Verification"
+msgid_plural "Started Verifications"
+msgstr[0] "Verifizierung gestartet"
+msgstr[1] "Verifizierungen gestartet"
+
+msgid "Started at"
+msgstr "Gestartet um"
+
+msgid "Status"
+msgstr "Status"
+
+msgid "Status description"
+msgstr "Status-Beschreibung"
+
+msgid "Step Description"
+msgstr "Schrittbeschreibung"
+
+msgid "Storage location"
+msgstr "Storage Lokation"
+
+msgid "Storage type"
+msgstr "Speichertyp"
+
+msgid "Storm"
+msgstr "Storm"
+
+msgid "Streaming MapReduce"
+msgstr "Streaming MapReduce"
+
+msgid "String"
+msgstr "Zeichenkette"
+
+msgid ""
+"Substitute data source objects for URLs of the form datasource://name or "
+"uuid."
+msgstr ""
+"Ersetzen Sie Datenquellenobjekte für URLs in der Form Datenquelle://name "
+"oder uuid."
+
+msgctxt "Current status of a Job"
+msgid "Succeeded"
+msgstr "erfolgreich ausgeführt"
+
+msgid "Successfully updated image."
+msgstr "Abbild erfolgreich aktualisiert."
+
+msgid "Supported Versions"
+msgstr "Unterstütze Versionen"
+
+msgid "Swift"
+msgstr "Swift"
+
+msgid "Tags"
+msgstr "Schlagwörter"
+
+msgid ""
+"Tags are used for filtering images suitable for each plugin and each Data "
+"Processing version.\n"
+"        To add required tags, select a plugin and a Data Processing version "
+"and click &quot;Add plugin tags&quot; button."
+msgstr ""
+"Schlagwörter werden verwendet, um passende Abbilder für jedes Plugin und "
+"jede Datenverarbeitungsversion herauszufiltern.\n"
+"Um notwendige Schlagwörter hinzuzufügen, wählen Sie ein Plugin und eine "
+"Datenverarbeitungsversion und klicken Sie auf die &quot;Schlagwörter für "
+"Plugins hinzufügen&quot; Schaltfläche."
+
+msgid "Template"
+msgstr "Vorlage"
+
+msgid "Template Name"
+msgstr "Vorlage Name"
+
+msgid "Template not specified"
+msgstr "Vorlage nicht angegeben"
+
+msgid ""
+"The Cluster Template object may specify a list of processes in anti-affinity "
+"group.\n"
+"    That means these processes may not be launched more than once on a "
+"single host."
+msgstr ""
+"Das Clustervorlagenobjekt kann eine Liste von Prozessen in Anti-"
+"Affinitätsgruppen spezifizieren.\n"
+"Das bedeutet, dass diese Prozesse nicht mehr als ein Mal pro einzelnem Host "
+"gestartet werden können."
+
+msgid ""
+"The Cluster Template object should specify Node Group Templates that will be "
+"used to build a Cluster.\n"
+"    You can add Node Groups using Node Group Templates on a &quot;Node "
+"Groups&quot; tab."
+msgstr ""
+"Das Clustervorlagenobjekt sollte Knoten-Gruppenvorlagen enthalten, die zum "
+"Bau des Clusters verwendet werden. \n"
+"Sie können Knoten-Gruppenvorlagen unter dem Reiter &quot;Knoten-"
+"Gruppen&quot; hinzufügen."
+
+msgid ""
+"The Cluster object should specify OpenStack Image to boot instances for "
+"Cluster."
+msgstr ""
+"Das Clusterobjekt sollte das OpenStack Abbild angeben, welches zum Starten "
+"des Clusters verwendet wird."
+
+msgid ""
+"The Node Group Template object specifies the processes\n"
+"        that will be launched on each instance. Check one or more "
+"processes.\n"
+"        When processes are selected, you may set <b>node</b> scoped\n"
+"        configurations on corresponding tabs."
+msgstr ""
+"Das Knoten-Gruppenvorlagenobjekt spezifiziert die in jeder Instanz zu "
+"startenden\n"
+"Prozesse. Wählen Sie einen oder mehrere Prozesse. Wenn Prozesse ausgewählt "
+"sind,\n"
+"können Sie die <b>Knoten</b> bezogenen Konfigurationen unter den "
+"entsprechenden\n"
+"Reitern festlegen."
+
+msgid ""
+"The first step is to determine which type of\n"
+"                    cluster you want to run.  You may have several choices\n"
+"                    available depending on the configuration of your "
+"system.\n"
+"                    Click on \"choose plugin\" to bring up the list of data\n"
+"                    processing plugins.  There you will be able to choose "
+"the\n"
+"                    data processing plugin along with the version number.\n"
+"                    Choosing this up front will allow the rest of the "
+"cluster\n"
+"                    creation steps to focus only on options that are "
+"pertinent\n"
+"                    to your desired cluster type."
+msgstr ""
+"Im ersten Schritt bestimmen Sie, welchen Clustertyp \n"
+"Sie laufen lassen wollen. Abhängig von der Systemkonfiguration \n"
+"haben Sie verschiedene zur Auswahl. \n"
+"Klicken Sie \"wähle Plugins\", um eine Liste von \n"
+"Datenverarbeitungs-Plugins anzuzeigen. \n"
+"Dort wählen Sie das Datenverarbeitungs-Plugin und \n"
+"dessen Versionsnummer. \n"
+"Wenn Sie dies vorab auswählen, erhalten Sie nur Optionen, \n"
+"die für den gewünschten Clustertyp möglich sind."
+
+msgid "The value of shares must be a list of values"
+msgstr "Der Wert der Freigaben muss in einer Liste von Werten sein"
+
+msgid "This Cluster Template will be created for:"
+msgstr "Diese Clustervorlage wird erzeugt für:"
+
+msgid "This Cluster will be started with:"
+msgstr "Der Cluster wird gestartet mit:"
+
+msgid "This Node Group Template will be created for:"
+msgstr "Diese  Knoten-Gruppenvorlage wird erzeugt für:"
+
+msgid "Title"
+msgstr "Titel"
+
+msgid "Type"
+msgstr "Typ"
+
+msgid "URL"
+msgstr "URL"
+
+msgid "Unable to create job binary"
+msgstr "Aufgaben-Binärprogramm kann nicht erzeugt werden"
+
+msgid "Unable to create new cluster for job."
+msgstr "Für die Aufgabe kann kein neuer Cluster erzeugt werden."
+
+msgid "Unable to create the cluster"
+msgstr "Cluster kann nicht erstellt werden."
+
+#, python-format
+msgid "Unable to fetch Base Image with id: %s."
+msgstr "Basis-Abbild mit der ID %s kann nicht abgerufen werden."
+
+msgid "Unable to fetch available images."
+msgstr "Verfügbare Abbilder können nicht abgerufen werden."
+
+msgid "Unable to fetch cluster list"
+msgstr "Clusterliste kann nicht abgerufen werden."
+
+msgid "Unable to fetch cluster template list"
+msgstr "Abrufen der Liste der Clustervorlagen nicht möglich."
+
+msgid "Unable to fetch cluster template."
+msgstr "Abruf der Clustervorlage nicht möglich."
+
+msgid "Unable to fetch cluster to scale"
+msgstr "Abruf der zu skalierenden Cluster fehlgeschlagen"
+
+msgid "Unable to fetch cluster to scale."
+msgstr "Abruf der zu skalierenden Cluster fehlgeschlagen."
+
+msgid "Unable to fetch cluster."
+msgstr "Cluster kann nicht abgerufen werden."
+
+msgid "Unable to fetch clusters."
+msgstr "Cluster können nicht abgerufen werden."
+
+msgid "Unable to fetch data source list"
+msgstr "Liste der Plugins kann nicht abgerufen werden."
+
+msgid "Unable to fetch data sources."
+msgstr "Datenquellen können nicht abgerufen werden."
+
+msgid "Unable to fetch flavor for template."
+msgstr "Die Variante für die Vorlage kann nicht abgerufen werden."
+
+msgid "Unable to fetch floating ip pools."
+msgstr "Floating-IP-Pools können nicht abgerufen werden."
+
+msgid "Unable to fetch image choices."
+msgstr "Abrufen der Abbild Auswahlmöglichkeiten fehlgeschlagen."
+
+msgid "Unable to fetch instance details."
+msgstr "Instanzdetails können nicht abgerufen werden."
+
+msgid "Unable to fetch job binary list"
+msgstr "Liste der Aufgaben-Binärprogramme kann nicht abgerufen werden."
+
+msgid "Unable to fetch job binary list."
+msgstr "Liste der Aufgaben-Binärprogramme kann nicht abgerufen werden."
+
+#, python-format
+msgid "Unable to fetch job binary: %(exc)s"
+msgstr "Aufgaben-Binärprogramm kann nicht abgerufen werden: %(exc)s"
+
+msgid "Unable to fetch job list"
+msgstr "Liste der Aufgabenvorlagen kann nicht abgerufen werden."
+
+msgid "Unable to fetch job template list"
+msgstr "Liste der Aufgabenvorlagen kann nicht abgerufen werden."
+
+msgid "Unable to fetch jobs."
+msgstr "Aufgaben können nicht abgerufen werden."
+
+msgid "Unable to fetch keypair choices."
+msgstr "Auswahlmöglichkeiten der Schlüsselpaare können nicht abgerufen werden."
+
+msgid "Unable to fetch node group details."
+msgstr "Knotengruppendetails können nicht abgerufen werden."
+
+msgid "Unable to fetch node group template list"
+msgstr "Liste der Knoten-Gruppenvorlagen kann nicht abgerufen werden"
+
+msgid "Unable to fetch node group template list."
+msgstr "Liste der Koten-Gruppenvorlagen kann nicht abgerufen werden."
+
+msgid "Unable to fetch plugin details."
+msgstr "Plugindetails können nicht abgerufen werden."
+
+msgid "Unable to fetch plugin list"
+msgstr "Liste der Plugins kann nicht abgerufen werden."
+
+msgid "Unable to fetch plugin list."
+msgstr "Liste der Plugins kann nicht abgerufen werden."
+
+msgid "Unable to fetch template object."
+msgstr "Vorlagenobjekt kann nicht abgerufen werden."
+
+msgid "Unable to fetch template to copy."
+msgstr "Zu kopierende Vorlage kann nicht abgerufen werden."
+
+msgid "Unable to fetch template to edit."
+msgstr "Vorlage zum Bearbeiten kann nicht abgerufen werden."
+
+msgid "Unable to fetch the image details"
+msgstr "Abbilddetails können nicht abgerufen werden"
+
+msgid "Unable to generate process choices."
+msgstr "Die Prozessauswahl kann nicht erzeugt werden."
+
+msgid "Unable to get node group details."
+msgstr "Knotengruppendetails können nicht abgerufen werden."
+
+msgid "Unable to get security group list."
+msgstr "Liste der Sicherheitsgruppen kann nicht abgerufen werden."
+
+msgid "Unable to get volume type list."
+msgstr "Liste der Datenträgertypen kann nicht abgerufen werden."
+
+msgid "Unable to launch job."
+msgstr "Die Aufgabe kann nicht ausgeführt werden."
+
+msgid "Unable to populate anti-affinity processes."
+msgstr "Anti-Affinität Prozesse können nicht bestückt werden."
+
+msgid "Unable to process plugin tags"
+msgstr "Verarbeitung der Plugin Schlagwörter fehlgeschlagen"
+
+msgid "Unable to retrieve data processing plugins."
+msgstr "Datenverarbeitungsplugins können nicht abgerufen werden."
+
+#, python-format
+msgid "Unable to retrieve details for cluster \"%s\"."
+msgstr "Details für Cluster \"%s\" können nicht abgerufen werden."
+
+#, python-format
+msgid "Unable to retrieve details for cluster template \"%s\"."
+msgstr "Details zur Clustervorlage \"%s\" können nicht abgerufen werden."
+
+#, python-format
+msgid "Unable to retrieve details for data source \"%s\"."
+msgstr "Details zur Datenquelle \"%s\" können nicht abgerufen werden."
+
+#, python-format
+msgid "Unable to retrieve details for job \"%s\"."
+msgstr "Details zur Aufgabe \"%s\" können nicht abgerufen werden."
+
+#, python-format
+msgid "Unable to retrieve details for job binary \"%s\"."
+msgstr ""
+"Details des Aufgaben-Binärprogramms \"%s\" können nicht abgerufen werden."
+
+#, python-format
+msgid "Unable to retrieve details for job template \"%s\"."
+msgstr "Details zur Aufgabenvorlage \"%s\" können nicht abgerufen werden."
+
+#, python-format
+msgid "Unable to retrieve details for node group template \"%s\"."
+msgstr ""
+"Details zur Knoten-Gruppenvorlage \"%s\" können nicht abgerufen werden."
+
+msgid "Unable to retrieve image list"
+msgstr "Liste der Abbilder kann nicht abgerufen werden"
+
+#, python-format
+msgid "Unable to retrieve images with filter %s."
+msgstr "Abbilder können mit dem Filter %s nicht abgerufen werden."
+
+#, python-format
+msgid "Unable to retrieve job binary \"%s\"."
+msgstr "Aufgaben-Binärprogramm \"%s\" konnte nicht abgerufen werden."
+
+msgid "Unable to retrieve networks."
+msgstr "Netzwerke können nicht abgerufen werden."
+
+msgid "Unable to retrieve plugin."
+msgstr "Das Plugin kann nicht abgerufen werden."
+
+#, python-format
+msgid "Unable to retrieve security group %(group)s."
+msgstr "Sicherheitsgruppe %(group)s kann nicht abgerufen werden."
+
+msgid "Unable to set cluster type"
+msgstr "Clustertyp kann nicht gesetzt werden"
+
+msgid "Unable to set job type"
+msgstr "Aufgabentyp kann nicht gesetzt werden"
+
+msgid "Unable to set node group template"
+msgstr "Liste der Koten-Gruppenvorlagen kann nicht gesetzt werden."
+
+msgid "Unable to update job binary"
+msgstr "Job Binärprogramm konnte nicht aktualisiert werden"
+
+msgid "Unable to update row"
+msgstr "Die Reihe kann nicht aktualisiert werden"
+
+msgid "Unable to upload cluster template file"
+msgstr "Hochladen der Clustervorlage nicht möglich"
+
+msgid "Unable to upload job binary"
+msgstr "Aufgaben-Binärprogramm kann nicht hochgeladen werden"
+
+msgid "Unknown"
+msgstr "Unbekannt"
+
+msgid "Unnecessary tags may be removed by clicking a cross near tag's name."
+msgstr ""
+"Klicken Sie auf das Kreuz neben dem Namen, um unnötige Schlagwörter zu "
+"entfernen."
+
+msgid "Unregister Image"
+msgid_plural "Unregister Images"
+msgstr[0] "Abbild austragen"
+msgstr[1] "Abbilder austragen"
+
+msgid "Unregistered Image"
+msgid_plural "Unregistered Images"
+msgstr[0] "Ausgetragenes Abbild"
+msgstr[1] "Ausgetragene Abbilder"
+
+msgid "Update"
+msgstr "Aktualisieren"
+
+msgid "Update Cluster Shares"
+msgstr "Cluster-Freigaben aktualisieren"
+
+msgid "Update Shares"
+msgstr "Aktualisierte Freigaben"
+
+msgid "Updated"
+msgstr "Aktualisiert"
+
+msgid "Updated time"
+msgstr "Aktualisierte Zeit"
+
+msgid "Upload"
+msgstr "Hochladen"
+
+msgid "Upload File"
+msgstr "Datei hochladen"
+
+msgid "Upload Template"
+msgstr "Vorlage hochladen"
+
+msgid "Upload a new file"
+msgstr "Eine neue Datei hochladen"
+
+msgid "Url"
+msgstr "URL"
+
+msgid "Use Data Source Substitution for Names and UUIDs"
+msgstr "Benutzen Sie Datenquelle Ersetzung für Namen und UUIDs"
+
+msgid "Use HBase Common library"
+msgstr "Allgemeine HBase Bibliothek verwenden"
+
+msgid "Use anti-affinity groups for processes"
+msgstr "Anti-Affinität Gruppen für Prozesse nutzen"
+
+msgid "Use anti-affinity groups for: "
+msgstr "Benutze Anti-Affinity Gruppen für:"
+
+msgid "Use auto-configuration"
+msgstr "Benutze Auto-Konfiguration"
+
+msgid "User Name"
+msgstr "Benutzername"
+
+msgid "User has to choose a keypair to have access to clusters instances."
+msgstr ""
+"Der Benutzer muss ein Schlüsselpaar auswählen, um Zugriff auf die "
+"Clusterinstanzen zu haben."
+
+msgid "Username"
+msgstr "Benutzername"
+
+msgid "Value"
+msgstr "Wert"
+
+msgid "Value Type"
+msgstr "Werttyp"
+
+msgid "Version"
+msgstr "Version"
+
+msgid "Version:"
+msgstr "Version:"
+
+msgid "Volume local to instance"
+msgstr "Lokaler Datenträger an Instanz"
+
+msgid "Volumes Availability Zone"
+msgstr "Datenträger Verfügbarkeitszone"
+
+msgid "Volumes local to instance"
+msgstr "Lokaler Datenträger für Instanz"
+
+msgid "Volumes per node"
+msgstr "Datenträger pro Node"
+
+msgid "Volumes size"
+msgstr "Größe der Datenträger"
+
+msgid "Volumes size (GB)"
+msgstr "Größe der Datenträger (GB)"
+
+msgid "Volumes type"
+msgstr "Datenträgertyp"
+
+msgid "Which keypair to use for authentication."
+msgstr "Welches Schlüsselpaar soll für die Authentifizierung verwendet werden."
+
+msgid "Worker Node Group Template:"
+msgstr "Worker Knoten-Gruppenvorlage:"
+
+msgid ""
+"You are now ready to\n"
+"                        launch your cluster.  When you click on the link\n"
+"                        below, you will need to give your cluster a name,\n"
+"                        choose the Cluster Template to use and choose which\n"
+"                        image to use to build your instances.  After you\n"
+"                        click on \"Create\", your instances will begin to\n"
+"                        spawn.  Your cluster should be operational in a few\n"
+"                        minutes."
+msgstr ""
+"Sie sind jetzt bereit, \n"
+"den Cluster zu starten. Wenn Sie den unten stehenden Link \n"
+"anklicken, müssen Sie dem Cluster einen Namen zuweisen, \n"
+"eine Clustervorlage auswählen und das Abbild wählen, aus \n"
+"dem die Instanzen gebaut werden. Nachdem Sie \"Erstellen\" \n"
+"geklickt haben, startet die Verteilung Ihrer Instanzen. \n"
+"Ihr Cluster sollte innerhalb weniger Minuten verfügbar sein.\n"
+" "
+
+msgid "You may also add any custom tag."
+msgstr "Sie können auch benutzerspezifische Schlagwörter hinzufügen."
+
+msgid "You may also enter an optional description for your Data Source."
+msgstr ""
+"Sie können ebenfalls eine optionale Beschreibung der Datenquelle eingeben."
+
+msgid "You may also enter an optional description for your job binary."
+msgstr ""
+"Sie können eine optionale Beschreibung ihres Aufgaben-Binärprogramms "
+"eingeben."
+
+msgid "You may also enter an optional description for your job template."
+msgstr ""
+"Sie können eine optionale Beschreibung für Ihre Aufgabenvorlage eingeben."
+
+msgid "You may need to enter the username and password for your Data Source."
+msgstr ""
+"Sie müssen möglicherweise Benutzernamen und Passwort für Ihre Datenquelle "
+"angeben."
+
+msgid "You may set <b>cluster</b> scoped configurations on corresponding tabs."
+msgstr ""
+"Sie können Konfigurationen für den <b>Cluster</b> Bereich in den "
+"entsprechenden Reitern setzen."
+
+msgid ""
+"You must choose a flavor to determine the size (VCPUs, memory and storage) "
+"of all launched VMs."
+msgstr ""
+"Sie müssen eine Variante wählen, um die Größe (VCPUs, Speicher und Storage) "
+"aller gestarteten VMs zu bestimmen."
+
+msgid "cluster"
+msgstr "Cluster"
+
+msgid "cluster template"
+msgstr "Clustervorlage"
+
+msgid "data source"
+msgstr "Datenquelle"
+
+msgid "job"
+msgstr "Aufgabe"
+
+msgid "job binary"
+msgstr "Aufgaben-Binärprogramm"
+
+msgid "no processes"
+msgstr "keine Prozesse"
+
+msgid "node group template"
+msgstr "Knoten-Gruppenvorlage"
