@@ -1,0 +1,90 @@
+# Eric Baum <ecbaum@gmail.com>, 2016. #zanata
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2016-03-07 20:43+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2016-03-14 01:17+0000\n"
+"Last-Translator: Eric Baum <ecbaum@gmail.com>\n"
+"Language-Team: Portuguese (Brazil)\n"
+"Language: pt-BR\n"
+"X-Generator: Zanata 3.7.3\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+
+msgid "(show events)"
+msgstr "(mostrar eventos)"
+
+msgid "Configuration Value"
+msgstr "Valor de configuração"
+
+msgid "Data Source"
+msgstr "Fonte de Dados"
+
+msgid "Default Value"
+msgstr "Valor padrão"
+
+msgid "Description"
+msgstr "Descrição"
+
+msgid "Event log is not available."
+msgstr "Log de eventos não está disponível."
+
+msgid ""
+"For configs and params, type the key name; for args, type the index as an "
+"integer, starting from 0."
+msgstr ""
+"Para configurações e parâmetros, digite o nome da chave; para argumentos, "
+"digite o índice como um número inteiro, a partir de 0."
+
+msgid ""
+"For data sources, use a data source UUID or a path (as per data source "
+"creation.)"
+msgstr ""
+"Para fontes de dados, use o UUID ou um caminho (como definido na criação da "
+"fonte de dados)."
+
+msgid "Location"
+msgstr "Localização"
+
+msgid "Mapping Type"
+msgstr "Tipo de Mapeamento"
+
+msgid "Name"
+msgstr "Nome"
+
+msgid "Named Parameter"
+msgstr "Parâmetro Nomeado"
+
+msgid "Number"
+msgstr "Número"
+
+msgid "Positional Argument"
+msgstr "Argumento posicional"
+
+msgid "Remove"
+msgstr "Remover"
+
+msgid "Required?"
+msgstr "Necessário?"
+
+msgid ""
+"See http://docs.openstack.org/developer/sahara/userdoc/edp.html for "
+"definitions."
+msgstr ""
+"Veja http://docs.openstack.org/developer/sahara/userdoc/edp.html para "
+"definições."
+
+msgid "String"
+msgstr "String"
+
+msgid "The step has completed successfully. No events to display."
+msgstr "A etapa foi concluída com sucesso. Não há eventos para exibir."
+
+msgid "Value Type"
+msgstr "Tipo de Valor"
+
+msgid "Verification is not available."
+msgstr "Verificação não está disponível."
