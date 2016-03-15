@@ -60,7 +60,7 @@ class EditNodegroupTemplate(copy_flow.CopyNodegroupTemplate):
             plugin, hadoop_version = (
                 workflow_helpers.get_plugin_and_hadoop_version(request))
 
-            volumes_per_node = None
+            volumes_per_node = 0
             volumes_size = None
             volumes_availability_zone = None
             volume_type = None

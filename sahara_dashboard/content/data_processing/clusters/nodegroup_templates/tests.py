@@ -266,7 +266,7 @@ class DataProcessingNodeGroupTests(test.TestCase):
             hadoop_version=ngt.hadoop_version,
             flavor_id=flavor.id,
             description=ngt.description,
-            volumes_per_node=None,
+            volumes_per_node=0,
             volumes_size=None,
             volume_type=None,
             volume_local_to_instance=False,
