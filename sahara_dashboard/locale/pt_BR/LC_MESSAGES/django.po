@@ -1,0 +1,1948 @@
+# Andreas Jaeger <jaegerandi@gmail.com>, 2016. #zanata
+# Eric Baum <ecbaum@gmail.com>, 2016. #zanata
+# José Mello <jose.eduardo.jr@gmail.com>, 2016. #zanata
+# Marcelo Dieder <marcelodieder@gmail.com>, 2016. #zanata
+# Rodrigo Melotto <melotto@gmail.com>, 2016. #zanata
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2016-03-07 20:43+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2016-03-16 04:05+0000\n"
+"Last-Translator: Marcelo Dieder <marcelodieder@gmail.com>\n"
+"Language-Team: Portuguese (Brazil)\n"
+"Language: pt-BR\n"
+"X-Generator: Zanata 3.7.3\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+
+msgid " Done"
+msgstr "Pronto"
+
+msgid " or "
+msgstr " ou "
+
+#, python-format
+msgid "%(conf_name)s: %(conf_val)s"
+msgstr "%(conf_name)s: %(conf_val)s"
+
+#, python-format
+msgid "%(conf_name)s: %(conf_value)s"
+msgstr "%(conf_name)s: %(conf_value)s"
+
+#, python-format
+msgid "%(group)s:"
+msgstr "%(group)s:"
+
+#, python-format
+msgid "%(key)s: %(val)s"
+msgstr "%(key)s: %(val)s"
+
+#, python-format
+msgid "%s processes: "
+msgstr "%s processos:"
+
+msgid "-- not selected --"
+msgstr "-- Não Selecionado --"
+
+msgid ""
+"<b>Important</b>:  The name that you give your job binary will be the name "
+"used in your job execution.\n"
+"  If your binary requires a particular name or extension (ie: \".jar\"), be "
+"sure to include it here."
+msgstr ""
+"<b>Importante</b>: O nome que você dá para o binário da sua tarefa será o "
+"mesmo nome usado na execução da tarefa.\n"
+" Se o se binário precisa de um nome ou extensão específicos (i.e.: \".jar"
+"\"), tome o cuidado de incluir aqui."
+
+msgid "Adapt For Oozie"
+msgstr "Adaptar para Oozie"
+
+msgid "Add"
+msgstr "Adicionar"
+
+msgid "Add Node Group"
+msgstr "Adicionar um Grupo de Nós"
+
+msgid "Add custom tag"
+msgstr "Adicionar etiqueta customizada"
+
+msgid "Add libraries to your job template."
+msgstr "Adicionar bibliotecas ao seu modelo de tarefa."
+
+msgid "Add plugin tags"
+msgstr "Adicionar etiquetas de plugins"
+
+msgid "Anti-affinity enabled for"
+msgstr "Anti-affinity ativada Para"
+
+msgid "Arguments"
+msgstr "Argumentos"
+
+msgid "Auto Security Group"
+msgstr "Grupo de Segurança Automática"
+
+msgid "Auto-configure"
+msgstr "Auto-configurar"
+
+msgid ""
+"Automatically modify the Hadoop configuration so that job config values are "
+"set and so that Oozie will handle exit codes correctly."
+msgstr ""
+"Modifica automaticamente a configuração do Hadoop para que os valores "
+"configurados na tarefa sejam definidos e para que o Oozie lide corretamente "
+"com os códigos de saída."
+
+msgid "Availability Zone"
+msgstr "Zona de disponibilidade"
+
+msgid "Base Image"
+msgstr "Imagem de Base"
+
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgid "Checking"
+msgstr "Verificando"
+
+msgid "Choose"
+msgstr "Escolha"
+
+msgid "Choose a main binary"
+msgstr "Escolha um binário principal"
+
+msgid "Choose a shell script"
+msgstr "Escolha um script shell"
+
+msgid "Choose a storage location"
+msgstr "Escolha o local de armazenamento"
+
+msgid "Choose additional files"
+msgstr "Escolha arquivos adicionais"
+
+msgid "Choose an existing Master Node Group Template"
+msgstr "Selecione um existente Modelo Master de Grupo de Nó."
+
+msgid "Choose an existing Worker Node Group Template"
+msgstr "Escolha um existente Modelo de Grupo de Nó de Trabalho"
+
+msgid "Choose an existing file"
+msgstr "Escolha um arquivo existente"
+
+msgid ""
+"Choose from the list of binaries and click \"choose\" to add the library to "
+"your job template.  This can be repeated for additional libraries."
+msgstr ""
+"Escolha da lista de binários e clique \"escolher\" para adicionar a "
+"biblioteca ao seu modelo de tarefa. Isto pode ser repetido para bibliotecas "
+"adicionais."
+
+msgid "Choose job type"
+msgstr "Escolha o tipo de tafera"
+
+msgid "Choose libraries"
+msgstr "Escolha bibliotecas"
+
+msgid "Choose node group template"
+msgstr "Escolha um modelo de grupo de nós"
+
+msgid ""
+"Choose or create your main binary.  Additional libraries can be added from "
+"the \"Libs\" tab."
+msgstr ""
+"Escolha ou crie o seu binário principal. Bibliotecas adicionais podem ser "
+"adicionadas a partir do menu \"Bibliotecas\"."
+
+msgid "Choose plugin"
+msgstr "Escolha o Plugin"
+
+msgid "Choose plugin and version"
+msgstr "Escolha o Plugin e a versão"
+
+msgid "Choose plugin type and version"
+msgstr "Escolha o tipo de plugin e a versão"
+
+msgid "Choose the Input Data Source (n/a for Java and Shell jobs)."
+msgstr ""
+"Escolha a fonte de entrada de dados (n/a para tarefas de Java e Shell)."
+
+msgid "Choose the Output Data Source (n/a for Java and Shell jobs)."
+msgstr "Escolha a saída da fonte de dados (n/a para tarefas de Java e Shell)."
+
+msgid "Choose the binary which should be used in this Job."
+msgstr "Escolha o binário que deve ser utilizada nesta tarefa."
+
+msgid "Choose the cluster to use for the job."
+msgstr "Escolha qual cluster será utilizado para essa tarefa."
+
+msgid "Chosen Libraries"
+msgstr "Bibliotecas Escolhidas"
+
+msgid "Cinder volumes"
+msgstr "Volumes do Cinder"
+
+msgid "Cluster"
+msgstr "Cluster"
+
+msgid "Cluster Configuration Overview"
+msgstr "Visão Geral da Configuração do Cluster"
+
+msgid "Cluster Count"
+msgstr "Contagem de Clusters"
+
+msgid "Cluster Creation Guide"
+msgstr "Guia de Criação de Cluster"
+
+msgid "Cluster Events"
+msgstr "Eventos de Cluster"
+
+msgid "Cluster Instances"
+msgstr "Instâncias do Cluster"
+
+msgid "Cluster Name"
+msgstr "Nome do Cluster"
+
+msgid "Cluster Template"
+msgstr "Modelo do Cluster"
+
+#, python-format
+msgid "Cluster Template %s updated"
+msgstr "Modelo do Cluster %s atualizado"
+
+msgid "Cluster Template Configuration Overview"
+msgstr "Visão Geral da Configuração do Modelo do Conjunto"
+
+msgid "Cluster Template Name"
+msgstr "Nome do Modelo de Cluster"
+
+#, python-format
+msgid "Cluster Template copy %s created"
+msgstr "Cópia de Modelo de Cluster %s criada"
+
+msgid "Cluster Templates"
+msgstr "Modelos de Cluster"
+
+msgid "Cluster can be launched using existing Cluster Templates."
+msgstr "Cluster pode ser lançado usando modelos de cluster existente."
+
+msgid "Cluster configurations are not specified"
+msgstr "As configurações de Cluster não estão especificadas."
+
+msgid "Cluster health checks"
+msgstr "Verificações de saúde do cluster"
+
+msgid "Cluster provision steps"
+msgstr "Passos de provisionamento de cluster"
+
+msgid "Cluster share update failed."
+msgstr "Atualização dos compartilhamentos do cluster falhou."
+
+msgid "Cluster template creation failed"
+msgstr "Falha na criação de modelo de cluster"
+
+msgid "Cluster template update failed"
+msgstr "Atualização do modelo do Cluster falhou."
+
+msgid "Cluster type chosen"
+msgstr "Escolha o tipo de Cluster"
+
+msgid "Clusters"
+msgstr "Clusters"
+
+msgid "Completed Successfully"
+msgstr "Completado com Sucesso"
+
+msgid "Configuration"
+msgstr "Configuração"
+
+msgid "Configuration Details"
+msgstr "Detalhes de Configuração"
+
+msgid "Configuration Value"
+msgstr "Valor de Configuração"
+
+msgid "Configure"
+msgstr "Configurar"
+
+msgid "Configure Cluster"
+msgstr "Configurar Cluster"
+
+msgid "Configure Cluster Template"
+msgstr "Configurar Modelo do Cluster"
+
+msgid "Configure Node Group Template"
+msgstr "Configurar Modelo de Grupo de Nó"
+
+msgid "Configure Template"
+msgstr "Configurar Modelo"
+
+msgid "Control access to instances of the node group."
+msgstr "Controlar o acesso a instâncias do grupo de nós."
+
+msgid "Copy Cluster Template"
+msgstr "Copiar Modelo Cluster"
+
+msgid "Copy Template"
+msgstr "Copiar modelo"
+
+msgid "Could not create"
+msgstr "Não foi possível criar"
+
+msgid "Could not create data source"
+msgstr "Não foi possível criar fonte de dados"
+
+msgid "Could not create job template"
+msgstr "Não foi possível criar o modelo de tarefa"
+
+msgid "Could not launch job"
+msgstr "Não foi possível iniciar a tarefa"
+
+msgid "Could not update cluster shares"
+msgstr "Não foi possível atualizar os compartilhamentos do cluster"
+
+msgid "Could not update data source"
+msgstr "Não foi possível atualizar a fonte de dados"
+
+msgid "Count"
+msgstr "Contagem"
+
+msgid "Create"
+msgstr "Criar"
+
+msgid "Create Cluster Template"
+msgstr "Criar Modelo de Cluster"
+
+msgid "Create Data Source"
+msgstr "Criar uma Fonte de Dados"
+
+msgid "Create Job Binary"
+msgstr "Criar binário da tarefa"
+
+msgid "Create Job Template"
+msgstr "Criar um modelo de tarefa"
+
+msgid "Create Node Group Template"
+msgstr "Criar Modelo de Grupo de Nós"
+
+msgid "Create Template"
+msgstr "Criar modelo"
+
+msgid "Create a Cluster Template"
+msgstr "Criar Modelo de Cluster"
+
+msgid "Create a Data Source with a specified name."
+msgstr "Cria uma Fonte de Dados com um nome específico."
+
+msgid "Create a Master Node Group Template"
+msgstr "Criar um Modelo de Grupo de Nós principal"
+
+msgid "Create a Worker Node Group Template"
+msgstr "Criar um Modelo de Grupo de Nodo de Trabalho"
+
+msgid "Create a data source"
+msgstr "Criar uma fonte de dados"
+
+msgid "Create a job template"
+msgstr "Criar um modelo de tarefa"
+
+msgid "Create a job template with a specified name."
+msgstr "Crie um modelo de tarefa com um nome específico."
+
+msgid "Create a script to be uploaded dynamically"
+msgstr "Crie um script para ser enviado dinamicamente"
+
+msgid "Create security group for this Node Group."
+msgstr "Criar grupo de segurança para este Grupo de Nó"
+
+msgid "Create time"
+msgstr "Tempo de criação"
+
+msgid "Create volumes in this availability zone."
+msgstr "Criar volumes nesta zona de disponibilidade."
+
+msgid "Created"
+msgstr "Criado"
+
+msgctxt "Created time"
+msgid "Created"
+msgstr "Criado"
+
+#, python-format
+msgid "Created Cluster Template %s"
+msgstr "Modelo de Cluster %s Criado"
+
+#, python-format
+msgid "Created Node Group Template %s"
+msgstr "Criado Modelo de Grupo de Nós %s"
+
+msgid "Created time"
+msgstr "Hora da criação"
+
+msgid "Current choice:"
+msgstr "Escolha atual:"
+
+msgid "Current type:"
+msgstr "Tipo atual:"
+
+msgid "Data Processing"
+msgstr "Processamento de Dados"
+
+msgid "Data Processing Plugin Details"
+msgstr "Detalhes de Plugin de Processamento de Dados"
+
+msgid "Data Processing Plugins"
+msgstr "Plugins de Processamento de Dados"
+
+msgid "Data Processing internal database"
+msgstr "Banco de Dados interno do Processamento de Dados"
+
+msgid ""
+"Data Processing provides different storage location options. You may choose "
+"Ephemeral Drive or a Cinder Volume to be attached to instances."
+msgstr ""
+"Processamento de Dados oferece diferentes opções de localização de "
+"armazenamento. Você pode escolher Drive Efêmero ou um Volume Cinder para ser "
+"anexado às instâncias."
+
+msgid "Data Source"
+msgstr "Fonte de Dados"
+
+msgid "Data Source Type"
+msgstr "Tipo de Fonte de Dados"
+
+msgid "Data Sources"
+msgstr "Fonte de Dados"
+
+msgid ""
+"Data Sources are what your\n"
+"                            job uses for input and output.  Depending on the "
+"type\n"
+"                            of job you will be running, you may need to "
+"define one\n"
+"                            or more data sources.  You can create multiple "
+"data\n"
+"                            sources by repeating this step.\n"
+"                        "
+msgstr ""
+"Fontes de Dados são o que\n"
+"                            a sua tarefa utiliza para entrada e saída. "
+"Dependendo\n"
+"                            do tipo de tarefa que você rodará, pode ser "
+"necessário\n"
+"                            definir uma ou mais fontes de dados. Você pode "
+"criar\n"
+"                            múltiplas fontes repetindo este passo.\n"
+"                            "
+
+msgid "Data source created"
+msgstr "Fonte de Dados criada"
+
+msgid "Data source updated"
+msgstr "Fonte de Dados atualizada"
+
+msgid "Default Value"
+msgstr "Valor padrão"
+
+msgid ""
+"Define your Job Template.\n"
+"                        This is where you choose the type of job that you\n"
+"                        want to run (Pig, Java Action, Spark, etc) and "
+"choose\n"
+"                        or upload the files necessary to run it.  The "
+"inputs\n"
+"                        and outputs will be defined later.\n"
+"                    "
+msgstr ""
+"Defina o Modelo da sua Tarefa.\n"
+"                       Aqui é onde você escolhe qual tipo de tarefa que\n"
+"                       você deseja executar (Pig, Ação Java, Spark, etc) e\n"
+"                       escolher ou envia os arquivos necessários para\n"
+"                       rodá-lo. As entradas e saídas serão definidas "
+"depois.\n"
+"                     "
+
+msgid "Delete Cluster"
+msgid_plural "Delete Clusters"
+msgstr[0] "Excluir Cluster"
+msgstr[1] "Excluir Clusters"
+
+msgid "Delete Data Source"
+msgid_plural "Delete Data Sources"
+msgstr[0] "Excluir Fonte de Dados"
+msgstr[1] "Excluir Fontes de Dados"
+
+msgid "Delete Job"
+msgid_plural "Delete Jobs"
+msgstr[0] "Excluir Tarefa"
+msgstr[1] "Excluir Tarefas"
+
+msgid "Delete Job Binary"
+msgid_plural "Delete Job Binaries"
+msgstr[0] "Remover Binário da Tarefa"
+msgstr[1] "Remover Binários da Tarefa"
+
+msgid "Delete Job Template"
+msgid_plural "Delete Job Templates"
+msgstr[0] "Remover Modelo de Tarefa"
+msgstr[1] "Remover Modelos de Tarefas"
+
+msgid "Delete Template"
+msgid_plural "Delete Templates"
+msgstr[0] "Excluir Modelo"
+msgstr[1] "Excluir Modelos"
+
+msgid "Deleted Cluster"
+msgid_plural "Deleted Clusters"
+msgstr[0] "Cluster Excluído"
+msgstr[1] "Clusters Excluídos"
+
+msgid "Deleted Data Source"
+msgid_plural "Deleted Data Sources"
+msgstr[0] "Fonte de Dados Excluída"
+msgstr[1] "Fontes de Dados Excluídas"
+
+msgid "Deleted Job"
+msgid_plural "Deleted Jobs"
+msgstr[0] "Tarefa Excluída"
+msgstr[1] "Tarefas Excluídas"
+
+msgid "Deleted Job Binary"
+msgid_plural "Deleted Job Binaries"
+msgstr[0] "Binário da Tarefa Removido"
+msgstr[1] "Binários da Tarefa Removidos"
+
+msgid "Deleted Job Template"
+msgid_plural "Deleted Jobs Templates"
+msgstr[0] "Modelo de Tarefa Removido"
+msgstr[1] "Modelos de Tarefas Removidos"
+
+msgid "Deleted Template"
+msgid_plural "Deleted Templates"
+msgstr[0] "Modelo Excluído"
+msgstr[1] "Modelos Excluídos"
+
+msgid "Description"
+msgstr "Descrição"
+
+msgid "Details"
+msgstr "Detalhes"
+
+msgid "Done"
+msgstr "Pronto"
+
+msgctxt "Current status of a Job"
+msgid "Done with Error"
+msgstr "Finalizado com erro"
+
+msgid "Download Job Binary"
+msgstr "Baixar Binário da Tarefa"
+
+msgid "Download job binary"
+msgstr "Baixar o binário da tarefa"
+
+msgid "Duration"
+msgstr "Duração"
+
+msgid "Edit Cluster Template"
+msgstr "Editar Modelo do Cluster"
+
+msgid "Edit Data Source"
+msgstr "Editar Fonte de Dados"
+
+msgid "Edit Image Tags"
+msgstr "Editar Tags de Imagem"
+
+msgid "Edit Job Binary"
+msgstr "Editar Binário da Tarefa"
+
+msgid "Edit Node Group Template"
+msgstr "Edite o Modelo de Grupo de Nós"
+
+msgid "Edit Tags"
+msgstr "Editar Tags"
+
+msgid "Edit Template"
+msgstr "Editar modelo"
+
+msgid "Enable Swift Paths"
+msgstr "Habilitar caminhos do Swift"
+
+msgctxt "End time"
+msgid "Ended"
+msgstr "Finalizado"
+
+msgid "Enter any custom configuration required for your job's execution."
+msgstr ""
+"Digite qualquer configuração personalizada necessária para a execução do seu "
+"job."
+
+msgid "Enter the URL for the file"
+msgstr "Digite a URL para o arquivo"
+
+msgid "Enter the username and password required to access that file"
+msgstr ""
+"Digite o nome de usuário e a senha necessários para acessar esse arquivo"
+
+msgid "Ephemeral drive"
+msgstr "Drive Efêmero "
+
+msgid "Error Details"
+msgstr "Detalhes do erro"
+
+msgid "Event time"
+msgstr "Horário do Evento"
+
+msgid "Failed"
+msgstr "Falhou"
+
+msgctxt "Current status of a Job"
+msgid "Failed"
+msgstr "Falhou"
+
+msgid "Failed to fetch internal binary list"
+msgstr "Falha ao buscar a lista  de binários internos"
+
+msgid "Failed to get list of internal binaries."
+msgstr "Falaha ao obter lista de binários internos."
+
+msgid "Failed to get list of shares"
+msgstr "Não foi possível obter a lista de compartilhamentos"
+
+msgid "Failed to update image."
+msgstr "Falha ao atualizar imagem."
+
+msgid "Filter"
+msgstr "Filtro"
+
+msgid ""
+"First, select which type of job that\n"
+"                            you want to run.  This choice will determine "
+"which\n"
+"                            other steps are required\n"
+"                        "
+msgstr ""
+"Primeiro, selecione o tipo de tarefa\n"
+"                        que você deseja executar. Está escolha determinará\n"
+"                        quais outros passos são necessários\n"
+"                        "
+
+msgid "Flavor"
+msgstr "Sabor"
+
+msgid "Flavor is not specified"
+msgstr "Sabor não é especificado"
+
+msgid "Floating IP Pool"
+msgstr "Pool de IPs flutuantes"
+
+msgid ""
+"For Data Processing internal job binaries, you may choose from the following:"
+msgstr ""
+"Para binários internos de tarefas de Processamento de Dados, você pode "
+"escolher entre os seguintes:"
+
+msgid ""
+"For Data Sources on a Manila share, choose the share and enter the path "
+"relative to the share (example: /outputdir/myinputfile.txt)"
+msgstr ""
+"Para Fontes de Dados em compartilhamentos do Manila, escolha o "
+"compartilhamento e digite o caminho relativo ao compartilhamento (exemplo: /"
+"meudir/meuarquivo.txt)"
+
+msgid ""
+"For MapReduce or Java Action jobs, \"mains\" are not applicable.  You are "
+"required to add one\n"
+"  or more \"libs\" for these jobs."
+msgstr ""
+"Para tarefas MapReduce ou Ações Java, \"mains\" não são aplicáveis. Você "
+"precisa adicionar\n"
+" uma ou mais \"bibliotecas\" para essas tarefas."
+
+msgid "For Object Store job binaries, you must:"
+msgstr "Para binários de tarefas de Armazenamento de Objetos, você deve:"
+
+msgid ""
+"For Shell Action jobs, any required files beyond the main script may be "
+"added as \"libraries\"."
+msgstr ""
+"Para tarefas de ações Shell, quaisquer arquivos necessários além do script "
+"principal devem ser adicionados como \"bibliotecas\"."
+
+msgid ""
+"For Spark and Shell jobs, only a main is required, \"libs\" are optional."
+msgstr ""
+"Para tarefas Spark e Shell, apenas o \"main \" é necessário, \"bibliotecas\" "
+"são opcionais."
+
+msgid "General Info"
+msgstr "Informações gerais"
+
+msgid "Guided Cluster Creation"
+msgstr "Criação de Cluster Guiada"
+
+msgid "Guided Job Execution"
+msgstr "Execução de Tarefa Guiada"
+
+msgid "HDFS placement"
+msgstr "colocação HDFS"
+
+msgid "Health"
+msgstr "Saúde"
+
+msgid "Hide full configuration"
+msgstr "Esconder configuração completa"
+
+msgid "Hive"
+msgstr "Hive"
+
+msgid "ID"
+msgstr "ID"
+
+#, python-format
+msgid ""
+"If selected, %s will be protected from modifications until this will be "
+"unselected"
+msgstr ""
+"Se selecionado, %s será protegido de modificações até que isto sejá "
+"desmarcado"
+
+#, python-format
+msgid "If selected, %s will be shared across the tenants"
+msgstr "Se selecionado, %s será compartilhado entre os locatários"
+
+msgid ""
+"If selected, instances of a cluster will be automatically configured during "
+"creation. Otherwise you should manually specify configuration values"
+msgstr ""
+"Se selecionado, instâncias de um cluster serão automaticamente configuradas "
+"durante a criação. Caso contrário você deve manualmente especificar valores "
+"de configuração"
+
+msgid ""
+"If selected, instances of a node group will be automatically configured "
+"during cluster creation. Otherwise you should manually specify configuration "
+"values."
+msgstr ""
+"Se selecionado, as instâncias de um grupo de nós serão configuradas "
+"automaticamente durante a criação do cluster. Caso contrário, você deve "
+"especificar manualmente os valores de configuração."
+
+msgid "Image"
+msgstr "Imagem"
+
+msgid "Image Registry"
+msgstr "Registro de Imagem"
+
+msgid ""
+"Image Registry is used to provide additional information about images for "
+"Data Processing."
+msgstr ""
+"Registro de imagem é utilizado para fornecer informações adicionais sobre as "
+"imagens para processamento de dados."
+
+msgid "Image Registry tool:"
+msgstr "Ferramenta de registro de imagem:"
+
+msgid "In progress"
+msgstr "Em progresso"
+
+msgid "Info"
+msgstr "Informação"
+
+msgid "Input"
+msgstr "Entrada"
+
+msgid "Input Data Source"
+msgstr "Fonte de Dados de Entrada"
+
+msgid "Instance"
+msgstr "Instância"
+
+msgid "Instance and attached volumes will be created on the same physical host"
+msgstr "Instâncias e volumes anexados serão criados no mesmo host físico"
+
+msgid "Instances"
+msgstr "Instâncias"
+
+msgid "Instances Count"
+msgstr "Contagem de instâncias "
+
+msgid "Interface Arguments"
+msgstr "Argumentos da interface"
+
+msgid "Internal Binary"
+msgstr "Binário Interno"
+
+msgid "Internal IP"
+msgstr "IP interno"
+
+msgid "Internal binary"
+msgstr "Binário interno"
+
+msgid "Java"
+msgstr "Java"
+
+msgid "Java Action"
+msgstr "Ação Java"
+
+msgid "Java Opts"
+msgstr "Java Opts"
+
+msgid "Job"
+msgstr "Tarefa"
+
+msgid "Job Binaries"
+msgstr "Binários de Tarefas"
+
+msgid "Job Configuration"
+msgstr "Configuração da tarefa"
+
+msgid "Job Execution ID"
+msgstr "ID de execução da tarefa"
+
+msgid "Job Guide"
+msgstr "Guia de tarefa"
+
+msgid "Job Template"
+msgstr "Modelo de Tarefa"
+
+msgid "Job Templates"
+msgstr "Modelos de Tarefa"
+
+msgid "Job Type"
+msgstr "Tipo de Tarefa"
+
+msgid "Job args"
+msgstr "Argumentos da tarefa"
+
+msgid "Job configs"
+msgstr "Configurações da tarefa"
+
+msgid "Job created"
+msgstr "Tarefa criada"
+
+msgid "Job launched"
+msgstr "Tarefa iniciada"
+
+msgid "Job params"
+msgstr "Parâmetros da tarefa"
+
+msgid "Job template:"
+msgstr "Modelo de tarefa:"
+
+msgid "Job type chosen"
+msgstr "Tipo de tarefa escolhido"
+
+msgid "Jobs"
+msgstr "Tarefas"
+
+msgid "Keypair"
+msgstr "Par de chaves"
+
+msgctxt "Current status of a Job"
+msgid "Killed"
+msgstr "Morto"
+
+msgid "Last Updated"
+msgstr "Última Atualização"
+
+msgid "Launch"
+msgstr "Iniciar"
+
+msgid "Launch Cluster"
+msgstr "Iniciar Cluster"
+
+msgid "Launch Job"
+msgid_plural "Launch Jobs"
+msgstr[0] "Iniciar Tarefa"
+msgstr[1] "Iniciar Tarefas"
+
+msgid "Launch On Existing Cluster"
+msgstr "Iniciar Em Cluster Existente"
+
+msgid "Launch On New Cluster"
+msgstr "Iniciar Em Novo Cluster"
+
+msgid "Launch a Cluster"
+msgstr "Iniciar um Cluster"
+
+msgid "Launch instances in these security groups."
+msgstr "Disparar instâncias nestes grupos de segurança."
+
+msgid "Launch instances in this availability zone."
+msgstr "Iniciar instâncias nesta zona de disponibilidade"
+
+msgid "Launch job"
+msgstr "Iniciar Tarefa"
+
+msgid "Launch the given job template on a cluster."
+msgstr "Inicie o seguinte modelo de tarefa em um cluster."
+
+msgid ""
+"Launch your job.  When\n"
+"                        launching, you may need to choose your input and\n"
+"                        output data sources.  This is where you would also\n"
+"                        add any special configuration values, parameters,\n"
+"                        or arguments that you need to pass along\n"
+"                        to your job.\n"
+"                        "
+msgstr ""
+"Inicie sua tarefa. Quando\n"
+"                        estiver iniciando, você pode escolher sua fonte de\n"
+"                        entrada e saída de dados. Aqui é onde você também\n"
+"                        adicionará qualquer valor de configuração especial,\n"
+"                        parâmetros ou argumentos que precisem ser\n"
+"                        passados para sua tarefa.\n"
+"                                               "
+
+#, python-format
+msgid "Launched Cluster %s"
+msgstr "Cluster %s Iniciado"
+
+msgid "Launched Job"
+msgid_plural "Launched Jobs"
+msgstr[0] "Tarefa Iniciada"
+msgstr[1] "Tarefas Iniciadas"
+
+msgid "Libs"
+msgstr "Bibliotecas"
+
+msgid "Location"
+msgstr "Localização"
+
+msgid "Main Class"
+msgstr "Classe principal"
+
+msgid "Mains"
+msgstr "Mains"
+
+msgid "Management IP"
+msgstr "IP de gerenciamento"
+
+msgid "Manila share"
+msgstr "Compartilhamento do Manila"
+
+msgid "MapReduce"
+msgstr "MapReduce"
+
+msgid "Mapper"
+msgstr "Mapeador"
+
+msgid "Mapping Type"
+msgstr "Tipo de Mapeamento"
+
+msgid "Master Node Group Template:"
+msgstr "Modelo de Grupo de Nó principal:"
+
+msgid ""
+"Modify the configuration so that swift URLs can be dereferenced through HDFS "
+"at runtime."
+msgstr ""
+"Modifique a configuração para que as URLs do swift possam ser referenciadas "
+"através do HDFS em tempo de execução."
+
+msgid "Name"
+msgstr "Nome"
+
+#, python-format
+msgid "Name: %(node_group_name)s"
+msgstr "Nome: %(node_group_name)s"
+
+msgid "Named Parameter"
+msgstr "Parâmetro Nomeado"
+
+msgid "Neutron Management Network"
+msgstr "Rede de Gerenciamento"
+
+msgid "Never"
+msgstr "Nunca"
+
+msgid "Next"
+msgstr "Próximo"
+
+msgid ""
+"Next, you need to define the different\n"
+"                        types of machines in your cluster.  This is done by\n"
+"                        defining a Node Group Template for each type of\n"
+"                        machine.  A very common case is where you\n"
+"                        need to have one or more machines running a \"master"
+"\"\n"
+"                        set of processes while another set of machines need\n"
+"                        to be running the \"worker\" processes.  Here,\n"
+"                        you will define the Node Group Template for your\n"
+"                        \"master\" node(s).\n"
+"                     "
+msgstr ""
+"Depois, você precisa definir os diferentes\n"
+"tipos de máquinas em seu cluster. Isto é feito através\n"
+"da definição de um Modelo de Grupo de Nodo para cada tipo\n"
+"de máquina. Um caso muito comum é quando você\n"
+"precisa ter uma ou mais máquinas executando um conjunto \"master\"\n"
+"de processos, enquanto outro conjunto de máquinas precisam\n"
+"estar executando os processos \"worker\". Aqui,\n"
+"você irá definir o Modelo de Grupo de Nodo para seus\n"
+"nodo(s) \"master\".\n"
+" "
+
+msgid "No Cluster Template Created"
+msgstr "Sem modelo de cluster criado"
+
+msgid "No Images Available"
+msgstr "Nenhuma Imagem Disponível"
+
+msgid "No Master Node Group Template Created"
+msgstr "Nenhum Modelo de Grupo de Nodo Master Criado"
+
+msgid "No Templates Available"
+msgstr "Nenhum Modelo Disponível"
+
+msgid "No Worker Node Group Template Created"
+msgstr "Nenhum Modelo de Grupo de Nodo Criado"
+
+msgid "No availability zone specified"
+msgstr "Nenhuma zona de disponibilidade especificada"
+
+msgid "No configurations"
+msgstr "Nenhuma configuração"
+
+msgid "No description"
+msgstr "Sem descrição"
+
+msgid "No image specified"
+msgstr "Nenhuma imagem especificada"
+
+msgid "No images available."
+msgstr "Nenhuma imagem disponível."
+
+msgid "No info available"
+msgstr "Sem informação disponível"
+
+msgid "No job template created"
+msgstr "Nenhum modelo de tarefa criado"
+
+msgid "No keypair"
+msgstr "Sem par de chaves."
+
+msgid "No plugin chosen"
+msgstr "Nenhum plugin escolhido"
+
+msgid "No type chosen"
+msgstr "Nenhum tipo escolhido"
+
+msgid "No volume type"
+msgstr "Sem tipo de volume"
+
+msgid "Node Group"
+msgstr "Grupo de Nós"
+
+#, python-format
+msgid "Node Group Name: %(node_group_name)s"
+msgstr "Nome do Grupo de Nó %(node_group_name)s"
+
+msgid "Node Group Template"
+msgstr "Modelo de Grupo de Nós"
+
+#, python-format
+msgid "Node Group Template %s updated"
+msgstr "Modelo de grupo de nós \"%s\" foi atualizado."
+
+#, python-format
+msgid "Node Group Template copy %s created"
+msgstr "Cópia do modelo do Grupo de Nó %s criado"
+
+msgid "Node Group Templates"
+msgstr "Modelo de Grupo de Nós"
+
+#, python-format
+msgid "Node Group: %(node_group_name)s"
+msgstr "Grupo de Nó: %(node_group_name)s"
+
+msgid "Node Groups"
+msgstr "Grupos de nós"
+
+msgid "Node Groups Configuration Overview"
+msgstr "Visão Geral de Configuração do Nó de Grupos"
+
+msgid "Node Processes"
+msgstr "Processos do Nó"
+
+msgid "Node group cluster"
+msgstr "Cluster do Grupo de Nós"
+
+msgid "Node group configurations are not specified"
+msgstr "As Configurações de Grupos de Nós não estão específicadas"
+
+msgid "Node processes are not specified"
+msgstr "Processos de Nós não estão específicados"
+
+msgid "Nodes Count"
+msgstr "Contagem de Nós"
+
+msgid "None"
+msgstr "Nenhum"
+
+msgid "Not available"
+msgstr "Não disponível"
+
+msgid ""
+"Now you need to set the layout of your\n"
+"                        cluster.  By\n"
+"                        creating a Cluster Template, you will be choosing "
+"the\n"
+"                        number of instances of each Node Group Template "
+"that\n"
+"                        will appear in your cluster.  Additionally,\n"
+"                        you will have a chance to set any cluster-specific\n"
+"                        configuration items in the additional tabs on the\n"
+"                        create Cluster Template form."
+msgstr ""
+"Agora, você precisa definir o layout do seu\n"
+"cluster. Através\n"
+"da criação do Modelo de Cluster, você estará escolhendo o\n"
+"número de instâncias de cada Modelo de Grupo de Nodo que\n"
+"irá aparecer em seu cluster. Adicionalmente,\n"
+"você terá a chance de definir qualquer item de configuração\n"
+"específica de cluster nas guias adicionais no\n"
+"formulário Modelo de Criação de Cluster."
+
+msgid "Number"
+msgstr "Número"
+
+msgid "Number of Nodes"
+msgstr "Número de nós"
+
+msgid "Number of clusters to launch."
+msgstr "Número de clusters para disparar "
+
+msgid "Oozie Job ID"
+msgstr "ID de tarefa Oozie"
+
+msgid "OpenStack Flavor"
+msgstr "Distribuição OpenStack"
+
+msgid "Output"
+msgstr "Saída"
+
+msgid "Output Data Source"
+msgstr "Fonte de Dados de Saída"
+
+msgid "Parameters"
+msgstr "Parâmetros"
+
+msgid "Password"
+msgstr "Senha"
+
+msgid "Path"
+msgstr "Caminho"
+
+msgid "Path on share"
+msgstr "Caminho no compartilhamento"
+
+msgid "Persist cluster after job exit"
+msgstr "Manter o cluster após o término da tarefa"
+
+msgid "Pig"
+msgstr "Pig"
+
+msgid "Plugin"
+msgstr "Plugin"
+
+msgid "Plugin Name"
+msgstr "Nome do Plugin"
+
+msgid "Plugin name"
+msgstr "Nome do Plugin"
+
+msgid "Plugin:"
+msgstr "Plugin:"
+
+msgid "Plugins"
+msgstr "Plugins"
+
+msgid "Positional Argument"
+msgstr "Argumento Posicional"
+
+msgid "Progress"
+msgstr "Progresso"
+
+msgid "Project ID"
+msgstr "ID do Projeto"
+
+msgid "Project Id"
+msgstr "ID do Projeto"
+
+msgid "Protected"
+msgstr "Protegido"
+
+msgid "Proxy Gateway"
+msgstr "Proxy Gateway"
+
+msgid "Public"
+msgstr "Público"
+
+msgid "Read only"
+msgstr "Somente leitura"
+
+msgid "Read/Write"
+msgstr "Leitura/Escrita"
+
+msgid "Reducer"
+msgstr "Redutor"
+
+msgid "Register Image"
+msgstr "Registrar Imagem"
+
+msgid ""
+"Register tags required for the Plugin with specified Data Processing Version"
+msgstr ""
+"Registre etiquetas necessárias para o Plugin com versão de Processamento de "
+"Dados especificado"
+
+msgid "Relaunch On Existing Cluster"
+msgstr "Reiniciar em cluster existente."
+
+msgid "Relaunch On New Cluster"
+msgstr "Reiniciar em um novo cluster"
+
+msgid "Remove"
+msgstr "Remover"
+
+msgid ""
+"Repeat the Node Group Template\n"
+"                        creation process, but this time you are creating\n"
+"                        your \"worker\" Node Group Template."
+msgstr ""
+"Repetir o processo de criação do Modelo do Grupo de Nó,\n"
+" mas desta vez você está criando \n"
+"o seu Modelo de Grupo de Nó de \"trabalho\"."
+
+msgid "Required"
+msgstr "Requerido"
+
+msgid "Reset Cluster Creation Guide"
+msgstr "Redefinir Guia de Criação de Cluster"
+
+msgid "Reset Cluster Guide"
+msgstr "Guia de Reset de Cluster"
+
+msgid "Reset Job Execution Guide"
+msgstr "Reiniciar Guia de Execução de Tarefa"
+
+msgid "Return Code"
+msgstr "Código de retorno"
+
+msgid "Run HBase EDP Jobs with common HBase library on HDFS"
+msgstr "Execute tarefas HBase EDP com a biblioteca comum HBase no HDFS"
+
+msgid ""
+"Sahara will use instances of this node group to access other cluster "
+"instances."
+msgstr ""
+"Sahara vai usar instâncias desse grupo de nó para acessar outros clusters de "
+"instâncias."
+
+msgid "Scale"
+msgstr "Escala"
+
+msgid "Scale Cluster"
+msgstr "Escalar Cluster"
+
+msgid "Scale cluster operation failed"
+msgstr "Operação de escalar cluster falhou"
+
+msgid "Scaled cluster successfully started."
+msgstr "Cluster dimensionado iniciado com sucesso."
+
+msgid "Script name"
+msgstr "Nome do script"
+
+msgid "Script text"
+msgstr "Texto do script"
+
+msgid "Security"
+msgstr "Segurança"
+
+msgid "Security Groups"
+msgstr "Grupos de Segurança"
+
+msgid "Select"
+msgstr "Selecione"
+
+msgid "Select Image"
+msgstr "Selecione a Imagem"
+
+msgid "Select Node Group Processes"
+msgstr "Selecione um Grupo de Nós de Processos"
+
+msgid "Select Shares"
+msgstr "Selecione os Compartihamentos"
+
+msgid "Select a Node Group Template to add:"
+msgstr "Selecione um Modelo de Grupo de Nós para adicionar:"
+
+msgid "Select a Value Type for your next argument:"
+msgstr "Selecione um Tipo de Valor para o seu próximo argumento:"
+
+msgid "Select a plugin and version for a new Cluster template."
+msgstr "Selecione um plugin e versão para um novo modelo de Cluster."
+
+msgid "Select a plugin and version for a new Cluster."
+msgstr "Selecione um plugin e uma versão para um novo Cluster."
+
+msgid "Select a plugin and version for the new Node Group template."
+msgstr "Selecione um plugin e versão para o novo Modelo de Grupo de Nós."
+
+msgid ""
+"Select an existing node group template.\n"
+"    "
+msgstr ""
+"Selecione um modelo de grupo de nó existente.\n"
+" "
+
+msgid "Select node processes for the node group"
+msgstr "Selecione processos de nó para o grupo de nó"
+
+msgid "Select plugin and hadoop version"
+msgstr "Escolha um plugin e versão do hadoop"
+
+msgid "Select plugin and hadoop version for cluster"
+msgstr "Escolha um plugin e versão do Hadoop para clusters"
+
+msgid "Select plugin and hadoop version for cluster template"
+msgstr "Escolha um plugin e versão do Hadoop para o modelo de cluster"
+
+msgid "Select property name"
+msgstr "Selecione o nome da propriedade"
+
+msgid "Select the manila shares for this cluster"
+msgstr "Selecione os compartilhamentos do manila para este cluster"
+
+msgid "Select the manila shares for this node group"
+msgstr "Selecione os compartilhamentos do manila para este grupo de nós"
+
+msgid "Select the storage type for your job binary."
+msgstr "Selecione o tipo de armazenamento para o binário da sua tarefa."
+
+msgid "Select the type of your Data Source."
+msgstr "Selecione o tipo da sua Fonte de Dados."
+
+msgid "Select the type of your job:"
+msgstr "Selecione o tipo da sua tarefa:"
+
+msgid "Select type"
+msgstr "Selecione o tipo"
+
+msgid ""
+"Select which plugin and version that you\n"
+"    want to use to create your cluster."
+msgstr ""
+"Selecione qual plugin e versão você \n"
+"quer utilizar para criar seu cluster."
+
+msgid ""
+"Select which type of job that you want to run.\n"
+"      This choice will dictate which steps are required to successfully\n"
+"      execute your job.\n"
+"    "
+msgstr ""
+"Selecione qual o tipo de tarefa que você deseja executar.\n"
+"      Esta escolha determinará quais passos são necessários para\n"
+"      executar a sua tarefa com sucesso.\n"
+"      "
+
+msgid "Service Configurations"
+msgstr "Configurações de Serviço"
+
+msgid "Share"
+msgstr "Compartilhamento"
+
+msgid "Shares"
+msgstr "Compartilhamentos"
+
+msgid "Shell"
+msgstr "Shell"
+
+msgid "Shell Action"
+msgstr "Ação Shell"
+
+msgid "Show full configuration"
+msgstr "Mostrar configuração completa"
+
+msgid "Source password"
+msgstr "Senha da Fonte"
+
+msgid "Source username"
+msgstr "Nome de usuário da Fonte"
+
+msgid "Spark"
+msgstr "Spark"
+
+msgid ""
+"Specified User Name will be used by Data Processing to apply configs and "
+"manage processes on instances."
+msgstr ""
+"Nome de usuário especificado será usado pelo Processamento de Dados para "
+"aplicar configurações e gerenciar os processos em instâncias."
+
+msgid "Start Verification"
+msgid_plural "Start Verifications"
+msgstr[0] "Iniciar  Verificação"
+msgstr[1] "Iniciar Verificações"
+
+msgctxt "Start time"
+msgid "Started"
+msgstr "Iniciado"
+
+msgid "Started Verification"
+msgid_plural "Started Verifications"
+msgstr[0] "Verificação Iniciada"
+msgstr[1] "Verificações Iniciadas"
+
+msgid "Started at"
+msgstr "Iniciado em"
+
+msgid "Status"
+msgstr "Status"
+
+msgid "Status description"
+msgstr "Descrição do estado"
+
+msgid "Step Description"
+msgstr "Descrição dos passo"
+
+msgid "Storage location"
+msgstr "Local de Armazenamento"
+
+msgid "Storage type"
+msgstr "Tipo de Armazenamento"
+
+msgid "Storm"
+msgstr "Storm"
+
+msgid "Streaming MapReduce"
+msgstr "Transmitindo MapReduce"
+
+msgid "String"
+msgstr "String"
+
+msgid ""
+"Substitute data source objects for URLs of the form datasource://name or "
+"uuid."
+msgstr ""
+"Substitua objetos de fontes de dados por URLs no formato datasource://nome "
+"ou uuid."
+
+msgctxt "Current status of a Job"
+msgid "Succeeded"
+msgstr "Bem sucedido"
+
+msgid "Successfully updated image."
+msgstr "Imagem atualizada com sucesso."
+
+msgid "Supported Versions"
+msgstr "Versões suportadas"
+
+msgid "Swift"
+msgstr "Swift"
+
+msgid "Tags"
+msgstr "Tags"
+
+msgid ""
+"Tags are used for filtering images suitable for each plugin and each Data "
+"Processing version.\n"
+"        To add required tags, select a plugin and a Data Processing version "
+"and click &quot;Add plugin tags&quot; button."
+msgstr ""
+"Etiquetas são utilizados para filtrar imagens adequadas para cada plugin e "
+"cada versão de Processamento de Dados. \n"
+"Para adicionar etiquetas necessárias, selecionar um plug-in e uma versão de "
+"Processamento de Dados e clique em &quot;Add plugin tags&quot; button."
+
+msgid "Template"
+msgstr "Modelo"
+
+msgid "Template Name"
+msgstr "Nome do Modelo"
+
+msgid "Template not specified"
+msgstr "Modelo não especificado"
+
+msgid ""
+"The Cluster Template object may specify a list of processes in anti-affinity "
+"group.\n"
+"    That means these processes may not be launched more than once on a "
+"single host."
+msgstr ""
+"O modelo de cluster pode especificar uma lista de processos em anti-affinity "
+"group.\n"
+"Isso significa que esses processos não podem ser lançados mais de uma vez em "
+"um único host."
+
+msgid ""
+"The Cluster Template object should specify Node Group Templates that will be "
+"used to build a Cluster.\n"
+"    You can add Node Groups using Node Group Templates on a &quot;Node "
+"Groups&quot; tab."
+msgstr ""
+"O objeto do modelo do conjunto deve especificar os modelos de grupo de nó "
+"que serão usados para construir o agrupamento.\n"
+"__Você pode adicionar Grupos de Nó usando Modelos de Grupo de Nó em uma "
+"&quot;Grupos de Nó&quot; tabulação."
+
+msgid ""
+"The Cluster object should specify OpenStack Image to boot instances for "
+"Cluster."
+msgstr ""
+"O objeto de Cluster deveria especificar a Imagem OpenStack para iniciar as "
+"instâncias do Cluster."
+
+msgid ""
+"The Node Group Template object specifies the processes\n"
+"        that will be launched on each instance. Check one or more "
+"processes.\n"
+"        When processes are selected, you may set <b>node</b> scoped\n"
+"        configurations on corresponding tabs."
+msgstr ""
+"O objeto do Modelo de Grupo de Nó especifica os processos\n"
+" que serão iniciados em cada instância. Assinale um ou mais processos.\n"
+" Quando os processos são selecionados, você pode definir o escopo do <b>nó</"
+"b> nas\n"
+"guias correspondentes de configurações."
+
+msgid ""
+"The first step is to determine which type of\n"
+"                    cluster you want to run.  You may have several choices\n"
+"                    available depending on the configuration of your "
+"system.\n"
+"                    Click on \"choose plugin\" to bring up the list of data\n"
+"                    processing plugins.  There you will be able to choose "
+"the\n"
+"                    data processing plugin along with the version number.\n"
+"                    Choosing this up front will allow the rest of the "
+"cluster\n"
+"                    creation steps to focus only on options that are "
+"pertinent\n"
+"                    to your desired cluster type."
+msgstr ""
+"O primeiro passo é determinar que tipo de\n"
+"cluster você deseja executar. Você poderá ter várias escolhas\n"
+"disponíveis dependendo da configuração do seu sistema.\n"
+"Clique em \"escolher plugin\" para trazer a lista de plugins de\n"
+"processamento de dados. Lá você será capaz de escolher\n"
+"o plugin de processamento de dados juntamente com o número da versão.\n"
+"Escolhendo isto primeiro, vai permitir que o resto dos passos de criação do "
+"cluster \n"
+"foque somente nas opções que são pertinentes \n"
+"ao seu tipo de cluster desejado."
+
+msgid "The value of shares must be a list of values"
+msgstr "O valor dos compartilhamentos deve ser uma lista de valores"
+
+msgid "This Cluster Template will be created for:"
+msgstr "Este Modelo de Agrupamento será criado para:"
+
+msgid "This Cluster will be started with:"
+msgstr "Este Cluster será iniciado com:"
+
+msgid "This Node Group Template will be created for:"
+msgstr "Este Modelo de Grupo de Nó será criado para:"
+
+msgid "Title"
+msgstr "Título"
+
+msgid "Type"
+msgstr "Tipo"
+
+msgid "URL"
+msgstr "URL"
+
+msgid "Unable to create job binary"
+msgstr "Não foi possível criar binário da tarefa"
+
+msgid "Unable to create new cluster for job."
+msgstr "Não é possível criar novo cluster para a tarefa"
+
+msgid "Unable to create the cluster"
+msgstr "Não foi possível criar o cluster"
+
+#, python-format
+msgid "Unable to fetch Base Image with id: %s."
+msgstr "Não foi possível obter a Imagem de Base com id: %s"
+
+msgid "Unable to fetch available images."
+msgstr "Não foi possível obter imagens disponíveis."
+
+msgid "Unable to fetch cluster list"
+msgstr "Não foi possível obter a lista de cluster"
+
+msgid "Unable to fetch cluster template list"
+msgstr "Não foi possível obter a lista de modelo de cluster"
+
+msgid "Unable to fetch cluster template."
+msgstr "Não foi possível obeter modelo de cluster."
+
+msgid "Unable to fetch cluster to scale"
+msgstr "Não foi possível obter cluster para escalar."
+
+msgid "Unable to fetch cluster to scale."
+msgstr "Não foi possível obter cluster para escalar."
+
+msgid "Unable to fetch cluster."
+msgstr "Não foi possível obter cluster."
+
+msgid "Unable to fetch clusters."
+msgstr "Não foi possível obter clusters."
+
+msgid "Unable to fetch data source list"
+msgstr "Não foi possível buscar a lista de fontes de dados"
+
+msgid "Unable to fetch data sources."
+msgstr "Não foi possível buscar a fonte de dados."
+
+msgid "Unable to fetch flavor for template."
+msgstr "Não é possível buscar o tipo de modelo"
+
+msgid "Unable to fetch floating ip pools."
+msgstr "Não foi possível obter os conjuntos de IPs flutuantes."
+
+msgid "Unable to fetch image choices."
+msgstr "Não foi possível buscar as escolhas de imagem."
+
+msgid "Unable to fetch instance details."
+msgstr "Não foi possível obter detalhes da instância"
+
+msgid "Unable to fetch job binary list"
+msgstr "Não foi possível buscar a lista de binários da tarefa"
+
+msgid "Unable to fetch job binary list."
+msgstr "Não foi possível buscar a lista de binários da tarefa."
+
+#, python-format
+msgid "Unable to fetch job binary: %(exc)s"
+msgstr "Não foi possível buscar o binário da tarefa: %(exc)s"
+
+msgid "Unable to fetch job list"
+msgstr "Não foi possível obter a lista de tarefas"
+
+msgid "Unable to fetch job template list"
+msgstr "Não foi possível obter a lista de modelos de tarefa"
+
+msgid "Unable to fetch jobs."
+msgstr "Não foi possível obter jobs"
+
+msgid "Unable to fetch keypair choices."
+msgstr "Não foi possível obter opções de par de chaves."
+
+msgid "Unable to fetch node group details."
+msgstr "Não foi possível obter detalhes do grupo de nós."
+
+msgid "Unable to fetch node group template list"
+msgstr "Não foi possível obter a lista de modelos de grupo de nós."
+
+msgid "Unable to fetch node group template list."
+msgstr "Não foi possível obter a lista de modelos de grupos de nós"
+
+msgid "Unable to fetch plugin details."
+msgstr "Não foi possível obter detalhes do plugin."
+
+msgid "Unable to fetch plugin list"
+msgstr "Não foi possível buscar a lista de plugins"
+
+msgid "Unable to fetch plugin list."
+msgstr "Não foi possível obter lista de plugin"
+
+msgid "Unable to fetch template object."
+msgstr "Não foi possível obter o objeto modelo."
+
+msgid "Unable to fetch template to copy."
+msgstr "Não foi possível obter modelo para copiar."
+
+msgid "Unable to fetch template to edit."
+msgstr "Não foi possível obter o modelo para edição."
+
+msgid "Unable to fetch the image details"
+msgstr "Não foi possível obter os detalhes da imagem"
+
+msgid "Unable to generate process choices."
+msgstr "Não foi possível gerar opções de processo."
+
+msgid "Unable to get node group details."
+msgstr "Não foi possível obter detalhes do node group"
+
+msgid "Unable to get security group list."
+msgstr "Não foi possível obter a lista de grupo de segurança."
+
+msgid "Unable to get volume type list."
+msgstr "Não é possível obter o tipo de volume de lista."
+
+msgid "Unable to launch job."
+msgstr "Não é possível iniciar a tarefa."
+
+msgid "Unable to populate anti-affinity processes."
+msgstr "Incapaz de preencher os processos anti-afinidade."
+
+msgid "Unable to process plugin tags"
+msgstr "Não é possível processar as tags do plugin"
+
+msgid "Unable to retrieve data processing plugins."
+msgstr "Não foi possível obter plugins de processamento de dados."
+
+#, python-format
+msgid "Unable to retrieve details for cluster \"%s\"."
+msgstr "Não foi possível obter detalhes para o cluster \"%s\"."
+
+#, python-format
+msgid "Unable to retrieve details for cluster template \"%s\"."
+msgstr "Não foi possível obter detalhes para o modelo de cluster \"%s\"."
+
+#, python-format
+msgid "Unable to retrieve details for data source \"%s\"."
+msgstr "Não foi possível obter detalhes da fonte de dados \"%s\"."
+
+#, python-format
+msgid "Unable to retrieve details for job \"%s\"."
+msgstr "Não foi possível obter detalhes da sua tarefa \"%s\"."
+
+#, python-format
+msgid "Unable to retrieve details for job binary \"%s\"."
+msgstr "Não foi possível obter detalhes do binário da tarefa \"%s\"."
+
+#, python-format
+msgid "Unable to retrieve details for job template \"%s\"."
+msgstr "Não foi possível obter detalhes para o modelo de tarefa \"%s\"."
+
+#, python-format
+msgid "Unable to retrieve details for node group template \"%s\"."
+msgstr "Não foi possível obter detalhes para o modelo de grupo de nós \"%s\"."
+
+msgid "Unable to retrieve image list"
+msgstr "Não é possível recuperar lista de imagens"
+
+#, python-format
+msgid "Unable to retrieve images with filter %s."
+msgstr "Não é possível recuperar as imagens com filtro %s."
+
+#, python-format
+msgid "Unable to retrieve job binary \"%s\"."
+msgstr "Não foi possível obter o binário da tarefa \"%s\"."
+
+msgid "Unable to retrieve networks."
+msgstr "Não foi possível recuperar as redes."
+
+msgid "Unable to retrieve plugin."
+msgstr "Não foi possível obter o plugin."
+
+#, python-format
+msgid "Unable to retrieve security group %(group)s."
+msgstr "Não foi possível obter o grupo de segurança %(group)s."
+
+msgid "Unable to set cluster type"
+msgstr "Não é possível definir o tipo de cluster"
+
+msgid "Unable to set job type"
+msgstr "Não é possível definir o tipo de tarefa"
+
+msgid "Unable to set node group template"
+msgstr "Não foi possível definir o modelo de grupo de nós."
+
+msgid "Unable to update job binary"
+msgstr "Não foi possível atualizar o binário da tarefa"
+
+msgid "Unable to update row"
+msgstr "Não foi possível atualizar a linha"
+
+msgid "Unable to upload cluster template file"
+msgstr "Não foi possível enviar arquivo do modelo de cluster"
+
+msgid "Unable to upload job binary"
+msgstr "Não foi possível enviar binário da tarefa"
+
+msgid "Unknown"
+msgstr "Desconhecido"
+
+msgid "Unnecessary tags may be removed by clicking a cross near tag's name."
+msgstr ""
+"Etiquetas desnecessárias podem ser removidos clicando no nome de uma "
+"etiqueta."
+
+msgid "Unregister Image"
+msgid_plural "Unregister Images"
+msgstr[0] "Cancelar o Registro da Imagem"
+msgstr[1] "Cancelar o Registro das Imagens"
+
+msgid "Unregistered Image"
+msgid_plural "Unregistered Images"
+msgstr[0] "Imagem não-registrada"
+msgstr[1] "Imagens não-registradas"
+
+msgid "Update"
+msgstr "Atualizar"
+
+msgid "Update Cluster Shares"
+msgstr "Atualizar Compartilhamentos do Cluster"
+
+msgid "Update Shares"
+msgstr "Atualizar Compartilhamentos"
+
+msgid "Updated"
+msgstr "Atualizado"
+
+msgid "Updated time"
+msgstr "Hora da atualização"
+
+msgid "Upload"
+msgstr "Enviar"
+
+msgid "Upload File"
+msgstr "Enviar Arquivo"
+
+msgid "Upload Template"
+msgstr "Upload de modelo"
+
+msgid "Upload a new file"
+msgstr "Envie um novo arquivo"
+
+msgid "Url"
+msgstr "Url"
+
+msgid "Use Data Source Substitution for Names and UUIDs"
+msgstr "Utilize a substituição de Fontes de Dados para nomes e UUIDs"
+
+msgid "Use HBase Common library"
+msgstr "Usar biblioteca HBase Common"
+
+msgid "Use anti-affinity groups for processes"
+msgstr "Use grupos anti-afinidade para processos"
+
+msgid "Use anti-affinity groups for: "
+msgstr "Use grupos anti-afinidade para:"
+
+msgid "Use auto-configuration"
+msgstr "Utilizar auto-configuração"
+
+msgid "User Name"
+msgstr "Nome do Usuário"
+
+msgid "User has to choose a keypair to have access to clusters instances."
+msgstr ""
+"O usuário precisa escolher um par de chaves para ter acesso a instâncias de "
+"clusters."
+
+msgid "Username"
+msgstr "Nome de usuário"
+
+msgid "Value"
+msgstr "Valor"
+
+msgid "Value Type"
+msgstr "Tipo de Valor"
+
+msgid "Version"
+msgstr "Versão"
+
+msgid "Version:"
+msgstr "Versão:"
+
+msgid "Volume local to instance"
+msgstr "Local do volume para a instância"
+
+msgid "Volumes Availability Zone"
+msgstr "Zona de Disponibilidade de Volumes"
+
+msgid "Volumes local to instance"
+msgstr "Volumes locais para a instância"
+
+msgid "Volumes per node"
+msgstr "Volumes por nó."
+
+msgid "Volumes size"
+msgstr "Tamanho dos Volumes"
+
+msgid "Volumes size (GB)"
+msgstr "Tamanho dos Volumes (GB)"
+
+msgid "Volumes type"
+msgstr "Tipo de volumes"
+
+msgid "Which keypair to use for authentication."
+msgstr "Qual par de chaves utilizar para autenticação"
+
+msgid "Worker Node Group Template:"
+msgstr "Modelo de Grupo de Nó de trabalho"
+
+msgid ""
+"You are now ready to\n"
+"                        launch your cluster.  When you click on the link\n"
+"                        below, you will need to give your cluster a name,\n"
+"                        choose the Cluster Template to use and choose which\n"
+"                        image to use to build your instances.  After you\n"
+"                        click on \"Create\", your instances will begin to\n"
+"                        spawn.  Your cluster should be operational in a few\n"
+"                        minutes."
+msgstr ""
+"Agora você está pronto para\n"
+"lançar seu cluster. Quando você clicar no link\n"
+"abaixo, você precisará dar um nome para seu cluster,\n"
+"escolher o Modelo de Cluster para usar, e escolher qual\n"
+"imagem utilizar para construir suas instâncias. Depois que\n"
+"você clicar em \"Criar\", suas instâncias começarão a ser \n"
+"geradas. Seu cluster deve estar operacional em poucos\n"
+"minutos."
+
+msgid "You may also add any custom tag."
+msgstr "Você também pode adicionar qualquer etiqueta personalizada."
+
+msgid "You may also enter an optional description for your Data Source."
+msgstr ""
+"Você pode também digitar uma descrição opcional para a sua Fonte de Dados."
+
+msgid "You may also enter an optional description for your job binary."
+msgstr ""
+"Você podem também digitar uma descrição opcional para o binário da sua "
+"tarefa."
+
+msgid "You may also enter an optional description for your job template."
+msgstr ""
+"Você também pode digitar uma descrição opcional para o seu modelo de tarefa."
+
+msgid "You may need to enter the username and password for your Data Source."
+msgstr ""
+"Você pode precisar digitar o nome de usuário e senha para a sua Fonte de "
+"Dados."
+
+msgid "You may set <b>cluster</b> scoped configurations on corresponding tabs."
+msgstr ""
+"Você pode definir configurações de escopo do <b>cluster</b> nas guias "
+"correspondentes."
+
+msgid ""
+"You must choose a flavor to determine the size (VCPUs, memory and storage) "
+"of all launched VMs."
+msgstr ""
+"Você precisa escolher o sabor para determinar o tamanho (VCPUs, memória e "
+"armazenamento) de todas as VMs criadas."
+
+msgid "cluster"
+msgstr "cluster"
+
+msgid "cluster template"
+msgstr "modelo do cluster"
+
+msgid "data source"
+msgstr "fonte de dados"
+
+msgid "job"
+msgstr "Tarefa"
+
+msgid "job binary"
+msgstr "binário da tarefa"
+
+msgid "no processes"
+msgstr "nenhum processo"
+
+msgid "node group template"
+msgstr "Modelo de grupo de nó"
