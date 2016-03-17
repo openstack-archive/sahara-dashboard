@@ -1,0 +1,90 @@
+# SeYeon Lee <sy_lee@kr.ibm.com>, 2016. #zanata
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2016-03-07 20:43+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2016-03-16 11:14+0000\n"
+"Last-Translator: SeYeon Lee <sy_lee@kr.ibm.com>\n"
+"Language-Team: Korean (South Korea)\n"
+"Language: ko-KR\n"
+"X-Generator: Zanata 3.7.3\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+
+msgid "(show events)"
+msgstr "(이벤트 표시)"
+
+msgid "Configuration Value"
+msgstr "구성 값"
+
+msgid "Data Source"
+msgstr "데이터 소스"
+
+msgid "Default Value"
+msgstr "기본값"
+
+msgid "Description"
+msgstr "설명"
+
+msgid "Event log is not available."
+msgstr "이벤트 로그를 사용할 수 없습니다."
+
+msgid ""
+"For configs and params, type the key name; for args, type the index as an "
+"integer, starting from 0."
+msgstr ""
+"구성 및 매개 변수의 경우 키 이름을 입력하고, 인수의 경우 0부터 시작하는 정수"
+"인 인덱스를 입력하십시오."
+
+msgid ""
+"For data sources, use a data source UUID or a path (as per data source "
+"creation.)"
+msgstr ""
+"데이터 소스의 경우 데이터 소스 UUID 또는 경로(데이터 소스 생성별)를 사용하십"
+"시오."
+
+msgid "Location"
+msgstr "위치"
+
+msgid "Mapping Type"
+msgstr "매핑 타입"
+
+msgid "Name"
+msgstr "이름"
+
+msgid "Named Parameter"
+msgstr "이름 지정된 매개변수"
+
+msgid "Number"
+msgstr "숫자"
+
+msgid "Positional Argument"
+msgstr "위치 인수"
+
+msgid "Remove"
+msgstr "제거"
+
+msgid "Required?"
+msgstr "필수 여부"
+
+msgid ""
+"See http://docs.openstack.org/developer/sahara/userdoc/edp.html for "
+"definitions."
+msgstr ""
+"정의는 http://docs.openstack.org/developer/sahara/userdoc/edp.html을 참조하십"
+"시오."
+
+msgid "String"
+msgstr "문자열"
+
+msgid "The step has completed successfully. No events to display."
+msgstr "이 단계는 성공적으로 완료되었습니다. 표시할 이벤트가 없습니다."
+
+msgid "Value Type"
+msgstr "값 타입"
+
+msgid "Verification is not available."
+msgstr "확인을 사용할 수 없습니다."
