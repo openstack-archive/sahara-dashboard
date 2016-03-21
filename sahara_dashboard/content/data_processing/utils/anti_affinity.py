@@ -41,9 +41,9 @@ def populate_anti_affinity_choices(self, request, context):
             for process in processes:
                 process_choices.append((process, process))
 
-        cluster_template_id = request.REQUEST.get("cluster_template_id", None)
+        cluster_template_id = request.GET.get("cluster_template_id", None)
         if cluster_template_id is None:
-            selected_processes = request.REQUEST.get("aa_groups", [])
+            selected_processes = request.GET.get("aa_groups", [])
         else:
             cluster_template = (
                 sahara.cluster_templates.get(cluster_template_id))

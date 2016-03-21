@@ -202,10 +202,13 @@ def get_security_groups(request, security_group_ids):
 def get_plugin_and_hadoop_version(request):
     plugin_name = None
     hadoop_version = None
-    if request.REQUEST.get("plugin_name"):
-        plugin_name = request.REQUEST["plugin_name"]
-        hadoop_version = request.REQUEST["hadoop_version"]
-    return (plugin_name, hadoop_version)
+    # In some cases request contains valuable info in both GET and POST methods
+    req = request.GET.copy()
+    req.update(request.POST)
+    if req.get("plugin_name"):
+        plugin_name = req["plugin_name"]
+        hadoop_version = req["hadoop_version"]
+    return plugin_name, hadoop_version
 
 
 def clean_node_group(node_group):

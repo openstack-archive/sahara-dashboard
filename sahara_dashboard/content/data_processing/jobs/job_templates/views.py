@@ -83,8 +83,8 @@ class LaunchJobView(workflows.WorkflowView):
 
     def get(self, request, *args, **kwargs):
         if request.is_ajax():
-            if request.REQUEST.get("json", None):
-                job_id = request.REQUEST.get("job_id")
+            if request.GET.get("json", None):
+                job_id = request.GET.get("job_id")
                 job_type = saharaclient.job_get(request, job_id).type
                 return http.HttpResponse(json.dumps({"job_type": job_type}),
                                          content_type='application/json')

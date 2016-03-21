@@ -148,9 +148,10 @@ class GeneralConfigAction(workflows.Action):
         # cluster_template_id comes from cluster templates table, when
         # Create Cluster from template is clicked there
         selected_template_name = None
-        if request.REQUEST.get("cluster_template_name"):
+        req = request.GET or request.POST
+        if req.get("cluster_template_name"):
             selected_template_name = (
-                request.REQUEST.get("cluster_template_name"))
+                req.get("cluster_template_name"))
         if selected_template_name:
             for template in templates:
                 if template.name == selected_template_name:
@@ -158,7 +159,7 @@ class GeneralConfigAction(workflows.Action):
                     break
         else:
             selected_template_id = (
-                request.REQUEST.get("cluster_template_id", None))
+                req.get("cluster_template_id", None))
 
         for template in templates:
             if template.id == selected_template_id:
