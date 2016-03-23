@@ -59,7 +59,7 @@ class TestCRUD(SaharaTestCase):
                                     "Test description", tags=IMAGE_TAGS)
         image_reg_pg.wait_until_image_registered(IMAGE_NAME)
 
-    def test_cluster_create_delete(self):
+    def create_cluster(self):
         nodegrouptpls_pg = (
             self.home_pg.go_to_dataprocessing_clusters_nodegrouptemplatespage()
         )
@@ -106,12 +106,32 @@ class TestCRUD(SaharaTestCase):
         self.assertTrue(cluster_pg.is_cluster_active(CLUSTER_NAME),
                         "Cluster is not active")
 
+    def cluster_scale(self):
+        cluster_pg = self.home_pg.go_to_dataprocessing_clusters_clusterspage()
+        cluster_pg.scale(CLUSTER_NAME, WORKER_NAME, 2)
+        self.assertTrue(cluster_pg.has_success_message())
+        self.assertFalse(cluster_pg.has_error_message())
+
+        cluster_pg.wait_until_cluster_active(
+            CLUSTER_NAME, timeout=self.CONFIG.sahara.launch_timeout)
+        self.assertTrue(cluster_pg.is_cluster_active(CLUSTER_NAME),
+                        "Cluster is not active")
+        self.assertEqual(cluster_pg.get_cluster_instances_count(CLUSTER_NAME),
+                         3, "Cluster was not scaled")
+
+    def delete_cluster(self):
+        cluster_pg = self.home_pg.go_to_dataprocessing_clusters_clusterspage()
         cluster_pg.delete(CLUSTER_NAME)
         self.assertTrue(cluster_pg.has_success_message())
         self.assertFalse(cluster_pg.has_error_message())
         cluster_pg.wait_until_cluster_deleted(CLUSTER_NAME)
         self.assertFalse(cluster_pg.is_present(CLUSTER_NAME),
                          "Cluster was not deleted.")
+
+    def test_cluster_create_scale_delete(self):
+        self.create_cluster()
+        self.cluster_scale()
+        self.delete_cluster()
 
     def tearDown(self):
         clustertpls_pg = (
