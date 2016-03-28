@@ -1,0 +1,91 @@
+# Ilya Alekseyev <ilyaalekseyev@acm.org>, 2016. #zanata
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2016-03-07 20:43+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2016-03-24 02:37+0000\n"
+"Last-Translator: Ilya Alekseyev <ilyaalekseyev@acm.org>\n"
+"Language-Team: Russian\n"
+"Language: ru\n"
+"X-Generator: Zanata 3.7.3\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+
+msgid "(show events)"
+msgstr "(показать события)"
+
+msgid "Configuration Value"
+msgstr "Конфигурационное значение"
+
+msgid "Data Source"
+msgstr "Источник данных"
+
+msgid "Default Value"
+msgstr "Значение по умолчанию"
+
+msgid "Description"
+msgstr "Описание"
+
+msgid "Event log is not available."
+msgstr "Журнал событий недоступен."
+
+msgid ""
+"For configs and params, type the key name; for args, type the index as an "
+"integer, starting from 0."
+msgstr ""
+"Для configs и params, введите имя ключа; для args, введите индекс как целое "
+"число начиная с 0."
+
+msgid ""
+"For data sources, use a data source UUID or a path (as per data source "
+"creation.)"
+msgstr ""
+"Для источников данных используйте UUID источника или путь (такой же как при "
+"создании источника)"
+
+msgid "Location"
+msgstr "Расположение"
+
+msgid "Mapping Type"
+msgstr "Тип отображения"
+
+msgid "Name"
+msgstr "Имя"
+
+msgid "Named Parameter"
+msgstr "Именованный параметр"
+
+msgid "Number"
+msgstr "Число"
+
+msgid "Positional Argument"
+msgstr "Позиционный аргумент"
+
+msgid "Remove"
+msgstr "Удалить"
+
+msgid "Required?"
+msgstr "Обязательно?"
+
+msgid ""
+"See http://docs.openstack.org/developer/sahara/userdoc/edp.html for "
+"definitions."
+msgstr ""
+"Смотрите http://docs.openstack.org/developer/sahara/userdoc/edp.html для "
+"определений."
+
+msgid "String"
+msgstr "Строка"
+
+msgid "The step has completed successfully. No events to display."
+msgstr "Этап успешно завершен. Нет событий для отображения."
+
+msgid "Value Type"
+msgstr "Тип значения"
+
+msgid "Verification is not available."
+msgstr "Верификация недоступна."

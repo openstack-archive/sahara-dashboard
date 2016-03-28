@@ -1,0 +1,1953 @@
+# Ilya Alekseyev <ilyaalekseyev@acm.org>, 2016. #zanata
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2016-03-07 20:43+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2016-03-27 12:16+0000\n"
+"Last-Translator: Ilya Alekseyev <ilyaalekseyev@acm.org>\n"
+"Language-Team: Russian\n"
+"Language: ru\n"
+"X-Generator: Zanata 3.7.3\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+
+msgid " Done"
+msgstr "Сделано"
+
+msgid " or "
+msgstr "или "
+
+#, python-format
+msgid "%(conf_name)s: %(conf_val)s"
+msgstr "%(conf_name)s: %(conf_val)s"
+
+#, python-format
+msgid "%(conf_name)s: %(conf_value)s"
+msgstr "%(conf_name)s: %(conf_value)s"
+
+#, python-format
+msgid "%(group)s:"
+msgstr "%(group)s:"
+
+#, python-format
+msgid "%(key)s: %(val)s"
+msgstr "%(key)s: %(val)s"
+
+#, python-format
+msgid "%s processes: "
+msgstr "%s процессов: "
+
+msgid "-- not selected --"
+msgstr "-- не выбрано --"
+
+msgid ""
+"<b>Important</b>:  The name that you give your job binary will be the name "
+"used in your job execution.\n"
+"  If your binary requires a particular name or extension (ie: \".jar\"), be "
+"sure to include it here."
+msgstr ""
+"<b>Важно</b>: Имя. которое вы даете вашим исполняемым файлам будет именем "
+"использованным в выполнении задачи.\n"
+"Если ваши исполняемые файлы требуют определенного имени или расширения (т."
+"е.: \".jar\"), обязательно укажите это здесь."
+
+msgid "Adapt For Oozie"
+msgstr "Адаптировать для Oozie"
+
+msgid "Add"
+msgstr "Добавить"
+
+msgid "Add Node Group"
+msgstr "Добавить группу узлов"
+
+msgid "Add custom tag"
+msgstr "Добавить пользовательский тег"
+
+msgid "Add libraries to your job template."
+msgstr "Добавить библиотеки в ваш шаблон задачи."
+
+msgid "Add plugin tags"
+msgstr "Добавить теги плагина"
+
+msgid "Anti-affinity enabled for"
+msgstr "Анти-аффинность разрешена для"
+
+msgid "Arguments"
+msgstr "Аргументы"
+
+msgid "Auto Security Group"
+msgstr "Автоматическая группа безопасности"
+
+msgid "Auto-configure"
+msgstr "Авто-конфигурация"
+
+msgid ""
+"Automatically modify the Hadoop configuration so that job config values are "
+"set and so that Oozie will handle exit codes correctly."
+msgstr ""
+"Автоматически изменить конфигурацию Hadoop для задания конфигурационных "
+"значений задач, так чтобы Oozie корректно воспринимал коды возврата."
+
+msgid "Availability Zone"
+msgstr "Зона доступности"
+
+msgid "Base Image"
+msgstr "Базовый образ"
+
+msgid "Cancel"
+msgstr "Отмена"
+
+msgid "Checking"
+msgstr "Проверка"
+
+msgid "Choose"
+msgstr "Выбрать"
+
+msgid "Choose a main binary"
+msgstr "Выбрать основной исполняемый файл"
+
+msgid "Choose a shell script"
+msgstr "Выберите скрипт shell"
+
+msgid "Choose a storage location"
+msgstr "Выбрать место хранения"
+
+msgid "Choose additional files"
+msgstr "Выберите дополнительные файлы"
+
+msgid "Choose an existing Master Node Group Template"
+msgstr "Выберите существующий шаблон группы узлов Master."
+
+msgid "Choose an existing Worker Node Group Template"
+msgstr "Выберите существующий шаблон группы узлов Worker."
+
+msgid "Choose an existing file"
+msgstr "Выбрать существующий файл"
+
+msgid ""
+"Choose from the list of binaries and click \"choose\" to add the library to "
+"your job template.  This can be repeated for additional libraries."
+msgstr ""
+"Выберите из списка исполняемых файлов и нажмите \"выбрать\" чтобы добавить "
+"библиотеку в ваш шаблон. Это можно выполнить несколько раз для "
+"дополнительных библиотек."
+
+msgid "Choose job type"
+msgstr "Выберите тип задачи"
+
+msgid "Choose libraries"
+msgstr "Выбрать библиотеки"
+
+msgid "Choose node group template"
+msgstr "Выберите шаблон группы узлов"
+
+msgid ""
+"Choose or create your main binary.  Additional libraries can be added from "
+"the \"Libs\" tab."
+msgstr ""
+"Выбрать или создать ваш основной исполняемый  файл. Дополнительные "
+"библиотеки могут быть добавлены во вкладке \"Библиотеки\"."
+
+msgid "Choose plugin"
+msgstr "Выбрать плагин"
+
+msgid "Choose plugin and version"
+msgstr "Выберите плагин и версию"
+
+msgid "Choose plugin type and version"
+msgstr "Выберите тип и версию плагина"
+
+msgid "Choose the Input Data Source (n/a for Java and Shell jobs)."
+msgstr ""
+"Выберите входящий источник данных (недоступно для  задач Java и Shell)."
+
+msgid "Choose the Output Data Source (n/a for Java and Shell jobs)."
+msgstr ""
+"Выберите исходящий источник данных (недоступно для  задач Java и Shell)."
+
+msgid "Choose the binary which should be used in this Job."
+msgstr "Выберите исполняемые файл, который будет использован в этой задаче."
+
+msgid "Choose the cluster to use for the job."
+msgstr "Выберите кластер для запуска задачи."
+
+msgid "Chosen Libraries"
+msgstr "Выбранные библиотеки"
+
+msgid "Cinder volumes"
+msgstr "Диски Cinder"
+
+msgid "Cluster"
+msgstr "Кластер"
+
+msgid "Cluster Configuration Overview"
+msgstr "Обзор конфигурации кластера"
+
+msgid "Cluster Count"
+msgstr "Количество кластеров"
+
+msgid "Cluster Creation Guide"
+msgstr "Мастер создания кластера"
+
+msgid "Cluster Events"
+msgstr "События кластера"
+
+msgid "Cluster Instances"
+msgstr "Инстансы кластера"
+
+msgid "Cluster Name"
+msgstr "Имя кластера"
+
+msgid "Cluster Template"
+msgstr "Шаблон кластера"
+
+#, python-format
+msgid "Cluster Template %s updated"
+msgstr "Шаблон кластера %s обновлен"
+
+msgid "Cluster Template Configuration Overview"
+msgstr "Обзор конфигурации шаблона кластера"
+
+msgid "Cluster Template Name"
+msgstr "Имя шаблона кластера"
+
+#, python-format
+msgid "Cluster Template copy %s created"
+msgstr "Копия шаблона кластера %s создана"
+
+msgid "Cluster Templates"
+msgstr "Шаблоны кластера"
+
+msgid "Cluster can be launched using existing Cluster Templates."
+msgstr "Кластер может быть запущен с помощью существующих шаблонов кластера."
+
+msgid "Cluster configurations are not specified"
+msgstr "Конфигурации кластера не заданы"
+
+msgid "Cluster health checks"
+msgstr "Проверки работоспособности кластера"
+
+msgid "Cluster provision steps"
+msgstr "Шаги создания кластера"
+
+msgid "Cluster share update failed."
+msgstr "Обновление разделяемых дисков кластера не удалось"
+
+msgid "Cluster template creation failed"
+msgstr "Не удалось создать шаблон кластера"
+
+msgid "Cluster template update failed"
+msgstr "Обновление шаблона кластера не удалось"
+
+msgid "Cluster type chosen"
+msgstr "Выбран тип кластера"
+
+msgid "Clusters"
+msgstr "Кластера"
+
+msgid "Completed Successfully"
+msgstr "Успешно завершено"
+
+msgid "Configuration"
+msgstr "Конфигурация"
+
+msgid "Configuration Details"
+msgstr "Детали конфигурации"
+
+msgid "Configuration Value"
+msgstr "Конфигурационное значение"
+
+msgid "Configure"
+msgstr "Настроить"
+
+msgid "Configure Cluster"
+msgstr "Настроить кластер"
+
+msgid "Configure Cluster Template"
+msgstr "Настроить шаблон кластера"
+
+msgid "Configure Node Group Template"
+msgstr "Настроить шаблон группы узлов "
+
+msgid "Configure Template"
+msgstr "Настроить шаблон"
+
+msgid "Control access to instances of the node group."
+msgstr "Управление доступом к инстансам группы узлов."
+
+msgid "Copy Cluster Template"
+msgstr "Копировать шаблон кластера"
+
+msgid "Copy Template"
+msgstr "Копировать шаблон"
+
+msgid "Could not create"
+msgstr "Не удалось создать"
+
+msgid "Could not create data source"
+msgstr "Не удалось создать источник данных"
+
+msgid "Could not create job template"
+msgstr "Не удалось создать шаблон задачи"
+
+msgid "Could not launch job"
+msgstr "Не удалось запустить задачу"
+
+msgid "Could not update cluster shares"
+msgstr "Не могу обновить разделяемые диски"
+
+msgid "Could not update data source"
+msgstr "Невозможно обновить источник данных"
+
+msgid "Count"
+msgstr "Количество"
+
+msgid "Create"
+msgstr "Создать"
+
+msgid "Create Cluster Template"
+msgstr "Создать шаблон кластера"
+
+msgid "Create Data Source"
+msgstr "Создать источник данных"
+
+msgid "Create Job Binary"
+msgstr "Создать исполняемый файл задачи"
+
+msgid "Create Job Template"
+msgstr "Создать шаблон задачи"
+
+msgid "Create Node Group Template"
+msgstr "Создать шаблон группы узлов"
+
+msgid "Create Template"
+msgstr "Создать шаблон"
+
+msgid "Create a Cluster Template"
+msgstr "Создание шаблона кластера"
+
+msgid "Create a Data Source with a specified name."
+msgstr "Создать источник данных с указанным именем"
+
+msgid "Create a Master Node Group Template"
+msgstr "Создание шаблона группы узлов \"Master\""
+
+msgid "Create a Worker Node Group Template"
+msgstr "Создание шаблона группы узлов \"Worker\""
+
+msgid "Create a data source"
+msgstr "Создание источника данных"
+
+msgid "Create a job template"
+msgstr "Создать шаблон задачи"
+
+msgid "Create a job template with a specified name."
+msgstr "Создать шаблон задачи с указанным именем."
+
+msgid "Create a script to be uploaded dynamically"
+msgstr "Создать скрипт для динамической загрузки"
+
+msgid "Create security group for this Node Group."
+msgstr "Создать группу безопасности для этой группы узлов "
+
+msgid "Create time"
+msgstr "Создать время"
+
+msgid "Create volumes in this availability zone."
+msgstr "Создать диски в этой зоне доступности"
+
+msgid "Created"
+msgstr "Создано"
+
+msgctxt "Created time"
+msgid "Created"
+msgstr "Создано"
+
+#, python-format
+msgid "Created Cluster Template %s"
+msgstr "Созданный шаблон кластера %s "
+
+#, python-format
+msgid "Created Node Group Template %s"
+msgstr "Создать шаблон группы узлов  %s"
+
+msgid "Created time"
+msgstr "Время создания"
+
+msgid "Current choice:"
+msgstr "Текущий выбор:"
+
+msgid "Current type:"
+msgstr "Текущий тип:"
+
+msgid "Data Processing"
+msgstr "Обработка данных"
+
+msgid "Data Processing Plugin Details"
+msgstr "Данные плагина обработки данных"
+
+msgid "Data Processing Plugins"
+msgstr "Плагины обработки данных"
+
+msgid "Data Processing internal database"
+msgstr "Внутренняя БД обработки данных"
+
+msgid ""
+"Data Processing provides different storage location options. You may choose "
+"Ephemeral Drive or a Cinder Volume to be attached to instances."
+msgstr ""
+"Обработка данных предоставляет различные опции  мест хранения. Вы можете "
+"выбрать эфемерный диски или диски Cinder для подключения к инстансам."
+
+msgid "Data Source"
+msgstr "Источник данных"
+
+msgid "Data Source Type"
+msgstr "Тип источника данных"
+
+msgid "Data Sources"
+msgstr "Источники данных"
+
+msgid ""
+"Data Sources are what your\n"
+"                            job uses for input and output.  Depending on the "
+"type\n"
+"                            of job you will be running, you may need to "
+"define one\n"
+"                            or more data sources.  You can create multiple "
+"data\n"
+"                            sources by repeating this step.\n"
+"                        "
+msgstr ""
+"Источники данных используются задачей для получения \n"
+"    входной и выдачи выходной информации. В зависимости \n"
+"    от типа задачи вы можете определить один или более  \n"
+"    источников данных. Вы можете создать \n"
+"    несколько источников повторив этот шаг.\n"
+"    "
+
+msgid "Data source created"
+msgstr "Источник данных создан"
+
+msgid "Data source updated"
+msgstr "Источник данных обновлен"
+
+msgid "Default Value"
+msgstr "Значение по умолчанию"
+
+msgid ""
+"Define your Job Template.\n"
+"                        This is where you choose the type of job that you\n"
+"                        want to run (Pig, Java Action, Spark, etc) and "
+"choose\n"
+"                        or upload the files necessary to run it.  The "
+"inputs\n"
+"                        and outputs will be defined later.\n"
+"                    "
+msgstr ""
+"Определите шаблон задачи.\n"
+"    Здесь вы выбираете тип задачи которую\n"
+"    вы хотите запустить (Pig, Java Action, Spark и т.д.)\n"
+"    и выберите или загрузите файлы необходимые для запуска.\n"
+"    Входные и выходные источники будут определены далее.\n"
+"    "
+
+msgid "Delete Cluster"
+msgid_plural "Delete Clusters"
+msgstr[0] "Удалить кластер"
+msgstr[1] "Удалить кластеры"
+msgstr[2] "Удалить кластеры"
+
+msgid "Delete Data Source"
+msgid_plural "Delete Data Sources"
+msgstr[0] "Удалить источник данных"
+msgstr[1] "Удалить источники данных"
+msgstr[2] "Удалить источники данных"
+
+msgid "Delete Job"
+msgid_plural "Delete Jobs"
+msgstr[0] "Удалить задачу"
+msgstr[1] "Удалить задачи"
+msgstr[2] "Удалить задачи"
+
+msgid "Delete Job Binary"
+msgid_plural "Delete Job Binaries"
+msgstr[0] "Удалить исполняемый файл задачи"
+msgstr[1] "Удалить исполняемые файлы задачи"
+msgstr[2] "Удалить исполняемые файлы задачи"
+
+msgid "Delete Job Template"
+msgid_plural "Delete Job Templates"
+msgstr[0] "Удалить шаблон задачи"
+msgstr[1] "Удалить шаблоны задачи"
+msgstr[2] "Удалить шаблоны задачи"
+
+msgid "Delete Template"
+msgid_plural "Delete Templates"
+msgstr[0] "Удалить шаблон"
+msgstr[1] "Удалить шаблоны"
+msgstr[2] "Удалить шаблоны"
+
+msgid "Deleted Cluster"
+msgid_plural "Deleted Clusters"
+msgstr[0] "Удаленный кластер"
+msgstr[1] "Удаленные кластеры"
+msgstr[2] "Удаленные кластеры"
+
+msgid "Deleted Data Source"
+msgid_plural "Deleted Data Sources"
+msgstr[0] "Удаленный источник данных"
+msgstr[1] "Удаленые источники данных"
+msgstr[2] "Удаленые источники данных"
+
+msgid "Deleted Job"
+msgid_plural "Deleted Jobs"
+msgstr[0] "Удаленная задача"
+msgstr[1] "Удаленные задачи"
+msgstr[2] "Удаленные задачи"
+
+msgid "Deleted Job Binary"
+msgid_plural "Deleted Job Binaries"
+msgstr[0] "Удаленный исполняемый файл задачи"
+msgstr[1] "Удаленные исполняемые файлы задачи"
+msgstr[2] "Удаленные исполняемые файлы задачи"
+
+msgid "Deleted Job Template"
+msgid_plural "Deleted Jobs Templates"
+msgstr[0] "Удаленный шаблон задачи"
+msgstr[1] "Удаленные шаблоны задачи"
+msgstr[2] "Удаленные шаблоны задачи"
+
+msgid "Deleted Template"
+msgid_plural "Deleted Templates"
+msgstr[0] "Удаленный шаблон"
+msgstr[1] "Удаленные шаблоны"
+msgstr[2] "Удаленные шаблоны"
+
+msgid "Description"
+msgstr "Описание"
+
+msgid "Details"
+msgstr "Подробности"
+
+msgid "Done"
+msgstr "Сделано"
+
+msgctxt "Current status of a Job"
+msgid "Done with Error"
+msgstr "Выполнена с ошибками"
+
+msgid "Download Job Binary"
+msgstr "Скачать исполняемый файл задачи"
+
+msgid "Download job binary"
+msgstr "Скачать исполняемый файл задачи"
+
+msgid "Duration"
+msgstr "Продолжительность"
+
+msgid "Edit Cluster Template"
+msgstr "Редактировать шаблон кластера"
+
+msgid "Edit Data Source"
+msgstr "Редактировать источник данных"
+
+msgid "Edit Image Tags"
+msgstr "Редактировать теги образа"
+
+msgid "Edit Job Binary"
+msgstr "Редактировать исполняемый файл задачи"
+
+msgid "Edit Node Group Template"
+msgstr "Редактирование шаблона группы улов"
+
+msgid "Edit Tags"
+msgstr "Редактировать теги"
+
+msgid "Edit Template"
+msgstr "Редактировать шаблон"
+
+msgid "Enable Swift Paths"
+msgstr "Разрешить пути Swift"
+
+msgctxt "End time"
+msgid "Ended"
+msgstr "Завершено"
+
+msgid "Enter any custom configuration required for your job's execution."
+msgstr ""
+"Введите любую нестандартную конфигурацию необходимую для выполнения вашей "
+"задачи."
+
+msgid "Enter the URL for the file"
+msgstr "Ввести URL для файла"
+
+msgid "Enter the username and password required to access that file"
+msgstr ""
+"Ввести имя пользователя и пароль, необходимые для доступа к этому файлу "
+
+msgid "Ephemeral drive"
+msgstr "Эфемерный диск"
+
+msgid "Error Details"
+msgstr "Сведения об ошибке"
+
+msgid "Event time"
+msgstr "Время события"
+
+msgid "Failed"
+msgstr "Произошла ошибка"
+
+msgctxt "Current status of a Job"
+msgid "Failed"
+msgstr "Произошла ошибка"
+
+msgid "Failed to fetch internal binary list"
+msgstr "Не удалось получить список внутренних исполняемых файлов"
+
+msgid "Failed to get list of internal binaries."
+msgstr "Не удалось получить список внутренних исполняемых файлов"
+
+msgid "Failed to get list of shares"
+msgstr "Не удалось получить список разделяемых дисков"
+
+msgid "Failed to update image."
+msgstr "Не удалось обновить образ"
+
+msgid "Filter"
+msgstr "Фильтр"
+
+msgid ""
+"First, select which type of job that\n"
+"                            you want to run.  This choice will determine "
+"which\n"
+"                            other steps are required\n"
+"                        "
+msgstr ""
+"Во первых, выберите тип задачи,\n"
+"    которую вы хотите запустить. Этот выбор повлияет на\n"
+"    на дальнейшие необходимые шаги\n"
+"    "
+
+msgid "Flavor"
+msgstr "Тип инстанса"
+
+msgid "Flavor is not specified"
+msgstr "Тип инстанса не указан"
+
+msgid "Floating IP Pool"
+msgstr "Пул назначаемых IP"
+
+msgid ""
+"For Data Processing internal job binaries, you may choose from the following:"
+msgstr ""
+"Для внутренних исполняемых файлов Обработки Данных вы можете выбрать "
+"следующее:"
+
+msgid ""
+"For Data Sources on a Manila share, choose the share and enter the path "
+"relative to the share (example: /outputdir/myinputfile.txt)"
+msgstr ""
+"Для источников данных на разделяемых дисках Manila, выберите разделяемый "
+"диск и введите относительный путь (например:  /outputdir/myinputfile.txt)"
+
+msgid ""
+"For MapReduce or Java Action jobs, \"mains\" are not applicable.  You are "
+"required to add one\n"
+"  or more \"libs\" for these jobs."
+msgstr ""
+"Для задач MapReduce или команды Java основной скрипт неприменим. Вы должны "
+"добавить одну\n"
+"или несколько библиотек для этих задач."
+
+msgid "For Object Store job binaries, you must:"
+msgstr "Для исполняемых файлов задач Объектного Хранилища вы должны:"
+
+msgid ""
+"For Shell Action jobs, any required files beyond the main script may be "
+"added as \"libraries\"."
+msgstr ""
+"Для команд Shell любые необходимые файлы, помимо основного скрипта, могут "
+"быть добавлены как библиотеки."
+
+msgid ""
+"For Spark and Shell jobs, only a main is required, \"libs\" are optional."
+msgstr ""
+"Для задач Spark и Shell необходим только основной скрипт, библиотеки не "
+"обязательны."
+
+msgid "General Info"
+msgstr "Общая информация"
+
+msgid "Guided Cluster Creation"
+msgstr "Мастер создания кластера"
+
+msgid "Guided Job Execution"
+msgstr "Управляемый запуск задачи"
+
+msgid "HDFS placement"
+msgstr "Размещение HDFS "
+
+msgid "Health"
+msgstr "Работоспособность"
+
+msgid "Hide full configuration"
+msgstr "Скрыть полную конфигурацию"
+
+msgid "Hive"
+msgstr "Hive"
+
+msgid "ID"
+msgstr "ID"
+
+#, python-format
+msgid ""
+"If selected, %s will be protected from modifications until this will be "
+"unselected"
+msgstr ""
+"Если выбрано, %s будет защищено от модификаций пока этот пункт не будет "
+"отменен"
+
+#, python-format
+msgid "If selected, %s will be shared across the tenants"
+msgstr "Если выбрано, %s будет доступно во всех тенантах"
+
+msgid ""
+"If selected, instances of a cluster will be automatically configured during "
+"creation. Otherwise you should manually specify configuration values"
+msgstr ""
+"Если эта опция выбрана, инстансы кластера будут автоматически "
+"сконфигурированы во время создания. В противном случае вы должны вручную "
+"задать конфигурационные значения."
+
+msgid ""
+"If selected, instances of a node group will be automatically configured "
+"during cluster creation. Otherwise you should manually specify configuration "
+"values."
+msgstr ""
+"Если выбрано, инстансы группы узлов автоматически настраиваются во время "
+"создания кластера. Иначе необходимо указывать конфигурационные значения "
+"вручную."
+
+msgid "Image"
+msgstr "Образ"
+
+msgid "Image Registry"
+msgstr "Реестр образов"
+
+msgid ""
+"Image Registry is used to provide additional information about images for "
+"Data Processing."
+msgstr ""
+"Реестр образов используется для предоставления дополнительной информации об "
+"образах для обработки данных. "
+
+msgid "Image Registry tool:"
+msgstr "Утилита для реестра образов:"
+
+msgid "In progress"
+msgstr "В процессе"
+
+msgid "Info"
+msgstr "Информация"
+
+msgid "Input"
+msgstr "Ввод"
+
+msgid "Input Data Source"
+msgstr "Источник входных данных"
+
+msgid "Instance"
+msgstr "Инстанс"
+
+msgid "Instance and attached volumes will be created on the same physical host"
+msgstr "Инстансы и подключенные диски будут созданы на одном физическом хосте"
+
+msgid "Instances"
+msgstr "Инстансы"
+
+msgid "Instances Count"
+msgstr "Количество инстансов"
+
+msgid "Interface Arguments"
+msgstr "Аргументы интерфейса"
+
+msgid "Internal Binary"
+msgstr "Внутренний исполняемый файл"
+
+msgid "Internal IP"
+msgstr "Внутренний IP"
+
+msgid "Internal binary"
+msgstr "Внутренний исполняемый файл"
+
+msgid "Java"
+msgstr "Java"
+
+msgid "Java Action"
+msgstr "Команда Java"
+
+msgid "Java Opts"
+msgstr "Опции Java "
+
+msgid "Job"
+msgstr "Задача"
+
+msgid "Job Binaries"
+msgstr "Исполняемые файлы задач"
+
+msgid "Job Configuration"
+msgstr "Конфигурация задачи"
+
+msgid "Job Execution ID"
+msgstr "ID выполнения задачи"
+
+msgid "Job Guide"
+msgstr "Мастер задачи"
+
+msgid "Job Template"
+msgstr "Шаблон задачи"
+
+msgid "Job Templates"
+msgstr "Шаблоны задачи"
+
+msgid "Job Type"
+msgstr "Тип задачи"
+
+msgid "Job args"
+msgstr "Аргументы задачи"
+
+msgid "Job configs"
+msgstr "Конфигурации задачи"
+
+msgid "Job created"
+msgstr "Задача создана"
+
+msgid "Job launched"
+msgstr "Задача запущена"
+
+msgid "Job params"
+msgstr "Параметры задачи"
+
+msgid "Job template:"
+msgstr "Шаблон задачи:"
+
+msgid "Job type chosen"
+msgstr "Выбран типа задачи"
+
+msgid "Jobs"
+msgstr "Задачи"
+
+msgid "Keypair"
+msgstr "Ключевая пара"
+
+msgctxt "Current status of a Job"
+msgid "Killed"
+msgstr "Убита"
+
+msgid "Last Updated"
+msgstr "Обновлено"
+
+msgid "Launch"
+msgstr "Запустить"
+
+msgid "Launch Cluster"
+msgstr "Запустить кластер"
+
+msgid "Launch Job"
+msgid_plural "Launch Jobs"
+msgstr[0] "Запустить задачу"
+msgstr[1] "Запустить задачи"
+msgstr[2] "Запустить задачи"
+
+msgid "Launch On Existing Cluster"
+msgstr "Запустить на существующем кластере"
+
+msgid "Launch On New Cluster"
+msgstr "Запустить на новом кластере"
+
+msgid "Launch a Cluster"
+msgstr "Запуск кластера"
+
+msgid "Launch instances in these security groups."
+msgstr "Запустить инстансы в этих группах безопасности"
+
+msgid "Launch instances in this availability zone."
+msgstr "Запустить инстанс в этой зоне доступности."
+
+msgid "Launch job"
+msgstr "Запустить задачу"
+
+msgid "Launch the given job template on a cluster."
+msgstr "Запустить выбранный шаблон задачи на кластере."
+
+msgid ""
+"Launch your job.  When\n"
+"                        launching, you may need to choose your input and\n"
+"                        output data sources.  This is where you would also\n"
+"                        add any special configuration values, parameters,\n"
+"                        or arguments that you need to pass along\n"
+"                        to your job.\n"
+"                        "
+msgstr ""
+"Запустите свою задачу. При запуске\n"
+"    вам может потребоваться выбрать источники для входных\n"
+"    и выходные данных. Там же вы добавите дополнительные\n"
+"    конфигурационные значения, параметры или аргументы\n"
+"    которые вы хотите передать \n"
+"    вашей задаче. \n"
+"    "
+
+#, python-format
+msgid "Launched Cluster %s"
+msgstr "Запущен кластер %s"
+
+msgid "Launched Job"
+msgid_plural "Launched Jobs"
+msgstr[0] "Запущенная задача"
+msgstr[1] "Запущенные задачи"
+msgstr[2] "Запущенные задачи"
+
+msgid "Libs"
+msgstr "Библиотеки"
+
+msgid "Location"
+msgstr "Расположение"
+
+msgid "Main Class"
+msgstr "Основной класс"
+
+msgid "Mains"
+msgstr "Основные скрипты"
+
+msgid "Management IP"
+msgstr "IP управления"
+
+msgid "Manila share"
+msgstr "Разделяемые диски Manila"
+
+msgid "MapReduce"
+msgstr "MapReduce"
+
+msgid "Mapper"
+msgstr "Маппер"
+
+msgid "Mapping Type"
+msgstr "Тип отображения"
+
+msgid "Master Node Group Template:"
+msgstr "Шаблон группы узлов Master:"
+
+msgid ""
+"Modify the configuration so that swift URLs can be dereferenced through HDFS "
+"at runtime."
+msgstr ""
+"Изменить конфигурацию, чтобы во время выполнения URL Swift могли быть "
+"разыменованы через HDFS."
+
+msgid "Name"
+msgstr "Имя"
+
+#, python-format
+msgid "Name: %(node_group_name)s"
+msgstr "Имя: %(node_group_name)s"
+
+msgid "Named Parameter"
+msgstr "Именованный параметр"
+
+msgid "Neutron Management Network"
+msgstr "Управляющая сеть Neutron"
+
+msgid "Never"
+msgstr "Никогда"
+
+msgid "Next"
+msgstr "Далее"
+
+msgid ""
+"Next, you need to define the different\n"
+"                        types of machines in your cluster.  This is done by\n"
+"                        defining a Node Group Template for each type of\n"
+"                        machine.  A very common case is where you\n"
+"                        need to have one or more machines running a \"master"
+"\"\n"
+"                        set of processes while another set of machines need\n"
+"                        to be running the \"worker\" processes.  Here,\n"
+"                        you will define the Node Group Template for your\n"
+"                        \"master\" node(s).\n"
+"                     "
+msgstr ""
+"Далее вы должны определить различные\n"
+"типы машин в вашем кластере. Это выполняется\n"
+"с помощью определения шаблона группы узлов для\n"
+"каждого типа машин. В наиболее распространенном случае\n"
+"на одной или нескольких машинах запускается \n"
+"набор процессов \"master\" и еще один набор \n"
+"машин выполняет \"worker\" процессы.\n"
+"На данном шаге вы определяете \n"
+"шаблон группы узлов для вашего\n"
+"\"master\" узла (узлов). "
+
+msgid "No Cluster Template Created"
+msgstr "Не создан шаблон кластера"
+
+msgid "No Images Available"
+msgstr "Нет доступных образов"
+
+msgid "No Master Node Group Template Created"
+msgstr "Не создан шаблон группы узлов \"Master\""
+
+msgid "No Templates Available"
+msgstr "Нет доступных шаблонов"
+
+msgid "No Worker Node Group Template Created"
+msgstr "Не создан шаблон группы узлов \"Worker\""
+
+msgid "No availability zone specified"
+msgstr "Не указана зона доступности"
+
+msgid "No configurations"
+msgstr "Нет конфигураций"
+
+msgid "No description"
+msgstr "Нет описания"
+
+msgid "No image specified"
+msgstr "Образ не указан"
+
+msgid "No images available."
+msgstr "Нет доступных образов."
+
+msgid "No info available"
+msgstr "Информация недоступна"
+
+msgid "No job template created"
+msgstr "Не создан шаблон задачи"
+
+msgid "No keypair"
+msgstr "Нет ключевых пар"
+
+msgid "No plugin chosen"
+msgstr "Плагин не выбран"
+
+msgid "No type chosen"
+msgstr "Тип не выбран"
+
+msgid "No volume type"
+msgstr "Нет типа диска"
+
+msgid "Node Group"
+msgstr "Группа узлов"
+
+#, python-format
+msgid "Node Group Name: %(node_group_name)s"
+msgstr "Группа узлов: %(node_group_name)s"
+
+msgid "Node Group Template"
+msgstr "Шаблон группы узлов"
+
+#, python-format
+msgid "Node Group Template %s updated"
+msgstr "Шаблон группы узлов %s обновлён"
+
+#, python-format
+msgid "Node Group Template copy %s created"
+msgstr "Копия шаблона группы узлов %s создана"
+
+msgid "Node Group Templates"
+msgstr "Шаблоны группы узлов"
+
+#, python-format
+msgid "Node Group: %(node_group_name)s"
+msgstr "Группа узлов: %(node_group_name)s"
+
+msgid "Node Groups"
+msgstr "Группы нод"
+
+msgid "Node Groups Configuration Overview"
+msgstr "Обзор конфигурации группы узлов"
+
+msgid "Node Processes"
+msgstr "Процессы ноды"
+
+msgid "Node group cluster"
+msgstr "Кластер группы узлов "
+
+msgid "Node group configurations are not specified"
+msgstr "Конфигурации группы узлов не указаны"
+
+msgid "Node processes are not specified"
+msgstr "Процессы узла не указаны"
+
+msgid "Nodes Count"
+msgstr "Количество узлов"
+
+msgid "None"
+msgstr "Нет"
+
+msgid "Not available"
+msgstr "Недоступно"
+
+msgid ""
+"Now you need to set the layout of your\n"
+"                        cluster.  By\n"
+"                        creating a Cluster Template, you will be choosing "
+"the\n"
+"                        number of instances of each Node Group Template "
+"that\n"
+"                        will appear in your cluster.  Additionally,\n"
+"                        you will have a chance to set any cluster-specific\n"
+"                        configuration items in the additional tabs on the\n"
+"                        create Cluster Template form."
+msgstr ""
+"Теперь вы должны определить планировку \n"
+"вашего кластера. \n"
+"Создавая шаблон кластера вы выберете \n"
+"количество инстансов для каждого шаблона группы узлов \n"
+"вашего кластера. Дополнительно,\n"
+"вы сможете задать любые настройки \n"
+"для конкретного кластера в дополнительных закладках \n"
+"формы создания шаблона кластера."
+
+msgid "Number"
+msgstr "Число"
+
+msgid "Number of Nodes"
+msgstr "Количество узлов"
+
+msgid "Number of clusters to launch."
+msgstr "Количество кластеров для запуска."
+
+msgid "Oozie Job ID"
+msgstr "ID задачи в Oozie"
+
+msgid "OpenStack Flavor"
+msgstr "тип инстанса OpenStack "
+
+msgid "Output"
+msgstr "Вывод"
+
+msgid "Output Data Source"
+msgstr "Источник выходных данных"
+
+msgid "Parameters"
+msgstr "Параметры"
+
+msgid "Password"
+msgstr "Пароль"
+
+msgid "Path"
+msgstr "Путь"
+
+msgid "Path on share"
+msgstr "Путь к разделяемому диску"
+
+msgid "Persist cluster after job exit"
+msgstr "Сохранить кластер после завершения задачи"
+
+msgid "Pig"
+msgstr "Pig"
+
+msgid "Plugin"
+msgstr "Плагин"
+
+msgid "Plugin Name"
+msgstr "Имя плагина"
+
+msgid "Plugin name"
+msgstr "Имя плагина"
+
+msgid "Plugin:"
+msgstr "Плагин:"
+
+msgid "Plugins"
+msgstr "Плагины"
+
+msgid "Positional Argument"
+msgstr "Позиционный аргумент"
+
+msgid "Progress"
+msgstr "Прогресс"
+
+msgid "Project ID"
+msgstr " ID проекта"
+
+msgid "Project Id"
+msgstr " ID проекта"
+
+msgid "Protected"
+msgstr "Защищенный"
+
+msgid "Proxy Gateway"
+msgstr "Шлюз прокси"
+
+msgid "Public"
+msgstr "Публичный"
+
+msgid "Read only"
+msgstr "Только для чтения"
+
+msgid "Read/Write"
+msgstr "Чтение/Запись"
+
+msgid "Reducer"
+msgstr "Редьюсер"
+
+msgid "Register Image"
+msgstr "Зарегистрировать образ"
+
+msgid ""
+"Register tags required for the Plugin with specified Data Processing Version"
+msgstr ""
+"Зарегистрированные теги требуются для плагина с указанной версией обработки "
+"данных."
+
+msgid "Relaunch On Existing Cluster"
+msgstr "Перезапустить на существующем кластере"
+
+msgid "Relaunch On New Cluster"
+msgstr "Перезапустить на новом кластере"
+
+msgid "Remove"
+msgstr "Удалить"
+
+msgid ""
+"Repeat the Node Group Template\n"
+"                        creation process, but this time you are creating\n"
+"                        your \"worker\" Node Group Template."
+msgstr ""
+"Повторите процесс создания шаблона группы узлов,\n"
+"но в этот раз вы создаете шаблон \n"
+"для вашей группы узлов \"worker\""
+
+msgid "Required"
+msgstr "Необходимо"
+
+msgid "Reset Cluster Creation Guide"
+msgstr "Сбросить мастер создания кластера"
+
+msgid "Reset Cluster Guide"
+msgstr "Сбросить мастер кластера"
+
+msgid "Reset Job Execution Guide"
+msgstr "Сбросить мастер запуска задачи"
+
+msgid "Return Code"
+msgstr "Код возврата"
+
+msgid "Run HBase EDP Jobs with common HBase library on HDFS"
+msgstr "Выполнить задачу HBase EDP с общей библиотекой HBase на HDFS"
+
+msgid ""
+"Sahara will use instances of this node group to access other cluster "
+"instances."
+msgstr ""
+"Sahara будет использовать инстансы из этой группы для доступа к другим "
+"инстансам кластера."
+
+msgid "Scale"
+msgstr "Масштабировать"
+
+msgid "Scale Cluster"
+msgstr "Масштабировать кластер"
+
+msgid "Scale cluster operation failed"
+msgstr "Не удалось выполнить операцию масштабирования кластера"
+
+msgid "Scaled cluster successfully started."
+msgstr "Масштабированный кластер успешно запущен."
+
+msgid "Script name"
+msgstr "Имя скрипта"
+
+msgid "Script text"
+msgstr "Текст скрипта"
+
+msgid "Security"
+msgstr "Безопасность"
+
+msgid "Security Groups"
+msgstr "Группы безопасности"
+
+msgid "Select"
+msgstr "Выбрать"
+
+msgid "Select Image"
+msgstr "Выберите образ"
+
+msgid "Select Node Group Processes"
+msgstr "Выберите процессы группы узлов"
+
+msgid "Select Shares"
+msgstr "Выбрать разделяемые диски"
+
+msgid "Select a Node Group Template to add:"
+msgstr "Выберите шаблон группы узлов для добавления:"
+
+msgid "Select a Value Type for your next argument:"
+msgstr "Выберите тип значения для следующего аргумента:"
+
+msgid "Select a plugin and version for a new Cluster template."
+msgstr "Выберите плагин и версию для нового шаблона кластера."
+
+msgid "Select a plugin and version for a new Cluster."
+msgstr "Выберите плагин и версию для нового кластера."
+
+msgid "Select a plugin and version for the new Node Group template."
+msgstr "Выберите плагин и версию для нового шаблоны группы узлов."
+
+msgid ""
+"Select an existing node group template.\n"
+"    "
+msgstr ""
+"Выберите существующий шаблон группы узлов.\n"
+"    "
+
+msgid "Select node processes for the node group"
+msgstr "Выберите процессы узла для группы узлов"
+
+msgid "Select plugin and hadoop version"
+msgstr "Выбрать плагин и версию hadoop "
+
+msgid "Select plugin and hadoop version for cluster"
+msgstr "Выберите плагин и версию hadoop для кластера"
+
+msgid "Select plugin and hadoop version for cluster template"
+msgstr "Выберите плагин и версию hadoop для шаблона кластера"
+
+msgid "Select property name"
+msgstr "Выбрать имя свойства"
+
+msgid "Select the manila shares for this cluster"
+msgstr "Выбрать разделяемые диски Manila для этого кластера"
+
+msgid "Select the manila shares for this node group"
+msgstr "Выбрать разделяемые диски Manila для этой группы узлов"
+
+msgid "Select the storage type for your job binary."
+msgstr "Выбрать тип хранилища для вашего исполняемого файла."
+
+msgid "Select the type of your Data Source."
+msgstr "Выбрать тип вашего источника данных"
+
+msgid "Select the type of your job:"
+msgstr "Выбрать тип вашей задачи:"
+
+msgid "Select type"
+msgstr "Выберите тип"
+
+msgid ""
+"Select which plugin and version that you\n"
+"    want to use to create your cluster."
+msgstr ""
+"Выберите плагин и его версию \n"
+"для создания кластера."
+
+msgid ""
+"Select which type of job that you want to run.\n"
+"      This choice will dictate which steps are required to successfully\n"
+"      execute your job.\n"
+"    "
+msgstr ""
+"Выберите тип задачи который вы хотите запустить.\n"
+"    Этот выбор влияет шаги которые необходимо успешно \n"
+"    завершить для запуска задачи.\n"
+"    "
+
+msgid "Service Configurations"
+msgstr "Конфигурации сервиса"
+
+msgid "Share"
+msgstr "Разделяемый диск"
+
+msgid "Shares"
+msgstr "Разделяемые диски"
+
+msgid "Shell"
+msgstr "Shell"
+
+msgid "Shell Action"
+msgstr "Команда Shell"
+
+msgid "Show full configuration"
+msgstr "Показать полную конфигурацию"
+
+msgid "Source password"
+msgstr "Пароль источника"
+
+msgid "Source username"
+msgstr "Имя пользователя источника"
+
+msgid "Spark"
+msgstr "Spark"
+
+msgid ""
+"Specified User Name will be used by Data Processing to apply configs and "
+"manage processes on instances."
+msgstr ""
+"Указанное имя пользователя будет использоваться системой обработки данных в "
+"применении  конфигурации и управлении процессами в инстансе."
+
+msgid "Start Verification"
+msgid_plural "Start Verifications"
+msgstr[0] "Начать верификацию"
+msgstr[1] "Начать верификации"
+msgstr[2] "Начать верификации"
+
+msgctxt "Start time"
+msgid "Started"
+msgstr "Запущено"
+
+msgid "Started Verification"
+msgid_plural "Started Verifications"
+msgstr[0] "Начатая верификация"
+msgstr[1] "Начатые верификации"
+msgstr[2] "Начатые верификации"
+
+msgid "Started at"
+msgstr "Запущено "
+
+msgid "Status"
+msgstr "Статус"
+
+msgid "Status description"
+msgstr "Описание статуса"
+
+msgid "Step Description"
+msgstr "Описание шага"
+
+msgid "Storage location"
+msgstr "Место хранения"
+
+msgid "Storage type"
+msgstr "Тип хранилища"
+
+msgid "Storm"
+msgstr "Storm"
+
+msgid "Streaming MapReduce"
+msgstr "Поточный MapReduce"
+
+msgid "String"
+msgstr "Строка"
+
+msgid ""
+"Substitute data source objects for URLs of the form datasource://name or "
+"uuid."
+msgstr ""
+"Подставлять объекты источника данных для URL в форме &lt;источник "
+"данных&gt;://&lt;имя&gt; или uuid."
+
+msgctxt "Current status of a Job"
+msgid "Succeeded"
+msgstr "Успешно завершена"
+
+msgid "Successfully updated image."
+msgstr "Образ успешно обновлен."
+
+msgid "Supported Versions"
+msgstr "Поддерживаемые версии"
+
+msgid "Swift"
+msgstr "Swift"
+
+msgid "Tags"
+msgstr "Теги"
+
+msgid ""
+"Tags are used for filtering images suitable for each plugin and each Data "
+"Processing version.\n"
+"        To add required tags, select a plugin and a Data Processing version "
+"and click &quot;Add plugin tags&quot; button."
+msgstr ""
+"Теги используются для фильтрации образов подходящих для каждого плагина и "
+"каждой версии обработки данных.\n"
+" Чтобы добавить необходимые теги выберите плагин и версию обработки данных и "
+"нажмите кнопку &quot;Добавить теги плагина&quot;"
+
+msgid "Template"
+msgstr "Шаблон"
+
+msgid "Template Name"
+msgstr "Имя шаблона"
+
+msgid "Template not specified"
+msgstr "Шаблон не указан"
+
+msgid ""
+"The Cluster Template object may specify a list of processes in anti-affinity "
+"group.\n"
+"    That means these processes may not be launched more than once on a "
+"single host."
+msgstr ""
+"Объект шаблона кластера может указать список процессов в анти-аффинной "
+"группе.\n"
+"Это означает, что эти процессы не могут быть запущены более одного раза на "
+"одном хосте."
+
+msgid ""
+"The Cluster Template object should specify Node Group Templates that will be "
+"used to build a Cluster.\n"
+"    You can add Node Groups using Node Group Templates on a &quot;Node "
+"Groups&quot; tab."
+msgstr ""
+"Шаблон кластера должен содержать шаблоны групп узлов, которые будут "
+"использованы при построении кластера.\n"
+"Вы можете добавить группы узлов используя шаблоны групп узлов на вкладке "
+"&quot;Группы узлов&quot;"
+
+msgid ""
+"The Cluster object should specify OpenStack Image to boot instances for "
+"Cluster."
+msgstr ""
+"Объект \"Кластер\" должен указывать образ OpenStack который будет "
+"использоваться для инстансов кластера."
+
+msgid ""
+"The Node Group Template object specifies the processes\n"
+"        that will be launched on each instance. Check one or more "
+"processes.\n"
+"        When processes are selected, you may set <b>node</b> scoped\n"
+"        configurations on corresponding tabs."
+msgstr ""
+"Объект шаблона группы узлов определяет процессы\n"
+"которые будут запущены на всех машинах. Выберите один или\n"
+"несколько процессов. Для выбранных процессов вы можете\n"
+"установить настройки специфичные для <b>узлов</b> на соответствующих "
+"вкладках."
+
+msgid ""
+"The first step is to determine which type of\n"
+"                    cluster you want to run.  You may have several choices\n"
+"                    available depending on the configuration of your "
+"system.\n"
+"                    Click on \"choose plugin\" to bring up the list of data\n"
+"                    processing plugins.  There you will be able to choose "
+"the\n"
+"                    data processing plugin along with the version number.\n"
+"                    Choosing this up front will allow the rest of the "
+"cluster\n"
+"                    creation steps to focus only on options that are "
+"pertinent\n"
+"                    to your desired cluster type."
+msgstr ""
+"Первый шаг - определить какой тип кластера \n"
+"вы хотите запустить. У вас может быть несколько \n"
+"вариантов в зависимости от конфигурации вашей системы\n"
+"Нажмите на \"выбрать плагин\" чтобы получить список\n"
+"плагинов для обработки данных. Там вы сможете выбрать\n"
+"плагин обработки данных и его версию. \n"
+"Этот выбор позволит остальным\n"
+"шагам по создания кластера сфокусироваться только \n"
+"на опциях желаемого типа кластера."
+
+msgid "The value of shares must be a list of values"
+msgstr "Значение разделяемых дисков должно быть списоком значений"
+
+msgid "This Cluster Template will be created for:"
+msgstr "Этот шаблон кластера будет создан для:"
+
+msgid "This Cluster will be started with:"
+msgstr "Этот кластер будет запущен с:"
+
+msgid "This Node Group Template will be created for:"
+msgstr "Этот шаблон группы узлов будет создан для:"
+
+msgid "Title"
+msgstr "Заголовок"
+
+msgid "Type"
+msgstr "Тип"
+
+msgid "URL"
+msgstr "URL"
+
+msgid "Unable to create job binary"
+msgstr "Не удалось создать исполняемый файл задачи"
+
+msgid "Unable to create new cluster for job."
+msgstr "Не удалось создать новый кластер для задачи"
+
+msgid "Unable to create the cluster"
+msgstr "Не удалось создать кластер"
+
+#, python-format
+msgid "Unable to fetch Base Image with id: %s."
+msgstr "Невзможно получить базовый образ с id: %s."
+
+msgid "Unable to fetch available images."
+msgstr "Не удалось получить доступные образы."
+
+msgid "Unable to fetch cluster list"
+msgstr "Не удалось получить список кластеров"
+
+msgid "Unable to fetch cluster template list"
+msgstr "Невозможно получить список шаблонов кластера"
+
+msgid "Unable to fetch cluster template."
+msgstr "Невозможно получить шаблон кластера."
+
+msgid "Unable to fetch cluster to scale"
+msgstr "Не удалось получить кластер для масштабирования"
+
+msgid "Unable to fetch cluster to scale."
+msgstr "Не удалось получить кластер для масштабирования."
+
+msgid "Unable to fetch cluster."
+msgstr "Невозможно получить кластер."
+
+msgid "Unable to fetch clusters."
+msgstr "Не удалось получить кластеры"
+
+msgid "Unable to fetch data source list"
+msgstr "Невозможно получить список источников данных."
+
+msgid "Unable to fetch data sources."
+msgstr "Не удалось получить источники данных"
+
+msgid "Unable to fetch flavor for template."
+msgstr "Не удалось получить тип инстансов для шаблона."
+
+msgid "Unable to fetch floating ip pools."
+msgstr "Не удалось получить пул назначаемых ip."
+
+msgid "Unable to fetch image choices."
+msgstr "Не удалось получить выбранные образы"
+
+msgid "Unable to fetch instance details."
+msgstr "Невозможно получить данные инстанса."
+
+msgid "Unable to fetch job binary list"
+msgstr "Не удалось получить список исполняемых файлов задач"
+
+msgid "Unable to fetch job binary list."
+msgstr "Не удалось получить список исполняемых файлов задач"
+
+#, python-format
+msgid "Unable to fetch job binary: %(exc)s"
+msgstr "Не удалось получить исполняемый файл задачи: %(exc)s"
+
+msgid "Unable to fetch job list"
+msgstr "Не удалось получить список шаблонов задач"
+
+msgid "Unable to fetch job template list"
+msgstr "Не удалось получить список шаблонов задач"
+
+msgid "Unable to fetch jobs."
+msgstr "Не удалось получить задачи"
+
+msgid "Unable to fetch keypair choices."
+msgstr "Не удалось получить доступные ключевые пары."
+
+msgid "Unable to fetch node group details."
+msgstr "Невозможно получить подробную информации о группе нод"
+
+msgid "Unable to fetch node group template list"
+msgstr "Не удалось получить список шаблонов группы узлов."
+
+msgid "Unable to fetch node group template list."
+msgstr "Не удалось получить список шаблонов группы узлов."
+
+msgid "Unable to fetch plugin details."
+msgstr "Не удалось получить данные плагина"
+
+msgid "Unable to fetch plugin list"
+msgstr "Невозможно получить список плагинов."
+
+msgid "Unable to fetch plugin list."
+msgstr "Невозможно получить список плагинов."
+
+msgid "Unable to fetch template object."
+msgstr "Не удалось получить шаблон объекта."
+
+msgid "Unable to fetch template to copy."
+msgstr "Невозможно получить шаблон кластера для копирования."
+
+msgid "Unable to fetch template to edit."
+msgstr "Невозможно получит шаблон для редактирования"
+
+msgid "Unable to fetch the image details"
+msgstr "Не удалось получить данные образа"
+
+msgid "Unable to generate process choices."
+msgstr "Не удалось создать выбор процессов"
+
+msgid "Unable to get node group details."
+msgstr "Не удалось получить данные группы узлов."
+
+msgid "Unable to get security group list."
+msgstr "Не удалось получить список групп безопасности"
+
+msgid "Unable to get volume type list."
+msgstr "Невозможно получить список типов дисков."
+
+msgid "Unable to launch job."
+msgstr "Не удалось запустить задачу."
+
+msgid "Unable to populate anti-affinity processes."
+msgstr "Не удалось заполнить анти-аффинные процессы"
+
+msgid "Unable to process plugin tags"
+msgstr "Не удалось обработать теги плагина"
+
+msgid "Unable to retrieve data processing plugins."
+msgstr "Не удалось получить плагины обработки данных"
+
+#, python-format
+msgid "Unable to retrieve details for cluster \"%s\"."
+msgstr "Не удалось получить данные кластера \"%s\""
+
+#, python-format
+msgid "Unable to retrieve details for cluster template \"%s\"."
+msgstr "Невозможно получить подробную информацию о шаблоне кластера \"%s\"."
+
+#, python-format
+msgid "Unable to retrieve details for data source \"%s\"."
+msgstr "Не удалось получить детали источника данных «%s»."
+
+#, python-format
+msgid "Unable to retrieve details for job \"%s\"."
+msgstr "Не удалось получить детали задачи \"%s\"."
+
+#, python-format
+msgid "Unable to retrieve details for job binary \"%s\"."
+msgstr "Не удалось получить детали процесса задачи \"%s\"."
+
+#, python-format
+msgid "Unable to retrieve details for job template \"%s\"."
+msgstr "Не удалось получить детали шаблона задачи \"%s\"."
+
+#, python-format
+msgid "Unable to retrieve details for node group template \"%s\"."
+msgstr "Невозможно получить информацию для шаблона группы узлов \"%s\"."
+
+msgid "Unable to retrieve image list"
+msgstr "Не удалось получить список образов"
+
+#, python-format
+msgid "Unable to retrieve images with filter %s."
+msgstr "Не удалось получить образы с фильтром %s."
+
+#, python-format
+msgid "Unable to retrieve job binary \"%s\"."
+msgstr "Невозможно получить исполняемый файл задач \"%s\"."
+
+msgid "Unable to retrieve networks."
+msgstr "Не удалось получить сети."
+
+msgid "Unable to retrieve plugin."
+msgstr "Не удалось получить плагин"
+
+#, python-format
+msgid "Unable to retrieve security group %(group)s."
+msgstr "Не удалось получить группу безопасности %(group)s."
+
+msgid "Unable to set cluster type"
+msgstr "Не удалось задать тип кластера"
+
+msgid "Unable to set job type"
+msgstr "Не удалось задать тип задачи"
+
+msgid "Unable to set node group template"
+msgstr "Не удалось получить список шаблонов группы узлов."
+
+msgid "Unable to update job binary"
+msgstr "Невозможно обновить исполняемый файл задачи"
+
+msgid "Unable to update row"
+msgstr "Невозможно обновить строку"
+
+msgid "Unable to upload cluster template file"
+msgstr "Невозможно загрузить файл шаблона кластера"
+
+msgid "Unable to upload job binary"
+msgstr "Не удалось загрузить исполняемый файл задачи"
+
+msgid "Unknown"
+msgstr "Неизвестно"
+
+msgid "Unnecessary tags may be removed by clicking a cross near tag's name."
+msgstr "Ненужные теги могут быть убраны нажатием крестика возле имени тега."
+
+msgid "Unregister Image"
+msgid_plural "Unregister Images"
+msgstr[0] "Разрегистрировать образ"
+msgstr[1] "Разрегистрировать образы"
+msgstr[2] "Разрегистрировать образы"
+
+msgid "Unregistered Image"
+msgid_plural "Unregistered Images"
+msgstr[0] "Разрегистрированный образ"
+msgstr[1] "Разрегистрированные образы"
+msgstr[2] "Разрегистрированные образы"
+
+msgid "Update"
+msgstr "Обновить"
+
+msgid "Update Cluster Shares"
+msgstr "Обновить разделяемые диски кластера"
+
+msgid "Update Shares"
+msgstr "Обновить разделяемые диски"
+
+msgid "Updated"
+msgstr "Обновлено"
+
+msgid "Updated time"
+msgstr "Время обновления"
+
+msgid "Upload"
+msgstr "Загрузить"
+
+msgid "Upload File"
+msgstr "Загрузить файл"
+
+msgid "Upload Template"
+msgstr "Загрузить шаблон"
+
+msgid "Upload a new file"
+msgstr "Загрузить новый файл"
+
+msgid "Url"
+msgstr "URL"
+
+msgid "Use Data Source Substitution for Names and UUIDs"
+msgstr "Используйте подстановку источников данных для имен и UUID"
+
+msgid "Use HBase Common library"
+msgstr "Использовать общую библитеку HBase"
+
+msgid "Use anti-affinity groups for processes"
+msgstr "Использовать анти-аффинные группы для процессов"
+
+msgid "Use anti-affinity groups for: "
+msgstr "Использовать анти-аффинные группы для:"
+
+msgid "Use auto-configuration"
+msgstr "Использовать автоконфигурацию"
+
+msgid "User Name"
+msgstr "Имя пользователя"
+
+msgid "User has to choose a keypair to have access to clusters instances."
+msgstr ""
+"Пользователь должен выбрать ключевую пару, чтобы иметь доступ к инстансам "
+"кластера. "
+
+msgid "Username"
+msgstr "Имя пользователя"
+
+msgid "Value"
+msgstr "Значение"
+
+msgid "Value Type"
+msgstr "Тип значения"
+
+msgid "Version"
+msgstr "Версия"
+
+msgid "Version:"
+msgstr "Версия:"
+
+msgid "Volume local to instance"
+msgstr "Локальный диск для инстанса"
+
+msgid "Volumes Availability Zone"
+msgstr "Зона доступности дисков"
+
+msgid "Volumes local to instance"
+msgstr "Локальные диски для инстанса"
+
+msgid "Volumes per node"
+msgstr "Дисков на узел"
+
+msgid "Volumes size"
+msgstr "Размер дисков"
+
+msgid "Volumes size (GB)"
+msgstr "Размер дисков (ГБ)"
+
+msgid "Volumes type"
+msgstr "Тип дисков"
+
+msgid "Which keypair to use for authentication."
+msgstr "Ключевая пара используемая для аутентификации."
+
+msgid "Worker Node Group Template:"
+msgstr "Шаблон группы узлов Worker:"
+
+msgid ""
+"You are now ready to\n"
+"                        launch your cluster.  When you click on the link\n"
+"                        below, you will need to give your cluster a name,\n"
+"                        choose the Cluster Template to use and choose which\n"
+"                        image to use to build your instances.  After you\n"
+"                        click on \"Create\", your instances will begin to\n"
+"                        spawn.  Your cluster should be operational in a few\n"
+"                        minutes."
+msgstr ""
+"Теперь все готово для запуска кластера.\n"
+"После нажатия на ссылку ниже \n"
+"вам будет необходимо указать название кластера, \n"
+"выбрать шаблон и образ для создания инстансов. \n"
+"После нажатия на кнопку \"Создать\" начнется \n"
+"процесс запуска инстансов. \n"
+"Ваш кластер будет готов \n"
+"к работе через несколько минут."
+
+msgid "You may also add any custom tag."
+msgstr "Также вы можете добавить любой пользовательский тег."
+
+msgid "You may also enter an optional description for your Data Source."
+msgstr ""
+"Вы также можете ввести дополнительное описание для вашего источника данных"
+
+msgid "You may also enter an optional description for your job binary."
+msgstr ""
+"Вы также можете ввести необязательное описание для вашего исполняемого файла "
+"задачи."
+
+msgid "You may also enter an optional description for your job template."
+msgstr "Вы также можете ввести необязательное описание вашего шаблоны задачи."
+
+msgid "You may need to enter the username and password for your Data Source."
+msgstr ""
+"Вам может понадобиться ввести имя пользователя и пароль для вашего источника "
+"данных"
+
+msgid "You may set <b>cluster</b> scoped configurations on corresponding tabs."
+msgstr ""
+"Вы можете установить конфигурации специфичные для <b>кластера</b> на "
+"соответствующих  вкладках."
+
+msgid ""
+"You must choose a flavor to determine the size (VCPUs, memory and storage) "
+"of all launched VMs."
+msgstr ""
+"Вы должны выбрать тип инстанса для определения размера (VCPUs, память и "
+"хранилище) всех запускаемых виртуальных машин. "
+
+msgid "cluster"
+msgstr "кластер"
+
+msgid "cluster template"
+msgstr "шаблон кластера"
+
+msgid "data source"
+msgstr "источник данных"
+
+msgid "job"
+msgstr "задача"
+
+msgid "job binary"
+msgstr "исполняемый файл задачи"
+
+msgid "no processes"
+msgstr "нет процессов"
+
+msgid "node group template"
+msgstr "шаблон группы узлов"
