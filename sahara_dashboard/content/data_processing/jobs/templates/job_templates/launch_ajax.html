@@ -1,0 +1,22 @@
+{% load i18n %}
+{% include 'horizon/common/_workflow.html' %}
+
+<script type="text/javascript">
+  $(function() {
+
+    var cl_name_status_map = {};
+    {% for name, status in cl_name_state_map %}
+        cl_name_status_map["{{ name }}"] = "{{ status }}";
+    {% endfor %}
+
+    var status_message_map = {{ status_message_map | safe }};
+
+    $('.cluster_choice').ready(function(){
+        horizon.job_launching_warning.show_warning(cl_name_status_map, status_message_map);
+    });
+
+    $(document).on('change', '.cluster_choice', function(){
+        horizon.job_launching_warning.show_warning(cl_name_status_map, status_message_map);
+    });
+  });
+</script>
