@@ -33,7 +33,8 @@ import sahara_dashboard.content.data_processing. \
     utils.workflow_helpers as whelpers
 
 
-class SelectPluginAction(workflows.Action):
+class SelectPluginAction(workflows.Action,
+                         whelpers.PluginAndVersionMixin):
     hidden_create_field = forms.CharField(
         required=False,
         widget=forms.HiddenInput(attrs={"class": "hidden_create_field"}))
@@ -41,29 +42,8 @@ class SelectPluginAction(workflows.Action):
     def __init__(self, request, *args, **kwargs):
         super(SelectPluginAction, self).__init__(request, *args, **kwargs)
 
-        try:
-            plugins = saharaclient.plugin_list(request)
-        except Exception:
-            plugins = []
-            exceptions.handle(request,
-                              _("Unable to fetch plugin list."))
-        plugin_choices = [(plugin.name, plugin.title) for plugin in plugins]
-
-        self.fields["plugin_name"] = forms.ChoiceField(
-            label=_("Plugin name"),
-            choices=plugin_choices,
-            widget=forms.Select(attrs={"class": "plugin_name_choice"}))
-
-        for plugin in plugins:
-            field_name = plugin.name + "_version"
-            choice_field = forms.ChoiceField(
-                label=_("Version"),
-                choices=[(version, version) for version in plugin.versions],
-                widget=forms.Select(
-                    attrs={"class": "plugin_version_choice "
-                                    + field_name + "_choice"})
-            )
-            self.fields[field_name] = choice_field
+        sahara = saharaclient.client(request)
+        self._generate_plugin_version_fields(sahara)
 
     class Meta(object):
         name = _("Select plugin and hadoop version for cluster template")
