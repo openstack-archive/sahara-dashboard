@@ -60,18 +60,8 @@
                             $(".configure-clustertemplate-btn")[0].href = oldHref;
                             return false;
                     });
-                    $(".plugin_version_choice").closest(".form-group").hide();
                 }
             }
-
-            //display version for selected plugin
-            $(document).on('change', '.plugin_name_choice', switch_versions);
-            function switch_versions() {
-                $(".plugin_version_choice").closest(".form-group").hide();
-                var plugin = $(this);
-                $("." + plugin.val() + "_version_choice").closest(".form-group").show();
-            }
-            $(".plugin_name_choice").change();
         });
 
     });
@@ -106,19 +96,8 @@
                             $(".configure-nodegrouptemplate-btn")[0].href = oldHref;
                             return false;
                         });
-                        $(".plugin_version_choice").closest(".form-group").hide();
                     }
                 }
-
-                //display version for selected plugin
-                $(document).on('change', '.plugin_name_choice', switch_versions);
-                function switch_versions() {
-                    $(".plugin_version_choice").closest(".form-group").hide();
-                    var plugin = $(this);
-                    $("." + plugin.val() + "_version_choice").closest(".form-group").show();
-                }
-
-                $(".plugin_name_choice").change();
 
                 //handle node processes change
                 $("input").filter(function (idx, e) {
@@ -175,18 +154,8 @@
                         $(".configure-cluster-btn")[0].href = oldHref;
                         return false;
                     });
-                    $(".plugin_version_choice").closest(".form-group").hide();
                 }
             }
-
-            //display version for selected plugin
-            $(document).on('change', '.plugin_name_choice', switch_versions);
-            function switch_versions() {
-                $(".plugin_version_choice").closest(".form-group").hide();
-                var plugin = $(this);
-                $("." + plugin.val() + "_version_choice").closest(".form-group").show();
-            }
-            $(".plugin_name_choice").change();
         });
 
     });
