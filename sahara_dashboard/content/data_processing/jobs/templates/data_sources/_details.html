@@ -19,6 +19,6 @@
     <dt>{% trans "Protected" %}</dt>
     <dd>{{ data_source.is_protected|yesno }}</dd>
     <dt>{% trans "Create time" %}</dt>
-    <dd>{{ data_source.created_at }}</dd>
+    <dd>{{ data_source.created_at|parse_isotime }}</dd>
   </dl>
 </div>
