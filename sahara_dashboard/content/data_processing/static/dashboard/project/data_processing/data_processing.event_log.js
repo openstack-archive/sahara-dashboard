@@ -44,7 +44,7 @@ horizon.event_log = {
             "</tr>";
 
 
-        var started_at = new Date(step.created_at).toString();
+        var started_at = step.started_at;
         var progress = "" + step.completed + " / " + step.total;
         var description = step.step_type + "<br />" + step.step_name;
 
