@@ -284,6 +284,7 @@ class TestUpdateClusterTemplate(SaharaTestCase):
         self.image_name = self.gen_name("image")
 
         self.worker_name = self.gen_name("worker")
+        self.new_worker_name = self.gen_name("new-worker")
         self.master_name = self.gen_name("master")
         self.cluster_template_name = self.gen_name("old-name")
         self.new_cluster_template_name = self.gen_name("new-name")
@@ -364,6 +365,44 @@ class TestUpdateClusterTemplate(SaharaTestCase):
         details = {k: v for k, v in details.items() if k in expected}
         self.assertEqual(expected, details)
 
+    def test_update_nodegroup(self):
+        nodegrouptpls_pg = (
+            self.home_pg.go_to_dataprocessing_clusters_nodegrouptemplatespage()
+        )
+        kwargs = {
+            'nodegroup_name': self.new_worker_name,
+            'description': '{} description'.format(self.new_worker_name),
+            'flavor': 'm1.small',
+            'availability_zone': 'No availability zone specified',
+            'floating_ip_pool': 'public',
+            'use_autoconfig': False,
+            'proxygateway': True,
+            'processes': ['jobtracker', 'namenode'],
+            'security_autogroup': False,
+            'security_groups': ['default']
+        }
+        nodegrouptpls_pg.update(group_name=self.worker_name, **kwargs)
+        self.assertTrue(nodegrouptpls_pg.has_success_message())
+        self.assertFalse(nodegrouptpls_pg.has_error_message())
+        self.assertTrue(nodegrouptpls_pg.is_present(self.new_worker_name),
+                        "Node group template was not updated.")
+        clustertpls_pg = (
+            self.home_pg.go_to_dataprocessing_clusters_clustertemplatespage())
+        details = clustertpls_pg.get_nodegroup_details(
+            self.cluster_template_name, self.new_worker_name)
+        expected = {
+            'Auto Security Group': 'no',
+            'Flavor': '2',
+            'Node Processes': {'namenode', 'jobtracker'},
+            'Nodes Count': '1',
+            'Proxy Gateway': 'yes',
+            'Security Groups': 'default',
+            'Template': self.new_worker_name,
+            'Use auto-configuration': 'False'
+        }
+        details = {k: v for k, v in details.items() if k in expected}
+        self.assertEqual(expected, details)
+
     def tearDown(self):
         clustertpls_pg = (
             self.home_pg.go_to_dataprocessing_clusters_clustertemplatespage())
@@ -373,5 +412,6 @@ class TestUpdateClusterTemplate(SaharaTestCase):
         nodegrouptpls_pg = (
             self.home_pg.go_to_dataprocessing_clusters_nodegrouptemplatespage()
         )
-        nodegrouptpls_pg.delete_many((self.worker_name, self.master_name))
+        nodegrouptpls_pg.delete_many((self.worker_name, self.master_name,
+                                      self.new_worker_name))
         super(TestUpdateClusterTemplate, self).tearDown()

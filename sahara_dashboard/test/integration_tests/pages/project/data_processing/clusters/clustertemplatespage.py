@@ -124,3 +124,25 @@ class ClustertemplatesPage(mixins.PluginSelectMixin, mixins.DeleteMixin,
             if '\n' in value:
                 details[key] = set(value.split('\n'))
         return details
+
+    def get_nodegroup_details(self, cluster_tpl_name, node_group_name):
+        self.table.src_elem.find_element_by_link_text(cluster_tpl_name).click()
+        self.driver.find_element_by_link_text('Node Groups').click()
+        details = {}
+        groups = self.driver.find_elements_by_css_selector(
+            'div.tab-pane.active dl')
+        for group in groups:
+            if node_group_name not in group.text:
+                continue
+            for item in group.find_elements_by_tag_name('dt'):
+                key = item.text
+                value_elem = item.find_element_by_xpath(
+                    './following-sibling::*')
+                if value_elem.tag_name != "dd":
+                    continue
+                value = value_elem.text
+                details[key] = value
+        for key, value in details.items():
+            if '\n' in value:
+                details[key] = set(value.split('\n'))
+        return details
