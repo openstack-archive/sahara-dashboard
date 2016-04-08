@@ -22,5 +22,6 @@
 
 {% block modal-footer %}
     <input class="btn btn-primary pull-right" id="upload_file_btn" type="submit" value="{{ submit_label }}"/>
-    <a href="{% url 'horizon:project:data_processing.jobs:index' %}" class="btn btn-default secondary cancel close">{% trans "Cancel" %}</a>
+    <a href="{% url 'horizon:project:data_processing.jobs:index' %}"
+       class="btn btn-default cancel">{% trans "Cancel" %}</a>
 {% endblock %}
