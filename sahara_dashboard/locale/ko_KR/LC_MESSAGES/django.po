@@ -1,5 +1,5 @@
 # Ian Y. Choi <ianyrchoi@gmail.com>, 2016. #zanata
-# SeYeon Lee <sy_lee@kr.ibm.com>, 2016. #zanata
+# Sungjin Kang <gang.sungjin@gmail.com>, 2016. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2016-03-18 03:55+0000\n"
+"PO-Revision-Date: 2016-04-08 04:44+0000\n"
 "Last-Translator: SeYeon Lee <sy_lee@kr.ibm.com>\n"
 "Language-Team: Korean (South Korea)\n"
 "Language: ko-KR\n"
@@ -157,7 +157,7 @@ msgid "Choose plugin and version"
 msgstr "플러그인 및 버전 선택"
 
 msgid "Choose plugin type and version"
-msgstr "플러그인 타입 및 버전 선택"
+msgstr "플러그인 타입과 버전 선택"
 
 msgid "Choose the Input Data Source (n/a for Java and Shell jobs)."
 msgstr "입력 데이터 소스를 선택하십시오(Java 및 Shell 작업의 경우 n/a)."
@@ -397,7 +397,7 @@ msgid ""
 "Ephemeral Drive or a Cinder Volume to be attached to instances."
 msgstr ""
 "데이터 프로세싱에서는 여러 다른 스토리지 위치 옵션을 제공합니다. 인스턴스에 "
-"연결할 Ephemeral 드라이브 또는 Clinder 볼륨을 선택할 수 있습니다."
+"연결할 Ephemeral 드라이브나 Clinder 볼륨을 선택할 수 있습니다."
 
 msgid "Data Source"
 msgstr "데이터 소스"
@@ -628,8 +628,8 @@ msgid ""
 "required to add one\n"
 "  or more \"libs\" for these jobs."
 msgstr ""
-"MapReduce 또는 Java Action 작업에는 \"mains\"이 적용되지 않습니다. 이러한 작"
-"업의 \"libs\"를\n"
+"MapReduce이나 Java Action 작업에는 \"mains\"이 적용되지 않습니다. 이러한 작업"
+"의 \"libs\"를\n"
 "  하나 이상 추가해야 합니다."
 
 msgid "For Object Store job binaries, you must:"
@@ -805,7 +805,7 @@ msgid "Jobs"
 msgstr "작업"
 
 msgid "Keypair"
-msgstr "키페어"
+msgstr "키 페어"
 
 msgctxt "Current status of a Job"
 msgid "Killed"
@@ -1253,7 +1253,7 @@ msgid "Select a plugin and version for a new Cluster."
 msgstr "새 클러스터의 버전과 플러그인을 선택하십시오."
 
 msgid "Select a plugin and version for the new Node Group template."
-msgstr "새 노드 그룹 템플릿의 플러그인 및 버전을 선택하십시오."
+msgstr "새 노드 그룹 템플릿의 플러그인과 버전을 선택하십시오."
 
 msgid ""
 "Select an existing node group template.\n"
@@ -1266,13 +1266,13 @@ msgid "Select node processes for the node group"
 msgstr "노드 그룹의 노드 프로세스 선택"
 
 msgid "Select plugin and hadoop version"
-msgstr "플러그인 및 Hadoop 버전 선택"
+msgstr "플러그인과 Hadoop 버전 선택"
 
 msgid "Select plugin and hadoop version for cluster"
-msgstr "클러스터의 Hadoop 버전 및 플러그인 선택"
+msgstr "클러스터의 Hadoop 버전과 플러그인 선택"
 
 msgid "Select plugin and hadoop version for cluster template"
-msgstr "클러스터 템플릿에 대한 플러그인 및 hadoop 버전을 선택합니다"
+msgstr "클러스터 템플릿에 대한 플러그인과 hadoop 버전을 선택합니다"
 
 msgid "Select property name"
 msgstr "등록 이름 선택"
@@ -1284,7 +1284,7 @@ msgid "Select the manila shares for this node group"
 msgstr "이 노드 그룹의 manila 공유 선택"
 
 msgid "Select the storage type for your job binary."
-msgstr "작업 바이너리의 스토리지 유형을 선택하십시오."
+msgstr "작업 바이너리에대한 스토리지 유형을 선택하십시오."
 
 msgid "Select the type of your Data Source."
 msgstr "데이터 소스의 타입을 선택하십시오."
@@ -1389,7 +1389,7 @@ msgstr "문자열"
 msgid ""
 "Substitute data source objects for URLs of the form datasource://name or "
 "uuid."
-msgstr "양식 데이터 소스의 URL을 데이터 소스 오브젝트로 대체://name 또는 uuid."
+msgstr "양식 데이터 소스의 URL을 데이터 소스 오브젝트로 대체://name나 uuid."
 
 msgctxt "Current status of a Job"
 msgid "Succeeded"
@@ -1435,7 +1435,7 @@ msgid ""
 msgstr ""
 "클러스터 템플릿 오브젝트는 anti-affinity 그룹에 프로세스 목록을 지정할 수 있"
 "습니다.\n"
-"    특, 이러한 프로세스는 단일 호스트에서 두 번 이상 실행할 수 없습니다."
+"    특히, 이러한 프로세스는 단일 호스트에서 두 번 이상 실행할 수 없습니다."
 
 msgid ""
 "The Cluster Template object should specify Node Group Templates that will be "
@@ -1445,8 +1445,8 @@ msgid ""
 msgstr ""
 "클러스터 템플릿 객체는 클러스터를 구성에 사용할 노드 그룹 템플릿을 지정해야 "
 "합니다.\n"
-"&quot;Node Groups&quot; 탭에서 노드 그룹 템플릿을 이용하여 노드 그룹을 추가"
-"할 수 있습니다."
+"    &quot;Node Groups&quot; 탭에서 노드 그룹 템플릿을 이용하여 노드 그룹을 추"
+"가할 수 있습니다."
 
 msgid ""
 "The Cluster object should specify OpenStack Image to boot instances for "
@@ -1557,7 +1557,7 @@ msgid "Unable to fetch data sources."
 msgstr "데이터 소스를 가져올 수 없습니다."
 
 msgid "Unable to fetch flavor for template."
-msgstr "템플릿의 flavor를 가져올 수 없습니다."
+msgstr "템플릿에대한 flavor를 가져올 수 없습니다."
 
 msgid "Unable to fetch floating ip pools."
 msgstr "Floating IP 풀을 가져올 수 없습니다."
@@ -1654,7 +1654,7 @@ msgstr "\"%s\" 클러스터 템플릿의 세부 사항을 찾을 수 없습니�
 
 #, python-format
 msgid "Unable to retrieve details for data source \"%s\"."
-msgstr "데이터 소스 \"%s\"의 세부 사항을 검색할 수 없습니다."
+msgstr "데이터 소스 \"%s\"에대한 세부 사항을 검색할 수 없습니다."
 
 #, python-format
 msgid "Unable to retrieve details for job \"%s\"."
@@ -1666,7 +1666,7 @@ msgstr "작업 바이너리 \"%s\"의 세부 사항을 검색할 수 없습니�
 
 #, python-format
 msgid "Unable to retrieve details for job template \"%s\"."
-msgstr "작업 템플릿 \"%s\"의 세부 사항을 검색할 수 없습니다."
+msgstr "작업 템플릿 \"%s\"에대한 세부 사항을 검색할 수 없습니다."
 
 #, python-format
 msgid "Unable to retrieve details for node group template \"%s\"."
@@ -1777,7 +1777,7 @@ msgid "User Name"
 msgstr "사용자 이름"
 
 msgid "User has to choose a keypair to have access to clusters instances."
-msgstr "클러스터 인스턴스에 접근할 권한이 있는 키페어를 선택했습니다."
+msgstr "클러스터 인스턴스에 접근할 권한이 있는 키 페어를 선택했습니다."
 
 msgid "Username"
 msgstr "사용자 이름"
