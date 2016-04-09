@@ -185,11 +185,15 @@ class GeneralConfigAction(workflows.Action):
         for param in node_parameters:
             self.fields[param.name] = workflow_helpers.build_control(param)
 
-        if request.REQUEST.get("guide_template_type"):
+        # when we copy or edit a node group template then
+        # request contains valuable info in both GET and POST methods
+        req = request.GET.copy()
+        req.update(request.POST)
+        if req.get("guide_template_type"):
             self.fields["guide_template_type"] = forms.CharField(
                 required=False,
                 widget=forms.HiddenInput(),
-                initial=request.REQUEST.get("guide_template_type"))
+                initial=req.get("guide_template_type"))
 
         try:
             volume_types = cinder.volume_type_list(request)

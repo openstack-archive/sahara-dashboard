@@ -55,15 +55,15 @@ class JobExecutionGeneralConfigAction(workflows.Action):
         super(JobExecutionGeneralConfigAction, self).__init__(request,
                                                               *args,
                                                               **kwargs)
-
-        if request.REQUEST.get("job_id", None) is None:
+        req = request.GET or request.POST
+        if req.get("job_id", None) is None:
             self.fields["job"] = forms.ChoiceField(
                 label=_("Job"))
             self.fields["job"].choices = self.populate_job_choices(request)
         else:
             self.fields["job"] = forms.CharField(
                 widget=forms.HiddenInput(),
-                initial=request.REQUEST.get("job_id", None))
+                initial=req.get("job_id", None))
 
     def populate_job_input_choices(self, request, context):
         return self.get_data_source_choices(request, context)
@@ -225,7 +225,8 @@ class JobConfigAction(workflows.Action):
 
     def __init__(self, request, *args, **kwargs):
         super(JobConfigAction, self).__init__(request, *args, **kwargs)
-        job_ex_id = request.REQUEST.get("job_execution_id")
+        req = request.GET or request.POST
+        job_ex_id = req.get("job_execution_id")
         if job_ex_id is not None:
             job_ex = saharaclient.job_execution_get(request, job_ex_id)
             job = saharaclient.job_get(request, job_ex.job_id)
@@ -289,7 +290,8 @@ class JobConfigAction(workflows.Action):
         return cleaned_data
 
     def populate_property_name_choices(self, request, context):
-        job_id = request.REQUEST.get("job_id") or request.REQUEST.get("job")
+        req = request.GET or request.POST
+        job_id = req.get("job_id") or req.get("job")
         job_type = saharaclient.job_get(request, job_id).type
         job_configs = (
             saharaclient.job_get_configs(request, job_type).job_config)
@@ -442,8 +444,8 @@ class JobExecutionInterfaceConfigAction(workflows.Action):
         job = saharaclient.job_get(request, job_id)
         interface = job.interface or []
         interface_args = {}
-
-        job_ex_id = request.REQUEST.get("job_execution_id")
+        req = request.GET or request.POST
+        job_ex_id = req.get("job_execution_id")
         if job_ex_id is not None:
             job_ex = saharaclient.job_execution_get(request, job_ex_id)
             job = saharaclient.job_get(request, job_ex.job_id)
@@ -533,8 +535,8 @@ class SelectHadoopPluginAction(t_flows.SelectPluginAction):
         self.fields["job_params"] = forms.ChoiceField(
             label=_("Job params"),
             widget=forms.HiddenInput(attrs={"class": "hidden_create_field"}))
-
-        job_ex_id = request.REQUEST.get("job_execution_id")
+        req = request.GET or request.POST
+        job_ex_id = req.get("job_execution_id")
         if job_ex_id is not None:
             self.fields["job_execution_id"] = forms.ChoiceField(
                 label=_("Job Execution ID"),

@@ -106,9 +106,10 @@ class GeneralConfigAction(workflows.Action):
     def __init__(self, request, context, *args, **kwargs):
         super(GeneralConfigAction,
               self).__init__(request, context, *args, **kwargs)
-        if request.REQUEST.get("guide_job_type"):
+        req = request.GET or request.POST
+        if req.get("guide_job_type"):
             self.fields["job_type"].initial = (
-                request.REQUEST.get("guide_job_type").lower())
+                req.get("guide_job_type").lower())
 
     def populate_job_type_choices(self, request, context):
         choices = []
@@ -153,14 +154,10 @@ class ConfigureInterfaceArgumentsAction(workflows.Action):
     def __init__(self, request, *args, **kwargs):
         super(ConfigureInterfaceArgumentsAction, self).__init__(
             request, *args, **kwargs)
-        request_source = None
-        if 'argument_ids' in request.POST:
-                request_source = request.POST
-        elif 'argument_ids' in request.REQUEST:
-                request_source = request.REQUEST
-        if request_source:
+        req = request.GET or request.POST
+        if 'argument_ids' in req:
             self.arguments = []
-            for id in json.loads(request_source['argument_ids']):
+            for id in json.loads(req['argument_ids']):
                 fields = {
                     "name": "argument_name_" + str(id),
                     "description": "argument_description_" + str(id),
@@ -168,12 +165,12 @@ class ConfigureInterfaceArgumentsAction(workflows.Action):
                     "location": "argument_location_" + str(id),
                     "value_type": "argument_value_type_" + str(id),
                     "default_value": "argument_default_value_" + str(id)}
-                argument = {k: request_source[v]
+                argument = {k: req[v]
                             for k, v in fields.items()}
                 required_field = "argument_required_" + str(id)
                 fields.update({"required": required_field})
                 argument.update(
-                    {"required": required_field in request_source})
+                    {"required": required_field in req})
                 self.arguments.append(argument)
 
                 whelpers.build_interface_argument_fields(self, **fields)
