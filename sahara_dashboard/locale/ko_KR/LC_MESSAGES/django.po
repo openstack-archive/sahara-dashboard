@@ -4,11 +4,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2016-03-07 20:43+0000\n"
+"POT-Creation-Date: 2016-04-09 12:09+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2016-04-08 04:44+0000\n"
+"PO-Revision-Date: 2016-04-09 12:09+0000\n"
 "Last-Translator: SeYeon Lee <sy_lee@kr.ibm.com>\n"
 "Language-Team: Korean (South Korea)\n"
 "Language: ko-KR\n"
@@ -453,54 +453,6 @@ msgstr ""
 "                        출력은 나중에 정의합니다.\n"
 "                    "
 
-msgid "Delete Cluster"
-msgid_plural "Delete Clusters"
-msgstr[0] "클러스터 삭제"
-
-msgid "Delete Data Source"
-msgid_plural "Delete Data Sources"
-msgstr[0] "데이터 소스 삭제"
-
-msgid "Delete Job"
-msgid_plural "Delete Jobs"
-msgstr[0] "작업 삭제"
-
-msgid "Delete Job Binary"
-msgid_plural "Delete Job Binaries"
-msgstr[0] "작업 바이너리 삭제"
-
-msgid "Delete Job Template"
-msgid_plural "Delete Job Templates"
-msgstr[0] "작업 템플릿 삭제"
-
-msgid "Delete Template"
-msgid_plural "Delete Templates"
-msgstr[0] "템플릿 삭제"
-
-msgid "Deleted Cluster"
-msgid_plural "Deleted Clusters"
-msgstr[0] "삭제된 클러스터"
-
-msgid "Deleted Data Source"
-msgid_plural "Deleted Data Sources"
-msgstr[0] "삭제된 데이터 소스"
-
-msgid "Deleted Job"
-msgid_plural "Deleted Jobs"
-msgstr[0] "삭제된 작업"
-
-msgid "Deleted Job Binary"
-msgid_plural "Deleted Job Binaries"
-msgstr[0] "삭제된 작업 바이너리"
-
-msgid "Deleted Job Template"
-msgid_plural "Deleted Jobs Templates"
-msgstr[0] "삭제된 작업 템플릿"
-
-msgid "Deleted Template"
-msgid_plural "Deleted Templates"
-msgstr[0] "삭제된 템플릿"
-
 msgid "Description"
 msgstr "설명"
 
@@ -509,10 +461,6 @@ msgstr "세부 사항"
 
 msgid "Done"
 msgstr "완료"
-
-msgctxt "Current status of a Job"
-msgid "Done with Error"
-msgstr "오류를 표시하며 완료"
 
 msgid "Download Job Binary"
 msgstr "작업 바이너리 다운로드"
@@ -569,10 +517,6 @@ msgstr "오류 세부 사항"
 msgid "Event time"
 msgstr "이벤트 시간"
 
-msgid "Failed"
-msgstr "실패함"
-
-msgctxt "Current status of a Job"
 msgid "Failed"
 msgstr "실패함"
 
@@ -807,10 +751,6 @@ msgstr "작업"
 msgid "Keypair"
 msgstr "키 페어"
 
-msgctxt "Current status of a Job"
-msgid "Killed"
-msgstr "강제 종료됨"
-
 msgid "Last Updated"
 msgstr "마지막 업데이트 날짜"
 
@@ -820,9 +760,9 @@ msgstr "실행"
 msgid "Launch Cluster"
 msgstr "클러스터 실행"
 
+#, fuzzy
 msgid "Launch Job"
-msgid_plural "Launch Jobs"
-msgstr[0] "작업 실행"
+msgstr "작업 실행"
 
 msgid "Launch On Existing Cluster"
 msgstr "기존 클러스터에서 실행"
@@ -865,10 +805,6 @@ msgstr ""
 #, python-format
 msgid "Launched Cluster %s"
 msgstr "%s 클러스터가 실행됨"
-
-msgid "Launched Job"
-msgid_plural "Launched Jobs"
-msgstr[0] "실행된 작업"
 
 msgid "Libs"
 msgstr "Libs"
@@ -1347,17 +1283,9 @@ msgstr ""
 "데이터 프로세싱에서 지정된 사용자 이름을 사용하여 구성을 적용하고 인스턴스의 "
 "프로세스를 관리합니다."
 
-msgid "Start Verification"
-msgid_plural "Start Verifications"
-msgstr[0] "확인 시작"
-
 msgctxt "Start time"
 msgid "Started"
 msgstr "시작 시간"
-
-msgid "Started Verification"
-msgid_plural "Started Verifications"
-msgstr[0] "확인이 시작됨"
 
 msgid "Started at"
 msgstr "시작"
@@ -1390,10 +1318,6 @@ msgid ""
 "Substitute data source objects for URLs of the form datasource://name or "
 "uuid."
 msgstr "양식 데이터 소스의 URL을 데이터 소스 오브젝트로 대체://name나 uuid."
-
-msgctxt "Current status of a Job"
-msgid "Succeeded"
-msgstr "성공함"
 
 msgid "Successfully updated image."
 msgstr "성공적으로 이미지를 업데이트했습니다."
@@ -1719,14 +1643,6 @@ msgstr "알 수 없음"
 
 msgid "Unnecessary tags may be removed by clicking a cross near tag's name."
 msgstr "불필요한 태그는 태그 이름 근처의 십자 표시를 눌러 제거할 수 있습니다."
-
-msgid "Unregister Image"
-msgid_plural "Unregister Images"
-msgstr[0] "이미지 등록 취소"
-
-msgid "Unregistered Image"
-msgid_plural "Unregistered Images"
-msgstr[0] "등록이 취소된 이미지"
 
 msgid "Update"
 msgstr "업데이트"

@@ -3,11 +3,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2016-03-07 20:43+0000\n"
+"POT-Creation-Date: 2016-04-09 12:09+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2016-03-09 09:20+0000\n"
+"PO-Revision-Date: 2016-04-09 12:09+0000\n"
 "Last-Translator: Gérald LONLAS <g.lonlas@gmail.com>\n"
 "Language-Team: French\n"
 "Language: fr\n"
@@ -460,66 +460,6 @@ msgstr ""
 "                        et les sorties seront définies par la suite.\n"
 "                        "
 
-msgid "Delete Cluster"
-msgid_plural "Delete Clusters"
-msgstr[0] "Supprimer le cluster"
-msgstr[1] "Supprimer les clusters"
-
-msgid "Delete Data Source"
-msgid_plural "Delete Data Sources"
-msgstr[0] "Supprimer la source de données"
-msgstr[1] "Supprimer les sources de données"
-
-msgid "Delete Job"
-msgid_plural "Delete Jobs"
-msgstr[0] "Supprimer la tâche"
-msgstr[1] "Supprimer les tâches"
-
-msgid "Delete Job Binary"
-msgid_plural "Delete Job Binaries"
-msgstr[0] "Supprimer un binaire pour une tâche"
-msgstr[1] "Supprimer des binaires pour une tâche"
-
-msgid "Delete Job Template"
-msgid_plural "Delete Job Templates"
-msgstr[0] "Supprimer le modèle de tâche"
-msgstr[1] "Supprimer les modèles de tâche"
-
-msgid "Delete Template"
-msgid_plural "Delete Templates"
-msgstr[0] "Supprimer le Modèle"
-msgstr[1] "Supprimer les Modèles"
-
-msgid "Deleted Cluster"
-msgid_plural "Deleted Clusters"
-msgstr[0] "Cluster supprimé"
-msgstr[1] "Clusters supprimés"
-
-msgid "Deleted Data Source"
-msgid_plural "Deleted Data Sources"
-msgstr[0] "Source de données supprimée"
-msgstr[1] "Sources de données supprimées"
-
-msgid "Deleted Job"
-msgid_plural "Deleted Jobs"
-msgstr[0] "Tâche supprimée"
-msgstr[1] "Tâches supprimées"
-
-msgid "Deleted Job Binary"
-msgid_plural "Deleted Job Binaries"
-msgstr[0] "Binaire pour une tâche supprimées"
-msgstr[1] "Binaires pour une tâche supprimées"
-
-msgid "Deleted Job Template"
-msgid_plural "Deleted Jobs Templates"
-msgstr[0] "Modèle de tâche supprimé"
-msgstr[1] "Modèles de tâches supprimés"
-
-msgid "Deleted Template"
-msgid_plural "Deleted Templates"
-msgstr[0] "Modèle supprimé"
-msgstr[1] "Modèles supprimés"
-
 msgid "Description"
 msgstr "Description"
 
@@ -528,10 +468,6 @@ msgstr "Détails"
 
 msgid "Done"
 msgstr "Terminé"
-
-msgctxt "Current status of a Job"
-msgid "Done with Error"
-msgstr "Effectué avec une erreur"
 
 msgid "Download Job Binary"
 msgstr "Télécharger le binaire pour une tâche"
@@ -592,10 +528,6 @@ msgstr "Détails de l'erreur"
 msgid "Event time"
 msgstr "Date de l’événement"
 
-msgid "Failed"
-msgstr "Échec"
-
-msgctxt "Current status of a Job"
 msgid "Failed"
 msgstr "Échec"
 
@@ -841,10 +773,6 @@ msgstr "Tâches"
 msgid "Keypair"
 msgstr "Paire de clés"
 
-msgctxt "Current status of a Job"
-msgid "Killed"
-msgstr "Supprimé de force"
-
 msgid "Last Updated"
 msgstr "Dernière mise à jour"
 
@@ -854,10 +782,9 @@ msgstr "Démarrer"
 msgid "Launch Cluster"
 msgstr "Lancer le Cluster"
 
+#, fuzzy
 msgid "Launch Job"
-msgid_plural "Launch Jobs"
-msgstr[0] "Démarrer une tâche"
-msgstr[1] "Démarrer les tâches"
+msgstr "Démarrer une tâche"
 
 msgid "Launch On Existing Cluster"
 msgstr "Lancer sur le cluster existant"
@@ -903,11 +830,6 @@ msgstr ""
 #, python-format
 msgid "Launched Cluster %s"
 msgstr "Cluster démarré %s"
-
-msgid "Launched Job"
-msgid_plural "Launched Jobs"
-msgstr[0] "Tâche démarrée"
-msgstr[1] "Tâches démarrées"
 
 msgid "Libs"
 msgstr "Libs"
@@ -1399,19 +1321,9 @@ msgstr ""
 "d'appliquer les configurations et administrer les processus sur les "
 "instances."
 
-msgid "Start Verification"
-msgid_plural "Start Verifications"
-msgstr[0] "Démarrer la vérification"
-msgstr[1] "Démarrer les vérifications"
-
 msgctxt "Start time"
 msgid "Started"
 msgstr "Démarré"
-
-msgid "Started Verification"
-msgid_plural "Started Verifications"
-msgstr[0] "Vérification démarrée"
-msgstr[1] "Vérifications démarrées"
 
 msgid "Started at"
 msgstr "Démarré à"
@@ -1446,10 +1358,6 @@ msgid ""
 msgstr ""
 "Remplacer la source de données des objets pour les URLs du formulaire "
 "datasource://name ou UUID."
-
-msgctxt "Current status of a Job"
-msgid "Succeeded"
-msgstr "Réussi"
 
 msgid "Successfully updated image."
 msgstr "Image mise à jour avec succès"
@@ -1780,16 +1688,6 @@ msgid "Unnecessary tags may be removed by clicking a cross near tag's name."
 msgstr ""
 "Les étiquettes non obligatoires peuvent être supprimées en cliquant sur la "
 "croix à côté du nom de l'étiquette."
-
-msgid "Unregister Image"
-msgid_plural "Unregister Images"
-msgstr[0] "Désinscrire l'image"
-msgstr[1] "Désinscrire les images"
-
-msgid "Unregistered Image"
-msgid_plural "Unregistered Images"
-msgstr[0] "Image désinscrite"
-msgstr[1] "Images désinscrites"
 
 msgid "Update"
 msgstr "Mettre à jour"
