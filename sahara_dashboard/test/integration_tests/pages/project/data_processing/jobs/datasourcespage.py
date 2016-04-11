@@ -18,17 +18,20 @@ from sahara_dashboard.test.integration_tests.pages import mixins
 
 
 class CreateMixin(object):
-    CREATE_FIELD_MAPPING = (
-        ('data_source_name', 'data_source_type', 'data_source_url',
-            'data_source_credential_user', 'data_source_credential_pass',
-            'data_source_description'),
-    )
+    CREATE_FIELD_MAPPING = {
+        "data_source_name": "data_source_name",
+        "data_source_type": "data_source_type",
+        "data_source_url": "data_source_url",
+        "data_source_credential_user": "data_source_credential_user",
+        "data_source_credential_pass": "data_source_credential_pass",
+        "data_source_description": "data_source_description"
+    }
 
     @tables.bind_table_action('create data source')
     def get_create_form(self, button):
         button.click()
-        return forms.TabbedFormRegion(self.driver, self.conf,
-                                      field_mappings=self.CREATE_FIELD_MAPPING)
+        return forms.FormRegion(self.driver, self.conf,
+                                field_mappings=self.CREATE_FIELD_MAPPING)
 
 
 class DatasourcesPage(mixins.DeleteMixin, basepage.BaseDataProcessingPage):

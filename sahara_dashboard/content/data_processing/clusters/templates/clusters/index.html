@@ -30,11 +30,8 @@
         horizon.modals.addModalInitFunction(function (modal) {
             // ensure that we only do this for the cluster template form
             if (($(modal).find("#create_cluster_template__selectpluginaction")).length > 0) {
-                var $navbar = $(modal).find(".nav-tabs");
-                if ($navbar.find("li").size() == 1) {
-                    // hide tab bar for plugin/version modal wizard
-                   $navbar.hide();
-                }
+                hide_navbar_pills(modal);
+
                 var add_ng_btn_label = '{% trans "Add Node Group" %}';
                 $(".hidden_nodegroups_field").after("<input type='button' id='add_nodegroup' value='" + add_ng_btn_label + "'/><br/>");
                 $("#add_nodegroup").click(function() {
@@ -92,11 +89,7 @@
             horizon.modals.addModalInitFunction(function (modal) {
                 // ensure that we only do this for the nodegroup template form
                 if (($(modal).find("#create_nodegroup_template__selectpluginaction")).length > 0) {
-                    var $navbar = $(modal).find(".nav-tabs");
-                    if ($navbar.find("li").size() == 1) {
-                        // hide tab bar for plugin/version modal wizard
-                        $navbar.hide();
-                    }
+                    hide_navbar_pills(modal);
 
                     if ($(modal).find(".hidden_create_field").length > 0) {
                         var form = $(".hidden_create_field").closest("form");
@@ -159,11 +152,7 @@
         horizon.modals.addModalInitFunction(function (modal) {
             // ensure that we only do this for the create cluster form
             if (($(modal).find("#create_cluster__selectpluginaction")).length > 0) {
-                var $navbar = $(modal).find(".nav-tabs");
-                if ($navbar.find("li").size() == 1) {
-                    // hide tab bar for plugin/version modal wizard
-                    $navbar.hide();
-                }
+                hide_navbar_pills(modal);
 
                 $(".hidden_nodegroups_field").val("");
                 $(".hidden_configure_field").val("");
@@ -203,4 +192,22 @@
     });
 </script>
 
+<script type="text/javascript">
+    addHorizonLoadEvent(function () {
+        horizon.modals.addModalInitFunction(function (modal) {
+            if (($(modal).find("#configure_cluster__generalconfigaction")).length > 0) {
+                hide_navbar_pills(modal);
+            }
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    function hide_navbar_pills(modal) {
+        var $navbar = $(modal).find(".nav-pills");
+        if ($navbar.find("li").size() == 1) {
+            $navbar.hide();
+        }
+    }
+</script>
 {% endblock %}
