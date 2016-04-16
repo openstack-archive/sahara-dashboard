@@ -1,10 +1,9 @@
-# Gaoxiao Zhu <zhu.gaoxiao@h3c.com>, 2016. #zanata
-# Shengjing Zhu <zsj950618@gmail.com>, 2016. #zanata
+# Andreas Jaeger <jaegerandi@gmail.com>, 2016. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2016-04-07 22:03+0000\n"
+"POT-Creation-Date: 2016-04-12 20:35+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -449,6 +448,54 @@ msgstr ""
 "                        之后再定义输入和输出。\n"
 "                        "
 
+msgid "Delete Cluster"
+msgid_plural "Delete Clusters"
+msgstr[0] "删除集群"
+
+msgid "Delete Data Source"
+msgid_plural "Delete Data Sources"
+msgstr[0] "删除数据源"
+
+msgid "Delete Job"
+msgid_plural "Delete Jobs"
+msgstr[0] "删除任务"
+
+msgid "Delete Job Binary"
+msgid_plural "Delete Job Binaries"
+msgstr[0] "删除任务的二进制文件"
+
+msgid "Delete Job Template"
+msgid_plural "Delete Job Templates"
+msgstr[0] "删除任务模板"
+
+msgid "Delete Template"
+msgid_plural "Delete Templates"
+msgstr[0] "删除模板"
+
+msgid "Deleted Cluster"
+msgid_plural "Deleted Clusters"
+msgstr[0] "已删除的集群"
+
+msgid "Deleted Data Source"
+msgid_plural "Deleted Data Sources"
+msgstr[0] "已删除的数据源"
+
+msgid "Deleted Job"
+msgid_plural "Deleted Jobs"
+msgstr[0] "已删除的任务"
+
+msgid "Deleted Job Binary"
+msgid_plural "Deleted Job Binaries"
+msgstr[0] "已删除任务的二进制文件"
+
+msgid "Deleted Job Template"
+msgid_plural "Deleted Jobs Templates"
+msgstr[0] "已删除的任务模板"
+
+msgid "Deleted Template"
+msgid_plural "Deleted Templates"
+msgstr[0] "已删除的模板"
+
 msgid "Description"
 msgstr "描述"
 
@@ -457,6 +504,10 @@ msgstr "详情"
 
 msgid "Done"
 msgstr "完成"
+
+msgctxt "Current status of a Job"
+msgid "Done with Error"
+msgstr "完成但有错误发生"
 
 msgid "Download Job Binary"
 msgstr "下载任务的二进制文件"
@@ -515,6 +566,10 @@ msgstr "事件时间"
 
 msgid "Failed"
 msgstr "失败"
+
+msgctxt "Current status of a Job"
+msgid "Failed"
+msgstr "已失败"
 
 msgid "Failed to fetch internal binary list"
 msgstr "获取内部二进制文件列表失败"
@@ -744,6 +799,10 @@ msgstr "任务"
 msgid "Keypair"
 msgstr "密钥对"
 
+msgctxt "Current status of a Job"
+msgid "Killed"
+msgstr "已杀死"
+
 msgid "Last Updated"
 msgstr "最近更新"
 
@@ -755,7 +814,8 @@ msgstr "启动集群"
 
 #, fuzzy
 msgid "Launch Job"
-msgstr "启动任务"
+msgid_plural "Launch Jobs"
+msgstr[0] "启动任务"
 
 msgid "Launch On Existing Cluster"
 msgstr "在已存在集群上启动"
@@ -798,6 +858,10 @@ msgstr ""
 #, python-format
 msgid "Launched Cluster %s"
 msgstr "启动集群 %s"
+
+msgid "Launched Job"
+msgid_plural "Launched Jobs"
+msgstr[0] "已启动的任务"
 
 #, fuzzy
 msgid "Libs"
@@ -1283,9 +1347,19 @@ msgid ""
 "manage processes on instances."
 msgstr "数据处理过程中，用户名会被用在实例的配置和任务管理上。"
 
+#, fuzzy
+msgid "Start Verification"
+msgid_plural "Start Verifications"
+msgstr[0] "开始验证"
+
 msgctxt "Start time"
 msgid "Started"
 msgstr "已开始"
+
+#, fuzzy
+msgid "Started Verification"
+msgid_plural "Started Verifications"
+msgstr[0] "已开始的验证"
 
 msgid "Started at"
 msgstr "开始于"
@@ -1318,6 +1392,10 @@ msgid ""
 "Substitute data source objects for URLs of the form datasource://name or "
 "uuid."
 msgstr "使用数据源对象来代替 datasource://name 格式的 URL 和 UUID。"
+
+msgctxt "Current status of a Job"
+msgid "Succeeded"
+msgstr "已成功"
 
 msgid "Successfully updated image."
 msgstr "成功更新了镜像。"
@@ -1643,6 +1721,14 @@ msgstr "未知"
 
 msgid "Unnecessary tags may be removed by clicking a cross near tag's name."
 msgstr "不必要的标签可以通过点击标签名称旁边的“×”来删除。"
+
+msgid "Unregister Image"
+msgid_plural "Unregister Images"
+msgstr[0] "注销镜像"
+
+msgid "Unregistered Image"
+msgid_plural "Unregistered Images"
+msgstr[0] "已注销的镜像"
 
 msgid "Update"
 msgstr "更新"

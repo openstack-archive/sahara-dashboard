@@ -1,10 +1,9 @@
-# Akihiro Motoki <amotoki@gmail.com>, 2016. #zanata
 # Andreas Jaeger <jaegerandi@gmail.com>, 2016. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2016-04-07 22:03+0000\n"
+"POT-Creation-Date: 2016-04-12 20:35+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -458,6 +457,54 @@ msgstr ""
 "ここで行います。\n"
 "出入力は後で定義されます。"
 
+msgid "Delete Cluster"
+msgid_plural "Delete Clusters"
+msgstr[0] "クラスターの削除"
+
+msgid "Delete Data Source"
+msgid_plural "Delete Data Sources"
+msgstr[0] "データソースの削除"
+
+msgid "Delete Job"
+msgid_plural "Delete Jobs"
+msgstr[0] "ジョブの削除"
+
+msgid "Delete Job Binary"
+msgid_plural "Delete Job Binaries"
+msgstr[0] "ジョブバイナリーの削除"
+
+msgid "Delete Job Template"
+msgid_plural "Delete Job Templates"
+msgstr[0] "ジョブテンプレートの削除"
+
+msgid "Delete Template"
+msgid_plural "Delete Templates"
+msgstr[0] "テンプレートの削除"
+
+msgid "Deleted Cluster"
+msgid_plural "Deleted Clusters"
+msgstr[0] "クラスターを削除しました"
+
+msgid "Deleted Data Source"
+msgid_plural "Deleted Data Sources"
+msgstr[0] "データソースを削除しました"
+
+msgid "Deleted Job"
+msgid_plural "Deleted Jobs"
+msgstr[0] "ジョブを削除しました"
+
+msgid "Deleted Job Binary"
+msgid_plural "Deleted Job Binaries"
+msgstr[0] "ジョブバイナリーを削除しました"
+
+msgid "Deleted Job Template"
+msgid_plural "Deleted Jobs Templates"
+msgstr[0] "ジョブテンプレートを削除しました"
+
+msgid "Deleted Template"
+msgid_plural "Deleted Templates"
+msgstr[0] "テンプレートを削除しました"
+
 msgid "Description"
 msgstr "説明"
 
@@ -466,6 +513,10 @@ msgstr "詳細"
 
 msgid "Done"
 msgstr "完了"
+
+msgctxt "Current status of a Job"
+msgid "Done with Error"
+msgstr "エラー終了"
 
 msgid "Download Job Binary"
 msgstr "ジョブバイナリーのダウンロード"
@@ -522,6 +573,10 @@ msgstr "エラー詳細"
 msgid "Event time"
 msgstr "イベント時刻"
 
+msgid "Failed"
+msgstr "失敗"
+
+msgctxt "Current status of a Job"
 msgid "Failed"
 msgstr "失敗"
 
@@ -761,6 +816,10 @@ msgstr "ジョブ"
 msgid "Keypair"
 msgstr "キーペア"
 
+msgctxt "Current status of a Job"
+msgid "Killed"
+msgstr "強制終了"
+
 msgid "Last Updated"
 msgstr "最終更新"
 
@@ -772,7 +831,8 @@ msgstr "クラスターの起動"
 
 #, fuzzy
 msgid "Launch Job"
-msgstr "ジョブの起動"
+msgid_plural "Launch Jobs"
+msgstr[0] "ジョブの起動"
 
 msgid "Launch On Existing Cluster"
 msgstr "既存のクラスターで起動"
@@ -815,6 +875,10 @@ msgstr ""
 #, python-format
 msgid "Launched Cluster %s"
 msgstr "クラスター %s を起動しました"
+
+msgid "Launched Job"
+msgid_plural "Launched Jobs"
+msgstr[0] "ジョブを起動しました"
 
 msgid "Libs"
 msgstr "ライブラリー"
@@ -1297,9 +1361,17 @@ msgstr ""
 "指定されたユーザー名は、設定を適用したり、インスタンス上のプロセスを管理した"
 "りするのに使用されます。"
 
+msgid "Start Verification"
+msgid_plural "Start Verifications"
+msgstr[0] "検証の開始"
+
 msgctxt "Start time"
 msgid "Started"
 msgstr "開始時刻"
+
+msgid "Started Verification"
+msgid_plural "Started Verifications"
+msgstr[0] "検証を開始しました"
 
 msgid "Started at"
 msgstr "開始時刻"
@@ -1334,6 +1406,10 @@ msgid ""
 msgstr ""
 "データソースオブジェクトを datasource://名前またはUUID の形式の URL に置き換"
 "えます。"
+
+msgctxt "Current status of a Job"
+msgid "Succeeded"
+msgstr "正常終了"
 
 msgid "Successfully updated image."
 msgstr "イメージを正常にアップロードしました。"
@@ -1661,6 +1737,14 @@ msgstr "不明"
 
 msgid "Unnecessary tags may be removed by clicking a cross near tag's name."
 msgstr "不要なタグは、タグ名の横の ☓ 印をクリックすると削除できます。"
+
+msgid "Unregister Image"
+msgid_plural "Unregister Images"
+msgstr[0] "イメージの登録削除"
+
+msgid "Unregistered Image"
+msgid_plural "Unregistered Images"
+msgstr[0] "イメージの登録を削除しました"
 
 msgid "Update"
 msgstr "更新"

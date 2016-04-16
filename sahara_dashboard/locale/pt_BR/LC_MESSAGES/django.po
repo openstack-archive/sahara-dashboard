@@ -1,13 +1,9 @@
 # Andreas Jaeger <jaegerandi@gmail.com>, 2016. #zanata
-# Eric Baum <ecbaum@gmail.com>, 2016. #zanata
-# José Mello <jose.eduardo.jr@gmail.com>, 2016. #zanata
-# Marcelo Dieder <marcelodieder@gmail.com>, 2016. #zanata
-# Rodrigo Melotto <melotto@gmail.com>, 2016. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2016-04-07 22:03+0000\n"
+"POT-Creation-Date: 2016-04-12 20:35+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -464,6 +460,66 @@ msgstr ""
 "depois.\n"
 "                     "
 
+msgid "Delete Cluster"
+msgid_plural "Delete Clusters"
+msgstr[0] "Excluir Cluster"
+msgstr[1] "Excluir Clusters"
+
+msgid "Delete Data Source"
+msgid_plural "Delete Data Sources"
+msgstr[0] "Excluir Fonte de Dados"
+msgstr[1] "Excluir Fontes de Dados"
+
+msgid "Delete Job"
+msgid_plural "Delete Jobs"
+msgstr[0] "Excluir Tarefa"
+msgstr[1] "Excluir Tarefas"
+
+msgid "Delete Job Binary"
+msgid_plural "Delete Job Binaries"
+msgstr[0] "Remover Binário da Tarefa"
+msgstr[1] "Remover Binários da Tarefa"
+
+msgid "Delete Job Template"
+msgid_plural "Delete Job Templates"
+msgstr[0] "Remover Modelo de Tarefa"
+msgstr[1] "Remover Modelos de Tarefas"
+
+msgid "Delete Template"
+msgid_plural "Delete Templates"
+msgstr[0] "Excluir Modelo"
+msgstr[1] "Excluir Modelos"
+
+msgid "Deleted Cluster"
+msgid_plural "Deleted Clusters"
+msgstr[0] "Cluster Excluído"
+msgstr[1] "Clusters Excluídos"
+
+msgid "Deleted Data Source"
+msgid_plural "Deleted Data Sources"
+msgstr[0] "Fonte de Dados Excluída"
+msgstr[1] "Fontes de Dados Excluídas"
+
+msgid "Deleted Job"
+msgid_plural "Deleted Jobs"
+msgstr[0] "Tarefa Excluída"
+msgstr[1] "Tarefas Excluídas"
+
+msgid "Deleted Job Binary"
+msgid_plural "Deleted Job Binaries"
+msgstr[0] "Binário da Tarefa Removido"
+msgstr[1] "Binários da Tarefa Removidos"
+
+msgid "Deleted Job Template"
+msgid_plural "Deleted Jobs Templates"
+msgstr[0] "Modelo de Tarefa Removido"
+msgstr[1] "Modelos de Tarefas Removidos"
+
+msgid "Deleted Template"
+msgid_plural "Deleted Templates"
+msgstr[0] "Modelo Excluído"
+msgstr[1] "Modelos Excluídos"
+
 msgid "Description"
 msgstr "Descrição"
 
@@ -472,6 +528,10 @@ msgstr "Detalhes"
 
 msgid "Done"
 msgstr "Pronto"
+
+msgctxt "Current status of a Job"
+msgid "Done with Error"
+msgstr "Finalizado com erro"
 
 msgid "Download Job Binary"
 msgstr "Baixar Binário da Tarefa"
@@ -531,6 +591,10 @@ msgstr "Detalhes do erro"
 msgid "Event time"
 msgstr "Horário do Evento"
 
+msgid "Failed"
+msgstr "Falhou"
+
+msgctxt "Current status of a Job"
 msgid "Failed"
 msgstr "Falhou"
 
@@ -774,6 +838,10 @@ msgstr "Tarefas"
 msgid "Keypair"
 msgstr "Par de chaves"
 
+msgctxt "Current status of a Job"
+msgid "Killed"
+msgstr "Morto"
+
 msgid "Last Updated"
 msgstr "Última Atualização"
 
@@ -785,7 +853,9 @@ msgstr "Iniciar Cluster"
 
 #, fuzzy
 msgid "Launch Job"
-msgstr "Iniciar Tarefa"
+msgid_plural "Launch Jobs"
+msgstr[0] "Iniciar Tarefa"
+msgstr[1] "Iniciar Tarefas"
 
 msgid "Launch On Existing Cluster"
 msgstr "Iniciar Em Cluster Existente"
@@ -828,6 +898,11 @@ msgstr ""
 #, python-format
 msgid "Launched Cluster %s"
 msgstr "Cluster %s Iniciado"
+
+msgid "Launched Job"
+msgid_plural "Launched Jobs"
+msgstr[0] "Tarefa Iniciada"
+msgstr[1] "Tarefas Iniciadas"
 
 msgid "Libs"
 msgstr "Bibliotecas"
@@ -1309,9 +1384,19 @@ msgstr ""
 "Nome de usuário especificado será usado pelo Processamento de Dados para "
 "aplicar configurações e gerenciar os processos em instâncias."
 
+msgid "Start Verification"
+msgid_plural "Start Verifications"
+msgstr[0] "Iniciar  Verificação"
+msgstr[1] "Iniciar Verificações"
+
 msgctxt "Start time"
 msgid "Started"
 msgstr "Iniciado"
+
+msgid "Started Verification"
+msgid_plural "Started Verifications"
+msgstr[0] "Verificação Iniciada"
+msgstr[1] "Verificações Iniciadas"
 
 msgid "Started at"
 msgstr "Iniciado em"
@@ -1346,6 +1431,10 @@ msgid ""
 msgstr ""
 "Substitua objetos de fontes de dados por URLs no formato datasource://nome "
 "ou uuid."
+
+msgctxt "Current status of a Job"
+msgid "Succeeded"
+msgstr "Bem sucedido"
 
 msgid "Successfully updated image."
 msgstr "Imagem atualizada com sucesso."
@@ -1676,6 +1765,16 @@ msgid "Unnecessary tags may be removed by clicking a cross near tag's name."
 msgstr ""
 "Etiquetas desnecessárias podem ser removidos clicando no nome de uma "
 "etiqueta."
+
+msgid "Unregister Image"
+msgid_plural "Unregister Images"
+msgstr[0] "Cancelar o Registro da Imagem"
+msgstr[1] "Cancelar o Registro das Imagens"
+
+msgid "Unregistered Image"
+msgid_plural "Unregistered Images"
+msgstr[0] "Imagem não-registrada"
+msgstr[1] "Imagens não-registradas"
 
 msgid "Update"
 msgstr "Atualizar"

@@ -1,9 +1,9 @@
-# Frank Kloeker <eumel@arcor.de>, 2016. #zanata
+# Andreas Jaeger <jaegerandi@gmail.com>, 2016. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2016-04-07 22:03+0000\n"
+"POT-Creation-Date: 2016-04-12 20:35+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -457,6 +457,66 @@ msgstr ""
 "oder wählen sie aus. Eingaben und Ausgaben werden später festgelegt.\n"
 " "
 
+msgid "Delete Cluster"
+msgid_plural "Delete Clusters"
+msgstr[0] "Cluster löschen"
+msgstr[1] "Cluster löschen"
+
+msgid "Delete Data Source"
+msgid_plural "Delete Data Sources"
+msgstr[0] "Datenquelle löschen"
+msgstr[1] "Datenquellen löschen"
+
+msgid "Delete Job"
+msgid_plural "Delete Jobs"
+msgstr[0] "Aufgabe löschen"
+msgstr[1] "Aufgaben löschen"
+
+msgid "Delete Job Binary"
+msgid_plural "Delete Job Binaries"
+msgstr[0] "Aufgaben-Binärprogramm löschen"
+msgstr[1] "Aufgaben-Binärprogramme löschen"
+
+msgid "Delete Job Template"
+msgid_plural "Delete Job Templates"
+msgstr[0] "Aufgabenvorlage löschen"
+msgstr[1] "Aufgabenvorlagen löschen"
+
+msgid "Delete Template"
+msgid_plural "Delete Templates"
+msgstr[0] "Vorlage löschen"
+msgstr[1] "Vorlagen löschen"
+
+msgid "Deleted Cluster"
+msgid_plural "Deleted Clusters"
+msgstr[0] "Gelöschte Cluster"
+msgstr[1] "Gelöschte Cluster"
+
+msgid "Deleted Data Source"
+msgid_plural "Deleted Data Sources"
+msgstr[0] "Gelöschte Datenquelle"
+msgstr[1] "Gelöschte Datenquellen"
+
+msgid "Deleted Job"
+msgid_plural "Deleted Jobs"
+msgstr[0] "Gelöschte Aufgabe"
+msgstr[1] "Gelöschte Aufgaben"
+
+msgid "Deleted Job Binary"
+msgid_plural "Deleted Job Binaries"
+msgstr[0] "Aufgaben-Binärprogramm gelöscht"
+msgstr[1] "Aufgaben-Binärprogramme gelöscht"
+
+msgid "Deleted Job Template"
+msgid_plural "Deleted Jobs Templates"
+msgstr[0] "Gelöschte Aufgabenvorlage"
+msgstr[1] "Gelöschte Aufgabenvorlagen"
+
+msgid "Deleted Template"
+msgid_plural "Deleted Templates"
+msgstr[0] "Gelöschte Vorlage"
+msgstr[1] "Gelöschte Vorlagen"
+
 msgid "Description"
 msgstr "Beschreibung"
 
@@ -465,6 +525,10 @@ msgstr "Details"
 
 msgid "Done"
 msgstr "Fertig"
+
+msgctxt "Current status of a Job"
+msgid "Done with Error"
+msgstr "Mit Fehler erledigt"
 
 msgid "Download Job Binary"
 msgstr "Aufgaben-Binärprogramm herunterladen"
@@ -525,6 +589,10 @@ msgstr "Fehlerdetails"
 msgid "Event time"
 msgstr "Ereigniszeit"
 
+msgid "Failed"
+msgstr "Fehlgeschlagen"
+
+msgctxt "Current status of a Job"
 msgid "Failed"
 msgstr "Fehlgeschlagen"
 
@@ -768,6 +836,10 @@ msgstr "Aufgaben"
 msgid "Keypair"
 msgstr "Schlüsselpaar"
 
+msgctxt "Current status of a Job"
+msgid "Killed"
+msgstr "Beendet"
+
 msgid "Last Updated"
 msgstr "Letzte Aktualisierung"
 
@@ -779,7 +851,9 @@ msgstr "Cluster starten"
 
 #, fuzzy
 msgid "Launch Job"
-msgstr "Aufgabe starten"
+msgid_plural "Launch Jobs"
+msgstr[0] "Aufgabe starten"
+msgstr[1] "Aufgaben starten"
 
 msgid "Launch On Existing Cluster"
 msgstr "Auf existierendem Cluster starten"
@@ -822,6 +896,11 @@ msgstr ""
 #, python-format
 msgid "Launched Cluster %s"
 msgstr "Cluster %s gestartet"
+
+msgid "Launched Job"
+msgid_plural "Launched Jobs"
+msgstr[0] "Gestartete Aufgabe"
+msgstr[1] "Gestartete Aufgaben"
 
 msgid "Libs"
 msgstr "Libs"
@@ -1306,9 +1385,19 @@ msgstr ""
 "Der angegebene Benutzername wird von der Datenverarbeitung verwendet, um "
 "Konfigurationen anzuwenden sowie Prozesse und Instanzen zu kontrollieren."
 
+msgid "Start Verification"
+msgid_plural "Start Verifications"
+msgstr[0] "Verifizierung starten"
+msgstr[1] "Verifizierungen starten"
+
 msgctxt "Start time"
 msgid "Started"
 msgstr "Gestartet"
+
+msgid "Started Verification"
+msgid_plural "Started Verifications"
+msgstr[0] "Verifizierung gestartet"
+msgstr[1] "Verifizierungen gestartet"
 
 msgid "Started at"
 msgstr "Gestartet um"
@@ -1343,6 +1432,10 @@ msgid ""
 msgstr ""
 "Ersetzen Sie Datenquellenobjekte für URLs in der Form Datenquelle://name "
 "oder uuid."
+
+msgctxt "Current status of a Job"
+msgid "Succeeded"
+msgstr "erfolgreich ausgeführt"
 
 msgid "Successfully updated image."
 msgstr "Abbild erfolgreich aktualisiert."
@@ -1677,6 +1770,16 @@ msgid "Unnecessary tags may be removed by clicking a cross near tag's name."
 msgstr ""
 "Klicken Sie auf das Kreuz neben dem Namen, um unnötige Schlagwörter zu "
 "entfernen."
+
+msgid "Unregister Image"
+msgid_plural "Unregister Images"
+msgstr[0] "Abbild austragen"
+msgstr[1] "Abbilder austragen"
+
+msgid "Unregistered Image"
+msgid_plural "Unregistered Images"
+msgstr[0] "Ausgetragenes Abbild"
+msgstr[1] "Ausgetragene Abbilder"
 
 msgid "Update"
 msgstr "Aktualisieren"
