@@ -254,7 +254,9 @@ class PluginAndVersionMixin(object):
         self.fields["plugin_name"] = forms.ChoiceField(
             label=_("Plugin Name"),
             choices=plugin_choices,
-            widget=forms.Select(attrs={"class": "plugin_name_choice"}))
+            widget=forms.Select(
+                attrs={"class": "plugin_name_choice switchable",
+                       'data-slug': 'pluginname'}))
 
         for plugin in plugins:
             field_name = plugin.name + "_version"
@@ -262,8 +264,10 @@ class PluginAndVersionMixin(object):
                 label=_("Version"),
                 choices=[(version, version) for version in plugin.versions],
                 widget=forms.Select(
-                    attrs={"class": "plugin_version_choice "
-                                    + field_name + "_choice"})
+                    attrs={"class": "plugin_version_choice switched "
+                           + field_name + "_choice",
+                           "data-switch-on": "pluginname",
+                           "data-pluginname-%s" % plugin.name: _("Version")})
             )
             self.fields[field_name] = choice_field
 
