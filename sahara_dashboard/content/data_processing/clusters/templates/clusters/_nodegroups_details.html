@@ -1,3 +1,4 @@
+
 {% load i18n sizeformat %}
 
 
@@ -34,7 +35,7 @@
 
             <dt>{% trans "Security Groups" %}</dt>
             <dd>
-                <ul class="list-bullet">
+                <ul class="list-bullet" style="margin-left: 20px">
                     {% for group in node_group.security_groups_full %}
                         {% if group.id %}
                             <li><a href="{% url 'horizon:project:access_and_security:security_groups:detail' group.id %}">{{ group.name }}</a></li>
@@ -48,7 +49,7 @@
             <dt>{% trans "Node Processes" %}</dt>
             {% if node_group.node_processes %}
                 <dd>
-                    <ul class="list-bullet">
+                    <ul class="list-bullet" style="margin-left: 20px">
                         {% for process in node_group.node_processes %}
                             <li>{{ process }}</li>
                         {% endfor %}
