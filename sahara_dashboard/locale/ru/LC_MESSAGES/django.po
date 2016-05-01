@@ -1,9 +1,9 @@
 # Ilya Alekseyev <ilyaalekseyev@acm.org>, 2016. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2016-04-09 12:09+0000\n"
+"Project-Id-Version: sahara-dashboard 4.0.1.dev6\n"
+"Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
+"POT-Creation-Date: 2016-04-30 18:50+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -456,6 +456,78 @@ msgstr ""
 "    Входные и выходные источники будут определены далее.\n"
 "    "
 
+msgid "Delete Cluster"
+msgid_plural "Delete Clusters"
+msgstr[0] "Удалить кластер"
+msgstr[1] "Удалить кластеры"
+msgstr[2] "Удалить кластеры"
+
+msgid "Delete Data Source"
+msgid_plural "Delete Data Sources"
+msgstr[0] "Удалить источник данных"
+msgstr[1] "Удалить источники данных"
+msgstr[2] "Удалить источники данных"
+
+msgid "Delete Job"
+msgid_plural "Delete Jobs"
+msgstr[0] "Удалить задачу"
+msgstr[1] "Удалить задачи"
+msgstr[2] "Удалить задачи"
+
+msgid "Delete Job Binary"
+msgid_plural "Delete Job Binaries"
+msgstr[0] "Удалить исполняемый файл задачи"
+msgstr[1] "Удалить исполняемые файлы задачи"
+msgstr[2] "Удалить исполняемые файлы задачи"
+
+msgid "Delete Job Template"
+msgid_plural "Delete Job Templates"
+msgstr[0] "Удалить шаблон задачи"
+msgstr[1] "Удалить шаблоны задачи"
+msgstr[2] "Удалить шаблоны задачи"
+
+msgid "Delete Template"
+msgid_plural "Delete Templates"
+msgstr[0] "Удалить шаблон"
+msgstr[1] "Удалить шаблоны"
+msgstr[2] "Удалить шаблоны"
+
+msgid "Deleted Cluster"
+msgid_plural "Deleted Clusters"
+msgstr[0] "Удаленный кластер"
+msgstr[1] "Удаленные кластеры"
+msgstr[2] "Удаленные кластеры"
+
+msgid "Deleted Data Source"
+msgid_plural "Deleted Data Sources"
+msgstr[0] "Удаленный источник данных"
+msgstr[1] "Удаленые источники данных"
+msgstr[2] "Удаленые источники данных"
+
+msgid "Deleted Job"
+msgid_plural "Deleted Jobs"
+msgstr[0] "Удаленная задача"
+msgstr[1] "Удаленные задачи"
+msgstr[2] "Удаленные задачи"
+
+msgid "Deleted Job Binary"
+msgid_plural "Deleted Job Binaries"
+msgstr[0] "Удаленный исполняемый файл задачи"
+msgstr[1] "Удаленные исполняемые файлы задачи"
+msgstr[2] "Удаленные исполняемые файлы задачи"
+
+msgid "Deleted Job Template"
+msgid_plural "Deleted Jobs Templates"
+msgstr[0] "Удаленный шаблон задачи"
+msgstr[1] "Удаленные шаблоны задачи"
+msgstr[2] "Удаленные шаблоны задачи"
+
+msgid "Deleted Template"
+msgid_plural "Deleted Templates"
+msgstr[0] "Удаленный шаблон"
+msgstr[1] "Удаленные шаблоны"
+msgstr[2] "Удаленные шаблоны"
+
 msgid "Description"
 msgstr "Описание"
 
@@ -464,6 +536,10 @@ msgstr "Подробности"
 
 msgid "Done"
 msgstr "Сделано"
+
+msgctxt "Current status of a Job"
+msgid "Done with Error"
+msgstr "Выполнена с ошибками"
 
 msgid "Download Job Binary"
 msgstr "Скачать исполняемый файл задачи"
@@ -523,6 +599,10 @@ msgstr "Сведения об ошибке"
 msgid "Event time"
 msgstr "Время события"
 
+msgid "Failed"
+msgstr "Произошла ошибка"
+
+msgctxt "Current status of a Job"
 msgid "Failed"
 msgstr "Произошла ошибка"
 
@@ -765,6 +845,10 @@ msgstr "Задачи"
 msgid "Keypair"
 msgstr "Ключевая пара"
 
+msgctxt "Current status of a Job"
+msgid "Killed"
+msgstr "Убита"
+
 msgid "Last Updated"
 msgstr "Обновлено"
 
@@ -776,7 +860,10 @@ msgstr "Запустить кластер"
 
 #, fuzzy
 msgid "Launch Job"
-msgstr "Запустить задачу"
+msgid_plural "Launch Jobs"
+msgstr[0] "Запустить задачу"
+msgstr[1] "Запустить задачи"
+msgstr[2] "Запустить задачи"
 
 msgid "Launch On Existing Cluster"
 msgstr "Запустить на существующем кластере"
@@ -819,6 +906,12 @@ msgstr ""
 #, python-format
 msgid "Launched Cluster %s"
 msgstr "Запущен кластер %s"
+
+msgid "Launched Job"
+msgid_plural "Launched Jobs"
+msgstr[0] "Запущенная задача"
+msgstr[1] "Запущенные задачи"
+msgstr[2] "Запущенные задачи"
 
 msgid "Libs"
 msgstr "Библиотеки"
@@ -1300,9 +1393,21 @@ msgstr ""
 "Указанное имя пользователя будет использоваться системой обработки данных в "
 "применении  конфигурации и управлении процессами в инстансе."
 
+msgid "Start Verification"
+msgid_plural "Start Verifications"
+msgstr[0] "Начать верификацию"
+msgstr[1] "Начать верификации"
+msgstr[2] "Начать верификации"
+
 msgctxt "Start time"
 msgid "Started"
 msgstr "Запущено"
+
+msgid "Started Verification"
+msgid_plural "Started Verifications"
+msgstr[0] "Начатая верификация"
+msgstr[1] "Начатые верификации"
+msgstr[2] "Начатые верификации"
 
 msgid "Started at"
 msgstr "Запущено "
@@ -1337,6 +1442,10 @@ msgid ""
 msgstr ""
 "Подставлять объекты источника данных для URL в форме &lt;источник "
 "данных&gt;://&lt;имя&gt; или uuid."
+
+msgctxt "Current status of a Job"
+msgid "Succeeded"
+msgstr "Успешно завершена"
 
 msgid "Successfully updated image."
 msgstr "Образ успешно обновлен."
@@ -1664,6 +1773,18 @@ msgstr "Неизвестно"
 
 msgid "Unnecessary tags may be removed by clicking a cross near tag's name."
 msgstr "Ненужные теги могут быть убраны нажатием крестика возле имени тега."
+
+msgid "Unregister Image"
+msgid_plural "Unregister Images"
+msgstr[0] "Разрегистрировать образ"
+msgstr[1] "Разрегистрировать образы"
+msgstr[2] "Разрегистрировать образы"
+
+msgid "Unregistered Image"
+msgid_plural "Unregistered Images"
+msgstr[0] "Разрегистрированный образ"
+msgstr[1] "Разрегистрированные образы"
+msgstr[2] "Разрегистрированные образы"
 
 msgid "Update"
 msgstr "Обновить"
