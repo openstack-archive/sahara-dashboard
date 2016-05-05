@@ -16,7 +16,7 @@
 # pip install {opts} {packages}
 
 ZUUL_CLONER=/usr/zuul-env/bin/zuul-cloner
-BRANCH_NAME=master
+BRANCH_NAME=stable/mitaka
 horizon_installed=$(echo "import horizon" | python 2>/dev/null ; echo $?)
 
 set -e
