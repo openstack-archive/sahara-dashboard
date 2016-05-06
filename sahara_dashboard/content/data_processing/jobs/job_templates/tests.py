@@ -25,7 +25,10 @@ DETAILS_URL = reverse(
 
 
 class DataProcessingJobTemplateTests(test.TestCase):
-    @test.create_stubs({api.sahara: ('job_list',)})
+    @test.create_stubs({api.sahara: ('job_execution_list',
+                                     'plugin_list', 'job_binary_list',
+                                     'data_source_list',
+                                     'job_list')})
     def test_index(self):
         api.sahara.job_list(IsA(http.HttpRequest), {}) \
             .AndReturn(self.jobs.list())

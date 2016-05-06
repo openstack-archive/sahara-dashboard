@@ -26,7 +26,10 @@ REGISTER_URL = reverse(
 
 
 class DataProcessingImageRegistryTests(test.TestCase):
-    @test.create_stubs({api.sahara: ('image_list',)})
+    @test.create_stubs({api.sahara: ('cluster_template_list',
+                                     'image_list',
+                                     'cluster_list',
+                                     'nodegroup_template_list')})
     def test_index(self):
         api.sahara.image_list(IsA(http.HttpRequest)) \
             .AndReturn(self.images.list())

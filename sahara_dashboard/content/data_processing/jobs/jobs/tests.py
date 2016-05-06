@@ -25,7 +25,10 @@ DETAILS_URL = reverse(
 
 
 class DataProcessingJobTests(test.TestCase):
-    @test.create_stubs({api.sahara: ('job_execution_list',)})
+    @test.create_stubs({api.sahara: ('job_execution_list',
+                                     'plugin_list', 'job_binary_list',
+                                     'data_source_list',
+                                     'job_list')})
     def test_index(self):
         api.sahara.job_execution_list(IsA(http.HttpRequest), {}) \
             .AndReturn(self.job_executions.list())
@@ -42,7 +45,9 @@ class DataProcessingJobTests(test.TestCase):
         self.assertTemplateUsed(res, 'jobs/index.html')
         self.assertContains(res, 'Jobs')
 
-    @test.create_stubs({api.sahara: ('job_execution_get',)})
+    @test.create_stubs({api.sahara: ('job_execution_get',
+                                     'cluster_get', 'job_get',
+                                     'data_source_get')})
     def test_details(self):
         api.sahara.job_execution_get(IsA(http.HttpRequest), IsA(six.text_type)) \
             .MultipleTimes().AndReturn(self.job_executions.first())

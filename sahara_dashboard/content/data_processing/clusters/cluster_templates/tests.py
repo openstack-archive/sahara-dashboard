@@ -32,7 +32,10 @@ DETAILS_URL = reverse(
 
 
 class DataProcessingClusterTemplateTests(test.TestCase):
-    @test.create_stubs({api.sahara: ('cluster_template_list',)})
+    @test.create_stubs({api.sahara: ('cluster_template_list',
+                                     'image_list',
+                                     'cluster_list',
+                                     'nodegroup_template_list')})
     def test_index(self):
         api.sahara.cluster_template_list(IsA(http.HttpRequest), {}) \
             .AndReturn(self.cluster_templates.list())
@@ -42,7 +45,8 @@ class DataProcessingClusterTemplateTests(test.TestCase):
         self.assertContains(res, 'Cluster Templates')
         self.assertContains(res, 'Name')
 
-    @test.create_stubs({api.sahara: ('cluster_template_get',),
+    @test.create_stubs({api.sahara: ('cluster_template_get',
+                                     'nodegroup_template_get'),
                         dash_api.nova: ('flavor_get',)})
     def test_details(self):
         flavor = self.flavors.first()
@@ -56,7 +60,8 @@ class DataProcessingClusterTemplateTests(test.TestCase):
         res = self.client.get(DETAILS_URL)
         self.assertTemplateUsed(res, 'horizon/common/_detail.html')
 
-    @test.create_stubs({api.sahara: ('cluster_template_get',
+    @test.create_stubs({api.sahara: ('client',
+                                     'cluster_template_get',
                                      'plugin_get_version_details',
                                      'nodegroup_template_find')})
     def test_copy(self):
@@ -100,7 +105,8 @@ class DataProcessingClusterTemplateTests(test.TestCase):
         self.assertRedirectsNoFollow(res, INDEX_URL)
         self.assertMessageCount(success=1)
 
-    @test.create_stubs({api.sahara: ('cluster_template_get',
+    @test.create_stubs({api.sahara: ('client',
+                                     'cluster_template_get',
                                      'cluster_template_update',
                                      'plugin_get_version_details',
                                      'nodegroup_template_find')})

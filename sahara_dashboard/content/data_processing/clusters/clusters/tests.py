@@ -15,6 +15,8 @@ from django import http
 from mox3.mox import IsA  # noqa
 from oslo_serialization import jsonutils
 
+from openstack_dashboard import api as os_api
+
 from sahara_dashboard import api
 from sahara_dashboard.test import helpers as test
 
@@ -25,7 +27,10 @@ DETAILS_URL = reverse(
 
 
 class DataProcessingClusterTests(test.TestCase):
-    @test.create_stubs({api.sahara: ('cluster_list',)})
+    @test.create_stubs({api.sahara: ('cluster_template_list',
+                                     'image_list',
+                                     'cluster_list',
+                                     'nodegroup_template_list')})
     def test_index(self):
         api.sahara.cluster_list(IsA(http.HttpRequest), {}) \
             .AndReturn(self.clusters.list())
@@ -35,7 +40,10 @@ class DataProcessingClusterTests(test.TestCase):
         self.assertContains(res, 'Clusters')
         self.assertContains(res, 'Name')
 
-    @test.create_stubs({api.sahara: ('cluster_template_list', 'image_list')})
+    @test.create_stubs({api.sahara: ('cluster_template_list', 'image_list',
+                                     'plugin_get_version_details'),
+                        os_api.neutron: ('network_list',),
+                        os_api.nova: ('keypair_list',)})
     def test_launch_cluster_get_nodata(self):
         api.sahara.cluster_template_list(IsA(http.HttpRequest)) \
             .AndReturn([])

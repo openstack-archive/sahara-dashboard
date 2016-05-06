@@ -29,7 +29,10 @@ CREATE_URL = reverse(
 
 
 class DataProcessingJobBinaryTests(test.TestCase):
-    @test.create_stubs({api.sahara: ('job_binary_list',)})
+    @test.create_stubs({api.sahara: ('job_execution_list',
+                                     'plugin_list', 'job_binary_list',
+                                     'data_source_list',
+                                     'job_list')})
     def test_index(self):
         api.sahara.job_binary_list(IsA(http.HttpRequest)) \
             .AndReturn(self.job_binaries.list())
@@ -99,7 +102,8 @@ class DataProcessingJobBinaryTests(test.TestCase):
         )
 
     @test.create_stubs({api.sahara: ('job_binary_get',
-                                     'job_binary_update')})
+                                     'job_binary_update',
+                                     'job_binary_internal_list')})
     def test_update(self):
         jb = api.sahara.job_binary_get(IsA(http.HttpRequest), IsA(six.text_type)) \
             .AndReturn(self.job_binaries.first())
@@ -125,6 +129,8 @@ class DataProcessingJobBinaryTests(test.TestCase):
         self.assertNoFormErrors(res)
 
     @test.create_stubs({api.manila: ('share_list', ),
+                        api.sahara: ('job_binary_create',
+                                     'job_binary_internal_list'),
                         api.sahara.base: ('is_service_enabled', )})
     def test_create_manila(self):
         share = self.mox.CreateMockAnything(

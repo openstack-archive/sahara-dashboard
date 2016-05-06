@@ -29,7 +29,10 @@ EDIT_URL = reverse(
 
 
 class DataProcessingDataSourceTests(test.TestCase):
-    @test.create_stubs({api.sahara: ('data_source_list',)})
+    @test.create_stubs({api.sahara: ('job_execution_list',
+                                     'plugin_list', 'job_binary_list',
+                                     'data_source_list',
+                                     'job_list')})
     def test_index(self):
         api.sahara.data_source_list(IsA(http.HttpRequest)) \
             .AndReturn(self.data_sources.list())

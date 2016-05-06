@@ -12,6 +12,7 @@
 
 from django.core.urlresolvers import reverse
 
+from sahara_dashboard import api
 from sahara_dashboard.test import helpers as test
 
 
@@ -23,7 +24,9 @@ CLUSTER_GUIDE_RESET_URL = reverse(
 
 
 class DataProcessingClusterGuideTests(test.TestCase):
+    @test.create_stubs({api.sahara: ('nodegroup_template_find',)})
     def test_cluster_guide(self):
+        self.mox.ReplayAll()
         res = self.client.get(CLUSTER_GUIDE_URL)
         self.assertTemplateUsed(
             res, 'cluster_wizard/cluster_guide.html')

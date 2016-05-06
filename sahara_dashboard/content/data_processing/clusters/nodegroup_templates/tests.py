@@ -68,7 +68,10 @@ class DataProcessingNodeGroupTests(test.TestCase):
 
         return ngt, configs, res
 
-    @test.create_stubs({api.sahara: ('nodegroup_template_list',)})
+    @test.create_stubs({api.sahara: ('cluster_template_list',
+                                     'image_list',
+                                     'cluster_list',
+                                     'nodegroup_template_list')})
     def test_index(self):
         api.sahara.nodegroup_template_list(IsA(http.HttpRequest), {}) \
             .AndReturn(self.nodegroup_templates.list())
@@ -112,7 +115,10 @@ class DataProcessingNodeGroupTests(test.TestCase):
         self.assertMessageCount(success=1)
 
     @test.create_stubs({api.sahara: ('nodegroup_template_get',
-                                     'plugin_get_version_details'),
+                                     'plugin_get_version_details',
+                                     'image_list'),
+                        dash_api.nova: ('availability_zone_list',
+                                        'flavor_list'),
                         dash_api.network: ('floating_ip_pools_list',
                                            'security_group_list'),
                         dash_api.cinder: ('extension_supported',
@@ -130,7 +136,8 @@ class DataProcessingNodeGroupTests(test.TestCase):
                                      'plugin_get_version_details'),
                         dash_api.network: ('floating_ip_pools_list',
                                            'security_group_list'),
-                        dash_api.nova: ('flavor_list',),
+                        dash_api.nova: ('flavor_list',
+                                        'availability_zone_list'),
                         dash_api.cinder: ('extension_supported',
                                           'availability_zone_list',
                                           'volume_type_list')})
@@ -222,7 +229,8 @@ class DataProcessingNodeGroupTests(test.TestCase):
                                      'plugin_get_version_details'),
                         dash_api.network: ('floating_ip_pools_list',
                                            'security_group_list'),
-                        dash_api.nova: ('flavor_list',),
+                        dash_api.nova: ('flavor_list',
+                                        'availability_zone_list'),
                         dash_api.cinder: ('extension_supported',
                                           'availability_zone_list',
                                           'volume_type_list')})
@@ -313,7 +321,10 @@ class DataProcessingNodeGroupTests(test.TestCase):
         self.assertMessageCount(success=1)
 
     @test.create_stubs({api.sahara: ('nodegroup_template_get',
-                                     'plugin_get_version_details'),
+                                     'plugin_get_version_details',
+                                     'image_list'),
+                        dash_api.nova: ('availability_zone_list',
+                                        'flavor_list'),
                         dash_api.network: ('floating_ip_pools_list',
                                            'security_group_list'),
                         dash_api.cinder: ('extension_supported',
