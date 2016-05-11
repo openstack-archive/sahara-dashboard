@@ -24,6 +24,8 @@ class CreateMixin(object):
 
     LAUNCH_ON_EXIST_CLUSTER_FIELD_MAPPING = (
         ('job_input', 'job_output', 'cluster'),
+        ('adapt_spark_swift', 'datasource_substitute'),
+        (),
     )
 
     @tables.bind_table_action('create job')
@@ -56,10 +58,50 @@ class JobtemplatesPage(mixins.DeleteMixin, basepage.BaseDataProcessingPage):
         form.submit()
 
     def launch_on_exists(self, job_name, input_name, output_name,
-                         cluster_name):
+                         cluster_name, adapt_swift=True,
+                         datasource_substitution=True, configuration=None,
+                         parameters=None, arguments=()):
+        configuration = configuration or {}
+        parameters = parameters or {}
         row = self._get_row_with_name(job_name)
         form = self.table.get_launch_on_exists_form(row)
         form.job_input.text = input_name
         form.job_output.text = output_name
         form.cluster.text = cluster_name
+
+        form.switch_to(1)
+        if adapt_swift:
+            form.adapt_spark_swift.mark()
+        else:
+            form.adapt_spark_swift.unmark()
+        if datasource_substitution:
+            form.datasource_substitute.mark()
+        else:
+            form.datasource_substitute.unmark()
+
+        config_block = form.src_elem.find_element_by_id('configs')
+        add_btn = config_block.find_element_by_link_text('Add')
+        for key, value in configuration.items():
+            add_btn.click()
+            inputs = config_block.find_elements_by_css_selector(
+                'input[type=text]')[-2:]
+            inputs[0].send_keys(key)
+            inputs[1].send_keys(value)
+
+        config_block = form.src_elem.find_element_by_id('params')
+        add_btn = config_block.find_element_by_link_text('Add')
+        for key, value in parameters.items():
+            add_btn.click()
+            inputs = config_block.find_elements_by_css_selector(
+                'input[type=text]')[-2:]
+            inputs[0].send_keys(key)
+            inputs[1].send_keys(value)
+
+        config_block = form.src_elem.find_element_by_id('args_array')
+        add_btn = config_block.find_element_by_link_text('Add')
+        for value in arguments:
+            add_btn.click()
+            input_el = config_block.find_elements_by_css_selector(
+                'input[type=text]')[-1]
+            input_el.send_keys(value)
         form.submit()

@@ -19,18 +19,24 @@ PLUGIN_VERSION = '0.1'
 IMAGE_TAGS = ('fake', PLUGIN_VERSION)
 
 
-class TestCRUD(SaharaTestCase):
+class TestCRUDBase(SaharaTestCase):
 
     def setUp(self):
-        super(TestCRUD, self).setUp()
+        super(TestCRUDBase, self).setUp()
         self.flavor_name = self.gen_name('flavor')
         self.image_name = self.gen_name("image")
         self.master_name = self.gen_name("master")
         self.worker_name = self.gen_name("worker")
         self.template_name = self.gen_name("template")
         self.cluster_name = self.gen_name("cluster")
+        self.ds_input_name = self.gen_name('input')
+        self.ds_output_name = self.gen_name('output')
+        self.job_binary_name = self.gen_name('function')
+        self.jobtemplate_name = self.gen_name('test-job')
 
+    def create_flavor(self):
         flavors_page = self.home_pg.go_to_system_flavorspage()
+
         flavors_page.create_flavor(
             name=self.flavor_name,
             vcpus=self.CONFIG.sahara.flavor_vcpus,
@@ -38,18 +44,35 @@ class TestCRUD(SaharaTestCase):
             root_disk=self.CONFIG.sahara.flavor_root_disk,
             ephemeral_disk=self.CONFIG.sahara.flavor_ephemeral_disk,
             swap_disk=self.CONFIG.sahara.flavor_swap_disk)
-
         self.assertTrue(flavors_page.is_flavor_present(self.flavor_name))
+
+    def delete_flavor(self):
+        flavors_page = self.home_pg.go_to_system_flavorspage()
+        flavors_page.delete_flavor(self.flavor_name)
+        self.assertFalse(flavors_page.is_flavor_present(self.flavor_name))
+
+    def create_image(self):
         image_pg = self.home_pg.go_to_compute_imagespage()
         image_pg.create_image(self.image_name,
                               location=self.CONFIG.sahara.fake_http_image)
         image_pg.wait_until_image_active(self.image_name)
+
+    def delete_image(self):
+        image_pg = self.home_pg.go_to_compute_imagespage()
+        image_pg.delete_image(self.image_name)
+
+    def register_image(self):
         image_reg_pg = (
             self.home_pg.go_to_dataprocessing_clusters_imageregistrypage())
         image_ssh_user = self.CONFIG.sahara.fake_image_ssh_user
         image_reg_pg.register_image(self.image_name, image_ssh_user,
                                     "Test description", tags=IMAGE_TAGS)
         image_reg_pg.wait_until_image_registered(self.image_name)
+
+    def unregister_image(self):
+        image_reg_pg = (
+            self.home_pg.go_to_dataprocessing_clusters_imageregistrypage())
+        image_reg_pg.unregister_image(self.image_name)
 
     def create_cluster(self):
         nodegrouptpls_pg = (
@@ -113,60 +136,93 @@ class TestCRUD(SaharaTestCase):
             cluster_pg.get_cluster_instances_count(self.cluster_name), 3,
             "Cluster was not scaled")
 
-    def run_edp_job(self):
+    def create_datasources(self):
         datasource_pg = (
             self.home_pg.go_to_dataprocessing_jobs_datasourcespage())
-        input_name = self.gen_name('input')
-        datasource_pg.create(name=input_name, source_type="HDFS",
+        datasource_pg.create(name=self.ds_input_name, source_type="HDFS",
                              url="hdfs://user/input")
-        output_name = self.gen_name('output')
-        datasource_pg.create(name=output_name, source_type="Swift",
+        datasource_pg.create(name=self.ds_output_name, source_type="Swift",
                              url="swift://container/output")
 
-        # create job binary
-        job_binary_pg = (
-            self.home_pg.go_to_dataprocessing_jobs_jobbinariespage())
-        job_binary_name = self.gen_name('function')
-        job_binary_pg.create_job_binary_from_file(job_binary_name, __file__)
-
-        self.assertTrue(job_binary_pg.is_job_binary_present(job_binary_name),
-                        "Job binary is not in the binaries job table after"
-                        " its creation.")
-
-        # create job template
-        jobtemplates_pg = (
-            self.home_pg.go_to_dataprocessing_jobs_jobtemplatespage())
-        jobtemplate_name = self.gen_name('test-job')
-        jobtemplates_pg.create(name=jobtemplate_name, job_type='Pig',
-                               binary_name=job_binary_name)
-
-        # launch job
-        jobtemplates_pg.launch_on_exists(job_name=jobtemplate_name,
-                                         input_name=input_name,
-                                         output_name=output_name,
-                                         cluster_name=self.cluster_name)
-        jobs_pg = self.home_pg.go_to_dataprocessing_jobs_jobspage()
-        jobs_pg.wait_until_job_succeeded(jobtemplate_name)
-
-        # delete job
-        jobs_pg.delete(jobtemplate_name)
-
-        # delete job_template
-        jobtemplates_pg = (
-            self.home_pg.go_to_dataprocessing_jobs_jobtemplatespage())
-        jobtemplates_pg.delete(jobtemplate_name)
-
-        # delete job binary
-        job_binary_pg = (
-            self.home_pg.go_to_dataprocessing_jobs_jobbinariespage())
-        job_binary_pg.delete_job_binary(job_binary_name)
-        self.assertFalse(job_binary_pg.is_job_binary_present(job_binary_name),
-                         "Job binary was not removed from binaries job table.")
-
+    def delete_datasources(self):
         datasource_pg = (
             self.home_pg.go_to_dataprocessing_jobs_datasourcespage())
-        datasource_pg.delete(input_name)
-        datasource_pg.delete(output_name)
+        datasource_pg.delete(self.ds_input_name)
+        datasource_pg.delete(self.ds_output_name)
+
+    def create_job_binary(self):
+        job_binary_pg = (
+            self.home_pg.go_to_dataprocessing_jobs_jobbinariespage())
+        job_binary_pg.create_job_binary_from_file(
+            self.job_binary_name, __file__)
+
+        self.assertTrue(
+            job_binary_pg.is_job_binary_present(self.job_binary_name),
+            "Job binary is not in the binaries job table after its creation.")
+
+    def delete_job_binary(self):
+        job_binary_pg = (
+            self.home_pg.go_to_dataprocessing_jobs_jobbinariespage())
+        job_binary_pg.delete_job_binary(self.job_binary_name)
+        self.assertFalse(
+            job_binary_pg.is_job_binary_present(self.job_binary_name),
+            "Job binary was not removed from binaries job table.")
+
+    def create_job_template(self):
+        jobtemplates_pg = (
+            self.home_pg.go_to_dataprocessing_jobs_jobtemplatespage())
+        jobtemplates_pg.create(name=self.jobtemplate_name, job_type='Pig',
+                               binary_name=self.job_binary_name)
+
+    def delete_job_template(self):
+        jobtemplates_pg = (
+            self.home_pg.go_to_dataprocessing_jobs_jobtemplatespage())
+        jobtemplates_pg.delete(self.jobtemplate_name)
+
+    def run_edp_job(self):
+        jobtemplates_pg = (
+            self.home_pg.go_to_dataprocessing_jobs_jobtemplatespage())
+        jobtemplates_pg.launch_on_exists(job_name=self.jobtemplate_name,
+                                         input_name=self.ds_input_name,
+                                         output_name=self.ds_output_name,
+                                         cluster_name=self.cluster_name)
+        jobs_pg = self.home_pg.go_to_dataprocessing_jobs_jobspage()
+        jobs_pg.wait_until_job_succeeded(self.jobtemplate_name)
+
+    def run_edp_job_with_parameters(self):
+        jobtemplates_pg = (
+            self.home_pg.go_to_dataprocessing_jobs_jobtemplatespage())
+        jobtemplates_pg.launch_on_exists(job_name=self.jobtemplate_name,
+                                         input_name=self.ds_input_name,
+                                         output_name=self.ds_output_name,
+                                         cluster_name=self.cluster_name,
+                                         adapt_swift=False,
+                                         datasource_substitution=False,
+                                         configuration={'foo': 'bar'},
+                                         parameters={'key': 'value'},
+                                         arguments=('one', 'two'))
+        jobs_pg = self.home_pg.go_to_dataprocessing_jobs_jobspage()
+        details = jobs_pg.get_details(self.jobtemplate_name)
+        expected = {
+            'Job Configuration': {
+                'configs': set([
+                    'edp.substitute_data_source_for_name = False',
+                    'foo = bar',
+                    'edp.substitute_data_source_for_uuid = False'
+                ]),
+                'params': set(['key = value']),
+                'args': set(['one', 'two']),
+                'job_execution_info': set([]),
+            },
+            'Job Template': self.jobtemplate_name,
+        }
+
+        details = {k: v for k, v in details.items() if k in expected}
+        self.assertEqual(expected, details)
+
+    def delete_job(self):
+        jobs_pg = self.home_pg.go_to_dataprocessing_jobs_jobspage()
+        jobs_pg.delete(self.jobtemplate_name)
 
     def delete_cluster(self):
         cluster_pg = self.home_pg.go_to_dataprocessing_clusters_clusterspage()
@@ -176,12 +232,6 @@ class TestCRUD(SaharaTestCase):
         cluster_pg.wait_until_cluster_deleted(self.cluster_name)
         self.assertFalse(cluster_pg.is_present(self.cluster_name),
                          "Cluster was not deleted.")
-
-    def test_cluster_operate(self):
-        self.create_cluster()
-        self.run_edp_job()
-        self.cluster_scale()
-        self.delete_cluster()
 
     def tearDown(self):
         clustertpls_pg = (
@@ -193,17 +243,36 @@ class TestCRUD(SaharaTestCase):
             self.home_pg.go_to_dataprocessing_clusters_nodegrouptemplatespage()
         )
         nodegrouptpls_pg.delete_many((self.worker_name, self.master_name))
+        super(TestCRUDBase, self).tearDown()
 
-        image_reg_pg = (
-            self.home_pg.go_to_dataprocessing_clusters_imageregistrypage())
-        image_reg_pg.unregister_image(self.image_name)
 
-        image_pg = self.home_pg.go_to_compute_imagespage()
-        image_pg.delete_image(self.image_name)
+class TestCRUD(TestCRUDBase):
 
-        flavors_page = self.home_pg.go_to_system_flavorspage()
-        flavors_page.delete_flavor(self.flavor_name)
-        self.assertFalse(flavors_page.is_flavor_present(self.flavor_name))
+    def setUp(self):
+        super(TestCRUD, self).setUp()
+        self.create_flavor()
+        self.create_image()
+        self.register_image()
+
+    def test_cluster_operate(self):
+        self.create_cluster()
+        self.create_datasources()
+        self.create_job_binary()
+        self.create_job_template()
+        self.run_edp_job()
+        self.delete_job()
+        self.run_edp_job_with_parameters()
+        self.delete_job()
+        self.delete_job_template()
+        self.delete_job_binary()
+        self.delete_datasources()
+        self.cluster_scale()
+        self.delete_cluster()
+
+    def tearDown(self):
+        self.unregister_image()
+        self.delete_image()
+        self.delete_flavor()
         super(TestCRUD, self).tearDown()
 
 
@@ -415,3 +484,94 @@ class TestUpdateClusterTemplate(SaharaTestCase):
         nodegrouptpls_pg.delete_many((self.worker_name, self.master_name,
                                       self.new_worker_name))
         super(TestUpdateClusterTemplate, self).tearDown()
+
+
+class TestUpdateDataSource(SaharaTestCase):
+
+    def setUp(self):
+        super(TestUpdateDataSource, self).setUp()
+        datasource_pg = (
+            self.home_pg.go_to_dataprocessing_jobs_datasourcespage())
+        self.name = self.gen_name('input')
+        self.new_name = '{}-new'.format(self.name)
+        datasource_pg.create(name=self.name, source_type="HDFS",
+                             url="hdfs://user/input")
+
+    def test_update(self):
+        datasource_pg = (
+            self.home_pg.go_to_dataprocessing_jobs_datasourcespage())
+        kwargs = {
+            'data_source_name': self.new_name,
+            'data_source_type': 'Swift',
+            'data_source_url': 'swift://container.sahara/object',
+            'data_source_credential_user': 'test-user',
+            'data_source_credential_pass': 'test-password',
+            'data_source_description': '{} description'.format(self.new_name),
+        }
+        datasource_pg.update(self.name, **kwargs)
+        self.assertTrue(datasource_pg.has_success_message())
+        self.assertFalse(datasource_pg.has_error_message())
+        self.assertTrue(datasource_pg.is_present(self.new_name),
+                        "Node group template was not updated.")
+        details = datasource_pg.get_details(self.new_name)
+        expected = {
+            'Description': kwargs['data_source_description'],
+            'Name': self.new_name,
+            'Type': 'swift',
+            'URL': 'swift://container.sahara/object'
+        }
+        details = {k: v for k, v in details.items() if k in expected}
+        self.assertEqual(expected, details)
+
+    def tearDown(self):
+        datasource_pg = (
+            self.home_pg.go_to_dataprocessing_jobs_datasourcespage())
+        datasource_pg.delete_many([self.name, self.new_name])
+        super(TestUpdateDataSource, self).tearDown()
+
+
+class TestUpdateJobBinaries(SaharaTestCase):
+
+    def setUp(self):
+        super(TestUpdateJobBinaries, self).setUp()
+        # create job binary
+        job_binary_pg = (
+            self.home_pg.go_to_dataprocessing_jobs_jobbinariespage())
+        self.name = self.gen_name('function')
+        self.new_name = '{}-new'.format(self.name)
+        job_binary_pg.create_job_binary_from_file(self.name, __file__)
+
+    def test_update(self):
+        job_binary_pg = (
+            self.home_pg.go_to_dataprocessing_jobs_jobbinariespage())
+        kwargs = {
+            "job_binary_name": self.new_name,
+            "job_binary_type": "Internal database",
+            "job_binary_internal": "*Create a script",
+            "job_binary_script_name": "script-name",
+            "job_binary_script": "script-text",
+            "job_binary_description": "{} description".format(self.new_name),
+        }
+        job_binary_pg.update_job_binary(self.name, **kwargs)
+        self.assertTrue(job_binary_pg.has_success_message())
+        self.assertFalse(job_binary_pg.has_error_message())
+        self.assertTrue(job_binary_pg.is_job_binary_present(self.new_name),
+                        "Job binary was not updated.")
+        details = job_binary_pg.get_details(self.new_name)
+        expected = {
+            'Description': kwargs['job_binary_description'],
+            'Name': self.new_name,
+        }
+
+        details = {k: v for k, v in details.items() if k in expected}
+        self.assertEqual(expected, details)
+
+    def tearDown(self):
+        job_binary_pg = (
+            self.home_pg.go_to_dataprocessing_jobs_jobbinariespage())
+        for name in (self.name, self.new_name):
+            try:
+                job_binary_pg.delete_job_binary(name)
+            except Exception:
+                pass
+        super(TestUpdateJobBinaries, self).tearDown()
