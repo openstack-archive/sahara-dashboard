@@ -514,11 +514,11 @@ class LaunchJob(workflows.Workflow):
         return True
 
 
-class SelectHadoopPluginAction(t_flows.SelectPluginAction):
+class SelectPluginForJobLaunchAction(t_flows.SelectPluginAction):
     def __init__(self, request, *args, **kwargs):
-        super(SelectHadoopPluginAction, self).__init__(request,
-                                                       *args,
-                                                       **kwargs)
+        super(SelectPluginForJobLaunchAction, self).__init__(request,
+                                                             *args,
+                                                             **kwargs)
         self.fields["job_id"] = forms.ChoiceField(
             label=_("Plugin name"),
             initial=request.GET.get("job_id") or request.POST.get("job_id"),
@@ -564,7 +564,7 @@ class SelectHadoopPluginAction(t_flows.SelectPluginAction):
 
 
 class SelectHadoopPlugin(workflows.Step):
-    action_class = SelectHadoopPluginAction
+    action_class = SelectPluginForJobLaunchAction
 
 
 class ChosePluginVersion(workflows.Workflow):
