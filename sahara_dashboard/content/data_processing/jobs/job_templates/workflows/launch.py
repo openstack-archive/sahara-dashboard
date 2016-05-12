@@ -27,6 +27,7 @@ import sahara_dashboard.content.data_processing. \
     clusters.clusters.workflows.create as c_flow
 from sahara_dashboard.content.data_processing.utils \
     import acl as acl_utils
+from sahara_dashboard.content.data_processing.utils import helpers
 import sahara_dashboard.content.data_processing. \
     utils.workflow_helpers as whelpers
 
@@ -119,10 +120,11 @@ class JobExecutionExistingGeneralConfigAction(JobExecutionGeneralConfigAction):
             clusters = []
             exceptions.handle(request,
                               _("Unable to fetch clusters."))
-
-        choices = [(cluster.id, cluster.name)
-                   for cluster in clusters]
-
+        choices = [(cl.id, "%s %s" % (cl.name,
+                                      helpers.ALLOWED_STATUSES.get(cl.status)))
+                   for cl in clusters if cl.status in helpers.ALLOWED_STATUSES]
+        if not choices:
+            choices = [(None, _("No clusters available"))]
         return choices
 
     class Meta(object):

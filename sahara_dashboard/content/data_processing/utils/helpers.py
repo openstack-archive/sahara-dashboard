@@ -16,6 +16,7 @@ import six
 
 from django.template import defaultfilters as filters
 from django.utils import timezone
+from django.utils.translation import ugettext
 from django.utils.translation import ugettext_lazy as _
 from oslo_utils import timeutils
 
@@ -190,3 +191,17 @@ JOB_TYPE_MAP = {"pig": [_("Pig"), "Pig"],
                                         "MapReduce.Streaming"],
                 "java": [_("Java"), "Java"],
                 "shell": [_("Shell"), "Shell"]}
+
+# Statuses of clusters that we can choose for job execution and
+# suitable messages that will be displayed next to the cluster name
+ALLOWED_STATUSES = {
+    "Active": "",
+    "Error": "(in error state)",
+}
+
+# Cluster status and suitable warning message that will be displayed
+# in the Job Launch form
+STATUS_MESSAGE_MAP = {
+    "Error": ugettext("You\'ve chosen a cluster that is in \'Error\' state. "
+                      "Appropriate execution of the job can't be guaranteed."),
+}
