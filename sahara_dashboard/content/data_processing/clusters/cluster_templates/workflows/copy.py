@@ -11,7 +11,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import base64
 import json
 
 from django.utils.translation import ugettext_lazy as _
@@ -23,6 +22,7 @@ import sahara_dashboard.content.data_processing.clusters. \
     cluster_templates.workflows.create as create_flow
 import sahara_dashboard.content.data_processing.utils. \
     workflow_helpers as wf_helpers
+from sahara_dashboard import utils
 
 
 class CopyClusterTemplate(create_flow.ConfigureClusterTemplate):
@@ -65,7 +65,7 @@ class CopyClusterTemplate(create_flow.ConfigureClusterTemplate):
 
                         # save the original node group with all its fields in
                         # case the template id is missing
-                        serialized_val = base64.urlsafe_b64encode(
+                        serialized_val = utils.serialize(
                             json.dumps(wf_helpers.clean_node_group(templ_ng)))
 
                         ng = {

@@ -11,7 +11,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import base64
 import json
 
 from django.utils.translation import ugettext_lazy as _
@@ -26,6 +25,7 @@ import sahara_dashboard.content.data_processing.clusters. \
     cluster_templates.workflows.copy as copy_flow
 import sahara_dashboard.content.data_processing. \
     utils.workflow_helpers as whelpers
+from sahara_dashboard import utils
 
 
 class EditClusterTemplate(copy_flow.CopyClusterTemplate):
@@ -66,7 +66,7 @@ class EditClusterTemplate(copy_flow.CopyClusterTemplate):
                 raw_ng = context.get("ng_serialized_" + str(id))
 
                 if raw_ng and raw_ng != 'null':
-                    ng = json.loads(base64.urlsafe_b64decode(str(raw_ng)))
+                    ng = json.loads(utils.deserialize(str(raw_ng)))
                 else:
                     ng = dict()
                 ng["name"] = name

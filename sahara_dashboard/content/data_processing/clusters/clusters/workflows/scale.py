@@ -11,7 +11,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import base64
 import json
 
 from django.utils.translation import ugettext_lazy as _
@@ -25,6 +24,7 @@ import sahara_dashboard.content.data_processing.clusters. \
 import sahara_dashboard.content.data_processing.clusters. \
     clusters.workflows.create as cl_create_flow
 from sahara_dashboard.content.data_processing.utils import workflow_helpers
+from sahara_dashboard import utils
 
 
 class NodeGroupsStep(clt_create_flow.ConfigureNodegroups):
@@ -81,7 +81,7 @@ class ScaleCluster(cl_create_flow.ConfigureCluster,
                     count = "count_%d" % i
                     serialized = "serialized_%d" % i
 
-                    serialized_val = base64.urlsafe_b64encode(json.dumps(
+                    serialized_val = utils.serialize(json.dumps(
                         workflow_helpers.clean_node_group(templ_ng)))
 
                     ng_action.groups.append({

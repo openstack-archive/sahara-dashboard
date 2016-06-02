@@ -10,7 +10,6 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-import base64
 import copy
 
 from django.core.urlresolvers import reverse
@@ -23,6 +22,7 @@ from openstack_dashboard import api as dash_api
 
 from sahara_dashboard import api
 from sahara_dashboard.test import helpers as test
+from sahara_dashboard import utils
 
 
 INDEX_URL = reverse('horizon:project:data_processing.clusters:'
@@ -148,7 +148,7 @@ class DataProcessingClusterTemplateTests(test.TestCase):
                       args=[ct.id])
 
         def serialize(obj):
-            return base64.urlsafe_b64encode(jsonutils.dump_as_bytes(obj))
+            return utils.serialize(jsonutils.dump_as_bytes(obj))
 
         res = self.client.post(
             url,
@@ -167,7 +167,6 @@ class DataProcessingClusterTemplateTests(test.TestCase):
              'count_1': 2,
              'serialized_1': serialize(ct.node_groups[1]),
              'forms_ids': "[0,1]",
-             'anti-affinity': ct.anti_affinity,
              })
 
         self.assertNoFormErrors(res)
