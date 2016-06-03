@@ -1,0 +1,1460 @@
+# Lenka Husáková <lenka.husakova@ultimum.io>, 2016. #zanata
+# Stanislav Ulrych <stanislav.ulrych@ultimum.io>, 2016. #zanata
+msgid ""
+msgstr ""
+"Project-Id-Version: sahara-dashboard 4.0.1.dev11\n"
+"Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
+"POT-Creation-Date: 2016-05-20 19:21+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2016-06-02 02:15+0000\n"
+"Last-Translator: Lenka Husáková <lenka.husakova@ultimum.io>\n"
+"Language-Team: Czech\n"
+"Language: cs\n"
+"X-Generator: Zanata 3.7.3\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2\n"
+
+msgid " Done"
+msgstr "Hotovo"
+
+msgid " or "
+msgstr "nebo"
+
+#, python-format
+msgid "%(conf_name)s: %(conf_val)s"
+msgstr "%(conf_name)s: %(conf_val)s"
+
+#, python-format
+msgid "%(group)s:"
+msgstr "%(group)s:"
+
+#, python-format
+msgid "%(key)s: %(val)s"
+msgstr "%(key)s: %(val)s"
+
+#, python-format
+msgid "%s processes: "
+msgstr "%s procesů: "
+
+msgid "-- not selected --"
+msgstr "-- nezvoleno --"
+
+msgid "Add"
+msgstr "Přidat"
+
+msgid "Add Node Group"
+msgstr "Přidat skupiny uzlu"
+
+msgid "Add custom tag"
+msgstr "Přidat vlastní značku"
+
+msgid "Add libraries to your job template."
+msgstr "Přidat knihovny k vaší šabloně úkolu."
+
+msgid "Add plugin tags"
+msgstr "Přidat značky zásuvného modulu"
+
+msgid "Anti-affinity enabled for"
+msgstr "Proti slučivost povolena pro"
+
+msgid "Arguments"
+msgstr "Argumenty"
+
+msgid "Auto Security Group"
+msgstr "Skupina automatické bezpečnosti"
+
+msgid "Auto-configure"
+msgstr "Automatické nastavení"
+
+msgid "Availability Zone"
+msgstr "Zóna dostupnosti"
+
+msgid "Base Image"
+msgstr "Základní obraz"
+
+msgid "Cancel"
+msgstr "Zrušit"
+
+msgid "Checking"
+msgstr "Kontrola"
+
+msgid "Choose"
+msgstr "Zvolit"
+
+msgid "Choose a storage location"
+msgstr "Zvolte umístění úložiště"
+
+msgid "Choose additional files"
+msgstr "Zvolte další soubory"
+
+msgid "Choose an existing Master Node Group Template"
+msgstr "Vyberte existující šablonu skupinu hlavního uzlu"
+
+msgid "Choose an existing Worker Node Group Template"
+msgstr "Vyberte existující šablonu skupinu pracovního uzlu"
+
+msgid "Choose an existing file"
+msgstr "Zvolit existující soubor"
+
+msgid "Choose job type"
+msgstr "Zvolte typ úkolu"
+
+msgid "Choose libraries"
+msgstr "Zvolte knihovny"
+
+msgid "Choose node group template"
+msgstr "Vybrat šablonu skupiny uzlů"
+
+msgid ""
+"Choose or create your main binary.  Additional libraries can be added from "
+"the \"Libs\" tab."
+msgstr ""
+"Zvolte nebo vytvořte svůj hlavní binární soubor. Další knihovny mohou být "
+"přidány z karty \"Knihovny\"."
+
+msgid "Choose plugin"
+msgstr "Zvolte zásuvný modul"
+
+msgid "Choose plugin and version"
+msgstr "Vyberte zásuvný modul a verzi"
+
+msgid "Choose plugin type and version"
+msgstr "Vyberte zásuvný modul a verzi"
+
+msgid "Chosen Libraries"
+msgstr "Zvolené knihovny"
+
+msgid "Cinder volumes"
+msgstr "Svazky Cinder"
+
+msgid "Cluster"
+msgstr "Cluster"
+
+msgid "Cluster Configuration Overview"
+msgstr "Přehled konfigurace clusteru"
+
+msgid "Cluster Count"
+msgstr "Počet clusterů"
+
+msgid "Cluster Creation Guide"
+msgstr "Průvodce vytvořením clusteru"
+
+msgid "Cluster Events"
+msgstr "Události clusteru"
+
+msgid "Cluster Instances"
+msgstr "Instance clusteru"
+
+msgid "Cluster Name"
+msgstr "Název clusteru"
+
+msgid "Cluster Template"
+msgstr "Šablona clusteru"
+
+#, python-format
+msgid "Cluster Template %s updated"
+msgstr "Šablona clusteru %s aktualizována"
+
+msgid "Cluster Template Name"
+msgstr "Jméno šablony clusteru"
+
+#, python-format
+msgid "Cluster Template copy %s created"
+msgstr "Kopie šablony clusteru %s vytvořena"
+
+msgid "Cluster Templates"
+msgstr "Šablony clusterů"
+
+msgid "Cluster can be launched using existing Cluster Templates."
+msgstr "Cluster může být spuštěn pomocí existujících šablon clusteru."
+
+msgid "Cluster configurations are not specified"
+msgstr "Konfigurace clusteru nejsou zadané"
+
+msgid "Cluster template creation failed"
+msgstr "Vytvoření šablony clusteru selhalo"
+
+msgid "Cluster template update failed"
+msgstr "Aktualizace šablony clusteru selhala"
+
+msgid "Cluster type chosen"
+msgstr "Typ clusteru zvolen"
+
+msgid "Clusters"
+msgstr "Clustery"
+
+msgid "Completed Successfully"
+msgstr "Úspěšně dokončeno"
+
+msgid "Configuration"
+msgstr "Konfigurace"
+
+msgid "Configuration Details"
+msgstr "Konfigurace"
+
+msgid "Configuration Value"
+msgstr "Hodnota nastavení"
+
+msgid "Configure"
+msgstr "Nastavit"
+
+msgid "Configure Cluster"
+msgstr "Nastavit cluster"
+
+msgid "Configure Cluster Template"
+msgstr "Konfigurovat šablonu clusteru"
+
+msgid "Configure Node Group Template"
+msgstr "Nastavit šablonu skupiny uzlu"
+
+msgid "Configure Template"
+msgstr "Nastavit šablonu"
+
+msgid "Copy Cluster Template"
+msgstr "Kopírovat šablonu clusteru"
+
+msgid "Copy Template"
+msgstr "Zkopírovat šablonu"
+
+msgid "Could not create"
+msgstr "Nelze vytvořit"
+
+msgid "Could not create data source"
+msgstr "Nelze vytvořit zdroj dat"
+
+msgid "Could not launch job"
+msgstr "Úkol nelze spustit"
+
+msgid "Could not update cluster shares"
+msgstr "Nelze aktualizovat sdílení clusteru"
+
+msgid "Could not update data source"
+msgstr "Nelze aktualizovat zdroj dat"
+
+msgid "Count"
+msgstr "Počet"
+
+msgid "Create"
+msgstr "Vytvořit"
+
+msgid "Create Cluster Template"
+msgstr "Vytvořit šablonu clusteru"
+
+msgid "Create Data Source"
+msgstr "Vytvořit zdroj dat"
+
+msgid "Create Job Binary"
+msgstr "Vytvořit binární soubor úkolu"
+
+msgid "Create Job Template"
+msgstr "Vytvořit šablonu úkolu"
+
+msgid "Create Node Group Template"
+msgstr "Vytvořit šablonu skupiny uzlu"
+
+msgid "Create Template"
+msgstr "Vytvořit šablonu"
+
+msgid "Create a Cluster Template"
+msgstr "Vytvořit šablonu clusteru"
+
+msgid "Create a Data Source with a specified name."
+msgstr "Vytvořit zdroj dat se zadaným názvem."
+
+msgid "Create a Master Node Group Template"
+msgstr "Vytvořit šablonu skupiny hlavního uzlu"
+
+msgid "Create a Worker Node Group Template"
+msgstr "Vytvořit šablonu skupiny pracovního uzlu"
+
+msgid "Create a script to be uploaded dynamically"
+msgstr "Vytvořit skript, který bude dynamicky nahráván"
+
+msgid "Create security group for this Node Group."
+msgstr "Vytvořit bezpečnostní skupinu pro tuto skupinu uzlu."
+
+msgid "Create time"
+msgstr "Vytvořit čas"
+
+msgid "Create volumes in this availability zone."
+msgstr "Vytvořit svazky v této zóně dostupnosti."
+
+msgid "Created"
+msgstr "Vytvořeno"
+
+msgctxt "Created time"
+msgid "Created"
+msgstr "Vytvořeno"
+
+#, python-format
+msgid "Created Cluster Template %s"
+msgstr "Šablona clusteru %s vytvořena"
+
+msgid "Created time"
+msgstr "Čas vytvoření"
+
+msgid "Current choice:"
+msgstr "Současná volba:"
+
+msgid "Current type:"
+msgstr "Současný typ:"
+
+msgid "Data Processing"
+msgstr "Zpracování dat"
+
+msgid "Data Processing Plugin Details"
+msgstr "Podrobnosti zásuvného modulu zpracování dat"
+
+msgid "Data Processing Plugins"
+msgstr "Zásuvné moduly zpracování dat"
+
+msgid "Data Source"
+msgstr "Zdroj dat"
+
+msgid "Data Source Type"
+msgstr "Typ zdroje dat"
+
+msgid "Data Sources"
+msgstr "Zdroje dat"
+
+msgid "Data source created"
+msgstr "Zdroj dat vytvořen"
+
+msgid "Data source updated"
+msgstr "Zdroj dat aktualizován"
+
+msgid "Default Value"
+msgstr "Výchozí hodnota"
+
+msgid "Delete Cluster"
+msgid_plural "Delete Clusters"
+msgstr[0] "Smazat cluster"
+msgstr[1] "Smazat clustery"
+msgstr[2] "Smazat clustery"
+
+msgid "Delete Data Source"
+msgid_plural "Delete Data Sources"
+msgstr[0] "Smazat zdroj dat"
+msgstr[1] "Smazat zdroje dat"
+msgstr[2] "Smazat zdroje dat"
+
+msgid "Delete Job"
+msgid_plural "Delete Jobs"
+msgstr[0] "Smazat úkol"
+msgstr[1] "Smazat úkoly"
+msgstr[2] "Smazat úkolů"
+
+msgid "Delete Job Binary"
+msgid_plural "Delete Job Binaries"
+msgstr[0] "Smazat binární soubor úkolu"
+msgstr[1] "Smazat binární soubory úkolu"
+msgstr[2] "Smazat binární soubory úkolu"
+
+msgid "Delete Job Template"
+msgid_plural "Delete Job Templates"
+msgstr[0] "Smazat šablonu úkolu"
+msgstr[1] "Smazat šablony úkolu"
+msgstr[2] "Smazat šablon úkolu"
+
+msgid "Delete Template"
+msgid_plural "Delete Templates"
+msgstr[0] "Smazat šablonu"
+msgstr[1] "Smazat šablony"
+msgstr[2] "Smazat šablony"
+
+msgid "Deleted Cluster"
+msgid_plural "Deleted Clusters"
+msgstr[0] "Cluster smazán"
+msgstr[1] "Clustery smazány"
+msgstr[2] "Clustery smazány"
+
+msgid "Deleted Data Source"
+msgid_plural "Deleted Data Sources"
+msgstr[0] "Zdroj dat smazán"
+msgstr[1] "Zdroje dat smazány"
+msgstr[2] "Zdroje dat smazány"
+
+msgid "Deleted Job"
+msgid_plural "Deleted Jobs"
+msgstr[0] "Úkol smazán"
+msgstr[1] "Úkoly smazány"
+msgstr[2] "Úkolů smazáno"
+
+msgid "Deleted Job Binary"
+msgid_plural "Deleted Job Binaries"
+msgstr[0] "Binární soubory úkolu smazán"
+msgstr[1] "Binární soubory úkolu smazány"
+msgstr[2] "Binární soubory úkolu smazány"
+
+msgid "Deleted Job Template"
+msgid_plural "Deleted Jobs Templates"
+msgstr[0] "Šablona úkolu smazána"
+msgstr[1] "Šablony úkolu smazány"
+msgstr[2] "Šablon úkolu smazáno"
+
+msgid "Deleted Template"
+msgid_plural "Deleted Templates"
+msgstr[0] "Smazaná šablona"
+msgstr[1] "Smazané šablony"
+msgstr[2] "Smazané šablony"
+
+msgid "Description"
+msgstr "Popis"
+
+msgid "Details"
+msgstr "Podrobnosti"
+
+msgid "Done"
+msgstr "Hotovo"
+
+msgctxt "Current status of a Job"
+msgid "Done with Error"
+msgstr "Dokončeno s chybou"
+
+msgid "Download Job Binary"
+msgstr "Stáhnout binární soubor úkolu"
+
+msgid "Duration"
+msgstr "Doba trvání"
+
+msgid "Edit Cluster Template"
+msgstr "Upravit šablonu clusteru"
+
+msgid "Edit Data Source"
+msgstr "Upravit zdroj dat"
+
+msgid "Edit Image Tags"
+msgstr "Upravit značky obrazu"
+
+msgid "Edit Job Binary"
+msgstr "Upravit binární soubor úkolu"
+
+msgid "Edit Tags"
+msgstr "Upravit značky"
+
+msgid "Edit Template"
+msgstr "Editovat šablonu"
+
+msgctxt "End time"
+msgid "Ended"
+msgstr "Ukončeno"
+
+msgid "Enter any custom configuration required for your job's execution."
+msgstr "Zadejte jakékoli vlastni nastavení potřebné pro spuštění vašeho úkolu."
+
+msgid "Enter the URL for the file"
+msgstr "Zadat URL odkazující na soubor"
+
+msgid "Enter the username and password required to access that file"
+msgstr "Zadat uživatelské jméno a heslo nutné pro přístup k tomuto souboru"
+
+msgid "Ephemeral drive"
+msgstr "Efemérní disk"
+
+msgid "Error Details"
+msgstr "Podrobnosti chyby"
+
+msgid "Event time"
+msgstr "Čas události"
+
+msgid "Failed"
+msgstr "Selhalo"
+
+msgctxt "Current status of a Job"
+msgid "Failed"
+msgstr "Selhalo"
+
+msgid "Failed to fetch internal binary list"
+msgstr "Nelze získat seznam interních binárních souborů"
+
+msgid "Failed to get list of internal binaries."
+msgstr "Nelze získat seznam interních binárních souborů."
+
+msgid "Failed to get list of shares"
+msgstr "Nelze získat seznam sdílení"
+
+msgid "Failed to update image."
+msgstr "Aktualizace obrazu selhala."
+
+msgid "Filter"
+msgstr "Filtr"
+
+msgid "Flavor"
+msgstr "Konfigurace"
+
+msgid "Flavor is not specified"
+msgstr "Konfigurace nenalezena."
+
+msgid "Floating IP Pool"
+msgstr "Zásoba plovoucích IP"
+
+msgid ""
+"For Spark and Shell jobs, only a main is required, \"libs\" are optional."
+msgstr ""
+"Pro úkoly Spark a Shell, je potřeba pouze hlavní komponenta, \"knihovny\" "
+"jsou volitelné."
+
+msgid "General Info"
+msgstr "Informace"
+
+msgid "Guided Job Execution"
+msgstr "Spuštění úkolu s průvodcem"
+
+msgid "Hide full configuration"
+msgstr "Skrýt úplnou konfiguraci"
+
+msgid "Hive"
+msgstr "Hive"
+
+msgid "ID"
+msgstr "ID"
+
+msgid "Image"
+msgstr "Obraz"
+
+msgid "Image Registry"
+msgstr "Registr obrazů"
+
+msgid "Image Registry tool:"
+msgstr "Nástroj registru obrazů:"
+
+msgid "In progress"
+msgstr "Probíhá"
+
+msgid "Info"
+msgstr "Informace"
+
+msgid "Input"
+msgstr "Vstup"
+
+msgid "Input Data Source"
+msgstr "Zdroj vstupních dat"
+
+msgid "Instance"
+msgstr "Instance"
+
+msgid "Instance and attached volumes will be created on the same physical host"
+msgstr ""
+"Instance a připojené svazky budou vytvořeny na stejném fyzickém hostiteli"
+
+msgid "Instances"
+msgstr "Instance"
+
+msgid "Instances Count"
+msgstr "Počet instancí"
+
+msgid "Internal Binary"
+msgstr "Interní binární soubor"
+
+msgid "Internal IP"
+msgstr "Interní IP adresa"
+
+msgid "Internal binary"
+msgstr "Interní binární soubor"
+
+msgid "Java"
+msgstr "Java"
+
+msgid "Java Action"
+msgstr "Činnosti Java"
+
+msgid "Java Opts"
+msgstr "Operace Java"
+
+msgid "Job Binaries"
+msgstr "Binární soubory úkolu"
+
+msgid "Job Configuration"
+msgstr "Konfigurace úkolu"
+
+msgid "Job Execution ID"
+msgstr "ID spuštění úkolu"
+
+msgid "Job Guide"
+msgstr "Průvodce úkolem"
+
+msgid "Job Template"
+msgstr "Šablona úkolu"
+
+msgid "Job Templates"
+msgstr "Šablony úkolu"
+
+msgid "Job Type"
+msgstr "Typ úkolu"
+
+msgid "Job args"
+msgstr "Argumenty úkolu"
+
+msgid "Job configs"
+msgstr "Konfigurace úkolu"
+
+msgid "Job launched"
+msgstr "Úkol spuštěn"
+
+msgid "Job params"
+msgstr "Parametry úkolu"
+
+msgid "Job template:"
+msgstr "Šablona úkolu:"
+
+msgid "Job type chosen"
+msgstr "Zvolen typ úkolu"
+
+msgid "Keypair"
+msgstr "Pár klíčů"
+
+msgid "Last Updated"
+msgstr "Naposledy aktualizováno"
+
+msgid "Launch"
+msgstr "Spustit"
+
+msgid "Launch Cluster"
+msgstr "Spustit cluster"
+
+msgid "Launch Job"
+msgid_plural "Launch Jobs"
+msgstr[0] "Spustit úkol"
+msgstr[1] "Spustit úkoly"
+msgstr[2] "Spustit úkoly"
+
+msgid "Launch On Existing Cluster"
+msgstr "Spustit na existujícím clusteru"
+
+msgid "Launch On New Cluster"
+msgstr "Spustit na novém clusteru"
+
+msgid "Launch a Cluster"
+msgstr "Spustit cluster"
+
+msgid "Launch instances in these security groups."
+msgstr "Spustit instance v těchto bezpečnostních skupinách."
+
+msgid "Launch instances in this availability zone."
+msgstr "Spustit instance v této zóně dostupnosti."
+
+msgid "Launch job"
+msgstr "Spustit úkol"
+
+msgid "Launch the given job template on a cluster."
+msgstr "Spustit zadanou šablonu úkolu v clusteru."
+
+msgid ""
+"Launch your job.  When\n"
+"                        launching, you may need to choose your input and\n"
+"                        output data sources.  This is where you would also\n"
+"                        add any special configuration values, parameters,\n"
+"                        or arguments that you need to pass along\n"
+"                        to your job.\n"
+"                        "
+msgstr ""
+"Spuštění vašeho úkolu.\n"
+"                        Při spouštění bude možná třeba zvolit vaše vstupní\n"
+"                        a výstupní zdroje dat. Tady také lze přidat všechny\n"
+"                        speciální hodnoty nastavení, parametry, nebo\n"
+"                        argumenty, které je třeba vašemu úkolu předat.\n"
+"\n"
+"                        "
+
+#, python-format
+msgid "Launched Cluster %s"
+msgstr "Cluster %s spuštěn"
+
+msgid "Launched Job"
+msgid_plural "Launched Jobs"
+msgstr[0] "Úkol spuštěny"
+msgstr[1] "Úkoly spuštěny"
+msgstr[2] "Úkolů spuštěno"
+
+msgid "Libs"
+msgstr "Knihovny"
+
+msgid "Location"
+msgstr "Umístění"
+
+msgid "Main Class"
+msgstr "Hlavní třída"
+
+msgid "Mains"
+msgstr "Hlavní komponenta"
+
+msgid "Management IP"
+msgstr "Management IP adresa"
+
+msgid "MapReduce"
+msgstr "MapReduce"
+
+msgid "Mapper"
+msgstr "Mapovač"
+
+msgid "Mapping Type"
+msgstr "Typ mapování"
+
+msgid "Master Node Group Template:"
+msgstr "Šablona skupiny hlavního uzlu"
+
+msgid "Name"
+msgstr "Jméno"
+
+#, python-format
+msgid "Name: %(node_group_name)s"
+msgstr "Název: %(node_group_name)s"
+
+msgid "Named Parameter"
+msgstr "Pojmenovaný parametr"
+
+msgid "Never"
+msgstr "Nikdy"
+
+msgid "Next"
+msgstr "Další"
+
+msgid ""
+"Next, you need to define the different\n"
+"                        types of machines in your cluster.  This is done by\n"
+"                        defining a Node Group Template for each type of\n"
+"                        machine.  A very common case is where you\n"
+"                        need to have one or more machines running a \"master"
+"\"\n"
+"                        set of processes while another set of machines need\n"
+"                        to be running the \"worker\" processes.  Here,\n"
+"                        you will define the Node Group Template for your\n"
+"                        \"master\" node(s).\n"
+"                     "
+msgstr ""
+"Dále potřebujete určit různé typy\n"
+"                        strojů ve vašem clusteru.  To se provádí zadáním\n"
+"                        Šablony skupiny uzlu pro každý typ stroje.\n"
+"                        Běžným případem je nutnost mít jeden nebo více\n"
+"                        strojů obsluhující \"hlavní\" sadu procesů, zatímco\n"
+"                        další sada strojů potřebuje obsluhovat \"pracovní\"\n"
+"                        procesy. Zde zadáte Šablonu skupiny uzlu pro vaše,\n"
+"                        \"hlavní\" uzle.\n"
+"\n"
+"                     "
+
+msgid "No Cluster Template Created"
+msgstr "Šablona clusteru nevytvořena"
+
+msgid "No Images Available"
+msgstr "Žádné obrazy nejsou dostupné"
+
+msgid "No Master Node Group Template Created"
+msgstr "Nebyla vytvořena žádná šablona skupiny hlavního uzlu"
+
+msgid "No Templates Available"
+msgstr "Žádné šablony nejsou dostupné"
+
+msgid "No Worker Node Group Template Created"
+msgstr "Nebyla vytvořena žádná šablona skupiny pracovního uzlu"
+
+msgid "No availability zone specified"
+msgstr "Zóna dostupnosti nezadána"
+
+msgid "No description"
+msgstr "Žádný popis"
+
+msgid "No image specified"
+msgstr "Žádné obrazy nezadány"
+
+msgid "No images available."
+msgstr "Žádné obrazy nejsou dostupné."
+
+msgid "No info available"
+msgstr "Nejsou dostupné žádné informace"
+
+msgid "No keypair"
+msgstr "Žádný klíč"
+
+msgid "No plugin chosen"
+msgstr "Nezvolen žádný zásuvný modul"
+
+msgid "No type chosen"
+msgstr "Nezvolen žádný typ"
+
+msgid "No volume type"
+msgstr "Žádný typ svazku"
+
+msgid "Node Group Template"
+msgstr "Šablona skupiny uzlu"
+
+#, python-format
+msgid "Node Group Template copy %s created"
+msgstr "Kopie šablony skupiny uzlu %s vytvořena"
+
+msgid "Node Group Templates"
+msgstr "Šablony skupiny uzlu"
+
+#, python-format
+msgid "Node Group: %(node_group_name)s"
+msgstr "Skupina uzlu: %(node_group_name)s"
+
+msgid "Node Groups"
+msgstr "Skupiny uzlů"
+
+msgid "Node Processes"
+msgstr "Procesy uzlu"
+
+msgid "Node group cluster"
+msgstr "Cluster skupiny uzlů"
+
+msgid "Node processes are not specified"
+msgstr "Procesy uzlu nezadány"
+
+msgid "Nodes Count"
+msgstr "Počet uzlů"
+
+msgid "None"
+msgstr "Žádný"
+
+msgid "Not available"
+msgstr "Není dostupné"
+
+msgid ""
+"Now you need to set the layout of your\n"
+"                        cluster.  By\n"
+"                        creating a Cluster Template, you will be choosing "
+"the\n"
+"                        number of instances of each Node Group Template "
+"that\n"
+"                        will appear in your cluster.  Additionally,\n"
+"                        you will have a chance to set any cluster-specific\n"
+"                        configuration items in the additional tabs on the\n"
+"                        create Cluster Template form."
+msgstr ""
+"Nyní je třeba nastavit rozvržení vašeho\n"
+"                        clusteru. Vytvořením\n"
+"                        Šablony clusteru, můžete zvolit počet instancí\n"
+"                        v každé šabloně skupiny uzlu, které se objeví\n"
+"                        ve vašem clusteru.  Dále budete moci nastavit,\n"
+"                        v dodatečných kartách formuláře vytvoření\n"
+"                        šablony clusteru, všechny volby vztahující\n"
+"                        se ke clusteru."
+
+msgid "Number"
+msgstr "Číslo"
+
+msgid "Number of Nodes"
+msgstr "Počet uzlů"
+
+msgid "Number of clusters to launch."
+msgstr "Počet clusterů ke spuštění"
+
+msgid "Oozie Job ID"
+msgstr "ID úkolu Oozie"
+
+msgid "OpenStack Flavor"
+msgstr "OpenStack Flavor"
+
+msgid "Output"
+msgstr "Výstup"
+
+msgid "Output Data Source"
+msgstr "Zdroj výstupních dat"
+
+msgid "Parameters"
+msgstr "Parametry"
+
+msgid "Password"
+msgstr "Heslo"
+
+msgid "Path"
+msgstr "Cesta"
+
+msgid "Pig"
+msgstr "Pig"
+
+msgid "Plugin"
+msgstr "Plugin"
+
+msgid "Plugin Name"
+msgstr "Název zásuvného modulu"
+
+msgid "Plugin name"
+msgstr "Název zásuvného modulu"
+
+msgid "Plugin:"
+msgstr "Zásuvný modul:"
+
+msgid "Plugins"
+msgstr "Zásuvné moduly"
+
+msgid "Positional Argument"
+msgstr "Poziční argument"
+
+msgid "Project ID"
+msgstr "ID projektu"
+
+msgid "Project Id"
+msgstr "ID projektu"
+
+msgid "Protected"
+msgstr "Chráněno"
+
+msgid "Proxy Gateway"
+msgstr "Brána proxy"
+
+msgid "Public"
+msgstr "Veřejné"
+
+msgid "Read only"
+msgstr "Pouze pro čtení"
+
+msgid "Read/Write"
+msgstr "Zápis/Čtení"
+
+msgid "Reducer"
+msgstr "Reduktor"
+
+msgid "Register Image"
+msgstr "Registrovat obraz"
+
+msgid ""
+"Register tags required for the Plugin with specified Data Processing Version"
+msgstr ""
+"Zaregistrujte značky vyžadované zásuvným modulem pomocí zadané verze "
+"Zpracování dat"
+
+msgid "Relaunch On Existing Cluster"
+msgstr "Znovu spustit na existujícím clusteru"
+
+msgid "Relaunch On New Cluster"
+msgstr "Znovu spustit na novém clusteru"
+
+msgid "Remove"
+msgstr "Odstranit"
+
+msgid ""
+"Repeat the Node Group Template\n"
+"                        creation process, but this time you are creating\n"
+"                        your \"worker\" Node Group Template."
+msgstr ""
+"Zopakujte vytvoření šablony skupiny uzlu,\n"
+"                        ale nyní vytváříte šablonu pro\n"
+"                        vaše \"pracovní\" skupiny uzlu."
+
+msgid "Required"
+msgstr "Vyžadováno"
+
+msgid "Reset Cluster Creation Guide"
+msgstr "Resetovat průvodce vytvoření clusteru"
+
+msgid "Reset Cluster Guide"
+msgstr "Resetovat průvodce clusterem"
+
+msgid "Reset Job Execution Guide"
+msgstr "Resetovat průvodce spuštěním úkolu"
+
+msgid "Return Code"
+msgstr "Návratový kód"
+
+msgid ""
+"Sahara will use instances of this node group to access other cluster "
+"instances."
+msgstr ""
+"Sahara použije instance této skupiny uzlů pro přístup k ostatním instancím "
+"clusteru."
+
+msgid "Scale"
+msgstr "Škálovat"
+
+msgid "Scale Cluster"
+msgstr "Škálovat cluster"
+
+msgid "Scale cluster operation failed"
+msgstr "Operace škálování clusteru selhala"
+
+msgid "Scaled cluster successfully started."
+msgstr "Škálovaný cluster úspěšně spuštěn."
+
+msgid "Script name"
+msgstr "Název skriptu"
+
+msgid "Script text"
+msgstr "Text skriptu"
+
+msgid "Security"
+msgstr "Bezpečnost"
+
+msgid "Security Groups"
+msgstr "Bezpečnostní skupiny"
+
+msgid "Select"
+msgstr "Vyberte"
+
+msgid "Select Image"
+msgstr "Vyberte obraz"
+
+msgid "Select Shares"
+msgstr "Zvolit sdílení"
+
+msgid "Select a Node Group Template to add:"
+msgstr "Vyberte šablonu skupiny uzlu pro přidání:"
+
+msgid "Select a Value Type for your next argument:"
+msgstr "Vyberte typ hodnoty pro váš další argument:"
+
+msgid "Select a plugin and version for a new Cluster template."
+msgstr "Vyberte zásuvný modul a verzi pro novou šablonu clusteru."
+
+msgid "Select a plugin and version for a new Cluster."
+msgstr "Vyberte zásuvný modul a verzi pro nový cluster."
+
+msgid ""
+"Select an existing node group template.\n"
+"    "
+msgstr ""
+"Zvolte existující šablonu skupiny uzlů.\n"
+" "
+
+msgid "Select plugin and hadoop version for cluster"
+msgstr "Vyberte zásuvný modul a verzi hadoop pro clusteru"
+
+msgid "Select plugin and hadoop version for cluster template"
+msgstr "Vyberte zásuvný modul a verzi Hadoop pro šablonu clusteru"
+
+msgid "Select the type of your Data Source."
+msgstr "Vyberte typ svého zdroje dat."
+
+msgid "Select type"
+msgstr "Vyberte typ"
+
+msgid ""
+"Select which plugin and version that you\n"
+"    want to use to create your cluster."
+msgstr ""
+"Vyberte který zásuvný modul a verzi\n"
+"chcete použít pro vytvoření nového clusteru."
+
+msgid "Service Configurations"
+msgstr "Konfigurace služby"
+
+msgid "Share"
+msgstr "Sdílet"
+
+msgid "Shares"
+msgstr "Sdílení"
+
+msgid "Shell"
+msgstr "Shell"
+
+msgid "Shell Action"
+msgstr "Činnost shell"
+
+msgid "Show full configuration"
+msgstr "Zobrazit úplnou konfiguraci"
+
+msgid "Source password"
+msgstr "Heslo zdroje"
+
+msgid "Source username"
+msgstr "Uživatelské jméno zdroje"
+
+msgid "Spark"
+msgstr "Spark"
+
+msgid "Start Verification"
+msgid_plural "Start Verifications"
+msgstr[0] "Spustit ověření"
+msgstr[1] "Spustit ověření"
+msgstr[2] "Spustit ověření"
+
+msgctxt "Start time"
+msgid "Started"
+msgstr "Spuštěno"
+
+msgid "Started Verification"
+msgid_plural "Started Verifications"
+msgstr[0] "Ověření spuštěno"
+msgstr[1] "Ověření spuštěna"
+msgstr[2] "Ověření spuštěna"
+
+msgid "Status"
+msgstr "Stav"
+
+msgid "Status description"
+msgstr "Popis stavu"
+
+msgid "Storage location"
+msgstr "Umístění úložiště"
+
+msgid "Storage type"
+msgstr "Typ úložiště"
+
+msgid "Storm"
+msgstr "Storm"
+
+msgid "Streaming MapReduce"
+msgstr "Streamování Mapreduce"
+
+msgid "String"
+msgstr "Řetězec"
+
+msgctxt "Current status of a Job"
+msgid "Succeeded"
+msgstr "Úspěšně provedeno"
+
+msgid "Successfully updated image."
+msgstr "Obraz úspěšně aktualizován."
+
+msgid "Supported Versions"
+msgstr "Podporované verze"
+
+msgid "Swift"
+msgstr "Swift"
+
+msgid "Tags"
+msgstr "Značky"
+
+msgid "Template"
+msgstr "Šablona"
+
+msgid "Template Name"
+msgstr "Název šablony"
+
+msgid "Template not specified"
+msgstr "Šablona nezadána"
+
+msgid ""
+"The Cluster object should specify OpenStack Image to boot instances for "
+"Cluster."
+msgstr ""
+"Objekt clusteru by měl udávat obraz Openstack sloužící k zavedení instancí "
+"pro cluster."
+
+msgid ""
+"The first step is to determine which type of\n"
+"                    cluster you want to run.  You may have several choices\n"
+"                    available depending on the configuration of your "
+"system.\n"
+"                    Click on \"choose plugin\" to bring up the list of data\n"
+"                    processing plugins.  There you will be able to choose "
+"the\n"
+"                    data processing plugin along with the version number.\n"
+"                    Choosing this up front will allow the rest of the "
+"cluster\n"
+"                    creation steps to focus only on options that are "
+"pertinent\n"
+"                    to your desired cluster type."
+msgstr ""
+"První krok je ujasnění, který typ\n"
+"                    clusteru chcete spustit.  V závislosti na nastavení "
+"vašeho\n"
+"                    systému můžete mít k dispozici několik možností.\n"
+"                    Klikněte na \"zvolte zásuvný modul\" pro zobrazení "
+"seznamu\n"
+"                    zásuvných modulů pro zpracování dat.  Zde budete moci\n"
+"                    zvolit zásuvný modul spolu s číslem verze.\n"
+"                    Když toto zvolíte dopředu, následující kroky pro "
+"vytvoření\n"
+"                    clusteru se budou soustředit pouze na volby související "
+"s\n"
+"                    typem vašeho požadovaného clusteru."
+
+msgid "The value of shares must be a list of values"
+msgstr "shares musí být seznam hodnot"
+
+msgid "This Cluster Template will be created for:"
+msgstr "Tato šablona clusteru bude vytvořena pro:"
+
+msgid "This Cluster will be started with:"
+msgstr "Tento cluster bude spuštěn takto:"
+
+msgid "This Node Group Template will be created for:"
+msgstr "Tato šablona skupiny uzlu bude vytvořena pro:"
+
+msgid "Title"
+msgstr "Název"
+
+msgid "Type"
+msgstr "Typ"
+
+msgid "URL"
+msgstr "URL"
+
+msgid "Unable to create job binary"
+msgstr "Nelze vytvořit binární soubor úkolu"
+
+msgid "Unable to create new cluster for job."
+msgstr "Nelze vytvořit nový cluster pro úkol."
+
+msgid "Unable to create the cluster"
+msgstr "Nelze vytvořit cluster"
+
+msgid "Unable to fetch cluster list"
+msgstr "Nelze získat seznam clusterů"
+
+msgid "Unable to fetch cluster template list"
+msgstr "Nelze získat seznam šablon clusterů"
+
+msgid "Unable to fetch cluster template."
+msgstr "Nelze získat šablonu clusteru."
+
+msgid "Unable to fetch cluster to scale"
+msgstr "Nelze získat cluster pro škálování"
+
+msgid "Unable to fetch cluster to scale."
+msgstr "Nelze získat cluster pro škálování."
+
+msgid "Unable to fetch cluster."
+msgstr "Nelze získat cluster."
+
+msgid "Unable to fetch clusters."
+msgstr "Nelze získat clustery."
+
+msgid "Unable to fetch flavor for template."
+msgstr "Nelze získat flavor pro šablonu."
+
+msgid "Unable to fetch image choices."
+msgstr "Nelze získat seznam obrazů."
+
+msgid "Unable to fetch instance details."
+msgstr "Nelze získat podrobnosti instance."
+
+msgid "Unable to fetch job binary list"
+msgstr "Nelze získat seznam binárních souborů úkolu."
+
+msgid "Unable to fetch job binary list."
+msgstr "Nelze získat seznam binárních souborů úkolu."
+
+msgid "Unable to fetch jobs."
+msgstr "Nelze získat úkoly."
+
+msgid "Unable to fetch keypair choices."
+msgstr "Nelze získat seznam klíčů."
+
+msgid "Unable to fetch node group details."
+msgstr "Nelze získat podrobnosti skupiny uzlů."
+
+msgid "Unable to fetch node group template list"
+msgstr "Nelze získat seznam šablon skupiny uzlu."
+
+msgid "Unable to fetch node group template list."
+msgstr "Nelze získat seznam šablon skupiny uzlu."
+
+msgid "Unable to fetch plugin details."
+msgstr "Nelze získat podrobnosti zásuvného modulu."
+
+msgid "Unable to fetch template object."
+msgstr "Nelze získat objekt šablony."
+
+msgid "Unable to fetch template to copy."
+msgstr "Nelze získat šablonu ke zkopírování."
+
+msgid "Unable to fetch template to edit."
+msgstr "Nelze získat šablonu k úpravě."
+
+msgid "Unable to get node group details."
+msgstr "Nelze získat podrobnosti skupiny uzlů."
+
+msgid "Unable to get security group list."
+msgstr "Nelze získat seznam bezpečnostních skupin."
+
+msgid "Unable to get volume type list."
+msgstr "Nelze získat seznam typů svazků."
+
+msgid "Unable to launch job."
+msgstr "Nelze spustit úkol."
+
+msgid "Unable to process plugin tags"
+msgstr "Nelze zpracovat značky zásuvného modulu"
+
+msgid "Unable to retrieve data processing plugins."
+msgstr "Nelze získat zásuvné moduly zpracování dat."
+
+#, python-format
+msgid "Unable to retrieve details for cluster \"%s\"."
+msgstr "Nelze získat detaily clusteru \"%s\"."
+
+#, python-format
+msgid "Unable to retrieve details for cluster template \"%s\"."
+msgstr "Nelze získat podrobnosti šablony clusteru \"%s\"."
+
+#, python-format
+msgid "Unable to retrieve details for job \"%s\"."
+msgstr "Nelze získat podrobnosti úkolu \"%s\"."
+
+#, python-format
+msgid "Unable to retrieve details for job binary \"%s\"."
+msgstr "Nelze získat podrobnosti binárního souboru úkolu \"%s\"."
+
+#, python-format
+msgid "Unable to retrieve details for node group template \"%s\"."
+msgstr "Nelze získat podrobnosti šablony skupiny uzlu \"%s\"."
+
+msgid "Unable to retrieve image list"
+msgstr "Nele získat seznam obrazů"
+
+#, python-format
+msgid "Unable to retrieve job binary \"%s\"."
+msgstr "Nelze získat binární soubor úkolu \"%s\"."
+
+msgid "Unable to retrieve networks."
+msgstr "Nelze získat sítě."
+
+#, python-format
+msgid "Unable to retrieve security group %(group)s."
+msgstr "Nelze získat bezpečnostní skupinu %(group)s."
+
+msgid "Unable to set cluster type"
+msgstr "Nelze nastavit typ clusteru"
+
+msgid "Unable to set job type"
+msgstr "Nelze nastavit typ úkolu"
+
+msgid "Unable to update job binary"
+msgstr "Nelze aktualizovat binární soubor úkolu"
+
+msgid "Unable to update row"
+msgstr "Nelze aktualizovat řádek"
+
+msgid "Unable to upload cluster template file"
+msgstr "Nelze nahrát soubor šablony clusteru"
+
+msgid "Unable to upload job binary"
+msgstr "Nelze nahrát binární soubor úkolu"
+
+msgid "Unknown"
+msgstr "Neznámý"
+
+msgid "Unnecessary tags may be removed by clicking a cross near tag's name."
+msgstr ""
+"Nepotřebné značky mohou být odstraněny kliknutím na křížek u jejich jména."
+
+msgid "Unregister Image"
+msgid_plural "Unregister Images"
+msgstr[0] "Zrušit registraci obrazu"
+msgstr[1] "Zrušit registrace obrazů"
+msgstr[2] "Zrušit registrace obrazů"
+
+msgid "Unregistered Image"
+msgid_plural "Unregistered Images"
+msgstr[0] "Registrace obrazu zrušena"
+msgstr[1] "Registrace obrazů zrušena"
+msgstr[2] "Registrace obrazů zrušena"
+
+msgid "Update"
+msgstr "Aktualizovat"
+
+msgid "Update Cluster Shares"
+msgstr "Aktualizovat sdílení clusteru"
+
+msgid "Update Shares"
+msgstr "Aktualizovat sdílení"
+
+msgid "Updated"
+msgstr "Aktualizováno"
+
+msgid "Updated time"
+msgstr "Čas aktualizace"
+
+msgid "Upload"
+msgstr "Nahrát"
+
+msgid "Upload File"
+msgstr "Nahrát soubor"
+
+msgid "Upload Template"
+msgstr "Nahrát  šablonu"
+
+msgid "Upload a new file"
+msgstr "Nahrát nový soubor"
+
+msgid "Url"
+msgstr "Url"
+
+msgid "Use auto-configuration"
+msgstr "Použít automatické nastavení"
+
+msgid "User Name"
+msgstr "Uživatelské jméno"
+
+msgid "User has to choose a keypair to have access to clusters instances."
+msgstr "Uživatel si musí zvolit pár klíčů pro přístup k instancím clusteru."
+
+msgid "Username"
+msgstr "Uživatelské jméno"
+
+msgid "Value"
+msgstr "Hodnota"
+
+msgid "Value Type"
+msgstr "Typ hodnoty"
+
+msgid "Version"
+msgstr "Verze"
+
+msgid "Version:"
+msgstr "Verze:"
+
+msgid "Volume local to instance"
+msgstr "Lokální svazek k instanci"
+
+msgid "Volumes Availability Zone"
+msgstr "Zóna dostupnosti svazků"
+
+msgid "Volumes per node"
+msgstr "Svazků v uzlu"
+
+msgid "Volumes size"
+msgstr "Velikost svazků"
+
+msgid "Volumes size (GB)"
+msgstr "Velikost svazků (GB)"
+
+msgid "Volumes type"
+msgstr "Typy svazků"
+
+msgid "Which keypair to use for authentication."
+msgstr "Který pár klíčů má být použit pro ověření."
+
+msgid "Worker Node Group Template:"
+msgstr "Šablona skupiny pracovního uzlu"
+
+msgid ""
+"You are now ready to\n"
+"                        launch your cluster.  When you click on the link\n"
+"                        below, you will need to give your cluster a name,\n"
+"                        choose the Cluster Template to use and choose which\n"
+"                        image to use to build your instances.  After you\n"
+"                        click on \"Create\", your instances will begin to\n"
+"                        spawn.  Your cluster should be operational in a few\n"
+"                        minutes."
+msgstr ""
+"Nyní jste připraveni ke spuštění\n"
+"                        vašeho clusteru. Při kliknutí na odkaz níže je\n"
+"                        třeba váš cluster pojmenovat, zvolit jeho šablonu,\n"
+"                        a zvolit obraz použitý k sestavení vašich instancí.\n"
+"                        Po kliknutí na \"Vytvořit\", bude vaše instance "
+"spuštěna\n"
+"                        Za pár minut by měl být váš cluster v provozu.\n"
+"                        \n"
+"                        "
+
+msgid "You may also add any custom tag."
+msgstr "Můžete také přidat jakékoli vlastní značky."
+
+msgid "You may also enter an optional description for your Data Source."
+msgstr "Můžete také zadat dodatečný popis pro váš zdroj dat."
+
+msgid "You may need to enter the username and password for your Data Source."
+msgstr "Je možné, že váš zdroj dat bude vyžadovat uživatelské jméno a heslo."
+
+msgid "cluster"
+msgstr "cluster"
+
+msgid "cluster template"
+msgstr "šablona clusteru"
+
+msgid "data source"
+msgstr "Zdroj dat"
+
+msgid "job binary"
+msgstr "binární soubor úkolu"
+
+msgid "no processes"
+msgstr "žádné procesy"
+
+msgid "node group template"
+msgstr "šablona skupiny uzlu"

@@ -1,0 +1,88 @@
+# Lenka Husáková <lenka.husakova@ultimum.io>, 2016. #zanata
+msgid ""
+msgstr ""
+"Project-Id-Version: sahara-dashboard 4.0.1.dev11\n"
+"Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
+"POT-Creation-Date: 2016-05-20 19:21+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2016-06-02 08:49+0000\n"
+"Last-Translator: Lenka Husáková <lenka.husakova@ultimum.io>\n"
+"Language-Team: Czech\n"
+"Language: cs\n"
+"X-Generator: Zanata 3.7.3\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2\n"
+
+msgid "(show events)"
+msgstr "(zobrazit události)"
+
+msgid "Configuration Value"
+msgstr "Hodnota nastavení"
+
+msgid "Data Source"
+msgstr "Zdroj dat"
+
+msgid "Default Value"
+msgstr "Výchozí hodnota"
+
+msgid "Description"
+msgstr "Popis"
+
+msgid "Event log is not available."
+msgstr "Záznam události není dostupný."
+
+msgid ""
+"For configs and params, type the key name; for args, type the index as an "
+"integer, starting from 0."
+msgstr ""
+"Pro nastavení a parametry zadejte název klíče; pro argumenty zadejte index "
+"jako celé číslo počínaje od 0."
+
+msgid ""
+"For data sources, use a data source UUID or a path (as per data source "
+"creation.)"
+msgstr ""
+"Pro zdroj dat použijte UUID zdroje nebo cestu (podle vytvoření data zdroje.)"
+
+msgid "Location"
+msgstr "Umístění"
+
+msgid "Mapping Type"
+msgstr "Typ mapování"
+
+msgid "Name"
+msgstr "Název"
+
+msgid "Named Parameter"
+msgstr "Pojmenovaný parametr"
+
+msgid "Number"
+msgstr "Číslo"
+
+msgid "Positional Argument"
+msgstr "Poziční argument"
+
+msgid "Remove"
+msgstr "Odstranit"
+
+msgid "Required?"
+msgstr "Vyžadováno?"
+
+msgid ""
+"See http://docs.openstack.org/developer/sahara/userdoc/edp.html for "
+"definitions."
+msgstr ""
+"Viz http://docs.openstack.org/developer/sahara/userdoc/edp.html pro definice."
+
+msgid "String"
+msgstr "Řetězec"
+
+msgid "The step has completed successfully. No events to display."
+msgstr "Krok byl úspěšně dokončen. Žádné události k zobrazení."
+
+msgid "Value Type"
+msgstr "Typ hodnoty"
+
+msgid "Verification is not available."
+msgstr "Ověření není k dispozici."
