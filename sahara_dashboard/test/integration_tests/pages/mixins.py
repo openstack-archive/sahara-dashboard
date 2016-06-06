@@ -19,7 +19,6 @@ class TableCreateWithPluginMixin(object):
     PLUGIN_CHOOSE_FORM_FIELDS = (
         'vanilla_version',
         'cdh_version',
-        'hdp_version',
         'plugin_name',
         'spark_version',
         'fake_version',
