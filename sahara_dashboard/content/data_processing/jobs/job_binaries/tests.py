@@ -138,7 +138,7 @@ class DataProcessingJobBinaryTests(test.TestCase):
              "name": "Test share"})
         shares = [share]
         api.sahara.base.is_service_enabled(IsA(http.HttpRequest), IsA(str)) \
-            .AndReturn(True)
+            .MultipleTimes().AndReturn(True)
         api.manila.share_list(IsA(http.HttpRequest)).AndReturn(shares)
         self.mox.ReplayAll()
 
