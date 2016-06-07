@@ -492,6 +492,10 @@ def job_get_configs(request, job_type):
 def job_execution_create(request, job_id, cluster_id,
                          input_id, output_id, configs,
                          interface, is_public=None, is_protected=None):
+    if input_id in [None, "", "None"]:
+        input_id = None
+    if output_id in [None, "", "None"]:
+        output_id = None
     return client(request).job_executions.create(
         job_id=job_id,
         cluster_id=cluster_id,
