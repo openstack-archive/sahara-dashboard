@@ -56,6 +56,22 @@
             {% else %}
                 <dd>{% trans "Node processes are not specified" %}</dd>
             {% endif %}
+
+            <h4> {% trans "HDFS placement" %}</h4>
+            {% if node_group.volumes_per_node %}
+                <dt> {% trans "Volumes per node" %} </dt>
+                <dd>{{ node_group.volumes_per_node }}</dd>
+                <dt> {% trans "Volumes size" %} </dt>
+                <dd>{{ node_group.volumes_size }}</dd>
+                <dt> {% trans "Volumes type" %} </dt>
+                <dd>{{ node_group.volume_type }}</dd>
+                <dt> {% trans "Volumes local to instance" %} </dt>
+                <dd>{{ node_group.volume_local_to_instance }}</dd>
+            {% else %}
+                <dt> {% trans "Drive type" %} </dt>
+                <dd> {% trans "Ephemeral drive" %} </dd>
+            {% endif %}
+
         </dl>
     {% endfor %}
 </div>
