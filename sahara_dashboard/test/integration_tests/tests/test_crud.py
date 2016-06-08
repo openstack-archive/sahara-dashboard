@@ -48,7 +48,7 @@ class TestCRUDBase(SaharaTestCase):
 
     def delete_flavor(self):
         flavors_page = self.home_pg.go_to_system_flavorspage()
-        flavors_page.delete_flavor(self.flavor_name)
+        flavors_page.delete_flavor_by_row(self.flavor_name)
         self.assertFalse(flavors_page.is_flavor_present(self.flavor_name))
 
     def create_image(self):
