@@ -2,43 +2,45 @@
 <div id="image_tags_list" class="well"></div>
 <div style="clear: both;"></div>
 <div id="plugin_populate_section">
-    <h5>{% trans "Register tags required for the Plugin with specified Data Processing Version" %}</h5>
-    <span class="row">
-        <span class="col-sm-4 small-padding"><b>{% trans "Plugin" %}</b></span>
-        <span class="col-sm-4 small-padding"><b>{% trans "Version" %}</b></span>
-    </span>
-    <span class="row">
-        <span class="col-sm-4 small-padding">
-            <select id="plugin_select" class="plugin-choice form-control">
-                {% for plugin, version_dict in plugins.items %}
-                    <option value="{{ plugin }}">{{ plugin }}</option>
-                {% endfor %}
-            </select>
-        </span>
-        <span class="col-sm-4 small-padding">
-            {% for plugin, version_dict in plugins.items %}
-            <div id="version_group_{{ plugin }}" class="data_processing-version-choice" >
-                <select id="data_processing_version_{{ plugin }}" class="form-control">
-                    {% for version, tags in version_dict.items %}
-                        <option value="{{ version }}">{{ version }}</option>
-                    {% endfor %}
-                </select>
-            </div>
+  <div class="form-group">
+    <label class="control-label" for="plugin_select">{% trans "Plugin and Version Tag" %}</label>
+    <div>
+      <div class="col-sm-5 small-padding">
+        <select id="plugin_select" class="plugin-choice form-control">
+          {% for plugin, version_dict in plugins.items %}
+          <option value="{{ plugin }}">{{ plugin }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="col-sm-5 small-padding">
+        {% for plugin, version_dict in plugins.items %}
+        <div id="version_group_{{ plugin }}" class="data_processing-version-choice" >
+          <select id="data_processing_version_{{ plugin }}" class="form-control">
+            {% for version, tags in version_dict.items %}
+            <option value="{{ version }}">{{ version }}</option>
             {% endfor %}
-        </span>
-        <span class="col-sm-4 small-padding">
-            <input type="button" id="add_all_btn" class="btn btn-default" value="{% trans "Add plugin tags" %}" />
-        </span>
-    </span>
-    <span class="row">
-        <span class="col-sm-8 small-padding">
-            <input type="text" class="tag-input form-control" id="_sahara_image_tag"/>
-        </span>
-        <span class="col-sm-3 small-padding">
-            <button type="button" id="add_tag_btn" class="btn btn-default btn-small btn-create btn-inline" onclick="add_tag_to_image()">{% trans "Add custom tag" %}</button>
-        </span>
-    </span>
-
+          </select>
+        </div>
+        {% endfor %}
+      </div>
+      <div class="small-padding">
+        <a id="add_all_btn" class="btn btn-default" href="javascript:void(0);">
+          <span class="fa fa-plus"></span>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label" for="_sahara_image_tag">{% trans "Custom Tag" %}</label>
+    <div class="col-sm-10 small-padding">
+      <input type="text" class="tag-input form-control" id="_sahara_image_tag"/>
+    </div>
+    <div class="small-padding">
+      <a id="add_tag_btn" class="btn btn-default" href="javascript:void(0);" onclick="add_tag_to_image()">
+        <span class="fa fa-plus"></span>
+      </a>
+    </div>
+  </div>
 </div>
 
 <script type="text/javascript">
