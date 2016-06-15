@@ -21,6 +21,33 @@ horizon_installed=$(echo "import horizon" | python 2>/dev/null ; echo $?)
 
 set -e
 
+zuul_install () {
+    if [ -x "$ZUUL_CLONER" ]; then
+        export ZUUL_BRANCH=${ZUUL_BRANCH-$BRANCH}
+        echo "ZUUL CLONER" > /tmp/tox_install.txt
+        cwd=$(/bin/pwd)
+        cd /tmp
+        $ZUUL_CLONER --cache-dir \
+            /opt/git \
+            --branch $BRANCH_NAME \
+            git://git.openstack.org \
+            openstack/horizon
+        cd openstack/horizon
+        $install_cmd -e .
+        cd "$cwd"
+    else
+        return 1
+    fi
+}
+
+usual_install () {
+    echo "PIP HARDCODE" > /tmp/tox_install.txt
+    if [ -z "$HORIZON_PIP_LOCATION" ]; then
+        HORIZON_PIP_LOCATION="git+https://git.openstack.org/openstack/horizon@$BRANCH_NAME#egg=horizon"
+    fi
+    $install_cmd -U -e ${HORIZON_PIP_LOCATION}
+}
+
 install_cmd="pip install"
 if [ "$1" = "constrained" ]; then
     install_cmd="$install_cmd $2"
@@ -31,25 +58,8 @@ shift
 if [ $horizon_installed -eq 0 ]; then
     echo "ALREADY INSTALLED" > /tmp/tox_install.txt
     echo "Horizon already installed; using existing package"
-elif [ -x "$ZUUL_CLONER" ]; then
-    export ZUUL_BRANCH=${ZUUL_BRANCH-$BRANCH}
-    echo "ZUUL CLONER" > /tmp/tox_install.txt
-    cwd=$(/bin/pwd)
-    cd /tmp
-    $ZUUL_CLONER --cache-dir \
-        /opt/git \
-        --branch $BRANCH_NAME \
-        git://git.openstack.org \
-        openstack/horizon
-    cd openstack/horizon
-    $install_cmd -e .
-    cd "$cwd"
 else
-    echo "PIP HARDCODE" > /tmp/tox_install.txt
-    if [ -z "$HORIZON_PIP_LOCATION" ]; then
-        HORIZON_PIP_LOCATION="git+https://git.openstack.org/openstack/horizon@$BRANCH_NAME#egg=horizon"
-    fi
-    $install_cmd -U -e ${HORIZON_PIP_LOCATION}
+    zuul_install || usual_install
 fi
 
 $install_cmd -U $*
