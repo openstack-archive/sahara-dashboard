@@ -29,6 +29,7 @@ from sahara_dashboard.api import manila as manilaclient
 from sahara_dashboard.api import sahara as saharaclient
 from sahara_dashboard.content.data_processing.utils \
     import acl as acl_utils
+from saharaclient.api import base
 
 
 class LabeledInput(widgets.TextInput):
@@ -254,9 +255,14 @@ class JobBinaryCreateForm(forms.SelfHandlingForm):
             )
             messages.success(request, "Successfully created job binary")
             return bin_object
+        except base.APIException as ex:
+
+            exceptions.handle(request, _("Unable to create job binary: %s") %
+                              ex.error_message)
+            return False
+
         except Exception:
-            exceptions.handle(request,
-                              _("Unable to create job binary"))
+            exceptions.handle(request, _("Unable to create job binary"))
             return False
 
     def get_help_text(self, extra_context=None):
@@ -298,9 +304,15 @@ class JobBinaryCreateForm(forms.SelfHandlingForm):
                         request, context["job_binary_script_name"]),
                     context["job_binary_script"])
                 bin_id = result.id
+            except base.APIException as ex:
+
+                exceptions.handle(
+                    request,
+                    _("Unable to create job binary: %s") % ex.error_message)
+                return None
+
             except Exception:
-                exceptions.handle(request,
-                                  _("Unable to create job binary"))
+                exceptions.handle(request, _("Unable to create job binary"))
                 return None
 
         return "internal-db://%s" % bin_id
@@ -368,7 +380,11 @@ class JobBinaryEditForm(JobBinaryCreateForm):
 
             messages.success(request, "Successfully updated job binary")
             return bin_object
-        except Exception:
-            exceptions.handle(request,
-                              _("Unable to update job binary"))
+        except base.APIException as ex:
+
+            exceptions.handle(request, _("Unable to update job binary: %s") %
+                              ex.error_message)
             return False
+
+        except Exception:
+            exceptions.handle(request, _("Unable to update job binary"))
