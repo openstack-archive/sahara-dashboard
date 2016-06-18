@@ -2,14 +2,14 @@
 # Shu Muto <shu-mutou@rf.jp.nec.com>, 2016. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: sahara-dashboard 4.0.0.0rc2.dev49\n"
+"Project-Id-Version: sahara-dashboard 5.0.0.0b2.dev23\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2016-05-17 07:30+0000\n"
+"POT-Creation-Date: 2016-06-17 21:09+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2016-05-20 03:36+0000\n"
-"Last-Translator: Shu Muto <shu-mutou@rf.jp.nec.com>\n"
+"PO-Revision-Date: 2016-06-16 05:52+0000\n"
+"Last-Translator: Tsutomu Kimura <ebb0de2@jp.ibm.com>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
 "Plural-Forms: nplurals=1; plural=0\n"
@@ -64,14 +64,8 @@ msgstr "追加"
 msgid "Add Node Group"
 msgstr "ノードグループの追加"
 
-msgid "Add custom tag"
-msgstr "カスタムタグの追加"
-
 msgid "Add libraries to your job template."
 msgstr "ジョブテンプレートにライブラリーを追加します。"
-
-msgid "Add plugin tags"
-msgstr "プラグインタグの追加"
 
 msgid "Anti-affinity enabled for"
 msgstr "anti-affinity の指定"
@@ -386,6 +380,9 @@ msgstr "現在の選択項目:"
 msgid "Current type:"
 msgstr "現在の種別:"
 
+msgid "Custom Tag"
+msgstr "カスタムタグ"
+
 msgid "Data Processing"
 msgstr "データ処理"
 
@@ -524,6 +521,9 @@ msgstr "ジョブバイナリーのダウンロード"
 
 msgid "Download job binary"
 msgstr "ジョブバイナリーのダウンロード"
+
+msgid "Drive type"
+msgstr "ドライブ種別"
 
 msgid "Duration"
 msgstr "継続時間"
@@ -830,7 +830,6 @@ msgstr "起動"
 msgid "Launch Cluster"
 msgstr "クラスターの起動"
 
-#, fuzzy
 msgid "Launch Job"
 msgid_plural "Launch Jobs"
 msgstr[0] "ジョブの起動"
@@ -1128,6 +1127,9 @@ msgstr "プラグイン"
 msgid "Plugin Name"
 msgstr "プラグイン名"
 
+msgid "Plugin and Version Tag"
+msgstr "プラグインとバージョンタグ"
+
 msgid "Plugin name"
 msgstr "プラグイン名"
 
@@ -1169,11 +1171,6 @@ msgstr "Reducer"
 
 msgid "Register Image"
 msgstr "イメージの登録"
-
-msgid ""
-"Register tags required for the Plugin with specified Data Processing Version"
-msgstr ""
-"必要なプラグインとデータ処理基盤の特定のバージョンのタグを登録してください"
 
 msgid "Relaunch On Existing Cluster"
 msgstr "既存のクラスターで再起動"
@@ -1431,12 +1428,12 @@ msgid ""
 "Tags are used for filtering images suitable for each plugin and each Data "
 "Processing version.\n"
 "        To add required tags, select a plugin and a Data Processing version "
-"and click &quot;Add plugin tags&quot; button."
+"and click the &quot;Add&quot; button."
 msgstr ""
 "タグは、各プラグイン、各データ処理基盤のバージョンに適したイメージを絞り込む"
 "のに使用されます。\n"
 "必要なタグを追加するには、プラグインとデータ処理基盤のバージョンを選択して"
-"「プラグインタグの追加」をクリックしてください。"
+"「追加」をクリックしてください。"
 
 msgid "Template"
 msgstr "テンプレート"
@@ -1794,6 +1791,9 @@ msgstr "anti-affinity グループを使用するプロセス:"
 
 msgid "Use auto-configuration"
 msgstr "自動設定を使用"
+
+msgid "User"
+msgstr "ユーザー"
 
 msgid "User Name"
 msgstr "ユーザー名"

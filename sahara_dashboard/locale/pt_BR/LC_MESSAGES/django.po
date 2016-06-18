@@ -1,9 +1,9 @@
 # Andreas Jaeger <jaegerandi@gmail.com>, 2016. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: sahara-dashboard 4.0.0.0rc2.dev36\n"
+"Project-Id-Version: sahara-dashboard 5.0.0.0b2.dev23\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2016-04-30 19:14+0000\n"
+"POT-Creation-Date: 2016-06-17 21:09+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -63,14 +63,8 @@ msgstr "Adicionar"
 msgid "Add Node Group"
 msgstr "Adicionar um Grupo de Nós"
 
-msgid "Add custom tag"
-msgstr "Adicionar etiqueta customizada"
-
 msgid "Add libraries to your job template."
 msgstr "Adicionar bibliotecas ao seu modelo de tarefa."
-
-msgid "Add plugin tags"
-msgstr "Adicionar etiquetas de plugins"
 
 msgid "Anti-affinity enabled for"
 msgstr "Anti-affinity ativada Para"
@@ -1192,12 +1186,6 @@ msgstr "Redutor"
 msgid "Register Image"
 msgstr "Registrar Imagem"
 
-msgid ""
-"Register tags required for the Plugin with specified Data Processing Version"
-msgstr ""
-"Registre etiquetas necessárias para o Plugin com versão de Processamento de "
-"Dados especificado"
-
 msgid "Relaunch On Existing Cluster"
 msgstr "Reiniciar em cluster existente."
 
@@ -1447,17 +1435,6 @@ msgstr "Swift"
 
 msgid "Tags"
 msgstr "Tags"
-
-msgid ""
-"Tags are used for filtering images suitable for each plugin and each Data "
-"Processing version.\n"
-"        To add required tags, select a plugin and a Data Processing version "
-"and click &quot;Add plugin tags&quot; button."
-msgstr ""
-"Etiquetas são utilizados para filtrar imagens adequadas para cada plugin e "
-"cada versão de Processamento de Dados. \n"
-"Para adicionar etiquetas necessárias, selecionar um plug-in e uma versão de "
-"Processamento de Dados e clique em &quot;Add plugin tags&quot; button."
 
 msgid "Template"
 msgstr "Modelo"
