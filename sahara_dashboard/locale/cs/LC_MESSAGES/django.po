@@ -1,13 +1,14 @@
 # Lenka Husáková <lenka.husakova@ultimum.io>, 2016. #zanata
+# Stanislav Ulrych <stanislav.ulrych@ultimum.io>, 2016. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: sahara-dashboard 5.0.0.0b2.dev9\n"
+"Project-Id-Version: sahara-dashboard 5.0.0.0b2.dev23\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2016-06-08 15:04+0000\n"
+"POT-Creation-Date: 2016-06-17 21:09+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2016-06-08 11:33+0000\n"
+"PO-Revision-Date: 2016-06-14 11:20+0000\n"
 "Last-Translator: Lenka Husáková <lenka.husakova@ultimum.io>\n"
 "Language-Team: Czech\n"
 "Language: cs\n"
@@ -41,7 +42,7 @@ msgid "%s processes: "
 msgstr "%s procesů: "
 
 msgid "-- not selected --"
-msgstr "-- nezvoleno --"
+msgstr "-- nevybráno --"
 
 msgid ""
 "<b>Important</b>:  The name that you give your job binary will be the name "
@@ -49,7 +50,7 @@ msgid ""
 "  If your binary requires a particular name or extension (ie: \".jar\"), be "
 "sure to include it here."
 msgstr ""
-"<b>Důležité</b>: Název který použijete pro binární soubor úkolu bude použit "
+"<b>Důležité</b>: Název který použijete pro binární soubor úlohy bude použit "
 "při jeho spuštění.\n"
 "Pokud soubor vyžaduje konkrétní název nebo příponu (např.: \".jar\"), "
 "nezapomeňte je zde zadat."
@@ -63,17 +64,11 @@ msgstr "Přidat"
 msgid "Add Node Group"
 msgstr "Přidat skupiny uzlu"
 
-msgid "Add custom tag"
-msgstr "Přidat vlastní značku"
-
 msgid "Add libraries to your job template."
-msgstr "Přidat knihovny k vaší šabloně úkolu."
-
-msgid "Add plugin tags"
-msgstr "Přidat značky zásuvného modulu"
+msgstr "Přidat knihovny k vaší šabloně úloh."
 
 msgid "Anti-affinity enabled for"
-msgstr "Proti slučivost povolena pro"
+msgstr "Antiafinita povolena pro"
 
 msgid "Arguments"
 msgstr "Argumenty"
@@ -82,13 +77,13 @@ msgid "Auto Security Group"
 msgstr "Skupina automatické bezpečnosti"
 
 msgid "Auto-configure"
-msgstr "Automatické nastavení"
+msgstr "Automatická konfigurace"
 
 msgid ""
 "Automatically modify the Hadoop configuration so that job config values are "
 "set and so that Oozie will handle exit codes correctly."
 msgstr ""
-"Automaticky upravit nastavení Hadoop tak, aby hodnoty nastavení úkolu byly "
+"Automaticky upravit nastavení Hadoop tak, aby hodnoty nastavení úlohy byly "
 "zadány a aby Oozie správně zpracovával návratové kódy."
 
 msgid "Availability Zone"
@@ -132,10 +127,10 @@ msgid ""
 "your job template.  This can be repeated for additional libraries."
 msgstr ""
 "Vyberte si ze seznamu binárních souborů a klikněte na \"zvolit\" pro přidání "
-"knihovny k vaší šabloně úkolu. Toto můžete zopakovat pro další knihovny."
+"knihovny k vaší šabloně úloh. Toto můžete zopakovat pro další knihovny."
 
 msgid "Choose job type"
-msgstr "Zvolte typ úkolu"
+msgstr "Zvolte typ úlohy"
 
 msgid "Choose libraries"
 msgstr "Zvolte knihovny"
@@ -147,8 +142,8 @@ msgid ""
 "Choose or create your main binary.  Additional libraries can be added from "
 "the \"Libs\" tab."
 msgstr ""
-"Zvolte nebo vytvořte svůj hlavní binární soubor. Další knihovny mohou být "
-"přidány z karty \"Knihovny\"."
+"Zvolte nebo vytvořte hlavní binární soubor. Další knihovny mohou být přidány "
+"z karty \"Knihovny\"."
 
 msgid "Choose plugin"
 msgstr "Zvolte zásuvný modul"
@@ -160,16 +155,16 @@ msgid "Choose plugin type and version"
 msgstr "Vyberte zásuvný modul a verzi"
 
 msgid "Choose the Input Data Source (n/a for Java and Shell jobs)."
-msgstr "Zvolte zdroj vstupních dat (toto neplatní pro úkoly Java a Shell)."
+msgstr "Zvolte zdroj vstupních dat (toto neplatní pro úlohy Java a Shell)."
 
 msgid "Choose the Output Data Source (n/a for Java and Shell jobs)."
-msgstr "Zvolte zdroj výstupních dat (toto neplatní pro úkoly Java a Shell)."
+msgstr "Zvolte zdroj výstupních dat (toto neplatní pro úlohy Java a Shell)."
 
 msgid "Choose the binary which should be used in this Job."
-msgstr "Zvolte binární soubor, který má být použit v tomto úkolu."
+msgstr "Zvolte binární soubor, který má být použit v této úloze."
 
 msgid "Choose the cluster to use for the job."
-msgstr "Zvolte cluster který bude použit pro úkol."
+msgstr "Zvolte cluster, který bude použit pro úlohu."
 
 msgid "Chosen Libraries"
 msgstr "Zvolené knihovny"
@@ -224,8 +219,11 @@ msgstr "Cluster může být spuštěn pomocí existujících šablon clusteru."
 msgid "Cluster configurations are not specified"
 msgstr "Konfigurace clusteru nejsou zadané"
 
+msgid "Cluster health checks"
+msgstr "Kontroly zdraví clusteru"
+
 msgid "Cluster provision steps"
-msgstr "Kroky k poskytnutí clusteru"
+msgstr "Kroky vytvoření clusteru"
 
 msgid "Cluster share update failed."
 msgstr "Aktualizace sdílení clusteru selhala."
@@ -258,7 +256,7 @@ msgid "Configure"
 msgstr "Nastavit"
 
 msgid "Configure Cluster"
-msgstr "Nastavit cluster"
+msgstr "Konfigurovat cluster"
 
 msgid "Configure Cluster Template"
 msgstr "Konfigurovat šablonu clusteru"
@@ -267,7 +265,7 @@ msgid "Configure Node Group Template"
 msgstr "Nastavit šablonu skupiny uzlu"
 
 msgid "Configure Template"
-msgstr "Nastavit šablonu"
+msgstr "Konfigurovat šablonu"
 
 msgid "Control access to instances of the node group."
 msgstr "Řízení přístupu k instancím ze skupiny uzlu."
@@ -282,19 +280,19 @@ msgid "Could not create"
 msgstr "Nelze vytvořit"
 
 msgid "Could not create data source"
-msgstr "Nelze vytvořit zdroj dat"
+msgstr "Nelze vytvořit datový zdroj"
 
 msgid "Could not create job template"
-msgstr "Nelze vytvořit šablonu úkolu"
+msgstr "Nelze vytvořit šablonu úlohy"
 
 msgid "Could not launch job"
-msgstr "Úkol nelze spustit"
+msgstr "Úloha nelze spustit"
 
 msgid "Could not update cluster shares"
 msgstr "Nelze aktualizovat sdílení clusteru"
 
 msgid "Could not update data source"
-msgstr "Nelze aktualizovat zdroj dat"
+msgstr "Nelze aktualizovat datový zdroj"
 
 msgid "Count"
 msgstr "Počet"
@@ -306,13 +304,13 @@ msgid "Create Cluster Template"
 msgstr "Vytvořit šablonu clusteru"
 
 msgid "Create Data Source"
-msgstr "Vytvořit zdroj dat"
+msgstr "Vytvořit datový zdroj"
 
 msgid "Create Job Binary"
-msgstr "Vytvořit binární soubor úkolu"
+msgstr "Vytvořit binární soubor úlohy"
 
 msgid "Create Job Template"
-msgstr "Vytvořit šablonu úkolu"
+msgstr "Vytvořit šablonu úlohy"
 
 msgid "Create Node Group Template"
 msgstr "Vytvořit šablonu skupiny uzlu"
@@ -324,7 +322,7 @@ msgid "Create a Cluster Template"
 msgstr "Vytvořit šablonu clusteru"
 
 msgid "Create a Data Source with a specified name."
-msgstr "Vytvořit zdroj dat se zadaným názvem."
+msgstr "Vytvořit datový zdroj se zadaným názvem."
 
 msgid "Create a Master Node Group Template"
 msgstr "Vytvořit šablonu skupiny hlavního uzlu"
@@ -333,13 +331,13 @@ msgid "Create a Worker Node Group Template"
 msgstr "Vytvořit šablonu skupiny pracovního uzlu"
 
 msgid "Create a data source"
-msgstr "Vytvořit zdroj dat"
+msgstr "Vytvořit datový zdroj"
 
 msgid "Create a job template"
-msgstr "Vytvořit šablonu úkolu"
+msgstr "Vytvořit šablonu úlohy"
 
 msgid "Create a job template with a specified name."
-msgstr "Vytvořit šablonu úkolu se zadaným názvem."
+msgstr "Vytvořit šablonu úlohy se zadaným názvem."
 
 msgid "Create a script to be uploaded dynamically"
 msgstr "Vytvořit skript, který bude dynamicky nahráván"
@@ -348,7 +346,7 @@ msgid "Create security group for this Node Group."
 msgstr "Vytvořit bezpečnostní skupinu pro tuto skupinu uzlu."
 
 msgid "Create time"
-msgstr "Vytvořit čas"
+msgstr "Čas vytvoření"
 
 msgid "Create volumes in this availability zone."
 msgstr "Vytvořit svazky v této zóně dostupnosti."
@@ -369,7 +367,7 @@ msgid "Created Node Group Template %s"
 msgstr "Šablona skupiny uzlu %s vytvořena"
 
 msgid "Created time"
-msgstr "Čas vytvoření"
+msgstr "Vytvořeno"
 
 msgid "Current choice:"
 msgstr "Současná volba:"
@@ -397,13 +395,13 @@ msgstr ""
 "Efemerní disk nebo svazek Cinder, které budou připojeny k instancím."
 
 msgid "Data Source"
-msgstr "Zdroj dat"
+msgstr "Datový zdroj"
 
 msgid "Data Source Type"
-msgstr "Typ zdroje dat"
+msgstr "Typ datového zdroje"
 
 msgid "Data Sources"
-msgstr "Zdroje dat"
+msgstr "Datový zdroj"
 
 msgid ""
 "Data Sources are what your\n"
@@ -416,10 +414,10 @@ msgid ""
 "                            sources by repeating this step.\n"
 "                        "
 msgstr ""
-"Zdroje dat jsou to,\n"
-"                            co vaše úkoly použijí jako vstup a výstup. V "
+"Datové zdroje jsou to,\n"
+"                            co vaše úlohy použijí jako vstup a výstup. V "
 "závislosti\n"
-"                            na typu spuštěného úkolu, je třeba zadat jeden "
+"                            na typu spuštěné úlohy, je třeba zadat jeden "
 "nebo\n"
 "                            více zdrojů dat. Více zdrojů dat vytvoříte "
 "opakováním\n"
@@ -427,10 +425,10 @@ msgstr ""
 "                        "
 
 msgid "Data source created"
-msgstr "Zdroj dat vytvořen"
+msgstr "Datový zdroj vytvořen"
 
 msgid "Data source updated"
-msgstr "Zdroj dat aktualizován"
+msgstr "Datový zdroj aktualizován"
 
 msgid "Default Value"
 msgstr "Výchozí hodnota"
@@ -445,10 +443,10 @@ msgid ""
 "                        and outputs will be defined later.\n"
 "                    "
 msgstr ""
-"Určení vaší šablony úkolu.\n"
-"                        Tady zvolíte typ úkolu, který chcete spustit\n"
-"                        (Pig, Činnosti Java, Spark, atd) a zvolíte, nebo\n"
-"                        nahrajete soubory potřebné k jeho spuštění.\n"
+"Definování šablony úlohy.\n"
+"                        Zvolte typ úlohy, který chcete spustit\n"
+"                        (Pig, Činnosti Java, Spark, atd) a zvolte, nebo\n"
+"                        nahrajte soubory potřebné k jeho spuštění.\n"
 "                        Vstupy a výstupy budou zadány později.\n"
 "                    "
 
@@ -460,27 +458,27 @@ msgstr[2] "Smazat clustery"
 
 msgid "Delete Data Source"
 msgid_plural "Delete Data Sources"
-msgstr[0] "Smazat zdroj dat"
-msgstr[1] "Smazat zdroje dat"
-msgstr[2] "Smazat zdroje dat"
+msgstr[0] "Smazat datový zdroj"
+msgstr[1] "Smazat datové zdroje"
+msgstr[2] "Smazat datových zdrojů"
 
 msgid "Delete Job"
 msgid_plural "Delete Jobs"
-msgstr[0] "Smazat úkol"
-msgstr[1] "Smazat úkoly"
-msgstr[2] "Smazat úkolů"
+msgstr[0] "Smazat úlohu"
+msgstr[1] "Smazat úlohy"
+msgstr[2] "Smazat úloh"
 
 msgid "Delete Job Binary"
 msgid_plural "Delete Job Binaries"
-msgstr[0] "Smazat binární soubor úkolu"
-msgstr[1] "Smazat binární soubory úkolu"
-msgstr[2] "Smazat binární soubory úkolu"
+msgstr[0] "Smazat binární soubor úlohy"
+msgstr[1] "Smazat binární soubory úloh"
+msgstr[2] "Smazat binárních souborů úloh"
 
 msgid "Delete Job Template"
 msgid_plural "Delete Job Templates"
-msgstr[0] "Smazat šablonu úkolu"
-msgstr[1] "Smazat šablony úkolu"
-msgstr[2] "Smazat šablon úkolu"
+msgstr[0] "Smazat šablonu úlohy"
+msgstr[1] "Smazat šablony úloh"
+msgstr[2] "Smazat šablon úloh"
 
 msgid "Delete Template"
 msgid_plural "Delete Templates"
@@ -496,27 +494,27 @@ msgstr[2] "Clustery smazány"
 
 msgid "Deleted Data Source"
 msgid_plural "Deleted Data Sources"
-msgstr[0] "Zdroj dat smazán"
-msgstr[1] "Zdroje dat smazány"
-msgstr[2] "Zdroje dat smazány"
+msgstr[0] "Datový zdroj smazán"
+msgstr[1] "Datové zdroje smazány"
+msgstr[2] "Datových zdrojů smazáno"
 
 msgid "Deleted Job"
 msgid_plural "Deleted Jobs"
-msgstr[0] "Úkol smazán"
-msgstr[1] "Úkoly smazány"
-msgstr[2] "Úkolů smazáno"
+msgstr[0] "Úloha smazána"
+msgstr[1] "Úlohyy smazány"
+msgstr[2] "Úloh smazáno"
 
 msgid "Deleted Job Binary"
 msgid_plural "Deleted Job Binaries"
-msgstr[0] "Binární soubory úkolu smazán"
-msgstr[1] "Binární soubory úkolu smazány"
-msgstr[2] "Binární soubory úkolu smazány"
+msgstr[0] "Binární soubory úlohy smazán"
+msgstr[1] "Binární soubory úlohy smazány"
+msgstr[2] "Binárních souborů úlohy smazáno"
 
 msgid "Deleted Job Template"
 msgid_plural "Deleted Jobs Templates"
-msgstr[0] "Šablona úkolu smazána"
-msgstr[1] "Šablony úkolu smazány"
-msgstr[2] "Šablon úkolu smazáno"
+msgstr[0] "Šablona úlohy smazána"
+msgstr[1] "Šablony úlohy smazány"
+msgstr[2] "Šablon úlohy smazáno"
 
 msgid "Deleted Template"
 msgid_plural "Deleted Templates"
@@ -538,10 +536,13 @@ msgid "Done with Error"
 msgstr "Dokončeno s chybou"
 
 msgid "Download Job Binary"
-msgstr "Stáhnout binární soubor úkolu"
+msgstr "Stáhnout binární soubor úlohy"
 
 msgid "Download job binary"
-msgstr "Stáhnout binární soubor úkolu"
+msgstr "Stáhnout binární soubor úlohy"
+
+msgid "Drive type"
+msgstr "Typ ovladače"
 
 msgid "Duration"
 msgstr "Doba trvání"
@@ -550,19 +551,19 @@ msgid "Edit Cluster Template"
 msgstr "Upravit šablonu clusteru"
 
 msgid "Edit Data Source"
-msgstr "Upravit zdroj dat"
+msgstr "Upravit datový zdroj"
 
 msgid "Edit Image Tags"
-msgstr "Upravit značky obrazu"
+msgstr "Upravit tagy obrazu"
 
 msgid "Edit Job Binary"
-msgstr "Upravit binární soubor úkolu"
+msgstr "Upravit binární soubor úlohy"
 
 msgid "Edit Node Group Template"
 msgstr "Upravit šablonu skupiny uzlu"
 
 msgid "Edit Tags"
-msgstr "Upravit značky"
+msgstr "Upravit tagy"
 
 msgid "Edit Template"
 msgstr "Editovat šablonu"
@@ -575,7 +576,7 @@ msgid "Ended"
 msgstr "Ukončeno"
 
 msgid "Enter any custom configuration required for your job's execution."
-msgstr "Zadejte jakékoli vlastni nastavení potřebné pro spuštění vašeho úkolu."
+msgstr "Zadejte jakékoli vlastni nastavení potřebné pro spuštění vaší úlohy."
 
 msgid "Enter the URL for the file"
 msgstr "Zadat URL odkazující na soubor"
@@ -621,10 +622,16 @@ msgid ""
 "                            other steps are required\n"
 "                        "
 msgstr ""
-"Nejdříve zvolte typ úkolu, který\n"
+"Nejdříve zvolte typ úlohy, který\n"
 "                            chcete spustit. Tato volba určí které další\n"
 "                            kroky je nutné provést\n"
 "                        "
+
+msgid "Flavor"
+msgstr "Typ"
+
+msgid "Flavor is not specified"
+msgstr "Typ není zadán"
 
 msgid "Floating IP Pool"
 msgstr "Zásoba plovoucích IP"
@@ -632,7 +639,7 @@ msgstr "Zásoba plovoucích IP"
 msgid ""
 "For Data Processing internal job binaries, you may choose from the following:"
 msgstr ""
-"Pro interní binární soubory úkolu Zpracování dat. můžete provést jedno z "
+"Pro interní binární soubory úlohy zpracování dat můžete provést jedno z "
 "následujících"
 
 msgid ""
@@ -640,24 +647,24 @@ msgid ""
 "required to add one\n"
 "  or more \"libs\" for these jobs."
 msgstr ""
-"Hlavní komponenty se v úkolech MapReduce a Činností Java nepoužívají. Pro "
-"tyto úkoly\n"
+"Hlavní komponenty se v úlohách MapReduce a Činností Java nepoužívají. Pro "
+"tyto úlohy\n"
 "je třeba zadat jednu nebo více \"knihoven\"."
 
 msgid "For Object Store job binaries, you must:"
-msgstr "Pro binární soubory úkolu v Úložišti objektů musíte:"
+msgstr "Pro binární soubory úlohy v Úložišti objektů musíte:"
 
 msgid ""
 "For Shell Action jobs, any required files beyond the main script may be "
 "added as \"libraries\"."
 msgstr ""
-"Pro úkoly Činnosti Shell lze dodatečné soubory, mimo hlavní skript, přidat "
+"Pro úlohy činnosti Shell lze dodatečné soubory, mimo hlavní skript, přidat "
 "jako \"knihovny\"."
 
 msgid ""
 "For Spark and Shell jobs, only a main is required, \"libs\" are optional."
 msgstr ""
-"Pro úkoly Spark a Shell, je potřeba pouze hlavní komponenta, \"knihovny\" "
+"Pro úlohy Spark a Shell je potřeba pouze hlavní komponenta, \"knihovny\" "
 "jsou volitelné."
 
 msgid "General Info"
@@ -667,10 +674,13 @@ msgid "Guided Cluster Creation"
 msgstr "Vytvoření clusteru s průvodcem"
 
 msgid "Guided Job Execution"
-msgstr "Spuštění úkolu s průvodcem"
+msgstr "Spuštění úlohy s průvodcem"
 
 msgid "HDFS placement"
 msgstr "Umístění HDFS"
+
+msgid "Health"
+msgstr "Zdraví"
 
 msgid "Hide full configuration"
 msgstr "Skrýt úplnou konfiguraci"
@@ -680,6 +690,17 @@ msgstr "Hive"
 
 msgid "ID"
 msgstr "ID"
+
+#, python-format
+msgid ""
+"If selected, %s will be protected from modifications until this will be "
+"unselected"
+msgstr ""
+"Pokud je vybráno, %s bude chráněno proti změnám dokud nebude výběr zrušen."
+
+#, python-format
+msgid "If selected, %s will be shared across the tenants"
+msgstr "Pokud je vybráno, %s bude nasdíleno napříč tenanty."
 
 msgid ""
 "If selected, instances of a cluster will be automatically configured during "
@@ -753,61 +774,65 @@ msgid "Java"
 msgstr "Java"
 
 msgid "Java Action"
-msgstr "Činnosti Java"
+msgstr "Akce Java"
 
 msgid "Java Opts"
 msgstr "Operace Java"
 
 msgid "Job"
-msgstr "Úkol"
+msgstr "Úloha"
 
 msgid "Job Binaries"
-msgstr "Binární soubory úkolu"
+msgstr "Binární soubory úlohy"
 
 msgid "Job Configuration"
-msgstr "Konfigurace úkolu"
+msgstr "Konfigurace úlohy"
 
 msgid "Job Execution ID"
-msgstr "ID spuštění úkolu"
+msgstr "ID spuštění úlohy"
 
 msgid "Job Guide"
-msgstr "Průvodce úkolem"
+msgstr "Průvodce úlohou"
 
 msgid "Job Template"
-msgstr "Šablona úkolu"
+msgstr "Šablona úlohy"
 
 msgid "Job Templates"
-msgstr "Šablony úkolu"
+msgstr "Šablony úlohy"
 
 msgid "Job Type"
-msgstr "Typ úkolu"
+msgstr "Typ úlohy"
 
 msgid "Job args"
-msgstr "Argumenty úkolu"
+msgstr "Argumenty úlohy"
 
 msgid "Job configs"
-msgstr "Konfigurace úkolu"
+msgstr "Konfigurace úlohy"
 
 msgid "Job created"
-msgstr "Úkol vytvořen"
+msgstr "Úloha vytvořena"
 
 msgid "Job launched"
-msgstr "Úkol spuštěn"
+msgstr "Úloha spuštěna"
 
 msgid "Job params"
-msgstr "Parametry úkolu"
+msgstr "Parametry úlohy"
 
 msgid "Job template:"
-msgstr "Šablona úkolu:"
+msgstr "Šablona úlohy:"
 
 msgid "Job type chosen"
-msgstr "Zvolen typ úkolu"
+msgstr "Zvolen typ úlohy"
 
 msgid "Jobs"
-msgstr "Úkoly"
+msgstr "Úlohy"
 
 msgid "Keypair"
 msgstr "Klíč"
+
+msgctxt "Current status of a Job"
+msgid "Killed"
+msgstr "Killed"
 
 msgid "Last Updated"
 msgstr "Naposledy aktualizováno"
@@ -820,9 +845,9 @@ msgstr "Spustit cluster"
 
 msgid "Launch Job"
 msgid_plural "Launch Jobs"
-msgstr[0] "Spustit úkol"
-msgstr[1] "Spustit úkoly"
-msgstr[2] "Spustit úkoly"
+msgstr[0] "Spustit úlohu"
+msgstr[1] "Spustit úlohy"
+msgstr[2] "Spustit úloh"
 
 msgid "Launch On Existing Cluster"
 msgstr "Spustit na existujícím clusteru"
@@ -840,10 +865,10 @@ msgid "Launch instances in this availability zone."
 msgstr "Spustit instance v této zóně dostupnosti."
 
 msgid "Launch job"
-msgstr "Spustit úkol"
+msgstr "Spustit úlohu"
 
 msgid "Launch the given job template on a cluster."
-msgstr "Spustit zadanou šablonu úkolu v clusteru."
+msgstr "Spustit zadanou šablonu úlohu v clusteru."
 
 msgid ""
 "Launch your job.  When\n"
@@ -854,11 +879,11 @@ msgid ""
 "                        to your job.\n"
 "                        "
 msgstr ""
-"Spuštění vašeho úkolu.\n"
+"Spuštění vaší úlohy.\n"
 "                        Při spouštění bude možná třeba zvolit vaše vstupní\n"
 "                        a výstupní zdroje dat. Tady také lze přidat všechny\n"
 "                        speciální hodnoty nastavení, parametry, nebo\n"
-"                        argumenty, které je třeba vašemu úkolu předat.\n"
+"                        argumenty, které je třeba vaší úloze předat.\n"
 "\n"
 "                        "
 
@@ -868,15 +893,15 @@ msgstr "Cluster %s spuštěn"
 
 msgid "Launched Job"
 msgid_plural "Launched Jobs"
-msgstr[0] "Úkol spuštěny"
-msgstr[1] "Úkoly spuštěny"
-msgstr[2] "Úkolů spuštěno"
+msgstr[0] "Úloha spuštěna"
+msgstr[1] "Úlohy spuštěny"
+msgstr[2] "Úloh spuštěno"
 
 msgid "Libs"
 msgstr "Knihovny"
 
 msgid "Location"
-msgstr "Lokace"
+msgstr "Umístění"
 
 msgid "Main Class"
 msgstr "Hlavní třída"
@@ -939,13 +964,13 @@ msgid ""
 "                     "
 msgstr ""
 "Dále potřebujete určit různé typy\n"
-"                        strojů ve vašem clusteru.  To se provádí zadáním\n"
-"                        Šablony skupiny uzlu pro každý typ stroje.\n"
+"                        strojů ve vašem clusteru.  To provedete zadáním\n"
+"                        Šablony skupin uzlů pro každý typ stroje.\n"
 "                        Běžným případem je nutnost mít jeden nebo více\n"
-"                        strojů obsluhující \"hlavní\" sadu procesů, zatímco\n"
-"                        další sada strojů potřebuje obsluhovat \"pracovní\"\n"
-"                        procesy. Zde zadáte Šablonu skupiny uzlu pro vaše,\n"
-"                        \"hlavní\" uzle.\n"
+"                        strojů obsluhující \"master\" sadu procesů, zatímco\n"
+"                        další sada strojů potřebuje obsluhovat \"worker\"\n"
+"                        procesy. Zde zadáte šablonu skupiny uzlů pro\n"
+"                        \"master\" uzel.\n"
 "\n"
 "                     "
 
@@ -965,7 +990,7 @@ msgid "No Worker Node Group Template Created"
 msgstr "Nebyla vytvořena žádná šablona skupiny pracovního uzlu"
 
 msgid "No availability zone specified"
-msgstr "Zóna dostupnosti nezadána"
+msgstr "Nezadána zóna dostupnosti"
 
 msgid "No clusters available"
 msgstr "Clustery nejsou dostupné"
@@ -986,7 +1011,7 @@ msgid "No info available"
 msgstr "Nejsou dostupné žádné informace"
 
 msgid "No job template created"
-msgstr "Nevytvořena žádná šablona úkolu"
+msgstr "Nevytvořena žádná šablona úlohy"
 
 msgid "No keypair"
 msgstr "Žádný klíč"
@@ -1064,9 +1089,9 @@ msgid ""
 "                        configuration items in the additional tabs on the\n"
 "                        create Cluster Template form."
 msgstr ""
-"Nyní je třeba nastavit rozvržení vašeho\n"
+"Nyní je třeba nastavit rozvržení\n"
 "                        clusteru. Vytvořením\n"
-"                        Šablony clusteru, můžete zvolit počet instancí\n"
+"                        šablony clusteru můžete zvolit počet instancí\n"
 "                        v každé šabloně skupiny uzlu, které se objeví\n"
 "                        ve vašem clusteru.  Dále budete moci nastavit,\n"
 "                        v dodatečných kartách formuláře vytvoření\n"
@@ -1083,10 +1108,10 @@ msgid "Number of clusters to launch."
 msgstr "Počet clusterů ke spuštění"
 
 msgid "Oozie Job ID"
-msgstr "ID úkolu Oozie"
+msgstr "ID úlohy Oozie"
 
 msgid "OpenStack Flavor"
-msgstr "OpenStack Flavor"
+msgstr "OpenStack typ"
 
 msgid "Output"
 msgstr "Výstup"
@@ -1102,6 +1127,9 @@ msgstr "Heslo"
 
 msgid "Path"
 msgstr "Cesta"
+
+msgid "Persist cluster after job exit"
+msgstr "Cluster nebude zrušen po dokončení úlohy"
 
 msgid "Pig"
 msgstr "Pig"
@@ -1154,12 +1182,6 @@ msgstr "Reduktor"
 msgid "Register Image"
 msgstr "Registrovat obraz"
 
-msgid ""
-"Register tags required for the Plugin with specified Data Processing Version"
-msgstr ""
-"Zaregistrujte značky vyžadované zásuvným modulem pomocí zadané verze "
-"Zpracování dat"
-
 msgid "Relaunch On Existing Cluster"
 msgstr "Znovu spustit na existujícím clusteru"
 
@@ -1176,7 +1198,7 @@ msgid ""
 msgstr ""
 "Zopakujte vytvoření šablony skupiny uzlu,\n"
 "                        ale nyní vytváříte šablonu pro\n"
-"                        vaše \"pracovní\" skupiny uzlu."
+"                         skupinu uzlů \"worker\"."
 
 msgid "Required"
 msgstr "Vyžadováno"
@@ -1188,13 +1210,13 @@ msgid "Reset Cluster Guide"
 msgstr "Resetovat průvodce clusterem"
 
 msgid "Reset Job Execution Guide"
-msgstr "Resetovat průvodce spuštěním úkolu"
+msgstr "Resetovat průvodce spuštěním úlohy"
 
 msgid "Return Code"
 msgstr "Návratový kód"
 
 msgid "Run HBase EDP Jobs with common HBase library on HDFS"
-msgstr "Spouštět úkoly HBase EDP se společnou knihovnou HBase na HDFS"
+msgstr "Spouštět úkoly HBase EDP s HBase common library na HDFS"
 
 msgid ""
 "Sahara will use instances of this node group to access other cluster "
@@ -1243,7 +1265,7 @@ msgid "Select a Node Group Template to add:"
 msgstr "Vyberte šablonu skupiny uzlu pro přidání:"
 
 msgid "Select a Value Type for your next argument:"
-msgstr "Vyberte typ hodnoty pro váš další argument:"
+msgstr "Vyberte typ hodnoty pro další argument:"
 
 msgid "Select a plugin and version for a new Cluster template."
 msgstr "Vyberte zásuvný modul a verzi pro novou šablonu clusteru."
@@ -1277,13 +1299,13 @@ msgid "Select property name"
 msgstr "Vyberte název vlastnosti"
 
 msgid "Select the storage type for your job binary."
-msgstr "Vyberte typ úložiště vašeho binárního souboru úkolu."
+msgstr "Vyberte typ úložiště vašeho binárního souboru úlohy."
 
 msgid "Select the type of your Data Source."
-msgstr "Vyberte typ svého zdroje dat."
+msgstr "Vyberte typ svého datového zdroje."
 
 msgid "Select the type of your job:"
-msgstr "Vyberte typ svého úkolu:"
+msgstr "Vyberte typ své úlohy:"
 
 msgid "Select type"
 msgstr "Vyberte typ"
@@ -1292,7 +1314,7 @@ msgid ""
 "Select which plugin and version that you\n"
 "    want to use to create your cluster."
 msgstr ""
-"Vyberte který zásuvný modul a verzi\n"
+"Vyberte, který zásuvný modul a verzi\n"
 "chcete použít pro vytvoření nového clusteru."
 
 msgid ""
@@ -1301,9 +1323,9 @@ msgid ""
 "      execute your job.\n"
 "    "
 msgstr ""
-"Zvolte typ úkolu, který chcete spustit.\n"
+"Zvolte typ úlohy, který chcete spustit.\n"
 "      Tato volba určí které další kroky je nutné provést\n"
-"      pro úspěšné spuštění úkolu.\n"
+"      pro úspěšné spuštění úlohy.\n"
 "    "
 
 msgid "Service Configurations"
@@ -1319,7 +1341,7 @@ msgid "Shell"
 msgstr "Shell"
 
 msgid "Shell Action"
-msgstr "Činnost shell"
+msgstr "Akce shell"
 
 msgid "Show full configuration"
 msgstr "Zobrazit úplnou konfiguraci"
@@ -1357,7 +1379,7 @@ msgstr[1] "Ověření spuštěna"
 msgstr[2] "Ověření spuštěna"
 
 msgid "Started at"
-msgstr "Zahájeno v"
+msgstr "Zahájeno"
 
 msgid "Status"
 msgstr "Stav"
@@ -1378,10 +1400,17 @@ msgid "Storm"
 msgstr "Storm"
 
 msgid "Streaming MapReduce"
-msgstr "Streamování Mapreduce"
+msgstr "Streamované Mapreduce"
 
 msgid "String"
 msgstr "Řetězec"
+
+msgid ""
+"Substitute data source objects for URLs of the form datasource://name or "
+"uuid."
+msgstr ""
+"Nahrazuje objekty zdrojových dat pro URL ve tvaru zdrojových dat: //název "
+"nebo uuid."
 
 msgctxt "Current status of a Job"
 msgid "Succeeded"
@@ -1397,18 +1426,7 @@ msgid "Swift"
 msgstr "Swift"
 
 msgid "Tags"
-msgstr "Značky"
-
-msgid ""
-"Tags are used for filtering images suitable for each plugin and each Data "
-"Processing version.\n"
-"        To add required tags, select a plugin and a Data Processing version "
-"and click &quot;Add plugin tags&quot; button."
-msgstr ""
-"Značky jsou použity k filtrování obrazů vhodných pro jednotlivé zásuvné "
-"moduly a verze Zpracování dat.\n"
-"        Pro přidání požadovaných značek vyberte modul a verzi Zpracování dat "
-"a klikněte na tlačítko &quot;Přidat značky zásuvného modulu&quot;."
+msgstr "Tagy"
 
 msgid "Template"
 msgstr "Šablona"
@@ -1475,7 +1493,7 @@ msgid ""
 "pertinent\n"
 "                    to your desired cluster type."
 msgstr ""
-"První krok je ujasnění, který typ\n"
+"První krok je volba, který typ\n"
 "                    clusteru chcete spustit.  V závislosti na nastavení "
 "vašeho\n"
 "                    systému můžete mít k dispozici několik možností.\n"
@@ -1483,17 +1501,17 @@ msgstr ""
 "seznamu\n"
 "                    zásuvných modulů pro zpracování dat.  Zde budete moci\n"
 "                    zvolit zásuvný modul spolu s číslem verze.\n"
-"                    Když toto zvolíte dopředu, následující kroky pro "
+"                    Když jej zvolíte dopředu, následující kroky pro "
 "vytvoření\n"
 "                    clusteru se budou soustředit pouze na volby související "
 "s\n"
-"                    typem vašeho požadovaného clusteru."
+"                    typem požadovaného clusteru."
 
 msgid "This Cluster Template will be created for:"
 msgstr "Tato šablona clusteru bude vytvořena pro:"
 
 msgid "This Cluster will be started with:"
-msgstr "Tento cluster bude spuštěn takto:"
+msgstr "Cluster bude spuštěn takto:"
 
 msgid "This Node Group Template will be created for:"
 msgstr "Tato šablona skupiny uzlu bude vytvořena pro:"
@@ -1508,10 +1526,10 @@ msgid "URL"
 msgstr "URL"
 
 msgid "Unable to create job binary"
-msgstr "Nelze vytvořit binární soubor úkolu"
+msgstr "Nelze vytvořit binární soubor úlohy"
 
 msgid "Unable to create new cluster for job."
-msgstr "Nelze vytvořit nový cluster pro úkol."
+msgstr "Nelze vytvořit nový cluster pro úlohu."
 
 msgid "Unable to create the cluster"
 msgstr "Nelze vytvořit cluster"
@@ -1541,13 +1559,13 @@ msgid "Unable to fetch clusters."
 msgstr "Nelze získat clustery."
 
 msgid "Unable to fetch data source list"
-msgstr "Nelze získat seznam zdrojů dat."
+msgstr "Nelze získat seznam datových zdrojů."
 
 msgid "Unable to fetch data sources."
-msgstr "Nelze získat zdroje dat."
+msgstr "Nelze získat datové zdroje."
 
 msgid "Unable to fetch flavor for template."
-msgstr "Nelze získat flavor pro šablonu."
+msgstr "Nelze získat typ pro šablonu."
 
 msgid "Unable to fetch floating ip pools."
 msgstr "Nelze získat zásoby plovoucích ip adres."
@@ -1559,23 +1577,23 @@ msgid "Unable to fetch instance details."
 msgstr "Nelze získat podrobnosti instance."
 
 msgid "Unable to fetch job binary list"
-msgstr "Nelze získat seznam binárních souborů úkolu."
+msgstr "Nelze získat seznam binárních souborů úlohy."
 
 msgid "Unable to fetch job binary list."
-msgstr "Nelze získat seznam binárních souborů úkolu."
+msgstr "Nelze získat seznam binárních souborů úlohy."
 
 #, python-format
 msgid "Unable to fetch job binary: %(exc)s"
-msgstr "Nelze získat binární soubor úkolu: %(exc)s"
+msgstr "Nelze získat binární soubor úlohy: %(exc)s"
 
 msgid "Unable to fetch job list"
-msgstr "Nelze získat seznam úkolu"
+msgstr "Nelze získat seznam úloh"
 
 msgid "Unable to fetch job template list"
-msgstr "Nelze získat seznam šablon úkolu"
+msgstr "Nelze získat seznam šablon úlohy"
 
 msgid "Unable to fetch jobs."
-msgstr "Nelze získat úkoly."
+msgstr "Nelze získat úlohy."
 
 msgid "Unable to fetch keypair choices."
 msgstr "Nelze získat seznam klíčů."
@@ -1608,7 +1626,7 @@ msgid "Unable to fetch the image details"
 msgstr "Nelze získat podrobnosti obrazu"
 
 msgid "Unable to generate process choices."
-msgstr "Nelze vytvořit možnosti procesu."
+msgstr "Nelze vygenerovat volby procesu."
 
 msgid "Unable to get node group details."
 msgstr "Nelze získat podrobnosti skupiny uzlů."
@@ -1620,13 +1638,13 @@ msgid "Unable to get volume type list."
 msgstr "Nelze získat seznam typů svazků."
 
 msgid "Unable to launch job."
-msgstr "Nelze spustit úkol."
+msgstr "Nelze spustit úlohu."
 
 msgid "Unable to populate anti-affinity processes."
 msgstr "Nelze zaplnit procesy proti slučivosti."
 
 msgid "Unable to process plugin tags"
-msgstr "Nelze zpracovat značky zásuvného modulu"
+msgstr "Nelze zpracovat tagy zásuvného modulu"
 
 msgid "Unable to retrieve data processing plugins."
 msgstr "Nelze získat zásuvné moduly zpracování dat."
@@ -1641,19 +1659,19 @@ msgstr "Nelze získat podrobnosti šablony clusteru \"%s\"."
 
 #, python-format
 msgid "Unable to retrieve details for data source \"%s\"."
-msgstr "Nelze získat podrobnosti zdroje dat \"%s\"."
+msgstr "Nelze získat podrobnosti datového zdroje \"%s\"."
 
 #, python-format
 msgid "Unable to retrieve details for job \"%s\"."
-msgstr "Nelze získat podrobnosti úkolu \"%s\"."
+msgstr "Nelze získat podrobnosti úlohy \"%s\"."
 
 #, python-format
 msgid "Unable to retrieve details for job binary \"%s\"."
-msgstr "Nelze získat podrobnosti binárního souboru úkolu \"%s\"."
+msgstr "Nelze získat podrobnosti binárního souboru úlohy \"%s\"."
 
 #, python-format
 msgid "Unable to retrieve details for job template \"%s\"."
-msgstr "Nelze získat podrobnosti šablony úkolu \"%s\"."
+msgstr "Nelze získat podrobnosti šablony úlohy \"%s\"."
 
 #, python-format
 msgid "Unable to retrieve details for node group template \"%s\"."
@@ -1668,7 +1686,7 @@ msgstr "Nelze získat obrazy pomocí filtru %s."
 
 #, python-format
 msgid "Unable to retrieve job binary \"%s\"."
-msgstr "Nelze získat binární soubor úkolu \"%s\"."
+msgstr "Nelze získat binární soubor úlohy \"%s\"."
 
 msgid "Unable to retrieve networks."
 msgstr "Nelze získat sítě."
@@ -1684,13 +1702,13 @@ msgid "Unable to set cluster type"
 msgstr "Nelze nastavit typ clusteru"
 
 msgid "Unable to set job type"
-msgstr "Nelze nastavit typ úkolu"
+msgstr "Nelze nastavit typ úlohy"
 
 msgid "Unable to set node group template"
 msgstr "Nelze nastavit šablonu skupiny uzlu"
 
 msgid "Unable to update job binary"
-msgstr "Nelze aktualizovat binární soubor úkolu"
+msgstr "Nelze aktualizovat binární soubor úlohy"
 
 msgid "Unable to update row"
 msgstr "Nelze aktualizovat řádek"
@@ -1699,14 +1717,14 @@ msgid "Unable to upload cluster template file"
 msgstr "Nelze nahrát soubor šablony clusteru"
 
 msgid "Unable to upload job binary"
-msgstr "Nelze nahrát binární soubor úkolu"
+msgstr "Nelze nahrát binární soubor úlohy"
 
 msgid "Unknown"
 msgstr "Neznámý"
 
 msgid "Unnecessary tags may be removed by clicking a cross near tag's name."
 msgstr ""
-"Nepotřebné značky mohou být odstraněny kliknutím na křížek u jejich jména."
+"Nepotřebné tagy mohou být odstraněny kliknutím na křížek u jejich jména."
 
 msgid "Unregister Image"
 msgid_plural "Unregister Images"
@@ -1733,7 +1751,7 @@ msgid "Updated"
 msgstr "Aktualizováno"
 
 msgid "Updated time"
-msgstr "Čas aktualizace"
+msgstr "Aktualizováno"
 
 msgid "Upload"
 msgstr "Nahrát"
@@ -1747,11 +1765,17 @@ msgstr "Nahrát  šablonu"
 msgid "Upload a new file"
 msgstr "Nahrát nový soubor"
 
+msgid "Uptime"
+msgstr "Uptime"
+
 msgid "Url"
 msgstr "Url"
 
+msgid "Use Data Source Substitution for Names and UUIDs"
+msgstr "Pro název a UUID použít substituci datového zdroje"
+
 msgid "Use HBase Common library"
-msgstr "Použít společnou knihovnu HBase"
+msgstr "Použít HBase common library"
 
 msgid "Use anti-affinity groups for processes"
 msgstr "Použít skupiny proti slučivosti pro procesy"
@@ -1761,6 +1785,9 @@ msgstr "Použít skupiny proti slučivosti pro:"
 
 msgid "Use auto-configuration"
 msgstr "Použít automatické nastavení"
+
+msgid "User"
+msgstr "Uživatel"
 
 msgid "User Name"
 msgstr "Uživatelské jméno"
@@ -1824,26 +1851,27 @@ msgstr ""
 "                        vašeho clusteru. Při kliknutí na odkaz níže je\n"
 "                        třeba váš cluster pojmenovat, zvolit jeho šablonu,\n"
 "                        a zvolit obraz použitý k sestavení vašich instancí.\n"
-"                        Po kliknutí na \"Vytvořit\", bude vaše instance "
-"spuštěna\n"
-"                        Za pár minut by měl být váš cluster v provozu.\n"
+"                        Po kliknutí na \"Vytvořit\" budou instance spuštěny "
+"a \n"
+"                        za pár minut by měl být cluster v provozu.\n"
 "                        \n"
 "                        "
 
 msgid "You may also add any custom tag."
-msgstr "Můžete také přidat jakékoli vlastní značky."
+msgstr "Můžete také přidat jakékoli vlastní tagy."
 
 msgid "You may also enter an optional description for your Data Source."
-msgstr "Můžete také zadat dodatečný popis pro váš zdroj dat."
+msgstr "Můžete také zadat dodatečný popis pro váš datový zdroj."
 
 msgid "You may also enter an optional description for your job binary."
-msgstr "Můžete také zadat jeho dodatečný popis."
+msgstr "Můžete také zadat dodatečný popis pro binární soubor úlohy."
 
 msgid "You may also enter an optional description for your job template."
-msgstr "Můžete také zadat dodatečný popis pro šablonu úkolů."
+msgstr "Můžete také zadat dodatečný popis pro šablonu úloh."
 
 msgid "You may need to enter the username and password for your Data Source."
-msgstr "Je možné, že váš zdroj dat bude vyžadovat uživatelské jméno a heslo."
+msgstr ""
+"Je možné, že váš datový zdroj bude vyžadovat uživatelské jméno a heslo."
 
 msgid "You may set <b>cluster</b> scoped configurations on corresponding tabs."
 msgstr ""
@@ -1854,8 +1882,15 @@ msgid ""
 "You must choose a flavor to determine the size (VCPUs, memory and storage) "
 "of all launched VMs."
 msgstr ""
-"Pro zjištění velikosti všech spuštěných virtuálních strojů musíte zvolit "
-"konfiguraci (VCPU, paměť a úložiště)."
+"Pro zjištění velikosti všech spuštěných virtuálních strojů musíte zvolit typ "
+"(VCPU, paměť a úložiště)."
+
+msgid ""
+"You've chosen a cluster that is in 'Error' state. Appropriate execution of "
+"the job can't be guaranteed."
+msgstr ""
+"Vybrali jste clusteru, který je v chybovém stavu. Nelze zaručit řádný výkon "
+"úlohy."
 
 msgid "cluster"
 msgstr "cluster"
@@ -1864,13 +1899,13 @@ msgid "cluster template"
 msgstr "šablona clusteru"
 
 msgid "data source"
-msgstr "zdroj dat"
+msgstr "datový zdroj"
 
 msgid "job"
-msgstr "úkol"
+msgstr "úloha"
 
 msgid "job binary"
-msgstr "binární soubor úkolu"
+msgstr "binární soubor úlohy"
 
 msgid "no processes"
 msgstr "žádné procesy"

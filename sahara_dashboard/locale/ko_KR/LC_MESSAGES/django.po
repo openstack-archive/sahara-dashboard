@@ -1,9 +1,9 @@
 # Andreas Jaeger <jaegerandi@gmail.com>, 2016. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: sahara-dashboard 4.0.0.0rc2.dev36\n"
+"Project-Id-Version: sahara-dashboard 5.0.0.0b2.dev23\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2016-04-30 19:14+0000\n"
+"POT-Creation-Date: 2016-06-17 21:09+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -62,14 +62,8 @@ msgstr "추가"
 msgid "Add Node Group"
 msgstr "노드 그룹 추가"
 
-msgid "Add custom tag"
-msgstr "사용자 정의 태그 추가"
-
 msgid "Add libraries to your job template."
 msgstr "작업 템플릿에 라이브러리를 추가하십시오."
-
-msgid "Add plugin tags"
-msgstr "플러그인 태그 추가"
 
 msgid "Anti-affinity enabled for"
 msgstr "Anti-affinity 사용"
@@ -1157,10 +1151,6 @@ msgstr "Reducer"
 msgid "Register Image"
 msgstr "이미지 등록"
 
-msgid ""
-"Register tags required for the Plugin with specified Data Processing Version"
-msgstr "지정된 데이터 프로세싱 버전으로 플러그인에 필요한 태그 등록"
-
 msgid "Relaunch On Existing Cluster"
 msgstr "기존 클러스터에서 재실행"
 
@@ -1406,17 +1396,6 @@ msgstr "Swift"
 
 msgid "Tags"
 msgstr "태그"
-
-msgid ""
-"Tags are used for filtering images suitable for each plugin and each Data "
-"Processing version.\n"
-"        To add required tags, select a plugin and a Data Processing version "
-"and click &quot;Add plugin tags&quot; button."
-msgstr ""
-"태그는 각 플러그인과 각 데이터 프로세싱 버전에 적합한 이미지를 필터링하는데 "
-"사용됩니다.\n"
-"        필수 태그를 추가하려면, 플러그인과 데이터 프로세싱 버전을 선택하고 "
-"&quot;플러그인 태그 추가&quot; 버튼을 누릅니다."
 
 msgid "Template"
 msgstr "템플릿"
