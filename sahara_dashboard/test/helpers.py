@@ -11,6 +11,8 @@
 #    License for the specific language governing permissions and limitations
 #    under the License.
 
+import mock
+
 from saharaclient import client as sahara_client
 
 from openstack_dashboard.test import helpers
@@ -27,6 +29,9 @@ class SaharaTestsMixin(object):
     def _setup_test_data(self):
         super(SaharaTestsMixin, self)._setup_test_data()
         utils.load_test_data(self)
+        self.policy_patcher = mock.patch(
+            'openstack_auth.policy.check', lambda action, request: True)
+        self.policy_check = self.policy_patcher.start()
 
 
 class TestCase(SaharaTestsMixin, helpers.TestCase):
