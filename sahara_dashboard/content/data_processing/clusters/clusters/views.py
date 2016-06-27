@@ -144,7 +144,8 @@ class ClusterEventsView(django_base.View):
                 step["duration"] = time_helpers.get_duration(
                     step["created_at"],
                     step["updated_at"])
-
+                step['started_at'] = time_helpers.to_time_zone(
+                    step["created_at"], localize=True)
                 result = _("In progress")
                 step["completed"] = successful_events_count
 
