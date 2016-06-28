@@ -1,0 +1,34 @@
+# This is a cross-platform list tracking distribution packages needed by tests;
+# see http://docs.openstack.org/infra/bindep/ for additional information.
+
+build-essential [platform:dpkg]
+gawk
+gettext
+graphviz
+language-pack-en [platform:ubuntu]
+libevent-dev [platform:dpkg]
+libevent-devel [platform:rpm]
+libffi-dev [platform:dpkg]
+libffi-devel [platform:rpm]
+libjpeg-dev [platform:dpkg]
+libjpeg-turbo-devel [platform:rpm]
+libsasl2-dev [platform:dpkg]
+libselinux-python [platform:rpm]
+libsqlite3-dev [platform:dpkg]
+libuuid-devel [platform:rpm]
+locales [platform:debian]
+pkg-config [platform:dpkg]
+pkgconfig [platform:rpm]
+python-dev [platform:dpkg]
+python-devel [platform:rpm]
+python-lxml
+python-zmq
+python3-all-dev [platform:ubuntu !platform:ubuntu-precise]
+python3-dev [platform:dpkg]
+python3-devel [platform:fedora]
+python3.4 [platform:ubuntu-trusty]
+python34-devel [platform:centos]
+python3.5 [platform:ubuntu-xenial]
+uuid-dev [platform:dpkg]
+zlib-devel [platform:rpm]
+zlib1g-dev [platform:dpkg]
