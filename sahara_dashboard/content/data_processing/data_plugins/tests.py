@@ -20,22 +20,19 @@ from sahara_dashboard.test import helpers as test
 
 
 INDEX_URL = reverse(
-    'horizon:project:data_processing.jobs:index')
+    'horizon:project:data_processing.data_plugins:index')
 DETAILS_URL = reverse(
-    'horizon:project:data_processing.jobs:plugin-details', args=['id'])
+    'horizon:project:data_processing.data_plugins:plugin-details', args=['id'])
 
 
 class DataProcessingPluginsTests(test.TestCase):
-    @test.create_stubs({api.sahara: ('job_execution_list',
-                                     'plugin_list', 'job_binary_list',
-                                     'data_source_list',
-                                     'job_list')})
+    @test.create_stubs({api.sahara: ('plugin_list',)})
     def test_index(self):
         api.sahara.plugin_list(IsA(http.HttpRequest)) \
             .AndReturn(self.plugins.list())
         self.mox.ReplayAll()
         res = self.client.get(INDEX_URL)
-        self.assertTemplateUsed(res, 'jobs/index.html')
+        self.assertTemplateUsed(res, 'data_plugins/plugins.html')
         self.assertContains(res, 'vanilla')
         self.assertContains(res, 'plugin')
 
