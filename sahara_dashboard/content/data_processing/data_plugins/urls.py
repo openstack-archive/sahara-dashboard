@@ -20,4 +20,7 @@ urlpatterns = [
     url(r'^$', views.PluginsView.as_view(), name='index'),
     url(r'^(?P<plugin_id>[^/]+)$',
         views.PluginDetailsView.as_view(), name='plugin-details'),
+    url(r'^(?P<plugin_name>[^/]+)/update',
+        views.UpdatePluginView.as_view(),
+        name='update'),
 ]

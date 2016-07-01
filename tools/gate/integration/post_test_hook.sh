@@ -13,6 +13,22 @@ sudo apt-get -y purge firefox
 sudo dpkg -i firefox.deb
 sudo rm firefox.deb
 
+cat >> /tmp/fake_config.json <<EOF
+{
+    "plugin_labels": {
+        "hidden": {
+            "status": false
+        }
+    }
+}
+EOF
+
+source $DEVSTACK_DIR/stackrc
+source $DEVSTACK_DIR/openrc admin demo
+
+openstack dataprocessing plugin update fake /tmp/fake_config.json
+openstack dataprocessing plugin show fake
+
 sudo -H -u stack tox -e py27integration
 retval=$?
 set -e

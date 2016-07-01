@@ -558,3 +558,7 @@ def job_types_list(request):
 
 def verification_update(request, cluster_id, status):
     return client(request).clusters.verification_update(cluster_id, status)
+
+
+def plugin_update(request, plugin_name, values):
+    return client(request).plugins.update(plugin_name, values)
