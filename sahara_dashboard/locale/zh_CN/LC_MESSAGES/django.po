@@ -1,15 +1,16 @@
 # Gaoxiao Zhu <zhu.gaoxiao@h3c.com>, 2016. #zanata
 # Shengjing Zhu <zsj950618@gmail.com>, 2016. #zanata
+# chunhan <chunhan_ryan@163.com>, 2016. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: sahara-dashboard 4.0.1.dev10\n"
+"Project-Id-Version: sahara-dashboard 4.0.2.dev7\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2016-05-15 19:22+0000\n"
+"POT-Creation-Date: 2016-06-27 14:40+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2016-04-09 12:09+0000\n"
-"Last-Translator: Gaoxiao Zhu <zhu.gaoxiao@h3c.com>\n"
+"PO-Revision-Date: 2016-07-01 02:44+0000\n"
+"Last-Translator: chunhan <chunhan_ryan@163.com>\n"
 "Language-Team: Chinese (China)\n"
 "Language: zh-CN\n"
 "X-Generator: Zanata 3.7.3\n"
@@ -386,9 +387,8 @@ msgstr "数据处理插件的详细信息"
 msgid "Data Processing Plugins"
 msgstr "数据处理插件"
 
-#, fuzzy
 msgid "Data Processing internal database"
-msgstr "数据处理内部数据库"
+msgstr "数据处理服务自己内部的数据库"
 
 msgid ""
 "Data Processing provides different storage location options. You may choose "
@@ -578,9 +578,8 @@ msgstr "获取内部二进制文件列表失败"
 msgid "Failed to get list of internal binaries."
 msgstr "获取内部二进制文件列表失败。"
 
-#, fuzzy
 msgid "Failed to get list of shares"
-msgstr "无法获取共享列表"
+msgstr "获取共享列表"
 
 msgid "Failed to update image."
 msgstr "更新镜像失败。"
@@ -628,9 +627,8 @@ msgstr ""
 "“main”对于 MapReduce 或 Java 任务不适用。你必须为\n"
 "这些任务增加一个或更多的“库”。"
 
-#, fuzzy
 msgid "For Object Store job binaries, you must:"
-msgstr "对于对象存储上的任务的二进制文件，你必须："
+msgstr "对于对象存储上的任务执行文件，你必须："
 
 msgid ""
 "For Shell Action jobs, any required files beyond the main script may be "
@@ -690,7 +688,6 @@ msgstr ""
 msgid "Image"
 msgstr "镜像"
 
-#, fuzzy
 msgid "Image Registry"
 msgstr "镜像注册"
 
@@ -729,16 +726,14 @@ msgstr "实例数量"
 msgid "Interface Arguments"
 msgstr "接口参数"
 
-#, fuzzy
 msgid "Internal Binary"
-msgstr "内部二进制文件"
+msgstr "内部可执行文件"
 
 msgid "Internal IP"
 msgstr "内网 IP"
 
-#, fuzzy
 msgid "Internal binary"
-msgstr "内部二进制文件"
+msgstr "内部可执行文件"
 
 msgid "Java"
 msgstr "Java"
@@ -813,10 +808,9 @@ msgstr "启动"
 msgid "Launch Cluster"
 msgstr "启动集群"
 
-#, fuzzy
 msgid "Launch Job"
 msgid_plural "Launch Jobs"
-msgstr[0] "启动任务"
+msgstr[0] "启动作业"
 
 msgid "Launch On Existing Cluster"
 msgstr "在已存在集群上启动"
@@ -864,9 +858,8 @@ msgid "Launched Job"
 msgid_plural "Launched Jobs"
 msgstr[0] "已启动的任务"
 
-#, fuzzy
 msgid "Libs"
-msgstr "Libs"
+msgstr "库"
 
 msgid "Location"
 msgstr "位置"
@@ -874,9 +867,8 @@ msgstr "位置"
 msgid "Main Class"
 msgstr "主类"
 
-#, fuzzy
 msgid "Mains"
-msgstr "Mains"
+msgstr "主方法"
 
 msgid "Management IP"
 msgstr "管理网络 IP"
@@ -887,9 +879,8 @@ msgstr "共享系统(Manila)"
 msgid "MapReduce"
 msgstr "MapReduce"
 
-#, fuzzy
 msgid "Mapper"
-msgstr "Mapper"
+msgstr "映射器"
 
 msgid "Mapping Type"
 msgstr "映射类型"
@@ -1024,9 +1015,8 @@ msgstr "节点组"
 msgid "Node Groups Configuration Overview"
 msgstr "节点组配置概览"
 
-#, fuzzy
 msgid "Node Processes"
-msgstr "节点处理"
+msgstr "运行于节点上服务进程"
 
 msgid "Node group cluster"
 msgstr "节点组集群"
@@ -1148,9 +1138,8 @@ msgstr "只读"
 msgid "Read/Write"
 msgstr "读/写"
 
-#, fuzzy
 msgid "Reducer"
-msgstr "Reducer"
+msgstr "规约器"
 
 msgid "Register Image"
 msgstr "注册镜像"
@@ -1192,7 +1181,6 @@ msgstr "重置任务执行向导"
 msgid "Return Code"
 msgstr "返回代码"
 
-#, fuzzy
 msgid "Run HBase EDP Jobs with common HBase library on HDFS"
 msgstr "在 HDFS 上使用 HBase 公共库来运行 HBase EDP 任务"
 
@@ -1201,21 +1189,17 @@ msgid ""
 "instances."
 msgstr "Sahara 将使用这个节点组中的实例以访问其它集群中的实例。"
 
-#, fuzzy
 msgid "Scale"
-msgstr "规模"
+msgstr "扩展"
 
-#, fuzzy
 msgid "Scale Cluster"
 msgstr "扩展集群"
 
-#, fuzzy
 msgid "Scale cluster operation failed"
-msgstr "扩展集群失败"
+msgstr "扩展集群操作失败"
 
-#, fuzzy
 msgid "Scaled cluster successfully started."
-msgstr "集群扩展成功。"
+msgstr "已扩展的集群启动成功"
 
 msgid "Script name"
 msgstr "脚本名称"
@@ -1238,9 +1222,8 @@ msgstr "选择镜像"
 msgid "Select Node Group Processes"
 msgstr "选择节点组进程"
 
-#, fuzzy
 msgid "Select Shares"
-msgstr "选择共享的"
+msgstr "选择是否共享"
 
 msgid "Select a Node Group Template to add:"
 msgstr "选择一个节点组模板来使用："
@@ -1318,9 +1301,8 @@ msgstr ""
 msgid "Service Configurations"
 msgstr "服务配置"
 
-#, fuzzy
 msgid "Share"
-msgstr "共享"
+msgstr "是否共享"
 
 msgid "Shares"
 msgstr "共享"
@@ -1348,7 +1330,6 @@ msgid ""
 "manage processes on instances."
 msgstr "数据处理过程中，用户名会被用在实例的配置和任务管理上。"
 
-#, fuzzy
 msgid "Start Verification"
 msgid_plural "Start Verifications"
 msgstr[0] "开始验证"
@@ -1357,10 +1338,9 @@ msgctxt "Start time"
 msgid "Started"
 msgstr "已开始"
 
-#, fuzzy
 msgid "Started Verification"
 msgid_plural "Started Verifications"
-msgstr[0] "已开始的验证"
+msgstr[0] "验证已开始"
 
 msgid "Started at"
 msgstr "开始于"
@@ -1489,16 +1469,14 @@ msgstr ""
 "                   以只关注和所选集群类型相\n"
 "                   关的选项。"
 
-#, fuzzy
 msgid "The value of shares must be a list of values"
-msgstr "共享的值必须是列表值"
+msgstr "共享信息的值必须是列表值"
 
 msgid "This Cluster Template will be created for:"
 msgstr "这个集群模板将被创建给："
 
-#, fuzzy
 msgid "This Cluster will be started with:"
-msgstr "这个集群将开始运行："
+msgstr "这个集群将开始启动："
 
 msgid "This Node Group Template will be created for:"
 msgstr "这个节点组模板将被创建给："
@@ -1537,13 +1515,11 @@ msgstr "无法获取集群模板列表"
 msgid "Unable to fetch cluster template."
 msgstr "无法获取集群模板。"
 
-#, fuzzy
 msgid "Unable to fetch cluster to scale"
-msgstr "无法获取集群进行扩展"
+msgstr "无法获取集群信息进行扩展"
 
-#, fuzzy
 msgid "Unable to fetch cluster to scale."
-msgstr "无法获取集群进行扩展。"
+msgstr "无法获取集群信息进行扩展"
 
 msgid "Unable to fetch cluster."
 msgstr "无法获取集群。"
@@ -1633,9 +1609,8 @@ msgstr "无法获取卷类型列表"
 msgid "Unable to launch job."
 msgstr "无法启动任务。"
 
-#, fuzzy
 msgid "Unable to populate anti-affinity processes."
-msgstr "无法给任务启用 anti-affinity。"
+msgstr "无法迁移反关联服务进程。"
 
 msgid "Unable to process plugin tags"
 msgstr "无法编辑插件标签"
@@ -1704,7 +1679,6 @@ msgstr "无法设置节点组模板"
 msgid "Unable to update job binary"
 msgstr "无法更新任务的二进制文件"
 
-#, fuzzy
 msgid "Unable to update row"
 msgstr "无法更新行"
 
@@ -1758,16 +1732,14 @@ msgstr "上传新文件"
 msgid "Url"
 msgstr "Url"
 
-#, fuzzy
 msgid "Use Data Source Substitution for Names and UUIDs"
-msgstr "使用数据源来代替名称和 UUID"
+msgstr "使用名称和 UUID来代替数据源"
 
 msgid "Use HBase Common library"
 msgstr "使用 HBase 公共库"
 
-#, fuzzy
 msgid "Use anti-affinity groups for processes"
-msgstr "为任务使用 anti-affinity 组"
+msgstr "为任务使用反关联节点组"
 
 msgid "Use anti-affinity groups for: "
 msgstr "使用 anti-affinity 组："
@@ -1802,13 +1774,11 @@ msgstr "实例的本地卷"
 msgid "Volumes Availability Zone"
 msgstr "卷的可用域"
 
-#, fuzzy
 msgid "Volumes local to instance"
-msgstr "实例的本地卷"
+msgstr "卷存储挂载到实例的本地存储"
 
-#, fuzzy
 msgid "Volumes per node"
-msgstr "卷/节点"
+msgstr "每个节点的卷存储"
 
 msgid "Volumes size"
 msgstr "卷大小"
