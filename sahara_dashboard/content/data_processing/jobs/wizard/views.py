@@ -31,6 +31,7 @@ class JobExecutionGuideView(horizon_views.APIView):
     def show_data_sources(self):
         try:
             if self.request.session["guide_job_type"] in ["Spark", "Storm",
+                                                          "Storm.Pyleus"
                                                           "Java"]:
                 return False
             return True

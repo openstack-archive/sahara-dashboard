@@ -161,6 +161,7 @@ def _merge_interface_with_configs(interface, job_configs):
 
 class JobConfigAction(workflows.Action):
     MAIN_CLASS = "edp.java.main_class"
+    STORM_PYLEUS_TOPOLOGY_NAME = "topology_name"
     JAVA_OPTS = "edp.java.java_opts"
     EDP_MAPPER = "edp.streaming.mapper"
     EDP_REDUCER = "edp.streaming.reducer"
@@ -193,6 +194,12 @@ class JobConfigAction(workflows.Action):
 
     main_class = forms.CharField(label=_("Main Class"),
                                  required=False)
+
+    topology_name = forms.CharField(
+        label=_("Topology Name"),
+        help_text=_("Use the same topology name as defined in your "
+                    ".yaml file"),
+        required=False)
 
     java_opts = forms.CharField(label=_("Java Opts"),
                                 required=False)
@@ -253,6 +260,9 @@ class JobConfigAction(workflows.Action):
             if self.MAIN_CLASS in edp_configs:
                 self.fields['main_class'].initial = (
                     edp_configs[self.MAIN_CLASS])
+            if self.STORM_PYLEUS_TOPOLOGY_NAME in edp_configs:
+                self.fields['topology_name'].initial = (
+                    edp_configs[self.STORM_PYLEUS_TOPOLOGY_NAME])
             if self.JAVA_OPTS in edp_configs:
                 self.fields['java_opts'].initial = (
                     edp_configs[self.JAVA_OPTS])
@@ -313,6 +323,7 @@ class JobConfigAction(workflows.Action):
                          self.EDP_MAPPER,
                          self.EDP_REDUCER,
                          self.MAIN_CLASS,
+                         self.STORM_PYLEUS_TOPOLOGY_NAME,
                          self.JAVA_OPTS,
                          self.EDP_ADAPT_FOR_OOZIE,
                          self.EDP_ADAPT_SPARK_SWIFT,
@@ -392,6 +403,10 @@ class JobConfig(workflows.Step):
                 context["job_config"]["configs"][
                     JobConfigAction.EDP_ADAPT_SPARK_SWIFT] = (
                     data.get("adapt_spark_swift", True))
+        elif job_type == "Storm.Pyleus":
+            context["job_config"]["configs"][
+                JobConfigAction.STORM_PYLEUS_TOPOLOGY_NAME] = (
+                data.get("topology_name", ""))
         elif job_type == "MapReduce.Streaming":
             context["job_config"]["configs"][JobConfigAction.EDP_MAPPER] = (
                 data.get("streaming_mapper", ""))

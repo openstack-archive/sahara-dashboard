@@ -155,11 +155,11 @@
     }
 
     function hide_unnecessary_fields() {
-      if ($.inArray(job_type, ["Java", "Spark", "Shell", "Storm"]) != -1) {
+      if ($.inArray(job_type, ["Java", "Spark", "Shell", "Storm", "Storm.Pyleus"]) != -1) {
         $("[name=job_input]").closest(".form-group").hide();
         $("[name=job_output]").closest(".form-group").hide();
       }
-      if ($.inArray(job_type, ["Hive", "MapReduce", "MapReduce.Streaming", "Pig", "Shell"]) != -1) {
+      if ($.inArray(job_type, ["Hive", "MapReduce", "MapReduce.Streaming", "Pig", "Shell", "Storm.Pyleus"]) != -1) {
         $("[name=java_opts]").closest(".form-group").hide();
         $("[name=main_class]").closest(".form-group").hide();
       }
@@ -173,6 +173,9 @@
       }
       if (job_type != "Spark") {
         $("[name=adapt_swift_spark]").closest(".form-group").hide();
+      }
+      if (job_type != "Storm.Pyleus") {
+        $("[name=topology_name]").closest(".form-group").hide();
       }
     }
 
