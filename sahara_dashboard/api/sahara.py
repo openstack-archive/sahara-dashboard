@@ -125,15 +125,6 @@ def plugin_get_version_details(request, plugin_name, hadoop_version):
         hadoop_version=hadoop_version)
 
 
-def plugin_convert_to_template(request, plugin_name, hadoop_version,
-                               template_name, file_content):
-    return client(request).plugins.convert_to_cluster_template(
-        plugin_name=plugin_name,
-        hadoop_version=hadoop_version,
-        template_name=template_name,
-        filecontent=file_content)
-
-
 def nodegroup_template_create(request, name, plugin_name, hadoop_version,
                               flavor_id, description=None,
                               volumes_per_node=None, volumes_size=None,
