@@ -16,8 +16,11 @@ from django.utils.translation import ungettext_lazy
 from saharaclient.api import base as api_base
 
 from horizon import tables
+from horizon.tabs import base as tabs_base
 
 from sahara_dashboard.api import sahara as saharaclient
+from sahara_dashboard.content.data_processing \
+    import tables as sahara_table
 from sahara_dashboard.content.data_processing.utils \
     import acl as acl_utils
 
@@ -100,7 +103,8 @@ class MakeUnProtected(acl_utils.MakeUnProtected):
         saharaclient.job_binary_update(request, datum_id, update_kwargs)
 
 
-class JobBinariesTable(tables.DataTable):
+class JobBinariesTable(sahara_table.SaharaPaginateTabbedTable):
+    tab_name = 'job_tabs%sjob_binaries_tab' % tabs_base.SEPARATOR
     name = tables.Column(
         "name",
         verbose_name=_("Name"),

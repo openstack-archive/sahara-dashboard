@@ -20,8 +20,11 @@ from saharaclient.api import base as api_base
 from horizon import messages
 from horizon import tables
 from horizon.tables import base as tables_base
+from horizon.tabs import base as tabs_base
 
 from sahara_dashboard.api import sahara as saharaclient
+from sahara_dashboard.content.data_processing \
+    import tables as sahara_table
 from sahara_dashboard.content.data_processing.utils \
     import acl as acl_utils
 from sahara_dashboard.content.data_processing.utils import helpers
@@ -216,7 +219,9 @@ def get_health_filter(health):
                             {'status': health, 'label': label})
 
 
-class ClustersTable(tables.DataTable):
+class ClustersTable(sahara_table.SaharaPaginateTabbedTable):
+
+    tab_name = 'cluster_tabs%sclusters_tab' % tabs_base.SEPARATOR
 
     class UptimeColumn(tables.Column):
         def get_data(self, cluster):

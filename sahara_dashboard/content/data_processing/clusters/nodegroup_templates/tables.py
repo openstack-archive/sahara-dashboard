@@ -16,8 +16,11 @@ from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ungettext_lazy
 
 from horizon import tables
+from horizon.tabs import base as tabs_base
 
 from sahara_dashboard.api import sahara as saharaclient
+from sahara_dashboard.content.data_processing \
+    import tables as sahara_table
 from sahara_dashboard.content.data_processing.utils \
     import acl as acl_utils
 
@@ -107,7 +110,10 @@ class MakeUnProtected(acl_utils.MakeUnProtected):
             request, datum_id, **update_kwargs)
 
 
-class NodegroupTemplatesTable(tables.DataTable):
+class NodegroupTemplatesTable(sahara_table.SaharaPaginateTabbedTable):
+
+    tab_name = 'cluster_tabs%snode_group_templates_tab' % tabs_base.SEPARATOR
+
     name = tables.Column(
         "name",
         verbose_name=_("Name"),

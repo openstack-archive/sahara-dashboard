@@ -11,7 +11,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from horizon import exceptions
 from horizon import tabs
+from horizon.tabs import base
+
+from sahara_dashboard import utils as u
 
 
 class SaharaTableTab(tabs.TableTab):
@@ -42,3 +46,32 @@ class SaharaTableTab(tabs.TableTab):
             'changed': changed
         }
         return filter_info
+
+
+class PaginationFriendlyTabGroup(tabs.TabGroup):
+    def load_tab_data(self):
+        """Preload all data that for the tabs that will be displayed."""
+        request_without_marker = u.delete_pagination_params_from_request(
+            self.request, save_limit=True)
+        for tab in self._tabs.values():
+            current_tab_id = tab.slug
+
+            tab_request = self.request.GET.get('tab')
+            request_tab_id = None
+
+            if tab_request:
+                request_tab_id = tab_request.split(base.SEPARATOR)[1]
+            if request_tab_id and current_tab_id != request_tab_id:
+                try:
+                    tab.request = request_without_marker
+                    tab._data = tab.get_context_data(request_without_marker)
+                except Exception:
+                    tab._data = False
+                    exceptions.handle(request_without_marker)
+
+            if tab.load and not tab.data_loaded:
+                try:
+                    tab._data = tab.get_context_data(self.request)
+                except Exception:
+                    tab._data = False
+                    exceptions.handle(self.request)
