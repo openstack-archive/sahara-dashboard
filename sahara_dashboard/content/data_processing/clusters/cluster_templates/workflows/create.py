@@ -21,6 +21,7 @@ from horizon import exceptions
 from horizon import forms
 from horizon import workflows
 
+from sahara_dashboard.api import designate as designateclient
 from sahara_dashboard.api import manila as manilaclient
 from sahara_dashboard.api import sahara as saharaclient
 from sahara_dashboard.content.data_processing.utils import helpers as helpers
@@ -275,6 +276,40 @@ class SelectClusterShares(workflows.Step):
         return context
 
 
+class SelectDnsDomainsAction(workflows.Action):
+    domain_name = forms.DynamicChoiceField(
+        label=_("Domain Name"),
+        required=False
+    )
+
+    def __init__(self, request, *args, **kwargs):
+        super(SelectDnsDomainsAction, self).__init__(request, *args, **kwargs)
+
+    def _get_domain_choices(self, request):
+        domains = designateclient.get_domain_names(request)
+        choices = [(None, _('No domain is specified'))]
+        choices.extend(
+            [(domain.get('name'), domain.get('name')) for domain in domains])
+        return choices
+
+    def populate_domain_name_choices(self, request, context):
+        return self._get_domain_choices(request)
+
+    class Meta(object):
+        name = _("DNS Domain Names")
+        help_text_template = (
+            "cluster_templates/_config_domain_names_help.html")
+
+
+class SelectDnsDomains(workflows.Step):
+    action_class = SelectDnsDomainsAction
+
+    def contribute(self, data, context):
+        for k, v in data.items():
+            context["dns_" + k] = v
+        return context
+
+
 class ConfigureClusterTemplate(whelpers.ServiceParametersWorkflow,
                                whelpers.StatusFormatMixin):
     slug = "configure_cluster_template"
@@ -302,6 +337,9 @@ class ConfigureClusterTemplate(whelpers.ServiceParametersWorkflow,
 
         if saharaclient.base.is_service_enabled(request, 'share'):
             ConfigureClusterTemplate._register_step(self, SelectClusterShares)
+
+        if saharaclient.base.is_service_enabled(request, 'dns'):
+            ConfigureClusterTemplate._register_step(self, SelectDnsDomains)
 
         self._populate_tabs(general_parameters, service_parameters)
 
@@ -353,6 +391,10 @@ class ConfigureClusterTemplate(whelpers.ServiceParametersWorkflow,
             if "ct_shares" in context:
                 ct_shares = context["ct_shares"]
 
+            domain = context.get('dns_domain_name', None)
+            if domain == 'None':
+                domain = None
+
             # TODO(nkonovalov): Fix client to support default_image_id
             saharaclient.cluster_template_create(
                 request,
@@ -366,7 +408,8 @@ class ConfigureClusterTemplate(whelpers.ServiceParametersWorkflow,
                 use_autoconfig=context['general_use_autoconfig'],
                 shares=ct_shares,
                 is_public=context['general_is_public'],
-                is_protected=context['general_is_protected']
+                is_protected=context['general_is_protected'],
+                domain_name=domain
             )
 
             hlps = helpers.Helpers(request)

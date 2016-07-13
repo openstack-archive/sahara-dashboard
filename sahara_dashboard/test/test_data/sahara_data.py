@@ -215,7 +215,8 @@ def data(TEST):
         "shares": [],
         "plugin_name": "vanilla",
         "tenant_id": "429ad8447c2d47bc8e0382d244e1d1df",
-        "updated_at": None
+        "updated_at": None,
+        "domain_name": None
     }
 
     ct1 = cluster_templates.ClusterTemplate(

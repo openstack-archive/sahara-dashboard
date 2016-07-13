@@ -48,6 +48,9 @@ class EditClusterTemplate(copy_flow.CopyClusterTemplate):
                     fields["cluster_template_id"] = forms.CharField(
                         widget=forms.HiddenInput(),
                         initial=self.cluster_template_id)
+                elif isinstance(step, create_flow.SelectDnsDomains):
+                    fields = step.action.fields
+                    fields["domain_name"].initial = self.template.domain_name
         except Exception:
             exceptions.handle(request,
                               _("Unable to fetch template to edit."))
@@ -82,6 +85,10 @@ class EditClusterTemplate(copy_flow.CopyClusterTemplate):
             if "ct_shares" in context:
                 ct_shares = context["ct_shares"]
 
+            domain = context.get('dns_domain_name', None)
+            if domain == 'None':
+                domain = None
+
             saharaclient.cluster_template_update(
                 request=request,
                 ct_id=self.cluster_template_id,
@@ -95,7 +102,8 @@ class EditClusterTemplate(copy_flow.CopyClusterTemplate):
                 use_autoconfig=context['general_use_autoconfig'],
                 shares=ct_shares,
                 is_public=context['general_is_public'],
-                is_protected=context['general_is_protected']
+                is_protected=context['general_is_protected'],
+                domain_name=domain
             )
             return True
         except exceptions.Conflict as e:

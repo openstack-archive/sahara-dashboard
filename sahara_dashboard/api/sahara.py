@@ -233,9 +233,9 @@ def nodegroup_update_acl_rules(request, nid,
 def cluster_template_create(request, name, plugin_name, hadoop_version,
                             description=None, cluster_configs=None,
                             node_groups=None, anti_affinity=None,
-                            net_id=None, use_autoconfig=None,
-                            shares=None,
-                            is_public=None, is_protected=None):
+                            net_id=None, use_autoconfig=None, shares=None,
+                            is_public=None, is_protected=None,
+                            domain_name=None):
     return client(request).cluster_templates.create(
         name=name,
         plugin_name=plugin_name,
@@ -248,7 +248,9 @@ def cluster_template_create(request, name, plugin_name, hadoop_version,
         use_autoconfig=use_autoconfig,
         shares=shares,
         is_public=is_public,
-        is_protected=is_protected)
+        is_protected=is_protected,
+        domain_name=domain_name
+    )
 
 
 def cluster_template_list(request, search_opts=None):
@@ -268,7 +270,8 @@ def cluster_template_update(request, ct_id, name, plugin_name,
                             cluster_configs=None, node_groups=None,
                             anti_affinity=None, net_id=None,
                             use_autoconfig=None, shares=None,
-                            is_public=None, is_protected=None):
+                            is_public=None, is_protected=None,
+                            domain_name=None):
     try:
         template = client(request).cluster_templates.update(
             cluster_template_id=ct_id,
@@ -283,7 +286,8 @@ def cluster_template_update(request, ct_id, name, plugin_name,
             use_autoconfig=use_autoconfig,
             shares=shares,
             is_public=is_public,
-            is_protected=is_protected
+            is_protected=is_protected,
+            domain_name=domain_name
         )
 
     except APIException as e:

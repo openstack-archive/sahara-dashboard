@@ -1,0 +1,3 @@
+---
+features:
+  - Added integration with Designate for hostname resolution.
