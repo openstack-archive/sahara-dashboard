@@ -32,14 +32,6 @@ class ClusterTemplatesFilterAction(tables.FilterAction):
                       ('description', _("Description")))
 
 
-class UploadFile(tables.LinkAction):
-    name = 'upload_file'
-    verbose_name = _("Upload Template")
-    url = 'horizon:project:data_processing.clusters:upload_file'
-    classes = ("btn-launch", "ajax-modal")
-    icon = "upload"
-
-
 class CreateCluster(tables.LinkAction):
     name = "create cluster"
     verbose_name = _("Launch Cluster")
@@ -159,8 +151,7 @@ class ClusterTemplatesTable(tables.DataTable):
     class Meta(object):
         name = "cluster_templates"
         verbose_name = _("Cluster Templates")
-        table_actions = (UploadFile,
-                         CreateClusterTemplate,
+        table_actions = (CreateClusterTemplate,
                          ConfigureClusterTemplate,
                          DeleteTemplate,
                          ClusterTemplatesFilterAction,)

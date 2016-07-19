@@ -12,19 +12,15 @@
 # limitations under the License.
 
 from django.core.urlresolvers import reverse
-from django.core.urlresolvers import reverse_lazy
 from django.utils.translation import ugettext_lazy as _
 
 from horizon import exceptions
-from horizon import forms
 from horizon import tables
 from horizon import tabs
 from horizon.utils import memoized
 from horizon import workflows
 
 from sahara_dashboard.api import sahara as saharaclient
-from sahara_dashboard.content.data_processing.clusters. \
-    cluster_templates import forms as cluster_forms
 import sahara_dashboard.content.data_processing.clusters. \
     cluster_templates.tables as ct_tables
 import sahara_dashboard.content.data_processing.clusters. \
@@ -76,14 +72,6 @@ class ClusterTemplateDetailsView(tabs.TabView):
     def get_redirect_url():
         return reverse("horizon:project:data_processing."
                        "clusters:cluster-templates-tab")
-
-
-class UploadFileView(forms.ModalFormView):
-    form_class = cluster_forms.UploadFileForm
-    template_name = 'cluster_templates/upload_file.html'
-    success_url = reverse_lazy(
-        'horizon:project:data_processing.clusters:cluster-templates-tab')
-    page_title = _("Upload Template")
 
 
 class CreateClusterTemplateView(workflows.WorkflowView):
