@@ -14,7 +14,6 @@
 from django.conf import urls
 import openstack_dashboard.urls
 
-urlpatterns = urls.patterns(
-    '',
+urlpatterns = [
     urls.url(r'', urls.include(openstack_dashboard.urls))
-)
+]
