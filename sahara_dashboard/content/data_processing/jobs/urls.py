@@ -17,8 +17,6 @@ from django.conf.urls import url
 import sahara_dashboard.content.data_processing. \
     jobs.views as views
 import sahara_dashboard.content.data_processing. \
-    jobs.data_plugins.views as plugin_views
-import sahara_dashboard.content.data_processing. \
     jobs.job_binaries.views as job_binary_views
 import sahara_dashboard.content.data_processing. \
     jobs.data_sources.views as data_source_views
@@ -79,9 +77,6 @@ urlpatterns = patterns('',
                        url(r'^data-source/(?P<data_source_id>[^/]+)$',
                            data_source_views.DataSourceDetailsView.as_view(),
                            name='ds-details'),
-                       url(r'^plugin/(?P<plugin_id>[^/]+)$',
-                           plugin_views.PluginDetailsView.as_view(),
-                           name='plugin-details'),
                        url(r'^jobex_guide$',
                            job_wizard_views.JobExecutionGuideView.as_view(),
                            name='jobex_guide'),

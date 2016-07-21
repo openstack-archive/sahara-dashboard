@@ -18,10 +18,10 @@ from horizon import tables
 from horizon import tabs
 
 from sahara_dashboard.api import sahara as saharaclient
-import sahara_dashboard.content.data_processing.jobs. \
-    data_plugins.tables as p_tables
-import sahara_dashboard.content.data_processing.jobs. \
-    data_plugins.tabs as p_tabs
+import sahara_dashboard.content.data_processing.data_plugins. \
+    tables as p_tables
+import sahara_dashboard.content.data_processing.data_plugins. \
+    tabs as p_tabs
 
 
 class PluginsView(tables.DataTableView):

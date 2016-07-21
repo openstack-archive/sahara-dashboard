@@ -21,7 +21,7 @@ class PluginsTable(tables.DataTable):
     title = tables.Column("title",
                           verbose_name=_("Title"),
                           link=("horizon:project:data_processing."
-                                "jobs:plugin-details"))
+                                "data_plugins:plugin-details"))
 
     versions = tables.Column("versions",
                              verbose_name=_("Supported Versions"),
