@@ -71,8 +71,13 @@ class GeneralTab(tabs.Tab):
                     if str(val).startswith(('http://', 'https://')):
                         cluster.info[info_key][key] = build_link(val)
 
-            base_image = glance.image_get(request,
-                                          cluster.default_image_id)
+            try:
+                base_image = glance.image_get(request,
+                                              cluster.default_image_id)
+            except Exception:
+                exceptions.handle(
+                    request, _("Unable to fetch base image details"))
+                base_image = {}
 
             if getattr(cluster, 'cluster_template_id', None):
                 cluster_template = saharaclient.safe_call(
@@ -80,12 +85,16 @@ class GeneralTab(tabs.Tab):
                     cluster.cluster_template_id)
             else:
                 cluster_template = None
-
-            if getattr(cluster, 'neutron_management_network', None):
-                net_id = cluster.neutron_management_network
-                network = neutron.network_get(request, net_id)
-                net_name = network.name_or_id
-            else:
+            try:
+                if getattr(cluster, 'neutron_management_network', None):
+                    net_id = cluster.neutron_management_network
+                    network = neutron.network_get(request, net_id)
+                    net_name = network.name_or_id
+                else:
+                    net_name = None
+            except Exception:
+                exceptions.handle(
+                    request, _("Unable to fetch network details"))
                 net_name = None
 
             cluster_info.update({"cluster": cluster,
