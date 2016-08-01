@@ -1,6 +1,6 @@
 {% load i18n sizeformat %}
 <h3>{% trans "Cluster Configuration Overview" %}</h3>
-<div class="status row detail">
+<div class="status detail">
   <dl class="well">
     {% if cluster.cluster_configs %}
       <dd>
@@ -23,7 +23,7 @@
   </dl>
 </div>
 <h3>{% trans "Node Groups Configuration Overview" %}</h3>
-<div class="status row detail">
+<div class="status detail">
   {% for node_group in cluster.node_groups %}
     <dl class="well">
       <h4>{% blocktrans with node_group_name=node_group.name %}Node Group Name: {{ node_group_name }}{% endblocktrans %}</h4>
