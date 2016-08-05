@@ -133,6 +133,7 @@ horizon.job_interface_arguments = {
                 replace(/\$required/g, required).
                 replace(/\$default_value/g, default_value);
         this.job_interface.find("div:last").after(tmp);
+        $("#argument_value_type_" + id).val(value_type.toLowerCase().replace(" ", "_"));
         this.job_interface.show();
         this.set_argument_ids();
     },
