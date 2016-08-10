@@ -1,9 +1,9 @@
 # Andreas Jaeger <jaegerandi@gmail.com>, 2016. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: sahara-dashboard 5.0.0.0b2.dev23\n"
+"Project-Id-Version: sahara-dashboard 5.0.0.0b3.dev24\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2016-06-17 21:09+0000\n"
+"POT-Creation-Date: 2016-08-08 15:40+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -200,9 +200,6 @@ msgstr "클러스터 템플릿 %s이(가) 업데이트됨"
 
 msgid "Cluster Template Configuration Overview"
 msgstr "클러스터 템플릿 구성 개요"
-
-msgid "Cluster Template Name"
-msgstr "클러스터 템플릿 이름"
 
 #, python-format
 msgid "Cluster Template copy %s created"
@@ -634,10 +631,6 @@ msgid ""
 msgstr ""
 "Shell Action 작업의 경우 기본 스크립트 이외의 필수 파일을 \"라이브러리\"로 추"
 "가할 수 있습니다."
-
-msgid ""
-"For Spark and Shell jobs, only a main is required, \"libs\" are optional."
-msgstr "Spark와 Shell 작업에서는 기본만 필요하며, \"libs\"는 선택 사항입니다."
 
 msgid "General Info"
 msgstr "일반 정보"
@@ -1683,9 +1676,6 @@ msgstr "작업 바이너리를 업데이트할 수 없음"
 
 msgid "Unable to update row"
 msgstr "행을 업데이트할 수 없음"
-
-msgid "Unable to upload cluster template file"
-msgstr "클러스터 템플릿 파일을 업로드할 수 없음"
 
 msgid "Unable to upload job binary"
 msgstr "작업 바이너리를 업로드할 수 없음"

@@ -1,9 +1,9 @@
 # Andreas Jaeger <jaegerandi@gmail.com>, 2016. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: sahara-dashboard 5.0.0.0b2.dev23\n"
+"Project-Id-Version: sahara-dashboard 5.0.0.0b3.dev24\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2016-06-17 21:09+0000\n"
+"POT-Creation-Date: 2016-08-08 15:40+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -204,9 +204,6 @@ msgstr "Modelo do Cluster %s atualizado"
 
 msgid "Cluster Template Configuration Overview"
 msgstr "Visão Geral da Configuração do Modelo do Conjunto"
-
-msgid "Cluster Template Name"
-msgstr "Nome do Modelo de Cluster"
 
 #, python-format
 msgid "Cluster Template copy %s created"
@@ -660,12 +657,6 @@ msgid ""
 msgstr ""
 "Para tarefas de ações Shell, quaisquer arquivos necessários além do script "
 "principal devem ser adicionados como \"bibliotecas\"."
-
-msgid ""
-"For Spark and Shell jobs, only a main is required, \"libs\" are optional."
-msgstr ""
-"Para tarefas Spark e Shell, apenas o \"main \" é necessário, \"bibliotecas\" "
-"são opcionais."
 
 msgid "General Info"
 msgstr "Informações gerais"
@@ -1725,9 +1716,6 @@ msgstr "Não foi possível atualizar o binário da tarefa"
 
 msgid "Unable to update row"
 msgstr "Não foi possível atualizar a linha"
-
-msgid "Unable to upload cluster template file"
-msgstr "Não foi possível enviar arquivo do modelo de cluster"
 
 msgid "Unable to upload job binary"
 msgstr "Não foi possível enviar binário da tarefa"

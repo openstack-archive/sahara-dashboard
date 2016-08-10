@@ -2,9 +2,9 @@
 # Gérald LONLAS <g.lonlas@gmail.com>, 2016. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: sahara-dashboard 5.0.0.0b2.dev23\n"
+"Project-Id-Version: sahara-dashboard 5.0.0.0b3.dev24\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2016-06-17 21:09+0000\n"
+"POT-Creation-Date: 2016-08-08 15:40+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -204,9 +204,6 @@ msgstr "Modèle de cluster %s mis a jour"
 
 msgid "Cluster Template Configuration Overview"
 msgstr "Aperçu de la configuration du modèle de cluster"
-
-msgid "Cluster Template Name"
-msgstr "Nom du Modèle de Cluster"
 
 #, python-format
 msgid "Cluster Template copy %s created"
@@ -663,12 +660,6 @@ msgid ""
 msgstr ""
 "Pour les travaux Action Shell, tout fichier requis en dehors du script "
 "principal doit être ajouté en tant que \"librairie\"."
-
-msgid ""
-"For Spark and Shell jobs, only a main is required, \"libs\" are optional."
-msgstr ""
-"Pour les travaux Spark et Shell, seul l'attribut \"main\" est nécessaire, "
-"\"libs\" est facultatif."
 
 msgid "General Info"
 msgstr "Informations générales"
@@ -1742,9 +1733,6 @@ msgstr "Impossible de mettre à jour le binaire de tâche"
 
 msgid "Unable to update row"
 msgstr "Impossible de modifier la ligne"
-
-msgid "Unable to upload cluster template file"
-msgstr "Impossible de charger le fichier modèle de cluster"
 
 msgid "Unable to upload job binary"
 msgstr "Impossible de charger le binaire pour une tâche"

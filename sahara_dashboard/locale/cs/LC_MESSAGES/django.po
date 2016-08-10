@@ -2,9 +2,9 @@
 # Stanislav Ulrych <stanislav.ulrych@ultimum.io>, 2016. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: sahara-dashboard 5.0.0.0b2.dev28\n"
+"Project-Id-Version: sahara-dashboard 5.0.0.0b3.dev24\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2016-06-22 23:58+0000\n"
+"POT-Creation-Date: 2016-08-08 15:40+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -202,9 +202,6 @@ msgstr "Šablona clusteru %s aktualizována"
 
 msgid "Cluster Template Configuration Overview"
 msgstr "Přehled konfigurace šablony clusteru"
-
-msgid "Cluster Template Name"
-msgstr "Jméno šablony clusteru"
 
 #, python-format
 msgid "Cluster Template copy %s created"
@@ -663,12 +660,6 @@ msgid ""
 msgstr ""
 "Pro úlohy činnosti Shell lze dodatečné soubory, mimo hlavní skript, přidat "
 "jako \"knihovny\"."
-
-msgid ""
-"For Spark and Shell jobs, only a main is required, \"libs\" are optional."
-msgstr ""
-"Pro úlohy Spark a Shell je potřeba pouze hlavní komponenta, \"knihovny\" "
-"jsou volitelné."
 
 msgid "General Info"
 msgstr "Informace"
@@ -1723,9 +1714,6 @@ msgstr "Nelze aktualizovat binární soubor úlohy: %s"
 
 msgid "Unable to update row"
 msgstr "Nelze aktualizovat řádek"
-
-msgid "Unable to upload cluster template file"
-msgstr "Nelze nahrát soubor šablony clusteru"
 
 msgid "Unable to upload job binary"
 msgstr "Nelze nahrát binární soubor úlohy"
