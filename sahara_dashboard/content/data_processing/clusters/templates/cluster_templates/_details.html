@@ -22,6 +22,10 @@
     <dd>{{ template.is_public|yesno }}</dd>
     <dt>{% trans "Protected" %}</dt>
     <dd>{{ template.is_protected|yesno }}</dd>
+    {% if template.domain_name %}
+      <dt>{% trans "Domain name" %}</dt>
+      <dd>{{ template.domain_name }}</dd>
+    {% endif %}
   </dl>
   <dl class="dl-horizontal">
     <dt>{% trans "Anti-affinity enabled for" %}</dt>

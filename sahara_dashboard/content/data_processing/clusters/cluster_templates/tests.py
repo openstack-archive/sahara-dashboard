@@ -140,7 +140,8 @@ class DataProcessingClusterTemplateTests(test.TestCase):
                                            use_autoconfig=False,
                                            shares=ct.shares,
                                            is_public=False,
-                                           is_protected=False) \
+                                           is_protected=False,
+                                           domain_name=ct.domain_name) \
             .AndReturn(new_ct)
         self.mox.ReplayAll()
 

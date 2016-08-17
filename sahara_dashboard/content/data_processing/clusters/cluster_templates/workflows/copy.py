@@ -102,6 +102,10 @@ class CopyClusterTemplate(create_flow.ConfigureClusterTemplate):
                     fields['is_protected'].initial = (
                         self.template.is_protected)
 
+                elif isinstance(step, create_flow.SelectDnsDomains):
+                    fields = step.action.fields
+                    fields["domain_name"].initial = self.template.domain_name
+
         except Exception:
             exceptions.handle(request,
                               _("Unable to fetch template to copy."))
