@@ -118,11 +118,16 @@ class GeneralConfigAction(workflows.Action):
 
     def get_help_text(self):
         extra = dict()
-        plugin, hadoop_version = whelpers\
+        plugin_name, hadoop_version = whelpers\
             .get_plugin_and_hadoop_version(self.request)
 
-        extra["plugin_name"] = plugin
+        extra["plugin_name"] = plugin_name
         extra["hadoop_version"] = hadoop_version
+
+        plugin = saharaclient.plugin_get_version_details(
+            self.request, plugin_name, hadoop_version)
+        extra["deprecated"] = whelpers.is_version_of_plugin_deprecated(
+            plugin, hadoop_version)
         return super(GeneralConfigAction, self).get_help_text(extra)
 
     def clean(self):
