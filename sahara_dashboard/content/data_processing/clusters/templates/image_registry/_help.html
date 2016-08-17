@@ -8,6 +8,15 @@
     <p>
         {% blocktrans %}Specified User Name will be used by Data Processing to apply configs and manage processes on instances.{% endblocktrans %}
     </p>
+
+        <div class="bs-component">
+        <div class="alert alert-dismissable alert-warning">
+          <button type="button" class="close" data-dismiss="alert">×</button>
+          <h4 translate=""><span class="ng-scope">Warning!</span></h4>
+          <p> {% blocktrans %} Input correct User Name for image. For Ubuntu images input 'ubuntu', 'fedora' for Fedora images,
+               'cloud-user' for CentOS 6.x images and 'centos' for CentOS 7.x images.{% endblocktrans %} </p>
+        </div>
+      </div>
     <p>
         {% blocktrans %}Tags are used for filtering images suitable for each plugin and each Data Processing version.
         To add required tags, select a plugin and a Data Processing version and click the &quot;Add&quot; button.{% endblocktrans %}
