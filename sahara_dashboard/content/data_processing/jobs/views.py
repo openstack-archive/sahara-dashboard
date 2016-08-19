@@ -24,9 +24,11 @@ from sahara_dashboard.content.data_processing.jobs.job_templates \
     import tabs as job_template_tabs
 from sahara_dashboard.content.data_processing.jobs.jobs \
     import tabs as job_tabs
+from sahara_dashboard.content.data_processing.tabs \
+    import PaginationFriendlyTabGroup
 
 
-class JobTabs(tabs.TabGroup):
+class JobTabs(PaginationFriendlyTabGroup):
     slug = "job_tabs"
     tabs = (job_tabs.JobsTab,
             job_template_tabs.JobTemplatesTab,

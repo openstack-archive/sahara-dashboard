@@ -15,11 +15,16 @@ import logging
 
 from django.conf import settings
 from saharaclient.api.base import APIException
+from saharaclient.api.base import Page
 from saharaclient import client as api_client
 
 from horizon import exceptions
+from horizon.utils import functions
 from horizon.utils.memoized import memoized  # noqa
 from openstack_dashboard.api import base
+
+from sahara_dashboard import utils as u
+
 
 LOG = logging.getLogger(__name__)
 
@@ -39,6 +44,25 @@ VERSIONS = base.APIVersionManager(
                               {}).get(SAHARA_SERVICE, 1.1))
 VERSIONS.load_supported_version(1.1, {"client": api_client,
                                       "version": 1.1})
+
+SAHARA_PAGE_SIZE = 15
+
+
+def get_page_size(request=None):
+    if request:
+        return functions.get_page_size(request)
+    else:
+        return SAHARA_PAGE_SIZE
+
+
+def _get_marker(request):
+    return request.GET["marker"] if 'marker' in request.GET else None
+
+
+def _update_pagination_params(marker, limit, request=None):
+    marker = _get_marker(request) if marker is None else marker
+    limit = get_page_size(request) if limit is None else limit
+    return marker, limit
 
 
 def safe_call(func, *args, **kwargs):
@@ -166,8 +190,11 @@ def nodegroup_template_create(request, name, plugin_name, hadoop_version,
         is_protected=is_protected)
 
 
-def nodegroup_template_list(request, search_opts=None):
-    return client(request).node_group_templates.list(search_opts=search_opts)
+def nodegroup_template_list(request, search_opts=None,
+                            marker=None, limit=None):
+    marker, limit = _update_pagination_params(marker, limit, request)
+    return client(request).node_group_templates.list(
+        search_opts=search_opts, limit=limit, marker=marker)
 
 
 def nodegroup_template_get(request, ngt_id):
@@ -253,8 +280,12 @@ def cluster_template_create(request, name, plugin_name, hadoop_version,
     )
 
 
-def cluster_template_list(request, search_opts=None):
-    return client(request).cluster_templates.list(search_opts=search_opts)
+def cluster_template_list(request, search_opts=None, marker=None, limit=None):
+    marker, limit = _update_pagination_params(marker, limit, request)
+    return client(request).cluster_templates.list(
+        search_opts=search_opts,
+        limit=limit,
+        marker=marker)
 
 
 def cluster_template_get(request, ct_id):
@@ -332,8 +363,14 @@ def cluster_scale(request, cluster_id, scale_object):
         scale_object=scale_object)
 
 
-def cluster_list(request, search_opts=None):
-    return client(request).clusters.list(search_opts=search_opts)
+def cluster_list(request, search_opts=None, marker=None, limit=None):
+    marker, limit = _update_pagination_params(marker, limit, request)
+    return client(request).clusters.list(
+        search_opts=search_opts, limit=limit, marker=marker)
+
+
+def _cluster_list(request):
+    return client(request).clusters.list()
 
 
 def cluster_get(request, cluster_id, show_progress=False):
@@ -380,8 +417,12 @@ def data_source_create(request, name, description, ds_type, url,
         is_protected=is_protected)
 
 
-def data_source_list(request, search_opts=None):
-    return client(request).data_sources.list(search_opts=search_opts)
+def data_source_list(request, search_opts=None, limit=None, marker=None):
+    marker, limit = _update_pagination_params(marker, limit, request)
+    return client(request).data_sources.list(
+        search_opts=search_opts,
+        limit=limit,
+        marker=marker)
 
 
 def data_source_get(request, ds_id):
@@ -408,8 +449,12 @@ def job_binary_create(request, name, url, description, extra,
     )
 
 
-def job_binary_list(request, search_opts=None):
-    return client(request).job_binaries.list(search_opts=search_opts)
+def job_binary_list(request, search_opts=None, marker=None, limit=None):
+    marker, limit = _update_pagination_params(marker, limit, request)
+    return client(request).job_binaries.list(
+        search_opts=search_opts,
+        limit=limit,
+        marker=marker)
 
 
 def job_binary_get(request, jb_id):
@@ -434,8 +479,13 @@ def job_binary_internal_create(request, name, data):
         data=data)
 
 
-def job_binary_internal_list(request, search_opts=None):
-    return client(request).job_binary_internals.list(search_opts=search_opts)
+def job_binary_internal_list(request, search_opts=None,
+                             marker=None, limit=None):
+    marker, limit = _update_pagination_params(marker, limit, request)
+    return client(request).job_binary_internals.list(
+        search_opts=search_opts,
+        limit=limit,
+        marker=marker)
 
 
 def job_binary_internal_get(request, jbi_id):
@@ -468,8 +518,16 @@ def job_update(request, job_id, is_public=None, is_protected=None):
         job_id=job_id, **prepare_acl_update_dict(is_public, is_protected))
 
 
-def job_list(request, search_opts=None):
-    return client(request).jobs.list(search_opts=search_opts)
+def job_list(request, search_opts=None, marker=None, limit=None):
+    marker, limit = _update_pagination_params(marker, limit, request)
+    return client(request).jobs.list(
+        search_opts=search_opts,
+        limit=limit,
+        marker=marker)
+
+
+def _job_list(request):
+    return client(request).jobs.list()
 
 
 def job_get(request, job_id):
@@ -523,11 +581,17 @@ def _resolve_job_execution_names(job_execution, cluster=None,
     return job_execution
 
 
-def job_execution_list(request, search_opts=None):
+def job_execution_list(request, search_opts=None, marker=None, limit=None):
+    marker, limit = _update_pagination_params(marker, limit, request)
     job_execution_list = client(request).job_executions.list(
-        search_opts=search_opts)
-    job_dict = dict((j.id, j) for j in job_list(request))
-    cluster_dict = dict((c.id, c) for c in cluster_list(request))
+        search_opts=search_opts, limit=limit,
+        marker=marker)
+
+    new_request = u.delete_pagination_params_from_request(
+        request, save_limit=False)
+
+    job_dict = dict((j.id, j) for j in _job_list(new_request))
+    cluster_dict = dict((c.id, c) for c in _cluster_list(new_request))
 
     resolved_job_execution_list = [
         _resolve_job_execution_names(
@@ -537,7 +601,8 @@ def job_execution_list(request, search_opts=None):
         for job_execution in job_execution_list
     ]
 
-    return resolved_job_execution_list
+    return Page(resolved_job_execution_list, job_execution_list.prev,
+                job_execution_list.next, job_execution_list.limit)
 
 
 def job_execution_get(request, jex_id):

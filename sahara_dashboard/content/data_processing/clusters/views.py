@@ -23,9 +23,11 @@ from sahara_dashboard.content.data_processing.clusters.image_registry \
     import tabs as image_registry_tabs
 from sahara_dashboard.content.data_processing.clusters.nodegroup_templates \
     import tabs as node_group_templates_tabs
+from sahara_dashboard.content.data_processing.tabs \
+    import PaginationFriendlyTabGroup
 
 
-class ClusterTabs(tabs.TabGroup):
+class ClusterTabs(PaginationFriendlyTabGroup):
     slug = "cluster_tabs"
     tabs = (clusters_tabs.ClustersTab,
             cluster_templates_tabs.ClusterTemplatesTab,

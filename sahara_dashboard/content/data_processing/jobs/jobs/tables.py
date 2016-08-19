@@ -21,10 +21,13 @@ from saharaclient.api import base as api_base
 
 from horizon import messages
 from horizon import tables
+from horizon.tabs import base as tabs_base
 
 from sahara_dashboard.api import sahara as saharaclient
 from sahara_dashboard.content.data_processing.jobs.job_templates \
     import tables as j_t
+from sahara_dashboard.content.data_processing \
+    import tables as sahara_table
 from sahara_dashboard.content.data_processing.utils \
     import acl as acl_utils
 from sahara_dashboard.content.data_processing.utils import helpers
@@ -150,7 +153,9 @@ class MakeUnProtected(acl_utils.MakeUnProtected):
         saharaclient.job_execution_update(request, datum_id, **update_kwargs)
 
 
-class JobsTable(tables.DataTable):
+class JobsTable(sahara_table.SaharaPaginateTabbedTable):
+    tab_name = 'job_tabs%sjobs_tab' % tabs_base.SEPARATOR
+
     class StatusColumn(tables.Column):
         def get_raw_data(self, datum):
             return datum.info['status']
