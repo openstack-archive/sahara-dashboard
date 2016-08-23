@@ -1,0 +1,27 @@
+{% load i18n %}
+
+<h4>{% trans "Cluster health checks" %}</h4>
+<table id="labels_table" class="table table-bordered datatable">
+    <thead>
+        <tr>
+            <th>{% trans "Label" %}</th>
+            <th>{% trans "Scope" %}</th>
+            <th>{% trans "Checked?" %}</th>
+            <th>{% trans "Description" %}</th>
+        </tr>
+    </thead>
+    <tbody id="labels_body">
+        {% for label in labels %}
+             <tr>
+                 <td>
+                     <span class="label label-{{ label.color }}">
+                         {{ label.name }}
+                     </span>
+                 </td>
+                 <td>{{ label.scope }}</td>
+                 <td>{{ label.status|yesno }}</td>
+                 <td>{{ label.description }}</td>
+             </tr>
+        {% endfor %}
+    </tbody>
+</table>

@@ -16,6 +16,16 @@ from django.utils.translation import ugettext_lazy as _
 
 from horizon import tables
 
+from sahara_dashboard.content.data_processing.utils \
+    import workflow_helpers as w_helpers
+
+
+class UpdatePluginAction(tables.LinkAction):
+    name = "update_plugin"
+    verbose_name = _("Update Plugin")
+    url = "horizon:project:data_processing.data_plugins:update"
+    classes = ("ajax-modal", "btn-edit")
+
 
 class PluginsTable(tables.DataTable):
     title = tables.Column("title",
@@ -23,8 +33,8 @@ class PluginsTable(tables.DataTable):
                           link=("horizon:project:data_processing."
                                 "data_plugins:plugin-details"))
 
-    versions = tables.Column("versions",
-                             verbose_name=_("Supported Versions"),
+    versions = tables.Column(w_helpers.get_pretty_enabled_versions,
+                             verbose_name=_("Enabled Versions"),
                              wrap_list=True,
                              filters=(filters.unordered_list,))
 
@@ -34,3 +44,5 @@ class PluginsTable(tables.DataTable):
     class Meta(object):
         name = "plugins"
         verbose_name = _("Plugins")
+
+        row_actions = (UpdatePluginAction,)

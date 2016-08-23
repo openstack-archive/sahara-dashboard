@@ -16,12 +16,15 @@ from django.utils.translation import ugettext_lazy as _
 from horizon import exceptions
 from horizon import tables
 from horizon import tabs
+from horizon import workflows
 
 from sahara_dashboard.api import sahara as saharaclient
 import sahara_dashboard.content.data_processing.data_plugins. \
     tables as p_tables
 import sahara_dashboard.content.data_processing.data_plugins. \
     tabs as p_tabs
+from sahara_dashboard.content.data_processing.data_plugins.workflows \
+    import update
 
 
 class PluginsView(tables.DataTableView):
@@ -43,3 +46,33 @@ class PluginDetailsView(tabs.TabView):
     tab_group_class = p_tabs.PluginDetailsTabs
     template_name = 'horizon/common/_detail.html'
     page_title = _("Data Processing Plugin Details")
+
+
+class UpdatePluginView(workflows.WorkflowView):
+    workflow_class = update.UpdatePlugin
+    success_url = "horizon:project:data_processing.data_plugins"
+    classes = ("ajax-modal",)
+    template_name = "data_plugins/update.html"
+    page_title = _("Update Plugin")
+
+    def get_context_data(self, **kwargs):
+        context = super(UpdatePluginView, self) \
+            .get_context_data(**kwargs)
+        context["plugin_name"] = kwargs["plugin_name"]
+        return context
+
+    def get_object(self, *args, **kwargs):
+        if not hasattr(self, "_object"):
+            plugin_name = self.kwargs['plugin_name']
+            try:
+                plugin = saharaclient.plugin_get(self.request, plugin_name)
+            except Exception:
+                exceptions.handle(self.request,
+                                  _("Unable to fetch plugin object."))
+            self._object = plugin
+        return self._object
+
+    def get_initial(self):
+        initial = super(UpdatePluginView, self).get_initial()
+        initial['plugin_name'] = self.kwargs['plugin_name']
+        return initial

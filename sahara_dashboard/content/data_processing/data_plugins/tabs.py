@@ -14,6 +14,7 @@
 import logging
 
 from django.utils.translation import ugettext_lazy as _
+import six
 
 from horizon import exceptions
 from horizon import tabs
@@ -48,6 +49,10 @@ class DetailsTab(tabs.Tab):
     slug = "plugin_details_tab"
     template_name = "data_plugins/_details.html"
 
+    def _generate_context(self, plugin):
+        if not plugin:
+            return {'plugin': plugin}
+
     def get_context_data(self, request):
         plugin_id = self.tab_group.kwargs['plugin_id']
         plugin = None
@@ -61,7 +66,52 @@ class DetailsTab(tabs.Tab):
         return {"plugin": plugin}
 
 
+class LabelsTab(tabs.Tab):
+    name = _("Label details")
+    slug = "label_details_tab"
+    template_name = "data_plugins/_label_details.html"
+
+    def _label_color(self, label):
+        color = 'info'
+        if label == 'deprecated':
+            color = 'danger'
+        elif label == 'stable':
+            color = 'success'
+        return color
+
+    def get_context_data(self, request, **kwargs):
+        plugin_id = self.tab_group.kwargs['plugin_id']
+        plugin = None
+        try:
+            plugin = saharaclient.plugin_get(request, plugin_id)
+        except Exception as e:
+            LOG.error("Unable to get plugin with plugin_id %s (%s)" %
+                      (plugin_id, str(e)))
+            exceptions.handle(self.tab_group.request,
+                              _('Unable to retrieve plugin.'))
+
+        labels = []
+        for label, data in six.iteritems(plugin.plugin_labels):
+            labels.append(
+                {'name': label,
+                 'color': self._label_color(label),
+                 'description': data.get('description', _("No description")),
+                 'scope': _("Plugin"), 'status': data.get('status', False)})
+
+        for version, version_data in six.iteritems(plugin.version_labels):
+            for label, data in six.iteritems(version_data):
+                labels.append(
+                    {'name': label,
+                     'color': self._label_color(label),
+                     'description': data.get('description',
+                                             _("No description")),
+                     'scope': _("Plugin version %s") % version,
+                     'status': data.get('status', False)})
+
+        return {"labels": labels}
+
+
 class PluginDetailsTabs(tabs.TabGroup):
     slug = "cluster_details"
-    tabs = (DetailsTab,)
+    tabs = (DetailsTab, LabelsTab)
     sticky = True

@@ -38,7 +38,7 @@ class DataProcessingPluginsTests(test.TestCase):
 
     @test.create_stubs({api.sahara: ('plugin_get',)})
     def test_details(self):
-        api.sahara.plugin_get(IsA(http.HttpRequest), IsA(six.text_type)) \
+        api.sahara.plugin_get(IsA(http.HttpRequest), IsA(six.text_type)).MultipleTimes() \
             .AndReturn(self.plugins.list()[0])
         self.mox.ReplayAll()
         res = self.client.get(DETAILS_URL)

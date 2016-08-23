@@ -25,6 +25,7 @@ from openstack_dashboard.api import network
 
 from sahara_dashboard.api import sahara as saharaclient
 
+
 LOG = logging.getLogger(__name__)
 
 
@@ -249,6 +250,7 @@ def populate_image_choices(self, request, context, empty_choice=False):
 class PluginAndVersionMixin(object):
     def _generate_plugin_version_fields(self, sahara):
         plugins = sahara.plugins.list()
+        plugins = filter(is_plugin_not_hidden_for_user, plugins)
         plugin_choices = [(plugin.name, plugin.title) for plugin in plugins]
 
         self.fields["plugin_name"] = forms.ChoiceField(
@@ -262,7 +264,8 @@ class PluginAndVersionMixin(object):
             field_name = plugin.name + "_version"
             choice_field = forms.ChoiceField(
                 label=_("Version"),
-                choices=[(version, version) for version in plugin.versions],
+                choices=[(version, version)
+                         for version in get_enabled_versions(plugin)],
                 widget=forms.Select(
                     attrs={"class": "plugin_version_choice switched "
                            + field_name + "_choice",
@@ -417,3 +420,33 @@ class MultipleShareChoiceField(forms.MultipleChoiceField):
             raise ValidationError(
                 _("The value of shares must be a list of values")
             )
+
+
+def is_plugin_not_hidden_for_user(plugin):
+    hidden_lbl = plugin.plugin_labels.get('hidden')
+    if hidden_lbl and hidden_lbl['status']:
+        return False
+    if get_enabled_versions(plugin):
+        return True
+    return False
+
+
+def get_enabled_versions(plugin):
+    lbs = plugin.version_labels
+
+    versions = []
+    for version, data in six.iteritems(lbs):
+        if data.get('enabled', {'status': True}).get('status', True):
+            versions.append(version)
+
+    if not plugin.plugin_labels.get(
+            'enabled', {'status': True}).get('status', True):
+        versions = []
+    return versions
+
+
+def get_pretty_enabled_versions(plugin):
+    versions = get_enabled_versions(plugin)
+    if len(versions) == 0:
+        versions = [_("No enabled versions")]
+    return versions

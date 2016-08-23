@@ -42,7 +42,24 @@ def data(TEST):
         "description": "vanilla plugin",
         "name": "vanilla",
         "title": "Vanilla Apache Hadoop",
-        "versions": ["2.3.0", "1.2.1"]
+        "versions": ["2.3.0", "1.2.1"],
+        'version_labels': {
+            '2.3.0': {
+                'enabled': {
+                    'status': True
+                }
+            },
+            '1.2.1': {
+                'enabled': {
+                    'status': True
+                }
+            }
+        },
+        'plugin_labels': {
+            'enabled': {
+                'status': True
+            }
+        }
     }
 
     plugin1 = plugins.Plugin(plugins.PluginManager(None), plugin1_dict)
@@ -95,7 +112,19 @@ def data(TEST):
             },
         ],
         "title": "Vanilla Apache Hadoop",
-        "name": "vanilla"
+        "name": "vanilla",
+        'version_labels': {
+            '1.2.1': {
+                'enabled': {
+                    'status': True
+                }
+            }
+        },
+        'plugin_labels': {
+            'enabled': {
+                'status': True
+            }
+        }
     }
 
     TEST.plugins_configs.add(plugins.Plugin(plugins.PluginManager(None),
