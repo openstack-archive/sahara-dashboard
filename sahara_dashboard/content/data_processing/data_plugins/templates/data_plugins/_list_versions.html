@@ -1,0 +1,10 @@
+{% load i18n %}
+<ul class="list-unstyled">
+    {% if versions %}
+        {% for version in versions %}
+            <li><span class="label label-info" id="image-tag">{{ version }}</span></li>
+        {% endfor %}
+    {% else %}
+            {% trans "No enabled versions" %}
+    {% endif %}
+</ul>
