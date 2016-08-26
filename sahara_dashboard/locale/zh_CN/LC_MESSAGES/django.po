@@ -1,16 +1,17 @@
 # Andreas Jaeger <jaegerandi@gmail.com>, 2016. #zanata
 # Shengjing Zhu <zsj950618@gmail.com>, 2016. #zanata
 # sunanchen <KF.sunanchen@h3c.com>, 2016. #zanata
+# zzxwill <zzxwill@gmail.com>, 2016. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: sahara-dashboard 5.0.0.0b3.dev36\n"
+"Project-Id-Version: sahara-dashboard 5.0.0.0b3.dev44\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2016-08-19 21:27+0000\n"
+"POT-Creation-Date: 2016-08-23 20:51+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2016-08-23 02:47+0000\n"
-"Last-Translator: sunanchen <KF.sunanchen@h3c.com>\n"
+"PO-Revision-Date: 2016-08-25 10:53+0000\n"
+"Last-Translator: zzxwill <zzxwill@gmail.com>\n"
 "Language-Team: Chinese (China)\n"
 "Language: zh-CN\n"
 "X-Generator: Zanata 3.7.3\n"
@@ -28,6 +29,15 @@ msgstr ""
 "请输入正确的镜像的用户名。对于Ubuntu镜像而言，请输入'ubuntu',对于Fedora镜像而"
 "言，请输入'fedora'。\n"
 "CentOS6版本的镜像的用户名为'cloud-user'，CentOS7版本的镜像的用户名为'centos'"
+
+msgid " Version "
+msgstr "版本"
+
+msgid " is now deprecated. "
+msgstr "现在已被弃用。"
+
+msgid " of plugin "
+msgstr "插件"
 
 msgid " or "
 msgstr "或者"
@@ -103,6 +113,9 @@ msgstr "基础镜像"
 
 msgid "Cancel"
 msgstr "取消"
+
+msgid "Checked?"
+msgstr "已选中？"
 
 msgid "Checking"
 msgstr "检查"
@@ -297,6 +310,9 @@ msgstr "无法更新集群共享"
 
 msgid "Could not update data source"
 msgstr "无法更新数据源"
+
+msgid "Could not update plugin"
+msgstr "无法更新插件"
 
 msgid "Count"
 msgstr "数量"
@@ -559,6 +575,9 @@ msgstr "编辑模板"
 msgid "Enable Swift Paths"
 msgstr "启用 Swift 路径"
 
+msgid "Enabled Versions"
+msgstr "已启用的版本"
+
 msgctxt "End time"
 msgid "Ended"
 msgstr "已结束"
@@ -818,6 +837,12 @@ msgctxt "Current status of a Job"
 msgid "Killed"
 msgstr "已杀死"
 
+msgid "Label"
+msgstr "标签"
+
+msgid "Label details"
+msgstr "标签详情"
+
 msgid "Last Updated"
 msgstr "最近更新"
 
@@ -985,6 +1010,9 @@ msgstr "没有可用的描述"
 msgid "No domain is specified"
 msgstr "未指定域"
 
+msgid "No enabled versions"
+msgstr "没有已启用的版本"
+
 msgid "No image specified"
 msgstr "未指定镜像"
 
@@ -1130,8 +1158,22 @@ msgstr "插件名称"
 msgid "Plugin and Version Tag"
 msgstr "插件类型和版本标签"
 
+msgid "Plugin label"
+msgstr "插件标签"
+
 msgid "Plugin name"
 msgstr "插件名称"
+
+msgid "Plugin update failed."
+msgstr "插件更新失败。"
+
+#, python-format
+msgid "Plugin version %(version)s label"
+msgstr "插件版本%(version)s的标签"
+
+#, python-format
+msgid "Plugin version %s"
+msgstr "插件版本%s"
 
 msgid "Plugin:"
 msgstr "插件："
@@ -1224,6 +1266,9 @@ msgstr "扩容集群失败"
 
 msgid "Scaled cluster successfully started."
 msgstr "已扩容的集群启动成功"
+
+msgid "Scope"
+msgstr "范围"
 
 msgid "Script name"
 msgstr "脚本名称"
@@ -1634,6 +1679,9 @@ msgstr "无法获取插件的详细信息。"
 msgid "Unable to fetch plugin list"
 msgstr "无法获取插件列表"
 
+msgid "Unable to fetch plugin object."
+msgstr "无法获取插件对象。"
+
 msgid "Unable to fetch template object."
 msgstr "无法获取模板对象。"
 
@@ -1761,8 +1809,14 @@ msgstr "更新"
 msgid "Update Cluster Shares"
 msgstr "更新集群共享"
 
+msgid "Update Plugin"
+msgstr "更新插件"
+
 msgid "Update Shares"
 msgstr "更新共享"
+
+msgid "Update the plugin labels"
+msgstr "更新插件标签"
 
 msgid "Updated"
 msgstr "已更新"
