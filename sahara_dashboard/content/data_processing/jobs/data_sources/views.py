@@ -15,7 +15,6 @@ from django.core.urlresolvers import reverse
 from django.utils.translation import ugettext_lazy as _
 
 from horizon import exceptions
-from horizon import tables
 from horizon import tabs
 from horizon.utils import memoized
 from horizon import workflows
@@ -29,21 +28,6 @@ import sahara_dashboard.content.data_processing.jobs. \
     data_sources.workflows.create as create_flow
 import sahara_dashboard.content.data_processing.jobs. \
     data_sources.workflows.edit as edit_flow
-
-
-class DataSourcesView(tables.DataTableView):
-    table_class = ds_tables.DataSourcesTable
-    template_name = 'data_sources/data_sources.html'
-    page_title = _("Data Sources")
-
-    def get_data(self):
-        try:
-            data_sources = saharaclient.data_source_list(self.request)
-        except Exception:
-            data_sources = []
-            exceptions.handle(self.request,
-                              _("Unable to fetch data sources."))
-        return data_sources
 
 
 class CreateDataSourceView(workflows.WorkflowView):

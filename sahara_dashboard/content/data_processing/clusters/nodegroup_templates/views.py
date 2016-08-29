@@ -15,7 +15,6 @@ from django.core.urlresolvers import reverse
 from django.utils.translation import ugettext_lazy as _
 
 from horizon import exceptions
-from horizon import tables
 from horizon import tabs
 from horizon.utils import memoized
 from horizon import workflows
@@ -31,26 +30,6 @@ import sahara_dashboard.content.data_processing.clusters. \
     nodegroup_templates.workflows.create as create_flow
 import sahara_dashboard.content.data_processing.clusters. \
     nodegroup_templates.workflows.edit as edit_flow
-
-
-class NodegroupTemplatesView(tables.DataTableView):
-    table_class = _tables.NodegroupTemplatesTable
-    template_name = 'nodegroup_templates/nodegroup_templates.html'
-    page_title = _("Node Group Templates")
-
-    def get_data(self):
-        try:
-            search_opts = {}
-            filter = self.get_server_filter_info(self.request)
-            if filter['value'] and filter['field']:
-                search_opts = {filter['field']: filter['value']}
-            data = saharaclient.nodegroup_template_list(self.request,
-                                                        search_opts)
-        except Exception:
-            data = []
-            exceptions.handle(self.request,
-                              _("Unable to fetch node group template list."))
-        return data
 
 
 class NodegroupTemplateDetailsView(tabs.TabView):

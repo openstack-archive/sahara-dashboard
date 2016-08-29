@@ -21,7 +21,6 @@ from oslo_utils import timeutils
 from saharaclient.api.base import APIException
 
 from horizon import exceptions
-from horizon import tables
 from horizon import tabs
 from horizon.utils import memoized
 from horizon import workflows
@@ -38,25 +37,6 @@ import sahara_dashboard.content.data_processing.clusters.clusters. \
 import sahara_dashboard.content.data_processing.clusters.clusters. \
     workflows.update as update_flow
 import sahara_dashboard.content.data_processing.utils.helpers as helpers
-
-
-class ClustersView(tables.DataTableView):
-    table_class = c_tables.ClustersTable
-    template_name = 'clusters/clusters.html'
-    page_title = _("Clusters")
-
-    def get_data(self):
-        try:
-            search_opts = {}
-            filter = self.get_server_filter_info(self.request)
-            if filter['value'] and filter['field']:
-                search_opts = {filter['field']: filter['value']}
-            clusters = saharaclient.cluster_list(self.request, search_opts)
-        except Exception:
-            clusters = []
-            exceptions.handle(self.request,
-                              _("Unable to fetch cluster list"))
-        return clusters
 
 
 class ClusterDetailsView(tabs.TabView):

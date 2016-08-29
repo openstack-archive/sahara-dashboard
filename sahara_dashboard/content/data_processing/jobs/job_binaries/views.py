@@ -19,7 +19,6 @@ import django.views
 
 from horizon import exceptions
 from horizon import forms
-from horizon import tables
 from horizon import tabs
 from horizon.utils import memoized
 
@@ -32,21 +31,6 @@ from sahara_dashboard.content.data_processing.jobs. \
     job_binaries import tabs as _tabs
 from sahara_dashboard.content.data_processing.jobs.job_binaries \
     import tables as jb_tables
-
-
-class JobBinariesView(tables.DataTableView):
-    table_class = jb_tables.JobBinariesTable
-    template_name = 'job_binaries/job_binaries.html'
-    page_title = _("Job Binaries")
-
-    def get_data(self):
-        try:
-            job_binaries = saharaclient.job_binary_list(self.request)
-        except Exception:
-            job_binaries = []
-            exceptions.handle(self.request,
-                              _("Unable to fetch job binary list."))
-        return job_binaries
 
 
 class CreateJobBinaryView(forms.ModalFormView):

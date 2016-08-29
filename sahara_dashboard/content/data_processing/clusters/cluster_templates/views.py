@@ -15,7 +15,6 @@ from django.core.urlresolvers import reverse
 from django.utils.translation import ugettext_lazy as _
 
 from horizon import exceptions
-from horizon import tables
 from horizon import tabs
 from horizon.utils import memoized
 from horizon import workflows
@@ -31,12 +30,6 @@ import sahara_dashboard.content.data_processing.clusters. \
     cluster_templates.workflows.create as create_flow
 import sahara_dashboard.content.data_processing.clusters. \
     cluster_templates.workflows.edit as edit_flow
-
-
-class ClusterTemplatesView(tables.DataTableView):
-    table_class = ct_tables.ClusterTemplatesTable
-    template_name = 'cluster_templates/cluster_templates.html'
-    page_title = _("Cluster Templates")
 
 
 class ClusterTemplateDetailsView(tabs.TabView):
