@@ -33,6 +33,10 @@ ADD_JS_FILES = [
     'dashboard/project/data_processing/js/data_processing.verifications.js'
 ]
 
+ADD_SCSS_FILES = [
+    'dashboard/project/data_processing/css/clusters.scss'
+]
+
 ADD_EXCEPTIONS = {
     'recoverable': exceptions.RECOVERABLE
 }
