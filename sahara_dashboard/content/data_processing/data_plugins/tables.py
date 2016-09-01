@@ -11,7 +11,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from django.template import defaultfilters as filters
+from django.template import loader
 from django.utils.translation import ugettext_lazy as _
 
 from horizon import tables
@@ -27,16 +27,21 @@ class UpdatePluginAction(tables.LinkAction):
     classes = ("ajax-modal", "btn-edit")
 
 
+def versions_to_string(plugin):
+    template_name = 'data_plugins/_list_versions.html'
+    versions = w_helpers.get_enabled_versions(plugin)
+    context = {"versions": versions}
+    return loader.render_to_string(template_name, context)
+
+
 class PluginsTable(tables.DataTable):
     title = tables.Column("title",
                           verbose_name=_("Title"),
                           link=("horizon:project:data_processing."
                                 "data_plugins:plugin-details"))
 
-    versions = tables.Column(w_helpers.get_pretty_enabled_versions,
-                             verbose_name=_("Enabled Versions"),
-                             wrap_list=True,
-                             filters=(filters.unordered_list,))
+    versions = tables.Column(versions_to_string,
+                             verbose_name=_("Enabled Versions"))
 
     description = tables.Column("description",
                                 verbose_name=_("Description"))

@@ -445,13 +445,6 @@ def get_enabled_versions(plugin):
     return versions
 
 
-def get_pretty_enabled_versions(plugin):
-    versions = get_enabled_versions(plugin)
-    if len(versions) == 0:
-        versions = [_("No enabled versions")]
-    return versions
-
-
 def is_version_of_plugin_deprecated(plugin, version):
     lbs = plugin.version_labels
     for iter_version, data in six.iteritems(lbs):
