@@ -31,6 +31,10 @@ ADD_JS_FILES = [
     'dashboard/project/data_processing/js/data_processing.job_launching.js'
 ]
 
+ADD_SCSS_FILES = [
+    'dashboard/project/data_processing/css/jobs.scss'
+]
+
 ADD_EXCEPTIONS = {
     'recoverable': exceptions.RECOVERABLE
 }

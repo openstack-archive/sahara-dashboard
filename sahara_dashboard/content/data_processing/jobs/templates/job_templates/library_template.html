@@ -3,15 +3,15 @@
     var remove_btn_label = '{% trans "Remove" %}';
     var lib_template = '<tr id_attr="$id">' +
             '<td>' +
-            '<div class="input form-group"  style="padding-right:15px;"><input disabled value="$lib_name" class="form-control" /></div>' +
+            '<div class="input form-group"  id="lib-name"><input disabled value="$lib_name" class="form-control" /></div>' +
             '</td>' +
             '<td>' +
-            '<div class="input form-group" style="float:left;padding-right:5px;">' +
+            '<div class="input form-group" id="btn-remove-lib">' +
             '<input type="button" class="btn btn-danger" id="delete_btn_$id" data-toggle="dropdown" onclick="delete_lib(this)" value="' + remove_btn_label +'" />' +
             '</div>' +
             '</td>' +
             '<td>' +
-            '<div class="input form-group" style="padding-right:15px;">' +
+            '<div class="input form-group" id="lib-name-hidden">' +
             '<input id="lib_name_$id" value="$lib_name" type="hidden" name="lib_name_$id">' +
             '</div>' +
             '</td>' +
