@@ -68,7 +68,7 @@ class ClusterDetailsView(tabs.TabView):
 
     @staticmethod
     def get_redirect_url():
-        return reverse("horizon:project:data_processing.clusters:clusters-tab")
+        return reverse("horizon:project:data_processing.clusters:index")
 
 
 class ClusterEventsView(django_base.View):
@@ -205,7 +205,7 @@ class CreateClusterView(workflows.WorkflowView):
 
 class ConfigureClusterView(workflows.WorkflowView):
     workflow_class = create_flow.ConfigureCluster
-    success_url = "horizon:project:data_processing.clusters-tab"
+    success_url = "horizon:project:data_processing.clusters:index"
     template_name = "clusters/configure.html"
     page_title = _("Configure Cluster")
 
@@ -217,7 +217,7 @@ class ConfigureClusterView(workflows.WorkflowView):
 
 class ScaleClusterView(workflows.WorkflowView):
     workflow_class = scale_flow.ScaleCluster
-    success_url = "horizon:project:data_processing.clusters-tab"
+    success_url = "horizon:project:data_processing.clusters:index"
     classes = ("ajax-modal",)
     template_name = "clusters/scale.html"
     page_title = _("Scale Cluster")

@@ -64,7 +64,7 @@ class ClusterTemplateDetailsView(tabs.TabView):
     @staticmethod
     def get_redirect_url():
         return reverse("horizon:project:data_processing."
-                       "clusters:cluster-templates-tab")
+                       "clusters:index")
 
 
 class CreateClusterTemplateView(workflows.WorkflowView):
@@ -79,7 +79,7 @@ class CreateClusterTemplateView(workflows.WorkflowView):
 class ConfigureClusterTemplateView(workflows.WorkflowView):
     workflow_class = create_flow.ConfigureClusterTemplate
     success_url = ("horizon:project:data_processing.clusters"
-                   ":cluster-templates-tab")
+                   ":index")
     template_name = "cluster_templates/configure.html"
     page_title = _("Configure Cluster Template")
 
@@ -87,7 +87,7 @@ class ConfigureClusterTemplateView(workflows.WorkflowView):
 class CopyClusterTemplateView(workflows.WorkflowView):
     workflow_class = copy_flow.CopyClusterTemplate
     success_url = ("horizon:project:data_processing.clusters"
-                   ":cluster-templates-tab")
+                   ":index")
     template_name = "cluster_templates/configure.html"
     page_title = _("Copy Cluster Template")
 
@@ -119,6 +119,6 @@ class CopyClusterTemplateView(workflows.WorkflowView):
 
 class EditClusterTemplateView(CopyClusterTemplateView):
     workflow_class = edit_flow.EditClusterTemplate
-    success_url = ("horizon:project:data_processing.clusters:"
-                   "cluster-templates-tab")
+    success_url = ("horizon:project:data_processing.clusters"
+                   ":index")
     template_name = "cluster_templates/configure.html"

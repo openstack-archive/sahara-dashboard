@@ -57,7 +57,7 @@ class EditTagsView(forms.ModalFormView):
     form_class = EditTagsForm
     template_name = 'image_registry/edit_tags.html'
     success_url = reverse_lazy(
-        'horizon:project:data_processing.clusters:image-registry-tab')
+        'horizon:project:data_processing.clusters:index')
     page_title = _("Edit Image Tags")
 
     def get_context_data(self, **kwargs):
@@ -90,7 +90,7 @@ class RegisterImageView(forms.ModalFormView):
     form_class = RegisterImageForm
     template_name = 'image_registry/register_image.html'
     success_url = reverse_lazy(
-        'horizon:project:data_processing.clusters:image-registry-tab')
+        'horizon:project:data_processing.clusters:index')
     page_title = _("Register Image")
 
     def get_context_data(self, **kwargs):

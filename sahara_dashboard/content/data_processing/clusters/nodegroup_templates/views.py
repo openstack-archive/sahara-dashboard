@@ -64,7 +64,7 @@ class NodegroupTemplateDetailsView(tabs.TabView):
     @staticmethod
     def get_redirect_url():
         return reverse("horizon:project:data_processing."
-                       "clusters:nodegroup-templates-tab")
+                       "clusters:index")
 
 
 class CreateNodegroupTemplateView(workflows.WorkflowView):
@@ -80,7 +80,7 @@ class CreateNodegroupTemplateView(workflows.WorkflowView):
 class ConfigureNodegroupTemplateView(workflows.WorkflowView):
     workflow_class = create_flow.ConfigureNodegroupTemplate
     success_url = ("horizon:project:"
-                   "data_processing.clusters:nodegroup-templates-tab")
+                   "data_processing.clusters:index")
     template_name = "nodegroup_templates/configure.html"
     page_title = _("Create Node Group Template")
 
@@ -93,7 +93,7 @@ class ConfigureNodegroupTemplateView(workflows.WorkflowView):
 class CopyNodegroupTemplateView(workflows.WorkflowView):
     workflow_class = copy_flow.CopyNodegroupTemplate
     success_url = ("horizon:project:"
-                   "data_processing.clusters:nodegroup-templates-tab")
+                   "data_processing.clusters:index")
     template_name = "nodegroup_templates/configure.html"
 
     def get_context_data(self, **kwargs):
@@ -125,5 +125,5 @@ class CopyNodegroupTemplateView(workflows.WorkflowView):
 class EditNodegroupTemplateView(CopyNodegroupTemplateView):
     workflow_class = edit_flow.EditNodegroupTemplate
     success_url = ("horizon:project:"
-                   "data_processing.clusters:nodegroup-templates-tab")
+                   "data_processing.clusters:index")
     template_name = "nodegroup_templates/configure.html"

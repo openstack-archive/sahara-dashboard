@@ -23,6 +23,8 @@ INDEX_URL = reverse(
     'horizon:project:data_processing.clusters:image-registry-tab')
 REGISTER_URL = reverse(
     'horizon:project:data_processing.clusters:register')
+SUCCESS_URL = reverse(
+    'horizon:project:data_processing.clusters:index')
 
 
 class DataProcessingImageRegistryTests(test.TestCase):
@@ -79,7 +81,7 @@ class DataProcessingImageRegistryTests(test.TestCase):
              'tags_list': '{}'})
 
         self.assertNoFormErrors(res)
-        self.assertRedirectsNoFollow(res, INDEX_URL)
+        self.assertRedirectsNoFollow(res, SUCCESS_URL)
         self.assertMessageCount(success=1)
 
     @test.create_stubs({api.sahara: ('image_list',
@@ -127,5 +129,5 @@ class DataProcessingImageRegistryTests(test.TestCase):
              'tags_list': '{"0": "mytag"}'})
 
         self.assertNoFormErrors(res)
-        self.assertRedirectsNoFollow(res, INDEX_URL)
+        self.assertRedirectsNoFollow(res, SUCCESS_URL)
         self.assertMessageCount(success=1)
