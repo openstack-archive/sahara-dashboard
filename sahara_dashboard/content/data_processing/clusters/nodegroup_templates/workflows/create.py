@@ -442,12 +442,9 @@ class ConfigureNodegroupTemplate(workflow_helpers.ServiceParametersWorkflow,
         plugin, hadoop_version = (
             workflow_helpers.get_plugin_and_hadoop_version(request))
 
-        general_parameters = hlps.get_general_node_group_configs(
-            plugin,
-            hadoop_version)
-        service_parameters = hlps.get_targeted_node_group_configs(
-            plugin,
-            hadoop_version)
+        general_parameters, service_parameters = \
+            hlps.get_general_and_service_nodegroups_parameters(plugin,
+                                                               hadoop_version)
 
         if saharaclient.base.is_service_enabled(request, 'share'):
             ConfigureNodegroupTemplate._register_step(self,
