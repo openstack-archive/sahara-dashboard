@@ -12,6 +12,7 @@
 # limitations under the License.
 
 import itertools
+import logging
 import uuid
 
 from django.utils import encoding
@@ -39,7 +40,22 @@ from sahara_dashboard.content.data_processing.utils \
 from sahara_dashboard.content.data_processing.utils \
     import workflow_helpers
 
+LOG = logging.getLogger(__name__)
+
 BASE_IMAGE_URL = "horizon:project:data_processing.clusters:register"
+
+
+def is_cinder_enabled(request):
+    return saharaclient.base.is_service_enabled(request, 'volume')
+
+
+def storage_choices(request):
+    choices = [("ephemeral_drive", _("Ephemeral Drive")), ]
+    if is_cinder_enabled(request):
+        choices.append(("cinder_volume", _("Cinder Volume")))
+    else:
+        LOG.warning(_("Cinder service is unavailable now"))
+    return choices
 
 
 class GeneralConfigAction(workflows.Action):
@@ -61,8 +77,7 @@ class GeneralConfigAction(workflows.Action):
     storage = forms.ChoiceField(
         label=_("Storage location"),
         help_text=_("Choose a storage location"),
-        choices=[("ephemeral_drive", "Ephemeral Drive"),
-                 ("cinder_volume", "Cinder Volume")],
+        choices=[],
         widget=forms.Select(attrs={
             "class": "storage_field switchable",
             'data-slug': 'storage_loc'
@@ -180,6 +195,9 @@ class GeneralConfigAction(workflows.Action):
             widget=forms.HiddenInput(),
             initial=hadoop_version
         )
+
+        self.fields["storage"].choices = storage_choices(request)
+
         node_parameters = hlps.get_general_node_group_configs(plugin,
                                                               hadoop_version)
         for param in node_parameters:
@@ -195,11 +213,10 @@ class GeneralConfigAction(workflows.Action):
                 widget=forms.HiddenInput(),
                 initial=req.get("guide_template_type"))
 
-        try:
+        if is_cinder_enabled(request):
             volume_types = cinder.volume_type_list(request)
-        except Exception:
-            exceptions.handle(request,
-                              _("Unable to get volume type list."))
+        else:
+            volume_types = []
 
         self.fields['volume_type'].choices = [(None, _("No volume type"))] + \
                                              [(type.name, type.name)
@@ -221,9 +238,10 @@ class GeneralConfigAction(workflows.Action):
 
     def populate_volumes_availability_zone_choices(self, request, context):
         az_list = [(None, _('No availability zone specified'))]
-        az_list.extend([(az.zoneName, az.zoneName)
-                        for az in cinder_utils.availability_zone_list(request)
-                        if az.zoneState['available']])
+        if is_cinder_enabled(request):
+            az_list.extend([(az.zoneName, az.zoneName)
+                            for az in cinder_utils.availability_zone_list(
+                                request) if az.zoneState['available']])
         return az_list
 
     def populate_image_choices(self, request, context):

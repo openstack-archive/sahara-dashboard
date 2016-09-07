@@ -12,6 +12,7 @@
 
 from django.core.urlresolvers import reverse
 from django import http
+import mock
 from mox3.mox import IgnoreArg  # noqa
 from mox3.mox import IsA  # noqa
 import six
@@ -37,7 +38,9 @@ CREATE_URL = reverse(
 
 
 class DataProcessingNodeGroupTests(test.TestCase):
-    def _setup_copy_test(self):
+    @mock.patch('openstack_dashboard.api.base.is_service_enabled')
+    def _setup_copy_test(self, service_checker):
+        service_checker.return_value = True
         ngt = self.nodegroup_templates.first()
         configs = self.plugins_configs.first()
         dash_api.cinder.extension_supported(IsA(http.HttpRequest),
@@ -141,7 +144,9 @@ class DataProcessingNodeGroupTests(test.TestCase):
                         dash_api.cinder: ('extension_supported',
                                           'availability_zone_list',
                                           'volume_type_list')})
-    def test_create(self):
+    @mock.patch('openstack_dashboard.api.base.is_service_enabled')
+    def test_create(self, service_checker):
+        service_checker.return_value = True
         flavor = self.flavors.first()
         ngt = self.nodegroup_templates.first()
         configs = self.plugins_configs.first()
@@ -234,7 +239,9 @@ class DataProcessingNodeGroupTests(test.TestCase):
                         dash_api.cinder: ('extension_supported',
                                           'availability_zone_list',
                                           'volume_type_list')})
-    def test_update(self):
+    @mock.patch('openstack_dashboard.api.base.is_service_enabled')
+    def test_update(self, service_checker):
+        service_checker.return_value = True
         flavor = self.flavors.first()
         ngt = self.nodegroup_templates.first()
         configs = self.plugins_configs.first()
