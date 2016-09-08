@@ -11,8 +11,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import logging
-
 from django.utils.translation import ugettext_lazy as _
 
 from horizon import exceptions
@@ -21,8 +19,6 @@ from horizon import tabs
 from sahara_dashboard.api import sahara as saharaclient
 from sahara_dashboard.content.data_processing.clusters.image_registry \
     import tables as image_registry_tables
-
-LOG = logging.getLogger(__name__)
 
 
 class ImageRegistryTab(tabs.TableTab):

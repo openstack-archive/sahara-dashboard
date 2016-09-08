@@ -11,8 +11,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import logging
-
 from django.utils.translation import ugettext_lazy as _
 from saharaclient.api import base as api_base
 
@@ -24,8 +22,6 @@ from sahara_dashboard.api import manila as manilaclient
 from sahara_dashboard.api import sahara as saharaclient
 import sahara_dashboard.content.data_processing. \
     utils.workflow_helpers as whelpers
-
-LOG = logging.getLogger(__name__)
 
 
 class SelectSharesAction(workflows.Action):

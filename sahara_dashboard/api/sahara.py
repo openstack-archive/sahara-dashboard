@@ -11,8 +11,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import logging
-
 from django.conf import settings
 from saharaclient.api.base import APIException
 from saharaclient.api.base import Page
@@ -25,8 +23,6 @@ from openstack_dashboard.api import base
 
 from sahara_dashboard import utils as u
 
-
-LOG = logging.getLogger(__name__)
 
 # "type" of Sahara service registered in keystone
 SAHARA_SERVICE = 'data-processing'
