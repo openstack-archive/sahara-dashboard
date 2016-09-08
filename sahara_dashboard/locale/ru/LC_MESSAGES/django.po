@@ -1,9 +1,9 @@
 # Andreas Jaeger <jaegerandi@gmail.com>, 2016. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: sahara-dashboard 5.0.0.0b3.dev24\n"
+"Project-Id-Version: sahara-dashboard 5.0.0.0b4.dev9\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2016-08-08 15:40+0000\n"
+"POT-Creation-Date: 2016-09-07 15:44+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1593,9 +1593,6 @@ msgstr "Невозможно получить данные инстанса."
 msgid "Unable to fetch job binary list"
 msgstr "Не удалось получить список исполняемых файлов задач"
 
-msgid "Unable to fetch job binary list."
-msgstr "Не удалось получить список исполняемых файлов задач"
-
 #, python-format
 msgid "Unable to fetch job binary: %(exc)s"
 msgstr "Не удалось получить исполняемый файл задачи: %(exc)s"
@@ -1616,9 +1613,6 @@ msgid "Unable to fetch node group details."
 msgstr "Невозможно получить подробную информации о группе нод"
 
 msgid "Unable to fetch node group template list"
-msgstr "Не удалось получить список шаблонов группы узлов."
-
-msgid "Unable to fetch node group template list."
 msgstr "Не удалось получить список шаблонов группы узлов."
 
 msgid "Unable to fetch plugin details."
@@ -1647,9 +1641,6 @@ msgstr "Не удалось получить данные группы узло�
 
 msgid "Unable to get security group list."
 msgstr "Не удалось получить список групп безопасности"
-
-msgid "Unable to get volume type list."
-msgstr "Невозможно получить список типов дисков."
 
 msgid "Unable to launch job."
 msgstr "Не удалось запустить задачу."
