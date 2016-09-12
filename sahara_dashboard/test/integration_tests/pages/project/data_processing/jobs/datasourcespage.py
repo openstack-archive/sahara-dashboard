@@ -36,9 +36,8 @@ class CreateMixin(object):
     @tables.bind_row_action('edit data source')
     def get_update_form(self, button, row):
         button.click()
-        return forms.TabbedFormRegion(
-            self.driver, self.conf, field_mappings=(self.CREATE_FIELD_MAPPING,)
-        )
+        return forms.FormRegion(self.driver, self.conf,
+                                field_mappings=self.CREATE_FIELD_MAPPING)
 
 
 class DatasourcesPage(mixins.DeleteMixin, basepage.BaseDataProcessingPage):
