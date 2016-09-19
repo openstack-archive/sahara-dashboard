@@ -5,6 +5,8 @@
 set -ex
 source commons $@
 
+wget https://cloud-images.ubuntu.com/xenial/current/xenial-server-cloudimg-amd64-disk1.img -O /tmp/xenial-server-cloudimg-amd64-disk1.img
+
 cd /opt/stack/new/horizon/openstack_dashboard/local/local_settings.d
 mv _20_integration_tests_scaffolds.py.example _20_integration_tests_scaffolds.py
 

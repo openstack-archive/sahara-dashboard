@@ -13,16 +13,18 @@
 from openstack_dashboard.test.integration_tests import helpers
 from openstack_dashboard.test.integration_tests.regions import messages
 
+from sahara_dashboard.test.integration_tests.helpers import SaharaTestCase
 
 IMAGE_NAME = helpers.gen_random_resource_name("image")
 
 
-class TestSaharaImageRegistry(helpers.TestCase):
+class TestSaharaImageRegistry(SaharaTestCase):
 
     def setUp(self):
         super(TestSaharaImageRegistry, self).setUp()
         image_pg = self.home_pg.go_to_compute_imagespage()
-        image_pg.create_image(IMAGE_NAME)
+        image_pg.create_image(
+            IMAGE_NAME, image_file=self.CONFIG.sahara.fake_image_location)
         image_pg.find_message_and_dismiss(messages.SUCCESS)
         image_pg.wait_until_image_active(IMAGE_NAME)
 

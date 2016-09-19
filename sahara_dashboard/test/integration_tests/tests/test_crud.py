@@ -53,8 +53,8 @@ class TestCRUDBase(SaharaTestCase):
 
     def create_image(self):
         image_pg = self.home_pg.go_to_compute_imagespage()
-        image_pg.create_image(self.image_name,
-                              location=self.CONFIG.sahara.fake_http_image)
+        image_pg.create_image(
+            self.image_name, image_file=self.CONFIG.sahara.fake_image_location)
         image_pg._wait_until(
             lambda x: image_pg.is_image_active(self.image_name),
             timeout=10 * 60)

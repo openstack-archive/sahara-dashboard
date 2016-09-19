@@ -24,8 +24,8 @@ class SaharaTestCase(helpers.AdminTestCase):
         sahara_group = cfg.OptGroup(
             'sahara', help='Sahara specific tests config group')
         cls.CONFIG.register_group(sahara_group)
-        fake_http_image = cfg.StrOpt('fake_http_image')
-        cls.CONFIG.register_opt(fake_http_image, group=sahara_group)
+        fake_image_location = cfg.StrOpt('fake_image_location')
+        cls.CONFIG.register_opt(fake_image_location, group=sahara_group)
         ssh_user = cfg.StrOpt('fake_image_ssh_user')
         cls.CONFIG.register_opt(ssh_user, group=sahara_group)
         project_name = cfg.StrOpt('project_name', default='demo')
