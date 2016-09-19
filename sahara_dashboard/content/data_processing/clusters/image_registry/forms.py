@@ -66,7 +66,8 @@ class RegisterImageForm(ImageForm):
         images = self._get_available_images(self.request)
         choices = [(image.id, image.name)
                    for image in images
-                   if image.properties.get("image_type", '') != "snapshot"]
+                   if image.to_dict()['properties'].get(
+                       "image_type") != "snapshot"]
         if choices:
             choices.insert(0, ("", _("Select Image")))
         else:
