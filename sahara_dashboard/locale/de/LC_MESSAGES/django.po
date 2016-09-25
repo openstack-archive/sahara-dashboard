@@ -1,9 +1,10 @@
 # Andreas Jaeger <jaegerandi@gmail.com>, 2016. #zanata
+# Frank Kloeker <eumel@arcor.de>, 2016. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: sahara-dashboard 5.0.0.0b4.dev9\n"
+"Project-Id-Version: sahara-dashboard 5.0.0.0rc2.dev9\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2016-09-07 15:44+0000\n"
+"POT-Creation-Date: 2016-09-21 12:17+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -703,7 +704,7 @@ msgid ""
 "during cluster creation. Otherwise you should manually specify configuration "
 "values."
 msgstr ""
-"Wenn ausgewählt, werden Instanzen einer Node-Gruppe während der Cluster-"
+"Wenn ausgewählt, werden Instanzen einer Knoten-Gruppe während der Cluster-"
 "Konfiguration automatisch konfiguriert. Andernfalls sollte manuelle "
 "Konfiguration gewählt werden."
 
@@ -765,7 +766,7 @@ msgid "Java"
 msgstr "Java"
 
 msgid "Java Action"
-msgstr "Java Action"
+msgstr "Java-Aktion"
 
 msgid "Java Opts"
 msgstr "Java Opts"
@@ -1053,7 +1054,7 @@ msgid "Node group cluster"
 msgstr "Knotengruppencluster"
 
 msgid "Node group configurations are not specified"
-msgstr "Konfigurationen der KNoten-Gruppen nicht angegeben"
+msgstr "Konfigurationen der Knoten-Gruppen nicht angegeben"
 
 msgid "Node processes are not specified"
 msgstr "Knoten-Prozesse nicht angegeben"
@@ -1316,7 +1317,7 @@ msgid ""
 "Select which plugin and version that you\n"
 "    want to use to create your cluster."
 msgstr ""
-"Wählen Sie Plugin und Version womit Sie\n"
+"Wählen Sie Plugin und Version, womit Sie\n"
 "    das Cluster erstellen möchten."
 
 msgid ""
@@ -1811,7 +1812,7 @@ msgid "Volumes local to instance"
 msgstr "Lokaler Datenträger für Instanz"
 
 msgid "Volumes per node"
-msgstr "Datenträger pro Node"
+msgstr "Datenträger pro Knoten"
 
 msgid "Volumes size"
 msgstr "Größe der Datenträger"
