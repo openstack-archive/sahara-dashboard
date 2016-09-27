@@ -2,14 +2,14 @@
 # Stanislav Ulrych <stanislav.ulrych@ultimum.io>, 2016. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: sahara-dashboard 5.0.0.0b4.dev9\n"
+"Project-Id-Version: sahara-dashboard 5.0.0.0rc2.dev11\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2016-09-07 15:44+0000\n"
+"POT-Creation-Date: 2016-09-25 12:33+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2016-06-22 12:38+0000\n"
-"Last-Translator: Lenka Husáková <lenka.husakova@ultimum.io>\n"
+"PO-Revision-Date: 2016-09-26 01:55+0000\n"
+"Last-Translator: Stanislav Ulrych <stanislav.ulrych@ultimum.io>\n"
 "Language-Team: Czech\n"
 "Language: cs\n"
 "X-Generator: Zanata 3.7.3\n"
@@ -17,6 +17,16 @@ msgstr ""
 
 msgid " Done"
 msgstr "Hotovo"
+
+#, python-format
+msgid ""
+" Version: <b>%(hadoop_version)s</b>\n"
+"              of plugin <b>%(plugin_name)s </b>\n"
+"              is now deprecated. "
+msgstr ""
+" Verze: <b>%(hadoop_version)s</b>\n"
+"              pluginu <b>%(plugin_name)s </b>\n"
+"              je zastaralá. "
 
 msgid " or "
 msgstr "nebo"
@@ -291,6 +301,9 @@ msgstr "Nelze aktualizovat sdílení clusteru"
 msgid "Could not update data source"
 msgstr "Nelze aktualizovat datový zdroj"
 
+msgid "Could not update plugin"
+msgstr "Nelze aktualizovat plugin"
+
 msgid "Count"
 msgstr "Počet"
 
@@ -374,6 +387,9 @@ msgstr "Současný typ:"
 
 msgid "Custom Tag"
 msgstr "Vlastní tag"
+
+msgid "DNS Domain Names"
+msgstr "Doménová jména"
 
 msgid "Data Processing"
 msgstr "Zpracování dat"
@@ -528,6 +544,12 @@ msgstr "Popis"
 msgid "Details"
 msgstr "Podrobnosti"
 
+msgid "Domain Name"
+msgstr "Doménové jméno"
+
+msgid "Domain name"
+msgstr "Doménové jméno"
+
 msgid "Done"
 msgstr "Hotovo"
 
@@ -570,6 +592,9 @@ msgstr "Editovat šablonu"
 
 msgid "Enable Swift Paths"
 msgstr "Povolit cesty Swift"
+
+msgid "Enabled Versions"
+msgstr "Povolené verze"
 
 msgctxt "End time"
 msgid "Ended"
@@ -828,6 +853,12 @@ msgctxt "Current status of a Job"
 msgid "Killed"
 msgstr "Killed"
 
+msgid "Label"
+msgstr "Štítek"
+
+msgid "Label details"
+msgstr "Detaily štítku"
+
 msgid "Last Updated"
 msgstr "Naposledy aktualizováno"
 
@@ -995,6 +1026,12 @@ msgstr "Žádné konfigurace"
 msgid "No description"
 msgstr "Žádný popis"
 
+msgid "No domain is specified"
+msgstr "Nebyla specifikována žádná doména"
+
+msgid "No enabled versions"
+msgstr "Žádné povolené verze"
+
 msgid "No image specified"
 msgstr "Žádné obrazy nezadány"
 
@@ -1134,8 +1171,18 @@ msgstr "Plugin"
 msgid "Plugin Name"
 msgstr "Název zásuvného modulu"
 
+msgid "Plugin label"
+msgstr "Štítek pluginu"
+
 msgid "Plugin name"
 msgstr "Název zásuvného modulu"
+
+msgid "Plugin update failed."
+msgstr "Aktualizace pluginu selhala."
+
+#, python-format
+msgid "Plugin version %s"
+msgstr "Verze pluginu %s"
 
 msgid "Plugin:"
 msgstr "Zásuvný modul:"
@@ -1230,6 +1277,9 @@ msgstr "Operace škálování clusteru selhala"
 
 msgid "Scaled cluster successfully started."
 msgstr "Škálovaný cluster úspěšně spuštěn."
+
+msgid "Scope"
+msgstr "Rozsah"
 
 msgid "Script name"
 msgstr "Název skriptu"
@@ -1393,6 +1443,9 @@ msgstr "Typ úložiště"
 msgid "Storm"
 msgstr "Storm"
 
+msgid "Storm Pyleus"
+msgstr "Storm Pyleus"
+
 msgid "Streaming MapReduce"
 msgstr "Streamované Mapreduce"
 
@@ -1501,6 +1554,9 @@ msgstr ""
 "s\n"
 "                    typem požadovaného clusteru."
 
+msgid "The value of shares must be a list of values"
+msgstr "shares musí být seznam hodnot"
+
 msgid "This Cluster Template will be created for:"
 msgstr "Tato šablona clusteru bude vytvořena pro:"
 
@@ -1512,6 +1568,9 @@ msgstr "Tato šablona skupiny uzlu bude vytvořena pro:"
 
 msgid "Title"
 msgstr "Název"
+
+msgid "Topology Name"
+msgstr "Jméno topologie"
 
 msgid "Type"
 msgstr "Typ"
@@ -1532,8 +1591,15 @@ msgstr "Nelze vytvořit nový cluster pro úlohu."
 msgid "Unable to create the cluster"
 msgstr "Nelze vytvořit cluster"
 
+#, python-format
+msgid "Unable to fetch Base Image with id: %s."
+msgstr "Nelze získat obraz s id: %s."
+
 msgid "Unable to fetch available images."
 msgstr "Nelze získat dostupné obrazy."
+
+msgid "Unable to fetch base image details"
+msgstr "Nelze získat podrobnosti obrazu."
 
 msgid "Unable to fetch cluster list"
 msgstr "Nelze získat seznam clusterů"
@@ -1593,6 +1659,9 @@ msgstr "Nelze získat úlohy."
 msgid "Unable to fetch keypair choices."
 msgstr "Nelze získat seznam klíčů."
 
+msgid "Unable to fetch network details"
+msgstr "Nelze získat podrobnosti sítě."
+
 msgid "Unable to fetch node group details."
 msgstr "Nelze získat podrobnosti skupiny uzlů."
 
@@ -1604,6 +1673,9 @@ msgstr "Nelze získat podrobnosti zásuvného modulu."
 
 msgid "Unable to fetch plugin list"
 msgstr "Nelze získat seznam zásuvných modulů."
+
+msgid "Unable to fetch plugin object."
+msgstr "Nelze získat plugin"
 
 msgid "Unable to fetch template object."
 msgstr "Nelze získat objekt šablony."
@@ -1734,8 +1806,14 @@ msgstr "Aktualizovat"
 msgid "Update Cluster Shares"
 msgstr "Aktualizovat sdílení clusteru"
 
+msgid "Update Plugin"
+msgstr "Aktualizovat plugin"
+
 msgid "Update Shares"
 msgstr "Aktualizovat sdílení"
+
+msgid "Update the plugin labels"
+msgstr "Aktualizovat štítky pluginu"
 
 msgid "Updated"
 msgstr "Aktualizováno"
@@ -1775,6 +1853,9 @@ msgstr "Použít skupiny proti slučivosti pro:"
 
 msgid "Use auto-configuration"
 msgstr "Použít automatické nastavení"
+
+msgid "Use the same topology name as defined in your .yaml file"
+msgstr "Použít stejné jméno topologie jako je definováno v .yaml souboru"
 
 msgid "User"
 msgstr "Uživatel"
