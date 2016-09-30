@@ -39,6 +39,22 @@
             <hr/>
             <li>
                 <div>
+                    <div>{% blocktrans %}You need to register an image to launch instances
+                         of your cluster. Skip this step if you already have a registered image
+                         for your plugin, otherwise click the link below. In the form you will
+                         need to choose the image, input the username and add tags for the chosen plugin.
+                         {% endblocktrans %}
+                    </div>
+                    <div>
+                        <a class="btn btn-default btn-small btn-create btn-inline ajax-modal"
+                            href="{% url 'horizon:project:data_processing.clusters:register'%}">
+                            <span class="fa fa-plus"></span> {% trans "Register Image" %}</a>
+                    </div>
+                </div>
+            </li>
+            <hr/>
+            <li>
+                <div>
                     <div>{% blocktrans %}Next, you need to define the different
                         types of machines in your cluster.  This is done by
                         defining a Node Group Template for each type of
