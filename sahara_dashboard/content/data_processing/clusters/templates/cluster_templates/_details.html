@@ -13,7 +13,7 @@
   </dl>
   <dl class="dl-horizontal">
     <dt>{% trans "Plugin" %}</dt>
-    <dd><a href="{% url 'horizon:project:data_processing.jobs:details' template.plugin_name %}">{{ template.plugin_name }}</a></dd>
+    <dd><a href="{% url 'horizon:project:data_processing.data_plugins:plugin-details' template.plugin_name %}">{{ cluster.plugin_name }}</a></dd>
     <dt>{% trans "Version" %}</dt>
     <dd>{{ template.hadoop_version }}</dd>
     <dt>{% trans "Use auto-configuration" %}</dt>

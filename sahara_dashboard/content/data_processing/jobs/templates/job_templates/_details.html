@@ -18,13 +18,13 @@
       <dd>{{ job.is_protected|yesno }}</dd>
       <dt>{% trans "Mains" %}</dt>
       {% for main in job.mains %}
-        <dd><a href="{% url 'horizon:project:data_processing.jobs:jt-details' main.id  %}">{{ main.name }}</a></dd>
+        <dd><a href="{% url 'horizon:project:data_processing.jobs:jb-details' main.id  %}">{{ main.name }}</a></dd>
       {% empty %}
         <dd>{% trans "None" %}</dd>
       {% endfor %}
       <dt>{% trans "Libs" %}</dt>
       {% for lib in job.libs %}
-        <dd><a href="{% url 'horizon:project:data_processing.jobs:jt-details' lib.id  %}">{{ lib.name }}</a></dd>
+        <dd><a href="{% url 'horizon:project:data_processing.jobs:jb-details' lib.id  %}">{{ lib.name }}</a></dd>
       {% empty %}
         <dd>{% trans "None" %}</dd>
       {% endfor %}
