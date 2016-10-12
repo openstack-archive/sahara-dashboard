@@ -1,0 +1,2061 @@
+# suhartono <cloudsuhartono@gmail.com>, 2016. #zanata
+msgid ""
+msgstr ""
+"Project-Id-Version: sahara-dashboard 5.0.1.dev2\n"
+"Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
+"POT-Creation-Date: 2016-10-10 10:08+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2016-10-12 12:31+0000\n"
+"Last-Translator: suhartono <cloudsuhartono@gmail.com>\n"
+"Language-Team: Indonesian\n"
+"Language: id\n"
+"X-Generator: Zanata 3.7.3\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+
+msgid " Done"
+msgstr " Done"
+
+msgid ""
+" Input correct User Name for image. For Ubuntu images input 'ubuntu', "
+"'fedora' for Fedora images,\n"
+"               'cloud-user' for CentOS 6.x images and 'centos' for CentOS 7."
+"x images."
+msgstr ""
+"Masukan nama pengguna benar untuk image. Untuk Ubuntu masukan image "
+"'ubuntu', 'fedora' untuk image Fedora, 'cloud-user' untuk image CentOS 6.x "
+"dan 'centos' untuk image CentOS 7.x."
+
+#, python-format
+msgid ""
+" Version: <b>%(hadoop_version)s</b>\n"
+"              of plugin <b>%(plugin_name)s </b>\n"
+"              is now deprecated. "
+msgstr ""
+" Version: <b>%(hadoop_version)s</b>\n"
+"              of plugin <b>%(plugin_name)s </b>\n"
+"              sekarang tidak berlaku."
+
+msgid " or "
+msgstr " atau "
+
+#, python-format
+msgid "%(conf_name)s: %(conf_val)s"
+msgstr "%(conf_name)s: %(conf_val)s"
+
+#, python-format
+msgid "%(conf_name)s: %(conf_value)s"
+msgstr "%(conf_name)s: %(conf_value)s"
+
+#, python-format
+msgid "%(group)s:"
+msgstr "%(group)s:"
+
+#, python-format
+msgid "%(key)s: %(val)s"
+msgstr "%(key)s: %(val)s"
+
+#, python-format
+msgid "%s processes: "
+msgstr "%s proses: "
+
+msgid "-- not selected --"
+msgstr "-- not selected --"
+
+msgid ""
+"<b>Important</b>:  The name that you give your job binary will be the name "
+"used in your job execution.\n"
+"  If your binary requires a particular name or extension (ie: \".jar\"), be "
+"sure to include it here."
+msgstr ""
+"<B> Important </ b>: Nama yang Anda berikan biner pekerjaan Anda akan "
+"menjadi nama yang digunakan dalam pelaksanaan pekerjaan Anda.\n"
+"   Jika biner Anda memerlukan nama tertentu atau ekstensi (yaitu: \"jar\"), "
+"pastikan untuk menyertakan di sini."
+
+msgid "Adapt For Oozie"
+msgstr "Adapt For Oozie (beradaptasi untuk Oozie)"
+
+msgid "Add"
+msgstr "Add (tambah)"
+
+msgid "Add Node Group"
+msgstr "Add Node Group (menambah grup simpul)"
+
+msgid "Add libraries to your job template."
+msgstr "Tambahkan perpustakaan ke template pekerjaan Anda."
+
+msgid "Anti-affinity enabled for"
+msgstr "Anti-afinitas diaktifkan untuk"
+
+msgid "Arguments"
+msgstr "Arguments (argumen)"
+
+msgid "Auto Security Group"
+msgstr "Auto Security Group (grup keamanan otomatis)"
+
+msgid "Auto-configure"
+msgstr "Auto-configure"
+
+msgid ""
+"Automatically modify the Hadoop configuration so that job config values are "
+"set and so that Oozie will handle exit codes correctly."
+msgstr ""
+"Memodifikasi secara otomatis konfigurasi Hadoop sehingga nilai config "
+"pekerjaan ditetapkan dan agar Oozie akan menangani kode keluar dengan benar."
+
+msgid "Availability Zone"
+msgstr "Availability Zone (ketersediaan zona)"
+
+msgid "Base Image"
+msgstr "Base Image (image dasar)"
+
+msgid "Cancel"
+msgstr "Cancel (pembatalan)"
+
+msgid "Checked?"
+msgstr "Checked? (diperiksa?)"
+
+msgid "Checking"
+msgstr "Checking (pengecekan)"
+
+msgid "Choose"
+msgstr "Choose (pilih)"
+
+msgid "Choose a main binary"
+msgstr "Pilih biner utama"
+
+msgid "Choose a shell script"
+msgstr "Pilih skrip shell"
+
+msgid "Choose a storage location"
+msgstr "Pilih lokasi penyimpanan"
+
+msgid "Choose additional files"
+msgstr "Pilih file tambahan"
+
+msgid "Choose an existing Master Node Group Template"
+msgstr ""
+"Pilih Master Node Group Template (template grup simpul master) yang ada."
+
+msgid "Choose an existing Worker Node Group Template"
+msgstr "Pilih Worker Node Group Template yang ada"
+
+msgid "Choose an existing file"
+msgstr "Pilih file yang ada"
+
+msgid ""
+"Choose from the list of binaries and click \"choose\" to add the library to "
+"your job template.  This can be repeated for additional libraries."
+msgstr ""
+"Pilih dari daftar binari dan klik \"choose\" untuk menambahkan perpustakaan "
+"ke template pekerjaan Anda. Hal ini dapat diulang untuk perpustakaan "
+"tambahan."
+
+msgid "Choose job type"
+msgstr "Pilih tipe pekerjaan"
+
+msgid "Choose libraries"
+msgstr "Choose libraries (pilih perpustakaan)"
+
+msgid "Choose node group template"
+msgstr "Pilih node group template"
+
+msgid ""
+"Choose or create your main binary.  Additional libraries can be added from "
+"the \"Libs\" tab."
+msgstr ""
+"Memilih atau membuat binary utama Anda. Perpustakaan tambahan dapat "
+"ditambahkan dari tab \"Libs\"."
+
+msgid "Choose plugin"
+msgstr "Pilih plugin"
+
+msgid "Choose plugin and version"
+msgstr "Pilih plugin dan versi"
+
+msgid "Choose plugin type and version"
+msgstr "Pilih tipe plugin dan versi"
+
+msgid "Choose the Input Data Source (n/a for Java and Shell jobs)."
+msgstr "Pilih Input Data Source (n/a untuk pekerjaan Java dan Shell)."
+
+msgid "Choose the Output Data Source (n/a for Java and Shell jobs)."
+msgstr "Pilih Output Data Source (n/a untuk pekerjaan Java dan Shell)."
+
+msgid "Choose the binary which should be used in this Job."
+msgstr "Pilih biner yang harus digunakan dalam pekerjaan ini."
+
+msgid "Choose the cluster to use for the job."
+msgstr "Pilih klaster digunakan untuk pekerjaan."
+
+msgid "Chosen Libraries"
+msgstr "Chosen Libraries (perpustakaan yang dipilih)"
+
+msgid "Cinder Volume"
+msgstr "Cinder Volume (volume Cinder)"
+
+msgid "Cinder service is unavailable now"
+msgstr "Layanan Cinder tidak tersedia sekarang"
+
+msgid "Cinder volumes"
+msgstr "Cinder Volumes"
+
+msgid "Cluster"
+msgstr "Cluster (klaster)"
+
+msgid "Cluster Configuration Overview"
+msgstr "Cluster Configuration Overview (ikhtisar konfigurasi klaster)"
+
+msgid "Cluster Count"
+msgstr "Cluster Count (hitung klaster)"
+
+msgid "Cluster Creation Guide"
+msgstr "Cluster Creation Guide"
+
+msgid "Cluster Events"
+msgstr "Cluster Events (kegiatan klaster)"
+
+msgid "Cluster Instances"
+msgstr "Cluster Instances (instance klaster)"
+
+msgid "Cluster Name"
+msgstr "Cluster Name (nama klaster)"
+
+msgid "Cluster Template"
+msgstr "Cluster Template (template klaster)"
+
+#, python-format
+msgid "Cluster Template %s updated"
+msgstr "Cluster Template %s updated"
+
+msgid "Cluster Template Configuration Overview"
+msgstr ""
+"Cluster Template Configuration Overview (ikhtisar kongigurasi template "
+"klaster)"
+
+#, python-format
+msgid "Cluster Template copy %s created"
+msgstr "Cluster Template copy %s dibuat"
+
+msgid "Cluster Templates"
+msgstr "Cluster Templates (template klaster)"
+
+msgid "Cluster can be launched using existing Cluster Templates."
+msgstr "Klaster dapat diluncurkan menggunakan Cluster Template yang ada."
+
+msgid "Cluster configurations are not specified"
+msgstr "Konfigurasi klaster tidak ditentukan"
+
+msgid "Cluster health checks"
+msgstr "Pemeriksaan kesehatan klaster)"
+
+msgid "Cluster provision steps"
+msgstr "Langkah penyediaan klaster"
+
+msgid "Cluster share update failed."
+msgstr "Pembaruan share klaster gagal."
+
+msgid "Cluster template creation failed"
+msgstr "Pembentukan Cluster Template gagal"
+
+msgid "Cluster template update failed"
+msgstr "Pembaruan Cluster Template gagal"
+
+msgid "Cluster type chosen"
+msgstr "Tipe klaster dipilih"
+
+msgid "Clusters"
+msgstr "Clusters (klaster)"
+
+msgid "Completed Successfully"
+msgstr "Completed Successfully (berhasil menyelesaikan)"
+
+msgid "Configuration"
+msgstr "Configuration (konfigurasi)"
+
+msgid "Configuration Details"
+msgstr "Configuration Details (rincian konfigurasi)"
+
+msgid "Configuration Value"
+msgstr "Configuration Value (nilai konfigurasi)"
+
+msgid "Configure"
+msgstr "Configure (konfigurasi)"
+
+msgid "Configure Cluster"
+msgstr "Configure Cluster (konfigurasi klaster)"
+
+msgid "Configure Cluster Template"
+msgstr "Configure Cluster Template (konfigurasi klaster template)"
+
+msgid "Configure Node Group Template"
+msgstr "Mengkonfigurasi template kelompok simpul"
+
+msgid "Configure Template"
+msgstr "Configure Template (konfigurasi template)"
+
+msgid "Control access to instances of the node group."
+msgstr "Mengontrol akses ke contoh dari kelompok simpul."
+
+msgid "Copy Cluster Template"
+msgstr "Copy Cluster Template (copy template cluster)"
+
+msgid "Copy Template"
+msgstr "Copy Template (copy template)"
+
+msgid "Could not create"
+msgstr "Tidak dapat membuat"
+
+msgid "Could not create data source"
+msgstr "Tidak dapat membuat sumber data"
+
+msgid "Could not create job template"
+msgstr "Tidak bisa membuat template pekerjaan"
+
+msgid "Could not launch job"
+msgstr "Tidak bisa memulai pekerjaan"
+
+msgid "Could not update cluster shares"
+msgstr "Tidak dapat memperbarui share klaster"
+
+msgid "Could not update data source"
+msgstr "Tidak dapat memperbarui sumber data"
+
+msgid "Could not update plugin"
+msgstr "Tidak bisa update plugin"
+
+msgid "Count"
+msgstr "Count"
+
+msgid "Create"
+msgstr "Create"
+
+msgid "Create Cluster Template"
+msgstr "Create Cluster Template (pembentukan template kluster)"
+
+msgid "Create Data Source"
+msgstr "Create Data Source (buat sumber data)"
+
+msgid "Create Job Binary"
+msgstr "Create Job Binary (buat biner pekerjaan)"
+
+msgid "Create Job Template"
+msgstr "Create Job Template (membuat template pekerjaan)"
+
+msgid "Create Node Group Template"
+msgstr "Create Node Group Template (Buat template node grup)"
+
+msgid "Create Template"
+msgstr "Create Template (pembentukan template)"
+
+msgid "Create a Cluster Template"
+msgstr "Buat Cluster Template (template klaster)"
+
+msgid "Create a Data Source with a specified name."
+msgstr "Membuat Sumber Data dengan nama tertentu."
+
+msgid "Create a Master Node Group Template"
+msgstr "Membuat Master Node Group Template"
+
+msgid "Create a Worker Node Group Template"
+msgstr "Buat Worker Node Group Template (template grup simpul pekerja)"
+
+msgid "Create a data source"
+msgstr "Membuat sumber data"
+
+msgid "Create a job template"
+msgstr "Membuat template kerja"
+
+msgid "Create a job template with a specified name."
+msgstr "Membuat template pekerjaan dengan nama tertentu."
+
+msgid "Create a script to be uploaded dynamically"
+msgstr "Membuat skrip untuk upload dinamis"
+
+msgid "Create security group for this Node Group."
+msgstr "Buat grup keamanan untuk grup node ini"
+
+msgid "Create time"
+msgstr "Buat waktu"
+
+msgid "Create volumes in this availability zone."
+msgstr "Membuat volume di zona ketersediaan ini."
+
+msgid "Created"
+msgstr "Created"
+
+msgctxt "Created time"
+msgid "Created"
+msgstr "Created (Dibuat)"
+
+#, python-format
+msgid "Created Cluster Template %s"
+msgstr "Created Cluster Template %s"
+
+#, python-format
+msgid "Created Node Group Template %s"
+msgstr "Node Group Template dibuat %s"
+
+msgid "Created time"
+msgstr "Waktu dibuat"
+
+msgid "Current choice:"
+msgstr "Pilihan saat ini:"
+
+msgid "Current type:"
+msgstr "Tipe saat ini:"
+
+msgid "Custom Tag"
+msgstr "Custom Tag (tag kustom)"
+
+msgid "DNS Domain Names"
+msgstr "DNS Domain Names"
+
+msgid "Data Processing"
+msgstr "Data Processing (proses data)"
+
+msgid "Data Processing Plugin Details"
+msgstr "Data Processing Plugin Details (rincian plugin pengolahan data)"
+
+msgid "Data Processing Plugins"
+msgstr "Data Processing Plugins (plugin pengolahan data)"
+
+msgid "Data Processing internal database"
+msgstr "Pengolahan Data database internal"
+
+msgid ""
+"Data Processing provides different storage location options. You may choose "
+"Ephemeral Drive or a Cinder Volume to be attached to instances."
+msgstr ""
+"Data Processing (proses data) memberikan pilihan lokasi penyimpanan yang "
+"berbeda. Anda dapat memilih Ephemeral Drive atau Cinder Volume terpasang ke "
+"instance."
+
+msgid "Data Source"
+msgstr "Data Source (sumber data)"
+
+msgid "Data Source Type"
+msgstr "Data Source Type (tipe sumber data)"
+
+msgid "Data Sources"
+msgstr "Data Sources (sumber data)"
+
+msgid ""
+"Data Sources are what your\n"
+"                            job uses for input and output.  Depending on the "
+"type\n"
+"                            of job you will be running, you may need to "
+"define one\n"
+"                            or more data sources.  You can create multiple "
+"data\n"
+"                            sources by repeating this step.\n"
+"                        "
+msgstr ""
+"Sumber data apa untuk penggunaan\n"
+"                             kerja input dan output. Tergantung pada tipe\n"
+"                             dari pekerjaan yang Anda akan berjalan, Anda "
+"mungkin perlu menetapkan satu\n"
+"                             atau lebih sumber data. Anda dapat membuat "
+"beberapa sumber data  dengan mengulangi langkah ini.\n"
+"                        "
+
+msgid "Data source created"
+msgstr "Sumber data yang dibuat"
+
+msgid "Data source updated"
+msgstr "Sumber data diperbarui"
+
+msgid "Default Value"
+msgstr "Default Value (nilai default)"
+
+msgid ""
+"Define your Job Template.\n"
+"                        This is where you choose the type of job that you\n"
+"                        want to run (Pig, Java Action, Spark, etc) and "
+"choose\n"
+"                        or upload the files necessary to run it.  The "
+"inputs\n"
+"                        and outputs will be defined later.\n"
+"                    "
+msgstr ""
+"Tentukan Template Kerja Anda.\n"
+"                         Ini adalah di mana Anda memilih tipe pekerjaan yang "
+"Anda\n"
+"                         ingin menjalankan (Pig, Java Action, Spark, dll) "
+"dan memilih\n"
+"                         atau meng-upload file yang diperlukan untuk "
+"menjalankannya. Input dan output akan ditentukan kemudian.\n"
+"                    "
+
+msgid "Delete Cluster"
+msgid_plural "Delete Clusters"
+msgstr[0] "Delete Cluster"
+
+msgid "Delete Data Source"
+msgid_plural "Delete Data Sources"
+msgstr[0] "Delete Data Source"
+
+msgid "Delete Job"
+msgid_plural "Delete Jobs"
+msgstr[0] "Delete Job"
+
+msgid "Delete Job Binary"
+msgid_plural "Delete Job Binaries"
+msgstr[0] "Delete Job Binary"
+
+msgid "Delete Job Template"
+msgid_plural "Delete Job Templates"
+msgstr[0] "Delete Job Template"
+
+msgid "Delete Template"
+msgid_plural "Delete Templates"
+msgstr[0] "Delete Template"
+
+msgid "Deleted Cluster"
+msgid_plural "Deleted Clusters"
+msgstr[0] "Deleted Cluster"
+
+msgid "Deleted Data Source"
+msgid_plural "Deleted Data Sources"
+msgstr[0] "Deleted Data Source"
+
+msgid "Deleted Job"
+msgid_plural "Deleted Jobs"
+msgstr[0] "Deleted Job"
+
+msgid "Deleted Job Binary"
+msgid_plural "Deleted Job Binaries"
+msgstr[0] "Deleted Job Binary"
+
+msgid "Deleted Job Template"
+msgid_plural "Deleted Jobs Templates"
+msgstr[0] "Deleted Job Template"
+
+msgid "Deleted Template"
+msgid_plural "Deleted Templates"
+msgstr[0] "Deleted Template"
+
+msgid "Description"
+msgstr "Description (deskripsi)"
+
+msgid "Details"
+msgstr "Details"
+
+msgid "Domain Name"
+msgstr "Domain Name"
+
+msgid "Domain name"
+msgstr "Nama domain"
+
+msgid "Done"
+msgstr "Done"
+
+msgctxt "Current status of a Job"
+msgid "Done with Error"
+msgstr "Done with Error (selesai dengan kesalahan)"
+
+msgid "Download Job Binary"
+msgstr "Download Job Binary"
+
+msgid "Download job binary"
+msgstr "Download pekerjaan biner"
+
+msgid "Drive type"
+msgstr "Tipe drive"
+
+msgid "Duration"
+msgstr "Duration (lamanya)"
+
+msgid "Edit Cluster Template"
+msgstr "Edit Cluster Template"
+
+msgid "Edit Data Source"
+msgstr "Edit Data Source (mengedit sumber data)"
+
+msgid "Edit Image Tags"
+msgstr "Mengedit kata kunci image"
+
+msgid "Edit Job Binary"
+msgstr "Edit Job Binary (mengedit pekerjaan biner)"
+
+msgid "Edit Node Group Template"
+msgstr "Edit Node Group Template (edit template grup simpul)"
+
+msgid "Edit Tags"
+msgstr "Edit Tags (mengedit kata kunci)"
+
+msgid "Edit Template"
+msgstr "Edit Template (edit template)"
+
+msgid "Enable Swift Paths"
+msgstr "Enable Swift Paths (aktifkan jalur Swift)"
+
+msgid "Enabled Versions"
+msgstr "Enabled Versions (versi diaktifkan)"
+
+msgctxt "End time"
+msgid "Ended"
+msgstr "Ended (diakhiri)"
+
+msgid "Enter any custom configuration required for your job's execution."
+msgstr ""
+"Masukkan konfigurasi kustom yang diperlukan untuk pelaksanaan pekerjaan Anda."
+
+msgid "Enter the URL for the file"
+msgstr "Masukkan URL untuk file itu"
+
+msgid "Enter the username and password required to access that file"
+msgstr ""
+"Masukkan username dan password yang diperlukan untuk mengakses file itu"
+
+msgid "Ephemeral Drive"
+msgstr "Ephemeral Drive (drive bersifat sementara)"
+
+msgid "Ephemeral drive"
+msgstr "Drive bersifat sementara"
+
+msgid "Error Details"
+msgstr "Error Details (rincian kesalahan)"
+
+msgid "Event time"
+msgstr "Event time (waktu saat acara)"
+
+msgid "Failed"
+msgstr "Failed (gagal)"
+
+msgctxt "Current status of a Job"
+msgid "Failed"
+msgstr "Failed (gagal)"
+
+msgid "Failed to fetch internal binary list"
+msgstr "Gagal mengambil daftar biner internal"
+
+msgid "Failed to get list of internal binaries."
+msgstr "Gagal mendapatkan daftar binari internal."
+
+msgid "Failed to get list of shares"
+msgstr "Gagal mendapatkan daftar berbagi"
+
+msgid "Failed to update image."
+msgstr "Image gagal memperbarui "
+
+msgid "Filter"
+msgstr "Filter (penyaring)"
+
+msgid ""
+"First, select which type of job that\n"
+"                            you want to run.  This choice will determine "
+"which\n"
+"                            other steps are required\n"
+"                        "
+msgstr ""
+"Pertama, pilih jenis pekerjaan yang\n"
+"                             Anda ingin menjalankan. Pilihan ini akan "
+"menentukan\n"
+"                             langkah-langkah lain yang diperlukan\n"
+"                        "
+
+msgid "Flavor"
+msgstr "Flavor"
+
+msgid "Flavor is not specified"
+msgstr "Flavor tidak ditentukan"
+
+msgid "Floating IP Pool"
+msgstr "Floating IP Pool (kolam IP mengambang)"
+
+msgid ""
+"For Data Processing internal job binaries, you may choose from the following:"
+msgstr ""
+"Untuk Pengolahan Data binari pekerjaan internal, Anda dapat memilih dari "
+"berikut ini:"
+
+msgid ""
+"For Data Sources on a Manila share, choose the share and enter the path "
+"relative to the share (example: /outputdir/myinputfile.txt)"
+msgstr ""
+"Untuk Sumber Data pada Manila share, pilih share dan masukkan path relatif "
+"ke share (contoh: /outputdir/inputfile.txt)"
+
+msgid ""
+"For MapReduce or Java Action jobs, \"mains\" are not applicable.  You are "
+"required to add one\n"
+"  or more \"libs\" for these jobs."
+msgstr ""
+"Untuk pekerjaan MapReduce atau Java Action, \"mains\" tidak berlaku. Anda "
+"diminta untuk menambahkan satu\n"
+"   atau lebih \"libs\" untuk pekerjaan ini."
+
+msgid "For Object Store job binaries, you must:"
+msgstr "Untuk binari pekerjaan Obyek Store, Anda harus:"
+
+msgid ""
+"For Shell Action jobs, any required files beyond the main script may be "
+"added as \"libraries\"."
+msgstr ""
+"Untuk pekerjaan Shell Action, setiap file yang dibutuhkan di luar script "
+"utama dapat ditambahkan sebagai \"libraries\"."
+
+msgid ""
+"For Storm, Storm Pyleus, Spark and Shell jobs, only a main is required,\"libs"
+"\" are optional."
+msgstr ""
+"Untuk pekerjaan Storm, Storm Pyleus, Spark dan Shell, hanya main diperlukan, "
+"\"libs\" adalah opsional."
+
+msgid "General Info"
+msgstr "General Info (info umum)"
+
+msgid "Guided Cluster Creation"
+msgstr "Guided Cluster Creation (pembuatan klaster dipandu)"
+
+msgid "Guided Job Execution"
+msgstr "Guided Job Execution (dipandu eksekusi kerja)"
+
+msgid "HDFS placement"
+msgstr "Penempatan HDFS"
+
+msgid "Health"
+msgstr "Health (kesehatan)"
+
+msgid "Hide full configuration"
+msgstr "Sembunyikan konfigurasi penuh"
+
+msgid "Hive"
+msgstr "Hive"
+
+msgid "ID"
+msgstr "ID"
+
+#, python-format
+msgid ""
+"If selected, %s will be protected from modifications until this will be "
+"unselected"
+msgstr ""
+"Jika dipilih, %s akan dilindungi dari modifikasi sampai ini akan tidak "
+"dipilih"
+
+#, python-format
+msgid "If selected, %s will be shared across the tenants"
+msgstr "Jika dipilih, %s akan dibagi untuk penyewa (tenant)"
+
+msgid ""
+"If selected, instances of a cluster will be automatically configured during "
+"creation. Otherwise you should manually specify configuration values"
+msgstr ""
+"Jika terpilih, instance cluster akan dikonfigurasi secara otomatis selama "
+"pembuatan. Jika tidak, Anda harus secara manual menentukan nilai konfigurasi"
+
+msgid ""
+"If selected, instances of a node group will be automatically configured "
+"during cluster creation. Otherwise you should manually specify configuration "
+"values."
+msgstr ""
+"Jika terpilih, instance dari kelompok node akan secara otomatis "
+"dikonfigurasi selama pembuatan cluster. Jika tidak, Anda harus secara manual "
+"menentukan nilai konfigurasi."
+
+msgid "Image"
+msgstr "Image (gambar)"
+
+msgid "Image Registry"
+msgstr "Image Registry (pendaftaran image)"
+
+msgid ""
+"Image Registry is used to provide additional information about images for "
+"Data Processing."
+msgstr ""
+"Image Registry digunakan untuk memberikan informasi tambahan tentang image "
+"untuk pengolahan data (Data Processing)."
+
+msgid "Image Registry tool:"
+msgstr "Alat Image Registry (registri image):"
+
+msgid "In progress"
+msgstr "Sedang berlangsung"
+
+msgid "Info"
+msgstr "Info"
+
+msgid "Input"
+msgstr "Input (masukan)"
+
+msgid "Input Data Source"
+msgstr "Pemasukan sumber data"
+
+msgid "Instance"
+msgstr "Instance"
+
+msgid "Instance and attached volumes will be created on the same physical host"
+msgstr "Instance dan volume yang melekat akan dibuat pada host fisik yang sama"
+
+msgid "Instances"
+msgstr "Instances (instance)"
+
+msgid "Instances Count"
+msgstr "Instances Count (hitung instance)"
+
+msgid "Interface Arguments"
+msgstr "Interface Arguments (argumen antarmuka)"
+
+msgid "Internal Binary"
+msgstr "Internal Binary (biner internal)"
+
+msgid "Internal IP"
+msgstr "Internal IP (IP internal)"
+
+msgid "Internal binary"
+msgstr "Biner internal"
+
+msgid "Java"
+msgstr "Java"
+
+msgid "Java Action"
+msgstr "Java Action (aksi java)"
+
+msgid "Java Opts"
+msgstr "Java Opts"
+
+msgid "Job"
+msgstr "Job (kerja)"
+
+msgid "Job Binaries"
+msgstr "Job Binaries (binari pekerjaan)"
+
+msgid "Job Configuration"
+msgstr "Job Configuration (konfigurasi kerja)"
+
+msgid "Job Execution ID"
+msgstr "Job Execution ID (ID eksekusi kerja)"
+
+msgid "Job Guide"
+msgstr "Job Guide (panduan kerja)"
+
+msgid "Job Template"
+msgstr "Job Template (template kerja)"
+
+msgid "Job Templates"
+msgstr "Job Templates (template pekerjaan)"
+
+msgid "Job Type"
+msgstr "Job Type (tipe pekerjaan)"
+
+msgid "Job args"
+msgstr "Job args"
+
+msgid "Job configs"
+msgstr "Job configs"
+
+msgid "Job created"
+msgstr "Job dibuat"
+
+msgid "Job launched"
+msgstr "Kerja diluncurkan"
+
+msgid "Job params"
+msgstr "Job params"
+
+msgid "Job template:"
+msgstr "Job template (template kerja):"
+
+msgid "Job type chosen"
+msgstr "Tipe pekerjaan yang dipilih"
+
+msgid "Jobs"
+msgstr "Jobs (pekerjaan)"
+
+msgid "Keypair"
+msgstr "Keypair (pasangan kunci)"
+
+msgctxt "Current status of a Job"
+msgid "Killed"
+msgstr "Killed (terbunuh)"
+
+msgid "Label"
+msgstr "Label (label)"
+
+msgid "Label details"
+msgstr "Label details (rincian label)"
+
+msgid "Last Updated"
+msgstr "Last Updated (terakhir diperbarui)"
+
+msgid "Launch"
+msgstr "Launch (meluncur)"
+
+msgid "Launch Cluster"
+msgstr "Launch Cluster (peluncuran kluster)"
+
+msgid "Launch Job"
+msgid_plural "Launch Jobs"
+msgstr[0] "Launch Job"
+
+msgid "Launch On Existing Cluster"
+msgstr "Launch On Existing Cluster (peluncuran cluster yang ada)"
+
+msgid "Launch On New Cluster"
+msgstr "Launch On New Cluster (peluncuran klaster baru"
+
+msgid "Launch a Cluster"
+msgstr "Meluncurkan klaster"
+
+msgid "Launch instances in these security groups."
+msgstr "Luncurkan instance dalam kelompok keamanan ini."
+
+msgid "Launch instances in this availability zone."
+msgstr "Luncurkan instance di zona ketersediaan ini."
+
+msgid "Launch job"
+msgstr "Peluncuran pekerjaan"
+
+msgid "Launch the given job template on a cluster."
+msgstr "Meluncurkan template kerja yang diberikan pada sebuah klaster."
+
+msgid ""
+"Launch your job.  When\n"
+"                        launching, you may need to choose your input and\n"
+"                        output data sources.  This is where you would also\n"
+"                        add any special configuration values, parameters,\n"
+"                        or arguments that you need to pass along\n"
+"                        to your job.\n"
+"                        "
+msgstr ""
+"Luncurkan pekerjaan Anda. Kapan\n"
+"                         peluncuran, Anda mungkin perlu memilih masukan dan\n"
+"                         sumber data output. Ini adalah dimana Anda juga "
+"akan\n"
+"                         menambahkan nilai konfigurasi khusus, parameter,\n"
+"                         atau argumen yang Anda harus lewatkan bersama\n"
+"                         untuk pekerjaan Anda.\n"
+"                        "
+
+#, python-format
+msgid "Launched Cluster %s"
+msgstr "Launched Cluster %s (klaster diluncurkan)"
+
+msgid "Launched Job"
+msgid_plural "Launched Jobs"
+msgstr[0] "Launched Job"
+
+msgid "Libs"
+msgstr "Libs"
+
+msgid "Location"
+msgstr "Location (lokasi)"
+
+msgid "Main Class"
+msgstr "Main Class (kelas utama)"
+
+msgid "Mains"
+msgstr "Mains (induk)"
+
+msgid "Management IP"
+msgstr "Management IP (IP managemen)"
+
+msgid "Manila share"
+msgstr "Berbagi Manila"
+
+msgid "MapReduce"
+msgstr "MapReduce"
+
+msgid "Mapper"
+msgstr "Mapper (pemetaan)"
+
+msgid "Mapping Type"
+msgstr "Mapping Type (tipe pemetaan)"
+
+msgid "Master Node Group Template:"
+msgstr "Master Node Group Template (template grup simpul master):"
+
+msgid ""
+"Modify the configuration so that swift URLs can be dereferenced through HDFS "
+"at runtime."
+msgstr ""
+"Mengubah konfigurasi sehingga URL cepat dapat dereferenced melalui HDFS saat "
+"runtime."
+
+msgid "Name"
+msgstr "Name (nama)"
+
+#, python-format
+msgid "Name: %(node_group_name)s"
+msgstr "Name (nama): %(node_group_name)s"
+
+msgid "Named Parameter"
+msgstr "Named Parameter (parameter bernama)"
+
+msgid "Neutron Management Network"
+msgstr "Neutron Management Network (jaringan managemen neutron)"
+
+msgid "Never"
+msgstr "Never (tak pernah)"
+
+msgid "Next"
+msgstr "Next"
+
+msgid ""
+"Next, you need to define the different\n"
+"                        types of machines in your cluster.  This is done by\n"
+"                        defining a Node Group Template for each type of\n"
+"                        machine.  A very common case is where you\n"
+"                        need to have one or more machines running a \"master"
+"\"\n"
+"                        set of processes while another set of machines need\n"
+"                        to be running the \"worker\" processes.  Here,\n"
+"                        you will define the Node Group Template for your\n"
+"                        \"master\" node(s).\n"
+"                     "
+msgstr ""
+"Selanjutnya, Anda perlu menentukan\n"
+"                         tipe mesin yang berbeda di cluster. Hal ini "
+"dilakukan dengan\n"
+"                         mendefinisikan Node Group Template untuk setiap "
+"tipe\n"
+"                         mesin. Sebuah kasus yang sangat umum adalah di mana "
+"Anda\n"
+"                         harus memiliki satu atau lebih mesin menjalankan "
+"set beberapa proses \"master\"\n"
+"                          sementara set beberapa mesin lainnya perlu\n"
+"                         menjalankan proses \"worker\". Disini,\n"
+"                         Anda akan menentukan Node Group Template untuk "
+"\"master\" node Anda.\n"
+"                     "
+
+msgid "No Cluster Template Created"
+msgstr "Tidak ada Cluster Template Created (template klaster yang dibuat)"
+
+msgid "No Images Available"
+msgstr "No Images Available (tidak ada image tersedia)"
+
+msgid "No Master Node Group Template Created"
+msgstr ""
+"Tidak ada Master Node Group Template Created (template grup simpul master  "
+"yang dibuat)"
+
+msgid "No Templates Available"
+msgstr "No Templates Available (tidak tersedia template)"
+
+msgid "No Worker Node Group Template Created"
+msgstr "Tidak ada Worker Node Group Template yang dibuat"
+
+msgid "No availability zone specified"
+msgstr "Tidak ada zona ketersediaan ditentukan"
+
+msgid "No clusters available"
+msgstr "Tidak ada klaster yang tersedia"
+
+msgid "No configurations"
+msgstr "Tidak ada konfigurasi"
+
+msgid "No description"
+msgstr "Tidak ada deskripsi"
+
+msgid "No domain is specified"
+msgstr "Tidak ada domain yang ditentukan"
+
+msgid "No enabled versions"
+msgstr "Tidak ada versi diaktifkan"
+
+msgid "No image specified"
+msgstr "Tidak ada image yang ditentukan"
+
+msgid "No images available."
+msgstr "Tidak ada image yang tersedia."
+
+msgid "No info available"
+msgstr "Tidak ada info yang tersedia"
+
+msgid "No job template created"
+msgstr "Tidak ada template kerja yang dibuat"
+
+msgid "No keypair"
+msgstr "Tidak ada pasangan kunci"
+
+msgid "No plugin chosen"
+msgstr "Tidak ada plugin yang dipilih"
+
+msgid "No type chosen"
+msgstr "Tidak ada tipe yang dipilih"
+
+msgid "No volume type"
+msgstr "Tidak ada tipe volume"
+
+msgid "Node Group"
+msgstr "Node Group (grup simpul)"
+
+#, python-format
+msgid "Node Group Name: %(node_group_name)s"
+msgstr "Node Group Name: %(node_group_name)s"
+
+msgid "Node Group Template"
+msgstr "Node Group Template (template grup simpul)"
+
+#, python-format
+msgid "Node Group Template %s updated"
+msgstr "Node Group Template %s diperbaharui"
+
+#, python-format
+msgid "Node Group Template copy %s created"
+msgstr "copy template node grup %s dibentuk"
+
+msgid "Node Group Templates"
+msgstr "Node Group Templates (template kelompok simpul)"
+
+#, python-format
+msgid "Node Group: %(node_group_name)s"
+msgstr "Node Group (grup simpul): %(node_group_name)s"
+
+msgid "Node Groups"
+msgstr "Node Groups  (grup node)"
+
+msgid "Node Groups Configuration Overview"
+msgstr "Node Groups Configuration Overview (Ikhtisar konfigurasi grup simple)"
+
+msgid "Node Processes"
+msgstr "Node Processes (proses simpul)"
+
+msgid "Node group cluster"
+msgstr "Node group cluster (klaster grup simpul)"
+
+msgid "Node group configurations are not specified"
+msgstr "Konfigurasi kelompok simpul tidak ditentukan"
+
+msgid "Node processes are not specified"
+msgstr "Proses simpul (Node) tidak ditentukan"
+
+msgid "Nodes Count"
+msgstr "Nodes Count (hitung simpul)"
+
+msgid "None"
+msgstr "None (tak satupun)"
+
+msgid "Not available"
+msgstr "Not available (tidak tersedia)"
+
+msgid ""
+"Now you need to set the layout of your\n"
+"                        cluster.  By\n"
+"                        creating a Cluster Template, you will be choosing "
+"the\n"
+"                        number of instances of each Node Group Template "
+"that\n"
+"                        will appear in your cluster.  Additionally,\n"
+"                        you will have a chance to set any cluster-specific\n"
+"                        configuration items in the additional tabs on the\n"
+"                        create Cluster Template form."
+msgstr ""
+"Sekarang Anda perlu mengatur tata letak kluster Anda.\n"
+"                        Oleh\n"
+"                         menciptakan Cluster Template (template klaster), "
+"Anda akan memilih\n"
+"                         jumlah instance masing-masing Node Group Template "
+"(template grup simpul) yang\n"
+"                         akan muncul dalam klaster Anda. Selain itu,\n"
+"                         Anda akan memiliki kesempatan untuk mengatur item "
+"konfigurasi cluster-specific\n"
+"                          dalam tab tambahan pada\n"
+"                         pembuatan formulir Cluster Template (template "
+"klaster)."
+
+msgid "Number"
+msgstr "Number (angka)"
+
+msgid "Number of Nodes"
+msgstr "Number of Nodes (jumlah simpul)"
+
+msgid "Number of clusters to launch."
+msgstr "Jumlah klaster untuk memulai."
+
+msgid "Oozie Job ID"
+msgstr "Oozie Job ID (ID kerja Oozie)"
+
+msgid "OpenStack Flavor"
+msgstr "OpenStack Flavor (flavor openstack)"
+
+msgid "Output"
+msgstr "Output (keluaran)"
+
+msgid "Output Data Source"
+msgstr "Pengeluaran sumber data"
+
+msgid "Parameters"
+msgstr "Parameters (parameter)"
+
+msgid "Password"
+msgstr "Password"
+
+msgid "Path"
+msgstr "Path (jalan)"
+
+msgid "Path on share"
+msgstr "Path on share (jalan untuk berbagi)"
+
+msgid "Persist cluster after job exit"
+msgstr "Bertahan klaster setelah keluar pekerjaan"
+
+msgid "Pig"
+msgstr "Pig"
+
+msgid "Plugin"
+msgstr "Plugin (plugin)"
+
+msgid "Plugin Name"
+msgstr "Plugin Name (nama plugin)"
+
+msgid "Plugin and Version Tag"
+msgstr "Plugin and Version Tag (tag plugin dan versi)"
+
+msgid "Plugin label"
+msgstr "Label plugin "
+
+msgid "Plugin name"
+msgstr "Nama plugin"
+
+msgid "Plugin update failed."
+msgstr "Perbarui plugin gagal."
+
+#, python-format
+msgid "Plugin version %(version)s label"
+msgstr "Versi plugin %(version)s label"
+
+#, python-format
+msgid "Plugin version %s"
+msgstr "Versi plugin %s"
+
+msgid "Plugin:"
+msgstr "Plugin:"
+
+msgid "Plugins"
+msgstr "Plugins (plugin)"
+
+msgid "Positional Argument"
+msgstr "Positional Argument (argumen posisi)"
+
+msgid "Progress"
+msgstr "Progress (kemajuan)"
+
+msgid "Project ID"
+msgstr "Project ID (ID proyek)"
+
+msgid "Project Id"
+msgstr "Project Id (Id proyek)"
+
+msgid "Protected"
+msgstr "Protected (terlindung)"
+
+msgid "Proxy Gateway"
+msgstr "Proxy Gateway (gerbang proxy)"
+
+msgid "Public"
+msgstr "Public (public)"
+
+msgid "Read only"
+msgstr "Read only (hanya baca)"
+
+msgid "Read/Write"
+msgstr "Read/Write (baca/tulis)"
+
+msgid "Reducer"
+msgstr "Reducer (peredam)"
+
+msgid "Register Image"
+msgstr "Register Image (mendaftar image)"
+
+msgid "Relaunch On Existing Cluster"
+msgstr "Relaunch On Existing Cluster (meluncurkan kembali klaster yang ada)"
+
+msgid "Relaunch On New Cluster"
+msgstr "Relaunch On New Cluster (meluncurkan kembali klaster baru)"
+
+msgid "Remove"
+msgstr "Remove (hapus)"
+
+msgid ""
+"Repeat the Node Group Template\n"
+"                        creation process, but this time you are creating\n"
+"                        your \"worker\" Node Group Template."
+msgstr ""
+"Ulangi proses pembuatan Node Group Template, \n"
+"                         tetapi kali ini Anda membuat\n"
+"                         \"worker\" Node Group Template Anda"
+
+msgid "Required"
+msgstr "Required (wajib)"
+
+msgid "Reset Cluster Creation Guide"
+msgstr "Pengaturan ulang Cluster Creation Guide (panduan pembuatan klaster)"
+
+msgid "Reset Cluster Guide"
+msgstr "Pengaturan ulang Cluster Guide (panduan klaster)"
+
+msgid "Reset Job Execution Guide"
+msgstr "Mengatur ulang panduan pelaksanaan kerja"
+
+msgid "Return Code"
+msgstr "Return Code (kode kembalinya)"
+
+msgid "Run HBase EDP Jobs with common HBase library on HDFS"
+msgstr "Jalankan HBase EDP Jobs dengan perpustakaan HBase umum pada HDFS"
+
+msgid ""
+"Sahara will use instances of this node group to access other cluster "
+"instances."
+msgstr ""
+"Sahara akan menggunakan instance kelompok node ini untuk mengakses instance "
+"klaster lainnya."
+
+msgid "Scale"
+msgstr "Scale (memperbesar)"
+
+msgid "Scale Cluster"
+msgstr "Scale Cluster (Scale klaster)"
+
+msgid "Scale cluster operation failed"
+msgstr "Operasi skala klaster gagal"
+
+msgid "Scaled cluster successfully started."
+msgstr "Skala klaster berhasil dimulai."
+
+msgid "Scope"
+msgstr "Scope (cakupan)"
+
+msgid "Script name"
+msgstr "Nama skrip"
+
+msgid "Script text"
+msgstr "Teks skrip"
+
+msgid "Security"
+msgstr "Security (keamanan)"
+
+msgid "Security Groups"
+msgstr "Security Groups (grup keamanan)"
+
+msgid "Select"
+msgstr "Pilih"
+
+msgid "Select Image"
+msgstr "Select Image (pilih image)"
+
+msgid "Select Node Group Processes"
+msgstr "Pilih proses grup node (Node Group Processes)"
+
+msgid "Select Shares"
+msgstr "Select Shares"
+
+msgid "Select a Node Group Template to add:"
+msgstr "Pilih Node Group Template (template grup simpul) untuk menambahkan:"
+
+msgid "Select a Value Type for your next argument:"
+msgstr "Pilih Value Type untuk argumen berikutnya:"
+
+msgid "Select a plugin and version for a new Cluster template."
+msgstr "Pilih plugin dan versi untuk template klaster baru."
+
+msgid "Select a plugin and version for a new Cluster."
+msgstr "Pilih plugin dan versi untuk klaster baru."
+
+msgid "Select a plugin and version for the new Node Group template."
+msgstr "Pilih plugin dan versi untuk template Node Group baru."
+
+msgid ""
+"Select an existing node group template.\n"
+"    "
+msgstr "Pilih template kelompok simpul yang ada.    "
+
+msgid "Select node processes for the node group"
+msgstr "Select node processes for the node group"
+
+msgid "Select plugin and hadoop version"
+msgstr "Pilih plugin dan versi Hadoop"
+
+msgid "Select plugin and hadoop version for cluster"
+msgstr "Pilih plugin dan versi Hadoop untuk cluster"
+
+msgid "Select plugin and hadoop version for cluster template"
+msgstr "Pilih Plugin dan versi Hadoop untuk template klaster"
+
+msgid "Select property name"
+msgstr "Pilih nama properti"
+
+msgid "Select the domain name for internal and external hostname resolution."
+msgstr "Pilih nama domain untuk resolusi nama host internal dan eksternal."
+
+msgid "Select the manila shares for this cluster"
+msgstr "Pilih share manila untuk cluster ini"
+
+msgid "Select the manila shares for this node group"
+msgstr "Pilih share manila untuk kelompok node ini"
+
+msgid "Select the storage type for your job binary."
+msgstr "Pilih tipe penyimpanan untuk biner pekerjaan Anda."
+
+msgid "Select the type of your Data Source."
+msgstr "Pilih jenis Sumber Data Anda."
+
+msgid "Select the type of your job:"
+msgstr "Pilih tipe pekerjaan Anda:"
+
+msgid "Select type"
+msgstr "Pilih tipe"
+
+msgid ""
+"Select which plugin and version that you\n"
+"    want to use to create your cluster."
+msgstr ""
+"Pilih plugin dan versi yang Anda\n"
+"     ingin gunakan untuk membuat cluster."
+
+msgid ""
+"Select which type of job that you want to run.\n"
+"      This choice will dictate which steps are required to successfully\n"
+"      execute your job.\n"
+"    "
+msgstr ""
+"Pilih jenis pekerjaan yang ingin Anda jalankan.\n"
+"       Pilihan ini akan menentukan yang langkah-langkah yang diperlukan "
+"untuk berhasil\n"
+"       mengeksekusi pekerjaan Anda.\n"
+"    "
+
+msgid ""
+"Selected domain name should already exist in the Designate.\n"
+"    You can check it in &quot;DNS&quot; tab on the left menu or by "
+"executing\n"
+"    &quot;designate domain-list&quot;\n"
+"    on the controller node."
+msgstr ""
+"Nama domain yang dipilih harus sudah ada di Designate (penunjukan) "
+"tersebut.\n"
+"     Anda dapat memeriksa dalam tab &quot;DNS&quot;  di menu kiri atau "
+"dengan mengeksekusi\n"
+"     &quot; menunjuk domain-list&quot;\n"
+"     pada simpul kontroler."
+
+msgid "Service Configurations"
+msgstr "Service Configurations (konfigurasi layanan)"
+
+msgid "Share"
+msgstr "Share (berbagi)"
+
+msgid "Shares"
+msgstr "Shares"
+
+msgid "Shell"
+msgstr "Shell"
+
+msgid "Shell Action"
+msgstr "Shell Action (aksi shell)"
+
+msgid "Show full configuration"
+msgstr "Tampilkan konfigurasi penuh"
+
+msgid "Source password"
+msgstr "Sumber password"
+
+msgid "Source username"
+msgstr "Sumber username"
+
+msgid "Spark"
+msgstr "Spark (percikan)"
+
+msgid ""
+"Specified User Name will be used by Data Processing to apply configs and "
+"manage processes on instances."
+msgstr ""
+"Specified User Name (nama pengguna yang ditentukan) akan digunakan oleh "
+"pengolahan data untuk menerapkan konfigurasi dan mengelola proses pada "
+"instance."
+
+msgid "Start Verification"
+msgid_plural "Start Verifications"
+msgstr[0] "Start Verification"
+
+msgctxt "Start time"
+msgid "Started"
+msgstr "Started (dimulai)"
+
+msgid "Started Verification"
+msgid_plural "Started Verifications"
+msgstr[0] "Started Verification"
+
+msgid "Started at"
+msgstr "Dimulai di"
+
+msgid "Status"
+msgstr "Status"
+
+msgid "Status description"
+msgstr "Deskripsi status"
+
+msgid "Step Description"
+msgstr "Deskripsi langkah"
+
+msgid "Storage location"
+msgstr "Storage location (lokasi penyimpanan)"
+
+msgid "Storage type"
+msgstr "Tipe penyimpanan"
+
+msgid "Storm"
+msgstr "Storm (badai)"
+
+msgid "Storm Pyelus"
+msgstr "Storm Pyelus"
+
+msgid "Storm Pyleus"
+msgstr "Storm Pyleus"
+
+msgid "Streaming MapReduce"
+msgstr "Streaming MapReduce"
+
+msgid "String"
+msgstr "String (string)"
+
+msgid ""
+"Substitute data source objects for URLs of the form datasource://name or "
+"uuid."
+msgstr ""
+"Pengganti objek sumber data untuk URL dari sumber data berupa://nama atau "
+"uuid."
+
+msgctxt "Current status of a Job"
+msgid "Succeeded"
+msgstr "Succeeded (berhasil)"
+
+msgid "Successfully updated image."
+msgstr "Image berhasil diperbarui."
+
+msgid "Supported Versions"
+msgstr "Versi didukung"
+
+msgid "Swift"
+msgstr "Swift"
+
+msgid "Tags"
+msgstr "Tags (kata kunci)"
+
+msgid ""
+"Tags are used for filtering images suitable for each plugin and each Data "
+"Processing version.\n"
+"        To add required tags, select a plugin and a Data Processing version "
+"and click the &quot;Add&quot; button."
+msgstr ""
+"Tag digunakan untuk menyaring image yang cocok untuk setiap plugin dan "
+"setiap versi pengolahan data.\n"
+"         Untuk menambahkan tag yang diperlukan, pilih plugin dan versi "
+"pengolahan data dan klik tombol &quot;Add&quot;."
+
+msgid "Template"
+msgstr "Template"
+
+msgid "Template Name"
+msgstr "Template Name"
+
+msgid "Template not specified"
+msgstr "Template tidak ditentukan"
+
+msgid ""
+"The Cluster Template object may specify a list of processes in anti-affinity "
+"group.\n"
+"    That means these processes may not be launched more than once on a "
+"single host."
+msgstr ""
+"Objek klaster templete dapat menentukan daftar proses dalam kelompok anti-"
+"afinitas.\n"
+"     Itu berarti proses ini mungkin tidak akan diluncurkan lebih dari sekali "
+"pada satu host."
+
+msgid ""
+"The Cluster Template object should specify Node Group Templates that will be "
+"used to build a Cluster.\n"
+"    You can add Node Groups using Node Group Templates on a &quot;Node "
+"Groups&quot; tab."
+msgstr ""
+"Objek  template klaster (Cluster Template) harus menentukan template grup "
+"simpul (Node Group Template) yang akan digunakan untuk membangun klaster "
+"(Cluster). Anda dapat menambahkan Node Grup menggunakan Node Group Templates "
+"pada &quot; Node Groups&quot; tab."
+
+msgid ""
+"The Cluster object should specify OpenStack Image to boot instances for "
+"Cluster."
+msgstr ""
+"Objek klaster harus menentukan OpenStack Image untuk boot instance untuk "
+"klaster."
+
+msgid ""
+"The Node Group Template object specifies the processes\n"
+"        that will be launched on each instance. Check one or more "
+"processes.\n"
+"        When processes are selected, you may set <b>node</b> scoped\n"
+"        configurations on corresponding tabs."
+msgstr ""
+"Objek Node Grup Template menentukan proses\n"
+"         yang akan diluncurkan pada setiap instance. Periksa satu atau lebih "
+"proses.\n"
+"         Ketika proses yang dipilih, Anda dapat menetapkan konfigurasi <b> "
+"node </ b> scoped\n"
+"         pada tab yang sesuai."
+
+msgid ""
+"The first step is to determine which type of\n"
+"                    cluster you want to run.  You may have several choices\n"
+"                    available depending on the configuration of your "
+"system.\n"
+"                    Click on \"choose plugin\" to bring up the list of data\n"
+"                    processing plugins.  There you will be able to choose "
+"the\n"
+"                    data processing plugin along with the version number.\n"
+"                    Choosing this up front will allow the rest of the "
+"cluster\n"
+"                    creation steps to focus only on options that are "
+"pertinent\n"
+"                    to your desired cluster type."
+msgstr ""
+"Langkah pertama adalah untuk menentukan tipe mengelompok Anda ingin "
+"menjalankan. Anda mungkin memiliki beberapa pilihan tersedia tergantung pada "
+"konfigurasi sistem Anda.\n"
+"                     Klik \"choose plugin\" untuk membuka daftar plugin "
+"pengolahan data. Di sana Anda akan dapat memilih plugin pengolahan data "
+"bersama dengan nomor versi.\n"
+"                     Pemilihan di awal ini akan memungkinkan sisa\n"
+"                     langkah-langkah penciptaan cluster hanya fokus pada "
+"pilihan yang bersangkutan pada\n"
+"                     tipe klaster yang Anda inginkan."
+
+msgid "The value of shares must be a list of values"
+msgstr "Nilai share harus daftar nilai"
+
+msgid "This Cluster Template will be created for:"
+msgstr "Template klaster (Cluster Template) ini akan dibuat untuk:"
+
+msgid "This Cluster will be started with:"
+msgstr "Klaster ini akan dimulai dengan:"
+
+msgid "This Node Group Template will be created for:"
+msgstr "Node Group Template (template grup simpul) ini akan dibuat untuk:"
+
+msgid "Title"
+msgstr "Title"
+
+msgid "Topology Name"
+msgstr "Topology Name"
+
+msgid "Type"
+msgstr "Type (tipe)"
+
+msgid "URL"
+msgstr "URL"
+
+msgid "Unable to create job binary"
+msgstr "Tidak dapat membuat biner pekerjaan"
+
+#, python-format
+msgid "Unable to create job binary: %s"
+msgstr "Tidak dapat membuat biner pekerjaan: %s"
+
+msgid "Unable to create new cluster for job."
+msgstr "Tidak dapat membuat cluster baru untuk pekerjaan."
+
+msgid "Unable to create the cluster"
+msgstr "Tidak dapat membuat klaster"
+
+#, python-format
+msgid "Unable to fetch Base Image with id: %s."
+msgstr "Tidak dapat mengambil image dasar (Base Image) dengan id: %s."
+
+msgid "Unable to fetch available images."
+msgstr "Tidak dapat mengambil image yang tersedia."
+
+msgid "Unable to fetch base image details"
+msgstr "Tidak dapat mengambil rincian image dasar"
+
+msgid "Unable to fetch cluster list"
+msgstr "Tidak dapat mengambil daftar klaster"
+
+msgid "Unable to fetch cluster template list"
+msgstr "Tidak dapat mengambil daftar template klaster)"
+
+msgid "Unable to fetch cluster template."
+msgstr "Tidak dapat mengambil klaster template."
+
+msgid "Unable to fetch cluster to scale"
+msgstr "Tidak dapat mengambil klaster untuk skala"
+
+msgid "Unable to fetch cluster to scale."
+msgstr "Tidak dapat mengambil cluster untuk skala."
+
+msgid "Unable to fetch cluster."
+msgstr "Tidak dapat mengambil klaster."
+
+msgid "Unable to fetch clusters."
+msgstr "Tidak dapat mengambil klaster."
+
+msgid "Unable to fetch data source list"
+msgstr "Tidak dapat mengambil daftar sumber data"
+
+msgid "Unable to fetch data sources."
+msgstr "Tidak dapat mengambil sumber data."
+
+msgid "Unable to fetch flavor for template."
+msgstr "Tidak dapat mengambil flavor untuk template."
+
+msgid "Unable to fetch floating ip pools."
+msgstr "Tidak dapat mengambil mengambang kolam ip."
+
+msgid "Unable to fetch image choices."
+msgstr "Tidak dapat mengambil pilihan image."
+
+msgid "Unable to fetch instance details."
+msgstr "Tidak dapat mengambil rincian instance."
+
+msgid "Unable to fetch job binary list"
+msgstr "Tidak dapat mengambil daftar biner pekerjaan"
+
+#, python-format
+msgid "Unable to fetch job binary: %(exc)s"
+msgstr "Tidak dapat mengambil biner pekerjaan: %(exc)s"
+
+msgid "Unable to fetch job list"
+msgstr "Tidak dapat mengambil daftar pekerjaan"
+
+msgid "Unable to fetch job template list"
+msgstr "Tidak dapat mengambil daftar template pekerjaan"
+
+msgid "Unable to fetch jobs."
+msgstr "Tidak dapat mengambil pekerjaan."
+
+msgid "Unable to fetch keypair choices."
+msgstr "Tidak dapat mengambil pilihan utama pasangan."
+
+msgid "Unable to fetch network details"
+msgstr "Tidak dapat mengambil rincian jaringan"
+
+msgid "Unable to fetch node group details."
+msgstr "Tidak dapat mengambil rincian kelompok simpul."
+
+msgid "Unable to fetch node group template list"
+msgstr "Tidak dapat mengambil daftar template kelompok simpul "
+
+msgid "Unable to fetch plugin details."
+msgstr "Tidak dapat mengambil rincian plugin."
+
+msgid "Unable to fetch plugin list"
+msgstr "Tidak dapat mengambil daftar plugin"
+
+msgid "Unable to fetch plugin object."
+msgstr "Tidak dapat mengambil objek plugin."
+
+msgid "Unable to fetch template object."
+msgstr "Tidak dapat mengambil objek template."
+
+msgid "Unable to fetch template to copy."
+msgstr "Tidak dapat mengambil template untuk menyalin."
+
+msgid "Unable to fetch template to edit."
+msgstr "Tidak dapat mengambil template untuk mengedit."
+
+msgid "Unable to fetch the image details"
+msgstr "Tidak dapat mengambil detil image"
+
+msgid "Unable to generate process choices."
+msgstr "Tidak dapat menghasilkan pilihan proses."
+
+msgid "Unable to get node group details."
+msgstr "Tidak dapat mendapatkan rincian kelompok simpul."
+
+msgid "Unable to get security group list."
+msgstr "Tidak dapat mendapatkan daftar grup keamanan."
+
+msgid "Unable to launch job."
+msgstr "Tidak dapat memulai pekerjaan."
+
+msgid "Unable to populate anti-affinity processes."
+msgstr "Tidak dapat mengisi proses anti-afinitas."
+
+msgid "Unable to process plugin tags"
+msgstr "Tidak dapat memproses kata kunci plugin"
+
+msgid "Unable to retrieve data processing plugins."
+msgstr "Tidak dapat mengambil plugin pengolahan data."
+
+#, python-format
+msgid "Unable to retrieve details for cluster \"%s\"."
+msgstr "Tidak dapat mengambil rincian untuk klaster \"%s\"."
+
+#, python-format
+msgid "Unable to retrieve details for cluster template \"%s\"."
+msgstr "Tidak dapat mengambil rincian untuk template klaster \"%s\"."
+
+#, python-format
+msgid "Unable to retrieve details for data source \"%s\"."
+msgstr "Tidak dapat mengambil rincian untuk sumber data \"%s\"."
+
+#, python-format
+msgid "Unable to retrieve details for job \"%s\"."
+msgstr "Unable to retrieve details for job \"%s\"."
+
+#, python-format
+msgid "Unable to retrieve details for job binary \"%s\"."
+msgstr "Tidak dapat mengambil rincian untuk biner pekerjaan \"%s\"."
+
+#, python-format
+msgid "Unable to retrieve details for job template \"%s\"."
+msgstr "Tidak dapat mengambil rincian untuk template pekerjaan \"%s\"."
+
+#, python-format
+msgid "Unable to retrieve details for node group template \"%s\"."
+msgstr "Tidak dapat mengambil rincian untuk template kelompok simpul \"%s\"."
+
+msgid "Unable to retrieve image list"
+msgstr "Tidak dapat mengambil daftar image"
+
+#, python-format
+msgid "Unable to retrieve images with filter %s."
+msgstr "Tidak dapat mengambil image dengan filter %s."
+
+#, python-format
+msgid "Unable to retrieve job binary \"%s\"."
+msgstr "Tidak dapat mengambil biner pekerjaan \"%s\"."
+
+msgid "Unable to retrieve networks."
+msgstr "Tidak dapat mengambil jaringan."
+
+msgid "Unable to retrieve plugin."
+msgstr "Tidak dapat mengambil plugin."
+
+#, python-format
+msgid "Unable to retrieve security group %(group)s."
+msgstr "Tidak dapat mengambil grup keamanan %(group)s."
+
+msgid "Unable to set cluster type"
+msgstr "Tidak dapat menetapkan tipe klaster"
+
+msgid "Unable to set job type"
+msgstr "Tidak dapat mengatur tipe kerja"
+
+msgid "Unable to set node group template"
+msgstr "Tidak dapat mengatur template grup simpul"
+
+msgid "Unable to update job binary"
+msgstr "Tidak dapat memperbarui biner pekerjaan"
+
+#, python-format
+msgid "Unable to update job binary: %s"
+msgstr "Tidak dapat memperbarui biner pekerjaan: %s"
+
+msgid "Unable to update row"
+msgstr "Tidak dapat memperbarui baris"
+
+msgid "Unable to upload job binary"
+msgstr "Tidak dapat mengunggah biner pekerjaan"
+
+msgid "Unknown"
+msgstr "Unknown (tidal diketahui)"
+
+msgid "Unnecessary tags may be removed by clicking a cross near tag's name."
+msgstr ""
+"Tag yang tidak perlu dapat dihapus dengan mengklik nama tag dekat lintasan."
+
+msgid "Unregister Image"
+msgid_plural "Unregister Images"
+msgstr[0] "Unregister Image"
+
+msgid "Unregistered Image"
+msgid_plural "Unregistered Images"
+msgstr[0] "Unregistered Image"
+
+msgid "Update"
+msgstr "Update"
+
+msgid "Update Cluster Shares"
+msgstr "memperbarui share klaster"
+
+msgid "Update Plugin"
+msgstr "Update Plugin (perbarui plugin)"
+
+msgid "Update Shares"
+msgstr "Update Shares  (memperbarui share)"
+
+msgid "Update the plugin labels"
+msgstr "Memperbaharui label plugin"
+
+msgid "Updated"
+msgstr "Updated (diperbarui)"
+
+msgid "Updated time"
+msgstr "Waktu diperbarui"
+
+msgid "Upload"
+msgstr "Upload (pengunggahan)"
+
+msgid "Upload File"
+msgstr "Upload File (unggah data)"
+
+msgid "Upload Template"
+msgstr "Upload Template (pengunggahan template)"
+
+msgid "Upload a new file"
+msgstr "Upload file baru"
+
+msgid "Uptime"
+msgstr "Uptime (waktu operasional)"
+
+msgid "Url"
+msgstr "Url"
+
+msgid "Use Data Source Substitution for Names and UUIDs"
+msgstr "Gunakan Pergantian Sumber Data untuk Nama dan UUID"
+
+msgid "Use HBase Common library"
+msgstr "Gunakan perpustakaan HBase Common"
+
+msgid "Use anti-affinity groups for processes"
+msgstr "Gunakan grup anti-afinitas untuk proses"
+
+msgid "Use anti-affinity groups for: "
+msgstr "Gunakan grup anti-afinitas untuk:"
+
+msgid "Use auto-configuration"
+msgstr "Gunakan auto-konfigurasi"
+
+msgid "Use the same topology name as defined in your .yaml file"
+msgstr ""
+"Menggunakan nama topologi yang sama seperti yang didefinisikan dalam file ."
+"yaml Anda"
+
+msgid "User"
+msgstr "User (pengguna)"
+
+msgid "User Name"
+msgstr "User Name (nama pengguna)"
+
+msgid "User has to choose a keypair to have access to clusters instances."
+msgstr ""
+"Pengguna harus memilih sepasang kunci (keypair) untuk memiliki akses ke "
+"instance klaster."
+
+msgid "Username"
+msgstr "Username (nama pengguna)"
+
+msgid "Value"
+msgstr "Value (nilai)"
+
+msgid "Value Type"
+msgstr "Value Type (tipe nilai)"
+
+msgid "Version"
+msgstr "Version (versi)"
+
+msgid "Version:"
+msgstr "Version:"
+
+msgid "Volume local to instance"
+msgstr "Volume lokal untuk instance"
+
+msgid "Volumes Availability Zone"
+msgstr "Volumes Availability Zone (zona ketersediaan volume)"
+
+msgid "Volumes local to instance"
+msgstr "Volume lokal untuk instance"
+
+msgid "Volumes per node"
+msgstr "Volume per node"
+
+msgid "Volumes size"
+msgstr "Ukuran volume"
+
+msgid "Volumes size (GB)"
+msgstr "Ukuran volume (GB)"
+
+msgid "Volumes type"
+msgstr "Tipe volume"
+
+msgid "Which keypair to use for authentication."
+msgstr "Yang sepasang kunci yang digunakan untuk otentikasi."
+
+msgid "Worker Node Group Template:"
+msgstr "Worker Node Group Template (template grup simpul pekerja):"
+
+msgid ""
+"You are now ready to\n"
+"                        launch your cluster.  When you click on the link\n"
+"                        below, you will need to give your cluster a name,\n"
+"                        choose the Cluster Template to use and choose which\n"
+"                        image to use to build your instances.  After you\n"
+"                        click on \"Create\", your instances will begin to\n"
+"                        spawn.  Your cluster should be operational in a few\n"
+"                        minutes."
+msgstr ""
+"Anda sekarang siap untuk\n"
+"                         meluncurkan klaster Anda. Ketika Anda mengklik pada "
+"link\n"
+"                         bawah, Anda akan perlu memberikan nama klaster,\n"
+"                         pilih Cluster Template (template cluster) untuk "
+"menggunakan dan memilih\n"
+"                         image digunakan untuk membangun instance Anda. "
+"Setelah Anda\n"
+"                         klik \"Create\", instance Anda akan mulai berpjah "
+"(spawn).\n"
+"                         Klaster Anda harus operasional dalam beberapa\n"
+"                         menit."
+
+msgid "You may also add any custom tag."
+msgstr "Anda juga dapat menambahkan tag kustom."
+
+msgid "You may also enter an optional description for your Data Source."
+msgstr "Anda juga dapat memasukkan deskripsi opsional untuk Sumber Data Anda."
+
+msgid "You may also enter an optional description for your job binary."
+msgstr ""
+"Anda juga dapat memasukkan deskripsi opsional untuk biner pekerjaan Anda."
+
+msgid "You may also enter an optional description for your job template."
+msgstr ""
+"Anda juga dapat memasukkan deskripsi opsional untuk template pekerjaan Anda."
+
+msgid "You may need to enter the username and password for your Data Source."
+msgstr ""
+"Anda mungkin perlu memasukkan username dan password untuk Sumber Data Anda."
+
+msgid "You may set <b>cluster</b> scoped configurations on corresponding tabs."
+msgstr ""
+"Anda dapat mengatur <b>cluster</b> konfigurasi scoped pada tab yang sesuai."
+
+msgid ""
+"You must choose a flavor to determine the size (VCPUs, memory and storage) "
+"of all launched VMs."
+msgstr ""
+"Anda harus memilih flavor untuk menentukan ukuran (VCPU, memori dan "
+"penyimpanan) dari semua VM diluncurkan."
+
+msgid ""
+"You've chosen a cluster that is in 'Error' state. Appropriate execution of "
+"the job can't be guaranteed."
+msgstr ""
+"Anda telah memilih klaster yang ada di kondisi 'Error'. Pelaksanaan yang "
+"tepat dari pekerjaan ini tidak dapat dijamin."
+
+msgid "cluster"
+msgstr "klaster"
+
+msgid "cluster template"
+msgstr "Template klaster"
+
+msgid "data source"
+msgstr "Sumber data"
+
+msgid "job"
+msgstr "pekerjaan"
+
+msgid "job binary"
+msgstr "biner pekerjaan"
+
+msgid "no processes"
+msgstr "tidak ada proses"
+
+msgid "node group template"
+msgstr "Template kelompok simpul"
