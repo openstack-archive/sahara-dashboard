@@ -2,13 +2,13 @@
 # Gérald LONLAS <g.lonlas@gmail.com>, 2016. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: sahara-dashboard 5.0.0.0b4.dev9\n"
+"Project-Id-Version: sahara-dashboard 5.0.0.0rc2.dev24\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2016-09-07 15:44+0000\n"
+"POT-Creation-Date: 2016-10-19 12:22+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2016-05-10 08:29+0000\n"
+"PO-Revision-Date: 2016-10-22 05:21+0000\n"
 "Last-Translator: Gérald LONLAS <g.lonlas@gmail.com>\n"
 "Language-Team: French\n"
 "Language: fr\n"
@@ -17,6 +17,16 @@ msgstr ""
 
 msgid " Done"
 msgstr "Terminé"
+
+#, python-format
+msgid ""
+" Version: <b>%(hadoop_version)s</b>\n"
+"              of plugin <b>%(plugin_name)s </b>\n"
+"              is now deprecated. "
+msgstr ""
+" La version : <b>%(hadoop_version)s</b>\n"
+"              du plugin <b>%(plugin_name)s </b>\n"
+"              est désormais obsolète. "
 
 msgid " or "
 msgstr "ou"
@@ -170,6 +180,12 @@ msgstr "Sélectionnez le cluster à utiliser pour cette tâche."
 
 msgid "Chosen Libraries"
 msgstr "Bibliothèques choisies"
+
+msgid "Cinder Volume"
+msgstr "Volume Cinder"
+
+msgid "Cinder service is unavailable now"
+msgstr "Le service Cinder n'est pas disponible maintenant"
 
 msgid "Cinder volumes"
 msgstr "Volumes Cinder"
@@ -374,6 +390,12 @@ msgstr "Choix actuel :"
 msgid "Current type:"
 msgstr "Type actuel :"
 
+msgid "Custom Tag"
+msgstr "Étiquette personnalisée"
+
+msgid "DNS Domain Names"
+msgstr "Nom de domaine DNS"
+
 msgid "Data Processing"
 msgstr "Traitement de données"
 
@@ -518,6 +540,12 @@ msgstr "Description"
 msgid "Details"
 msgstr "Détails"
 
+msgid "Domain Name"
+msgstr "Nom de domaine"
+
+msgid "Domain name"
+msgstr "Nom de domaine"
+
 msgid "Done"
 msgstr "Terminé"
 
@@ -530,6 +558,9 @@ msgstr "Télécharger le binaire pour une tâche"
 
 msgid "Download job binary"
 msgstr "Télécharger le binaire de tâche"
+
+msgid "Drive type"
+msgstr "Type de disque"
 
 msgid "Duration"
 msgstr "Durée"
@@ -558,6 +589,9 @@ msgstr "Editer le modèle"
 msgid "Enable Swift Paths"
 msgstr "Activation des chemins swifts"
 
+msgid "Enabled Versions"
+msgstr "Versions activées"
+
 msgctxt "End time"
 msgid "Ended"
 msgstr "Terminé"
@@ -574,6 +608,9 @@ msgid "Enter the username and password required to access that file"
 msgstr ""
 "Entrer le nom de l'utilisateur et son mot de passe requis pour accéder au "
 "fichier"
+
+msgid "Ephemeral Drive"
+msgstr "Disque éphémère"
 
 msgid "Ephemeral drive"
 msgstr "Disque éphémère"
@@ -831,6 +868,12 @@ msgctxt "Current status of a Job"
 msgid "Killed"
 msgstr "Supprimé de force"
 
+msgid "Label"
+msgstr "Libellé"
+
+msgid "Label details"
+msgstr "Détails du libellé"
+
 msgid "Last Updated"
 msgstr "Dernière mise à jour"
 
@@ -1005,6 +1048,12 @@ msgstr "Pas de configuration"
 msgid "No description"
 msgstr "Pas de description"
 
+msgid "No domain is specified"
+msgstr "Aucun nom de domaine spécifié"
+
+msgid "No enabled versions"
+msgstr "Aucune version activée"
+
 msgid "No image specified"
 msgstr "Aucune image spécifiée"
 
@@ -1146,8 +1195,16 @@ msgstr "Plugin"
 msgid "Plugin Name"
 msgstr "Nom du plugin"
 
+#, fuzzy
+msgid "Plugin and Version Tag"
+msgstr "Plugin et version de l'étiquette"
+
 msgid "Plugin name"
 msgstr "Nom du plugin"
+
+#, python-format
+msgid "Plugin version %s"
+msgstr "Version du plugin : %s"
 
 msgid "Plugin:"
 msgstr "Plugin :"
@@ -1557,6 +1614,9 @@ msgstr "Impossible de récupérer l'image de base avec l'ID : %s."
 msgid "Unable to fetch available images."
 msgstr "Impossible de récupérer les images disponibles."
 
+msgid "Unable to fetch base image details"
+msgstr "Impossible de récupérer les détails de l'image d'origine"
+
 msgid "Unable to fetch cluster list"
 msgstr "Impossible de récupérer la liste de clusters"
 
@@ -1615,6 +1675,9 @@ msgstr "Impossible de récupérer les tâches."
 msgid "Unable to fetch keypair choices."
 msgstr "Impossible de récupérer les choix de paires de clés."
 
+msgid "Unable to fetch network details"
+msgstr "Impossible de récupérer les détails des réseaux"
+
 msgid "Unable to fetch node group details."
 msgstr "Impossible de récupérer les détails du groupe de noeuds."
 
@@ -1626,6 +1689,9 @@ msgstr "Impossible de récupérer les détails du plugin."
 
 msgid "Unable to fetch plugin list"
 msgstr "Impossible de récupérer la liste des plugins"
+
+msgid "Unable to fetch plugin object."
+msgstr "Impossible de récupérer le objet plugin"
 
 msgid "Unable to fetch template object."
 msgstr "Impossible de récupérer l'objet modèle."
@@ -1752,6 +1818,9 @@ msgstr "Mettre à jour"
 msgid "Update Cluster Shares"
 msgstr "Mise à jour des Cluster partagés"
 
+msgid "Update Plugin"
+msgstr "Mise à jour du Plugin"
+
 msgid "Update Shares"
 msgstr "Mise à jour des partages"
 
@@ -1773,7 +1842,6 @@ msgstr "Charger un modèle"
 msgid "Upload a new file"
 msgstr "Charger un nouveau fichier"
 
-#, fuzzy
 msgid "Uptime"
 msgstr "Durée de fonctionnement"
 
@@ -1794,6 +1862,9 @@ msgstr "Utiliser les groupes d'anti-affinité pour :"
 
 msgid "Use auto-configuration"
 msgstr "Utilisation de la configuration auto"
+
+msgid "User"
+msgstr "Utilisateur"
 
 msgid "User Name"
 msgstr "Nom d'utilisateur"
@@ -1818,7 +1889,6 @@ msgstr "Version"
 msgid "Version:"
 msgstr "Version :"
 
-#, fuzzy
 msgid "Volume local to instance"
 msgstr "Volume local à l'instance"
 
