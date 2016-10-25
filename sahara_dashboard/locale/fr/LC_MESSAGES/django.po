@@ -2,13 +2,13 @@
 # Gérald LONLAS <g.lonlas@gmail.com>, 2016. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: sahara-dashboard 5.0.0.0rc2.dev24\n"
+"Project-Id-Version: sahara-dashboard 5.0.0.0rc2.dev27\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2016-10-19 12:22+0000\n"
+"POT-Creation-Date: 2016-10-23 18:34+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2016-10-22 05:21+0000\n"
+"PO-Revision-Date: 2016-10-24 09:25+0000\n"
 "Last-Translator: Gérald LONLAS <g.lonlas@gmail.com>\n"
 "Language-Team: French\n"
 "Language: fr\n"
@@ -105,6 +105,9 @@ msgstr "Image de base"
 
 msgid "Cancel"
 msgstr "Annuler"
+
+msgid "Checked?"
+msgstr "Coché ?"
 
 msgid "Checking"
 msgstr "Vérification"
@@ -308,6 +311,9 @@ msgstr "Impossible de mettre à jour les partages du cluster"
 
 msgid "Could not update data source"
 msgstr "Impossible de mettre à jour de la source de données "
+
+msgid "Could not update plugin"
+msgstr "Impossible de mettre à jour le plugin"
 
 msgid "Count"
 msgstr "Compteur"
@@ -572,7 +578,7 @@ msgid "Edit Data Source"
 msgstr "Modifier la source de données"
 
 msgid "Edit Image Tags"
-msgstr "Editer les étiquettes de l'image"
+msgstr "Éditer les étiquettes de l'image"
 
 msgid "Edit Job Binary"
 msgstr "Modifier le binaire pour une tâche"
@@ -584,7 +590,7 @@ msgid "Edit Tags"
 msgstr "Modifier les étiquettes"
 
 msgid "Edit Template"
-msgstr "Editer le modèle"
+msgstr "Éditer le modèle"
 
 msgid "Enable Swift Paths"
 msgstr "Activation des chemins swifts"
@@ -1042,6 +1048,9 @@ msgstr "Aucun modèle de groupe de nœuds Worker créé"
 msgid "No availability zone specified"
 msgstr "Pas de zone de disponibilité spécifiée"
 
+msgid "No clusters available"
+msgstr "Aucun clusters disponibles"
+
 msgid "No configurations"
 msgstr "Pas de configuration"
 
@@ -1199,8 +1208,18 @@ msgstr "Nom du plugin"
 msgid "Plugin and Version Tag"
 msgstr "Plugin et version de l'étiquette"
 
+msgid "Plugin label"
+msgstr "Etiquette du plugin"
+
 msgid "Plugin name"
 msgstr "Nom du plugin"
+
+msgid "Plugin update failed."
+msgstr "Échec de la mise à jour du plugin:"
+
+#, python-format
+msgid "Plugin version %(version)s label"
+msgstr "Etiquette version du plugin %(version)s"
 
 #, python-format
 msgid "Plugin version %s"
@@ -1302,6 +1321,9 @@ msgstr "Échec lors de la mise à l'échelle du cluster"
 msgid "Scaled cluster successfully started."
 msgstr "Cluster échelonné démarré avec succès"
 
+msgid "Scope"
+msgstr "Périmètre"
+
 msgid "Script name"
 msgstr "Nom du script"
 
@@ -1366,6 +1388,11 @@ msgstr "Sélectionner le plugin et la version pour le modèle de cluster"
 msgid "Select property name"
 msgstr "Sélectionner un nom de propriété"
 
+msgid "Select the domain name for internal and external hostname resolution."
+msgstr ""
+"Sélectionnez le nom de domaine pour la résolution du hostname interne ou "
+"externe."
+
 msgid "Select the manila shares for this cluster"
 msgstr "Sélectionner les partages Manila pour ce cluster"
 
@@ -1401,6 +1428,19 @@ msgstr ""
 "      Ce choix dictera les étapes à suivre pour l'exécuter\n"
 "      avec succès.\n"
 "    "
+
+msgid ""
+"Selected domain name should already exist in the Designate.\n"
+"    You can check it in &quot;DNS&quot; tab on the left menu or by "
+"executing\n"
+"    &quot;designate domain-list&quot;\n"
+"    on the controller node."
+msgstr ""
+"Le nom de domaine sélectionné existe déjà dans Designate.\n"
+"    Vous pouvez le vérifier dans l'onglet &quot;DNS&quot; dans le menu de "
+"gauche ou en exécutant\n"
+"    &quot;designate domain-list&quot;\n"
+"    sur le controleur de noeud."
 
 msgid "Service Configurations"
 msgstr "Configuration des services"
@@ -1472,6 +1512,9 @@ msgstr "Type de stockage"
 msgid "Storm"
 msgstr "Storm"
 
+msgid "Storm Pyleus"
+msgstr "Storm Pyleus"
+
 msgid "Streaming MapReduce"
 msgstr "Streaming MapReduce"
 
@@ -1500,6 +1543,17 @@ msgstr "Swift"
 
 msgid "Tags"
 msgstr "Etiquettes"
+
+msgid ""
+"Tags are used for filtering images suitable for each plugin and each Data "
+"Processing version.\n"
+"        To add required tags, select a plugin and a Data Processing version "
+"and click the &quot;Add&quot; button."
+msgstr ""
+"Les balises sont utilisées pour filtrer les images appropriées pour chaque "
+"version de plugin et de Traitement de Données.\n"
+"       Pour ajouter les balises requises, sélectionnez une version de plugin "
+"et  de Traitement de Données puis cliquez sur le bouton &quot;Ajouter&quot;."
 
 msgid "Template"
 msgstr "Modèle"
@@ -1592,6 +1646,9 @@ msgstr "Ce modèle de groupe de nœuds sera créé pour :"
 msgid "Title"
 msgstr "Titre"
 
+msgid "Topology Name"
+msgstr "Nom de topologie"
+
 msgid "Type"
 msgstr "Type"
 
@@ -1600,6 +1657,10 @@ msgstr "URL"
 
 msgid "Unable to create job binary"
 msgstr "Impossible de créer le binaire pour une tâche"
+
+#, python-format
+msgid "Unable to create job binary: %s"
+msgstr "Impossible de créer la tâche binaire : %s"
 
 msgid "Unable to create new cluster for job."
 msgstr "Impossible de créer le nouveau cluster pour la tâche"
@@ -1788,6 +1849,10 @@ msgstr "Impossible de configurer le modèle du groupe de nœuds"
 msgid "Unable to update job binary"
 msgstr "Impossible de mettre à jour le binaire de tâche"
 
+#, python-format
+msgid "Unable to update job binary: %s"
+msgstr "Impossible de mettre à jour la tâche binaire : %s"
+
 msgid "Unable to update row"
 msgstr "Impossible de modifier la ligne"
 
@@ -1823,6 +1888,9 @@ msgstr "Mise à jour du Plugin"
 
 msgid "Update Shares"
 msgstr "Mise à jour des partages"
+
+msgid "Update the plugin labels"
+msgstr "Mettre à jour les étiquettes du plugin"
 
 msgid "Updated"
 msgstr "Mis à jour"
@@ -1862,6 +1930,10 @@ msgstr "Utiliser les groupes d'anti-affinité pour :"
 
 msgid "Use auto-configuration"
 msgstr "Utilisation de la configuration auto"
+
+msgid "Use the same topology name as defined in your .yaml file"
+msgstr ""
+"Utilisez le même nom de topologie que celui définie dans votre fichier .yaml"
 
 msgid "User"
 msgstr "Utilisateur"
@@ -1972,6 +2044,13 @@ msgid ""
 msgstr ""
 "Vous devez sélectionner un gabarit pour déterminer la taille (les vCPU, la "
 "mémoire et le stockage) de toutes les machines virtuelles démarrées."
+
+msgid ""
+"You've chosen a cluster that is in 'Error' state. Appropriate execution of "
+"the job can't be guaranteed."
+msgstr ""
+"Vous avez choisi un cluster qui est dans l'état 'Error'. Un déroulement "
+"correct de la tâche ne peut pas être garanti."
 
 msgid "cluster"
 msgstr "cluster"
