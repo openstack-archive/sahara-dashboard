@@ -4,7 +4,7 @@
 {% load i18n %}
 
 {% block form_id %}register_image_form{% endblock %}
-{% block form_action %}{% url 'horizon:project:data_processing.clusters:register' %}{% endblock %}
+{% block form_action %}{% url action_url %}{% endblock %}
 
 {% block modal-header %}{% trans "Register Image" %}{% endblock %}
 
