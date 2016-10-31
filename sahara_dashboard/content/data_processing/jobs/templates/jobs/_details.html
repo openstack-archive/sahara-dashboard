@@ -23,7 +23,7 @@
       <dd><a href="{% url 'horizon:project:data_processing.jobs:ds-details' job_execution.output_id %}">{{ object_names.output_name }}</a> ({{ object_names.output_url }})</dd>
     {% endif %}
     <dt>{% trans "Cluster" %}</dt>
-    <dd><a href="{% url 'horizon:project:data_processing.clusters:details' job_execution.cluster_id %}">{{ object_names.cluster_name }}</a></dd>
+    <dd><a href="{% url 'horizon:project:data_processing.clusters:cluster-details' job_execution.cluster_id %}">{{ object_names.cluster_name }}</a></dd>
     <dt>{% trans "Last Updated" %}</dt>
     <dd>{{ job_execution.updated_at|parse_isotime }}</dd>
     <dt>{% trans "Started" context "Start time" %}</dt>
