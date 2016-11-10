@@ -27,7 +27,6 @@ source $DEVSTACK_DIR/stackrc
 source $DEVSTACK_DIR/openrc admin demo
 
 openstack dataprocessing plugin update fake /tmp/fake_config.json
-openstack dataprocessing plugin show fake
 
 sudo -H -u stack tox -e py27integration
 retval=$?
