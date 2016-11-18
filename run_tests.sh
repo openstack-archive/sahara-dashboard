@@ -322,10 +322,6 @@ function run_tests {
     export SELENIUM_HEADLESS=1
   fi
 
-  # TODO(david-lyle) remove when configuration files for Sahara are not loaded
-  # by default in Horizon
-  ${command_wrapper} python tools/clean_enabled_files.py
-
   if [ -z "$testargs" ]; then
      run_tests_all
   else
