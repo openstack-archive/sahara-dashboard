@@ -586,8 +586,8 @@ def job_execution_list(request, search_opts=None, marker=None, limit=None):
     new_request = u.delete_pagination_params_from_request(
         request, save_limit=False)
 
-    job_dict = dict((j.id, j) for j in _job_list(new_request))
-    cluster_dict = dict((c.id, c) for c in _cluster_list(new_request))
+    job_dict = {j.id: j for j in _job_list(new_request)}
+    cluster_dict = {c.id: c for c in _cluster_list(new_request)}
 
     resolved_job_execution_list = [
         _resolve_job_execution_names(
