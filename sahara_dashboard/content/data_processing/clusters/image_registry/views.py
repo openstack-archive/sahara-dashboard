@@ -95,6 +95,8 @@ class RegisterImageView(forms.ModalFormView):
 
     def get_context_data(self, **kwargs):
         context = super(RegisterImageView, self).get_context_data(**kwargs)
+        context['action_url'] = ('horizon:project'
+                                 ':data_processing.clusters:register')
         update_context_with_plugin_tags(self.request, context)
         return context
 

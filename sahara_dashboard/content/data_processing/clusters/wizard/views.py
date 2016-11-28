@@ -22,6 +22,8 @@ from horizon import views as horizon_views
 from sahara_dashboard.api import sahara as saharaclient
 from sahara_dashboard.content.data_processing.utils \
     import helpers
+import sahara_dashboard.content. \
+    data_processing.clusters.image_registry.views as imgviews
 import sahara_dashboard.content.data_processing.clusters.wizard \
     .forms as wizforms
 
@@ -52,6 +54,17 @@ class ResetClusterGuideView(generic.RedirectView):
             hlps = helpers.Helpers(request)
             hlps.reset_guide()
         return http.HttpResponseRedirect(reverse_lazy(self.pattern_name))
+
+
+class ImageRegisterView(imgviews.RegisterImageView):
+    success_url = reverse_lazy(
+        'horizon:project:data_processing.clusters:cluster_guide')
+
+    def get_context_data(self, **kwargs):
+        context = super(ImageRegisterView, self).get_context_data(**kwargs)
+        context['action_url'] = ('horizon:project'
+                                 ':data_processing.clusters:image_register')
+        return context
 
 
 class PluginSelectView(forms.ModalFormView):
