@@ -32,7 +32,7 @@ VENV = os.path.join(ROOT, '.venv')
 WITH_VENV = os.path.join(ROOT, 'tools', 'with_venv.sh')
 PIP_REQUIRES = os.path.join(ROOT, 'requirements.txt')
 TEST_REQUIRES = os.path.join(ROOT, 'test-requirements.txt')
-PIP_INSTALL_WRAPPER = os.path.join(ROOT, 'tools', 'pip_install.sh')
+PIP_INSTALL_WRAPPER = os.path.join(ROOT, 'tools', 'tox_install.sh')
 
 
 def die(message, *args):
@@ -110,12 +110,15 @@ def create_virtualenv(venv=VENV):
 
 
 def pip_install(*args):
-    args = [WITH_VENV, 'pip', 'install', '--upgrade'] + list(args)
+    constraints_url = os.environ.get('UPPER_CONSTRAINTS_FILE')
+    args = [WITH_VENV, 'pip', 'install', '-c', constraints_url,
+            '--upgrade'] + list(args)
     run_command(args, redirect_output=False)
 
 
 def pip_install_with_horizon(*args):
-    args = [WITH_VENV, PIP_INSTALL_WRAPPER, 'unconstrained'] + list(args)
+    constraints_url = os.environ.get('UPPER_CONSTRAINTS_FILE')
+    args = [WITH_VENV, PIP_INSTALL_WRAPPER, constraints_url] + list(args)
     run_command(args, redirect_output=False)
 
 
