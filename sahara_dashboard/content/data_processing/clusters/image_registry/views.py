@@ -11,6 +11,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from collections import OrderedDict
 import json
 
 from django.core.urlresolvers import reverse_lazy
@@ -37,8 +38,8 @@ def update_context_with_plugin_tags(request, context):
 
     plugins_object = dict()
     for plugin in plugins:
-        plugins_object[plugin.name] = dict()
-        for version in plugin.versions:
+        plugins_object[plugin.name] = OrderedDict()
+        for version in sorted(plugin.versions, reverse=True):
             try:
                 details = saharaclient. \
                     plugin_get_version_details(request,

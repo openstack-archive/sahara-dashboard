@@ -261,11 +261,13 @@ class PluginAndVersionMixin(object):
                        'data-slug': 'pluginname'}))
 
         for plugin in plugins:
+            version_choices = (sorted(
+                [(version, version)
+                 for version in get_enabled_versions(plugin)], reverse=True))
             field_name = plugin.name + "_version"
             choice_field = forms.ChoiceField(
                 label=_("Version"),
-                choices=[(version, version)
-                         for version in get_enabled_versions(plugin)],
+                choices=version_choices,
                 widget=forms.Select(
                     attrs={"class": "plugin_version_choice switched "
                            + field_name + "_choice",

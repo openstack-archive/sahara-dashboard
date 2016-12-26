@@ -60,10 +60,12 @@ class ChoosePluginForm(forms.SelfHandlingForm):
 
         for plugin in plugins:
             field_name = plugin.name + "_version"
+            version_choices = (sorted([(version, version)
+                               for version in plugin.versions], reverse=True))
             choice_field = forms.ChoiceField(
                 label=_("Version"),
                 required=False,
-                choices=[(version, version) for version in plugin.versions],
+                choices=version_choices,
                 widget=forms.Select(
                     attrs={"class": "switched",
                            "data-switch-on": "plugin",
