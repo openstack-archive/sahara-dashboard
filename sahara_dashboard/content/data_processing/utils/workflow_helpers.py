@@ -11,7 +11,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import logging
+from oslo_log import log as logging
 
 from django.core.exceptions import ValidationError
 from django.utils import safestring

@@ -12,13 +12,13 @@
 # limitations under the License.
 
 import itertools
-import logging
 import uuid
 
 from django.utils import encoding
 from django.utils import html
 from django.utils import safestring
 from django.utils.translation import ugettext_lazy as _
+from oslo_log import log as logging
 from saharaclient.api import base as api_base
 
 from horizon import exceptions

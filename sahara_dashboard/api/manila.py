@@ -19,10 +19,10 @@
 #    under the License.
 
 from __future__ import absolute_import
-import logging
 
 from django.conf import settings
 from manilaclient.v1 import client as manila_client
+from oslo_log import log as logging
 
 from horizon import exceptions
 from horizon.utils.memoized import memoized  # noqa
