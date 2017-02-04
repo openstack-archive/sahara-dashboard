@@ -1,15 +1,16 @@
 # Ian Y. Choi <ianyrchoi@gmail.com>, 2016. #zanata
+# Ian Y. Choi <ianyrchoi@gmail.com>, 2017. #zanata
 # Sungjin Kang <gang.sungjin@gmail.com>, 2017. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: Sahara Dashboard Release Notes 6.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-27 12:54+0000\n"
+"POT-Creation-Date: 2017-02-03 10:23+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2017-01-10 11:57+0000\n"
-"Last-Translator: Sungjin Kang <gang.sungjin@gmail.com>\n"
+"PO-Revision-Date: 2017-02-03 06:00+0000\n"
+"Last-Translator: Ian Y. Choi <ianyrchoi@gmail.com>\n"
 "Language-Team: Korean (South Korea)\n"
 "Language: ko-KR\n"
 "X-Generator: Zanata 3.7.3\n"
@@ -45,6 +46,9 @@ msgstr "새로운 기능"
 
 msgid "Newton Series Release Notes"
 msgstr "Newton 시리즈에 대한 릴리즈 노트"
+
+msgid "Ocata Series Release Notes"
+msgstr "Ocata 시리즈에 대한 릴리즈 노트"
 
 msgid "Other Notes"
 msgstr "기타 기능"
