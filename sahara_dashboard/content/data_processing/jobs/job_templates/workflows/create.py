@@ -237,7 +237,9 @@ class CreateJob(workflows.Workflow):
                 lib_locations.append(context.get(k))
 
         if context.get("main_binary", None):
-            main_locations.append(context["main_binary"])
+            job_type = context.get("job_type", None)
+            if job_type not in ["Java", "MapReduce"]:
+                main_locations.append(context["main_binary"])
 
         argument_ids = json.loads(context['argument_ids'])
         interface = [
