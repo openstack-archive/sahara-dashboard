@@ -12,13 +12,13 @@
 # limitations under the License.
 
 import itertools
-import uuid
 
 from django.utils import encoding
 from django.utils import html
 from django.utils import safestring
 from django.utils.translation import ugettext_lazy as _
 from oslo_log import log as logging
+from oslo_utils import uuidutils
 from saharaclient.api import base as api_base
 
 from horizon import exceptions
@@ -303,7 +303,7 @@ class CheckboxSelectMultiple(forms.CheckboxSelectMultiple):
         has_id = attrs and 'id' in attrs
         final_attrs = self.build_attrs(attrs, name=name)
         output = []
-        initial_service = uuid.uuid4()
+        initial_service = uuidutils.generate_uuid()
         str_values = set([encoding.force_text(v) for v in value])
         for i, (option_value, option_label) in enumerate(
                 itertools.chain(self.choices, choices)):
