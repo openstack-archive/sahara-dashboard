@@ -36,7 +36,7 @@
                 <ul class="list-bullet">
                     {% for group in node_group.security_groups_full %}
                         {% if group.id %}
-                            <li><a href="{% url 'horizon:project:access_and_security:security_groups:detail' group.id %}">{{ group.name }}</a></li>
+                            <li><a href="{% url 'horizon:project:security_groups:detail' group.id %}">{{ group.name }}</a></li>
                         {% else %}
                             <li>{{ group.name }}</li>
                         {% endif %}
