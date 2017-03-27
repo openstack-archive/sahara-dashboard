@@ -30,7 +30,7 @@ import sahara_dashboard.content.data_processing.clusters. \
     cluster_templates.workflows.create as t_flows
 
 
-KEYPAIR_IMPORT_URL = "horizon:project:access_and_security:keypairs:import"
+KEYPAIR_IMPORT_URL = "horizon:project:key_pairs:import"
 BASE_IMAGE_URL = "horizon:project:data_processing.clusters:register"
 TEMPLATE_UPLOAD_URL = (
     "horizon:project:data_processing.clusters:upload_file")
