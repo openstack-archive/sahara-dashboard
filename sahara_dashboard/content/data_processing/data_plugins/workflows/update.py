@@ -41,7 +41,7 @@ class UpdateLabelsAction(workflows.Action):
             initial=plugin_name)
 
     def _serialize_labels(self, prefix, prefix_trans, labels):
-        for name, label in six.iteritems(labels):
+        for name, label in labels.items():
             if not label['mutable']:
                 continue
             res_name_translated = "%s: %s" % (six.text_type(prefix_trans),
@@ -65,7 +65,7 @@ class UpdatePluginStep(workflows.Step):
     depends_on = ('plugin_name', )
 
     def contribute(self, data, context):
-        for name, item in six.iteritems(data):
+        for name, item in data.items():
             context[name] = item
         return context
 
@@ -84,7 +84,7 @@ class UpdatePlugin(workflows.Workflow):
 
     def _get_update_values(self, context):
         values = {'plugin_labels': {}, 'version_labels': {}}
-        for item, item_value in six.iteritems(context):
+        for item, item_value in context.items():
             if not item.startswith('label_'):
                 continue
             name = item.split('_')[1:]

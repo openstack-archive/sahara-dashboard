@@ -437,7 +437,7 @@ def get_enabled_versions(plugin):
     lbs = plugin.version_labels
 
     versions = []
-    for version, data in six.iteritems(lbs):
+    for version, data in lbs.items():
         if data.get('enabled', {'status': True}).get('status', True):
             versions.append(version)
 
@@ -449,7 +449,7 @@ def get_enabled_versions(plugin):
 
 def is_version_of_plugin_deprecated(plugin, version):
     lbs = plugin.version_labels
-    for iter_version, data in six.iteritems(lbs):
+    for iter_version, data in lbs.items():
         if iter_version == version:
             if data.get('deprecated', {'status': False}).get('status', False):
                 return True

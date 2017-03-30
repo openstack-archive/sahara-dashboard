@@ -14,7 +14,6 @@
 from oslo_log import log as logging
 
 from django.utils.translation import ugettext_lazy as _
-import six
 
 from horizon import exceptions
 from horizon import tabs
@@ -91,15 +90,15 @@ class LabelsTab(tabs.Tab):
                               _('Unable to retrieve plugin.'))
 
         labels = []
-        for label, data in six.iteritems(plugin.plugin_labels):
+        for label, data in plugin.plugin_labels.items():
             labels.append(
                 {'name': label,
                  'color': self._label_color(label),
                  'description': data.get('description', _("No description")),
                  'scope': _("Plugin"), 'status': data.get('status', False)})
 
-        for version, version_data in six.iteritems(plugin.version_labels):
-            for label, data in six.iteritems(version_data):
+        for version, version_data in plugin.version_labels.items():
+            for label, data in version_data.items():
                 labels.append(
                     {'name': label,
                      'color': self._label_color(label),
