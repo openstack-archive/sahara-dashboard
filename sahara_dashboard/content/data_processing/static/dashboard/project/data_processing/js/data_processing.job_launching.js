@@ -18,4 +18,4 @@ horizon.job_launching_warning = {
         }
     }
 
-}
+};
