@@ -1,17 +1,18 @@
 # suhartono <cloudsuhartono@gmail.com>, 2016. #zanata
+# suhartono <cloudsuhartono@gmail.com>, 2017. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: sahara-dashboard 5.0.0.0rc2.dev21\n"
+"Project-Id-Version: sahara-dashboard 7.0.0.0b2.dev6\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2016-10-14 10:21+0000\n"
+"POT-Creation-Date: 2017-05-06 19:15+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2016-10-19 03:16+0000\n"
+"PO-Revision-Date: 2017-05-09 04:38+0000\n"
 "Last-Translator: suhartono <cloudsuhartono@gmail.com>\n"
 "Language-Team: Indonesian\n"
 "Language: id\n"
-"X-Generator: Zanata 3.7.3\n"
+"X-Generator: Zanata 3.9.6\n"
 "Plural-Forms: nplurals=1; plural=0\n"
 
 msgid " Done"
@@ -1970,6 +1971,9 @@ msgstr "Ukuran volume (GB)"
 
 msgid "Volumes type"
 msgstr "Tipe volume"
+
+msgid "Warning!"
+msgstr "Peringatan!"
 
 msgid "Which keypair to use for authentication."
 msgstr "Yang sepasang kunci yang digunakan untuk otentikasi."
