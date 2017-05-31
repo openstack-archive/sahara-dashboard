@@ -29,6 +29,8 @@ from sahara_dashboard.content.data_processing.utils \
     import acl as acl_utils
 from sahara_dashboard.content.data_processing.utils import helpers
 
+SAHARA_VERIFICATION_DISABLED = saharaclient.SAHARA_VERIFICATION_DISABLED
+
 
 class ClustersFilterAction(tables.FilterAction):
     filter_type = "server"
@@ -242,10 +244,10 @@ class ClustersTable(sahara_table.SaharaPaginateTabbedTable):
     status = tables.Column(get_rich_status_info,
                            verbose_name=_("Status"),
                            filters=(rich_status_filter,))
-
-    health = tables.Column(get_health_status_info,
-                           verbose_name=_("Health"),
-                           filters=(get_health_filter,))
+    if not SAHARA_VERIFICATION_DISABLED:
+        health = tables.Column(get_health_status_info,
+                               verbose_name=_("Health"),
+                               filters=(get_health_filter,))
 
     instances_count = tables.Column(get_instances_count,
                                     verbose_name=_("Instances Count"))
@@ -258,7 +260,9 @@ class ClustersTable(sahara_table.SaharaPaginateTabbedTable):
         verbose_name = _("Clusters")
         row_class = UpdateRow
         cell_class = RichErrorCell
-        status_columns = ["status", "health"]
+        status_columns = ["status"]
+        if not SAHARA_VERIFICATION_DISABLED:
+            status_columns.append("health")
         table_actions = (ClusterGuide,
                          CreateCluster,
                          ConfigureCluster,
@@ -266,8 +270,14 @@ class ClustersTable(sahara_table.SaharaPaginateTabbedTable):
                          ClustersFilterAction)
         table_actions_menu = (MakePublic, MakePrivate,
                               MakeProtected, MakeUnProtected)
-        row_actions = (ScaleCluster,
-                       UpdateClusterShares,
-                       DeleteCluster, MakePublic, MakePrivate,
-                       MakeProtected, MakeUnProtected,
-                       CheckClusterAction)
+        if SAHARA_VERIFICATION_DISABLED:
+            row_actions = (ScaleCluster,
+                           UpdateClusterShares,
+                           DeleteCluster, MakePublic, MakePrivate,
+                           MakeProtected, MakeUnProtected)
+        else:
+            row_actions = (ScaleCluster,
+                           UpdateClusterShares,
+                           DeleteCluster, MakePublic, MakePrivate,
+                           MakeProtected, MakeUnProtected,
+                           CheckClusterAction)

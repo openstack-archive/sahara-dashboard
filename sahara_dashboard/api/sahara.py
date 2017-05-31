@@ -33,6 +33,12 @@ SAHARA_AUTO_IP_ALLOCATION_ENABLED = getattr(
     settings,
     'SAHARA_AUTO_IP_ALLOCATION_ENABLED',
     False)
+
+SAHARA_VERIFICATION_DISABLED = getattr(
+    settings,
+    'SAHARA_VERIFICATION_DISABLED',
+    False)
+
 VERSIONS = base.APIVersionManager(
     SAHARA_SERVICE,
     preferred_version=getattr(settings,

@@ -251,6 +251,11 @@ class HealthChecksTab(tabs.Tab):
 
 class ClusterDetailsTabs(tabs.TabGroup):
     slug = "cluster_details"
-    tabs = (GeneralTab, ClusterConfigsDetails, NodeGroupsTab, InstancesTab,
-            EventLogTab, HealthChecksTab)
+    if saharaclient.SAHARA_VERIFICATION_DISABLED:
+        tabs = (GeneralTab, ClusterConfigsDetails, NodeGroupsTab, InstancesTab,
+                EventLogTab)
+    else:
+        tabs = (GeneralTab, ClusterConfigsDetails, NodeGroupsTab, InstancesTab,
+                EventLogTab, HealthChecksTab)
+
     sticky = True
