@@ -21,7 +21,7 @@ import six
 from horizon import exceptions
 from horizon import forms
 from horizon import workflows
-from openstack_dashboard.api import network
+from openstack_dashboard.api import neutron
 
 from sahara_dashboard.api import sahara as saharaclient
 
@@ -190,7 +190,7 @@ def get_security_groups(request, security_group_ids):
     security_groups = []
     for group in security_group_ids or []:
         try:
-            security_groups.append(network.security_group_get(
+            security_groups.append(neutron.security_group_get(
                 request, group))
         except Exception:
             LOG.info(_('Unable to retrieve security group %(group)s.') %

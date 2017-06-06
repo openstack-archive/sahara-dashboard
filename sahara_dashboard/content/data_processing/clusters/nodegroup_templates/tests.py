@@ -57,9 +57,9 @@ class DataProcessingNodeGroupTests(test.TestCase):
                                               ngt.plugin_name,
                                               ngt.hadoop_version) \
             .MultipleTimes().AndReturn(configs)
-        dash_api.network.floating_ip_pools_list(IsA(http.HttpRequest)) \
+        dash_api.neutron.floating_ip_pools_list(IsA(http.HttpRequest)) \
             .AndReturn([])
-        dash_api.network.security_group_list(IsA(http.HttpRequest)) \
+        dash_api.neutron.security_group_list(IsA(http.HttpRequest)) \
             .AndReturn([])
 
         self.mox.ReplayAll()
@@ -122,7 +122,7 @@ class DataProcessingNodeGroupTests(test.TestCase):
                                      'image_list'),
                         dash_api.nova: ('availability_zone_list',
                                         'flavor_list'),
-                        dash_api.network: ('floating_ip_pools_list',
+                        dash_api.neutron: ('floating_ip_pools_list',
                                            'security_group_list'),
                         dash_api.cinder: ('extension_supported',
                                           'availability_zone_list',
@@ -137,7 +137,7 @@ class DataProcessingNodeGroupTests(test.TestCase):
     @test.create_stubs({api.sahara: ('client',
                                      'nodegroup_template_create',
                                      'plugin_get_version_details'),
-                        dash_api.network: ('floating_ip_pools_list',
+                        dash_api.neutron: ('floating_ip_pools_list',
                                            'security_group_list'),
                         dash_api.nova: ('flavor_list',
                                         'availability_zone_list'),
@@ -166,9 +166,9 @@ class DataProcessingNodeGroupTests(test.TestCase):
                                               ngt.plugin_name,
                                               ngt.hadoop_version) \
             .MultipleTimes().AndReturn(configs)
-        dash_api.network.floating_ip_pools_list(IsA(http.HttpRequest)) \
+        dash_api.neutron.floating_ip_pools_list(IsA(http.HttpRequest)) \
             .AndReturn([])
-        dash_api.network.security_group_list(IsA(http.HttpRequest)) \
+        dash_api.neutron.security_group_list(IsA(http.HttpRequest)) \
             .AndReturn([])
         workflow_helpers.parse_configs_from_context(
             IgnoreArg(), IgnoreArg()).AndReturn({})
@@ -232,7 +232,7 @@ class DataProcessingNodeGroupTests(test.TestCase):
                                      'nodegroup_template_update',
                                      'nodegroup_template_get',
                                      'plugin_get_version_details'),
-                        dash_api.network: ('floating_ip_pools_list',
+                        dash_api.neutron: ('floating_ip_pools_list',
                                            'security_group_list'),
                         dash_api.nova: ('flavor_list',
                                         'availability_zone_list'),
@@ -264,9 +264,9 @@ class DataProcessingNodeGroupTests(test.TestCase):
                                               ngt.plugin_name,
                                               ngt.hadoop_version) \
             .MultipleTimes().AndReturn(configs)
-        dash_api.network.floating_ip_pools_list(IsA(http.HttpRequest)) \
+        dash_api.neutron.floating_ip_pools_list(IsA(http.HttpRequest)) \
             .AndReturn([])
-        dash_api.network.security_group_list(IsA(http.HttpRequest)) \
+        dash_api.neutron.security_group_list(IsA(http.HttpRequest)) \
             .AndReturn([])
         workflow_helpers.parse_configs_from_context(
             IgnoreArg(), IgnoreArg()).AndReturn({})
@@ -332,7 +332,7 @@ class DataProcessingNodeGroupTests(test.TestCase):
                                      'image_list'),
                         dash_api.nova: ('availability_zone_list',
                                         'flavor_list'),
-                        dash_api.network: ('floating_ip_pools_list',
+                        dash_api.neutron: ('floating_ip_pools_list',
                                            'security_group_list'),
                         dash_api.cinder: ('extension_supported',
                                           'availability_zone_list',

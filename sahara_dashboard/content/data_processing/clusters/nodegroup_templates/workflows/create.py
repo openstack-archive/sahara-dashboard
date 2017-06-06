@@ -25,7 +25,7 @@ from horizon import exceptions
 from horizon import forms
 from horizon import workflows
 from openstack_dashboard.api import cinder
-from openstack_dashboard.api import network
+from openstack_dashboard.api import neutron
 from openstack_dashboard.dashboards.project.instances \
     import utils as nova_utils
 from openstack_dashboard.dashboards.project.volumes \
@@ -155,7 +155,7 @@ class GeneralConfigAction(workflows.Action):
             workflow_helpers.get_plugin_and_hadoop_version(request))
 
         if not saharaclient.SAHARA_AUTO_IP_ALLOCATION_ENABLED:
-            pools = network.floating_ip_pools_list(request)
+            pools = neutron.floating_ip_pools_list(request)
             pool_choices = [(pool.id, pool.name) for pool in pools]
             pool_choices.insert(0, (None, "Do not assign floating IPs"))
 
@@ -277,7 +277,7 @@ class SecurityConfigAction(workflows.Action):
             initial=True)
 
         try:
-            groups = network.security_group_list(request)
+            groups = neutron.security_group_list(request)
         except Exception:
             exceptions.handle(request,
                               _("Unable to get security group list."))

@@ -20,7 +20,6 @@ from horizon import exceptions
 from horizon import tables
 from horizon import tabs
 from openstack_dashboard.api import glance
-from openstack_dashboard.api import network
 from openstack_dashboard.api import neutron
 from openstack_dashboard.api import nova
 
@@ -164,7 +163,7 @@ class NodeGroupsTab(tabs.Tab):
         return {"cluster": cluster}
 
     def _get_floating_ip_pool_name(self, request, pool_id):
-        pools = [pool for pool in network.floating_ip_pools_list(
+        pools = [pool for pool in neutron.floating_ip_pools_list(
             request) if pool.id == pool_id]
 
         return pools[0].name if pools else pool_id
