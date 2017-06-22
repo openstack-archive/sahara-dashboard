@@ -1,0 +1,2011 @@
+# Andreas Jaeger <jaegerandi@gmail.com>, 2017. #zanata
+# işbaran akçayır <isbaran@gmail.com>, 2017. #zanata
+msgid ""
+msgstr ""
+"Project-Id-Version: sahara-dashboard 7.0.0.0b2.dev13\n"
+"Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
+"POT-Creation-Date: 2017-06-08 17:55+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2017-06-21 08:21+0000\n"
+"Last-Translator: Andreas Jaeger <jaegerandi@gmail.com>\n"
+"Language-Team: Turkish (Turkey)\n"
+"Language: tr-TR\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Zanata 3.9.6\n"
+"X-POOTLE-MTIME: 1495619320.000000\n"
+
+msgid " Done"
+msgstr " Bitti"
+
+msgid ""
+" Input correct User Name for image. For Ubuntu images input 'ubuntu', "
+"'fedora' for Fedora images,\n"
+"               'cloud-user' for CentOS 6.x images and 'centos' for CentOS 7."
+"x images."
+msgstr ""
+" İmaj için doğru Kullanıcı Adını girin. Ubuntu imajları için 'ubuntu', "
+"Fedora imajları için 'fedora',\n"
+"CentOS 6.x imajları için 'cloud-user', CentOS 7.x imajları için 'centos' "
+"girin."
+
+#, python-format
+msgid ""
+" Version: <b>%(hadoop_version)s</b>\n"
+"              of plugin <b>%(plugin_name)s </b>\n"
+"              is now deprecated. "
+msgstr ""
+"Sürüm:<b>%(hadoop_version)s</b>\n"
+"<b>%(plugin_name)s</b> eklentisi\n"
+"artık kullanılmıyor."
+
+msgid " or "
+msgstr " veya "
+
+#, python-format
+msgid "%(conf_name)s: %(conf_val)s"
+msgstr "%(conf_name)s: %(conf_val)s"
+
+#, python-format
+msgid "%(conf_name)s: %(conf_value)s"
+msgstr "%(conf_name)s: %(conf_value)s"
+
+#, python-format
+msgid "%(group)s:"
+msgstr "%(group)s:"
+
+#, python-format
+msgid "%(key)s: %(val)s"
+msgstr "%(key)s: %(val)s"
+
+#, python-format
+msgid "%s processes: "
+msgstr "%s süreç: "
+
+msgid "-- not selected --"
+msgstr "-- seçili değil --"
+
+msgid ""
+"<b>Important</b>:  The name that you give your job binary will be the name "
+"used in your job execution.\n"
+"  If your binary requires a particular name or extension (ie: \".jar\"), be "
+"sure to include it here."
+msgstr ""
+"<b>Önemli</b>:  İş ikiliğinize verdiğiniz isim işi çalıştırırken "
+"kullandığınız isim olacak.\n"
+"  İkiliğiniz belirli bir isim veya sonek (örn: \".jar\") gerektiriyorsa, "
+"burada girdiğinizden emin olun."
+
+msgid "Adapt For Oozie"
+msgstr "Oozie için uyarla"
+
+msgid "Add"
+msgstr "Ekle"
+
+msgid "Add Node Group"
+msgstr "Düğüm Grubu Ekle"
+
+msgid "Add libraries to your job template."
+msgstr "İş şablonunuz için kitaplıklar ekleyin."
+
+msgid "Anti-affinity enabled for"
+msgstr "Anti-benzeşim etkin"
+
+msgid "Arguments"
+msgstr "Değişkenler"
+
+msgid "Auto Security Group"
+msgstr "Oto Güvenlik Grubu"
+
+msgid "Auto-configure"
+msgstr "Oto-yapılandır"
+
+msgid ""
+"Automatically modify the Hadoop configuration so that job config values are "
+"set and so that Oozie will handle exit codes correctly."
+msgstr ""
+"Hadoop yapılandırmasını Oozie'nin çıkış kodlarını düzgün ele alması için iş "
+"yapılandırma değerleri ayarlanacak şekilde otomatik olarak değiştir."
+
+msgid "Availability Zone"
+msgstr "Kullanılırlık Bölgesi"
+
+msgid "Base Image"
+msgstr "Taban İmaj"
+
+msgid "Cancel"
+msgstr "İptal"
+
+msgid "Checked?"
+msgstr "İşaretli mi?"
+
+msgid "Checking"
+msgstr "Kontrol ediliyor"
+
+msgid "Choose"
+msgstr "Seç"
+
+msgid "Choose a main binary"
+msgstr "Bir ana ikilik seçin"
+
+msgid "Choose a shell script"
+msgstr "Bir kabuk betiği seçin"
+
+msgid "Choose a storage location"
+msgstr "Bir depolama konumu seçin"
+
+msgid "Choose additional files"
+msgstr "Ek dosyaları seçin"
+
+msgid "Choose an existing Master Node Group Template"
+msgstr "Var olan bir Ana Düğüm Grup Şablonu seç"
+
+msgid "Choose an existing Worker Node Group Template"
+msgstr "Mevcut İşçi Düğüm Grup Şablonu seçin"
+
+msgid "Choose an existing file"
+msgstr "Mevcut bir dosya seç"
+
+msgid ""
+"Choose from the list of binaries and click \"choose\" to add the library to "
+"your job template.  This can be repeated for additional libraries."
+msgstr ""
+"Kitaplığı iş şablonunuza eklemek için ikilik listesinden seçim yapın ve \"Seç"
+"\"e tıklayın. Ek kitaplıklar için bu işlem tekrarlanabilir."
+
+msgid "Choose job type"
+msgstr "İş türünü seçin"
+
+msgid "Choose libraries"
+msgstr "Kitaplıkları seçin"
+
+msgid "Choose node group template"
+msgstr "Düğüm grup şablonu seçin"
+
+msgid ""
+"Choose or create your main binary.  Additional libraries can be added from "
+"the \"Libs\" tab."
+msgstr ""
+"Ana ikiliğinizi seçin ya da oluşturun. Ek kitaplıklar \"Kitaplıklar\" "
+"sekmesinden eklenebilir."
+
+msgid "Choose plugin"
+msgstr "Eklenti seç"
+
+msgid "Choose plugin and version"
+msgstr "Eklenti ve sürüm seçin"
+
+msgid "Choose plugin type and version"
+msgstr "Eklenti türü ve sürümü seçin"
+
+msgid "Choose the Input Data Source (n/a for Java and Shell jobs)."
+msgstr "Girdi Veri Kaynağını seçin (Java ve Betik işlerinde kullanılamaz)."
+
+msgid "Choose the Output Data Source (n/a for Java and Shell jobs)."
+msgstr "Çıktı Veri Kaynağını seçin (Java ve Betik işlerinde kullanılamaz)."
+
+msgid "Choose the binary which should be used in this Job."
+msgstr "Bu işte kullanılması gereken ikiliği seçin."
+
+msgid "Choose the cluster to use for the job."
+msgstr "İş için kullanılacak kümeyi seçin."
+
+msgid "Chosen Libraries"
+msgstr "Seçilen Kitaplıklar"
+
+msgid "Cinder Volume"
+msgstr "Cinder Birimi"
+
+msgid "Cinder service is unavailable now"
+msgstr "Cinder servisi şu an kullanılabilir değil"
+
+msgid "Cinder volumes"
+msgstr "Cinder birimleri"
+
+msgid "Cluster"
+msgstr "Küme"
+
+msgid "Cluster Configuration Overview"
+msgstr "Küme Yapılandırma Genel Görünümü"
+
+msgid "Cluster Count"
+msgstr "Küme Sayısı"
+
+msgid "Cluster Creation Guide"
+msgstr "Küme Oluşturma Kılavuzu"
+
+msgid "Cluster Events"
+msgstr "Küme Olayları"
+
+msgid "Cluster Instances"
+msgstr "Küme Sunucuları"
+
+msgid "Cluster Name"
+msgstr "Küme İsmi"
+
+msgid "Cluster Template"
+msgstr "Küme Şablonu"
+
+#, python-format
+msgid "Cluster Template %s updated"
+msgstr "Küme Şablonu %s güncellendi"
+
+msgid "Cluster Template Configuration Overview"
+msgstr "Küme Şablon Yapılandırma Genel Görünümü"
+
+#, python-format
+msgid "Cluster Template copy %s created"
+msgstr "Küme Şablon kopyası %s oluşturuldu"
+
+msgid "Cluster Templates"
+msgstr "Küme Şablonları"
+
+msgid "Cluster can be launched using existing Cluster Templates."
+msgstr "Küme mevcut Küme Şablonlarıyla başlatılabilir."
+
+msgid "Cluster configurations are not specified"
+msgstr "Küme yapılandırmaları belirtilmemiş"
+
+msgid "Cluster health checks"
+msgstr "Küme sağlık kontrolleri"
+
+msgid "Cluster provision steps"
+msgstr "Küme hazırlık adımları"
+
+msgid "Cluster share update failed."
+msgstr "Küme paylaşım güncelleme başarısız."
+
+msgid "Cluster template creation failed"
+msgstr "Küme şablonu oluşturma başarısız"
+
+msgid "Cluster template update failed"
+msgstr "Küme şablonu güncellemesi başarısız"
+
+msgid "Cluster type chosen"
+msgstr "Seçilen küme türü"
+
+msgid "Clusters"
+msgstr "Kümeler"
+
+msgid "Completed Successfully"
+msgstr "Başarıyla Tamamlandı"
+
+msgid "Configuration"
+msgstr "Yapılandırma"
+
+msgid "Configuration Details"
+msgstr "Yapılandırma Ayrıntıları"
+
+msgid "Configuration Value"
+msgstr "Yapılandırma Değeri"
+
+msgid "Configure"
+msgstr "Yapılandır"
+
+msgid "Configure Cluster"
+msgstr "Kümeyi Yapılandır"
+
+msgid "Configure Cluster Template"
+msgstr "Küme Şablonunu Yapılandır"
+
+msgid "Configure Node Group Template"
+msgstr "Düğüm Grup Şablonunu Yapılandır"
+
+msgid "Configure Template"
+msgstr "Şablonu Yapılandır"
+
+msgid "Control access to instances of the node group."
+msgstr "Düğüm grubu sunucularına erişimi kontrol et."
+
+msgid "Copy Cluster Template"
+msgstr "Küme Şablonunu Kopyala"
+
+msgid "Copy Template"
+msgstr "Şablonu Kopyala"
+
+msgid "Could not create"
+msgstr "Oluşturulamadı"
+
+msgid "Could not create data source"
+msgstr "Veri kaynağı oluşturulamadı"
+
+msgid "Could not create job template"
+msgstr "İş şablonu oluşturulamadı"
+
+msgid "Could not launch job"
+msgstr "İş başlatılamadı"
+
+msgid "Could not update cluster shares"
+msgstr "Küme paylaşımları güncellenemedi"
+
+msgid "Could not update data source"
+msgstr "Veri kaynağı güncellenemiyor"
+
+msgid "Could not update plugin"
+msgstr "Eklenti güncellenemiyor"
+
+msgid "Count"
+msgstr "Sayı"
+
+msgid "Create"
+msgstr "Oluştur"
+
+msgid "Create Cluster Template"
+msgstr "Küme Şablonu Oluştur"
+
+msgid "Create Data Source"
+msgstr "Veri Kaynağı Oluştur"
+
+msgid "Create Job Binary"
+msgstr "İş İkiliği Oluştur"
+
+msgid "Create Job Template"
+msgstr "İş Şablonu Oluştur"
+
+msgid "Create Node Group Template"
+msgstr "Düğüm Grup Şablonu Oluştur"
+
+msgid "Create Template"
+msgstr "Şablon Oluştur"
+
+msgid "Create a Cluster Template"
+msgstr "Küme Şablonu Oluştur"
+
+msgid "Create a Data Source with a specified name."
+msgstr "Belirtilen isimde bir Veri Kaynağı oluştur."
+
+msgid "Create a Master Node Group Template"
+msgstr "Ana Düğüm Grup Şablonu Oluştur"
+
+msgid "Create a Worker Node Group Template"
+msgstr "İşçi Düğüm Grup Şablonu Oluştur"
+
+msgid "Create a data source"
+msgstr "Veri kaynağı oluştur"
+
+msgid "Create a job template"
+msgstr "Bir iş şablonu oluştur"
+
+msgid "Create a job template with a specified name."
+msgstr "Belirtilen isimde bir iş şablonu oluştur."
+
+msgid "Create a script to be uploaded dynamically"
+msgstr "Dinamik olarak yüklenecek bir betik oluştur"
+
+msgid "Create security group for this Node Group."
+msgstr "Bu Düğüm Grubu için güvenlik grubu oluştur."
+
+msgid "Create time"
+msgstr "Oluşturma zamanı"
+
+msgid "Create volumes in this availability zone."
+msgstr "Birimleri bu kullanılırlık bölgesinde oluştur."
+
+msgid "Created"
+msgstr "Oluşturuldu"
+
+msgctxt "Created time"
+msgid "Created"
+msgstr "Oluşturuldu"
+
+#, python-format
+msgid "Created Cluster Template %s"
+msgstr "Küme Şablonu %s Oluşturuldu"
+
+#, python-format
+msgid "Created Node Group Template %s"
+msgstr "Düğüm Grup Şablonu %s Oluştur"
+
+msgid "Created time"
+msgstr "Oluşturulma zamanı"
+
+msgid "Current choice:"
+msgstr "Şu anki seçim:"
+
+msgid "Current type:"
+msgstr "Mevcut tür:"
+
+msgid "Custom Tag"
+msgstr "Özel Etiket"
+
+msgid "DNS Domain Names"
+msgstr "DNS Alan Adları"
+
+msgid "Data Processing"
+msgstr "Veri İşleniyor"
+
+msgid "Data Processing Plugin Details"
+msgstr "Veri İşleme Eklenti Ayrıntıları"
+
+msgid "Data Processing Plugins"
+msgstr "Veri İşleme Eklentileri"
+
+msgid "Data Processing internal database"
+msgstr "Veri İşleme dahili veri tabanı"
+
+msgid ""
+"Data Processing provides different storage location options. You may choose "
+"Ephemeral Drive or a Cinder Volume to be attached to instances."
+msgstr ""
+"Veri İşleme değişik depolama konumu seçenekleri sağlar. Sunuculara eklemek "
+"için Geçici Sürücü veya Cinder Birimi seçebilirsiniz."
+
+msgid "Data Source"
+msgstr "Veri Kaynağı"
+
+msgid "Data Source Type"
+msgstr "Veri Kaynağı Türü"
+
+msgid "Data Sources"
+msgstr "Veri Kaynakları"
+
+msgid ""
+"Data Sources are what your\n"
+"                            job uses for input and output.  Depending on the "
+"type\n"
+"                            of job you will be running, you may need to "
+"define one\n"
+"                            or more data sources.  You can create multiple "
+"data\n"
+"                            sources by repeating this step.\n"
+"                        "
+msgstr ""
+"Veri Kaynakları işinizin girdi ve çıktı olarak kullandığı şeylerdir.\n"
+"Çalıştıracağınız iş türüne göre, bir ya da fazla veri kaynağı tanımlamanız\n"
+"gerekebilir. Bu adımı tekrarlayarak birden fazla veri kaynağı\n"
+"oluşturabilirsiniz.\n"
+"   "
+
+msgid "Data source created"
+msgstr "Veri kaynağı oluşturuldu"
+
+msgid "Data source updated"
+msgstr "Veri kaynağı güncellendi"
+
+msgid "Default Value"
+msgstr "Öntanımlı Değer"
+
+msgid ""
+"Define your Job Template.\n"
+"                        This is where you choose the type of job that you\n"
+"                        want to run (Pig, Java Action, Spark, etc) and "
+"choose\n"
+"                        or upload the files necessary to run it.  The "
+"inputs\n"
+"                        and outputs will be defined later.\n"
+"                    "
+msgstr ""
+"İş Şablonunuzu tanımlayın.\n"
+"Burda ne tür iş çalıştıracağınızı (Pig, Java Action, Spark, vs)\n"
+"ve çalıştırmak için gerekli dosyaları seçer ya da yüklersiniz.\n"
+"Girdi ve çıktılar daha sonra tanımlanır.\n"
+" "
+
+msgid "Delete Cluster"
+msgid_plural "Delete Clusters"
+msgstr[0] "Kümeyi Sil"
+msgstr[1] "Kümeleri Sil"
+
+msgid "Delete Data Source"
+msgid_plural "Delete Data Sources"
+msgstr[0] "Veri Kaynağı Sil"
+msgstr[1] "Veri Kaynaklarını Sil"
+
+msgid "Delete Job"
+msgid_plural "Delete Jobs"
+msgstr[0] "İşi Sil"
+msgstr[1] "İşleri Sil"
+
+msgid "Delete Job Binary"
+msgid_plural "Delete Job Binaries"
+msgstr[0] "İş İkiliğini Sil"
+msgstr[1] "İş İkiliklerini Sil"
+
+msgid "Delete Job Template"
+msgid_plural "Delete Job Templates"
+msgstr[0] "İş Şablonunu Sil"
+msgstr[1] "İş Şablonlarını Sil"
+
+msgid "Delete Template"
+msgid_plural "Delete Templates"
+msgstr[0] "Şablonu Sil"
+msgstr[1] "Şablonları Sil"
+
+msgid "Deleted Cluster"
+msgid_plural "Deleted Clusters"
+msgstr[0] "Küme Silindi"
+msgstr[1] "Kümeler Silindi"
+
+msgid "Deleted Data Source"
+msgid_plural "Deleted Data Sources"
+msgstr[0] "Veri Kaynağı Silindi"
+msgstr[1] "Veri Kaynakları Silindi"
+
+msgid "Deleted Job"
+msgid_plural "Deleted Jobs"
+msgstr[0] "İş Silindi"
+msgstr[1] "İşler Silindi"
+
+msgid "Deleted Job Binary"
+msgid_plural "Deleted Job Binaries"
+msgstr[0] "İş İkiliği Silindi"
+msgstr[1] "İş İkilikleri Silindi"
+
+msgid "Deleted Job Template"
+msgid_plural "Deleted Jobs Templates"
+msgstr[0] "İş Şablonu Silindi"
+msgstr[1] "İş Şablonları Silindi"
+
+msgid "Deleted Template"
+msgid_plural "Deleted Templates"
+msgstr[0] "Şablon Silindi"
+msgstr[1] "Şablonlar Silindi"
+
+msgid "Description"
+msgstr "Tanım"
+
+msgid "Details"
+msgstr "Ayrıntılar"
+
+msgid "Domain Name"
+msgstr "Alan Adı"
+
+msgid "Domain name"
+msgstr "Alan adı"
+
+msgid "Done"
+msgstr "Bitti"
+
+msgctxt "Current status of a Job"
+msgid "Done with Error"
+msgstr "Hata ile Bitti"
+
+msgid "Download Job Binary"
+msgstr "İş İkiliğini İndir"
+
+msgid "Download job binary"
+msgstr "İş ikiliğini indir"
+
+msgid "Drive type"
+msgstr "Sürücü türü"
+
+msgid "Duration"
+msgstr "Süre"
+
+msgid "Edit Cluster Template"
+msgstr "Küme Şablonunu Düzenle"
+
+msgid "Edit Data Source"
+msgstr "Veri Kaynağını Düzenle"
+
+msgid "Edit Image Tags"
+msgstr "İmaj Etiketlerini Düzenle"
+
+msgid "Edit Job Binary"
+msgstr "İş İkiliğini Düzenle"
+
+msgid "Edit Node Group Template"
+msgstr "Düğüm Grup Şablonunu Düzenle"
+
+msgid "Edit Tags"
+msgstr "Etiketleri Düzenle"
+
+msgid "Edit Template"
+msgstr "Şamblonu Düzenle"
+
+msgid "Enable Swift Paths"
+msgstr "Swift Yollarını Etkinleştir"
+
+msgid "Enabled Versions"
+msgstr "Etkin Sürümler"
+
+msgctxt "End time"
+msgid "Ended"
+msgstr "Bitti"
+
+msgid "Enter any custom configuration required for your job's execution."
+msgstr ""
+"İşinizin çalıştırılması için gerekli herhangi özel yapılandırma varsa girin."
+
+msgid "Enter the URL for the file"
+msgstr "Dosya için URL girin"
+
+msgid "Enter the username and password required to access that file"
+msgstr "Bu dosyaya erişim için gerekli kullanıcı adı ve parolayı girin"
+
+msgid "Ephemeral Drive"
+msgstr "Geçici Sürücü"
+
+msgid "Ephemeral drive"
+msgstr "Geçici sürücü"
+
+msgid "Error Details"
+msgstr "Hata Ayrıntıları"
+
+msgid "Event time"
+msgstr "Olay zamanı"
+
+msgid "Failed"
+msgstr "Başarısız"
+
+msgctxt "Current status of a Job"
+msgid "Failed"
+msgstr "Başarısız"
+
+msgid "Failed to fetch internal binary list"
+msgstr "Dahili ikilik listesi getirilemiyor"
+
+msgid "Failed to get list of internal binaries."
+msgstr "Dahili ikiliklerin listesi alınamadı."
+
+msgid "Failed to get list of shares"
+msgstr "Paylaşım listesi alma başarısız"
+
+msgid "Failed to update image."
+msgstr "İmaj güncellenemedi."
+
+msgid "Filter"
+msgstr "Süzgeç"
+
+msgid ""
+"First, select which type of job that\n"
+"                            you want to run.  This choice will determine "
+"which\n"
+"                            other steps are required\n"
+"                        "
+msgstr ""
+"Önce, ne tür bir iş çalıştırmak istediğinizi seçin.\n"
+"Bu seçim başka hangi adımların gerekli olduğuna karar verecek\n"
+"  "
+
+msgid "Flavor"
+msgstr "Nitelik"
+
+msgid "Flavor is not specified"
+msgstr "Nitelik belirtilmemiş"
+
+msgid "Floating IP Pool"
+msgstr "Değişken IP Havuzu"
+
+msgid ""
+"For Data Processing internal job binaries, you may choose from the following:"
+msgstr "Veri İşleme dahili iş ikilikleri için, şunlardan seçim yapabilirsiniz:"
+
+msgid ""
+"For Data Sources on a Manila share, choose the share and enter the path "
+"relative to the share (example: /outputdir/myinputfile.txt)"
+msgstr ""
+"Manila paylaşımındaki Veri Kaynakları için, paylaşımı seçin ve paylaşıma "
+"göre yolu girin (örneğin: /çıktı/dizini/girdidosyam.txt)"
+
+msgid ""
+"For MapReduce or Java Action jobs, \"mains\" are not applicable.  You are "
+"required to add one\n"
+"  or more \"libs\" for these jobs."
+msgstr ""
+"MapReduce veya Java Action işleri için, \"ana ikilikler\" uygulanabilir "
+"değildir. Bu işler için\n"
+"bir ya da daha fazla \"kitaplıklar\" eklemeniz gerekir."
+
+msgid "For Object Store job binaries, you must:"
+msgstr "Nesne Depolama iş ikilikleri için yapmanız gereken:"
+
+msgid ""
+"For Shell Action jobs, any required files beyond the main script may be "
+"added as \"libraries\"."
+msgstr ""
+"Kabuk Eylem işleri için, ana betikten başka gerekli dosyalar \"kitaplık\" "
+"olarak eklenebilir."
+
+msgid ""
+"For Storm, Storm Pyleus, Spark and Shell jobs, only a main is required,\"libs"
+"\" are optional."
+msgstr ""
+"Storm, Storm Pyleus, Spark ve Kabuk işleri için, yalnızca bir ana ikilik "
+"gereklidir, \"kitaplıklar\" isteğe bağlıdır."
+
+msgid "General Info"
+msgstr "Genel Bilgi"
+
+msgid "Guided Cluster Creation"
+msgstr "Kılavuzlu Küme Oluşturma"
+
+msgid "Guided Job Execution"
+msgstr "Kılavuzlu İş Çalıştırma"
+
+msgid "HDFS placement"
+msgstr "HDFS yerleştirme"
+
+msgid "Health"
+msgstr "Sağlık"
+
+msgid "Hide full configuration"
+msgstr "Tam yapılandırmayı gizle"
+
+msgid "Hive"
+msgstr "Hive"
+
+msgid "ID"
+msgstr "Kimlik"
+
+#, python-format
+msgid ""
+"If selected, %s will be protected from modifications until this will be "
+"unselected"
+msgstr ""
+"Seçiliyse, %s seçim kaldırılana kadar tüm değişikliklerden korunacaktır"
+
+#, python-format
+msgid "If selected, %s will be shared across the tenants"
+msgstr "Seçiliyse, %s tüm kiracılar arasında paylaşılır"
+
+msgid ""
+"If selected, instances of a cluster will be automatically configured during "
+"creation. Otherwise you should manually specify configuration values"
+msgstr ""
+"Seçiliyse, kümenin sunucuları oluşturma sırasında otomatik yapılandırılır. "
+"Aksi hale elle yapılandırma değerlerini belirtmeniz gerekir"
+
+msgid ""
+"If selected, instances of a node group will be automatically configured "
+"during cluster creation. Otherwise you should manually specify configuration "
+"values."
+msgstr ""
+"Seçiliyse, bir düğüm grubunun sunucuları küme oluşturulurken otomatik "
+"yapılandırılacak. Aksi halde yapılandırma değerlerini elle belirtmelisiniz."
+
+msgid "Image"
+msgstr "İmaj"
+
+msgid "Image Registry"
+msgstr "İmaj Kayıtları"
+
+msgid ""
+"Image Registry is used to provide additional information about images for "
+"Data Processing."
+msgstr ""
+"İmaj Kaydı Veri İşleme için imajlar hakkında ek bilgi sağlamak için "
+"kullanılır."
+
+msgid "Image Registry tool:"
+msgstr "İmaj Kayıt aracı:"
+
+msgid "In progress"
+msgstr "Devam ediyor"
+
+msgid "Info"
+msgstr "Bilgi"
+
+msgid "Input"
+msgstr "Girdi"
+
+msgid "Input Data Source"
+msgstr "Girdİ Veri Kaynağı"
+
+msgid "Instance"
+msgstr "Sunucu"
+
+msgid "Instance and attached volumes will be created on the same physical host"
+msgstr "Sunucu ve ekli birimler aynı fiziksel sunucu üzerinde oluşturulacak."
+
+msgid "Instances"
+msgstr "Sunucular"
+
+msgid "Instances Count"
+msgstr "Sunucu Sayısı"
+
+msgid "Interface Arguments"
+msgstr "Arayüz Değişkenleri"
+
+msgid "Internal Binary"
+msgstr "Dahiki İkilik"
+
+msgid "Internal IP"
+msgstr "Dahili IP"
+
+msgid "Internal binary"
+msgstr "Dahili ikilik"
+
+msgid "Java"
+msgstr "Java"
+
+msgid "Java Action"
+msgstr "Java Eylemi"
+
+msgid "Java Opts"
+msgstr "Java Seçenekleri"
+
+msgid "Job"
+msgstr "İş"
+
+msgid "Job Binaries"
+msgstr "İş İkilikleri"
+
+msgid "Job Configuration"
+msgstr "İş Yapılandırması"
+
+msgid "Job Execution ID"
+msgstr "İş Çalıştırma Kimliği"
+
+msgid "Job Guide"
+msgstr "İş Kılavuzu"
+
+msgid "Job Template"
+msgstr "İş Şablonu"
+
+msgid "Job Templates"
+msgstr "İş Şablonları"
+
+msgid "Job Type"
+msgstr "İş Türü"
+
+msgid "Job args"
+msgstr "İş değişkenleri"
+
+msgid "Job configs"
+msgstr "İş yapılandırmaları"
+
+msgid "Job created"
+msgstr "İş oluşturuldu"
+
+msgid "Job launched"
+msgstr "İş başlatıldı"
+
+msgid "Job params"
+msgstr "İş parametreleri"
+
+msgid "Job template:"
+msgstr "İş şablonu:"
+
+msgid "Job type chosen"
+msgstr "Seçilen iş türü"
+
+msgid "Jobs"
+msgstr "İşler"
+
+msgid "Keypair"
+msgstr "Anahtar çifti"
+
+msgctxt "Current status of a Job"
+msgid "Killed"
+msgstr "Öldürüldü"
+
+msgid "Label"
+msgstr "Etiket"
+
+msgid "Label details"
+msgstr "Etiket ayrıntıları"
+
+msgid "Last Updated"
+msgstr "Son Güncelleme"
+
+msgid "Launch"
+msgstr "Çalıştır"
+
+msgid "Launch Cluster"
+msgstr "Küme Başlat"
+
+msgid "Launch Job"
+msgid_plural "Launch Jobs"
+msgstr[0] "İşi Başlat"
+msgstr[1] "İşleri Başlat"
+
+msgid "Launch On Existing Cluster"
+msgstr "Mevcut Kümede Başlat"
+
+msgid "Launch On New Cluster"
+msgstr "Yeni Kümede Başlat"
+
+msgid "Launch a Cluster"
+msgstr "Bir Küme Başlat"
+
+msgid "Launch instances in these security groups."
+msgstr "Sunucuları bu güvenlik gruplarında başlat."
+
+msgid "Launch instances in this availability zone."
+msgstr "Sunucuları bu kullanılırlık bölgesinde başlat."
+
+msgid "Launch job"
+msgstr "İşi başlat"
+
+msgid "Launch the given job template on a cluster."
+msgstr "Verilen iş şablonunu bir kümede başlat."
+
+msgid ""
+"Launch your job.  When\n"
+"                        launching, you may need to choose your input and\n"
+"                        output data sources.  This is where you would also\n"
+"                        add any special configuration values, parameters,\n"
+"                        or arguments that you need to pass along\n"
+"                        to your job.\n"
+"                        "
+msgstr ""
+"İşinizi başlatın. Başlatırken,\n"
+"girdi ve çıktı veri kaynaklarınızı seçmeniz gerekebilir.\n"
+"Herhangi öze yapılandırma değerlerini, parametreleri,\n"
+"veya işinize geçirmeniz gereken değişkenleri de burada\n"
+"sağlayabilirsiniz.\n"
+"  "
+
+#, python-format
+msgid "Launched Cluster %s"
+msgstr "%s Kümesi Başlatıldı"
+
+msgid "Launched Job"
+msgid_plural "Launched Jobs"
+msgstr[0] "İş Başlatıldı"
+msgstr[1] "İşler Başlatıldı"
+
+msgid "Libs"
+msgstr "Kitaplıklar"
+
+msgid "Location"
+msgstr "Konum"
+
+msgid "Main Class"
+msgstr "Ana Sınıf"
+
+msgid "Mains"
+msgstr "Ana ikilikler"
+
+msgid "Management IP"
+msgstr "Yönetim IP'si"
+
+msgid "Manila share"
+msgstr "Manila paylaşımı"
+
+msgid "MapReduce"
+msgstr "MapReduce"
+
+msgid "Mapper"
+msgstr "Mapper"
+
+msgid "Mapping Type"
+msgstr "Eşleştirme Türü"
+
+msgid "Master Node Group Template:"
+msgstr "Ana Düğüm Grup Şablonu:"
+
+msgid ""
+"Modify the configuration so that swift URLs can be dereferenced through HDFS "
+"at runtime."
+msgstr ""
+"Çalışma zamanında HDFS üzerinden swift URL'lerini referanstan ayırmak için "
+"yapılandırmayı değiştir."
+
+msgid "Name"
+msgstr "İsim"
+
+#, python-format
+msgid "Name: %(node_group_name)s"
+msgstr "İsim: %(node_group_name)s"
+
+msgid "Named Parameter"
+msgstr "Adlandırılmış Parametre"
+
+msgid "Neutron Management Network"
+msgstr "Neutron Yönetim Ağı"
+
+msgid "Never"
+msgstr "Asla"
+
+msgid "Next"
+msgstr "Sonraki"
+
+msgid "No Cluster Template Created"
+msgstr "Küme Şablonu Oluşturulmadı"
+
+msgid "No Images Available"
+msgstr "Kullanılabilir İmaj Yok"
+
+msgid "No Master Node Group Template Created"
+msgstr "Ana Düğüm Grup Şablonu Oluşturulmamış"
+
+msgid "No Templates Available"
+msgstr "Kullanılabilir Şablon Yok"
+
+msgid "No Worker Node Group Template Created"
+msgstr "İşçi Düğüm Grup Şablonu Oluşturulmadı"
+
+msgid "No availability zone specified"
+msgstr "Kullanılırlık bölgesi belirtilmemiş"
+
+msgid "No clusters available"
+msgstr "Kullanılabilir küme yok"
+
+msgid "No configurations"
+msgstr "Yapılandırma yok"
+
+msgid "No description"
+msgstr "Tanım yok"
+
+msgid "No domain is specified"
+msgstr "Alan belirtilmemiş"
+
+msgid "No enabled versions"
+msgstr "Etkin sürüm yok"
+
+msgid "No image specified"
+msgstr "İmaj belirtilmemiş"
+
+msgid "No images available."
+msgstr "Kullanılabilir imaj yok."
+
+msgid "No info available"
+msgstr "Kullanılabilir bilgi yok"
+
+msgid "No job template created"
+msgstr "İş şablonu oluşturulmadı"
+
+msgid "No keypair"
+msgstr "Anahtar çifti yok"
+
+msgid "No plugin chosen"
+msgstr "Eklenti seçilmemiş"
+
+msgid "No type chosen"
+msgstr "Tür seçilmemiş"
+
+msgid "No volume type"
+msgstr "Birim türü yok"
+
+msgid "Node Group"
+msgstr "Düğüm Grubu"
+
+#, python-format
+msgid "Node Group Name: %(node_group_name)s"
+msgstr "Düğüm Grubu İsmi: %(node_group_name)s"
+
+msgid "Node Group Template"
+msgstr "Düğüm Grup Şablonu"
+
+#, python-format
+msgid "Node Group Template %s updated"
+msgstr "Düğüm Grup Şablonu %s güncellendi"
+
+#, python-format
+msgid "Node Group Template copy %s created"
+msgstr "Düğüm Grup Şablon kopyası %s oluşturuldu"
+
+msgid "Node Group Templates"
+msgstr "Düğüm Grup Şablonları"
+
+#, python-format
+msgid "Node Group: %(node_group_name)s"
+msgstr "Düğüm Grubu: %(node_group_name)s"
+
+msgid "Node Groups"
+msgstr "Düğüm Grupları"
+
+msgid "Node Groups Configuration Overview"
+msgstr "Düğüm Grupları Yapılandırma Genel Görünümü"
+
+msgid "Node Processes"
+msgstr "Düğüm Süreçleri"
+
+msgid "Node group cluster"
+msgstr "Düğüm grup kümesi"
+
+msgid "Node group configurations are not specified"
+msgstr "Düğüm grup yapılandırmaları belirtilmemiş"
+
+msgid "Node processes are not specified"
+msgstr "Düğüm süreçleri belirtilmemiş"
+
+msgid "Nodes Count"
+msgstr "Düğüm Sayısı"
+
+msgid "None"
+msgstr "Hiçbiri"
+
+msgid "Not available"
+msgstr "Kullanılabilir değil"
+
+msgid ""
+"Now you need to set the layout of your\n"
+"                        cluster.  By\n"
+"                        creating a Cluster Template, you will be choosing "
+"the\n"
+"                        number of instances of each Node Group Template "
+"that\n"
+"                        will appear in your cluster.  Additionally,\n"
+"                        you will have a chance to set any cluster-specific\n"
+"                        configuration items in the additional tabs on the\n"
+"                        create Cluster Template form."
+msgstr ""
+"Şimdi küme yerleşimini ayarlamanız gerekiyor.\n"
+"Bir Küme Şablonu oluşturarak kümeniz olacak her\n"
+"Düğüm Grup Şablonunun sunucu sayısını seçeceksiniz.\n"
+"Ek olarak Küme Şablonu oluşturma formundaki ek\n"
+"sekmelerde kümeye-özel yapılandırma ögelerini ayarlama\n"
+"imkanı bulacaksınız."
+
+msgid "Number"
+msgstr "Sayı"
+
+msgid "Number of Nodes"
+msgstr "Düğüm Sayısı"
+
+msgid "Number of clusters to launch."
+msgstr "Başlatılacak küme sayısı."
+
+msgid "Oozie Job ID"
+msgstr "Oozie İş Kimliği"
+
+msgid "OpenStack Flavor"
+msgstr "OpenStack Niteliği"
+
+msgid "Output"
+msgstr "Çıktı"
+
+msgid "Output Data Source"
+msgstr "Çıktı Veri Kaynağı"
+
+msgid "Parameters"
+msgstr "Parametreler"
+
+msgid "Password"
+msgstr "Parola"
+
+msgid "Path"
+msgstr "Yol"
+
+msgid "Path on share"
+msgstr "Paylaşımdaki yol"
+
+msgid "Persist cluster after job exit"
+msgstr "İş bitiminde kümeyi koru"
+
+msgid "Pig"
+msgstr "Pig"
+
+msgid "Plugin"
+msgstr "Eklenti"
+
+msgid "Plugin Name"
+msgstr "Eklenti İsmi"
+
+msgid "Plugin and Version Tag"
+msgstr "Eklenti ve Sürüm Etiketi"
+
+msgid "Plugin label"
+msgstr "Eklenti etiketi"
+
+msgid "Plugin name"
+msgstr "Eklenti ismi"
+
+msgid "Plugin update failed."
+msgstr "Eklenti güncelleme başarısız."
+
+#, python-format
+msgid "Plugin version %(version)s label"
+msgstr "Eklenti sürüm %(version)s etiketi"
+
+#, python-format
+msgid "Plugin version %s"
+msgstr "Eklenti sürümü %s"
+
+msgid "Plugin:"
+msgstr "Eklenti:"
+
+msgid "Plugins"
+msgstr "Eklentiler"
+
+msgid "Positional Argument"
+msgstr "Konumsal Değişken"
+
+msgid "Progress"
+msgstr "Süreç"
+
+msgid "Project ID"
+msgstr "Proje Kimliği"
+
+msgid "Project Id"
+msgstr "Proje Kimliği"
+
+msgid "Protected"
+msgstr "Korumalı"
+
+msgid "Proxy Gateway"
+msgstr "Vekil Ağ Geçidi"
+
+msgid "Public"
+msgstr "Açık"
+
+msgid "Read only"
+msgstr "Yalnızca okunur"
+
+msgid "Read/Write"
+msgstr "Oku/Yaz"
+
+msgid "Reducer"
+msgstr "Reducer"
+
+msgid "Register Image"
+msgstr "İmajı Kaydet"
+
+msgid "Relaunch On Existing Cluster"
+msgstr "Mevcut Kümede Yeniden Başlat"
+
+msgid "Relaunch On New Cluster"
+msgstr "Yeni Kümede Yeniden Başlat"
+
+msgid "Remove"
+msgstr "Kaldır"
+
+msgid ""
+"Repeat the Node Group Template\n"
+"                        creation process, but this time you are creating\n"
+"                        your \"worker\" Node Group Template."
+msgstr ""
+"Düğüm Grup Şablonu oluşturma sürecini\n"
+"tekrarla, ama bu sefer \"işçi\" Düğüm Grup Şablonunuzu\n"
+"oluşturuyorsunuz."
+
+msgid "Required"
+msgstr "Gerekli"
+
+msgid "Reset Cluster Creation Guide"
+msgstr "Küme Oluşturma Kılavuzunu Sıfırla"
+
+msgid "Reset Cluster Guide"
+msgstr "Küme Kılavuzunu Sıfırla"
+
+msgid "Reset Job Execution Guide"
+msgstr "İş Çalıştırma Kılavuzunu Sıfırla"
+
+msgid "Return Code"
+msgstr "Dönüş Kodu"
+
+msgid "Run HBase EDP Jobs with common HBase library on HDFS"
+msgstr "HDFS üzerinde genel HBase kitaplığı ile HBase EDP İşleri çalıştır"
+
+msgid ""
+"Sahara will use instances of this node group to access other cluster "
+"instances."
+msgstr ""
+"Sahara diğer küme sunucularına erişmek için bu düğüm grubu sunucularını "
+"kullanacak."
+
+msgid "Scale"
+msgstr "Ölçek"
+
+msgid "Scale Cluster"
+msgstr "Kümeyi Ölçeklendir"
+
+msgid "Scale cluster operation failed"
+msgstr "Küme ölçeklendirme işlemi başarısız"
+
+msgid "Scaled cluster successfully started."
+msgstr "Ölçeklenmiş küme başarıyla başlatıldı."
+
+msgid "Scope"
+msgstr "Kapsam"
+
+msgid "Script name"
+msgstr "Betik ismi"
+
+msgid "Script text"
+msgstr "Betik metni"
+
+msgid "Security"
+msgstr "Güvenlik"
+
+msgid "Security Groups"
+msgstr "Güvenlik Grupları"
+
+msgid "Select"
+msgstr "Seç"
+
+msgid "Select Image"
+msgstr "İmaj Seçin"
+
+msgid "Select Node Group Processes"
+msgstr "Düğüm Grup Süreçlerini Seç"
+
+msgid "Select Shares"
+msgstr "Paylaşımları Seç"
+
+msgid "Select a Node Group Template to add:"
+msgstr "Eklemek için bir Düğüm Grup Şablonu seçin:"
+
+msgid "Select a Value Type for your next argument:"
+msgstr "Sonraki değişkeniniz için bir Değer Türü seçin:"
+
+msgid "Select a plugin and version for a new Cluster template."
+msgstr "Yeni Küme şablonu için bir eklenti ve sürüm seçin."
+
+msgid "Select a plugin and version for a new Cluster."
+msgstr "Yeni Küme için bir eklenti ve sürüm seçin."
+
+msgid "Select a plugin and version for the new Node Group template."
+msgstr "Yeni Düğüm Grup şablonu için bir eklenti ve sürüm seçin."
+
+msgid ""
+"Select an existing node group template.\n"
+"    "
+msgstr ""
+"Mevcut bir düğüm grup şablonu seçin.\n"
+"    "
+
+msgid "Select node processes for the node group"
+msgstr "Düğüm grubu için düğüm süreçlerini seç"
+
+msgid "Select plugin and hadoop version"
+msgstr "Eklenti ve hadoop sürümü seçin"
+
+msgid "Select plugin and hadoop version for cluster"
+msgstr "Küme için eklenti ve hadoop sürümü seç"
+
+msgid "Select plugin and hadoop version for cluster template"
+msgstr "Küme şablonu için eklenti ve hadoop sürümü seçin"
+
+msgid "Select property name"
+msgstr "Özellik ismini seçin"
+
+msgid "Select the domain name for internal and external hostname resolution."
+msgstr "Dahili ve harici alan adı çözümü için alan ismini seçin."
+
+msgid "Select the manila shares for this cluster"
+msgstr "Bu küme için manila paylaşımlarını seçin"
+
+msgid "Select the manila shares for this node group"
+msgstr "Bu düğüm grubu için manila paylaşımlarını seç"
+
+msgid "Select the storage type for your job binary."
+msgstr "İş ikiliğiniz için depolama türü seçin."
+
+msgid "Select the type of your Data Source."
+msgstr "Veri Kaynağınızın türünü seçin."
+
+msgid "Select the type of your job:"
+msgstr "İşinizin türünü seçin:"
+
+msgid "Select type"
+msgstr "Tür seçin"
+
+msgid ""
+"Select which plugin and version that you\n"
+"    want to use to create your cluster."
+msgstr ""
+"Kümenizi oluşturmak için hangi eklenti\n"
+"    ve sürümü kullanmak istediğinizi seçin."
+
+msgid ""
+"Selected domain name should already exist in the Designate.\n"
+"    You can check it in &quot;DNS&quot; tab on the left menu or by "
+"executing\n"
+"    &quot;designate domain-list&quot;\n"
+"    on the controller node."
+msgstr ""
+"Seçili alan adı Designate'de mevcut olmalıdır.\n"
+"    Soldaki &quot;DNS&quot; sekmesinden veya kontrol düğümünde\n"
+"    &quot;designate domain-list&quot;\n"
+"    çalıştırarak kontrol edebilirsiniz."
+
+msgid "Service Configurations"
+msgstr "Servis Yapılandırmaları"
+
+msgid "Share"
+msgstr "Paylaşım"
+
+msgid "Shares"
+msgstr "Paylaşımlar"
+
+msgid "Shell"
+msgstr "Kabuk"
+
+msgid "Shell Action"
+msgstr "Kabuk Eylemi"
+
+msgid "Show full configuration"
+msgstr "Tam yapılandırmayı göster"
+
+msgid "Source password"
+msgstr "Kaynak parolası"
+
+msgid "Source username"
+msgstr "Kaynak kullanıcı adı"
+
+msgid "Spark"
+msgstr "Spark"
+
+msgid ""
+"Specified User Name will be used by Data Processing to apply configs and "
+"manage processes on instances."
+msgstr ""
+"Belirtilen Kullanıcı Adı Veri İşleme tarafından sunuculardaki süreçleri "
+"yönetme ve yapılandırmaları uygulama amacıyla kullanılacak."
+
+msgid "Start Verification"
+msgid_plural "Start Verifications"
+msgstr[0] "Onaylamayı Başlat"
+msgstr[1] "Onaylamaları Başlat"
+
+msgctxt "Start time"
+msgid "Started"
+msgstr "Başlatılma"
+
+msgid "Started Verification"
+msgid_plural "Started Verifications"
+msgstr[0] "Onaylama Başlatıldı"
+msgstr[1] "Onaylamalar Başlatıldı"
+
+msgid "Started at"
+msgstr "Başlama zamanı"
+
+msgid "Status"
+msgstr "Durum"
+
+msgid "Status description"
+msgstr "Durum tanımı"
+
+msgid "Step Description"
+msgstr "Adım Tanımlaması"
+
+msgid "Storage location"
+msgstr "Depolama konumu"
+
+msgid "Storage type"
+msgstr "Depolama türü"
+
+msgid "Storm"
+msgstr "Storm"
+
+msgid "Storm Pyleus"
+msgstr "Storm Pyleus"
+
+msgid "Streaming MapReduce"
+msgstr "Duraksız MapReduce"
+
+msgid "String"
+msgstr "Karakter Dizisi"
+
+msgid ""
+"Substitute data source objects for URLs of the form datasource://name or "
+"uuid."
+msgstr ""
+"Veri kaynağı nesnelerini verikaynağı://isim veya uuid biçiminde URL'ler ile "
+"değiştir."
+
+msgctxt "Current status of a Job"
+msgid "Succeeded"
+msgstr "Başarılı"
+
+msgid "Successfully updated image."
+msgstr "İmaj başarıyla güncellendi."
+
+msgid "Supported Versions"
+msgstr "Desteklenen Sürümler"
+
+msgid "Swift"
+msgstr "Swift"
+
+msgid "Tags"
+msgstr "Etiketler"
+
+msgid ""
+"Tags are used for filtering images suitable for each plugin and each Data "
+"Processing version.\n"
+"        To add required tags, select a plugin and a Data Processing version "
+"and click the &quot;Add&quot; button."
+msgstr ""
+"Etiketler her eklenti ve her Veri İşleme sürümü için uygun imajları süzmek "
+"için kullanılır.\n"
+"Gerekli etiketleri eklemek için, bir eklenti ve Veri İşleme sürümü seçin ve "
+"&quot;Ekle&quot; düğmesine tıklayın."
+
+msgid "Template"
+msgstr "Şablon"
+
+msgid "Template Name"
+msgstr "Şablon Adı"
+
+msgid "Template not specified"
+msgstr "Şablon belirtilmemiş"
+
+msgid ""
+"The Cluster Template object may specify a list of processes in anti-affinity "
+"group.\n"
+"    That means these processes may not be launched more than once on a "
+"single host."
+msgstr ""
+"Küme Şablon nesnesi anti-benzeşim grubunda süreç listesi sağlayabilir.\n"
+"  Bunun anlamı bu süreçlerin tek bir sunucuda birden fazla kez "
+"başlatılamayacağıdır."
+
+msgid ""
+"The Cluster Template object should specify Node Group Templates that will be "
+"used to build a Cluster.\n"
+"    You can add Node Groups using Node Group Templates on a &quot;Node "
+"Groups&quot; tab."
+msgstr ""
+"Küme Şablonu nesnesi Küme inşasında kullanılacak Düğüm Grup Şablonlarını "
+"belirtmeli.\n"
+"    Düğüm Gruplarını &quot;Düğüm Grupları&quot; sekmesindeki Düğüm Grup "
+"Şablonlarını kullanarak ekleyebilirsiniz."
+
+msgid ""
+"The Cluster object should specify OpenStack Image to boot instances for "
+"Cluster."
+msgstr ""
+"Küme nesnesi Küme için ön yüklenecek sunucular için OpenStack İmajını "
+"belirtmeli."
+
+msgid ""
+"The Node Group Template object specifies the processes\n"
+"        that will be launched on each instance. Check one or more "
+"processes.\n"
+"        When processes are selected, you may set <b>node</b> scoped\n"
+"        configurations on corresponding tabs."
+msgstr ""
+"Düğüm Grup Şablonu her sunucuda başlatılacak süreçleri belirtir.\n"
+"Bir ya da daha fazla süreci kontrol edin. Süreçler seçildiğinde, ilgili\n"
+"sekmelerde <b>düğüm</b> kapsamlı yapılandırmaları ayarlayabilirsiniz."
+
+msgid ""
+"The first step is to determine which type of\n"
+"                    cluster you want to run.  You may have several choices\n"
+"                    available depending on the configuration of your "
+"system.\n"
+"                    Click on \"choose plugin\" to bring up the list of data\n"
+"                    processing plugins.  There you will be able to choose "
+"the\n"
+"                    data processing plugin along with the version number.\n"
+"                    Choosing this up front will allow the rest of the "
+"cluster\n"
+"                    creation steps to focus only on options that are "
+"pertinent\n"
+"                    to your desired cluster type."
+msgstr ""
+"İlk adım ne tür bir küme çalıştırmak istediğinize\n"
+"karar vermektir. Sistem yapılandırmanıza göre birden\n"
+"fazla seçeneğiniz olabilir. Veri işleme eklentilerinin\n"
+"listesini görmek için \"eklenti seç\"e tıklayın. Burada veri\n"
+"işleme eklentisini sürüm numarasıyla göreceksiniz.\n"
+"Bunu önden seçmek geri kalan küme oluşturma adımlarının\n"
+"yalnızca istediğiniz küme türüne uygun seçeneklere odaklanmasını\n"
+"sağlar."
+
+msgid "The value of shares must be a list of values"
+msgstr "Paylaşım listesi bir değerler listesi olmalı"
+
+msgid "This Cluster Template will be created for:"
+msgstr "Bu Küme Şablonu şunun için oluşturulacak:"
+
+msgid "This Cluster will be started with:"
+msgstr "Bu Küme şunlarla başlatılacak:"
+
+msgid "This Node Group Template will be created for:"
+msgstr "Bu Düğüm Grup Şablonu şunun için oluşturulacak:"
+
+msgid "Title"
+msgstr "Başlık"
+
+msgid "Topology Name"
+msgstr "Topoloji İsmi"
+
+msgid "Type"
+msgstr "Tür"
+
+msgid "URL"
+msgstr "URL"
+
+msgid "Unable to create job binary"
+msgstr "İş ikiliği oluşturulamıyor"
+
+#, python-format
+msgid "Unable to create job binary: %s"
+msgstr "İş ikiliği oluşturulamıyor: %s"
+
+msgid "Unable to create new cluster for job."
+msgstr "İş için yeni bir küme oluşturulamıyor."
+
+msgid "Unable to create the cluster"
+msgstr "Küme oluşturulamıyor"
+
+#, python-format
+msgid "Unable to fetch Base Image with id: %s."
+msgstr "Bu kimliğe sahip Taban İmaj getirilemedi: %s."
+
+msgid "Unable to fetch available images."
+msgstr "Kullanılabilir imajlar getirilemedi."
+
+msgid "Unable to fetch base image details"
+msgstr "Taban imaj ayrıntıları getirilemiyor"
+
+msgid "Unable to fetch cluster list"
+msgstr "Küme listesi getirilemedi"
+
+msgid "Unable to fetch cluster template list"
+msgstr "Küme şablon listesi getirilemiyor"
+
+msgid "Unable to fetch cluster template."
+msgstr "Küme şablonu getirilemiyor."
+
+msgid "Unable to fetch cluster to scale"
+msgstr "Ölçeklenecek küme getirilemedi"
+
+msgid "Unable to fetch cluster to scale."
+msgstr "Ölçeklenecek küme getirilemedi."
+
+msgid "Unable to fetch cluster."
+msgstr "Küme getirilemedi."
+
+msgid "Unable to fetch clusters."
+msgstr "Kümeler alınamıyor."
+
+msgid "Unable to fetch data source list"
+msgstr "Veri kaynağı listesi getirilemedi"
+
+msgid "Unable to fetch data sources."
+msgstr "Veri kaynakları getirilemiyor."
+
+msgid "Unable to fetch flavor for template."
+msgstr "Şablon için nitelik getirilemedi."
+
+msgid "Unable to fetch floating ip pools."
+msgstr "Değişken ip havuzları getirilemedi."
+
+msgid "Unable to fetch image choices."
+msgstr "İmaj seçimleri getirilemedi."
+
+msgid "Unable to fetch instance details."
+msgstr "Sunucu ayrıntıları getirilemiyor."
+
+msgid "Unable to fetch job binary list"
+msgstr "İş ikiliği listesi getirilemedi"
+
+#, python-format
+msgid "Unable to fetch job binary: %(exc)s"
+msgstr "İş ikiliği getirilemiyor: %(exc)s"
+
+msgid "Unable to fetch job list"
+msgstr "İş listesi getirilemiyor"
+
+msgid "Unable to fetch job template list"
+msgstr "İş şablon listesi getirilemiyor"
+
+msgid "Unable to fetch jobs."
+msgstr "İşler getirilemiyor."
+
+msgid "Unable to fetch keypair choices."
+msgstr "Anahtar çifti seçimleri getirilemiyor."
+
+msgid "Unable to fetch network details"
+msgstr "Ağ ayrıntıları getirilemiyor"
+
+msgid "Unable to fetch node group details."
+msgstr "Düğüm grup ayrıntıları getirilemiyor."
+
+msgid "Unable to fetch node group template list"
+msgstr "Düğüm grup şablon listesi getirilemedi"
+
+msgid "Unable to fetch plugin details."
+msgstr "Eklenti ayrıntıları getirilemedi."
+
+msgid "Unable to fetch plugin list"
+msgstr "Eklenti listesi getirilemedi"
+
+msgid "Unable to fetch plugin object."
+msgstr "Eklenti nesnesi getirilemedi."
+
+msgid "Unable to fetch template object."
+msgstr "Şablon nesnesi getirilemedi."
+
+msgid "Unable to fetch template to copy."
+msgstr "Şablon kopyalamak için getirilemiyor."
+
+msgid "Unable to fetch template to edit."
+msgstr "Şablon düzenlenmek için getirilemiyor."
+
+msgid "Unable to fetch the image details"
+msgstr "İmaj ayrıntıları getirilemiyor"
+
+msgid "Unable to generate process choices."
+msgstr "Süreç seçenekleri üretilemiyor."
+
+msgid "Unable to get node group details."
+msgstr "Düğüm grup ayrıntıları alınamıyor."
+
+msgid "Unable to get security group list."
+msgstr "Güvenlik grubu listesi alınamadı."
+
+msgid "Unable to launch job."
+msgstr "İş başlatılamıyor."
+
+msgid "Unable to populate anti-affinity processes."
+msgstr "Anti-benzeşim süreçleri doldurulamıyor."
+
+msgid "Unable to process plugin tags"
+msgstr "Eklenti etiketleri işlenemiyor"
+
+msgid "Unable to retrieve data processing plugins."
+msgstr "Veri işleme eklentiler alınamadı."
+
+#, python-format
+msgid "Unable to retrieve details for cluster \"%s\"."
+msgstr "\"%s\" kümesinin ayrıntıları alınamıyor."
+
+#, python-format
+msgid "Unable to retrieve details for cluster template \"%s\"."
+msgstr "Küme şablonu \"%s\" için ayrıntılar alınamıyor."
+
+#, python-format
+msgid "Unable to retrieve details for data source \"%s\"."
+msgstr "Veri kaynağı \"%s\" için ayrıntılar alınamadı."
+
+#, python-format
+msgid "Unable to retrieve details for job \"%s\"."
+msgstr "\"%s\" işi için ayrıntılar alınamıyor."
+
+#, python-format
+msgid "Unable to retrieve details for job binary \"%s\"."
+msgstr "İş ikiliği \"%s\" için ayrıntılar alınamadı."
+
+#, python-format
+msgid "Unable to retrieve details for job template \"%s\"."
+msgstr "İş şablonu \"%s\" için ayrıntılar alınamıyor."
+
+#, python-format
+msgid "Unable to retrieve details for node group template \"%s\"."
+msgstr "Düğüm grup şablonu \"%s\" için ayrıntılar alınamadı."
+
+msgid "Unable to retrieve image list"
+msgstr "İmaj listesi alınamıyor"
+
+#, python-format
+msgid "Unable to retrieve images with filter %s."
+msgstr "%s süzgeciyle imaj alınamadı."
+
+#, python-format
+msgid "Unable to retrieve job binary \"%s\"."
+msgstr "İş ikiliği \"%s\" alınamadı."
+
+msgid "Unable to retrieve networks."
+msgstr "Ağlar alınamıyor."
+
+msgid "Unable to retrieve plugin."
+msgstr "Eklenti alınamadı."
+
+#, python-format
+msgid "Unable to retrieve security group %(group)s."
+msgstr "Güvenlik grubu %(group)s alınamadı."
+
+msgid "Unable to set cluster type"
+msgstr "Küme türü ayarlanamadı"
+
+msgid "Unable to set job type"
+msgstr "İş türü ayarlanamadı"
+
+msgid "Unable to set node group template"
+msgstr "Düğüm grup şablonu ayarlanamadı"
+
+msgid "Unable to update job binary"
+msgstr "İş ikiliği güncellenemiyor"
+
+#, python-format
+msgid "Unable to update job binary: %s"
+msgstr "İş ikiliği güncellenemiyor: %s"
+
+msgid "Unable to update row"
+msgstr "Satır güncellenemiyor"
+
+msgid "Unable to upload job binary"
+msgstr "İş ikiliği yüklenemiyor"
+
+msgid "Unknown"
+msgstr "Bilinmiyor"
+
+msgid "Unnecessary tags may be removed by clicking a cross near tag's name."
+msgstr ""
+"Gereksiz etiketler etiket isminin yanındaki çarpıya tıklayarak "
+"kaldırılabilir."
+
+msgid "Unregister Image"
+msgid_plural "Unregister Images"
+msgstr[0] "İmajı Kayıttan Çıkar"
+msgstr[1] "İmajları Kayıttan Çıkar"
+
+msgid "Unregistered Image"
+msgid_plural "Unregistered Images"
+msgstr[0] "İmaj Kayıttan Çıkarıldı"
+msgstr[1] "İmajlar Kayıttan Çıkarıldı"
+
+msgid "Update"
+msgstr "Güncelle"
+
+msgid "Update Cluster Shares"
+msgstr "Küme Paylaşımlarını Güncelle"
+
+msgid "Update Plugin"
+msgstr "Eklentiyi Güncelle"
+
+msgid "Update Shares"
+msgstr "Paylaşımları Güncelle"
+
+msgid "Update the plugin labels"
+msgstr "Eklenti etiketlerini güncelle"
+
+msgid "Updated"
+msgstr "Güncellendi"
+
+msgid "Updated time"
+msgstr "Güncellenme zamanı"
+
+msgid "Upload"
+msgstr "Yükle"
+
+msgid "Upload File"
+msgstr "Dosya Yükle"
+
+msgid "Upload Template"
+msgstr "Şablon Yükle"
+
+msgid "Upload a new file"
+msgstr "Yeni bir dosya yükle"
+
+msgid "Uptime"
+msgstr "Çalışma süresi"
+
+msgid "Url"
+msgstr "Url"
+
+msgid "Use Data Source Substitution for Names and UUIDs"
+msgstr "İsimler ve UUID'ler için Veri Kaynağı Yerdeğiştirmesi Kullan"
+
+msgid "Use HBase Common library"
+msgstr "HBase Genel kitaplığını kullan"
+
+msgid "Use anti-affinity groups for processes"
+msgstr "Süreçler için anti-benzeşim gruplarını kullan"
+
+msgid "Use anti-affinity groups for: "
+msgstr "Anti-benzeşim gruplarını kullan: "
+
+msgid "Use auto-configuration"
+msgstr "Oto-yapılandırma kullan"
+
+msgid "Use the same topology name as defined in your .yaml file"
+msgstr ".yaml dosyanızda olanla aynı topoloji ismini kullanın"
+
+msgid "User"
+msgstr "Kullanıcı"
+
+msgid "User Name"
+msgstr "Kullanıcı Adı"
+
+msgid "User has to choose a keypair to have access to clusters instances."
+msgstr "Küme sunucularına erişim için kullanıcı bir anahtar çifti seçmeli."
+
+msgid "Username"
+msgstr "Kullanıcı adı"
+
+msgid "Value"
+msgstr "Değer"
+
+msgid "Value Type"
+msgstr "Değer Türü"
+
+msgid "Version"
+msgstr "Sürüm"
+
+msgid "Version:"
+msgstr "Sürüm:"
+
+msgid "Volume local to instance"
+msgstr "Birim sunucuya yerel"
+
+msgid "Volumes Availability Zone"
+msgstr "Birimin Kullanılırlık Bölgesi"
+
+msgid "Volumes local to instance"
+msgstr "Birimler sunucuya yerel"
+
+msgid "Volumes per node"
+msgstr "Düğüm başına birim"
+
+msgid "Volumes size"
+msgstr "Birim boyutu"
+
+msgid "Volumes size (GB)"
+msgstr "Birim boyutu (GB)"
+
+msgid "Volumes type"
+msgstr "Birim türü"
+
+msgid "Warning!"
+msgstr "Uyarı!"
+
+msgid "Which keypair to use for authentication."
+msgstr "Kimlik doğrulama için hangi anahtar çiftinin kullanılacağı."
+
+msgid "Worker Node Group Template:"
+msgstr "İşçi Düğüm Grup Şablonu:"
+
+msgid ""
+"You are now ready to\n"
+"                        launch your cluster.  When you click on the link\n"
+"                        below, you will need to give your cluster a name,\n"
+"                        choose the Cluster Template to use and choose which\n"
+"                        image to use to build your instances.  After you\n"
+"                        click on \"Create\", your instances will begin to\n"
+"                        spawn.  Your cluster should be operational in a few\n"
+"                        minutes."
+msgstr ""
+"Şimdi kümenizi başlatmaya hazırsınız.\n"
+"Aşağıdaki bağlantıya tıkladığınızda, kümenize bir\n"
+"ad vermeniz, kullanılacak Küme Şablonunu seçmeniz\n"
+"ve sunucularınız inşa ederken kullanılacak imajı belirtmeniz\n"
+"gerekecek. \"Oluştur\"a tıkladığınızda sunucularınız açılmaya\n"
+"başlayacak. Kümeniz bir kaç dakika içinde hazır olacaktır."
+
+msgid "You may also add any custom tag."
+msgstr "Herhangi bir özel etiketi de ekleyebilirsiniz."
+
+msgid "You may also enter an optional description for your Data Source."
+msgstr "Veri Kaynağınız için isteğe bağlı bir tanım girebilirsiniz."
+
+msgid "You may also enter an optional description for your job binary."
+msgstr "İş ikiliğinize isteğe bağlı bir tanım girebilirsiniz."
+
+msgid "You may also enter an optional description for your job template."
+msgstr "İş şablonunuz için isteğe bağlı olarak tanım da girebilirsiniz."
+
+msgid "You may need to enter the username and password for your Data Source."
+msgstr "Veri Kaynağınız için kullanıcı adı ve parola girmeniz gerekebilir."
+
+msgid "You may set <b>cluster</b> scoped configurations on corresponding tabs."
+msgstr ""
+"İlgili sekmelerden <b>küme</b> kapsamlı yapılandırmaları ayarlayabilirsiniz."
+
+msgid ""
+"You must choose a flavor to determine the size (VCPUs, memory and storage) "
+"of all launched VMs."
+msgstr ""
+"Başlatılan tüm sanal makinelerin boyutuna karar vermek için (VCPU'lar, "
+"hafıza ve depolama) bir nitelik seçmelisiniz."
+
+msgid ""
+"You need to register an image to launch instances\n"
+"                         of your cluster. Skip this step if you already have "
+"a registered image\n"
+"                         for your plugin, otherwise click the link below. In "
+"the form you will\n"
+"                         need to choose the image, input the username and "
+"add tags for the chosen plugin.\n"
+"                         "
+msgstr ""
+"Kümenizdeki sunucuları başlatmak için bir imaj kaydetmelisiniz.\n"
+"Eklentiniz için kayıtlı bir imajınız varsa bu adımı geçebilirsiniz,\n"
+"aksi halde aşağıdaki bağlantıya tıklayın. Formda imajı, seçili\n"
+"eklenti için kullanıcı adını ve etiketleri girmeniz gerekecek."
+
+msgid ""
+"You've chosen a cluster that is in 'Error' state. Appropriate execution of "
+"the job can't be guaranteed."
+msgstr ""
+"'Hata' durumundaki bir kümeyi seçtiniz. İşin düzgün çalışacağı garanti "
+"edilemez."
+
+msgid "cluster"
+msgstr "küme"
+
+msgid "cluster template"
+msgstr "küme şablonu"
+
+msgid "data source"
+msgstr "veri kaynağı"
+
+msgid "job"
+msgstr "iş"
+
+msgid "job binary"
+msgstr "iş ikiliği"
+
+msgid "no processes"
+msgstr "süreç yok"
+
+msgid "node group template"
+msgstr "düğüm grup şablonu"

@@ -1,0 +1,94 @@
+# işbaran akçayır <isbaran@gmail.com>, 2017. #zanata
+msgid ""
+msgstr ""
+"Project-Id-Version: sahara-dashboard 7.0.0.0b2.dev13\n"
+"Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
+"POT-Creation-Date: 2017-06-08 17:55+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2017-05-24 11:10+0000\n"
+"Last-Translator: Copied by Zanata <copied-by-zanata@zanata.org>\n"
+"Language-Team: Turkish (Turkey)\n"
+"Language: tr-TR\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Zanata 3.9.6\n"
+"X-POOTLE-MTIME: 1495548113.000000\n"
+
+msgid "(show events)"
+msgstr "(olayları göster)"
+
+msgid "Configuration Value"
+msgstr "Yapılandırma Değeri"
+
+msgid "Data Source"
+msgstr "Veri Kaynağı"
+
+msgid "Default Value"
+msgstr "Öntanımlı Değer"
+
+msgid "Description"
+msgstr "Tanım"
+
+msgid "Event log is not available."
+msgstr "Olay kaydı kullanılabilir değil."
+
+msgid ""
+"For configs and params, type the key name; for args, type the index as an "
+"integer, starting from 0."
+msgstr ""
+"Yapılandırma ve parametreler için, anahtar ismini girin; değişkenler için, "
+"indisi tam sayı olarak 0'dan başlayacak şekilde girin."
+
+msgid ""
+"For data sources, use a data source UUID or a path (as per data source "
+"creation.)"
+msgstr ""
+"Veri kaynakları için, bir veri kaynağı UUID'si ya da yolu girin (veri "
+"kaynağı oluşturmada da.)"
+
+msgid "Location"
+msgstr "Konum"
+
+msgid "Mapping Type"
+msgstr "Eşleştirme Türü"
+
+msgid "Name"
+msgstr "İsim"
+
+msgid "Named Parameter"
+msgstr "Adlı Paremetre"
+
+msgid "Number"
+msgstr "Sayı"
+
+msgid "Positional Argument"
+msgstr "Konumsal Değişkenler"
+
+msgid "Remove"
+msgstr "Kaldır"
+
+msgid "Required?"
+msgstr "Gerekli?"
+
+msgid ""
+"See http://docs.openstack.org/developer/sahara/userdoc/edp.html for "
+"definitions."
+msgstr ""
+"Tanımlar için http://docs.openstack.org/developer/sahara/userdoc/edp.html "
+"adresine bakın."
+
+msgid "String"
+msgstr "Karakter Dizisi"
+
+msgid "The step has completed successfully. No events to display."
+msgstr "Adım başarıyla tamamlandı. Gösterilecek olay yok."
+
+msgid "Value Type"
+msgstr "Değer Türü"
+
+msgid "Verification is not available."
+msgstr "Doğrulama kullanılabilir değil."
+
+msgid "Warning!"
+msgstr "Uyarı!"
