@@ -13,7 +13,7 @@ netifaces>=0.10.4 # MIT
 nose-exclude # LGPL
 python-subunit>=0.0.18 # Apache-2.0/BSD
 selenium>=2.50.1 # Apache-2.0
-sphinx!=1.6.1,>=1.5.1 # BSD
+sphinx>=1.6.2 # BSD
 oslosphinx>=4.7.0 # Apache-2.0
 testrepository>=0.0.18 # Apache-2.0/BSD
 testscenarios>=0.4 # Apache-2.0/BSD
