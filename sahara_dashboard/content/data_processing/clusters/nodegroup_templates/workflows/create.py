@@ -46,7 +46,10 @@ BASE_IMAGE_URL = "horizon:project:data_processing.clusters:register"
 
 
 def is_cinder_enabled(request):
-    return saharaclient.base.is_service_enabled(request, 'volume')
+    for service in ['volumev3', 'volumev2', 'volume']:
+        if saharaclient.base.is_service_enabled(request, service):
+            return True
+    return False
 
 
 def storage_choices(request):
