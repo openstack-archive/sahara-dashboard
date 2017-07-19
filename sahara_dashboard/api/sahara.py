@@ -259,6 +259,10 @@ def nodegroup_update_acl_rules(request, nid,
         nid, **prepare_acl_update_dict(is_public, is_protected))
 
 
+def nodegroup_template_export(request, object_id):
+    return client(request).node_group_templates.export(object_id)
+
+
 def cluster_template_create(request, name, plugin_name, hadoop_version,
                             description=None, cluster_configs=None,
                             node_groups=None, anti_affinity=None,
