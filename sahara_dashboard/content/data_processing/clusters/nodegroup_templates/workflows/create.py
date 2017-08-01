@@ -304,7 +304,7 @@ class CheckboxSelectMultiple(forms.CheckboxSelectMultiple):
         if value is None:
             value = []
         has_id = attrs and 'id' in attrs
-        final_attrs = self.build_attrs(attrs, name=name)
+        final_attrs = self.build_attrs(attrs, {'name': name})
         output = []
         initial_service = uuidutils.generate_uuid()
         str_values = set([encoding.force_text(v) for v in value])
