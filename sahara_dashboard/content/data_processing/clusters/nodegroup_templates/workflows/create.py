@@ -300,11 +300,21 @@ class SecurityConfigAction(workflows.Action):
 
 
 class CheckboxSelectMultiple(forms.CheckboxSelectMultiple):
+    # TODO(shuyingya): should rewrite this class using the
+    # new method "get_context" when Django version less than 1.11
+    # no longer support.
+    def build_attrs(self, extra_attrs=None, **kwargs):
+        "Helper function for building an attribute dictionary."
+        attrs = dict(self.attrs, **kwargs)
+        if extra_attrs:
+            attrs.update(extra_attrs)
+        return attrs
+
     def render(self, name, value, attrs=None, choices=()):
         if value is None:
             value = []
         has_id = attrs and 'id' in attrs
-        final_attrs = self.build_attrs(attrs, {'name': name})
+        final_attrs = self.build_attrs(attrs, name=name)
         output = []
         initial_service = uuidutils.generate_uuid()
         str_values = set([encoding.force_text(v) for v in value])
