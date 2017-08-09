@@ -12,9 +12,11 @@
 # limitations under the License.
 
 from django.core.urlresolvers import reverse
+from django.core.urlresolvers import reverse_lazy
 from django.utils.translation import ugettext_lazy as _
 
 from horizon import exceptions
+from horizon import forms
 from horizon import tabs
 from horizon.utils import memoized
 from horizon import workflows
@@ -30,6 +32,8 @@ import sahara_dashboard.content.data_processing.clusters. \
     nodegroup_templates.workflows.create as create_flow
 import sahara_dashboard.content.data_processing.clusters. \
     nodegroup_templates.workflows.edit as edit_flow
+import sahara_dashboard.content.data_processing.clusters. \
+    nodegroup_templates.forms.import_forms as import_forms
 
 
 class NodegroupTemplateDetailsView(tabs.TabView):
@@ -49,8 +53,8 @@ class NodegroupTemplateDetailsView(tabs.TabView):
             exceptions.handle(self.request, msg, redirect=redirect)
 
     def get_context_data(self, **kwargs):
-        context = super(NodegroupTemplateDetailsView, self)\
-            .get_context_data(**kwargs)
+        context = super(
+            NodegroupTemplateDetailsView, self).get_context_data(**kwargs)
         node_group_template = self.get_object()
         context['template'] = node_group_template
         context['url'] = self.get_redirect_url()
@@ -97,8 +101,8 @@ class CopyNodegroupTemplateView(workflows.WorkflowView):
     template_name = "nodegroup_templates/configure.html"
 
     def get_context_data(self, **kwargs):
-        context = super(CopyNodegroupTemplateView, self)\
-            .get_context_data(**kwargs)
+        context = super(
+            CopyNodegroupTemplateView, self).get_context_data(**kwargs)
 
         context["template_id"] = kwargs["template_id"]
         return context
@@ -127,3 +131,38 @@ class EditNodegroupTemplateView(CopyNodegroupTemplateView):
     success_url = ("horizon:project:"
                    "data_processing.clusters:index")
     template_name = "nodegroup_templates/configure.html"
+
+
+class ImportNodegroupTemplateFileView(forms.ModalFormView):
+    template_name = "nodegroup_templates/import.html"
+    form_class = import_forms.ImportNodegroupTemplateFileForm
+    submit_label = _("Next")
+    submit_url = reverse_lazy("horizon:project:data_processing."
+                              "clusters:import-nodegroup-template-file")
+    success_url = reverse_lazy("horizon:project:data_processing."
+                               "clusters:import-nodegroup-template-details")
+    page_title = _("Import Node Group Template")
+
+    def get_form_kwargs(self):
+        kwargs = super(
+            ImportNodegroupTemplateFileView, self).get_form_kwargs()
+        kwargs['next_view'] = ImportNodegroupTemplateDetailsView
+        return kwargs
+
+
+class ImportNodegroupTemplateDetailsView(forms.ModalFormView):
+    template_name = "nodegroup_templates/import.html"
+    form_class = import_forms.ImportNodegroupTemplateDetailsForm
+    submit_label = _("Import")
+    submit_url = reverse_lazy("horizon:project:data_processing."
+                              "clusters:import-nodegroup-template-details")
+    success_url = reverse_lazy("horizon:project:data_processing."
+                               "clusters:index")
+    page_title = _("Import Node Group Template")
+
+    def get_form_kwargs(self):
+        kwargs = super(
+            ImportNodegroupTemplateDetailsView, self).get_form_kwargs()
+        if 'template_upload' in self.kwargs:
+            kwargs['template_upload'] = self.kwargs['template_upload']
+        return kwargs

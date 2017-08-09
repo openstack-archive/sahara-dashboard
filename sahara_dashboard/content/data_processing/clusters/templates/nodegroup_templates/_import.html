@@ -1,0 +1,24 @@
+{% extends "horizon/common/_modal_form.html" %}
+
+
+{% load i18n %}
+
+{% block form_id %}import-nodegroup-template{% endblock %}
+{% block form_action %}{{ submit_url }}{% endblock %}
+{% block form_attrs %}enctype="multipart/form-data"{% endblock %}
+
+{% block modal-header %}{{ page_title }}{% endblock %}
+
+{% block modal-body %}
+    <div class="left">
+        <fieldset>
+            {% include "horizon/common/_form_fields.html" %}
+        </fieldset>
+    </div>
+{% endblock %}
+
+{% block modal-footer %}
+    <input class="btn btn-primary pull-right" id="upload_file_btn" type="submit" value="{{ submit_label }}"/>
+    <a href="{% url 'horizon:project:data_processing.clusters:index' %}"
+       class="btn btn-default cancel">{% trans "Cancel" %}</a>
+{% endblock %}

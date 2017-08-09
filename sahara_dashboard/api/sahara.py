@@ -166,7 +166,8 @@ def nodegroup_template_create(request, name, plugin_name, hadoop_version,
                               use_autoconfig=None,
                               shares=None,
                               is_public=None,
-                              is_protected=None):
+                              is_protected=None,
+                              volume_mount_prefix=None):
     return client(request).node_group_templates.create(
         name=name,
         plugin_name=plugin_name,
@@ -189,7 +190,8 @@ def nodegroup_template_create(request, name, plugin_name, hadoop_version,
         use_autoconfig=use_autoconfig,
         shares=shares,
         is_public=is_public,
-        is_protected=is_protected)
+        is_protected=is_protected,
+        volume_mount_prefix=volume_mount_prefix)
 
 
 def nodegroup_template_list(request, search_opts=None,
