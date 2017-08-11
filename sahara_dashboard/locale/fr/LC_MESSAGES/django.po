@@ -1,16 +1,17 @@
 # Andreas Jaeger <jaegerandi@gmail.com>, 2016. #zanata
 # Gérald LONLAS <g.lonlas@gmail.com>, 2016. #zanata
 # JF Taltavull <jftalta@gmail.com>, 2017. #zanata
+# Pascal Larivée <pascal@larivee.photo>, 2017. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: sahara-dashboard 6.0.1.dev9\n"
+"Project-Id-Version: sahara-dashboard 7.0.0.0b4.dev12\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2017-03-13 13:55+0000\n"
+"POT-Creation-Date: 2017-08-04 19:17+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2017-03-23 08:10+0000\n"
-"Last-Translator: JF Taltavull <jftalta@gmail.com>\n"
+"PO-Revision-Date: 2017-08-10 01:47+0000\n"
+"Last-Translator: Pascal Larivée <pascal@larivee.photo>\n"
 "Language-Team: French\n"
 "Language: fr\n"
 "X-Generator: Zanata 3.9.6\n"
@@ -2001,6 +2002,9 @@ msgstr "Taille des volumes (Go)"
 
 msgid "Volumes type"
 msgstr "Type des volumes"
+
+msgid "Warning!"
+msgstr "Avertissement !"
 
 msgid "Which keypair to use for authentication."
 msgstr "Utiliser quelle paire de clés pour l'authentification."
