@@ -12,6 +12,7 @@
 # limitations under the License.
 
 from django.core import urlresolvers
+from django import http as http_response
 from django.template import defaultfilters as filters
 from django.utils import http
 from django.utils.translation import ugettext_lazy as _
@@ -19,6 +20,7 @@ from django.utils.translation import ungettext_lazy
 
 from horizon import tables
 from horizon.tabs import base as tabs_base
+from oslo_serialization import jsonutils as json
 
 from sahara_dashboard.api import sahara as saharaclient
 from sahara_dashboard.content.data_processing \
@@ -56,6 +58,23 @@ class CopyTemplate(tables.LinkAction):
     verbose_name = _("Copy Template")
     url = "horizon:project:data_processing.clusters:ct-copy"
     classes = ("ajax-modal", )
+
+
+class ExportTemplate(tables.Action):
+    name = "export"
+    verbose_name = _("Export Template")
+    classes = ("ajax-modal", )
+
+    def single(self, data_table, request, object_id):
+        content = json.dumps(saharaclient.cluster_template_export(
+            request, object_id)._info)
+        response = http_response.HttpResponse(
+            content, content_type="application/json")
+        filename = '%s-cluster-template.json' % object_id
+        disposition = 'attachment; filename="%s"' % filename
+        response['Content-Disposition'] = disposition.encode('utf-8')
+        response['Content-Length'] = str(len(response.content))
+        return response
 
 
 class EditTemplate(tables.LinkAction):
@@ -165,5 +184,6 @@ class ClusterTemplatesTable(sahara_table.SaharaPaginateTabbedTable):
         row_actions = (CreateCluster,
                        EditTemplate,
                        CopyTemplate,
+                       ExportTemplate,
                        DeleteTemplate, MakePublic, MakePrivate,
                        MakeProtected, MakeUnProtected)
