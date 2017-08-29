@@ -95,6 +95,15 @@ class CreateClusterTemplate(tables.LinkAction):
     icon = "plus"
 
 
+class ImportClusterTemplate(tables.LinkAction):
+    name = "import"
+    verbose_name = _("Import Template")
+    url = ("horizon:project:data_processing.clusters:"
+           "import-cluster-template-file")
+    classes = ("ajax-modal",)
+    icon = "plus"
+
+
 class ConfigureClusterTemplate(tables.LinkAction):
     name = "configure"
     verbose_name = _("Configure Cluster Template")
@@ -157,6 +166,7 @@ class ClusterTemplatesTable(sahara_table.SaharaPaginateTabbedTable):
         name = "cluster_templates"
         verbose_name = _("Cluster Templates")
         table_actions = (CreateClusterTemplate,
+                         ImportClusterTemplate,
                          ConfigureClusterTemplate,
                          DeleteTemplate,
                          ClusterTemplatesFilterAction,)
