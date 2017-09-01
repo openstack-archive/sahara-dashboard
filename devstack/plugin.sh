@@ -8,6 +8,7 @@ function install_sahara_dashboard {
 
 function configure_sahara_dashboard {
     cp -a ${SAHARA_DASH_DIR}/sahara_dashboard/enabled/* ${DEST}/horizon/openstack_dashboard/local/enabled/
+    cp -a ${SAHARA_DASH_DIR}/sahara_dashboard/local_settings.d/* ${DEST}/horizon/openstack_dashboard/local/local_settings.d/
     # NOTE: If locale directory does not exist, compilemessages will fail,
     # so check for an existence of locale directory is required.
     if [ -d ${SAHARA_DASH_DIR}/sahara_dashboard/locale ]; then
