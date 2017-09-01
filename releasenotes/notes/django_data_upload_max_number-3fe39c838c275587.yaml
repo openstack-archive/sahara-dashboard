@@ -1,0 +1,7 @@
+---
+security:
+  - |
+    Django 1.10 introduced a new var : DATA_UPLOAD_MAX_NUMBER_FIELDS which
+    prevent DOS on data received via GET and POST methods. Default values
+    is set to 2000 instead of upstream default of 1000 to keep the security
+    feature and to not cause issue with the Sahara Dashboard forms.
