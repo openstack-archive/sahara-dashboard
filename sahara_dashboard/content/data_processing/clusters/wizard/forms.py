@@ -23,6 +23,7 @@ from horizon import messages
 from sahara_dashboard.api import sahara as saharaclient
 from sahara_dashboard.content.data_processing.utils \
     import helpers
+from sahara_dashboard import utils
 
 
 class ChoosePluginForm(forms.SelfHandlingForm):
@@ -60,8 +61,10 @@ class ChoosePluginForm(forms.SelfHandlingForm):
 
         for plugin in plugins:
             field_name = plugin.name + "_version"
-            version_choices = (sorted([(version, version)
-                               for version in plugin.versions], reverse=True))
+            version_choices = (sorted(
+                [(version, version) for version in plugin.versions],
+                reverse=True, key=lambda v: utils.smart_sort_helper(v[0]))
+            )
             choice_field = forms.ChoiceField(
                 label=_("Version"),
                 required=False,
