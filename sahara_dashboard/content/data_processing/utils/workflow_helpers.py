@@ -24,7 +24,7 @@ from horizon import workflows
 from openstack_dashboard.api import neutron
 
 from sahara_dashboard.api import sahara as saharaclient
-
+from sahara_dashboard import utils
 
 LOG = logging.getLogger(__name__)
 
@@ -261,9 +261,12 @@ class PluginAndVersionMixin(object):
                        'data-slug': 'pluginname'}))
 
         for plugin in plugins:
-            version_choices = (sorted(
-                [(version, version)
-                 for version in get_enabled_versions(plugin)], reverse=True))
+            versions = [(version, version)
+                        for version in get_enabled_versions(plugin)]
+            version_choices = sorted(
+                versions,
+                reverse=True,
+                key=lambda v: utils.smart_sort_helper(v[0]))
             field_name = plugin.name + "_version"
             choice_field = forms.ChoiceField(
                 label=_("Version"),

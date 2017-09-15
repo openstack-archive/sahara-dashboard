@@ -69,3 +69,16 @@ def delete_pagination_params_from_request(request, save_limit=None):
             query_string = parse.urlencode(query_dict, doseq=True)
             request.META['QUERY_STRING'] = query_string
     return request
+
+
+def smart_sort_helper(version):
+    """Allows intelligent sorting of plugin versions, for example when
+    minor version of a plugin is 11, sort numerically so that 11 > 10,
+    instead of alphabetically so that 2 > 11
+    """
+    def _safe_cast_to_int(obj):
+        try:
+            return int(obj)
+        except ValueError:
+            return obj
+    return [_safe_cast_to_int(part) for part in version.split('.')]
