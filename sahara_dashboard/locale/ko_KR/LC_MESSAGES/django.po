@@ -1,17 +1,18 @@
 # Andreas Jaeger <jaegerandi@gmail.com>, 2016. #zanata
 # Ian Y. Choi <ianyrchoi@gmail.com>, 2016. #zanata
 # Sungjin Kang <gang.sungjin@gmail.com>, 2017. #zanata
+# minwook-shin <minwook0106@gmail.com>, 2017. #zanata
 # youngwoo Kim <koain@naver.com>, 2017. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: sahara-dashboard 7.0.0.0b4.dev11\n"
+"Project-Id-Version: sahara-dashboard 7.0.0.0rc2.dev12\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2017-08-03 15:40+0000\n"
+"POT-Creation-Date: 2017-09-18 13:21+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2017-08-03 05:04+0000\n"
-"Last-Translator: Sungjin Kang <gang.sungjin@gmail.com>\n"
+"PO-Revision-Date: 2017-09-20 05:24+0000\n"
+"Last-Translator: minwook-shin <minwook0106@gmail.com>\n"
 "Language-Team: Korean (South Korea)\n"
 "Language: ko-KR\n"
 "X-Generator: Zanata 3.9.6\n"
@@ -615,6 +616,9 @@ msgstr "오류 세부 사항"
 
 msgid "Event time"
 msgstr "이벤트 시간"
+
+msgid "Export Template"
+msgstr "템플릿 내보내기"
 
 msgid "Failed"
 msgstr "실패함"
