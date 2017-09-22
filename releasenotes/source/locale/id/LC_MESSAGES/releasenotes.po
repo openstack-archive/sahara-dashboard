@@ -2,13 +2,13 @@
 # suhartono <cloudsuhartono@gmail.com>, 2017. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: Sahara Dashboard Release Notes 6.0.1\n"
+"Project-Id-Version: Sahara Dashboard Release Notes 7.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-13 13:55+0000\n"
+"POT-Creation-Date: 2017-09-21 14:01+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2017-02-02 03:49+0000\n"
+"PO-Revision-Date: 2017-09-21 12:05+0000\n"
 "Last-Translator: suhartono <cloudsuhartono@gmail.com>\n"
 "Language-Team: Indonesian\n"
 "Language: id\n"
@@ -44,6 +44,9 @@ msgstr "Catatan rilis seri Ocata"
 
 msgid "Other Notes"
 msgstr "Other Notes (catatan lain)"
+
+msgid "Pike Series Release Notes"
+msgstr "Catatan Rilis Seri Pike"
 
 msgid "Sahara Dashboard Release Notes"
 msgstr "Sahara Dashboard Release Notes (catatan rilis Sahara Dashboard)"

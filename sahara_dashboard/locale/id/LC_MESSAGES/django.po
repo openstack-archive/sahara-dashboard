@@ -2,13 +2,13 @@
 # suhartono <cloudsuhartono@gmail.com>, 2017. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: sahara-dashboard 7.0.0.0b2.dev6\n"
+"Project-Id-Version: sahara-dashboard 7.0.0.0rc2.dev13\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2017-05-06 19:15+0000\n"
+"POT-Creation-Date: 2017-09-21 14:01+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2017-05-09 04:38+0000\n"
+"PO-Revision-Date: 2017-09-21 12:07+0000\n"
 "Last-Translator: suhartono <cloudsuhartono@gmail.com>\n"
 "Language-Team: Indonesian\n"
 "Language: id\n"
@@ -622,6 +622,9 @@ msgstr "Error Details (rincian kesalahan)"
 
 msgid "Event time"
 msgstr "Event time (waktu saat acara)"
+
+msgid "Export Template"
+msgstr "Template Ekspor"
 
 msgid "Failed"
 msgstr "Failed (gagal)"
