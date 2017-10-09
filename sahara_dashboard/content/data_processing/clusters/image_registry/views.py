@@ -26,6 +26,7 @@ from sahara_dashboard.content. \
     data_processing.clusters.image_registry.forms import EditTagsForm
 from sahara_dashboard.content. \
     data_processing.clusters.image_registry.forms import RegisterImageForm
+from sahara_dashboard import utils
 
 
 def update_context_with_plugin_tags(request, context):
@@ -39,7 +40,8 @@ def update_context_with_plugin_tags(request, context):
     plugins_object = dict()
     for plugin in plugins:
         plugins_object[plugin.name] = OrderedDict()
-        for version in sorted(plugin.versions, reverse=True):
+        for version in sorted(plugin.versions, reverse=True,
+                              key=utils.smart_sort_helper):
             try:
                 details = saharaclient. \
                     plugin_get_version_details(request,
