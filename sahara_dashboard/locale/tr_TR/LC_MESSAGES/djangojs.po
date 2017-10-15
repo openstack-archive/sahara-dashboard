@@ -1,9 +1,9 @@
 # işbaran akçayır <isbaran@gmail.com>, 2017. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: sahara-dashboard 7.0.0.0b2.dev13\n"
+"Project-Id-Version: sahara-dashboard 7.0.0.0rc2.dev21\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2017-06-08 17:55+0000\n"
+"POT-Creation-Date: 2017-10-13 23:21+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -70,13 +70,6 @@ msgstr "Kaldır"
 
 msgid "Required?"
 msgstr "Gerekli?"
-
-msgid ""
-"See http://docs.openstack.org/developer/sahara/userdoc/edp.html for "
-"definitions."
-msgstr ""
-"Tanımlar için http://docs.openstack.org/developer/sahara/userdoc/edp.html "
-"adresine bakın."
 
 msgid "String"
 msgstr "Karakter Dizisi"
