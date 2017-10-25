@@ -1,0 +1,27 @@
+- project:
+    name: openstack/sahara-dashboard
+    check:
+      jobs:
+        - sahara-dashboard-tox-py27-dj19
+        - sahara-dashboard-tox-py27-dj110:
+            voting: false
+            branches: ^(?!stable/ocata).*$
+    gate:
+      jobs:
+        - sahara-dashboard-tox-py27-dj19
+
+- job:
+    name: sahara-dashboard-tox-py27-dj110
+    parent: tox
+    required-projects:
+      - openstack/horizon
+    vars:
+      tox_envlist: py27dj110
+
+- job:
+    name: sahara-dashboard-tox-py27-dj19
+    parent: tox
+    required-projects:
+      - openstack/horizon
+    vars:
+      tox_envlist: py27dj19
