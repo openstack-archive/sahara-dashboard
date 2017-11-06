@@ -338,6 +338,10 @@ def cluster_template_update_acl_rules(request, ct_id,
         ct_id, **prepare_acl_update_dict(is_public, is_protected))
 
 
+def cluster_template_export(request, object_id):
+    return client(request).cluster_templates.export(object_id)
+
+
 def cluster_create(request, name, plugin_name, hadoop_version,
                    cluster_template_id=None, default_image_id=None,
                    is_transient=None, description=None, cluster_configs=None,
