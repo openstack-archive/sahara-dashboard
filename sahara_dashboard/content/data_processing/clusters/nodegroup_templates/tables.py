@@ -43,6 +43,15 @@ class CreateNodegroupTemplate(tables.LinkAction):
     icon = "plus"
 
 
+class ImportNodegroupTemplate(tables.LinkAction):
+    name = "import"
+    verbose_name = _("Import Template")
+    url = ("horizon:project:data_processing.clusters:"
+           "import-nodegroup-template-file")
+    classes = ("ajax-modal",)
+    icon = "plus"
+
+
 class ConfigureNodegroupTemplate(tables.LinkAction):
     name = "configure"
     verbose_name = _("Configure Template")
@@ -149,6 +158,7 @@ class NodegroupTemplatesTable(sahara_table.SaharaPaginateTabbedTable):
         name = "nodegroup_templates"
         verbose_name = _("Node Group Templates")
         table_actions = (CreateNodegroupTemplate,
+                         ImportNodegroupTemplate,
                          ConfigureNodegroupTemplate,
                          DeleteTemplate,
                          NodeGroupTemplatesFilterAction,)
