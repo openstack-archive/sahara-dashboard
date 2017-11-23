@@ -3,8 +3,10 @@
 
 build-essential [platform:dpkg]
 gawk
-gettext
-graphviz
+# gettext and graphviz are needed by doc builds only. For transition,
+# have them in both doc and test.
+gettext [doc test]
+graphviz [doc test]
 language-pack-en [platform:ubuntu]
 libevent-dev [platform:dpkg]
 libevent-devel [platform:rpm]
