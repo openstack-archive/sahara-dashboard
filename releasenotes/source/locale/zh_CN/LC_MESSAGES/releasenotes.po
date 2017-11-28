@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Sahara Dashboard Release Notes\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-23 12:39+0000\n"
+"POT-Creation-Date: 2017-11-26 22:05+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -17,12 +17,6 @@ msgstr ""
 
 msgid "5.0.0"
 msgstr "5.0.0版本"
-
-msgid "5.0.0.0b2"
-msgstr "5.0.0.0b2版本"
-
-msgid "5.0.0.0b3"
-msgstr "5.0.0.0b3版本"
 
 msgid "Added integration with Designate for hostname resolution."
 msgstr "给Designate增加域名以便于主机名解析"
