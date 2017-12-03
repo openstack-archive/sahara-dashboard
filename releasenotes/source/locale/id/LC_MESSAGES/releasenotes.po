@@ -4,11 +4,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Sahara Dashboard Release Notes\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-26 22:05+0000\n"
+"POT-Creation-Date: 2017-12-01 13:06+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2017-11-25 03:38+0000\n"
+"PO-Revision-Date: 2017-12-03 04:11+0000\n"
 "Last-Translator: suhartono <cloudsuhartono@gmail.com>\n"
 "Language-Team: Indonesian\n"
 "Language: id\n"
@@ -20,6 +20,9 @@ msgstr "5.0.0"
 
 msgid "7.0.0-3"
 msgstr "7.0.0-3"
+
+msgid "8.0.0.0b1-19"
+msgstr "8.0.0.0b1-19"
 
 msgid "Added integration with Designate for hostname resolution."
 msgstr "Ditambahkan integrasi dengan Designate untuk resolusi  hostname"
@@ -64,6 +67,9 @@ msgstr "Catatan Rilis Seri Pike"
 
 msgid "Sahara Dashboard Release Notes"
 msgstr "Sahara Dashboard Release Notes (catatan rilis Sahara Dashboard)"
+
+msgid "Security Issues"
+msgstr "Security Issues"
 
 msgid "Start using reno for release notes management."
 msgstr "Mulai menggunakan reno untuk manajemen catatan rilis."

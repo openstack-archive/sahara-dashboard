@@ -2,13 +2,13 @@
 # suhartono <cloudsuhartono@gmail.com>, 2017. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: sahara-dashboard 7.0.0.0rc2.dev13\n"
+"Project-Id-Version: sahara-dashboard 8.0.0.0b2.dev24\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2017-09-21 14:01+0000\n"
+"POT-Creation-Date: 2017-12-01 13:07+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2017-09-21 12:07+0000\n"
+"PO-Revision-Date: 2017-12-03 04:10+0000\n"
 "Last-Translator: suhartono <cloudsuhartono@gmail.com>\n"
 "Language-Team: Indonesian\n"
 "Language: id\n"
@@ -317,6 +317,9 @@ msgstr "Tidak bisa membuat template pekerjaan"
 
 msgid "Could not launch job"
 msgstr "Tidak bisa memulai pekerjaan"
+
+msgid "Could not parse template"
+msgstr "Could not parse template"
 
 msgid "Could not update cluster shares"
 msgstr "Tidak dapat memperbarui share klaster"
@@ -777,6 +780,15 @@ msgstr ""
 msgid "Image Registry tool:"
 msgstr "Alat Image Registry (registri image):"
 
+msgid "Import"
+msgstr "Import"
+
+msgid "Import Node Group Template"
+msgstr "Import Node Group Template"
+
+msgid "Import Template"
+msgstr "Import Template"
+
 msgid "In progress"
 msgstr "Sedang berlangsung"
 
@@ -908,6 +920,13 @@ msgstr "Meluncurkan klaster"
 msgid "Launch instances in these security groups."
 msgstr "Luncurkan instance dalam kelompok keamanan ini."
 
+msgid ""
+"Launch instances in these security groups. Auto security group will be "
+"determined by the value present in the imported template."
+msgstr ""
+"Luncurkan instance di grup keamanan ini. Grup keamanan otomatis akan "
+"ditentukan oleh nilai yang ada dalam template yang diimpor."
+
 msgid "Launch instances in this availability zone."
 msgstr "Luncurkan instance di zona ketersediaan ini."
 
@@ -982,6 +1001,13 @@ msgstr ""
 
 msgid "Name"
 msgstr "Name (nama)"
+
+msgid ""
+"Name must be provided either here or in the template. If provided in both "
+"places, this one will be used."
+msgstr ""
+"Nama harus disediakan di sini atau di template. Jika disediakan di kedua "
+"tempat itu, yang satu ini akan digunakan."
 
 #, python-format
 msgid "Name: %(node_group_name)s"
@@ -1177,6 +1203,9 @@ msgstr "Oozie Job ID (ID kerja Oozie)"
 
 msgid "OpenStack Flavor"
 msgstr "OpenStack Flavor (flavor openstack)"
+
+msgid "Openstack Flavor"
+msgstr "Openstack Flavor"
 
 msgid "Output"
 msgstr "Output (keluaran)"
@@ -1551,6 +1580,12 @@ msgstr ""
 
 msgid "Template"
 msgstr "Template"
+
+msgid "Template File"
+msgstr "Template File"
+
+msgid "Template JSON contained invalid key"
+msgstr "Template JSON berisi kunci yang tidak valid"
 
 msgid "Template Name"
 msgstr "Template Name"
