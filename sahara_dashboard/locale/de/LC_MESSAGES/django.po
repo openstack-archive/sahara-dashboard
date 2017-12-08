@@ -3,13 +3,13 @@
 # Robert Simai <robert.simai@suse.com>, 2017. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: sahara-dashboard 7.0.0.0rc2.dev14\n"
+"Project-Id-Version: sahara-dashboard 8.0.0.0b2.dev28\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2017-09-22 13:52+0000\n"
+"POT-Creation-Date: 2017-12-07 13:04+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2017-09-29 10:20+0000\n"
+"PO-Revision-Date: 2017-12-08 02:00+0000\n"
 "Last-Translator: Robert Simai <robert.simai@suse.com>\n"
 "Language-Team: German\n"
 "Language: de\n"
@@ -789,6 +789,12 @@ msgstr ""
 msgid "Image Registry tool:"
 msgstr "Abbild Registrierungstool:"
 
+msgid "Import"
+msgstr "Importieren"
+
+msgid "Import Template"
+msgstr "Vorlage importieren"
+
 msgid "In progress"
 msgstr "In Bearbeitung"
 
@@ -1183,6 +1189,9 @@ msgstr "Oozie Aufgaben ID"
 msgid "OpenStack Flavor"
 msgstr "OpenStack Variante"
 
+msgid "Openstack Flavor"
+msgstr "OpenStack Variante"
+
 msgid "Output"
 msgstr "Ausgabe"
 
@@ -1561,6 +1570,9 @@ msgstr ""
 
 msgid "Template"
 msgstr "Vorlage"
+
+msgid "Template File"
+msgstr "Vorlagendatei"
 
 msgid "Template Name"
 msgstr "Vorlage Name"
