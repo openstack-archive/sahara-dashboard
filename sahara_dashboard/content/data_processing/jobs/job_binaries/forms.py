@@ -33,11 +33,16 @@ from saharaclient.api import base
 
 
 class LabeledInput(widgets.TextInput):
+
+    def __init__(self, jb_type, *args, **kwargs):
+        self.jb_type = jb_type
+        super(LabeledInput, self).__init__(*args, **kwargs)
+
     def render(self, name, value, attrs=None):
         input = super(LabeledInput, self).render(name, value, attrs)
         label = "<span id='%s'>%s</span>" %\
             ("id_%s_label" % name,
-             "swift://")
+             "%s://" % self.jb_type)
         result = "%s%s" % (label, input)
         return mark_safe(result)
 
@@ -67,6 +72,7 @@ class JobBinaryCreateForm(forms.SelfHandlingForm):
             label=_("URL"),
             required=False,
             widget=LabeledInput(
+                "swift",
                 attrs={
                     'class': 'switched',
                     'data-switch-on': 'jb_type',
@@ -156,6 +162,48 @@ class JobBinaryCreateForm(forms.SelfHandlingForm):
                     'data-jb_type-swift': _('Password')
                 }))
 
+        self.fields["job_binary_s3_url"] = forms.CharField(
+            label=_("URL"),
+            required=False,
+            widget=LabeledInput(
+                "s3",
+                attrs={
+                    'class': 'switched',
+                    'data-switch-on': 'jb_type',
+                    'data-jb_type-s3': _('URL')
+                }))
+
+        self.fields["job_binary_s3_endpoint"] = forms.CharField(
+            label=_("S3 Endpoint"),
+            required=False,
+            widget=forms.TextInput(
+                attrs={
+                    'class': 'switched',
+                    'data-switch-on': 'jb_type',
+                    'data-jb_type-s3': _('S3 Endpoint')
+                }))
+
+        self.fields["job_binary_access_key"] = forms.CharField(
+            label=_("Access Key"),
+            required=False,
+            widget=forms.TextInput(
+                attrs={
+                    'class': 'switched',
+                    'data-switch-on': 'jb_type',
+                    'data-jb_type-s3': _('Access Key')
+                }))
+
+        self.fields["job_binary_secret_key"] = forms.CharField(
+            label=_("Secret Key"),
+            required=False,
+            widget=forms.PasswordInput(
+                attrs={
+                    'autocomplete': 'off',
+                    'class': 'switched',
+                    'data-switch-on': 'jb_type',
+                    'data-jb_type-s3': _('Secret Key')
+                }))
+
         self.fields["job_binary_description"] = (
             forms.CharField(label=_("Description"),
                             required=False,
@@ -168,7 +216,8 @@ class JobBinaryCreateForm(forms.SelfHandlingForm):
 
         self.fields["job_binary_type"].choices =\
             [("internal-db", "Internal database"),
-             ("swift", "Swift")]
+             ("swift", "Swift"),
+             ("s3", "S3")]
 
         self.fields["job_binary_internal"].choices =\
             self.populate_job_binary_internal_choices(request)
@@ -185,7 +234,7 @@ class JobBinaryCreateForm(forms.SelfHandlingForm):
             jb = self.initial["job_binary"]
             for field in self.fields:
                 if self.FIELD_MAP[field]:
-                    if field == "job_binary_url":
+                    if field in ["job_binary_url", "job_binary_s3_url"]:
                         url = getattr(jb, self.FIELD_MAP[field], None)
                         self.set_initial_values_by_type(url)
                     else:
@@ -200,6 +249,9 @@ class JobBinaryCreateForm(forms.SelfHandlingForm):
             self.fields["job_binary_manila_path"].initial = parsed.path
         elif parsed.scheme == "swift":
             self.fields["job_binary_url"].initial = (
+                "{0}{1}".format(parsed.netloc, parsed.path))
+        elif parsed.scheme == "s3":
+            self.fields["job_binary_s3_url"].initial = (
                 "{0}{1}".format(parsed.netloc, parsed.path))
         else:
             self.fields["job_binary_url"].initial = "{0}".format(parsed.netloc)
@@ -233,12 +285,18 @@ class JobBinaryCreateForm(forms.SelfHandlingForm):
             extra = {}
             jb_type = context.get("job_binary_type")
 
-            bin_url = "%s://%s" % (context["job_binary_type"],
-                                   context["job_binary_url"])
+            if jb_type != "s3":
+                bin_url = "%s://%s" % (context["job_binary_type"],
+                                       context["job_binary_url"])
+            else:
+                bin_url = "%s://%s" % (context["job_binary_type"],
+                                       context["job_binary_s3_url"])
             if(jb_type == "internal-db"):
                 bin_url = self.handle_internal(request, context)
             elif(jb_type == "swift"):
                 extra = self.handle_swift(request, context)
+            elif(jb_type == "s3"):
+                extra = self.handle_s3(request, context)
             elif(jb_type == "manila"):
                 bin_url = "%s://%s%s" % (context["job_binary_type"],
                                          context["job_binary_manila_share"],
@@ -326,6 +384,21 @@ class JobBinaryCreateForm(forms.SelfHandlingForm):
         }
         return extra
 
+    def handle_s3(self, request, context):
+        accesskey = context['job_binary_access_key']
+        secretkey = context['job_binary_secret_key']
+        endpoint = context['job_binary_s3_endpoint']
+
+        extra = {}
+        if accesskey != "":
+            extra["accesskey"] = accesskey
+        if secretkey != "":
+            extra["secretkey"] = secretkey
+        if endpoint != "":
+            extra["endpoint"] = endpoint
+
+        return extra
+
     def get_unique_binary_name(self, request, base_name):
         try:
             internals = saharaclient.job_binary_internal_list(request)
@@ -350,9 +423,13 @@ class JobBinaryEditForm(JobBinaryCreateForm):
         'job_binary_script_name': None,
         'job_binary_type': None,
         'job_binary_url': 'url',
+        'job_binary_s3_url': 'url',
         'job_binary_username': None,
         'job_binary_manila_share': None,
         'job_binary_manila_path': None,
+        'job_binary_access_key': None,
+        'job_binary_secret_key': None,
+        'job_binary_s3_endpoint': None,
         'is_public': 'is_public',
         'is_protected': 'is_protected',
     }
@@ -360,10 +437,18 @@ class JobBinaryEditForm(JobBinaryCreateForm):
     def handle(self, request, context):
         try:
             extra = {}
-            bin_url = "%s://%s" % (context["job_binary_type"],
-                                   context["job_binary_url"])
+            if context["job_binary_type"] != "s3":
+                bin_url = "%s://%s" % (context["job_binary_type"],
+                                       context["job_binary_url"])
+            else:
+                bin_url = "%s://%s" % (context["job_binary_type"],
+                                       context["job_binary_s3_url"])
+
             if (context["job_binary_type"] == "swift"):
                 extra = self.handle_swift(request, context)
+
+            if (context["job_binary_type"] == "s3"):
+                extra = self.handle_s3(request, context)
 
             update_data = {
                 "name": context["job_binary_name"],

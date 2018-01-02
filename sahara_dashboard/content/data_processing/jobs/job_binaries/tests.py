@@ -152,3 +152,19 @@ class DataProcessingJobBinaryTests(test.TestCase):
 
         res = self.client.post(CREATE_URL, form_data)
         self.assertNoFormErrors(res)
+
+    @test.create_stubs({api.sahara: ('job_binary_create',
+                                     'job_binary_internal_list')})
+    def test_create_s3(self):
+        form_data = {
+            "job_binary_type": "s3",
+            "job_binary_s3_url": "s3://a/b",
+            "job_binary_access_key": "acc",
+            "job_binary_secret_key": "sec",
+            "job_binary_s3_endpoint": "http://pointy.end",
+            "job_binary_name": "tests3",
+            "job_binary_description": "Test s3 description"
+        }
+        self.mox.ReplayAll()
+        res = self.client.post(CREATE_URL, form_data)
+        self.assertNoFormErrors(res)
