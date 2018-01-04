@@ -12,9 +12,11 @@
 # limitations under the License.
 
 from django.core.urlresolvers import reverse
+from django.core.urlresolvers import reverse_lazy
 from django.utils.translation import ugettext_lazy as _
 
 from horizon import exceptions
+from horizon import forms
 from horizon import tabs
 from horizon.utils import memoized
 from horizon import workflows
@@ -30,6 +32,8 @@ import sahara_dashboard.content.data_processing.clusters. \
     cluster_templates.workflows.create as create_flow
 import sahara_dashboard.content.data_processing.clusters. \
     cluster_templates.workflows.edit as edit_flow
+import sahara_dashboard.content.data_processing.clusters. \
+    cluster_templates.forms.import_forms as import_forms
 
 
 class ClusterTemplateDetailsView(tabs.TabView):
@@ -122,3 +126,56 @@ class EditClusterTemplateView(CopyClusterTemplateView):
     success_url = ("horizon:project:data_processing.clusters"
                    ":index")
     template_name = "cluster_templates/configure.html"
+
+
+class ImportClusterTemplateFileView(forms.ModalFormView):
+    template_name = "cluster_templates/import.html"
+    form_class = import_forms.ImportClusterTemplateFileForm
+    submit_label = _("Next")
+    submit_url = reverse_lazy("horizon:project:data_processing."
+                              "clusters:import-cluster-template-file")
+    success_url = reverse_lazy("horizon:project:data_processing."
+                               "clusters:import-cluster-template-name")
+    page_title = _("Import Cluster Template")
+
+    def get_form_kwargs(self):
+        kwargs = super(ImportClusterTemplateFileView, self).get_form_kwargs()
+        kwargs['next_view'] = ImportClusterTemplateNameView
+        return kwargs
+
+
+class ImportClusterTemplateNameView(forms.ModalFormView):
+    template_name = "cluster_templates/import.html"
+    form_class = import_forms.ImportClusterTemplateNameForm
+    submit_label = _("Next")
+    submit_url = reverse_lazy("horizon:project:data_processing."
+                              "clusters:import-cluster-template-name")
+    success_url = reverse_lazy("horizon:project:data_processing."
+                               "clusters:import-cluster-template-nodegroups")
+    page_title = _("Import Cluster Template")
+
+    def get_form_kwargs(self):
+        kwargs = super(ImportClusterTemplateNameView, self).get_form_kwargs()
+        kwargs['next_view'] = ImportClusterTemplateNodegroupsView
+        if 'template_upload' in self.kwargs:
+            kwargs['template_upload'] = self.kwargs['template_upload']
+        return kwargs
+
+
+class ImportClusterTemplateNodegroupsView(forms.ModalFormView):
+    template_name = "cluster_templates/import_nodegroups.html"
+    # template_name = "some_random_stuff.html"
+    form_class = import_forms.ImportClusterTemplateNodegroupsForm
+    submit_label = _("Import")
+    submit_url = reverse_lazy("horizon:project:data_processing."
+                              "clusters:import-cluster-template-nodegroups")
+    success_url = reverse_lazy("horizon:project:data_processing."
+                               "clusters:index")
+    page_title = _("Import Cluster Template")
+
+    def get_form_kwargs(self):
+        kwargs = super(ImportClusterTemplateNodegroupsView,
+                       self).get_form_kwargs()
+        if 'template_upload' in self.kwargs:
+            kwargs['template_upload'] = self.kwargs['template_upload']
+        return kwargs
