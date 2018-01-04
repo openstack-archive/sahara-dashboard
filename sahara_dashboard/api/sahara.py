@@ -29,10 +29,15 @@ SAHARA_SERVICE = 'data-processing'
 # Sahara service_type registered in Juno
 SAHARA_SERVICE_FALLBACK = 'data_processing'
 
-SAHARA_AUTO_IP_ALLOCATION_ENABLED = getattr(
-    settings,
-    'SAHARA_AUTO_IP_ALLOCATION_ENABLED',
-    False)
+try:
+    SAHARA_FLOATING_IP_DISABLED = getattr(
+        settings,
+        'SAHARA_FLOATING_IP_DISABLED')
+except AttributeError:
+    SAHARA_FLOATING_IP_DISABLED = getattr(
+        settings,
+        'SAHARA_AUTO_IP_ALLOCATION_ENABLED',
+        False)
 
 SAHARA_VERIFICATION_DISABLED = getattr(
     settings,
