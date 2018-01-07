@@ -13,7 +13,7 @@
         <div class="alert alert-dismissable alert-warning">
           <button type="button" class="close" data-dismiss="alert">×</button>
           <h4><span class="ng-scope">{% blocktrans %}Warning!{% endblocktrans %}</span></h4>
-          <p> {% blocktrans %} Version: <b>{{ hadoop_version }}</b>
+          <p> {% blocktrans trimmed %} Version: <b>{{ hadoop_version }}</b>
               of plugin <b>{{ plugin_name }} </b>
               is now deprecated. {% endblocktrans %}
           </p>
@@ -21,14 +21,14 @@
       </div>
     {% endif %}
 <p>
-    {% blocktrans %}The Cluster Template object should specify Node Group Templates that will be used to build a Cluster.
+    {% blocktrans trimmed %}The Cluster Template object should specify Node Group Templates that will be used to build a Cluster.
     You can add Node Groups using Node Group Templates on a &quot;Node Groups&quot; tab.{% endblocktrans %}
 </p>
 <p>
     {% blocktrans %}You may set <b>cluster</b> scoped configurations on corresponding tabs.{% endblocktrans %}
 </p>
 <p>
-    {% blocktrans %}The Cluster Template object may specify a list of processes in anti-affinity group.
+    {% blocktrans trimmed %}The Cluster Template object may specify a list of processes in anti-affinity group.
     That means these processes may not be launched more than once on a single host.{% endblocktrans %}
 </p>
 </div>

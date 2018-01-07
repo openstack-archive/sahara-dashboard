@@ -9,7 +9,7 @@
             <li>
                 <div>
                     <div>
-                        {% blocktrans %}First, select which type of job that
+                        {% blocktrans trimmed %}First, select which type of job that
                             you want to run.  This choice will determine which
                             other steps are required
                         {% endblocktrans %}
@@ -38,7 +38,7 @@
             {% if view.show_data_sources %}
                 <li>
                     <div>
-                        <div>{% blocktrans %}Data Sources are what your
+                        <div>{% blocktrans trimmed %}Data Sources are what your
                             job uses for input and output.  Depending on the type
                             of job you will be running, you may need to define one
                             or more data sources.  You can create multiple data
@@ -57,7 +57,7 @@
             {% endif %}
             <li>
                 <div>
-                    <div>{% blocktrans %}Define your Job Template.
+                    <div>{% blocktrans trimmed %}Define your Job Template.
                         This is where you choose the type of job that you
                         want to run (Pig, Java Action, Spark, etc) and choose
                         or upload the files necessary to run it.  The inputs
@@ -85,7 +85,7 @@
             <hr/>
             <li>
                 <div>
-                    <div>{% blocktrans %}Launch your job.  When
+                    <div>{% blocktrans trimmed %}Launch your job.  When
                         launching, you may need to choose your input and
                         output data sources.  This is where you would also
                         add any special configuration values, parameters,

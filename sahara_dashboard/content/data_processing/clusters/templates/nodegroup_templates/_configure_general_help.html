@@ -12,7 +12,7 @@
         <div class="alert alert-dismissable alert-warning">
           <button type="button" class="close" data-dismiss="alert">×</button>
           <h4><span class="ng-scope">{% blocktrans %}Warning!{% endblocktrans %}</span></h4>
-          <p> {% blocktrans %} Version: <b>{{ hadoop_version }}</b>
+          <p> {% blocktrans trimmed %} Version: <b>{{ hadoop_version }}</b>
               of plugin <b>{{ plugin_name }} </b>
               is now deprecated. {% endblocktrans %}
           </p>
@@ -21,7 +21,7 @@
     {% endif %}
 </p>
 <p>
-    {% blocktrans %}The Node Group Template object specifies the processes
+    {% blocktrans trimmed %}The Node Group Template object specifies the processes
         that will be launched on each instance. Check one or more processes.
         When processes are selected, you may set <b>node</b> scoped
         configurations on corresponding tabs.{% endblocktrans %}
