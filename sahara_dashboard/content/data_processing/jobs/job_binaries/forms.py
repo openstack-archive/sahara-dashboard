@@ -33,8 +33,8 @@ from saharaclient.api import base
 
 
 class LabeledInput(widgets.TextInput):
-    def render(self, name, values, attrs=None):
-        input = super(LabeledInput, self).render(name, values, attrs)
+    def render(self, name, value, attrs=None):
+        input = super(LabeledInput, self).render(name, value, attrs)
         label = "<span id='%s'>%s</span>" %\
             ("id_%s_label" % name,
              "swift://")
