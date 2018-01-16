@@ -1,0 +1,9 @@
+---
+prelude: >
+    The config parameter 'SAHARA_FLOATING_IP_DISABLED' replaces
+    'SAHARA_AUTO_IP_ALLOCATION_ENABLED'.
+deprecations:
+  - |
+    The 'SAHARA_AUTO_IP_ALLOCATION_ENABLED' config parameter in Sahara
+    was deprecated and replaced by 'SAHARA_FLOATING_IP_DISABLED'
+    which has a less confusing name.

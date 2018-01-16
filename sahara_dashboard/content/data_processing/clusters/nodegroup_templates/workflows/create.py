@@ -157,7 +157,7 @@ class GeneralConfigAction(workflows.Action):
         plugin, hadoop_version = (
             workflow_helpers.get_plugin_and_hadoop_version(request))
 
-        if not saharaclient.SAHARA_AUTO_IP_ALLOCATION_ENABLED:
+        if not saharaclient.SAHARA_FLOATING_IP_DISABLED:
             pools = neutron.floating_ip_pools_list(request)
             pool_choices = [(pool.id, pool.name) for pool in pools]
             pool_choices.insert(0, (None, "Do not assign floating IPs"))
