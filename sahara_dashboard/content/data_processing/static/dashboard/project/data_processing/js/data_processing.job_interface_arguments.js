@@ -28,7 +28,7 @@ horizon.job_interface_arguments = {
                     '<td class="col-sm-2 small-padding"></td>' +
                     '<td class="col-sm-2 small-padding">' +
                         '<label for="argument_mapping_type_$id">' + gettext("Mapping Type") + ':</label>' +
-                        '<span class="help-icon" title="" data-placement="top" data-toggle="tooltip" data-original-title="' + gettext("See http://docs.openstack.org/sahara/latest/user/edp.html for definitions.") + '">' +
+                        '<span class="help-icon" title="" data-placement="top" data-toggle="tooltip" data-original-title="' + gettext("See https://docs.openstack.org/sahara/latest/user/edp.html for definitions.") + '">' +
                             '<span class="fa fa-question-circle"></span>' +
                         '</span>' +
                     '</td>' +
