@@ -35,7 +35,7 @@ NOTE:
 =====
 
 As of the Mitaka release, the dashboard for sahara is now maintained
-outside of the horzon codebase, in the repository.
+outside of the horizon codebase, in the repository.
 
 Links:
 ------
