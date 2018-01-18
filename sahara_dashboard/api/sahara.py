@@ -76,7 +76,7 @@ def safe_call(func, *args, **kwargs):
     """Call a function ignoring Not Found error
 
     This method is supposed to be used only for safe retrieving Sahara
-    objects. If the object is no longer available the None should be
+    objects. If the object is no longer available, then None should be
     returned.
 
     """
