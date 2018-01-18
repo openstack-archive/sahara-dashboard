@@ -203,9 +203,11 @@ class JobConfigAction(workflows.Action):
     java_opts = forms.CharField(label=_("Java Opts"),
                                 required=False)
 
-    streaming_mapper = forms.CharField(label=_("Mapper"))
+    streaming_mapper = forms.CharField(label=_("Mapper"),
+                                       required=False)
 
-    streaming_reducer = forms.CharField(label=_("Reducer"))
+    streaming_reducer = forms.CharField(label=_("Reducer"),
+                                        required=False)
 
     hbase_common_lib = forms.BooleanField(
         label=_("Use HBase Common library"),
