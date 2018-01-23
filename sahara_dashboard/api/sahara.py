@@ -12,6 +12,8 @@
 # limitations under the License.
 
 from django.conf import settings
+from keystoneauth1 import identity
+from keystoneauth1 import session
 from saharaclient.api.base import APIException
 from saharaclient.api.base import Page
 from saharaclient import client as api_client
@@ -26,8 +28,6 @@ from sahara_dashboard import utils as u
 
 # "type" of Sahara service registered in keystone
 SAHARA_SERVICE = 'data-processing'
-# Sahara service_type registered in Juno
-SAHARA_SERVICE_FALLBACK = 'data_processing'
 
 try:
     SAHARA_FLOATING_IP_DISABLED = getattr(
@@ -91,21 +91,16 @@ def safe_call(func, *args, **kwargs):
 
 @memoized
 def client(request):
-    try:
-        service_type = SAHARA_SERVICE
-        sahara_url = base.url_for(request, service_type)
-    except exceptions.ServiceCatalogException:
-        # if no endpoint found, fallback to the old service_type
-        service_type = SAHARA_SERVICE_FALLBACK
-        sahara_url = base.url_for(request, service_type)
-
     insecure = getattr(settings, 'OPENSTACK_SSL_NO_VERIFY', False)
     cacert = getattr(settings, 'OPENSTACK_SSL_CACERT', None)
+    # TODO(jfreud): pass token directly to client after bug 1747838 resolved
+    auth = identity.Token(auth_url=request.user.endpoint,
+                          token=request.user.token.id,
+                          project_id=request.user.project_id)
+    sess = session.Session(auth=auth)
     return api_client.Client(VERSIONS.get_active_version()["version"],
-                             sahara_url=sahara_url,
-                             service_type=service_type,
-                             project_id=request.user.project_id,
-                             input_auth_token=request.user.token.id,
+                             service_type=SAHARA_SERVICE,
+                             session=sess,
                              insecure=insecure,
                              cacert=cacert)
 
