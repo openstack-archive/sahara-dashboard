@@ -24,7 +24,7 @@ from horizon import workflows
 from sahara_dashboard.api import designate as designateclient
 from sahara_dashboard.api import manila as manilaclient
 from sahara_dashboard.api import sahara as saharaclient
-from sahara_dashboard.content.data_processing.utils import helpers as helpers
+from sahara_dashboard.content.data_processing.utils import helpers
 from sahara_dashboard.content.data_processing. \
     utils import anti_affinity as aa
 from sahara_dashboard.content.data_processing.utils \
