@@ -1,5 +1,4 @@
 - project:
-    name: openstack/sahara-dashboard
     check:
       jobs:
         - sahara-dashboard-tox-py27-dj19
