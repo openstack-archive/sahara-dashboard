@@ -3,7 +3,7 @@
 # This script will be executed inside post_test_hook function in devstack gate
 
 set -x
-source commons $@
+. commons $@
 
 set +e
 cd /opt/stack/new/sahara-dashboard
@@ -23,8 +23,8 @@ cat >> /tmp/fake_config.json <<EOF
 }
 EOF
 
-source $DEVSTACK_DIR/stackrc
-source $DEVSTACK_DIR/openrc admin demo
+. $DEVSTACK_DIR/stackrc
+. $DEVSTACK_DIR/openrc admin demo
 
 openstack dataprocessing plugin update fake /tmp/fake_config.json
 

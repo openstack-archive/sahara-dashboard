@@ -7,4 +7,4 @@ VENV=${VENV:-${VENV_PATH}/${VENV_DIR}}
 # tools/tox_install.sh looks for VIRTUAL_ENV evrythign else looks for VENV
 # so for now make them the same.
 VIRTUAL_ENV=${VENV:-${VENV_PATH}/${VENV_DIR}}
-source ${VENV}/bin/activate && "$@"
+. ${VENV}/bin/activate && "$@"

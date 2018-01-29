@@ -3,7 +3,7 @@
 # This script will be executed inside pre_test_hook function in devstack gate
 
 set -ex
-source commons $@
+. commons $@
 
 wget https://cloud-images.ubuntu.com/xenial/current/xenial-server-cloudimg-amd64-disk1.img -O /tmp/xenial-server-cloudimg-amd64-disk1.img
 

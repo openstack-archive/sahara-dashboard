@@ -147,7 +147,7 @@ Horizon development environment setup is complete.
 To activate the virtualenv for the extent of your current shell session you
 can run:
 
-$ source .venv/bin/activate
+$ . .venv/bin/activate
 """
     print summary
 
