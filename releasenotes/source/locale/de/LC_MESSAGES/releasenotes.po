@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Sahara Dashboard Release Notes\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-19 08:49+0000\n"
+"POT-Creation-Date: 2018-01-28 18:09+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -17,6 +17,12 @@ msgstr ""
 
 msgid "5.0.0"
 msgstr "5.0.0"
+
+msgid "5.0.0.0b2"
+msgstr "5.0.0.0b2"
+
+msgid "5.0.0.0b3"
+msgstr "5.0.0.0b3"
 
 msgid "Added integration with Designate for hostname resolution."
 msgstr "Integration mit Designate zur Auflösung von Hostnamen hinzugefügt."
