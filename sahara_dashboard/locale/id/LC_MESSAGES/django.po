@@ -5,11 +5,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sahara-dashboard VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2018-01-18 23:07+0000\n"
+"POT-Creation-Date: 2018-01-30 01:03+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2018-01-18 02:55+0000\n"
+"PO-Revision-Date: 2018-01-29 01:57+0000\n"
 "Last-Translator: suhartono <cloudsuhartono@gmail.com>\n"
 "Language-Team: Indonesian\n"
 "Language: id\n"
@@ -54,6 +54,9 @@ msgstr ""
 "menjadi nama yang digunakan dalam pelaksanaan pekerjaan Anda. Jika biner "
 "Anda memerlukan nama atau ekstensi tertentu (misalnya: \".jar\"), pastikan "
 "untuk menyertakannya di sini."
+
+msgid "Access Key"
+msgstr "Access Key"
 
 msgid "Adapt For Oozie"
 msgstr "Adapt For Oozie (beradaptasi untuk Oozie)"
@@ -572,6 +575,14 @@ msgstr ""
 msgid "Enter the URL for the file"
 msgstr "Masukkan URL untuk file itu"
 
+msgid "Enter the access key and secret key required to access that file"
+msgstr ""
+"Masukkan access key dan secret key yang diperlukan untuk mengakses file "
+"tersebut"
+
+msgid "Enter the endpoint of the S3 service where the file is stored"
+msgstr "Masukkan endpoint layanan S3 tempat file disimpan"
+
 msgid "Enter the username and password required to access that file"
 msgstr ""
 "Masukkan username dan password yang diperlukan untuk mengakses file itu"
@@ -651,6 +662,9 @@ msgstr ""
 
 msgid "For Object Store job binaries, you must:"
 msgstr "Untuk binari pekerjaan Obyek Store, Anda harus:"
+
+msgid "For S3 job binaries, you must:"
+msgstr "Untuk binari kerja S3, Anda harus:"
 
 msgid ""
 "For Shell Action jobs, any required files beyond the main script may be "
@@ -1264,6 +1278,12 @@ msgstr "Return Code (kode kembalinya)"
 msgid "Run HBase EDP Jobs with common HBase library on HDFS"
 msgstr "Jalankan HBase EDP Jobs dengan perpustakaan HBase umum pada HDFS"
 
+msgid "S3"
+msgstr "S3"
+
+msgid "S3 Endpoint"
+msgstr "S3 Endpoint"
+
 msgid ""
 "Sahara will use instances of this node group to access other cluster "
 "instances."
@@ -1291,6 +1311,9 @@ msgstr "Nama skrip"
 
 msgid "Script text"
 msgstr "Teks skrip"
+
+msgid "Secret Key"
+msgstr "Secret Key"
 
 msgid "Security"
 msgstr "Security (keamanan)"
