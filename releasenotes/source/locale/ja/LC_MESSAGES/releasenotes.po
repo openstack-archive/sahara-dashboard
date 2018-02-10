@@ -1,0 +1,27 @@
+# Shu Muto <shu-mutou@rf.jp.nec.com>, 2016. #zanata
+msgid ""
+msgstr ""
+"Project-Id-Version: Sahara Dashboard Release Notes\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-02-09 18:15+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2016-06-16 05:52+0000\n"
+"Last-Translator: Shu Muto <shu-mutou@rf.jp.nec.com>\n"
+"Language-Team: Japanese\n"
+"Language: ja\n"
+"X-Generator: Zanata 3.9.6\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+
+msgid "Current Series Release Notes"
+msgstr "開発中バージョンのリリースノート"
+
+msgid "Other Notes"
+msgstr "その他の注意点"
+
+msgid "Sahara Dashboard Release Notes"
+msgstr "Sahara Dashboard リリースノート"
+
+msgid "Start using reno for release notes management."
+msgstr "リリースノートの管理に reno を使い始めました。"
