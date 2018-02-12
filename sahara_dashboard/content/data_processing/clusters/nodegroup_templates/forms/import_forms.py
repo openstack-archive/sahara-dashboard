@@ -73,7 +73,7 @@ class ImportNodegroupTemplateDetailsForm(forms.SelfHandlingForm):
         label=_("Floating IP Pool"),
         required=False)
 
-    flavor = forms.ChoiceField(label=_("Openstack Flavor"))
+    flavor = forms.ChoiceField(label=_("OpenStack Flavor"))
 
     image_id = forms.DynamicChoiceField(label=_("Base Image"),
                                         add_item_link=BASE_IMAGE_URL)
