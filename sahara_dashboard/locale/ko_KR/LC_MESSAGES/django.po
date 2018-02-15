@@ -2,16 +2,17 @@
 # Ian Y. Choi <ianyrchoi@gmail.com>, 2016. #zanata
 # Sungjin Kang <gang.sungjin@gmail.com>, 2017. #zanata
 # minwook-shin <minwook0106@gmail.com>, 2017. #zanata
+# Ian Y. Choi <ianyrchoi@gmail.com>, 2018. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: sahara-dashboard VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2018-01-08 12:57+0000\n"
+"POT-Creation-Date: 2018-02-10 12:41+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2017-09-20 05:24+0000\n"
-"Last-Translator: minwook-shin <minwook0106@gmail.com>\n"
+"PO-Revision-Date: 2018-02-11 07:31+0000\n"
+"Last-Translator: Ian Y. Choi <ianyrchoi@gmail.com>\n"
 "Language-Team: Korean (South Korea)\n"
 "Language: ko-KR\n"
 "X-Generator: Zanata 3.9.6\n"
@@ -45,6 +46,18 @@ msgstr "%s 프로세스: "
 
 msgid "-- not selected --"
 msgstr "-- 선택하지 않음 --"
+
+msgid ""
+"<b>Important</b>:  The name that you give your job binary will be the name "
+"used in your job execution. If your binary requires a particular name or "
+"extension (ie: \".jar\"), be sure to include it here."
+msgstr ""
+"<b>중요 사항</b>: Job 바이너리에 지정한 이름을 job 실행 이름으로 사용합니다. "
+"바이너리에 특정 이름이나 확장이 필요한 경우 (예: \".jar\"), 여기에 포함해야합"
+"니다."
+
+msgid "Access Key"
+msgstr "액세스키"
 
 msgid "Adapt For Oozie"
 msgstr "Oozie에 맞게 조정"
@@ -285,6 +298,9 @@ msgstr "작업 템플릿을 생성할 수 없음"
 msgid "Could not launch job"
 msgstr "작업을 실행할 수 없음"
 
+msgid "Could not parse template"
+msgstr "템플릿을 구문 분석할 수 없습니다"
+
 msgid "Could not update cluster shares"
 msgstr "클러스터 공유를 업데이트할 수 없음"
 
@@ -409,6 +425,16 @@ msgstr "데이터 소스 타입"
 msgid "Data Sources"
 msgstr "데이터 소스"
 
+msgid ""
+"Data Sources are what your job uses for input and output.  Depending on the "
+"type of job you will be running, you may need to define one or more data "
+"sources.  You can create multiple data sources by repeating this step."
+msgstr ""
+"데이터 소스는 작업이 입력 및 출력에 사용하는 내용입니다. 실행하는 작업의 유형"
+"에 따라 하나 이상의 데이터 소스를 정의해야 할 수도 있습니다. 이 단계를 반복하"
+"여 여러 데이터 소스를 생성할 수 있습니다.\n"
+"                        "
+
 msgid "Data source created"
 msgstr "데이터 소스가 생성됨"
 
@@ -417,6 +443,16 @@ msgstr "데이터 소스가 업데이트됨"
 
 msgid "Default Value"
 msgstr "기본값"
+
+msgid ""
+"Define your Job Template. This is where you choose the type of job that you "
+"want to run (Pig, Java Action, Spark, etc) and choose or upload the files "
+"necessary to run it.  The inputs and outputs will be defined later."
+msgstr ""
+"작업 템플릿을 정의하십시오. 템플릿은 실행할 작업 타입(Pig, Java Action, "
+"Spark 등)을 선택하고 이 타입을 실행하는 데 필요한 파일을 선택하거나 업로드하"
+"는 위치입니다. 입력이나 출력은 나중에 정의합니다.\n"
+"                    "
 
 msgid "Delete Cluster"
 msgid_plural "Delete Clusters"
@@ -534,6 +570,12 @@ msgstr "작업 실행에 필요한 사용자 정의 구성을 입력하십시오
 msgid "Enter the URL for the file"
 msgstr "파일의 URL 입력"
 
+msgid "Enter the access key and secret key required to access that file"
+msgstr "해당 파일을 접근하는 데 필요로 하는 액세스키와 비밀키를 입력합니다"
+
+msgid "Enter the endpoint of the S3 service where the file is stored"
+msgstr "파일이 저장되는 위치에 해당하는 S3 서비스 엔드포인트를 입력합니다"
+
 msgid "Enter the username and password required to access that file"
 msgstr "파일에 접근하는 데 필요한 사용자 이름과 암호 입력"
 
@@ -574,6 +616,13 @@ msgstr "이미지를 업데이트하지 못했습니다."
 msgid "Filter"
 msgstr "필터"
 
+msgid ""
+"First, select which type of job that you want to run.  This choice will "
+"determine which other steps are required"
+msgstr ""
+"먼저, 실행할 작업 유형을 선택합니다. 이 선택을 기반으로 어떤 다른 작업을 필요"
+"로 하는지를 결정합니다"
+
 msgid "Flavor"
 msgstr "Flavor"
 
@@ -594,8 +643,18 @@ msgstr ""
 "Manila 공유에서 데이터 소스의 공유를 선택하고 공유의 상대적 경로를 입력하십시"
 "오(예: /outputdir/myinputfile.txt)."
 
+msgid ""
+"For MapReduce or Java Action jobs, \"mains\" are not applicable.  You are "
+"required to add one or more \"libs\" for these jobs."
+msgstr ""
+"MapReduce 또는 자바 액션 작업은 \"mains\"에 적용되지 않습니다. 이런 작업에 대"
+"해서는 하나 이상의 \"라이브러리\"를 추가해야 합니다."
+
 msgid "For Object Store job binaries, you must:"
 msgstr "오브젝트 저장소 작업 바이너리의 경우 다음을 수행해야 합니다."
+
+msgid "For S3 job binaries, you must:"
+msgstr "S3 작업 바이너리에 대해, 다음을 수행해야 합니다:"
 
 msgid ""
 "For Shell Action jobs, any required files beyond the main script may be "
@@ -676,6 +735,18 @@ msgstr ""
 msgid "Image Registry tool:"
 msgstr "이미지 저장소 도구:"
 
+msgid "Import"
+msgstr "가져오기"
+
+msgid "Import Cluster Template"
+msgstr "클러스터 템플릿 가져오기"
+
+msgid "Import Node Group Template"
+msgstr "노드 그룹 템플릿 가져오기"
+
+msgid "Import Template"
+msgstr "템플릿 가져오기"
+
 msgid "In progress"
 msgstr "진행중"
 
@@ -687,6 +758,15 @@ msgstr "입력"
 
 msgid "Input Data Source"
 msgstr "입력 데이터 소스"
+
+msgid ""
+"Input correct User Name for image. For Ubuntu images input 'ubuntu', "
+"'fedora' for Fedora images, 'cloud-user' for CentOS 6.x images and 'centos' "
+"for CentOS 7.x images."
+msgstr ""
+"이미지에 대해 올바른 사용자 이름을 입력합니다. Ubuntu 이미지에 대해서는 "
+"'ubuntu' 를, Fedora 이미지에는 'fedora' 를, CentOS 6.x 이미지에는 'cloud-"
+"user' 를, 그리고 CentOS 7.x 이미지에는 'centos' 를 입력합니다."
 
 msgid "Instance"
 msgstr "인스턴스"
@@ -807,6 +887,13 @@ msgstr "클러스터 실행"
 msgid "Launch instances in these security groups."
 msgstr "이 보안 그룹에서 인스턴스를 실행하십시오."
 
+msgid ""
+"Launch instances in these security groups. Auto security group will be "
+"determined by the value present in the imported template."
+msgstr ""
+"해당 보안 그룹에 해당하는 인스턴스를 구동합니다. 자동 보안 그룹이 가져온 템플"
+"릿 내에 존재하는 값에 의해 정해질 것입니다."
+
 msgid "Launch instances in this availability zone."
 msgstr "이 가용 구역에서 인스턴스를 실행합니다."
 
@@ -815,6 +902,17 @@ msgstr "작업 실행"
 
 msgid "Launch the given job template on a cluster."
 msgstr "클러스터에서 지정된 작업 템플릿을 실행하십시오."
+
+msgid ""
+"Launch your job.  When launching, you may need to choose your input and "
+"output data sources.  This is where you would also add any special "
+"configuration values, parameters, or arguments that you need to pass along "
+"to your job."
+msgstr ""
+"작업을 실행하십시오.  실행 시, 입력 및 출력 데이터 소스를 선택해야 할 수도 있"
+"습니다. 여기에서, 작업에 전달해야 하는 특수 구성 값,  매개 변수 또는 인수도 "
+"모두 추가합니다.\n"
+"                        "
 
 #, python-format
 msgid "Launched Cluster %s"
@@ -863,6 +961,13 @@ msgstr ""
 msgid "Name"
 msgstr "이름"
 
+msgid ""
+"Name must be provided either here or in the template. If provided in both "
+"places, this one will be used."
+msgstr ""
+"이름은 여기 또는 템플릿 내에 명시되어야 합니다. 두 곳 모두에서 명시하는 경"
+"우, 여기있는 내용을 사용할 것입니다."
+
 #, python-format
 msgid "Name: %(node_group_name)s"
 msgstr "이름: %(node_group_name)s"
@@ -878,6 +983,21 @@ msgstr "수행하지 않음"
 
 msgid "Next"
 msgstr "다음"
+
+msgid ""
+"Next, you need to define the different types of machines in your cluster.  "
+"This is done by defining a Node Group Template for each type of machine.  A "
+"very common case is where you need to have one or more machines running a "
+"\"master\" set of processes while another set of machines need to be running "
+"the \"worker\" processes.  Here, you will define the Node Group Template for "
+"your \"master\" node(s)."
+msgstr ""
+"다음으로, 클러스터에서 다른 타입의 머신을 정의해야 합니다. 이 작업은 각 머신 "
+"타입의 노드 그룹 템플릿을 정의하여 수행합니다. 하나 이상의 머신에서 프로세스"
+"의 \"마스터\" 집합을 실행하는 한편 다른 머신 집합에서는 \"작업자\" 프로세스"
+"가 실행 중이어야 하는 경우가 매우 일반적입니다.  여기서 \"마스터\" 노드의 노"
+"드 그룹 템플릿을 정의합니다.\n"
+"                     "
 
 msgid "No Cluster Template Created"
 msgstr "클러스터 템플릿이 생성되지 않음"
@@ -988,6 +1108,18 @@ msgstr "없음"
 msgid "Not available"
 msgstr "사용할 수 없음"
 
+msgid ""
+"Now you need to set the layout of your cluster.  By creating a Cluster "
+"Template, you will be choosing the number of instances of each Node Group "
+"Template that will appear in your cluster.  Additionally, you will have a "
+"chance to set any cluster-specific configuration items in the additional "
+"tabs on the create Cluster Template form."
+msgstr ""
+"이제 클러스터 레이아웃을 설정해야 합니다. 클러스터 템플릿을 생성하여, 클러스"
+"터에 표시될 각 노드 그룹 템플릿의 인스턴스 개수를 선택합니다. 또한 클러스터 "
+"템플릿 생성 양식의 추가 탭에서 임의의 클러스터별 구성 항목을 설정할 수 있습니"
+"다."
+
 msgid "Number"
 msgstr "숫자"
 
@@ -1001,6 +1133,9 @@ msgid "Oozie Job ID"
 msgstr "Oozie 작업 ID"
 
 msgid "OpenStack Flavor"
+msgstr "OpenStack Flavor"
+
+msgid "Openstack Flavor"
 msgstr "OpenStack Flavor"
 
 msgid "Output"
@@ -1101,6 +1236,13 @@ msgstr "새 클러스터에서 재실행"
 msgid "Remove"
 msgstr "제거"
 
+msgid ""
+"Repeat the Node Group Template creation process, but this time you are "
+"creating your \"worker\" Node Group Template."
+msgstr ""
+"노드 그룹 템플릿 생성 프로세스를 반복합니다. 하지만 이때는 \"작업자\" 노드 그"
+"룹 템플릿을 생성합니다."
+
 msgid "Required"
 msgstr "필수"
 
@@ -1118,6 +1260,12 @@ msgstr "리턴 코드"
 
 msgid "Run HBase EDP Jobs with common HBase library on HDFS"
 msgstr "HDFS에서 일반적인 HBase 라이브러리로 HBase EDP 작업 실행"
+
+msgid "S3"
+msgstr "S3"
+
+msgid "S3 Endpoint"
+msgstr "S3 엔드포인트"
 
 msgid ""
 "Sahara will use instances of this node group to access other cluster "
@@ -1146,6 +1294,9 @@ msgstr "스크립트 이름"
 
 msgid "Script text"
 msgstr "스크립트 텍스트"
+
+msgid "Secret Key"
+msgstr "비밀키"
 
 msgid "Security"
 msgstr "보안"
@@ -1222,6 +1373,26 @@ msgstr "작업 타입 선택:"
 
 msgid "Select type"
 msgstr "타입 선택"
+
+msgid ""
+"Select which plugin and version that you want to use to create your cluster."
+msgstr "클러스터를 생성하는 데 사용할 플러그인과 버전을 선택하십시오."
+
+msgid ""
+"Select which type of job that you want to run. This choice will dictate "
+"which steps are required to successfully execute your job."
+msgstr ""
+"실행할 작업 유형을 선택합니다. 이 선택에 따라 성공적으로 작업을 실행하는 데 "
+"필요한 단계가 결정됩니다."
+
+msgid ""
+"Selected domain name should already exist in the Designate. You can check it "
+"in &quot;DNS&quot; tab on the left menu or by executing &quot;designate "
+"domain-list&quot; on the controller node."
+msgstr ""
+"선택한 도메인 이름이 Designate 내에 이미 존재하고 있어야 합니다. 왼쪽 메뉴 "
+"내 &quot;DNS&quot; 탭에서 확인하거나 컨트롤러 노드에서 &quot;designate "
+"domain-list&quot; 를 실행합니다."
 
 msgid "Service Configurations"
 msgstr "서비스 구성"
@@ -1320,8 +1491,23 @@ msgstr "Swift"
 msgid "Tags"
 msgstr "태그"
 
+msgid ""
+"Tags are used for filtering images suitable for each plugin and each Data "
+"Processing version. To add required tags, select a plugin and a Data "
+"Processing version and click the &quot;Add&quot; button."
+msgstr ""
+"태그는 각 플러그인과 각 데이터 프로세싱 버전에 적합한 이미지를 필터링하는데 "
+"사용됩니다. 필수 태그를 추가하려면, 플러그인과 데이터 프로세싱 버전을 선택하"
+"고 &quot;추가&quot; 버튼을 누릅니다."
+
 msgid "Template"
 msgstr "템플릿"
+
+msgid "Template File"
+msgstr "템플릿 파일"
+
+msgid "Template JSON contained invalid key"
+msgstr "템플릿 JSON이 잘못된 키를 포함하였습니다"
 
 msgid "Template Name"
 msgstr "템플릿 이름"
@@ -1330,11 +1516,53 @@ msgid "Template not specified"
 msgstr "템플릿이 지정되지 않음"
 
 msgid ""
+"The Cluster Template object may specify a list of processes in anti-affinity "
+"group. That means these processes may not be launched more than once on a "
+"single host."
+msgstr ""
+"클러스터 템플릿 오브젝트는 anti-affinity 그룹의 프로세스 목록에서 지정할 수 "
+"있습니다. 이러한 프로세스는 하나의 호스트에 두번 이상 실행되지 않음을 의미합"
+"니다."
+
+msgid ""
+"The Cluster Template object should specify Node Group Templates that will be "
+"used to build a Cluster. You can add Node Groups using Node Group Templates "
+"on a &quot;Node Groups&quot; tab."
+msgstr ""
+"클러스터 템플릿 객체는 클러스터를 구성에 사용할 노드 그룹 템플릿을 지정해야 "
+"합니다. &quot;Node Groups&quot; 탭에 노드 그룹 템플릿을 이용하여 노드 그룹을 "
+"추가할 수 있습니다."
+
+msgid ""
 "The Cluster object should specify OpenStack Image to boot instances for "
 "Cluster."
 msgstr ""
 "클러스터 오브젝트가 클러스터의 인스턴스를 부팅할 OpenStack 이미지를 지정해야 "
 "합니다."
+
+msgid ""
+"The Node Group Template object specifies the processes that will be launched "
+"on each instance. Check one or more processes. When processes are selected, "
+"you may set <b>node</b> scoped configurations on corresponding tabs."
+msgstr ""
+"노드 그룹 템플릿 객체는 각 인스턴스에 시작된  프로세스를 지정합니다. 하나 이"
+"상의 프로세스를 확인합니다.\n"
+" 프로세스를 선택하면, 해당 탭의 <b>노드</b> 범위 구성을 설정할 수 있습니다."
+
+msgid ""
+"The first step is to determine which type of cluster you want to run.  You "
+"may have several choices available depending on the configuration of your "
+"system. Click on \"choose plugin\" to bring up the list of data processing "
+"plugins.  There you will be able to choose the data processing plugin along "
+"with the version number. Choosing this up front will allow the rest of the "
+"cluster creation steps to focus only on options that are pertinent to your "
+"desired cluster type."
+msgstr ""
+"첫 번째 단계에서는 실행할 클러스터 타입을 판별합니다. 시스템 구성에 따라 사용"
+"할 수 있는 선택 사항이 여러 개입니다. \"플러그인 선택\"을 눌러 데이터 프로세"
+"싱 플러그인 목록을 표시하십시오. 여기에서 버전 번호와 함께 데이터 프로세싱 플"
+"러그인을 선택할 수 있습니다. 이러한 사항을 먼저 선택하면 나머지 클러스터 생"
+"성 단계에서 원하는 클러스터 유형에 속한 옵션에만 중점을 둘 수 있습니다."
 
 msgid "The value of shares must be a list of values"
 msgstr "공유 값은 값 목록이어야 함"
@@ -1658,6 +1886,14 @@ msgstr "버전"
 msgid "Version:"
 msgstr "버전:"
 
+#, python-format
+msgid ""
+"Version: <b>%(hadoop_version)s</b> of plugin <b>%(plugin_name)s </b> is now "
+"deprecated."
+msgstr ""
+"플러그인 <b>%(plugin_name)s </b>에 대한 버전: <b>%(hadoop_version)s</b>이 이"
+"제 deprecated 되었습니다."
+
 msgid "Volume local to instance"
 msgstr "인스턴스에 로컬인 볼륨"
 
@@ -1688,6 +1924,18 @@ msgstr "인증에 사용할 키 페어."
 msgid "Worker Node Group Template:"
 msgstr "작업자 노드 그룹 템플릿:"
 
+msgid ""
+"You are now ready to launch your cluster.  When you click on the link below, "
+"you will need to give your cluster a name, choose the Cluster Template to "
+"use and choose which image to use to build your instances.  After you click "
+"on \"Create\", your instances will begin to spawn.  Your cluster should be "
+"operational in a few minutes."
+msgstr ""
+"이제 클러스터를 실행할 준비가 되었습니다. 아래 링크를 누르면 클러스터에 이름"
+"을 지정하고, 사용할 클러스터 템플릿을 선택하며, 인스턴스를 생성하는 데 사용"
+"할 이미지를 선택합니다. \"생성\"을 누르고 나면 인스턴스가 생성되기 시작합니"
+"다. 몇 분 안에 클러스터가 작동해야 합니다."
+
 msgid "You may also add any custom tag."
 msgstr "사용자 정의 태그도 추가할 수 있습니다."
 
@@ -1712,6 +1960,17 @@ msgid ""
 msgstr ""
 "실행된 모든 VM의 크기(VCPU, 메모리 및 스토리지)를 판별하려면 flavor를 선택해"
 "야 합니다."
+
+msgid ""
+"You need to register an image to launch instances of your cluster. Skip this "
+"step if you already have a registered image for your plugin, otherwise click "
+"the link below. In the form you will need to choose the image, input the "
+"username and add tags for the chosen plugin."
+msgstr ""
+"클러스터의 인스턴스들을 동작시킬 이미지를 등록해야합니다. 플러그인에 이미 등"
+"록한 이미지가 있다면 이 단계를 건너뛰어도 됩니다. 그렇지 않다면, 아래 링크를 "
+"클릭하세요.  양식에서 이미지 선택과 username 입력, \n"
+"그리고 선택한 플러그 인을 위해 태그들을 추가해야 합니다."
 
 msgid ""
 "You've chosen a cluster that is in 'Error' state. Appropriate execution of "
