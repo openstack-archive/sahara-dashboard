@@ -1,17 +1,18 @@
 # Frank Kloeker <eumel@arcor.de>, 2016. #zanata
+# Frank Kloeker <eumel@arcor.de>, 2018. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: sahara-dashboard VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2018-01-22 12:16+0000\n"
+"POT-Creation-Date: 2018-03-01 09:13+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2016-10-13 04:44+0000\n"
-"Last-Translator: Copied by Zanata <copied-by-zanata@zanata.org>\n"
+"PO-Revision-Date: 2018-02-11 07:32+0000\n"
+"Last-Translator: Frank Kloeker <eumel@arcor.de>\n"
 "Language-Team: German\n"
 "Language: de\n"
-"X-Generator: Zanata 3.9.6\n"
+"X-Generator: Zanata 4.3.3\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 msgid "(show events)"
@@ -69,6 +70,12 @@ msgstr "Entfernen"
 
 msgid "Required?"
 msgstr "Erforderlich?"
+
+msgid ""
+"See https://docs.openstack.org/sahara/latest/user/edp.html for definitions."
+msgstr ""
+"Sehen Sie https://docs.openstack.org/sahara/latest/user/edp.html für "
+"Definitionen."
 
 msgid "String"
 msgstr "Zeichenkette"
