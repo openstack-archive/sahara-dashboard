@@ -13,8 +13,8 @@
 
 import json
 
-from django.core.urlresolvers import reverse
 from django.http import HttpResponse
+from django.urls import reverse
 from django.utils.translation import ugettext as _
 from django.views.generic import base as django_base
 from oslo_utils import timeutils

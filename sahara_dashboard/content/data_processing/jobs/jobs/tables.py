@@ -11,8 +11,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from django.core.urlresolvers import reverse
 from django.http import Http404  # noqa
+from django.urls import reverse
 from django.utils import http
 from django.utils.translation import pgettext_lazy
 from django.utils.translation import ugettext_lazy as _

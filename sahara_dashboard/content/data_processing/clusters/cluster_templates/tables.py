@@ -11,9 +11,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from django.core import urlresolvers
 from django import http as http_response
 from django.template import defaultfilters as filters
+from django import urls
 from django.utils import http
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ungettext_lazy
@@ -45,7 +45,7 @@ class CreateCluster(tables.LinkAction):
     icon = "plus"
 
     def get_link_url(self, datum):
-        base_url = urlresolvers.reverse(self.url)
+        base_url = urls.reverse(self.url)
 
         params = http.urlencode({"hadoop_version": datum.hadoop_version,
                                  "plugin_name": datum.plugin_name,

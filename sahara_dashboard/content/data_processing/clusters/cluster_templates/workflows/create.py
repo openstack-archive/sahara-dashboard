@@ -13,7 +13,7 @@
 
 import json
 
-from django.core import urlresolvers
+from django import urls
 from django.utils.translation import ugettext_lazy as _
 from saharaclient.api import base as api_base
 
@@ -66,7 +66,7 @@ class CreateClusterTemplate(workflows.Workflow):
     default_steps = (SelectPlugin, )
 
     def get_success_url(self):
-        url = urlresolvers.reverse(self.success_url)
+        url = urls.reverse(self.success_url)
         return url
 
 
