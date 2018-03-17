@@ -40,15 +40,13 @@ outside of the horizon codebase, in the repository.
 Links:
 ------
 
-Sahara project: https://github.com/openstack/sahara
+Sahara project: https://git.openstack.org/cgit/openstack/sahara
 
 Sahara at wiki.openstack.org: https://wiki.openstack.org/wiki/Sahara
 
-Launchpad project: https://launchpad.net/sahara
+Storyboard project: https://storyboard.openstack.org/#!/project/936
 
 Sahara docs site: https://docs.openstack.org/sahara/latest/
-
-Roadmap: https://wiki.openstack.org/wiki/Sahara/Roadmap
 
 Quickstart guide: https://docs.openstack.org/sahara/latest/user/quickstart.html
 
