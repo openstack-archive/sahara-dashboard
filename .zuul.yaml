@@ -4,6 +4,10 @@
         - sahara-dashboard-tox-py35dj20:
             voting: false
 
+        - openstack-tox-lower-constraints
+    gate:
+      jobs:
+        - openstack-tox-lower-constraints
 - job:
     name: sahara-dashboard-tox-base
     parent: openstack-tox
