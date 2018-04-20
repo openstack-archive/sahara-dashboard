@@ -20,6 +20,12 @@ from openstack_dashboard.test import helpers
 from sahara_dashboard import api
 from sahara_dashboard.test.test_data import utils
 
+# Shortcuts to avoid importing openstack_dashboard.test.helper and
+# for backwards compatibility.
+create_mocks = helpers.create_mocks
+IsA = helpers.IsA
+IsHttpRequest = helpers.IsHttpRequest
+
 
 def create_stubs(stubs_to_create={}):
     return helpers.create_stubs(stubs_to_create)
