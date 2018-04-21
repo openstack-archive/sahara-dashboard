@@ -10,13 +10,13 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-from django import http
 from django.urls import reverse
-from mox3.mox import IsA  # noqa
+import mock
 import six
 
 from sahara_dashboard import api
 from sahara_dashboard.test import helpers as test
+from sahara_dashboard.test.helpers import IsHttpRequest
 
 
 INDEX_URL = reverse(
@@ -26,22 +26,25 @@ DETAILS_URL = reverse(
 
 
 class DataProcessingPluginsTests(test.TestCase):
-    @test.create_stubs({api.sahara: ('plugin_list',)})
+
+    use_mox = False
+
+    @test.create_mocks({api.sahara: ('plugin_list',)})
     def test_index(self):
-        api.sahara.plugin_list(IsA(http.HttpRequest)) \
-            .AndReturn(self.plugins.list())
-        self.mox.ReplayAll()
+        self.mock_plugin_list.return_value = self.plugins.list()
         res = self.client.get(INDEX_URL)
+        self.mock_plugin_list.assert_called_once_with(IsHttpRequest())
         self.assertTemplateUsed(res, 'data_plugins/plugins.html')
         self.assertContains(res, 'vanilla')
         self.assertContains(res, 'plugin')
 
-    @test.create_stubs({api.sahara: ('plugin_get',)})
+    @test.create_mocks({api.sahara: ('plugin_get',)})
     def test_details(self):
-        api.sahara.plugin_get(IsA(http.HttpRequest), IsA(six.text_type)).MultipleTimes() \
-            .AndReturn(self.plugins.list()[0])
-        self.mox.ReplayAll()
+        self.mock_plugin_get.return_value = self.plugins.list()[0]
         res = self.client.get(DETAILS_URL)
+        self.assert_mock_multiple_calls_with_same_arguments(
+            self.mock_plugin_get, 2, mock.call(test.IsHttpRequest(),
+                                               test.IsA(six.text_type)))
         self.assertTemplateUsed(res, 'horizon/common/_detail.html')
         self.assertContains(res, 'vanilla')
         self.assertContains(res, 'plugin')
