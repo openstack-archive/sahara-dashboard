@@ -35,6 +35,7 @@ class SaharaTestsMixin(object):
 
 
 class TestCase(SaharaTestsMixin, helpers.TestCase):
+    use_mox = True
     pass
 
 
@@ -43,6 +44,8 @@ class BaseAdminViewTests(SaharaTestsMixin, helpers.TestCase):
 
 
 class SaharaAPITestCase(helpers.APITestCase):
+
+    use_mox = True
 
     def setUp(self):
         super(SaharaAPITestCase, self).setUp()
