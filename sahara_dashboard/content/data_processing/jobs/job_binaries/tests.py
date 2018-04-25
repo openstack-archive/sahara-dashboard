@@ -10,9 +10,8 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-from django import http
 from django.urls import reverse
-from mox3.mox import IsA  # noqa
+import mock
 import six
 
 from sahara_dashboard import api
@@ -29,53 +28,64 @@ CREATE_URL = reverse(
 
 
 class DataProcessingJobBinaryTests(test.TestCase):
-    @test.create_stubs({api.sahara: ('job_execution_list',
+
+    use_mox = False
+
+    @test.create_mocks({api.sahara: ('job_execution_list',
                                      'plugin_list', 'job_binary_list',
                                      'data_source_list',
                                      'job_list')})
     def test_index(self):
-        api.sahara.job_binary_list(IsA(http.HttpRequest)) \
-            .AndReturn(self.job_binaries.list())
-        self.mox.ReplayAll()
+        self.mock_job_binary_list.return_value = \
+            self.job_binaries.list()
         res = self.client.get(INDEX_URL)
         self.assertTemplateUsed(res, 'jobs/index.html')
         self.assertContains(res, 'Job Binaries')
         self.assertContains(res, 'Name')
         self.assertContains(res, 'example.pig')
+        self.mock_job_binary_list.assert_called_once_with(
+            test.IsHttpRequest())
 
-    @test.create_stubs({api.sahara: ('job_binary_get',)})
+    @test.create_mocks({api.sahara: ('job_binary_get',)})
     def test_details(self):
-        api.sahara.job_binary_get(IsA(http.HttpRequest), IsA(six.text_type)) \
-            .MultipleTimes().AndReturn(self.job_binaries.first())
-        self.mox.ReplayAll()
+        self.mock_job_binary_get.return_value = self.job_binaries.first()
         res = self.client.get(DETAILS_URL)
         self.assertTemplateUsed(res, 'horizon/common/_detail.html')
+        self.assert_mock_multiple_calls_with_same_arguments(
+            self.mock_job_binary_get, 2,
+            mock.call(test.IsHttpRequest(), test.IsA(six.text_type)))
 
-    @test.create_stubs({api.sahara: ('job_binary_list',
+    @test.create_mocks({api.sahara: ('job_binary_list',
                                      'job_binary_get',
                                      'job_binary_internal_delete',
                                      'job_binary_delete',)})
     def test_delete(self):
-        jb_list = (api.sahara.job_binary_list(IsA(http.HttpRequest))
-                   .AndReturn(self.job_binaries.list()))
-        api.sahara.job_binary_get(IsA(http.HttpRequest), IsA(six.text_type)) \
-            .AndReturn(self.job_binaries.list()[0])
-        api.sahara.job_binary_delete(IsA(http.HttpRequest), jb_list[0].id)
+        jb_list = self.mock_job_binary_list.return_value = \
+            self.job_binaries.list()
+        self.mock_job_binary_get.return_value = self.job_binaries.list()[0]
+        self.mock_job_binary_delete.return_value = None
         int_id = jb_list[0].url.split("//")[1]
-        api.sahara.job_binary_internal_delete(IsA(http.HttpRequest), int_id)
-        self.mox.ReplayAll()
+        self.mock_job_binary_internal_delete.return_value = None
         form_data = {"action": "job_binaries__delete__%s" % jb_list[0].id}
         res = self.client.post(INDEX_URL, form_data)
         self.assertRedirectsNoFollow(res, INDEX_URL)
 
-    @test.create_stubs({api.sahara: ('job_binary_get',
+        self.mock_job_binary_list.assert_called_once_with(
+            test.IsHttpRequest())
+        self.mock_job_binary_get.assert_called_once_with(
+            test.IsHttpRequest(), test.IsA(six.text_type))
+        self.mock_job_binary_delete.assert_called_once_with(
+            test.IsHttpRequest(), jb_list[0].id)
+        self.mock_job_binary_internal_delete.assert_called_once_with(
+            test.IsHttpRequest(), int_id)
+
+    @test.create_mocks({api.sahara: ('job_binary_get',
                                      'job_binary_get_file')})
     def test_download(self):
-        jb = api.sahara.job_binary_get(IsA(http.HttpRequest), IsA(six.text_type)) \
-            .AndReturn(self.job_binaries.list()[0])
-        api.sahara.job_binary_get_file(IsA(http.HttpRequest), jb.id) \
-            .AndReturn("TEST FILE CONTENT")
-        self.mox.ReplayAll()
+        jb = self.mock_job_binary_get.return_value = \
+            self.job_binaries.list()[0]
+        self.mock_job_binary_get_file.return_value = \
+            "TEST FILE CONTENT"
 
         context = {'job_binary_id': jb.id}
         url = reverse('horizon:project:data_processing.jobs:download',
@@ -83,14 +93,18 @@ class DataProcessingJobBinaryTests(test.TestCase):
         res = self.client.get(url, context)
         self.assertTrue(res.has_header('content-disposition'))
 
-    @test.create_stubs({api.sahara: ('job_binary_get',
+        self.mock_job_binary_get.assert_called_once_with(
+            test.IsHttpRequest(), test.IsA(six.text_type))
+        self.mock_job_binary_get_file.assert_called_once_with(
+            test.IsHttpRequest(), jb.id)
+
+    @test.create_mocks({api.sahara: ('job_binary_get',
                                      'job_binary_get_file')})
     def test_download_with_spaces(self):
-        jb = api.sahara.job_binary_get(IsA(http.HttpRequest), IsA(six.text_type)) \
-            .AndReturn(self.job_binaries.list()[1])
-        api.sahara.job_binary_get_file(IsA(http.HttpRequest), jb.id) \
-            .AndReturn("MORE TEST FILE CONTENT")
-        self.mox.ReplayAll()
+        jb = self.mock_job_binary_get.return_value = \
+            self.job_binaries.list()[1]
+        self.mock_job_binary_get_file.return_value = \
+            "MORE TEST FILE CONTENT"
 
         context = {'job_binary_id': jb.id}
         url = reverse('horizon:project:data_processing.jobs:download',
@@ -100,18 +114,19 @@ class DataProcessingJobBinaryTests(test.TestCase):
             res.get('Content-Disposition'),
             'attachment; filename="%s"' % jb.name
         )
+        self.mock_job_binary_get.assert_called_once_with(
+            test.IsHttpRequest(), test.IsA(six.text_type))
+        self.mock_job_binary_get_file.assert_called_once_with(
+            test.IsHttpRequest(), jb.id)
 
-    @test.create_stubs({api.sahara: ('job_binary_get',
+    @test.create_mocks({api.sahara: ('job_binary_get',
                                      'job_binary_update',
                                      'job_binary_internal_list')})
     def test_update(self):
-        jb = api.sahara.job_binary_get(IsA(http.HttpRequest), IsA(six.text_type)) \
-            .AndReturn(self.job_binaries.first())
-        api.sahara.job_binary_update(IsA(http.HttpRequest),
-                                     IsA(str),
-                                     IsA(dict)) \
-            .AndReturn(self.job_binaries.first())
-        self.mox.ReplayAll()
+        jb = self.mock_job_binary_get.return_value = \
+            self.job_binaries.first()
+        self.mock_job_binary_update.return_value = \
+            self.job_binaries.first()
 
         form_data = {
             'job_binary_url': jb.url,
@@ -127,20 +142,22 @@ class DataProcessingJobBinaryTests(test.TestCase):
         }
         res = self.client.post(EDIT_URL, form_data)
         self.assertNoFormErrors(res)
+        self.mock_job_binary_get.assert_called_once_with(
+            test.IsHttpRequest(), test.IsA(six.text_type))
+        self.mock_job_binary_update.assert_called_once_with(
+            test.IsHttpRequest(), test.IsA(str), test.IsA(dict))
 
-    @test.create_stubs({api.manila: ('share_list', ),
+    @test.create_mocks({api.manila: ('share_list', ),
                         api.sahara: ('job_binary_create',
                                      'job_binary_internal_list'),
                         api.sahara.base: ('is_service_enabled', )})
     def test_create_manila(self):
-        share = self.mox.CreateMockAnything(
-            {"id": "tuvwxy56-1234-abcd-abcd-defabcdaedcb",
-             "name": "Test share"})
+        share = mock.Mock()
+        share.return_value = {"id": "tuvwxy56-1234-abcd-abcd-defabcdaedcb",
+                              "name": "Test share"}
         shares = [share]
-        api.sahara.base.is_service_enabled(IsA(http.HttpRequest), IsA(str)) \
-            .MultipleTimes().AndReturn(True)
-        api.manila.share_list(IsA(http.HttpRequest)).AndReturn(shares)
-        self.mox.ReplayAll()
+        self.mock_is_service_enabled.return_value = True
+        self.mock_share_list.return_value = shares
 
         form_data = {
             "job_binary_type": "manila",
@@ -152,8 +169,11 @@ class DataProcessingJobBinaryTests(test.TestCase):
 
         res = self.client.post(CREATE_URL, form_data)
         self.assertNoFormErrors(res)
+        self.assert_mock_multiple_calls_with_same_arguments(
+            self.mock_is_service_enabled, 1,
+            mock.call(test.IsHttpRequest(), test.IsA(str)))
 
-    @test.create_stubs({api.sahara: ('job_binary_create',
+    @test.create_mocks({api.sahara: ('job_binary_create',
                                      'job_binary_internal_list')})
     def test_create_s3(self):
         form_data = {
@@ -165,6 +185,5 @@ class DataProcessingJobBinaryTests(test.TestCase):
             "job_binary_name": "tests3",
             "job_binary_description": "Test s3 description"
         }
-        self.mox.ReplayAll()
         res = self.client.post(CREATE_URL, form_data)
         self.assertNoFormErrors(res)
