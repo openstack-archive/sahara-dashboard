@@ -10,12 +10,8 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-from django import http
 from django.urls import reverse
 import mock
-from mox3.mox import IgnoreArg  # noqa
-from mox3.mox import IsA  # noqa
-import six
 
 from openstack_dashboard import api as dash_api
 
@@ -38,77 +34,84 @@ CREATE_URL = reverse(
 
 
 class DataProcessingNodeGroupTests(test.TestCase):
+
+    use_mox = False
+
     @mock.patch('openstack_dashboard.api.base.is_service_enabled')
     def _setup_copy_test(self, service_checker):
         service_checker.return_value = True
         ngt = self.nodegroup_templates.first()
         configs = self.plugins_configs.first()
-        dash_api.cinder.extension_supported(IsA(http.HttpRequest),
-                                            'AvailabilityZones') \
-            .AndReturn(True)
-        dash_api.cinder.availability_zone_list(IsA(http.HttpRequest))\
-            .AndReturn(self.availability_zones.list())
-        dash_api.cinder.volume_type_list(IsA(http.HttpRequest))\
-            .AndReturn([])
-        api.sahara.nodegroup_template_get(IsA(http.HttpRequest),
-                                          ngt.id) \
-            .AndReturn(ngt)
-        api.sahara.plugin_get_version_details(IsA(http.HttpRequest),
-                                              ngt.plugin_name,
-                                              ngt.hadoop_version) \
-            .MultipleTimes().AndReturn(configs)
-        dash_api.neutron.floating_ip_pools_list(IsA(http.HttpRequest)) \
-            .AndReturn([])
-        dash_api.neutron.security_group_list(IsA(http.HttpRequest)) \
-            .AndReturn([])
-
-        self.mox.ReplayAll()
+        self.mock_extension_supported.return_value = True
+        self.mock_availability_zone_list.return_value = \
+            self.availability_zones.list()
+        self.mock_volume_type_list.return_value = []
+        self.mock_nodegroup_template_get.return_value = ngt
+        self.mock_plugin_get_version_details.return_value = configs
+        self.mock_floating_ip_pools_list.return_value = []
+        self.mock_security_group_list.return_value = []
 
         url = reverse(
             'horizon:project:data_processing.clusters:copy',
             args=[ngt.id])
         res = self.client.get(url)
 
+        self.mock_availability_zone_list.assert_called_once_with(
+            test.IsHttpRequest())
+        self.mock_availability_zone_list.assert_called_once_with(
+            test.IsHttpRequest())
+        self.mock_volume_type_list.assert_called_once_with(
+            test.IsHttpRequest())
+        self.mock_nodegroup_template_get.assert_called_once_with(
+            test.IsHttpRequest(), ngt.id)
+        self.assert_mock_multiple_calls_with_same_arguments(
+            self.mock_plugin_get_version_details, 6,
+            mock.call(test.IsHttpRequest(), ngt.plugin_name,
+                      ngt.hadoop_version))
+        self.mock_floating_ip_pools_list.assert_called_once_with(
+            test.IsHttpRequest())
+        self.mock_security_group_list.assert_called_once_with(
+            test.IsHttpRequest())
+
         return ngt, configs, res
 
-    @test.create_stubs({api.sahara: ('cluster_template_list',
+    @test.create_mocks({api.sahara: ('cluster_template_list',
                                      'image_list',
                                      'cluster_list',
                                      'nodegroup_template_list')})
     def test_index(self):
-        api.sahara.nodegroup_template_list(IsA(http.HttpRequest), {}) \
-            .AndReturn(self.nodegroup_templates.list())
-        self.mox.ReplayAll()
+        self.mock_nodegroup_template_list.return_value = \
+            self.nodegroup_templates.list()
         res = self.client.get(INDEX_URL +
                               "?tab=cluster_tabs__node_group_templates_tab")
         self.assertTemplateUsed(res, 'clusters/index.html')
         self.assertContains(res, 'Node Group Templates')
         self.assertContains(res, 'Name')
         self.assertContains(res, 'Plugin')
+        self.mock_nodegroup_template_list.assert_called_once_with(
+            test.IsHttpRequest(), {})
 
-    @test.create_stubs({api.sahara: ('nodegroup_template_get',),
+    @test.create_mocks({api.sahara: ('nodegroup_template_get',),
                         dash_api.nova: ('flavor_get',)})
     def test_details(self):
         flavor = self.flavors.first()
         ngt = self.nodegroup_templates.first()
-        dash_api.nova.flavor_get(IsA(http.HttpRequest), flavor.id) \
-            .AndReturn(flavor)
-        api.sahara.nodegroup_template_get(IsA(http.HttpRequest),
-                                          IsA(six.text_type)) \
-            .MultipleTimes().AndReturn(ngt)
-        self.mox.ReplayAll()
+        self.mock_flavor_get.return_value = flavor
+        self.mock_nodegroup_template_get.return_value = ngt
         res = self.client.get(DETAILS_URL)
         self.assertTemplateUsed(res, 'horizon/common/_detail.html')
         self.assertContains(res, 'sample-template')
+        self.assert_mock_multiple_calls_with_same_arguments(
+            self.mock_flavor_get, 1,
+            mock.call(test.IsHttpRequest(), flavor.id))
 
-    @test.create_stubs({api.sahara: ('nodegroup_template_list',
+    @test.create_mocks({api.sahara: ('nodegroup_template_list',
                                      'nodegroup_template_delete')})
     def test_delete(self):
         ngt = self.nodegroup_templates.first()
-        api.sahara.nodegroup_template_list(IsA(http.HttpRequest), {}) \
-            .AndReturn(self.nodegroup_templates.list())
-        api.sahara.nodegroup_template_delete(IsA(http.HttpRequest), ngt.id)
-        self.mox.ReplayAll()
+        self.mock_nodegroup_template_list.return_value = \
+            self.nodegroup_templates.list()
+        self.mock_nodegroup_template_delete.return_value = None
 
         form_data = {'action': 'nodegroup_templates__delete__%s' % ngt.id}
         res = self.client.post(INDEX_URL, form_data)
@@ -116,8 +119,12 @@ class DataProcessingNodeGroupTests(test.TestCase):
         self.assertNoFormErrors(res)
         self.assertRedirectsNoFollow(res, INDEX_URL)
         self.assertMessageCount(success=1)
+        self.mock_nodegroup_template_list.assert_called_once_with(
+            test.IsHttpRequest(), {})
+        self.mock_nodegroup_template_delete.assert_called_once_with(
+            test.IsHttpRequest(), ngt.id)
 
-    @test.create_stubs({api.sahara: ('nodegroup_template_get',
+    @test.create_mocks({api.sahara: ('nodegroup_template_get',
                                      'plugin_get_version_details',
                                      'image_list'),
                         dash_api.nova: ('availability_zone_list',
@@ -134,7 +141,7 @@ class DataProcessingNodeGroupTests(test.TestCase):
         self.assertEqual(step.action['nodegroup_name'].field.initial,
                          ngt.name + "-copy")
 
-    @test.create_stubs({api.sahara: ('client',
+    @test.create_mocks({api.sahara: ('client',
                                      'nodegroup_template_create',
                                      'plugin_get_version_details'),
                         dash_api.neutron: ('floating_ip_pools_list',
@@ -145,60 +152,24 @@ class DataProcessingNodeGroupTests(test.TestCase):
                                           'availability_zone_list',
                                           'volume_type_list')})
     @mock.patch('openstack_dashboard.api.base.is_service_enabled')
-    def test_create(self, service_checker):
+    @mock.patch.object(workflow_helpers, 'parse_configs_from_context')
+    def test_create(self, mock_workflow, service_checker):
         service_checker.return_value = True
+        mock_workflow.return_value = {}
         flavor = self.flavors.first()
         ngt = self.nodegroup_templates.first()
         configs = self.plugins_configs.first()
         new_name = ngt.name + '-new'
-        self.mox.StubOutWithMock(
-            workflow_helpers, 'parse_configs_from_context')
 
-        dash_api.cinder.extension_supported(IsA(http.HttpRequest),
-                                            'AvailabilityZones') \
-            .AndReturn(True)
-        dash_api.cinder.availability_zone_list(IsA(http.HttpRequest))\
-            .AndReturn(self.availability_zones.list())
-        dash_api.cinder.volume_type_list(IsA(http.HttpRequest))\
-            .AndReturn([])
-        dash_api.nova.flavor_list(IsA(http.HttpRequest)).AndReturn([flavor])
-        api.sahara.plugin_get_version_details(IsA(http.HttpRequest),
-                                              ngt.plugin_name,
-                                              ngt.hadoop_version) \
-            .MultipleTimes().AndReturn(configs)
-        dash_api.neutron.floating_ip_pools_list(IsA(http.HttpRequest)) \
-            .AndReturn([])
-        dash_api.neutron.security_group_list(IsA(http.HttpRequest)) \
-            .AndReturn([])
-        workflow_helpers.parse_configs_from_context(
-            IgnoreArg(), IgnoreArg()).AndReturn({})
-        api.sahara.nodegroup_template_create(
-            IsA(http.HttpRequest),
-            **{'name': new_name,
-               'plugin_name': ngt.plugin_name,
-               'hadoop_version': ngt.hadoop_version,
-               'description': ngt.description,
-               'flavor_id': flavor.id,
-               'volumes_per_node': None,
-               'volumes_size': None,
-               'volume_type': None,
-               'volume_local_to_instance': False,
-               'volumes_availability_zone': None,
-               'node_processes': ['namenode'],
-               'node_configs': {},
-               'floating_ip_pool': None,
-               'security_groups': [],
-               'image_id': None,
-               'auto_security_group': True,
-               'availability_zone': None,
-               'is_proxy_gateway': False,
-               'use_autoconfig': True,
-               'shares': [],
-               'is_public': False,
-               'is_protected': False})\
-            .AndReturn(True)
-
-        self.mox.ReplayAll()
+        self.mock_extension_supported.return_value = True
+        self.mock_availability_zone_list.return_value = \
+            self.availability_zones.list()
+        self.mock_volume_type_list.return_value = []
+        self.mock_flavor_list.return_value = [flavor]
+        self.mock_plugin_get_version_details.return_value = configs
+        self.mock_floating_ip_pools_list.return_value = []
+        self.mock_security_group_list.return_value = []
+        self.mock_nodegroup_template_create.return_value = True
 
         res = self.client.post(
             CREATE_URL,
@@ -226,8 +197,46 @@ class DataProcessingNodeGroupTests(test.TestCase):
         self.assertNoFormErrors(res)
         self.assertRedirectsNoFollow(res, INDEX_URL)
         self.assertMessageCount(success=1)
+        self.mock_extension_supported.assert_called_once_with(
+            test.IsHttpRequest(), 'AvailabilityZones')
+        self.mock_availability_zone_list.assert_called_once_with(
+            test.IsHttpRequest())
+        self.mock_flavor_list.assert_called_once_with(
+            test.IsHttpRequest())
+        self.assert_mock_multiple_calls_with_same_arguments(
+            self.mock_plugin_get_version_details, 4,
+            mock.call(test.IsHttpRequest(), ngt.plugin_name,
+                      ngt.hadoop_version))
+        self.mock_floating_ip_pools_list.assert_called_once_with(
+            test.IsHttpRequest())
+        self.mock_security_group_list.assert_called_once_with(
+            test.IsHttpRequest())
+        self.mock_nodegroup_template_create(
+            test.IsHttpRequest(),
+            **{'name': new_name,
+               'plugin_name': ngt.plugin_name,
+               'hadoop_version': ngt.hadoop_version,
+               'description': ngt.description,
+               'flavor_id': flavor.id,
+               'volumes_per_node': None,
+               'volumes_size': None,
+               'volume_type': None,
+               'volume_local_to_instance': False,
+               'volumes_availability_zone': None,
+               'node_processes': ['namenode'],
+               'node_configs': {},
+               'floating_ip_pool': None,
+               'security_groups': [],
+               'image_id': None,
+               'auto_security_group': True,
+               'availability_zone': None,
+               'is_proxy_gateway': False,
+               'use_autoconfig': True,
+               'shares': [],
+               'is_public': False,
+               'is_protected': False})
 
-    @test.create_stubs({api.sahara: ('client',
+    @test.create_mocks({api.sahara: ('client',
                                      'nodegroup_template_create',
                                      'nodegroup_template_update',
                                      'nodegroup_template_get',
@@ -240,7 +249,8 @@ class DataProcessingNodeGroupTests(test.TestCase):
                                           'availability_zone_list',
                                           'volume_type_list')})
     @mock.patch('openstack_dashboard.api.base.is_service_enabled')
-    def test_update(self, service_checker):
+    @mock.patch.object(workflow_helpers, 'parse_configs_from_context')
+    def test_update(self, mock_workflow, service_checker):
         service_checker.return_value = True
         flavor = self.flavors.first()
         ngt = self.nodegroup_templates.first()
@@ -249,57 +259,18 @@ class DataProcessingNodeGroupTests(test.TestCase):
         UPDATE_URL = reverse(
             'horizon:project:data_processing.clusters:edit',
             kwargs={'template_id': ngt.id})
-        self.mox.StubOutWithMock(
-            workflow_helpers, 'parse_configs_from_context')
+        mock_workflow.return_value = {}
 
-        dash_api.cinder.extension_supported(IsA(http.HttpRequest),
-                                            'AvailabilityZones') \
-            .AndReturn(True)
-        dash_api.cinder.availability_zone_list(IsA(http.HttpRequest)) \
-            .AndReturn(self.availability_zones.list())
-        dash_api.cinder.volume_type_list(IsA(http.HttpRequest))\
-            .AndReturn([])
-        dash_api.nova.flavor_list(IsA(http.HttpRequest)).AndReturn([flavor])
-        api.sahara.plugin_get_version_details(IsA(http.HttpRequest),
-                                              ngt.plugin_name,
-                                              ngt.hadoop_version) \
-            .MultipleTimes().AndReturn(configs)
-        dash_api.neutron.floating_ip_pools_list(IsA(http.HttpRequest)) \
-            .AndReturn([])
-        dash_api.neutron.security_group_list(IsA(http.HttpRequest)) \
-            .AndReturn([])
-        workflow_helpers.parse_configs_from_context(
-            IgnoreArg(), IgnoreArg()).AndReturn({})
-        api.sahara.nodegroup_template_get(IsA(http.HttpRequest),
-                                          ngt.id) \
-            .AndReturn(ngt)
-        api.sahara.nodegroup_template_update(
-            request=IsA(http.HttpRequest),
-            ngt_id=ngt.id,
-            name=new_name,
-            plugin_name=ngt.plugin_name,
-            hadoop_version=ngt.hadoop_version,
-            flavor_id=flavor.id,
-            description=ngt.description,
-            volumes_per_node=0,
-            volumes_size=None,
-            volume_type=None,
-            volume_local_to_instance=False,
-            volumes_availability_zone=None,
-            node_processes=['namenode'],
-            node_configs={},
-            floating_ip_pool=None,
-            security_groups=[],
-            auto_security_group=True,
-            availability_zone=None,
-            use_autoconfig=True,
-            is_proxy_gateway=False,
-            shares=[],
-            is_protected=False,
-            is_public=False,
-            image_id=ngt.image_id).AndReturn(True)
-
-        self.mox.ReplayAll()
+        self.mock_extension_supported.return_value = True
+        self.mock_availability_zone_list.return_value = \
+            self.availability_zones.list()
+        self.mock_volume_type_list.return_value = []
+        self.mock_flavor_list.return_value = [flavor]
+        self.mock_plugin_get_version_details.return_value = configs
+        self.mock_floating_ip_pools_list.return_value = []
+        self.mock_security_group_list.return_value = []
+        self.mock_nodegroup_template_get.return_value = ngt
+        self.mock_nodegroup_template_update.return_value = True
 
         res = self.client.post(
             UPDATE_URL,
@@ -326,8 +297,51 @@ class DataProcessingNodeGroupTests(test.TestCase):
         self.assertNoFormErrors(res)
         self.assertRedirectsNoFollow(res, INDEX_URL)
         self.assertMessageCount(success=1)
+        self.mock_extension_supported.assert_called_once_with(
+            test.IsHttpRequest(), 'AvailabilityZones')
+        self.mock_availability_zone_list.assert_called_once_with(
+            test.IsHttpRequest())
+        self.mock_volume_type_list.assert_called_once_with(
+            test.IsHttpRequest())
+        self.mock_flavor_list.assert_called_once_with(
+            test.IsHttpRequest())
+        self.assert_mock_multiple_calls_with_same_arguments(
+            self.mock_plugin_get_version_details, 5,
+            mock.call(test.IsHttpRequest(), ngt.plugin_name,
+                      ngt.hadoop_version))
+        self.mock_floating_ip_pools_list.assert_called_once_with(
+            test.IsHttpRequest())
+        self.mock_security_group_list.assert_called_once_with(
+            test.IsHttpRequest())
+        self.mock_nodegroup_template_get.assert_called_once_with(
+            test.IsHttpRequest(), ngt.id)
+        self.mock_nodegroup_template_update.assert_called_once_with(
+            request=test.IsHttpRequest(),
+            ngt_id=ngt.id,
+            name=new_name,
+            plugin_name=ngt.plugin_name,
+            hadoop_version=ngt.hadoop_version,
+            flavor_id=flavor.id,
+            description=ngt.description,
+            volumes_per_node=0,
+            volumes_size=None,
+            volume_type=None,
+            volume_local_to_instance=False,
+            volumes_availability_zone=None,
+            node_processes=['namenode'],
+            node_configs={},
+            floating_ip_pool=None,
+            security_groups=[],
+            auto_security_group=True,
+            availability_zone=None,
+            use_autoconfig=True,
+            is_proxy_gateway=False,
+            shares=[],
+            is_protected=False,
+            is_public=False,
+            image_id=ngt.image_id)
 
-    @test.create_stubs({api.sahara: ('nodegroup_template_get',
+    @test.create_mocks({api.sahara: ('nodegroup_template_get',
                                      'plugin_get_version_details',
                                      'image_list'),
                         dash_api.nova: ('availability_zone_list',
