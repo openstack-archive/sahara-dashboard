@@ -22,25 +22,8 @@ class SaharaApiTest(test.SaharaAPITestCase):
     #
     def test_cluster_create_count(self):
         saharaclient = self.stub_saharaclient()
-        saharaclient.clusters = self.mox.CreateMockAnything()
-        saharaclient.clusters.create(anti_affinity=None,
-                                     cluster_configs=None,
-                                     cluster_template_id=None,
-                                     count=2,
-                                     use_autoconfig=None,
-                                     default_image_id=None,
-                                     description=None,
-                                     hadoop_version='1.0.0',
-                                     is_transient=None,
-                                     name='name',
-                                     net_id=None,
-                                     node_groups=None,
-                                     plugin_name='fake_plugin',
-                                     user_keypair_id=None,
-                                     is_public=False,
-                                     is_protected=False) \
-            .AndReturn({"Clusters": ['cluster1', 'cluster2']})
-        self.mox.ReplayAll()
+        saharaclient.clusters.create.return_value = \
+            {"Clusters": ['cluster1', 'cluster2']}
         ret_val = api.sahara.cluster_create(self.request,
                                             'name',
                                             'fake_plugin',

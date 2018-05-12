@@ -13,8 +13,6 @@
 
 import mock
 
-from saharaclient import client as sahara_client
-
 from openstack_dashboard.test import helpers
 
 from sahara_dashboard import api
@@ -51,8 +49,6 @@ class BaseAdminViewTests(SaharaTestsMixin, helpers.TestCase):
 
 class SaharaAPITestCase(helpers.APITestCase):
 
-    use_mox = True
-
     def setUp(self):
         super(SaharaAPITestCase, self).setUp()
 
@@ -66,6 +62,5 @@ class SaharaAPITestCase(helpers.APITestCase):
 
     def stub_saharaclient(self):
         if not hasattr(self, "saharaclient"):
-            self.mox.StubOutWithMock(sahara_client, 'Client')
-            self.saharaclient = self.mox.CreateMock(sahara_client.Client)
+            self.saharaclient = mock.Mock()
         return self.saharaclient
