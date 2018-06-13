@@ -190,6 +190,15 @@ class GeneralConfigAction(workflows.Action):
         self.fields['is_protected'] = acl_utils.get_is_protected_form(
             _("node group template"))
 
+        if saharaclient.VERSIONS.active == '2':
+            self.fields['boot_from_volume'] = forms.BooleanField(
+                label=_("Boot From Volume"),
+                help_text=_("If selected, the node group instance will be "
+                            "booted from volume"),
+                required=False,
+                widget=forms.CheckboxInput(),
+                initial=False)
+
         self.fields["plugin_name"] = forms.CharField(
             widget=forms.HiddenInput(),
             initial=plugin
@@ -547,6 +556,11 @@ class ConfigureNodegroupTemplate(workflow_helpers.ServiceParametersWorkflow,
 
             image_id = context["general_image"] or None
 
+            if saharaclient.VERSIONS.active == '2':
+                boot_from_volume = context["general_boot_from_volume"]
+            else:
+                boot_from_volume = None
+
             ngt = saharaclient.nodegroup_template_create(
                 request,
                 name=context["general_nodegroup_name"],
@@ -570,6 +584,7 @@ class ConfigureNodegroupTemplate(workflow_helpers.ServiceParametersWorkflow,
                 shares=ngt_shares,
                 is_public=context['general_is_public'],
                 is_protected=context['general_is_protected'],
+                boot_from_volume=boot_from_volume,
                 image_id=image_id)
 
             hlps = helpers.Helpers(request)

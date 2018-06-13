@@ -79,7 +79,7 @@ class EditNodegroupTemplate(copy_flow.CopyNodegroupTemplate):
 
             image_id = context["general_image"] or None
 
-            saharaclient.nodegroup_template_update(
+            args_dict = dict(
                 request=request,
                 ngt_id=self.template_id,
                 name=context["general_nodegroup_name"],
@@ -104,6 +104,13 @@ class EditNodegroupTemplate(copy_flow.CopyNodegroupTemplate):
                 is_public=context['general_is_public'],
                 is_protected=context['general_is_protected'],
                 image_id=image_id)
+
+            if saharaclient.VERSIONS.active == '2':
+                args_dict['boot_from_volume'] = (
+                    context['general_boot_from_volume'])
+
+            saharaclient.nodegroup_template_update(**args_dict)
+
             return True
         except api_base.APIException as e:
             self.error_description = str(e.message)

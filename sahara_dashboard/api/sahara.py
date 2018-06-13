@@ -170,7 +170,9 @@ def nodegroup_template_create(request, name, plugin_name, hadoop_version,
                               shares=None,
                               is_public=None,
                               is_protected=None,
-                              volume_mount_prefix=None):
+                              volume_mount_prefix=None,
+                              boot_from_volume=None):
+
     payload = dict(
         name=name,
         plugin_name=plugin_name,
@@ -194,10 +196,13 @@ def nodegroup_template_create(request, name, plugin_name, hadoop_version,
         is_public=is_public,
         is_protected=is_protected,
         volume_mount_prefix=volume_mount_prefix)
+
     if VERSIONS.active == '2':
         payload['plugin_version'] = hadoop_version
+        payload['boot_from_volume'] = boot_from_volume
     else:
         payload['hadoop_version'] = hadoop_version
+
     return client(request).node_group_templates.create(**payload)
 
 
@@ -237,7 +242,9 @@ def nodegroup_template_update(request, ngt_id, name, plugin_name,
                               shares=None,
                               is_protected=None,
                               is_public=None,
-                              image_id=None):
+                              image_id=None,
+                              boot_from_volume=None):
+
     payload = dict(
         ng_template_id=ngt_id,
         name=name,
@@ -261,10 +268,13 @@ def nodegroup_template_update(request, ngt_id, name, plugin_name,
         is_public=is_public,
         is_protected=is_protected,
         image_id=image_id)
+
     if VERSIONS.active == '2':
         payload['plugin_version'] = hadoop_version
+        payload['boot_from_volume'] = boot_from_volume
     else:
         payload['hadoop_version'] = hadoop_version
+
     return client(request).node_group_templates.update(**payload)
 
 

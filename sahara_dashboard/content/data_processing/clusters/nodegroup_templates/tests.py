@@ -337,7 +337,8 @@ class DataProcessingNodeGroupTests(test.TestCase):
             shares=[],
             is_protected=False,
             is_public=False,
-            image_id=ngt.image_id)
+            image_id=ngt.image_id,
+        )
 
     @test.create_mocks({api.sahara: ('nodegroup_template_get',
                                      'plugin_get_version_details',
