@@ -328,7 +328,7 @@ class ConfigureClusterTemplate(whelpers.ServiceParametersWorkflow,
                      ConfigureNodegroups)
 
     def __init__(self, request, context_seed, entry_point, *args, **kwargs):
-        ConfigureClusterTemplate._cls_registry = set([])
+        ConfigureClusterTemplate._cls_registry = []
 
         hlps = helpers.Helpers(request)
         plugin, hadoop_version = whelpers.\

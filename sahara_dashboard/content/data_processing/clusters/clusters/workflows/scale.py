@@ -40,7 +40,7 @@ class ScaleCluster(cl_create_flow.ConfigureCluster,
     default_steps = (NodeGroupsStep, )
 
     def __init__(self, request, context_seed, entry_point, *args, **kwargs):
-        ScaleCluster._cls_registry = set([])
+        ScaleCluster._cls_registry = []
 
         self.success_message = _("Scaled cluster successfully started.")
 
