@@ -52,6 +52,7 @@ Quickstart guide: https://docs.openstack.org/sahara/latest/user/quickstart.html
 
 How to participate: https://docs.openstack.org/sahara/latest/contributor/how-to-participate.html
 
+Release notes: https://docs.openstack.org/releasenotes/sahara-dashboard/
 
 License
 -------
