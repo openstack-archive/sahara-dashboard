@@ -112,7 +112,6 @@ six==1.10.0
 statsd==3.2.1
 stevedore==1.20.0
 tenacity==3.2.1
-testrepository==0.0.18
 testscenarios==0.4
 testtools==2.2.0
 traceback2==1.4.0
