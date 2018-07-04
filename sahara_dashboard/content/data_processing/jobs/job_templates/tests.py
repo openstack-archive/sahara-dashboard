@@ -10,10 +10,8 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-from django import http
 from django.urls import reverse
-from mox3.mox import IsA  # noqa
-import six
+import mock
 
 from sahara_dashboard import api
 from sahara_dashboard.test import helpers as test
@@ -25,41 +23,42 @@ DETAILS_URL = reverse(
 
 
 class DataProcessingJobTemplateTests(test.TestCase):
-    @test.create_stubs({api.sahara: ('job_execution_list',
+
+    use_mox = False
+
+    @test.create_mocks({api.sahara: ('job_execution_list',
                                      'plugin_list', 'job_binary_list',
                                      'data_source_list',
                                      'job_list')})
     def test_index(self):
-        api.sahara.job_list(IsA(http.HttpRequest), {}) \
-            .AndReturn(self.jobs.list())
-        self.mox.ReplayAll()
+        self.mock_job_list.return_value = self.jobs.list()
         res = self.client.get(INDEX_URL)
+
+        self.mock_job_list.assert_called_once_with(
+            test.IsHttpRequest(), {})
         self.assertTemplateUsed(res, 'jobs/index.html')
         self.assertContains(res, 'Job Templates')
         self.assertContains(res, 'Name')
-
-    @test.create_stubs({api.sahara: ('job_get',)})
-    def test_details(self):
-        api.sahara.job_get(IsA(http.HttpRequest), IsA(six.text_type)) \
-            .MultipleTimes().AndReturn(self.jobs.first())
-        self.mox.ReplayAll()
-        res = self.client.get(DETAILS_URL)
-        self.assertTemplateUsed(res, 'horizon/common/_detail.html')
         self.assertContains(res, 'pigjob')
 
-    @test.create_stubs({api.sahara: ('job_binary_list',
+    @test.create_mocks({api.sahara: ('job_get',)})
+    def test_details(self):
+        self.mock_job_get.return_value = self.jobs.first()
+        res = self.client.get(DETAILS_URL)
+
+        self.mock_job_get.assert_called_with(
+            test.IsHttpRequest(), 'id')
+        self.assertTemplateUsed(res, 'horizon/common/_detail.html')
+        self.assertContains(res, 'pigjob')
+        self.assertContains(res, 'example.pig')
+        self.assertContains(res, 'udf.jar')
+
+    @test.create_mocks({api.sahara: ('job_binary_list',
                                      'job_create',
                                      'job_types_list')})
     def test_create(self):
-        api.sahara.job_binary_list(IsA(http.HttpRequest)).AndReturn([])
-        api.sahara.job_binary_list(IsA(http.HttpRequest)).AndReturn([])
-        api.sahara.job_create(IsA(http.HttpRequest),
-                              'test', 'Pig', [], [], 'test create',
-                              interface=[], is_public=False,
-                              is_protected=False)
-        api.sahara.job_types_list(IsA(http.HttpRequest)) \
-            .AndReturn(self.job_types.list())
-        self.mox.ReplayAll()
+        self.mock_job_binary_list.return_value = []
+        self.mock_job_types_list.return_value = self.job_types.list()
         form_data = {'job_name': 'test',
                      'job_type': 'pig',
                      'lib_binaries': [],
@@ -71,39 +70,22 @@ class DataProcessingJobTemplateTests(test.TestCase):
         res = self.client.post(url, form_data)
 
         self.assertNoFormErrors(res)
+        self.assert_mock_multiple_calls_with_same_arguments(
+            self.mock_job_binary_list, 2,
+            mock.call(test.IsHttpRequest()))
+        self.mock_job_types_list.assert_called_once_with(
+            test.IsHttpRequest())
+        self.mock_job_create.assert_called_once_with(
+            test.IsHttpRequest(), 'test', 'Pig', [], [],
+            'test create', interface=[], is_public=False,
+            is_protected=False)
 
-    @test.create_stubs({api.sahara: ('job_binary_list',
+    @test.create_mocks({api.sahara: ('job_binary_list',
                                      'job_create',
                                      'job_types_list')})
     def test_create_with_interface(self):
-        api.sahara.job_binary_list(IsA(http.HttpRequest)).AndReturn([])
-        api.sahara.job_binary_list(IsA(http.HttpRequest)).AndReturn([])
-        api.sahara.job_create(IsA(http.HttpRequest),
-                              'test_interface', 'Pig', [], [], 'test create',
-                              interface=[
-                                  {
-                                      "name": "argument",
-                                      "description": None,
-                                      "mapping_type": "args",
-                                      "location": "0",
-                                      "value_type": "number",
-                                      "required": True,
-                                      "default": None
-                                  },
-                                  {
-                                      "name": "config",
-                                      "description": "Really great config",
-                                      "mapping_type": "configs",
-                                      "location": "edp.important.config",
-                                      "value_type": "string",
-                                      "required": False,
-                                      "default": "A value"
-                                  }],
-                              is_public=False,
-                              is_protected=False)
-        api.sahara.job_types_list(IsA(http.HttpRequest)) \
-            .AndReturn(self.job_types.list())
-        self.mox.ReplayAll()
+        self.mock_job_binary_list.return_value = []
+        self.mock_job_types_list.return_value = self.job_types.list()
         form_data = {'job_name': 'test_interface',
                      'job_type': 'pig',
                      'lib_binaries': [],
@@ -130,15 +112,41 @@ class DataProcessingJobTemplateTests(test.TestCase):
         res = self.client.post(url, form_data)
 
         self.assertNoFormErrors(res)
+        self.assert_mock_multiple_calls_with_same_arguments(
+            self.mock_job_binary_list, 2,
+            mock.call(test.IsHttpRequest()))
+        self.mock_job_types_list.assert_called_once_with(
+            test.IsHttpRequest())
+        self.mock_job_create.assert_called_once_with(
+            test.IsHttpRequest(),
+            'test_interface', 'Pig', [], [], 'test create',
+            interface=[
+                {
+                    "name": "argument",
+                    "description": None,
+                    "mapping_type": "args",
+                    "location": "0",
+                    "value_type": "number",
+                    "required": True,
+                    "default": None
+                },
+                {
+                    "name": "config",
+                    "description": "Really great config",
+                    "mapping_type": "configs",
+                    "location": "edp.important.config",
+                    "value_type": "string",
+                    "required": False,
+                    "default": "A value"
+                }],
+            is_public=False,
+            is_protected=False)
 
-    @test.create_stubs({api.sahara: ('job_list',
+    @test.create_mocks({api.sahara: ('job_list',
                                      'job_delete')})
     def test_delete(self):
         job = self.jobs.first()
-        api.sahara.job_list(IsA(http.HttpRequest), {}) \
-            .AndReturn(self.jobs.list())
-        api.sahara.job_delete(IsA(http.HttpRequest), job.id)
-        self.mox.ReplayAll()
+        self.mock_job_list.return_value = self.jobs.list()
 
         form_data = {'action': 'job_templates__delete__%s' % job.id}
         res = self.client.post(INDEX_URL, form_data)
@@ -146,8 +154,12 @@ class DataProcessingJobTemplateTests(test.TestCase):
         self.assertNoFormErrors(res)
         self.assertRedirectsNoFollow(res, INDEX_URL)
         self.assertMessageCount(success=1)
+        self.mock_job_list.assert_called_once_with(
+            test.IsHttpRequest(), {})
+        self.mock_job_delete.assert_called_once_with(
+            test.IsHttpRequest(), job.id)
 
-    @test.create_stubs({api.sahara: ('job_execution_create',
+    @test.create_mocks({api.sahara: ('job_execution_create',
                                      'job_get',
                                      'job_get_configs',
                                      'job_list',
@@ -159,29 +171,14 @@ class DataProcessingJobTemplateTests(test.TestCase):
         cluster = self.clusters.first()
         input_ds = self.data_sources.first()
         output_ds = self.data_sources.first()
-        api.sahara.job_get(IsA(http.HttpRequest), IsA(six.text_type)) \
-            .AndReturn(job)
-        api.sahara.job_get_configs(IsA(http.HttpRequest), job.type) \
-            .AndReturn(job)
-        api.sahara.cluster_list(IsA(http.HttpRequest)) \
-            .AndReturn(self.clusters.list())
-        api.sahara.data_source_list(IsA(http.HttpRequest)) \
-            .MultipleTimes().AndReturn(self.data_sources.list())
-        api.sahara.job_list(IsA(http.HttpRequest)) \
-            .AndReturn(self.jobs.list())
-        api.sahara.job_get(IsA(http.HttpRequest), IsA(six.text_type)) \
-            .AndReturn(job)
-        api.sahara.job_execution_create(IsA(http.HttpRequest),
-                                        IsA(six.text_type),
-                                        IsA(six.text_type),
-                                        IsA(six.text_type),
-                                        IsA(six.text_type),
-                                        IsA(dict),
-                                        IsA(dict),
-                                        is_public=False,
-                                        is_protected=False).AndReturn(
-            job_execution)
-        self.mox.ReplayAll()
+
+        self.mock_job_get.return_value = job
+        self.mock_job_get_configs.return_value = job
+        self.mock_cluster_list.return_value = self.clusters.list()
+        self.mock_data_source_list.return_value = self.data_sources.list()
+        self.mock_job_list.return_value = self.jobs.list()
+        self.mock_job_get.return_value = job
+        self.mock_job_execution_create.return_value = job_execution
 
         url = reverse('horizon:project:data_processing.jobs:launch-job')
         form_data = {
@@ -204,6 +201,36 @@ class DataProcessingJobTemplateTests(test.TestCase):
             'streaming_mapper': '',
             'streaming_reducer': ''
         }
-
         res = self.client.post(url, form_data)
+
+        # there seem not to be an easy way to check the order
+        # of the calls; check only if they happened
         self.assertNoFormErrors(res)
+        self.assert_mock_multiple_calls_with_same_arguments(
+            self.mock_job_get, 2,
+            mock.call(test.IsHttpRequest(), job.id))
+        self.mock_job_get_configs.assert_called_once_with(
+            test.IsHttpRequest(), job.type)
+        self.assert_mock_multiple_calls_with_same_arguments(
+            self.mock_cluster_list, 2,
+            mock.call(test.IsHttpRequest()))
+        self.mock_data_source_list.assert_called_with(
+            test.IsHttpRequest())
+        self.mock_job_list.assert_called_once_with(
+            test.IsHttpRequest())
+        self.mock_job_execution_create.assert_called_once_with(
+            test.IsHttpRequest(),
+            job.id,
+            cluster.id,
+            input_ds.id,
+            output_ds.id,
+            {
+                'params': {},
+                'args': [],
+                'configs': {
+                    'edp.substitute_data_source_for_name': True,
+                    'edp.substitute_data_source_for_uuid': True}
+            },
+            {},
+            is_public=False,
+            is_protected=False)
