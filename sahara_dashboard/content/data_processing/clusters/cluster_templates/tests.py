@@ -30,8 +30,6 @@ DETAILS_URL = reverse(
 
 class DataProcessingClusterTemplateTests(test.TestCase):
 
-    use_mox = False
-
     @test.create_mocks({api.sahara: ('cluster_template_list',
                                      'image_list',
                                      'cluster_list',

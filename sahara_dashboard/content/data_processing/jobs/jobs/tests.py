@@ -24,8 +24,6 @@ DETAILS_URL = reverse(
 
 class DataProcessingJobTests(test.TestCase):
 
-    use_mox = False
-
     @test.create_mocks({api.sahara: ('job_execution_list',
                                      'plugin_list', 'job_binary_list',
                                      'data_source_list',

@@ -25,8 +25,6 @@ CLUSTER_GUIDE_RESET_URL = reverse(
 
 class DataProcessingClusterGuideTests(test.TestCase):
 
-    use_mox = False
-
     @test.create_mocks({api.sahara: ('nodegroup_template_find',)})
     def test_cluster_guide(self):
         res = self.client.get(CLUSTER_GUIDE_URL)

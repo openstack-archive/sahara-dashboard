@@ -28,8 +28,6 @@ SUCCESS_URL = reverse(
 
 class DataProcessingImageRegistryTests(test.TestCase):
 
-    use_mox = False
-
     @test.create_mocks({api.sahara: ('cluster_template_list',
                                      'image_list',
                                      'cluster_list',

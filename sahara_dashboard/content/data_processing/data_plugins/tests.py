@@ -27,8 +27,6 @@ DETAILS_URL = reverse(
 
 class DataProcessingPluginsTests(test.TestCase):
 
-    use_mox = False
-
     @test.create_mocks({api.sahara: ('plugin_list',)})
     def test_index(self):
         self.mock_plugin_list.return_value = self.plugins.list()

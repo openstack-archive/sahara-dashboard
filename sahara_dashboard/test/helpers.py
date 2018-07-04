@@ -39,7 +39,6 @@ class SaharaTestsMixin(object):
 
 
 class TestCase(SaharaTestsMixin, helpers.TestCase):
-    use_mox = True
     pass
 
 

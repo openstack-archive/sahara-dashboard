@@ -35,8 +35,6 @@ CREATE_URL = reverse(
 
 class DataProcessingNodeGroupTests(test.TestCase):
 
-    use_mox = False
-
     @mock.patch('openstack_dashboard.api.base.is_service_enabled')
     def _setup_copy_test(self, service_checker):
         service_checker.return_value = True
