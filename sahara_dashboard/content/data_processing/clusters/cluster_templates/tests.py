@@ -12,11 +12,8 @@
 
 import copy
 
-from django import http
 from django.urls import reverse
-from mox3.mox import IsA  # noqa
 from oslo_serialization import jsonutils
-import six
 
 from openstack_dashboard import api as dash_api
 
@@ -32,35 +29,35 @@ DETAILS_URL = reverse(
 
 
 class DataProcessingClusterTemplateTests(test.TestCase):
-    @test.create_stubs({api.sahara: ('cluster_template_list',
+
+    use_mox = False
+
+    @test.create_mocks({api.sahara: ('cluster_template_list',
                                      'image_list',
                                      'cluster_list',
                                      'nodegroup_template_list')})
     def test_index(self):
-        api.sahara.cluster_template_list(IsA(http.HttpRequest), {}) \
-            .AndReturn(self.cluster_templates.list())
-        self.mox.ReplayAll()
+        self.mock_cluster_template_list.return_value = \
+            self.cluster_templates.list()
         res = self.client.get(INDEX_URL)
+        self.mock_cluster_template_list.assert_called_once_with(
+            test.IsHttpRequest(), {})
         self.assertTemplateUsed(res, 'clusters/index.html')
         self.assertContains(res, 'Cluster Templates')
         self.assertContains(res, 'Name')
 
-    @test.create_stubs({api.sahara: ('cluster_template_get',
+    @test.create_mocks({api.sahara: ('cluster_template_get',
                                      'nodegroup_template_get'),
                         dash_api.nova: ('flavor_get',)})
     def test_details(self):
         flavor = self.flavors.first()
         ct = self.cluster_templates.first()
-        dash_api.nova.flavor_get(IsA(http.HttpRequest), flavor.id) \
-            .MultipleTimes().AndReturn(flavor)
-        api.sahara.cluster_template_get(IsA(http.HttpRequest),
-                                        IsA(six.text_type)) \
-            .MultipleTimes().AndReturn(ct)
-        self.mox.ReplayAll()
+        self.mock_flavor_get.return_value = flavor
+        self.mock_cluster_template_get.return_value = ct
         res = self.client.get(DETAILS_URL)
         self.assertTemplateUsed(res, 'horizon/common/_detail.html')
 
-    @test.create_stubs({api.sahara: ('client',
+    @test.create_mocks({api.sahara: ('client',
                                      'cluster_template_get',
                                      'plugin_get_version_details',
                                      'nodegroup_template_find')})
@@ -68,44 +65,40 @@ class DataProcessingClusterTemplateTests(test.TestCase):
         ct = self.cluster_templates.first()
         ngts = self.nodegroup_templates.list()
         configs = self.plugins_configs.first()
-        api.sahara.cluster_template_get(IsA(http.HttpRequest),
-                                        ct.id) \
-            .AndReturn(ct)
-        api.sahara.plugin_get_version_details(IsA(http.HttpRequest),
-                                              ct.plugin_name,
-                                              ct.hadoop_version) \
-            .MultipleTimes().AndReturn(configs)
-        api.sahara.nodegroup_template_find(IsA(http.HttpRequest),
-                                           plugin_name=ct.plugin_name,
-                                           hadoop_version=ct.hadoop_version) \
-            .MultipleTimes().AndReturn(ngts)
-        self.mox.ReplayAll()
+        self.mock_cluster_template_get.return_value = ct
+        self.mock_plugin_get_version_details.return_value = configs
+        self.mock_nodegroup_template_find.return_value = ngts
 
         url = reverse('horizon:project:data_processing.clusters:ct-copy',
                       args=[ct.id])
         res = self.client.get(url)
+        self.mock_cluster_template_get.assert_called_once_with(
+            test.IsHttpRequest(), ct.id)
         workflow = res.context['workflow']
         step = workflow.get_step("generalconfigaction")
         self.assertEqual(step.action['cluster_template_name'].field.initial,
                          ct.name + "-copy")
 
-    @test.create_stubs({api.sahara: ('cluster_template_list',
+    @test.create_mocks({api.sahara: ('cluster_template_list',
                                      'cluster_template_delete')})
     def test_delete(self):
         ct = self.cluster_templates.first()
-        api.sahara.cluster_template_list(IsA(http.HttpRequest), {}) \
-            .AndReturn(self.cluster_templates.list())
-        api.sahara.cluster_template_delete(IsA(http.HttpRequest), ct.id)
-        self.mox.ReplayAll()
+        self.mock_cluster_template_list.return_value = \
+            self.cluster_templates.list()
+        self.mock_cluster_template_delete.return_value = None
 
         form_data = {'action': 'cluster_templates__delete__%s' % ct.id}
         res = self.client.post(INDEX_URL, form_data)
 
+        self.mock_cluster_template_list.assert_called_once_with(
+            test.IsHttpRequest(), {})
+        self.mock_cluster_template_delete.assert_called_once_with(
+            test.IsHttpRequest(), ct.id)
         self.assertNoFormErrors(res)
         self.assertRedirectsNoFollow(res, INDEX_URL)
         self.assertMessageCount(success=1)
 
-    @test.create_stubs({api.sahara: ('client',
+    @test.create_mocks({api.sahara: ('client',
                                      'cluster_template_get',
                                      'cluster_template_update',
                                      'plugin_get_version_details',
@@ -117,33 +110,10 @@ class DataProcessingClusterTemplateTests(test.TestCase):
         new_name = "UpdatedName"
         new_ct = copy.copy(ct)
         new_ct.name = new_name
-
-        api.sahara.cluster_template_get(IsA(http.HttpRequest), ct.id) \
-            .AndReturn(ct)
-        api.sahara.plugin_get_version_details(IsA(http.HttpRequest),
-                                              ct.plugin_name,
-                                              ct.hadoop_version) \
-            .MultipleTimes().AndReturn(configs)
-        api.sahara.nodegroup_template_find(IsA(http.HttpRequest),
-                                           plugin_name=ct.plugin_name,
-                                           hadoop_version=ct.hadoop_version) \
-            .MultipleTimes().AndReturn(ngts)
-        api.sahara.cluster_template_update(request=IsA(http.HttpRequest),
-                                           ct_id=ct.id,
-                                           name=new_name,
-                                           plugin_name=ct.plugin_name,
-                                           hadoop_version=ct.hadoop_version,
-                                           description=ct.description,
-                                           cluster_configs=ct.cluster_configs,
-                                           node_groups=ct.node_groups,
-                                           anti_affinity=ct.anti_affinity,
-                                           use_autoconfig=False,
-                                           shares=ct.shares,
-                                           is_public=False,
-                                           is_protected=False,
-                                           domain_name=ct.domain_name) \
-            .AndReturn(new_ct)
-        self.mox.ReplayAll()
+        self.mock_cluster_template_get.return_value = ct
+        self.mock_plugin_get_version_details.return_value = configs
+        self.mock_nodegroup_template_find.return_value = ngts
+        self.mock_cluster_template_update.return_value = new_ct
 
         url = reverse('horizon:project:data_processing.clusters:ct-edit',
                       args=[ct.id])
@@ -173,3 +143,19 @@ class DataProcessingClusterTemplateTests(test.TestCase):
         self.assertNoFormErrors(res)
         self.assertRedirectsNoFollow(res, INDEX_URL)
         self.assertMessageCount(success=1)
+        self.mock_cluster_template_update.assert_called_once_with(
+            request=test.IsHttpRequest(),
+            ct_id=ct.id,
+            name=new_name,
+            plugin_name=ct.plugin_name,
+            hadoop_version=ct.hadoop_version,
+            description=ct.description,
+            cluster_configs=ct.cluster_configs,
+            node_groups=ct.node_groups,
+            anti_affinity=ct.anti_affinity,
+            use_autoconfig=False,
+            shares=ct.shares,
+            is_public=False,
+            is_protected=False,
+            domain_name=ct.domain_name
+        )
