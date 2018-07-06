@@ -37,6 +37,11 @@ class EditDataSource(create.CreateDataSource):
         "data_source_url": "url",
         "data_source_credential_user": None,
         "data_source_credential_pass": None,
+        "data_source_credential_accesskey": None,
+        "data_source_credential_secretkey": None,
+        "data_source_credential_endpoint": None,
+        "data_source_credential_s3_ssl": None,
+        "data_source_credential_s3_bucket_in_path": None,
         "data_source_manila_share": None,
         'is_public': "is_public",
         'is_protected': "is_protected"
@@ -72,17 +77,36 @@ class EditDataSource(create.CreateDataSource):
 
     def handle(self, request, context):
         try:
+            credentials = {}
+            if context["general_data_source_type"] == "swift":
+                credentials["user"] = context.get(
+                    "general_data_source_credential_user", None)
+                credentials["password"] = context.get(
+                    "general_data_source_credential_pass", None)
+            elif context["general_data_source_type"] == "s3":
+                if context.get("general_data_source_credential_accesskey",
+                               None):
+                    credentials["accesskey"] = context[
+                        "general_data_source_credential_accesskey"]
+                if context.get("general_data_source_credential_secretkey",
+                               None):
+                    credentials["secretkey"] = context[
+                        "general_data_source_credential_secretkey"]
+                if context.get("general_data_source_credential_endpoint", None
+                               ):
+                    credentials["endpoint"] = context[
+                        "general_data_source_credential_endpoint"]
+                credentials["bucket_in_path"] = context[
+                    "general_data_source_credential_s3_bucket_in_path"]
+                credentials["ssl"] = context[
+                    "general_data_source_credential_s3_ssl"]
+            credentials = credentials or None
             update_data = {
                 "name": context["general_data_source_name"],
                 "description": context["general_data_source_description"],
                 "type": context["general_data_source_type"],
                 "url": context["source_url"],
-                "credentials": {
-                    "user": context.get("general_data_source_credential_user",
-                                        None),
-                    "password": context.get(
-                        "general_data_source_credential_pass", None)
-                },
+                "credentials": credentials,
                 "is_public": context['general_is_public'],
                 "is_protected": context['general_is_protected']
             }
