@@ -93,16 +93,18 @@ def safe_call(func, *args, **kwargs):
 def client(request):
     insecure = getattr(settings, 'OPENSTACK_SSL_NO_VERIFY', False)
     cacert = getattr(settings, 'OPENSTACK_SSL_CACERT', None)
-    # TODO(jfreud): pass token directly to client after bug 1747838 resolved
     auth = identity.Token(auth_url=request.user.endpoint,
                           token=request.user.token.id,
                           project_id=request.user.project_id)
-    sess = session.Session(auth=auth)
+    verify = False
+    if cacert:
+        verify = cacert
+    elif not insecure:
+        verify = True
+    sess = session.Session(auth=auth, verify=verify)
     return api_client.Client(VERSIONS.get_active_version()["version"],
                              service_type=SAHARA_SERVICE,
-                             session=sess,
-                             insecure=insecure,
-                             cacert=cacert)
+                             session=sess)
 
 
 def prepare_acl_update_dict(is_public=None, is_protected=None):
