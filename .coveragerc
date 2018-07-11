@@ -1,0 +1,13 @@
+[run]
+branch = True
+source = sahara_dashboard
+omit =
+ .tox/*
+ sahara_dashboard/test/*
+
+[paths]
+source = sahara_dashboard
+
+[report]
+ignore_errors = True
+precision = 3
