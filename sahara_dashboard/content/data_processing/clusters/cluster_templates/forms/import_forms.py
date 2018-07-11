@@ -132,7 +132,8 @@ class ImportClusterTemplateNodegroupsForm(forms.SelfHandlingForm):
             req.update(request.POST)
 
             plugin = template_json["plugin_name"]
-            version = template_json["hadoop_version"]
+            version = (template_json.get("hadoop_version", None) or
+                       template_json["plugin_version"])
 
             if not plugin or not version:
                 self.templates = saharaclient.nodegroup_template_find(request)

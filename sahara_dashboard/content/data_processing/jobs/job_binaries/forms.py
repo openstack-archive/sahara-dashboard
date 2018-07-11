@@ -215,12 +215,15 @@ class JobBinaryCreateForm(forms.SelfHandlingForm):
             _("job binary"))
 
         self.fields["job_binary_type"].choices =\
-            [("internal-db", "Internal database"),
-             ("swift", "Swift"),
+            [("swift", "Swift"),
              ("s3", "S3")]
 
-        self.fields["job_binary_internal"].choices =\
-            self.populate_job_binary_internal_choices(request)
+        if saharaclient.VERSIONS.active == '1.1':
+            self.fields["job_binary_type"].choices.append(
+                ("internal-db", "Internal database")
+            )
+            self.fields["job_binary_internal"].choices =\
+                self.populate_job_binary_internal_choices(request)
 
         if saharaclient.base.is_service_enabled(request, 'share'):
             self.fields["job_binary_type"].choices.append(("manila", "Manila"))

@@ -65,6 +65,8 @@ class GeneralTab(tabs.Tab):
         except Exception as e:
             template = {}
             LOG.error("Unable to fetch cluster template details: %s" % str(e))
+        if saharaclient.VERSIONS.active == '2':
+            template.hadoop_version = template.plugin_version
         return {"template": template}
 
 

@@ -85,8 +85,21 @@ class GeneralTab(tabs.Tab):
             LOG.error("Unable to fetch output url: %s", e)
             object_names["output_url"] = "None"
 
+        if saharaclient.VERSIONS.active == '2':
+            job_execution_engine_job_attr = "engine_job_id"
+            job_execution_engine_job_attr_pretty = _("Engine Job ID")
+        else:
+            job_execution_engine_job_attr = "oozie_job_id"
+            job_execution_engine_job_attr_pretty = _("Oozie Job ID")
+
+        job_execution_engine_job_id = getattr(job_execution,
+                                              job_execution_engine_job_attr)
+
         return {"job_execution": job_execution,
-                "object_names": object_names}
+                "object_names": object_names,
+                "job_execution_engine_job_id": job_execution_engine_job_id,
+                "job_execution_engine_job_attr_pretty":
+                    job_execution_engine_job_attr_pretty}
 
     def get_object_names(self, job_ex, request):
         object_names = {}

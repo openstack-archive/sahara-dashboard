@@ -147,7 +147,11 @@ class NodegroupTemplatesTable(sahara_table.SaharaPaginateTabbedTable):
         link="horizon:project:data_processing.clusters:details")
     plugin_name = tables.Column("plugin_name",
                                 verbose_name=_("Plugin"))
-    hadoop_version = tables.Column("hadoop_version",
+    if saharaclient.VERSIONS.active == '2':
+        version_attr = "plugin_version"
+    else:
+        version_attr = "hadoop_version"
+    hadoop_version = tables.Column(version_attr,
                                    verbose_name=_("Version"))
     node_processes = tables.Column("node_processes",
                                    verbose_name=_("Node Processes"),

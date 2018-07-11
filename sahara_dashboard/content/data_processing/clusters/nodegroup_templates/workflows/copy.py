@@ -30,11 +30,15 @@ class CopyNodegroupTemplate(create_flow.ConfigureNodegroupTemplate):
         self._set_configs_to_copy(self.template.node_configs)
 
         plugin = self.template.plugin_name
-        hadoop_version = self.template.hadoop_version
+        if saharaclient.VERSIONS.active == '2':
+            version_attr = 'plugin_version'
+        else:
+            version_attr = 'hadoop_version'
+        hadoop_version = getattr(self.template, version_attr)
 
         request.GET = request.GET.copy()
         request.GET.update(
-            {"plugin_name": plugin, "hadoop_version": hadoop_version})
+            {"plugin_name": plugin, version_attr: hadoop_version})
 
         super(CopyNodegroupTemplate, self).__init__(request, context_seed,
                                                     entry_point, *args,

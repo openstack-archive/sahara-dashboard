@@ -1,0 +1,6 @@
+---
+features:
+  - There is now support for APIv2 in sahara-dashboard. Enable it by setting
+    the "data-processing" API version to "2" in the `OPENSTACK_API_VERSIONS`
+    dictionary found in Horizon's local_settings.py. Some Sahara features are
+    only exposed through APIv2.

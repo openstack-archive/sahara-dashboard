@@ -51,6 +51,8 @@ VERSIONS = base.APIVersionManager(
                               {}).get(SAHARA_SERVICE, 1.1))
 VERSIONS.load_supported_version(1.1, {"client": api_client,
                                       "version": 1.1})
+VERSIONS.load_supported_version(2, {"client": api_client,
+                                    "version": 2})
 
 SAHARA_PAGE_SIZE = 15
 
@@ -149,8 +151,7 @@ def plugin_get(request, plugin_name):
 
 def plugin_get_version_details(request, plugin_name, hadoop_version):
     return client(request).plugins.get_version_details(
-        plugin_name=plugin_name,
-        hadoop_version=hadoop_version)
+        plugin_name, hadoop_version)
 
 
 def nodegroup_template_create(request, name, plugin_name, hadoop_version,
@@ -170,10 +171,9 @@ def nodegroup_template_create(request, name, plugin_name, hadoop_version,
                               is_public=None,
                               is_protected=None,
                               volume_mount_prefix=None):
-    return client(request).node_group_templates.create(
+    payload = dict(
         name=name,
         plugin_name=plugin_name,
-        hadoop_version=hadoop_version,
         flavor_id=flavor_id,
         description=description,
         volumes_per_node=volumes_per_node,
@@ -194,6 +194,11 @@ def nodegroup_template_create(request, name, plugin_name, hadoop_version,
         is_public=is_public,
         is_protected=is_protected,
         volume_mount_prefix=volume_mount_prefix)
+    if VERSIONS.active == '2':
+        payload['plugin_version'] = hadoop_version
+    else:
+        payload['hadoop_version'] = hadoop_version
+    return client(request).node_group_templates.create(**payload)
 
 
 def nodegroup_template_list(request, search_opts=None,
@@ -208,6 +213,8 @@ def nodegroup_template_get(request, ngt_id):
 
 
 def nodegroup_template_find(request, **kwargs):
+    if "hadoop_version" in kwargs and VERSIONS.active == '2':
+        kwargs["plugin_version"] = kwargs.pop("hadoop_version")
     return client(request).node_group_templates.find(**kwargs)
 
 
@@ -231,11 +238,10 @@ def nodegroup_template_update(request, ngt_id, name, plugin_name,
                               is_protected=None,
                               is_public=None,
                               image_id=None):
-    return client(request).node_group_templates.update(
+    payload = dict(
         ng_template_id=ngt_id,
         name=name,
         plugin_name=plugin_name,
-        hadoop_version=hadoop_version,
         flavor_id=flavor_id,
         description=description,
         volumes_per_node=volumes_per_node,
@@ -255,6 +261,11 @@ def nodegroup_template_update(request, ngt_id, name, plugin_name,
         is_public=is_public,
         is_protected=is_protected,
         image_id=image_id)
+    if VERSIONS.active == '2':
+        payload['plugin_version'] = hadoop_version
+    else:
+        payload['hadoop_version'] = hadoop_version
+    return client(request).node_group_templates.update(**payload)
 
 
 def nodegroup_update_acl_rules(request, nid,
@@ -273,10 +284,9 @@ def cluster_template_create(request, name, plugin_name, hadoop_version,
                             net_id=None, use_autoconfig=None, shares=None,
                             is_public=None, is_protected=None,
                             domain_name=None):
-    return client(request).cluster_templates.create(
+    payload = dict(
         name=name,
         plugin_name=plugin_name,
-        hadoop_version=hadoop_version,
         description=description,
         cluster_configs=cluster_configs,
         node_groups=node_groups,
@@ -288,6 +298,11 @@ def cluster_template_create(request, name, plugin_name, hadoop_version,
         is_protected=is_protected,
         domain_name=domain_name
     )
+    if VERSIONS.active == '2':
+        payload['plugin_version'] = hadoop_version
+    else:
+        payload['hadoop_version'] = hadoop_version
+    return client(request).cluster_templates.create(**payload)
 
 
 def cluster_template_list(request, search_opts=None, marker=None, limit=None):
@@ -314,11 +329,10 @@ def cluster_template_update(request, ct_id, name, plugin_name,
                             is_public=None, is_protected=None,
                             domain_name=None):
     try:
-        template = client(request).cluster_templates.update(
+        payload = dict(
             cluster_template_id=ct_id,
             name=name,
             plugin_name=plugin_name,
-            hadoop_version=hadoop_version,
             description=description,
             cluster_configs=cluster_configs,
             node_groups=node_groups,
@@ -330,6 +344,11 @@ def cluster_template_update(request, ct_id, name, plugin_name,
             is_protected=is_protected,
             domain_name=domain_name
         )
+        if VERSIONS.active == '2':
+            payload['plugin_version'] = hadoop_version
+        else:
+            payload['hadoop_version'] = hadoop_version
+        template = client(request).cluster_templates.update(**payload)
 
     except APIException as e:
         raise exceptions.Conflict(e)
@@ -352,10 +371,9 @@ def cluster_create(request, name, plugin_name, hadoop_version,
                    node_groups=None, user_keypair_id=None, anti_affinity=None,
                    net_id=None, count=None, use_autoconfig=None,
                    is_public=None, is_protected=None):
-    return client(request).clusters.create(
+    payload = dict(
         name=name,
         plugin_name=plugin_name,
-        hadoop_version=hadoop_version,
         cluster_template_id=cluster_template_id,
         default_image_id=default_image_id,
         is_transient=is_transient,
@@ -369,6 +387,11 @@ def cluster_create(request, name, plugin_name, hadoop_version,
         use_autoconfig=use_autoconfig,
         is_public=is_public,
         is_protected=is_protected)
+    if VERSIONS.active == '2':
+        payload['plugin_version'] = hadoop_version
+    else:
+        payload['hadoop_version'] = hadoop_version
+    return client(request).clusters.create(**payload)
 
 
 def cluster_scale(request, cluster_id, scale_object):
@@ -395,6 +418,10 @@ def cluster_get(request, cluster_id, show_progress=False):
 
 def cluster_delete(request, cluster_id):
     client(request).clusters.delete(cluster_id=cluster_id)
+
+
+def cluster_force_delete(request, cluster_id):
+    client(request).clusters.force_delete(cluster_id=cluster_id)
 
 
 def cluster_update(request, cluster_id, name=None, description=None,
@@ -516,7 +543,12 @@ def job_binary_internal_delete(request, jbi_id):
 
 def job_create(request, name, j_type, mains, libs, description, interface,
                is_public=None, is_protected=None):
-    return client(request).jobs.create(
+    sahara = client(request)
+    if VERSIONS.active == '2':
+        manager = 'job_templates'
+    else:
+        manager = 'jobs'
+    return getattr(sahara, manager).create(
         name=name,
         type=j_type,
         mains=mains,
@@ -528,32 +560,62 @@ def job_create(request, name, j_type, mains, libs, description, interface,
 
 
 def job_update(request, job_id, is_public=None, is_protected=None):
-    return client(request).jobs.update(
+    sahara = client(request)
+    if VERSIONS.active == '2':
+        manager = 'job_templates'
+    else:
+        manager = 'jobs'
+    return getattr(sahara, manager).update(
         job_id=job_id, **prepare_acl_update_dict(is_public, is_protected))
 
 
 def job_list(request, search_opts=None, marker=None, limit=None):
     marker, limit = _update_pagination_params(marker, limit, request)
-    return client(request).jobs.list(
+    sahara = client(request)
+    if VERSIONS.active == '2':
+        manager = 'job_templates'
+    else:
+        manager = 'jobs'
+    return getattr(sahara, manager).list(
         search_opts=search_opts,
         limit=limit,
         marker=marker)
 
 
 def _job_list(request):
-    return client(request).jobs.list()
+    sahara = client(request)
+    if VERSIONS.active == '2':
+        manager = 'job_templates'
+    else:
+        manager = 'jobs'
+    return getattr(sahara, manager).list()
 
 
 def job_get(request, job_id):
-    return client(request).jobs.get(job_id=job_id)
+    sahara = client(request)
+    if VERSIONS.active == '2':
+        manager = 'job_templates'
+    else:
+        manager = 'jobs'
+    return getattr(sahara, manager).get(job_id=job_id)
 
 
 def job_delete(request, job_id):
-    client(request).jobs.delete(job_id=job_id)
+    sahara = client(request)
+    if VERSIONS.active == '2':
+        manager = 'job_templates'
+    else:
+        manager = 'jobs'
+    getattr(sahara, manager).delete(job_id=job_id)
 
 
 def job_get_configs(request, job_type):
-    return client(request).jobs.get_configs(job_type=job_type)
+    sahara = client(request)
+    if VERSIONS.active == '2':
+        manager = 'job_templates'
+    else:
+        manager = 'jobs'
+    return getattr(sahara, manager).get_configs(job_type=job_type)
 
 
 def job_execution_create(request, job_id, cluster_id,
@@ -563,8 +625,13 @@ def job_execution_create(request, job_id, cluster_id,
         input_id = None
     if output_id in [None, "", "None"]:
         output_id = None
-    return client(request).job_executions.create(
-        job_id=job_id,
+    sahara = client(request)
+    if VERSIONS.active == '2':
+        manager = 'jobs'
+    else:
+        manager = 'job_executions'
+    return getattr(sahara, manager).create(
+        job_id,
         cluster_id=cluster_id,
         input_id=input_id,
         output_id=output_id,
@@ -576,9 +643,14 @@ def job_execution_create(request, job_id, cluster_id,
 
 
 def job_execution_update(request, jbe_id, is_public=None, is_protected=None):
-    return client(request).job_executions.update(job_execution_id=jbe_id,
-                                                 **prepare_acl_update_dict(
-                                                     is_public, is_protected))
+    sahara = client(request)
+    if VERSIONS.active == '2':
+        manager = 'jobs'
+    else:
+        manager = 'job_executions'
+    return getattr(sahara, manager).update(jbe_id,
+                                           **prepare_acl_update_dict(
+                                               is_public, is_protected))
 
 
 def _resolve_job_execution_names(job_execution, cluster=None,
@@ -597,7 +669,12 @@ def _resolve_job_execution_names(job_execution, cluster=None,
 
 def job_execution_list(request, search_opts=None, marker=None, limit=None):
     marker, limit = _update_pagination_params(marker, limit, request)
-    job_execution_list = client(request).job_executions.list(
+    sahara = client(request)
+    if VERSIONS.active == '2':
+        manager = 'jobs'
+    else:
+        manager = 'job_executions'
+    job_execution_list = getattr(sahara, manager).list(
         search_opts=search_opts, limit=limit,
         marker=marker)
 
@@ -620,15 +697,28 @@ def job_execution_list(request, search_opts=None, marker=None, limit=None):
 
 
 def job_execution_get(request, jex_id):
-    jex = client(request).job_executions.get(obj_id=jex_id)
+    sahara = client(request)
+    if VERSIONS.active == '2':
+        je_manager = 'jobs'
+        jt_manager = 'job_templates'
+    else:
+        je_manager = 'job_executions'
+        jt_manager = 'jobs'
+
+    jex = getattr(sahara, je_manager).get(obj_id=jex_id)
     cluster = safe_call(client(request).clusters.get, jex.cluster_id)
-    job = safe_call(client(request).jobs.get, jex.job_id)
+    job = safe_call(getattr(sahara, jt_manager).get, jex.job_id)
 
     return _resolve_job_execution_names(jex, cluster, job)
 
 
 def job_execution_delete(request, jex_id):
-    client(request).job_executions.delete(obj_id=jex_id)
+    sahara = client(request)
+    if VERSIONS.active == '2':
+        manager = 'jobs'
+    else:
+        manager = 'job_executions'
+    getattr(sahara, manager).delete(obj_id=jex_id)
 
 
 def job_types_list(request):

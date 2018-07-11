@@ -48,7 +48,11 @@ class ScaleCluster(cl_create_flow.ConfigureCluster,
         try:
             cluster = saharaclient.cluster_get(request, cluster_id)
             plugin = cluster.plugin_name
-            hadoop_version = cluster.hadoop_version
+            if saharaclient.VERSIONS.active == '2':
+                version_attr = 'plugin_version'
+            else:
+                version_attr = 'hadoop_version'
+            hadoop_version = getattr(cluster, version_attr)
 
             # Initialize deletable node groups.
             deletable = dict()
@@ -58,7 +62,7 @@ class ScaleCluster(cl_create_flow.ConfigureCluster,
             request.GET.update({
                 "cluster_id": cluster_id,
                 "plugin_name": plugin,
-                "hadoop_version": hadoop_version,
+                version_attr: hadoop_version,
                 "deletable": deletable
             })
 

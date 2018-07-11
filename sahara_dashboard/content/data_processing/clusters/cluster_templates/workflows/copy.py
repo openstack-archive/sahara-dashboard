@@ -37,9 +37,15 @@ class CopyClusterTemplate(create_flow.ConfigureClusterTemplate):
                 self.cluster_template_id)
             self._set_configs_to_copy(self.template.cluster_configs)
 
+            if saharaclient.VERSIONS.active == '2':
+                version_attr = 'plugin_version'
+            else:
+                version_attr = 'hadoop_version'
+            hadoop_version = getattr(self.template, version_attr)
+
             request.GET = request.GET.copy()
             request.GET.update({"plugin_name": self.template.plugin_name,
-                                "hadoop_version": self.template.hadoop_version,
+                                version_attr: hadoop_version,
                                 "aa_groups": self.template.anti_affinity})
 
             super(CopyClusterTemplate, self).__init__(request, context_seed,

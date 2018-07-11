@@ -208,7 +208,9 @@ def get_plugin_and_hadoop_version(request):
     req.update(request.POST)
     if req.get("plugin_name"):
         plugin_name = req["plugin_name"]
-        hadoop_version = req["hadoop_version"]
+        hadoop_version = (
+            req.get("plugin_version", None) or req["hadoop_version"]
+        )
     return plugin_name, hadoop_version
 
 

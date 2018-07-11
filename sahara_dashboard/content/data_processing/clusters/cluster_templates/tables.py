@@ -47,7 +47,12 @@ class CreateCluster(tables.LinkAction):
     def get_link_url(self, datum):
         base_url = urls.reverse(self.url)
 
-        params = http.urlencode({"hadoop_version": datum.hadoop_version,
+        if saharaclient.VERSIONS.active == '2':
+            version_attr = "plugin_version"
+        else:
+            version_attr = "hadoop_version"
+        params = http.urlencode({"hadoop_version":
+                                 getattr(datum, version_attr),
                                  "plugin_name": datum.plugin_name,
                                  "cluster_template_id": datum.id})
         return "?".join([base_url, params])
@@ -172,7 +177,11 @@ class ClusterTemplatesTable(sahara_table.SaharaPaginateTabbedTable):
                                "clusters:ct-details"))
     plugin_name = tables.Column("plugin_name",
                                 verbose_name=_("Plugin"))
-    hadoop_version = tables.Column("hadoop_version",
+    if saharaclient.VERSIONS.active == '2':
+        version_attr = "plugin_version"
+    else:
+        version_attr = "hadoop_version"
+    hadoop_version = tables.Column(version_attr,
                                    verbose_name=_("Version"))
     node_groups = tables.Column(render_node_groups,
                                 verbose_name=_("Node Groups"),

@@ -106,6 +106,29 @@ class CheckClusterAction(tables.BatchAction):
         saharaclient.verification_update(request, datum_id, status='START')
 
 
+class ForceDeleteCluster(tables.DeleteAction):
+    name = "force_delete"
+
+    @staticmethod
+    def action_present(count):
+        return ungettext_lazy(
+            u"Force Delete Cluster",
+            u"Force Delete Clusters",
+            count
+        )
+
+    @staticmethod
+    def action_past(count):
+        return ungettext_lazy(
+            u"Force Deleted Cluster",
+            u"Force Deleted Clusters",
+            count
+        )
+
+    def delete(self, request, obj_id):
+        saharaclient.cluster_force_delete(request, obj_id)
+
+
 class UpdateClusterShares(tables.LinkAction):
     name = "update_shares"
     verbose_name = _("Update Shares")
@@ -237,7 +260,11 @@ class ClustersTable(sahara_table.SaharaPaginateTabbedTable):
     plugin = tables.Column("plugin_name",
                            verbose_name=_("Plugin"))
 
-    version = tables.Column("hadoop_version",
+    if saharaclient.VERSIONS.active == '2':
+        version_attr = "plugin_version"
+    else:
+        version_attr = "hadoop_version"
+    version = tables.Column(version_attr,
                             verbose_name=_("Version"))
 
     # Status field need the whole cluster object to build the rich status.
@@ -268,6 +295,8 @@ class ClustersTable(sahara_table.SaharaPaginateTabbedTable):
                          ConfigureCluster,
                          DeleteCluster,
                          ClustersFilterAction)
+        if saharaclient.VERSIONS.active == '2':
+            table_actions = table_actions + (ForceDeleteCluster,)
         table_actions_menu = (MakePublic, MakePrivate,
                               MakeProtected, MakeUnProtected)
         if SAHARA_VERIFICATION_DISABLED:
@@ -281,3 +310,5 @@ class ClustersTable(sahara_table.SaharaPaginateTabbedTable):
                            DeleteCluster, MakePublic, MakePrivate,
                            MakeProtected, MakeUnProtected,
                            CheckClusterAction)
+        if saharaclient.VERSIONS.active == '2':
+            row_actions = row_actions + (ForceDeleteCluster,)

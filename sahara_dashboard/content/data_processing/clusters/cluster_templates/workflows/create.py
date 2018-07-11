@@ -171,7 +171,7 @@ class ConfigureNodegroupsAction(workflows.Action):
         req = request.GET.copy()
         req.update(request.POST)
         plugin = req.get("plugin_name")
-        version = req.get("hadoop_version")
+        version = req.get("hadoop_version", None) or req["plugin_version"]
         if plugin and not version:
             version_name = plugin + "_version"
             version = req.get(version_name)

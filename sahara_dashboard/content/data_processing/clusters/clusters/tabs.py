@@ -100,6 +100,11 @@ class GeneralTab(tabs.Tab):
                                  "base_image": base_image,
                                  "cluster_template": cluster_template,
                                  "network": net_name})
+
+            if saharaclient.VERSIONS.active == '2':
+                cluster_info["cluster"].hadoop_version = (
+                    cluster_info["cluster"].plugin_version
+                )
         except Exception as e:
             LOG.error("Unable to fetch cluster details: %s" % str(e))
 

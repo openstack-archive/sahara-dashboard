@@ -57,7 +57,7 @@ class DeleteJobBinary(tables.DeleteAction):
         jb_type = url_parts[0]
         jb_internal_id = url_parts[len(url_parts) - 1]
 
-        if jb_type == "internal-db":
+        if jb_type == "internal-db" and saharaclient.VERSIONS.active == '1.1':
             try:
                 saharaclient.job_binary_internal_delete(request,
                                                         jb_internal_id)

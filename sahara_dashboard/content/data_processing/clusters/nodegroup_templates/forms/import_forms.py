@@ -125,10 +125,12 @@ class ImportNodegroupTemplateDetailsForm(forms.SelfHandlingForm):
             else:
                 self.fields["flavor"].choices = []
 
+            version = (template_json.get("hadoop_version", None) or
+                       template_json["plugin_version"])
             self.fields["image_id"].choices = \
                 self._populate_image_choices(request,
                                              template_json["plugin_name"],
-                                             template_json["hadoop_version"])
+                                             version)
         except (ValueError, KeyError):
             raise exceptions.BadRequest(_("Could not parse template"))
         except Exception:
