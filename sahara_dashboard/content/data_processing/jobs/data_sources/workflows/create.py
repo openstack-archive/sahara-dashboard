@@ -52,7 +52,8 @@ class GeneralConfigAction(workflows.Action):
             "data-ds_type-manila": _("Path on share"),
             "data-ds_type-swift": _("URL"),
             "data-ds_type-hdfs": _("URL"),
-            "data-ds_type-maprfs": _("URL")
+            "data-ds_type-maprfs": _("URL"),
+            "data-ds_type-s3": _("URL"),
         }))
 
     data_source_credential_user = forms.CharField(
@@ -74,6 +75,56 @@ class GeneralConfigAction(workflows.Action):
         label=_("Source password"),
         required=False)
 
+    data_source_credential_accesskey = forms.CharField(
+        label=_("S3 accsss key"),
+        required=False,
+        widget=forms.TextInput(attrs={
+            "class": "switched",
+            "data-switch-on": "ds_type",
+            "data-ds_type-s3": _("S3 access key")
+        }))
+
+    data_source_credential_secretkey = forms.CharField(
+        widget=forms.PasswordInput(attrs={
+            'class': 'switched',
+            'data-switch-on': 'ds_type',
+            'data-ds_type-s3': _("S3 secret key"),
+            'autocomplete': 'off'
+        }),
+        label=_("S3 secret key"),
+        required=False)
+
+    data_source_credential_endpoint = forms.CharField(
+        label=_("S3 endpoint"),
+        required=False,
+        help_text=_("Endpoint should be specified without protocol"),
+        widget=forms.TextInput(attrs={
+            "class": "switched",
+            "data-switch-on": "ds_type",
+            "data-ds_type-s3": _("S3 endpoint")
+        }))
+
+    data_source_credential_s3_ssl = forms.BooleanField(
+        label=_("Use SSL"),
+        required=False,
+        initial=False,
+        widget=forms.CheckboxInput(attrs={
+            "class": "switched",
+            "data-switch-on": "ds_type",
+            "data-ds_type-s3": _("Use SSL")
+        }))
+
+    data_source_credential_s3_bucket_in_path = forms.BooleanField(
+        label=_("Use bucket in path"),
+        required=False,
+        initial=True,
+        help_text=_("If checked, bucket will be in path instead of host"),
+        widget=forms.CheckboxInput(attrs={
+            "class": "switched",
+            "data-switch-on": "ds_type",
+            "data-ds_type-s3": _("Use bucket in path")
+        }))
+
     data_source_description = forms.CharField(
         label=_("Description"),
         required=False,
@@ -87,7 +138,8 @@ class GeneralConfigAction(workflows.Action):
 
         self.fields["data_source_type"].choices = [("swift", "Swift"),
                                                    ("hdfs", "HDFS"),
-                                                   ("maprfs", "MapR FS")]
+                                                   ("maprfs", "MapR FS"),
+                                                   ("s3", "S3")]
         # If Manila is running, enable it as a choice for a data source
         if saharaclient.base.is_service_enabled(request, 'share'):
             self.fields["data_source_type"].choices.append(
@@ -142,6 +194,22 @@ class CreateDataSource(workflows.Workflow):
     default_steps = (GeneralConfig, )
 
     def handle(self, request, context):
+        s3_credentials = {}
+        if context["general_data_source_type"] == "s3":
+            if context.get("general_data_source_credential_accesskey", None):
+                s3_credentials["accesskey"] = context[
+                    "general_data_source_credential_accesskey"]
+            if context.get("general_data_source_credential_secretkey", None):
+                s3_credentials["secretkey"] = context[
+                    "general_data_source_credential_secretkey"]
+            if context.get("general_data_source_credential_endpoint", None):
+                s3_credentials["endpoint"] = context[
+                    "general_data_source_credential_endpoint"]
+            s3_credentials["bucket_in_path"] = context[
+                "general_data_source_credential_s3_bucket_in_path"]
+            s3_credentials["ssl"] = context[
+                "general_data_source_credential_s3_ssl"]
+        s3_credentials = s3_credentials or None
         try:
             self.object = saharaclient.data_source_create(
                 request,
@@ -152,7 +220,8 @@ class CreateDataSource(workflows.Workflow):
                 context.get("general_data_source_credential_user", None),
                 context.get("general_data_source_credential_pass", None),
                 is_public=context['general_is_public'],
-                is_protected=context['general_is_protected']
+                is_protected=context['general_is_protected'],
+                s3_credentials=s3_credentials
             )
 
             hlps = helpers.Helpers(request)

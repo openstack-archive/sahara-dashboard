@@ -446,16 +446,18 @@ def cluster_update_acl_rules(request, cl_id, is_public=None,
 
 def data_source_create(request, name, description, ds_type, url,
                        credential_user=None, credential_pass=None,
-                       is_public=None, is_protected=None):
+                       is_public=None, is_protected=None,
+                       s3_credentials=None):
     return client(request).data_sources.create(
         name=name,
         description=description,
         data_source_type=ds_type,
         url=url,
-        credential_user=credential_user,
-        credential_pass=credential_pass,
+        credential_user=credential_user or None,
+        credential_pass=credential_pass or None,
         is_public=is_public,
-        is_protected=is_protected)
+        is_protected=is_protected,
+        s3_credentials=s3_credentials)
 
 
 def data_source_list(request, search_opts=None, limit=None, marker=None):

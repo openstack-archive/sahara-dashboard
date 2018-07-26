@@ -92,10 +92,11 @@ class DataProcessingDataSourceTests(test.TestCase):
             data_source.description,
             data_source.type,
             data_source.url,
-            "",
-            "",
+            '',
+            '',
             is_public=False,
-            is_protected=False)
+            is_protected=False,
+            s3_credentials=None)
 
         self.assertNoFormErrors(res)
         self.assertRedirectsNoFollow(res, INDEX_URL)
@@ -164,6 +165,32 @@ class DataProcessingDataSourceTests(test.TestCase):
             IsA(six.text_type),
             IsA(six.text_type),
             IsA(str),
-            "", "", is_public=False, is_protected=False)
+            '', '', is_public=False, is_protected=False, s3_credentials=None)
         self.mock_share_list.assert_called_once_with(IsHttpRequest())
+        self.assertNoFormErrors(res)
+
+    @test.create_mocks({api.sahara: ('data_source_create',)})
+    def test_create_s3(self):
+        form_data = {
+            "data_source_type": "s3",
+            "data_source_url": "s3a://a/b",
+            "data_source_credential_accesskey": "acc",
+            "data_source_credential_secretkey": "sec",
+            "data_source_credential_endpoint": "pointy.end",
+            "data_source_credential_s3_bucket_in_url": False,
+            "data_source_credential_s3_ssl": True,
+            "data_source_name": "tests3",
+            "data_source_description": "Test s3 description"
+        }
+        res = self.client.post(CREATE_URL, form_data)
+        self.mock_data_source_create.return_value = True
+        self.mock_data_source_create.assert_called_once_with(
+            IsHttpRequest(),
+            IsA(six.text_type),
+            IsA(six.text_type),
+            IsA(six.text_type),
+            IsA(six.text_type),
+            IsA(six.text_type),
+            IsA(six.text_type),
+            is_public=False, is_protected=False, s3_credentials=IsA(dict))
         self.assertNoFormErrors(res)
