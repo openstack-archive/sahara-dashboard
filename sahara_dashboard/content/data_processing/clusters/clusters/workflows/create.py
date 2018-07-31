@@ -138,10 +138,14 @@ class GeneralConfigAction(workflows.Action):
         plugin, hadoop_version = whelpers.\
             get_plugin_and_hadoop_version(request)
 
-        choices = [(template.id, template.name)
-                   for template in templates
-                   if (template.hadoop_version == hadoop_version and
-                       template.plugin_name == plugin)]
+        choices = []
+        for template in templates:
+            version = (
+                getattr(template, "hadoop_version", None) or
+                template.plugin_version
+            )
+            if version == hadoop_version and template.plugin_name == plugin:
+                choices.append((template.id, template.name))
 
         if not choices:
             choices.append(("", _("No Templates Available")))
