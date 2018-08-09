@@ -5,11 +5,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sahara-dashboard VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2018-02-17 13:24+0000\n"
+"POT-Creation-Date: 2018-07-31 20:47+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2018-01-25 07:07+0000\n"
+"PO-Revision-Date: 2018-07-30 12:06+0000\n"
 "Last-Translator: Andi Chandler <andi@gowling.com>\n"
 "Language-Team: English (United Kingdom)\n"
 "Language: en_GB\n"
@@ -93,6 +93,12 @@ msgstr "Availability Zone"
 
 msgid "Base Image"
 msgstr "Base Image"
+
+msgid "Boot From Volume"
+msgstr "Boot From Volume"
+
+msgid "Boot from Volume"
+msgstr "Boot from Volume"
 
 msgid "Cancel"
 msgstr "Cancel"
@@ -572,6 +578,12 @@ msgctxt "End time"
 msgid "Ended"
 msgstr "Ended"
 
+msgid "Endpoint should be specified without protocol"
+msgstr "Endpoint should be specified without protocol"
+
+msgid "Engine Job ID"
+msgstr "Engine Job ID"
+
 msgid "Enter any custom configuration required for your job's execution."
 msgstr "Enter any custom configuration required for your job's execution."
 
@@ -646,6 +658,15 @@ msgstr ""
 "For Data Processing internal job binaries, you may choose from the following:"
 
 msgid ""
+"For Data Sources in S3 storage, the URL should be specified in the format "
+"s3a://bucket/path. Also, each of the access properties may be optional if "
+"you have configured that property on your cluster manually."
+msgstr ""
+"For Data Sources in S3 storage, the URL should be specified in the format "
+"s3a://bucket/path. Also, each of the access properties may be optional if "
+"you have configured that property on your cluster manually."
+
+msgid ""
 "For Data Sources on a Manila share, choose the share and enter the path "
 "relative to the share (example: /outputdir/myinputfile.txt)"
 msgstr ""
@@ -679,6 +700,16 @@ msgstr ""
 "For Storm, Storm Pyleus, Spark and Shell jobs, only a main is required,\"libs"
 "\" are optional."
 
+msgid "Force Delete Cluster"
+msgid_plural "Force Delete Clusters"
+msgstr[0] "Force Delete Cluster"
+msgstr[1] "Force Delete Clusters"
+
+msgid "Force Deleted Cluster"
+msgid_plural "Force Deleted Clusters"
+msgstr[0] "Force Deleted Cluster"
+msgstr[1] "Force Deleted Clusters"
+
 msgid "General Info"
 msgstr "General Info"
 
@@ -702,6 +733,9 @@ msgstr "Hive"
 
 msgid "ID"
 msgstr "ID"
+
+msgid "If checked, bucket will be in path instead of host"
+msgstr "If checked, bucket will be in path instead of host"
 
 #, python-format
 msgid ""
@@ -730,6 +764,9 @@ msgstr ""
 "If selected, instances of a node group will be automatically configured "
 "during cluster creation. Otherwise you should manually specify configuration "
 "values."
+
+msgid "If selected, the node group instance will be booted from volume"
+msgstr "If selected, the node group instance will be booted from volume"
 
 msgid "Image"
 msgstr "Image"
@@ -1280,6 +1317,18 @@ msgstr "S3"
 
 msgid "S3 Endpoint"
 msgstr "S3 Endpoint"
+
+msgid "S3 access key"
+msgstr "S3 access key"
+
+msgid "S3 accsss key"
+msgstr "S3 acesss key"
+
+msgid "S3 endpoint"
+msgstr "S3 endpoint"
+
+msgid "S3 secret key"
+msgstr "S3 secret key"
 
 msgid ""
 "Sahara will use instances of this node group to access other cluster "
@@ -1873,6 +1922,9 @@ msgstr "Use Data Source Substitution for Names and UUIDs"
 msgid "Use HBase Common library"
 msgstr "Use HBase Common library"
 
+msgid "Use SSL"
+msgstr "Use SSL"
+
 msgid "Use anti-affinity groups for processes"
 msgstr "Use anti-affinity groups for processes"
 
@@ -1881,6 +1933,9 @@ msgstr "Use anti-affinity groups for: "
 
 msgid "Use auto-configuration"
 msgstr "Use auto-configuration"
+
+msgid "Use bucket in path"
+msgstr "Use bucket in path"
 
 msgid "Use the same topology name as defined in your .yaml file"
 msgstr "Use the same topology name as defined in your .yaml file"
