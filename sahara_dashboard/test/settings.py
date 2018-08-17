@@ -13,8 +13,6 @@
 from horizon.test.settings import *  # noqa
 from openstack_dashboard.test.settings import *  # noqa
 
-TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
-
 INSTALLED_APPS = list(INSTALLED_APPS)
 INSTALLED_APPS.append('sahara_dashboard.content.data_processing.clusters')
 INSTALLED_APPS.append('sahara_dashboard.content.data_processing.jobs')
