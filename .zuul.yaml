@@ -3,7 +3,7 @@
       - check-requirements
       - openstack-python-jobs-horizon
       - openstack-python35-jobs-horizon
-      - release-notes-jobs
+      - release-notes-jobs-python3
     check:
       jobs:
         - sahara-dashboard-tox-py35dj20:
