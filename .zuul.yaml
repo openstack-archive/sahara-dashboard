@@ -1,10 +1,18 @@
 - project:
+    templates:
+      - check-requirements
+      - openstack-python-jobs-horizon
+      - openstack-python35-jobs-horizon
+      - release-notes-jobs
     check:
       jobs:
         - sahara-dashboard-tox-py27-dj19
         - sahara-dashboard-tox-py27-dj110:
             voting: false
             branches: ^(?!stable/ocata).*$
+        - legacy-sahara-dashboard-dsvm-integration:
+            voting: false
+
     gate:
       jobs:
         - sahara-dashboard-tox-py27-dj19
