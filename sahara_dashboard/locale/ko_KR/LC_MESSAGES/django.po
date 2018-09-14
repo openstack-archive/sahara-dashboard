@@ -2,17 +2,18 @@
 # Ian Y. Choi <ianyrchoi@gmail.com>, 2016. #zanata
 # Sungjin Kang <gang.sungjin@gmail.com>, 2017. #zanata
 # minwook-shin <minwook0106@gmail.com>, 2017. #zanata
+# ByungYeol Woo <wby1089@gmail.com>, 2018. #zanata
 # Ian Y. Choi <ianyrchoi@gmail.com>, 2018. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: sahara-dashboard VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2018-03-01 09:13+0000\n"
+"POT-Creation-Date: 2018-08-27 10:14+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2018-02-11 07:31+0000\n"
-"Last-Translator: Ian Y. Choi <ianyrchoi@gmail.com>\n"
+"PO-Revision-Date: 2018-08-31 10:47+0000\n"
+"Last-Translator: ByungYeol Woo <wby1089@gmail.com>\n"
 "Language-Team: Korean (South Korea)\n"
 "Language: ko_KR\n"
 "X-Generator: Zanata 4.3.3\n"
@@ -95,6 +96,12 @@ msgstr "가용 구역"
 
 msgid "Base Image"
 msgstr "기본 이미지"
+
+msgid "Boot From Volume"
+msgstr "볼륨으로 부팅"
+
+msgid "Boot from Volume"
+msgstr "볼륨으로 부팅"
 
 msgid "Cancel"
 msgstr "취소"
@@ -564,6 +571,12 @@ msgctxt "End time"
 msgid "Ended"
 msgstr "종료 시간"
 
+msgid "Endpoint should be specified without protocol"
+msgstr "엔드포인트는 프로토콜 없이 지정되어야 함"
+
+msgid "Engine Job ID"
+msgstr "엔진 작업 ID"
+
 msgid "Enter any custom configuration required for your job's execution."
 msgstr "작업 실행에 필요한 사용자 정의 구성을 입력하십시오."
 
@@ -637,6 +650,15 @@ msgid ""
 msgstr "데이터 프로세싱 내부 작업 바이너리는 다음 중에서 선택할 수 있습니다."
 
 msgid ""
+"For Data Sources in S3 storage, the URL should be specified in the format "
+"s3a://bucket/path. Also, each of the access properties may be optional if "
+"you have configured that property on your cluster manually."
+msgstr ""
+"S3 스토리지의 데이터 소스에서, URL은 s3a://bucket/path 포맷으로 지정되어야 합"
+"니다. 또한 클러스터에 속성을 수동으로 설정했다면 각 접근 속성은 선택사항일 "
+"수 있습니다."
+
+msgid ""
 "For Data Sources on a Manila share, choose the share and enter the path "
 "relative to the share (example: /outputdir/myinputfile.txt)"
 msgstr ""
@@ -670,6 +692,14 @@ msgstr ""
 "Storm, Storm Pyleus, Spark 및 Shell 작업에 대해서는, main만 필수이고, \"libs"
 "\" 는 선택 사항입니다."
 
+msgid "Force Delete Cluster"
+msgid_plural "Force Delete Clusters"
+msgstr[0] "클러스터 강제 삭제"
+
+msgid "Force Deleted Cluster"
+msgid_plural "Force Deleted Clusters"
+msgstr[0] "강제로 삭제된 클러스터"
+
 msgid "General Info"
 msgstr "일반 정보"
 
@@ -693,6 +723,9 @@ msgstr "Hive"
 
 msgid "ID"
 msgstr "ID"
+
+msgid "If checked, bucket will be in path instead of host"
+msgstr "체크되었다면, 버킷은 호스트 대신 경로에 있습니다."
 
 #, python-format
 msgid ""
@@ -718,6 +751,9 @@ msgid ""
 msgstr ""
 "선택한 경우, 클러스터 생성시 노드 그룹의 인스턴스가 자동으로 구성됩니다. 그렇"
 "지 않으면 구성 값을 수동으로 지정해야 합니다."
+
+msgid "If selected, the node group instance will be booted from volume"
+msgstr "선택되면, 노드 그룹 인스턴스는 볼륨으로 부팅됩니다."
 
 msgid "Image"
 msgstr "이미지"
@@ -1263,6 +1299,18 @@ msgstr "S3"
 
 msgid "S3 Endpoint"
 msgstr "S3 엔드포인트"
+
+msgid "S3 access key"
+msgstr "S3 접근 키"
+
+msgid "S3 accsss key"
+msgstr "S3 접근 키"
+
+msgid "S3 endpoint"
+msgstr "S3 엔드포인트"
+
+msgid "S3 secret key"
+msgstr "S3 비밀 키"
 
 msgid ""
 "Sahara will use instances of this node group to access other cluster "
@@ -1847,6 +1895,9 @@ msgstr "이름과 UUID의 데이터 소스 대체 사용"
 msgid "Use HBase Common library"
 msgstr "HBase 공통 라이브러리 사용"
 
+msgid "Use SSL"
+msgstr "SSL 사용"
+
 msgid "Use anti-affinity groups for processes"
 msgstr "프로세스에 대해 anti-affinity 그룹 사용"
 
@@ -1855,6 +1906,9 @@ msgstr "다음에 대해 anti-affinity 그룹 사용: "
 
 msgid "Use auto-configuration"
 msgstr "자동 구성 사용"
+
+msgid "Use bucket in path"
+msgstr "경로에서 버킷 사용"
 
 msgid "Use the same topology name as defined in your .yaml file"
 msgstr ".yaml 파일에 정의한 내용과 동일한 토폴로지 이름을 사용합니다"

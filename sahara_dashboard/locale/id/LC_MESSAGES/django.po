@@ -5,15 +5,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sahara-dashboard VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2018-02-14 13:00+0000\n"
+"POT-Creation-Date: 2018-08-27 10:14+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2018-01-29 01:57+0000\n"
+"PO-Revision-Date: 2018-08-21 03:56+0000\n"
 "Last-Translator: suhartono <cloudsuhartono@gmail.com>\n"
 "Language-Team: Indonesian\n"
 "Language: id\n"
-"X-Generator: Zanata 3.9.6\n"
+"X-Generator: Zanata 4.3.3\n"
 "Plural-Forms: nplurals=1; plural=0\n"
 
 msgid " Done"
@@ -94,6 +94,12 @@ msgstr "Availability Zone (ketersediaan zona)"
 
 msgid "Base Image"
 msgstr "Base Image (image dasar)"
+
+msgid "Boot From Volume"
+msgstr "Boot Dari Volume"
+
+msgid "Boot from Volume"
+msgstr "Boot dari Volume"
 
 msgid "Cancel"
 msgstr "Cancel (pembatalan)"
@@ -568,6 +574,12 @@ msgctxt "End time"
 msgid "Ended"
 msgstr "Ended (diakhiri)"
 
+msgid "Endpoint should be specified without protocol"
+msgstr "Endpoint harus ditentukan tanpa protokol"
+
+msgid "Engine Job ID"
+msgstr "Engine Job ID"
+
 msgid "Enter any custom configuration required for your job's execution."
 msgstr ""
 "Masukkan konfigurasi kustom yang diperlukan untuk pelaksanaan pekerjaan Anda."
@@ -647,6 +659,15 @@ msgstr ""
 "berikut ini:"
 
 msgid ""
+"For Data Sources in S3 storage, the URL should be specified in the format "
+"s3a://bucket/path. Also, each of the access properties may be optional if "
+"you have configured that property on your cluster manually."
+msgstr ""
+"Untuk Sumber Data di penyimpanan S3, URL harus ditentukan dalam format s3a://"
+"bucket/path. Juga, setiap properti akses mungkin opsional jika Anda telah "
+"mengonfigurasi properti tersebut di kluster Anda secara manual."
+
+msgid ""
 "For Data Sources on a Manila share, choose the share and enter the path "
 "relative to the share (example: /outputdir/myinputfile.txt)"
 msgstr ""
@@ -680,6 +701,14 @@ msgstr ""
 "Untuk pekerjaan Storm, Storm Pyleus, Spark dan Shell, hanya main diperlukan, "
 "\"libs\" adalah opsional."
 
+msgid "Force Delete Cluster"
+msgid_plural "Force Delete Clusters"
+msgstr[0] "Force Delete Cluster"
+
+msgid "Force Deleted Cluster"
+msgid_plural "Force Deleted Clusters"
+msgstr[0] "Force Deleted Cluster"
+
 msgid "General Info"
 msgstr "General Info (info umum)"
 
@@ -703,6 +732,9 @@ msgstr "Hive"
 
 msgid "ID"
 msgstr "ID"
+
+msgid "If checked, bucket will be in path instead of host"
+msgstr "Jika dicentang, bucket akan berada di path dari pada  host"
 
 #, python-format
 msgid ""
@@ -731,6 +763,9 @@ msgstr ""
 "Jika terpilih, instance dari kelompok node akan secara otomatis "
 "dikonfigurasi selama pembuatan cluster. Jika tidak, Anda harus secara manual "
 "menentukan nilai konfigurasi."
+
+msgid "If selected, the node group instance will be booted from volume"
+msgstr "Jika dipilih, instance grup node akan di-boot dari volume"
 
 msgid "Image"
 msgstr "Image (gambar)"
@@ -1280,6 +1315,18 @@ msgstr "S3"
 
 msgid "S3 Endpoint"
 msgstr "S3 Endpoint"
+
+msgid "S3 access key"
+msgstr "S3 access key"
+
+msgid "S3 accsss key"
+msgstr "S3 accsss key"
+
+msgid "S3 endpoint"
+msgstr "S3 endpoint"
+
+msgid "S3 secret key"
+msgstr "S3 secret key"
 
 msgid ""
 "Sahara will use instances of this node group to access other cluster "
@@ -1869,6 +1916,9 @@ msgstr "Gunakan Pergantian Sumber Data untuk Nama dan UUID"
 msgid "Use HBase Common library"
 msgstr "Gunakan perpustakaan HBase Common"
 
+msgid "Use SSL"
+msgstr "Gunakan SSL"
+
 msgid "Use anti-affinity groups for processes"
 msgstr "Gunakan grup anti-afinitas untuk proses"
 
@@ -1877,6 +1927,9 @@ msgstr "Gunakan grup anti-afinitas untuk:"
 
 msgid "Use auto-configuration"
 msgstr "Gunakan auto-konfigurasi"
+
+msgid "Use bucket in path"
+msgstr "Gunakan bucket di path"
 
 msgid "Use the same topology name as defined in your .yaml file"
 msgstr ""
