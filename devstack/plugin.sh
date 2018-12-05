@@ -12,7 +12,7 @@ function configure_sahara_dashboard {
     # NOTE: If locale directory does not exist, compilemessages will fail,
     # so check for an existence of locale directory is required.
     if [ -d ${SAHARA_DASH_DIR}/sahara_dashboard/locale ]; then
-        (cd ${SAHARA_DASH_DIR}/sahara_dashboard; DJANGO_SETTINGS_MODULE=openstack_dashboard.settings ../manage.py compilemessages)
+        (cd ${SAHARA_DASH_DIR}/sahara_dashboard; DJANGO_SETTINGS_MODULE=openstack_dashboard.settings $PYTHON ../manage.py compilemessages)
     fi
 }
 
