@@ -7,9 +7,21 @@
     <dt>{% trans "ID" %}</dt>
     <dd>{{ job_execution.id }}</dd>
     <dt>{% trans "Project ID" %}</dt>
+    {% if job_execution.tenant_id %}
     <dd>{{ job_execution.tenant_id }}</dd>
+    {% else %}
+    <dd>{{ job_execution.project_id }}</dd>
+    {% endif %}
     <dt>{% trans "Job Template" %}</dt>
-    <dd><a href="{% url 'horizon:project:data_processing.jobs:jt-details' job_execution.job_id %}">{{ object_names.job_name }}</a></dd>
+    <dd>
+    {% if job_execution.job_id %}
+    <a href="{% url 'horizon:project:data_processing.jobs:jt-details' job_execution.job_id %}">
+    {% else %}
+    <a href="{% url 'horizon:project:data_processing.jobs:jt-details' job_execution.job_template_id %}">
+    {% endif %}
+    {{ object_names.job_name }}
+    </a>
+    </dd>
     <dt>{% trans "Public" %}</dt>
     <dd>{{ job_execution.is_public|yesno }}</dd>
     <dt>{% trans "Protected" %}</dt>

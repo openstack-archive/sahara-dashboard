@@ -5,7 +5,11 @@
       <dt>{% trans "Name" %}</dt>
       <dd>{{ job.name }}</dd>
       <dt>{% trans "Project ID" %}</dt>
+      {% if job.tenant_id %}
       <dd>{{ job.tenant_id }}</dd>
+      {% else %}
+      <dd>{{ job.project_id }}</dd>
+      {% endif %}
       <dt>{% trans "ID" %}</dt>
       <dd>{{ job.id }}</dd>
       <dt>{% trans "Type" %}</dt>

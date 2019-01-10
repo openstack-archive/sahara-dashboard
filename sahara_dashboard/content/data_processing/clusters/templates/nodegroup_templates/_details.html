@@ -4,8 +4,12 @@
     <dl class="dl-horizontal">
         <dt>{% trans "Name" %}</dt>
         <dd>{{ template.name }}</dd>
-        <dt>{% trans "Project Id" %}</dt>
+        <dt>{% trans "Project ID" %}</dt>
+        {% if template.tenant_id %}
         <dd>{{ template.tenant_id }}</dd>
+        {% else %}
+        <dd>{{ template.project_id }}</dd>
+        {% endif %}
         <dt>{% trans "ID" %}</dt>
         <dd>{{ template.id }}</dd>
         <dt>{% trans "Description" %}</dt>
@@ -60,8 +64,18 @@
   </dl>
 
   <dl class="dl-horizontal">
+  {% if show_bfv %}
     <dt>{% trans "Boot from Volume" %}</dt>
     <dd>{{ template.boot_from_volume }}</dd>
+    {% if template.boot_from_volume %}
+      <dt>{% trans "Boot Volume type" %}</dt>
+      <dd>{{ template.boot_volume_type }}</dd>
+      <dt>{% trans "Boot Volume AZ" %}</dt>
+      <dd>{{ template.boot_volume_availability_zone }}</dd>
+      <dt>{% trans "Boot Volume locality" %}</dt>
+      <dd>{{ template.boot_volume_local_to_instance }}</dd>
+    {% endif %}
+  {% endif %}
   </dl>
 
   <dl class="dl-horizontal">

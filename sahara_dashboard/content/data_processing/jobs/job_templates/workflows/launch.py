@@ -239,7 +239,11 @@ class JobConfigAction(workflows.Action):
         job_ex_id = req.get("job_execution_id")
         if job_ex_id is not None:
             job_ex = saharaclient.job_execution_get(request, job_ex_id)
-            job = saharaclient.job_get(request, job_ex.job_id)
+            try:
+                jt_id = job_ex.job_template_id  # typical APIv2
+            except AttributeError:
+                jt_id = job_ex.job_id  # APIv1.1, older APIv2
+            job = saharaclient.job_get(request, jt_id)
             job_configs, interface_args = _merge_interface_with_configs(
                 job.interface, job_ex.job_configs)
             edp_configs = {}
@@ -466,7 +470,11 @@ class JobExecutionInterfaceConfigAction(workflows.Action):
         job_ex_id = req.get("job_execution_id")
         if job_ex_id is not None:
             job_ex = saharaclient.job_execution_get(request, job_ex_id)
-            job = saharaclient.job_get(request, job_ex.job_id)
+            try:
+                jt_id = job_ex.job_template_id  # typical APIv2
+            except AttributeError:
+                jt_id = job_ex.job_id  # APIv1.1, older APIv2
+            job = saharaclient.job_get(request, jt_id)
             job_configs, interface_args = _merge_interface_with_configs(
                 job.interface, job_ex.job_configs)
 

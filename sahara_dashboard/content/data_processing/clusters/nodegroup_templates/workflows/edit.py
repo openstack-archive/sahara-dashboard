@@ -105,9 +105,18 @@ class EditNodegroupTemplate(copy_flow.CopyNodegroupTemplate):
                 is_protected=context['general_is_protected'],
                 image_id=image_id)
 
-            if saharaclient.VERSIONS.active == '2':
-                args_dict['boot_from_volume'] = (
-                    context['general_boot_from_volume'])
+            if (saharaclient.VERSIONS.active == '2'
+                    and context["general_boot_storage"] == "cinder_volume"):
+                args_dict['boot_from_volume'] = True
+                args_dict['boot_volume_type'] = (
+                    context["general_boot_volume_type"] or None
+                )
+                args_dict['boot_volume_availability_zone'] = (
+                    context["general_boot_volume_availability_zone"] or None
+                )
+                args_dict['boot_volume_local_to_instance'] = (
+                    context["general_boot_volume_local_to_instance"]
+                )
 
             saharaclient.nodegroup_template_update(**args_dict)
 

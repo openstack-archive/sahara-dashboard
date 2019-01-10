@@ -78,7 +78,7 @@ class GeneralConfigAction(workflows.Action):
     )
 
     storage = forms.ChoiceField(
-        label=_("Storage location"),
+        label=_("Attached storage location"),
         help_text=_("Choose a storage location"),
         choices=[],
         widget=forms.Select(attrs={
@@ -191,13 +191,51 @@ class GeneralConfigAction(workflows.Action):
             _("node group template"))
 
         if saharaclient.VERSIONS.active == '2':
-            self.fields['boot_from_volume'] = forms.BooleanField(
-                label=_("Boot From Volume"),
-                help_text=_("If selected, the node group instance will be "
-                            "booted from volume"),
+            self.fields['boot_storage'] = forms.ChoiceField(
+                label=_("Boot storage location"),
+                help_text=_("Choose a boot mode"),
+                choices=storage_choices(request),
+                widget=forms.Select(attrs={
+                    "class": "boot_storage_field switchable",
+                    'data-slug': 'boot_storage_loc'
+                }))
+
+            self.fields['boot_volume_type'] = forms.ChoiceField(
+                label=_("Boot volume type"),
                 required=False,
-                widget=forms.CheckboxInput(),
-                initial=False)
+                widget=forms.Select(attrs={
+                    "class": "boot_volume_type_field switched",
+                    "data-switch-on": "boot_storage_loc",
+                    "data-boot_storage_loc-cinder_volume":
+                        _('Boot volume type')
+                })
+            )
+
+            self.fields['boot_volume_local_to_instance'] = forms.BooleanField(
+                label=_("Boot volume local to instance"),
+                required=False,
+                help_text=_("Boot volume locality"),
+                widget=forms.CheckboxInput(attrs={
+                    "class": "boot_volume_local_to_instance_field switched",
+                    "data-switch-on": "boot_storage_loc",
+                    "data-boot_storage_loc-cinder_volume":
+                        _('Boot volume local to instance')
+                })
+            )
+
+            self.fields['boot_volume_availability_zone'] = forms.ChoiceField(
+                label=_("Boot volume availability Zone"),
+                choices=self.populate_volumes_availability_zone_choices(
+                    request, None),
+                help_text=_("Create boot volume in this availability zone."),
+                required=False,
+                widget=forms.Select(attrs={
+                    "class": "boot_volume_availability_zone_field switched",
+                    "data-switch-on": "boot_storage_loc",
+                    "data-boot_storage_loc-cinder_volume":
+                        _('Boot volume availability zone')
+                })
+            )
 
         self.fields["plugin_name"] = forms.CharField(
             widget=forms.HiddenInput(),
@@ -233,6 +271,10 @@ class GeneralConfigAction(workflows.Action):
         self.fields['volume_type'].choices = [(None, _("No volume type"))] + \
                                              [(type.name, type.name)
                                               for type in volume_types]
+
+        if saharaclient.VERSIONS.active == '2':
+            self.fields['boot_volume_type'].choices = (
+                self.fields['volume_type'].choices)
 
     def populate_flavor_choices(self, request, context):
         flavors = nova_utils.flavor_list(request)
@@ -556,10 +598,23 @@ class ConfigureNodegroupTemplate(workflow_helpers.ServiceParametersWorkflow,
 
             image_id = context["general_image"] or None
 
-            if saharaclient.VERSIONS.active == '2':
-                boot_from_volume = context["general_boot_from_volume"]
+            if (saharaclient.VERSIONS.active == '2'
+                    and context["general_boot_storage"] == "cinder_volume"):
+                boot_from_volume = True
+                boot_volume_type = (
+                    context["general_boot_volume_type"] or None
+                )
+                boot_volume_availability_zone = (
+                    context["general_boot_volume_availability_zone"] or None
+                )
+                boot_volume_local_to_instance = (
+                    context["general_boot_volume_local_to_instance"]
+                )
             else:
                 boot_from_volume = None
+                boot_volume_type = None
+                boot_volume_availability_zone = None
+                boot_volume_local_to_instance = None
 
             ngt = saharaclient.nodegroup_template_create(
                 request,
@@ -585,6 +640,9 @@ class ConfigureNodegroupTemplate(workflow_helpers.ServiceParametersWorkflow,
                 is_public=context['general_is_public'],
                 is_protected=context['general_is_protected'],
                 boot_from_volume=boot_from_volume,
+                boot_volume_type=boot_volume_type,
+                boot_volume_availability_zone=boot_volume_availability_zone,
+                boot_volume_local_to_instance=boot_volume_local_to_instance,
                 image_id=image_id)
 
             hlps = helpers.Helpers(request)

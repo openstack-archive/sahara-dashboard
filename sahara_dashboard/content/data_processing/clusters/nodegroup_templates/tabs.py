@@ -98,10 +98,16 @@ class GeneralTab(tabs.Tab):
         security_groups = helpers.get_security_groups(
             request, template.security_groups)
 
+        if getattr(template, 'boot_from_volume', None) is None:
+            show_bfv = False
+        else:
+            show_bfv = True
+
         return {"template": template, "flavor": flavor,
                 "floating_ip_pool_name": floating_ip_pool_name,
                 "base_image_name": base_image_name,
-                "security_groups": security_groups}
+                "security_groups": security_groups,
+                "show_bfv": show_bfv}
 
     def _get_floating_ip_pool_name(self, request, pool_id):
         pools = [pool for pool in neutron.floating_ip_pools_list(

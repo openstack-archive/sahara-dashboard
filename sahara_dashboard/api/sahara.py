@@ -171,7 +171,10 @@ def nodegroup_template_create(request, name, plugin_name, hadoop_version,
                               is_public=None,
                               is_protected=None,
                               volume_mount_prefix=None,
-                              boot_from_volume=None):
+                              boot_from_volume=None,
+                              boot_volume_type=None,
+                              boot_volume_availability_zone=None,
+                              boot_volume_local_to_instance=None):
 
     payload = dict(
         name=name,
@@ -200,6 +203,13 @@ def nodegroup_template_create(request, name, plugin_name, hadoop_version,
     if VERSIONS.active == '2':
         payload['plugin_version'] = hadoop_version
         payload['boot_from_volume'] = boot_from_volume
+        payload['boot_volume_type'] = boot_volume_type
+        payload['boot_volume_availability_zone'] = (
+            boot_volume_availability_zone
+        )
+        payload['boot_volume_local_to_instance'] = (
+            boot_volume_local_to_instance
+        )
     else:
         payload['hadoop_version'] = hadoop_version
 
@@ -243,7 +253,10 @@ def nodegroup_template_update(request, ngt_id, name, plugin_name,
                               is_protected=None,
                               is_public=None,
                               image_id=None,
-                              boot_from_volume=None):
+                              boot_from_volume=None,
+                              boot_volume_type=None,
+                              boot_volume_availability_zone=None,
+                              boot_volume_local_to_instance=None):
 
     payload = dict(
         ng_template_id=ngt_id,
@@ -272,6 +285,14 @@ def nodegroup_template_update(request, ngt_id, name, plugin_name,
     if VERSIONS.active == '2':
         payload['plugin_version'] = hadoop_version
         payload['boot_from_volume'] = boot_from_volume
+        payload['boot_volume_type'] = boot_volume_type
+        payload['boot_volume_availability_zone'] = (
+            boot_volume_availability_zone
+        )
+        payload['boot_volume_local_to_instance'] = (
+            boot_volume_local_to_instance
+        )
+
     else:
         payload['hadoop_version'] = hadoop_version
 
@@ -696,11 +717,17 @@ def job_execution_list(request, search_opts=None, marker=None, limit=None):
     job_dict = {j.id: j for j in _job_list(new_request)}
     cluster_dict = {c.id: c for c in _cluster_list(new_request)}
 
+    def _find_jt_id(jex_obj):
+        try:
+            return jex_obj.job_template_id  # typical APIv2
+        except AttributeError:
+            return jex_obj.job_id  # APIv1.1, older APIv2
+
     resolved_job_execution_list = [
         _resolve_job_execution_names(
             job_execution,
             cluster_dict.get(job_execution.cluster_id),
-            job_dict.get(job_execution.job_id))
+            job_dict.get(_find_jt_id(job_execution)))
         for job_execution in job_execution_list
     ]
 
@@ -719,7 +746,11 @@ def job_execution_get(request, jex_id):
 
     jex = getattr(sahara, je_manager).get(obj_id=jex_id)
     cluster = safe_call(client(request).clusters.get, jex.cluster_id)
-    job = safe_call(getattr(sahara, jt_manager).get, jex.job_id)
+    try:
+        jt_id = jex.job_template_id  # typical APIv2
+    except AttributeError:
+        jt_id = jex.job_id  # APIv1.1, older APIv2
+    job = safe_call(getattr(sahara, jt_manager).get, jt_id)
 
     return _resolve_job_execution_names(jex, cluster, job)
 

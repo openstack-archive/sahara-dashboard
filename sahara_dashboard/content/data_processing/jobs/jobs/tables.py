@@ -92,7 +92,11 @@ class ReLaunchJobExistingCluster(j_t.ChoosePlugin):
 
     def get_link_url(self, datum):
         base_url = reverse(self.url)
-        params = http.urlencode({'job_id': datum.job_id,
+        try:
+            job_template_id = datum.job_template_id  # typical APIv2
+        except AttributeError:
+            job_template_id = datum.job_id  # APIv1.1, older APIv2
+        params = http.urlencode({'job_id': job_template_id,
                                  'job_execution_id': datum.id})
         return "?".join([base_url, params])
 
@@ -164,9 +168,15 @@ class JobsTable(sahara_table.SaharaPaginateTabbedTable):
         @staticmethod
         def link(job_execution):
             if job_execution.job_name:
+                try:
+                    # typical APIv2
+                    job_template_id = job_execution.job_template_id
+                except AttributeError:
+                    # APIv1.1, older APIv2
+                    job_template_id = job_execution.job_id
                 return reverse("horizon:project:data_processing."
                                "jobs:jt-details",
-                               args=(http.urlquote(job_execution.job_id),))
+                               args=(http.urlquote(job_template_id),))
             else:
                 # No link should be generated for a deleted Job.
                 return None
