@@ -35,7 +35,7 @@ class TestCRUDBase(SaharaTestCase):
         self.jobtemplate_name = self.gen_name('test-job')
 
     def create_flavor(self):
-        flavors_page = self.home_pg.go_to_system_flavorspage()
+        flavors_page = self.home_pg.go_to_admin_compute_flavorspage()
 
         flavors_page.create_flavor(
             name=self.flavor_name,
@@ -47,12 +47,12 @@ class TestCRUDBase(SaharaTestCase):
         self.assertTrue(flavors_page.is_flavor_present(self.flavor_name))
 
     def delete_flavor(self):
-        flavors_page = self.home_pg.go_to_system_flavorspage()
+        flavors_page = self.home_pg.go_to_admin_compute_flavorspage()
         flavors_page.delete_flavor_by_row(self.flavor_name)
         self.assertFalse(flavors_page.is_flavor_present(self.flavor_name))
 
     def create_image(self):
-        image_pg = self.home_pg.go_to_compute_imagespage()
+        image_pg = self.home_pg.go_to_project_compute_imagespage()
         image_pg.create_image(
             self.image_name, image_file=self.CONFIG.sahara.fake_image_location)
         image_pg._wait_until(
@@ -60,7 +60,7 @@ class TestCRUDBase(SaharaTestCase):
             timeout=10 * 60)
 
     def delete_image(self):
-        image_pg = self.home_pg.go_to_compute_imagespage()
+        image_pg = self.home_pg.go_to_project_compute_imagespage()
         image_pg.delete_image(self.image_name)
 
     def register_image(self):

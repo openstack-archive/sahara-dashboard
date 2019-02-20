@@ -1,0 +1,4 @@
+---
+devstack_base_dir: "/opt/stack"
+sahara_cloud_admin: "devstack-admin"
+sahara_cloud_demo: "devstack"

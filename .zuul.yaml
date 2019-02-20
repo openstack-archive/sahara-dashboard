@@ -9,8 +9,9 @@
       jobs:
         - sahara-dashboard-tox-py35dj20:
             voting: false
-        - legacy-sahara-dashboard-dsvm-integration:
-            voting: false
+    experimental:
+      jobs:
+        - sahara-dashboard-integration
 
 - job:
     name: sahara-dashboard-tox-base
@@ -28,3 +29,34 @@
     parent: sahara-dashboard-tox-base
     vars:
       tox_envlist: py35dj20
+
+- job:
+    name: sahara-dashboard-integration
+    parent: devstack
+    required-projects:
+      - openstack/heat
+      - openstack/horizon
+      - openstack/sahara
+      - openstack/sahara-plugin-ambari
+      - openstack/sahara-plugin-cdh
+      - openstack/sahara-plugin-mapr
+      - openstack/sahara-plugin-spark
+      - openstack/sahara-plugin-storm
+      - openstack/sahara-plugin-vanilla
+      - openstack/sahara-dashboard
+    roles:
+      - zuul: openstack/horizon
+    vars:
+      devstack_plugins:
+        sahara: 'git://git.openstack.org/openstack/sahara'
+        sahara-dashboard: 'git://git.openstack.org/openstack/sahara-dashboard'
+        heat: 'git://git.openstack.org/openstack/heat'
+      devstack_services:
+        horizon: true
+        tls-proxy: false
+    pre-run: playbooks/sahara-dashboard-integration/pre.yaml
+    run: playbooks/sahara-dashboard-integration/run.yaml
+    irrelevant-files:
+      - ^.*\.rst$
+      - ^doc/.*$
+      - ^releasenotes/.*$

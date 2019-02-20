@@ -34,3 +34,12 @@ python3.5 [platform:ubuntu-xenial]
 uuid-dev [platform:dpkg]
 zlib-devel [platform:rpm]
 zlib1g-dev [platform:dpkg]
+
+# integration tests
+firefox [integrationtests]
+dbus [integrationtests platform:redhat]
+dbus-1 [integrationtests platform:suse]
+xvfb [integrationtests platform:dpkg]
+# already part of xorg-x11-server on openSUSE
+xorg-x11-server-Xvfb [integrationtests platform:redhat]
+libav-tools [integrationtests platform:dpkg]

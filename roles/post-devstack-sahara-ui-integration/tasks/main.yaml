@@ -1,0 +1,10 @@
+---
+- name: copy the updated config snipped which enables the fake plugin
+  copy:
+    src: fake_config.json
+    dest: /tmp/sahara_fake_config.json
+
+- name: change the config of the fake plugin
+  shell: |
+    openstack --os-cloud {{ sahara_cloud_admin }} --os-project-name demo \
+        dataprocessing plugin update fake /tmp/sahara_fake_config.json

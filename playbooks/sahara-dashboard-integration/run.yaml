@@ -1,0 +1,13 @@
+---
+- hosts: all
+  strategy: linear
+  roles:
+    - orchestrate-devstack
+
+- hosts: controller
+  roles:
+    - post-devstack-sahara-ui-integration
+    - role: tox
+      tox_environment:
+        AVCONV_INSTALLED: 1
+      tox_envlist: py27integration

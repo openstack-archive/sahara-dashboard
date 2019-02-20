@@ -1,0 +1,5 @@
+---
+devstack_base_dir: "/opt/stack"
+sahara_cloud_image: "https://cloud-images.ubuntu.com/xenial/current/xenial-server-cloudimg-amd64-disk1.img"
+# TODO: if the following option is changed, it should also be specified in tempest.conf
+sahara_cloud_image_remote_path: "/tmp/xenial-server-cloudimg-amd64-disk1.img"

@@ -22,7 +22,7 @@ class TestSaharaImageRegistry(SaharaTestCase):
 
     def setUp(self):
         super(TestSaharaImageRegistry, self).setUp()
-        image_pg = self.home_pg.go_to_compute_imagespage()
+        image_pg = self.home_pg.go_to_project_compute_imagespage()
         image_pg.create_image(
             IMAGE_NAME, image_file=self.CONFIG.sahara.fake_image_location)
         image_pg.find_message_and_dismiss(messages.SUCCESS)
@@ -52,6 +52,6 @@ class TestSaharaImageRegistry(SaharaTestCase):
                          "Image was not unregistered.")
 
     def tearDown(self):
-        image_pg = self.home_pg.go_to_compute_imagespage()
+        image_pg = self.home_pg.go_to_project_compute_imagespage()
         image_pg.delete_image(IMAGE_NAME)
         super(TestSaharaImageRegistry, self).tearDown()

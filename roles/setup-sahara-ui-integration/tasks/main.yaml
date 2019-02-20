@@ -1,0 +1,21 @@
+---
+- name: download the ubuntu image file
+  get_url:
+    url: "{{ sahara_cloud_image }}"
+    dest: "{{ sahara_cloud_image_remote_path }}"
+
+# enable legacy panels (two files in local/local_settings.d and a new setting file
+# for the integration tests)
+- name: setup the old behavior of tables for testing purposes
+  copy:
+    src: "{{ devstack_base_dir }}/horizon/openstack_dashboard/local/local_settings.d/{{ item }}.example"
+    dest: "{{ devstack_base_dir }}/horizon/openstack_dashboard/local/local_settings.d/{{ item }}"
+    remote_src: yes
+  with_items:
+    - '_20_integration_tests_scaffolds.py'
+    - '_2010_integration_tests_deprecated.py'
+
+- name: setup the old behavior of panels for testing purposes
+  copy:
+    src: legacy_panels.conf
+    dest: "{{ devstack_base_dir }}/horizon/openstack_dashboard/test/integration_tests/local-horizon.conf"
