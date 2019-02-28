@@ -10,9 +10,6 @@
         - sahara-dashboard-tox-py27-dj110:
             voting: false
             branches: ^(?!stable/ocata).*$
-        - legacy-sahara-dashboard-dsvm-integration:
-            voting: false
-
     gate:
       jobs:
         - sahara-dashboard-tox-py27-dj19
