@@ -8,11 +8,7 @@
       jobs:
         - sahara-dashboard-tox-py35dj20:
             voting: false
-
         - openstack-tox-lower-constraints
-        - legacy-sahara-dashboard-dsvm-integration:
-            voting: false
-
     gate:
       jobs:
         - openstack-tox-lower-constraints
