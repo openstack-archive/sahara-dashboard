@@ -4,8 +4,3 @@
       - openstack-python-jobs-horizon
       - openstack-python35-jobs-horizon
       - release-notes-jobs
-    check:
-      jobs:
-        - legacy-sahara-dashboard-dsvm-integration:
-            voting: false
-
