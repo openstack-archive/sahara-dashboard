@@ -4,11 +4,12 @@
       - openstack-lower-constraints-jobs
       - openstack-python-jobs-horizon
       - openstack-python35-jobs-horizon
+      - openstack-python36-jobs-horizon
+      - openstack-python37-jobs-horizon
       - release-notes-jobs-python3
     check:
       jobs:
-        - sahara-dashboard-tox-py35dj20:
-            voting: false
+        - sahara-dashboard-tox-python3-django111
     experimental:
       jobs:
         - sahara-dashboard-integration
@@ -17,7 +18,7 @@
     name: sahara-dashboard-tox-base
     parent: openstack-tox
     required-projects:
-      - openstack/horizon
+      - openstack/sahara-dashboard
     irrelevant-files:
       - ^.*\.rst$
       - ^doc/.*$
@@ -25,10 +26,10 @@
       - ^sahara_dashboard/locale/.*$
 
 - job:
-    name: sahara-dashboard-tox-py35dj20
+    name: sahara-dashboard-tox-python3-django111
     parent: sahara-dashboard-tox-base
     vars:
-      tox_envlist: py35dj20
+      tox_envlist: py3-dj111
 
 - job:
     name: sahara-dashboard-integration
