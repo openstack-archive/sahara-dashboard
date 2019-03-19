@@ -5,7 +5,11 @@
     <dt>{% trans "Name" %}</dt>
     <dd>{{ cluster.name }}</dd>
     <dt>{% trans "Project ID" %}</dt>
+    {% if cluster.tenant_id %}
     <dd>{{ cluster.tenant_id }}</dd>
+    {% else %}
+    <dd>{{ cluster.project_id }}</dd>
+    {% endif %}
     <dt>{% trans "ID" %}</dt>
     <dd>{{ cluster.id }}</dd>
     <dt>{% trans "Description" %}</dt>

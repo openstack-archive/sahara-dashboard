@@ -103,6 +103,10 @@ class GeneralTab(tabs.Tab):
 
     def get_object_names(self, job_ex, request):
         object_names = {}
+        try:
+            job_template_id = job_ex.job_template_id  # typical APIv2
+        except AttributeError:
+            job_template_id = job_ex.job_id  # APIv1.1, older APIv2
         obj_names_map = {'input_name': {'obj': 'data_source_get',
                                         'obj_id': job_ex.input_id},
                          'output_name': {'obj': 'data_source_get',
@@ -110,7 +114,7 @@ class GeneralTab(tabs.Tab):
                          'cluster_name': {'obj': 'cluster_get',
                                           'obj_id': job_ex.cluster_id},
                          'job_name': {'obj': 'job_get',
-                                      'obj_id': job_ex.job_id}}
+                                      'obj_id': job_template_id}}
         for item in obj_names_map:
             object_names[item] = (
                 self.get_object_name(obj_names_map[item]['obj_id'],

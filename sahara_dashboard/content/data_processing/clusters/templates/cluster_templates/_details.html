@@ -5,7 +5,11 @@
     <dt>{% trans "Name" %}</dt>
     <dd>{{ template.name }}</dd>
     <dt>{% trans "Project ID" %}</dt>
+    {% if template.tenant_id %}
     <dd>{{ template.tenant_id }}</dd>
+    {% else %}
+    <dd>{{ template.project_id }}</dd>
+    {% endif %}
     <dt>{% trans "ID" %}</dt>
     <dd>{{ template.id }}</dd>
     <dt>{% trans "Description" %}</dt>

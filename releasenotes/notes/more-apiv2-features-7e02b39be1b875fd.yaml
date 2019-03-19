@@ -1,0 +1,12 @@
+---
+features:
+  - |
+    Support for the new boot from volume options introduced in the
+    Stein release of Sahara is added.
+other:
+  - |
+    Coinciding with the official stability of Sahara APIv2, operators
+    should feel especially encouraged to set "data-processing" API
+    version to "2" in the `OPENSTACK_API_VERSIONS` dictionary found in
+    Horizon's local_settings.py. As previously stated, some Sahara
+    features are only exposed through APIv2.
