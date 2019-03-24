@@ -49,9 +49,9 @@
       - zuul: openstack/horizon
     vars:
       devstack_plugins:
-        sahara: 'git://git.openstack.org/openstack/sahara'
-        sahara-dashboard: 'git://git.openstack.org/openstack/sahara-dashboard'
-        heat: 'git://git.openstack.org/openstack/heat'
+        sahara: 'https://git.openstack.org/openstack/sahara'
+        sahara-dashboard: 'https://git.openstack.org/openstack/sahara-dashboard'
+        heat: 'https://git.openstack.org/openstack/heat'
       devstack_services:
         horizon: true
         tls-proxy: false
