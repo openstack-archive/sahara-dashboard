@@ -23,7 +23,7 @@ How to use with devstack:
 
 Add the following to your devstack ``local.conf`` file::
 
-    enable_plugin sahara-dashboard git://git.openstack.org/openstack/sahara-dashboard
+    enable_plugin sahara-dashboard https://git.openstack.org/openstack/sahara-dashboard
 
 
 To run unit tests:
