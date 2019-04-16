@@ -3,7 +3,6 @@
       - check-requirements
       - openstack-lower-constraints-jobs
       - openstack-python-jobs-horizon
-      - openstack-python35-jobs-horizon
       - openstack-python36-jobs-horizon
       - openstack-python37-jobs-horizon
       - release-notes-jobs-python3
