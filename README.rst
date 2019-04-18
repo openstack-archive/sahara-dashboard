@@ -23,7 +23,7 @@ How to use with devstack:
 
 Add the following to your devstack ``local.conf`` file::
 
-    enable_plugin sahara-dashboard https://git.openstack.org/openstack/sahara-dashboard
+    enable_plugin sahara-dashboard https://opendev.org/openstack/sahara-dashboard
 
 
 To run unit tests:
@@ -40,7 +40,7 @@ outside of the horizon codebase, in the repository.
 Links:
 ------
 
-Sahara project: https://git.openstack.org/cgit/openstack/sahara
+Sahara project: https://opendev.org/openstack/sahara
 
 Sahara at wiki.openstack.org: https://wiki.openstack.org/wiki/Sahara
 
