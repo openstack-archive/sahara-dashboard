@@ -3,16 +3,17 @@
 # Robert Simai <robert.simai@suse.com>, 2017. #zanata
 # Frank Kloeker <eumel@arcor.de>, 2018. #zanata
 # Robert Simai <robert.simai@suse.com>, 2018. #zanata
+# Robert Simai <robert.simai@suse.com>, 2019. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: sahara-dashboard VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2018-08-27 10:14+0000\n"
+"POT-Creation-Date: 2019-03-25 09:09+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2018-08-11 08:51+0000\n"
-"Last-Translator: Frank Kloeker <eumel@arcor.de>\n"
+"PO-Revision-Date: 2019-05-03 02:00+0000\n"
+"Last-Translator: Robert Simai <robert.simai@suse.com>\n"
 "Language-Team: German\n"
 "Language: de\n"
 "X-Generator: Zanata 4.3.3\n"
@@ -78,6 +79,9 @@ msgstr "Anti-Affinität erlaubt für"
 msgid "Arguments"
 msgstr "Argumente"
 
+msgid "Attached storage location"
+msgstr "Eingebundener Speicherort"
+
 msgid "Auto Security Group"
 msgstr "Auto Sicherheitsgruppe"
 
@@ -97,11 +101,26 @@ msgstr "Verfügbarkeitszone"
 msgid "Base Image"
 msgstr "Basis-Abbild"
 
-msgid "Boot From Volume"
-msgstr "Von Datenträger starten"
+msgid "Boot Volume AZ"
+msgstr "Boot-Datenträger AZ"
+
+msgid "Boot Volume type"
+msgstr "Boot-Datenträger Typ"
 
 msgid "Boot from Volume"
 msgstr "Von Datenträger starten"
+
+msgid "Boot storage location"
+msgstr "Boot Speicherort"
+
+msgid "Boot volume availability Zone"
+msgstr "Boot-Datenträger Verfügbarkeitszone"
+
+msgid "Boot volume availability zone"
+msgstr "Boot-Datenträger Verfügbarkeitszone"
+
+msgid "Boot volume type"
+msgstr "Boot-Datenträger Typ"
 
 msgid "Cancel"
 msgstr "Abbrechen"
@@ -114,6 +133,9 @@ msgstr "Prüfe"
 
 msgid "Choose"
 msgstr "Auswählen"
+
+msgid "Choose a boot mode"
+msgstr "Boot-Modus auswählen"
 
 msgid "Choose a main binary"
 msgstr "Wählen Sie ein Haupt-Binärprogramm"
@@ -368,6 +390,9 @@ msgstr "Aufgabenvorlage mit angegebenem Namen erstellen."
 
 msgid "Create a script to be uploaded dynamically"
 msgstr "Erzeugen Sie ein Skript für das dynamische Hochladen"
+
+msgid "Create boot volume in this availability zone."
+msgstr "Erstelle Boot-Datenträger in dieser Verfügbarkeitszone."
 
 msgid "Create security group for this Node Group."
 msgstr "Sicherheitsgruppe für diese Knoten-Gruppe erstellen."
@@ -784,9 +809,6 @@ msgstr ""
 "Wenn ausgewählt, werden Instanzen einer Knoten-Gruppe während der Cluster-"
 "Konfiguration automatisch konfiguriert. Andernfalls sollte manuelle "
 "Konfiguration gewählt werden."
-
-msgid "If selected, the node group instance will be booted from volume"
-msgstr "Wenn ausgewählt, startet die Knotengruppeninstanz from Datenträger"
 
 msgid "Image"
 msgstr "Abbild"
@@ -1280,9 +1302,6 @@ msgstr "Fortschritt"
 msgid "Project ID"
 msgstr "Projekt-ID"
 
-msgid "Project Id"
-msgstr "Projekt-ID"
-
 msgid "Protected"
 msgstr "Geschützt"
 
@@ -1548,9 +1567,6 @@ msgstr "Status-Beschreibung"
 
 msgid "Step Description"
 msgstr "Schrittbeschreibung"
-
-msgid "Storage location"
-msgstr "Storage Lokation"
 
 msgid "Storage type"
 msgstr "Speichertyp"
