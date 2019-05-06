@@ -1,11 +1,11 @@
 # Akihiro Motoki <amotoki@gmail.com>, 2016. #zanata
 # Andreas Jaeger <jaegerandi@gmail.com>, 2016. #zanata
-# Shu Muto <shu-mutou@rf.jp.nec.com>, 2016. #zanata
+# Shu Muto <shu.mutow@gmail.com>, 2016. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: sahara-dashboard VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2018-01-08 12:57+0000\n"
+"POT-Creation-Date: 2019-04-22 11:41+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Language-Team: Japanese\n"
 "Language: ja\n"
 "Plural-Forms: nplurals=1; plural=0\n"
-"X-Generator: Zanata 3.9.6\n"
+"X-Generator: Zanata 4.3.3\n"
 
 msgid " Done"
 msgstr " 完了"
@@ -1072,9 +1072,6 @@ msgstr "進捗"
 msgid "Project ID"
 msgstr "プロジェクト ID"
 
-msgid "Project Id"
-msgstr "プロジェクト ID"
-
 msgid "Protected"
 msgstr "保護"
 
@@ -1288,9 +1285,6 @@ msgstr "ステータスの詳細"
 
 msgid "Step Description"
 msgstr "説明"
-
-msgid "Storage location"
-msgstr "ストレージの場所"
 
 msgid "Storage type"
 msgstr "ストレージ種別"

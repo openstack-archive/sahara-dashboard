@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sahara-dashboard VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2018-02-17 13:24+0000\n"
+"POT-Creation-Date: 2019-04-22 11:41+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1055,9 +1055,6 @@ msgstr "进行"
 msgid "Project ID"
 msgstr "项目ID"
 
-msgid "Project Id"
-msgstr "项目ID"
-
 msgid "Protected"
 msgstr "受保护的"
 
@@ -1263,9 +1260,6 @@ msgstr "状态说明"
 
 msgid "Step Description"
 msgstr "步骤说明"
-
-msgid "Storage location"
-msgstr "存储位置"
 
 msgid "Storage type"
 msgstr "存储类型"

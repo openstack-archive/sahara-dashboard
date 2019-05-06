@@ -4,15 +4,16 @@
 # minwook-shin <minwook0106@gmail.com>, 2017. #zanata
 # ByungYeol Woo <wby1089@gmail.com>, 2018. #zanata
 # Ian Y. Choi <ianyrchoi@gmail.com>, 2018. #zanata
+# ByungYeol Woo <wby1089@gmail.com>, 2019. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: sahara-dashboard VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2018-08-27 10:14+0000\n"
+"POT-Creation-Date: 2019-04-22 11:41+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2018-08-31 10:47+0000\n"
+"PO-Revision-Date: 2019-05-01 11:14+0000\n"
 "Last-Translator: ByungYeol Woo <wby1089@gmail.com>\n"
 "Language-Team: Korean (South Korea)\n"
 "Language: ko_KR\n"
@@ -78,6 +79,9 @@ msgstr "Anti-affinity 사용"
 msgid "Arguments"
 msgstr "인수"
 
+msgid "Attached storage location"
+msgstr "첨부된 스토리지 위치"
+
 msgid "Auto Security Group"
 msgstr "자동 보안 그룹"
 
@@ -97,11 +101,14 @@ msgstr "가용 구역"
 msgid "Base Image"
 msgstr "기본 이미지"
 
-msgid "Boot From Volume"
-msgstr "볼륨으로 부팅"
-
 msgid "Boot from Volume"
 msgstr "볼륨으로 부팅"
+
+msgid "Boot storage location"
+msgstr "부트 스토리지 위치"
+
+msgid "Boot volume type"
+msgstr "부트 볼륨 유형"
 
 msgid "Cancel"
 msgstr "취소"
@@ -114,6 +121,9 @@ msgstr "검사"
 
 msgid "Choose"
 msgstr "선택"
+
+msgid "Choose a boot mode"
+msgstr "부트 모드 선택"
 
 msgid "Choose a main binary"
 msgstr "기본 바이너리 선택"
@@ -752,9 +762,6 @@ msgstr ""
 "선택한 경우, 클러스터 생성시 노드 그룹의 인스턴스가 자동으로 구성됩니다. 그렇"
 "지 않으면 구성 값을 수동으로 지정해야 합니다."
 
-msgid "If selected, the node group instance will be booted from volume"
-msgstr "선택되면, 노드 그룹 인스턴스는 볼륨으로 부팅됩니다."
-
 msgid "Image"
 msgstr "이미지"
 
@@ -1236,9 +1243,6 @@ msgstr "진행"
 msgid "Project ID"
 msgstr "프로젝트 ID"
 
-msgid "Project Id"
-msgstr "프로젝트 ID"
-
 msgid "Protected"
 msgstr "보호됨"
 
@@ -1496,9 +1500,6 @@ msgstr "상태 설명"
 
 msgid "Step Description"
 msgstr "단계 설명"
-
-msgid "Storage location"
-msgstr "스토리지 위치"
 
 msgid "Storage type"
 msgstr "스토리지 타입"
