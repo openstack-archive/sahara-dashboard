@@ -38,14 +38,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'Sahara Dashboard Release Notes'
 copyright = u'2013, Sahara Developers'
-
-# Release notes are version independent.
-# The full version, including alpha/beta/rc tags.
-release = ''
-# The short X.Y version.
-version = ''
 
 # openstackdocstheme options
 repository_name = 'openstack/sahara-dashboard'
@@ -131,11 +124,6 @@ html_theme = 'openstackdocs'
 # directly to the root of the documentation.
 # html_extra_path = []
 
-# If not '', a 'Last updated on:' timestamp is inserted at every page bottom,
-# using the given strftime format.
-# html_last_updated_fmt = '%b %d, %Y'
-html_last_updated_fmt = '%Y-%m-%d %H:%M'
-
 # If true, SmartyPants will be used to convert quotes and dashes to
 # typographically correct entities.
 # html_use_smartypants = True
@@ -178,17 +166,6 @@ htmlhelp_basename = 'SaharaDashboardReleaseNotesdoc'
 
 
 # -- Options for LaTeX output ---------------------------------------------
-
-latex_elements = {
-    # The paper size ('letterpaper' or 'a4paper').
-    # 'papersize': 'letterpaper',
-
-    # The font size ('10pt', '11pt' or '12pt').
-    # 'pointsize': '10pt',
-
-    # Additional stuff for the LaTeX preamble.
-    # 'preamble': '',
-}
 
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title,
