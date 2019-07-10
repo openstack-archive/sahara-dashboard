@@ -26,10 +26,9 @@ from horizon import forms
 from horizon import workflows
 from openstack_dashboard.api import cinder
 from openstack_dashboard.api import neutron
+from openstack_dashboard.api import nova
 from openstack_dashboard.dashboards.project.instances \
     import utils as nova_utils
-from openstack_dashboard.dashboards.project.volumes \
-    import utils as cinder_utils
 
 from sahara_dashboard.api import manila as manilaclient
 from sahara_dashboard.api import sahara as saharaclient
@@ -59,6 +58,28 @@ def storage_choices(request):
     else:
         LOG.warning(_("Cinder service is unavailable now"))
     return choices
+
+
+def volume_availability_zone_list(request):
+    """Utility method to retrieve a list of volume availability zones."""
+    try:
+        if cinder.extension_supported(request, 'AvailabilityZones'):
+            return cinder.availability_zone_list(request)
+        return []
+    except Exception:
+        exceptions.handle(request,
+                          _('Unable to retrieve volumes availability zones.'))
+        return []
+
+
+def instance_availability_zone_list(request):
+    """Utility method to retrieve a list of instance availability zones."""
+    try:
+        return nova.availability_zone_list(request)
+    except Exception:
+        exceptions.handle(request,
+                          _('Unable to retrieve Nova availability zones.'))
+        return []
 
 
 class GeneralConfigAction(workflows.Action):
@@ -286,7 +307,7 @@ class GeneralConfigAction(workflows.Action):
         # The default is None, i.e. not specifying any availability zone
         az_list = [(None, _('No availability zone specified'))]
         az_list.extend([(az.zoneName, az.zoneName)
-                        for az in nova_utils.availability_zone_list(request)
+                        for az in instance_availability_zone_list(request)
                         if az.zoneState['available']])
         return az_list
 
@@ -294,7 +315,7 @@ class GeneralConfigAction(workflows.Action):
         az_list = [(None, _('No availability zone specified'))]
         if is_cinder_enabled(request):
             az_list.extend([(az.zoneName, az.zoneName)
-                            for az in cinder_utils.availability_zone_list(
+                            for az in volume_availability_zone_list(
                                 request) if az.zoneState['available']])
         return az_list
 
