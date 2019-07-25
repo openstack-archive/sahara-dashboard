@@ -120,7 +120,7 @@ class CopyClusterTemplate(create_flow.ConfigureClusterTemplate):
         values = dict()
         for i, choice in enumerate(choices):
             share_id = choice[0]
-            s = filter(lambda s: s['id'] == share_id, self.template.shares)
+            s = [s for s in self.template.shares if s['id'] == share_id]
             if len(s) > 0:
                 path = s[0]["path"] if "path" in s[0] else ""
                 values["share_id_{0}".format(i)] = {

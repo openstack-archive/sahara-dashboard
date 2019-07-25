@@ -130,7 +130,7 @@ class CopyNodegroupTemplate(create_flow.ConfigureNodegroupTemplate):
         choices = share_fields['shares'].choices
         for i, choice in enumerate(choices):
             share_id = choice[0]
-            s = filter(lambda s: s['id'] == share_id, self.template.shares)
+            s = [s for s in self.template.shares if s['id'] == share_id]
             if len(s) > 0:
                 path = s[0].get('path', '')
                 values["share_id_{0}".format(i)] = {

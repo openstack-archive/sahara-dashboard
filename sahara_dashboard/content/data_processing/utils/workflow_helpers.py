@@ -251,8 +251,8 @@ def populate_image_choices(self, request, context, empty_choice=False):
 
 class PluginAndVersionMixin(object):
     def _generate_plugin_version_fields(self, sahara):
-        plugins = sahara.plugins.list()
-        plugins = filter(is_plugin_not_hidden_for_user, plugins)
+        plugins = [p for p in sahara.plugins.list()
+                   if is_plugin_not_hidden_for_user(p)]
         plugin_choices = [(plugin.name, plugin.title) for plugin in plugins]
 
         self.fields["plugin_name"] = forms.ChoiceField(
