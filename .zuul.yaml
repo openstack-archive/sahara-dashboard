@@ -1,13 +1,11 @@
 - project:
     templates:
       - check-requirements
+      - horizon-non-primary-django-jobs
       - openstack-lower-constraints-jobs
       - openstack-python-jobs-horizon
       - openstack-python3-train-jobs-horizon
       - release-notes-jobs-python3
-    check:
-      jobs:
-        - sahara-dashboard-tox-python3-django111
     experimental:
       jobs:
         - sahara-dashboard-integration
@@ -22,12 +20,6 @@
       - ^doc/.*$
       - ^releasenotes/.*$
       - ^sahara_dashboard/locale/.*$
-
-- job:
-    name: sahara-dashboard-tox-python3-django111
-    parent: sahara-dashboard-tox-base
-    vars:
-      tox_envlist: py3-dj111
 
 - job:
     name: sahara-dashboard-integration

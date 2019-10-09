@@ -133,7 +133,7 @@ def data(TEST):
     # Nodegroup_Templates.
     ngt1_dict = {
         "created_at": "2014-06-04T14:01:03",
-        "description": None,
+        "description": "",
         "flavor_id": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
         "availability_zone": None,
         "floating_ip_pool": None,
