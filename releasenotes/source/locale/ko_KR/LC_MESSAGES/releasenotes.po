@@ -2,16 +2,17 @@
 # Ian Y. Choi <ianyrchoi@gmail.com>, 2017. #zanata
 # Sungjin Kang <gang.sungjin@gmail.com>, 2017. #zanata
 # minwook-shin <minwook0106@gmail.com>, 2017. #zanata
+# Hongjae Kim <neo415ha@gmail.com>, 2019. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: Sahara Dashboard Release Notes\n"
+"Project-Id-Version: sahara-dashboard\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-17 13:24+0000\n"
+"POT-Creation-Date: 2019-10-30 08:18+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2017-09-20 05:23+0000\n"
-"Last-Translator: minwook-shin <minwook0106@gmail.com>\n"
+"PO-Revision-Date: 2019-11-02 09:05+0000\n"
+"Last-Translator: Hongjae Kim <neo415ha@gmail.com>\n"
 "Language-Team: Korean (South Korea)\n"
 "Language: ko_KR\n"
 "X-Generator: Zanata 4.3.3\n"
@@ -26,12 +27,45 @@ msgstr "호스트 이름 변환을 위해 Designate와의 통합을 추가하였
 msgid "Bug Fixes"
 msgstr "버그 수정"
 
+msgid ""
+"Coinciding with the official stability of Sahara APIv2, operators should "
+"feel especially encouraged to set \"data-processing\" API version to \"2\" "
+"in the `OPENSTACK_API_VERSIONS` dictionary found in Horizon's local_settings."
+"py. As previously stated, some Sahara features are only exposed through "
+"APIv2."
+msgstr ""
+"사하라 APIv2의 공식 안정성과 일치하여 운영자들은 특히 Horizon의 "
+"local_settings.py.에 수록된 \"OPENSTACK_API_VERSIONS\" 사전에서 \"데이터 처리"
+"\" API 버전을 \"2\"로 설정하도록 권장해야 한다. 앞서 언급한 바와 같이 일부 사"
+"하라 기능은 APIv2를 통해서만 노출된다."
+
 msgid "Current Series Release Notes"
 msgstr "현재 시리즈에 대한 릴리즈 노트"
+
+msgid "Deprecation Notes"
+msgstr "감가 상각"
+
+msgid ""
+"Django 1.10 introduced a new var : DATA_UPLOAD_MAX_NUMBER_FIELDS which "
+"prevent DOS on data received via GET and POST methods. Default values is set "
+"to 2000 instead of upstream default of 1000 to keep the security feature and "
+"to not cause issue with the Sahara Dashboard forms."
+msgstr ""
+"Django 1.10에서 새로운 var: DATA_UPLOAD_를 도입함GET 및 POST 방법을 통해 수신"
+"된 데이터에 대한 DOS를 방지하는 MAX_NUMBER_FIELDS. 보안 기능을 유지하고 사하"
+"라 대시보드 양식에 문제를 일으키지 않으려면 기본값을 업스트림 기본값 1000이 "
+"아닌 2000으로 설정하십시오."
 
 msgid "Fixed issue with retrieving details for public clusters."
 msgstr ""
 "공용 클러스터에 대한 세부 사항을 가져오는 데 존재하던 이슈를 수정하였습니다."
+
+msgid ""
+"Increasing DATA_UPLOAD_MAX_NUMBER_FIELDS django configuration to allow "
+"creation of CDH node group templates."
+msgstr ""
+"DATA_UPLOAD_ 증가CDH 노드 그룹 템플릿을 만들 수 있도록 MAX_NUMBER_FIELDS "
+"django 구성."
 
 msgid "Mitaka Series Release Notes"
 msgstr "Mitaka 시리즈에 대한 릴리즈 노트"
@@ -56,3 +90,10 @@ msgstr "Sahara 대시보드 릴리즈 노트"
 
 msgid "Start using reno for release notes management."
 msgstr "릴리즈 노트 관리를 위해 reno 사용을 시작합니다."
+
+msgid ""
+"Support for the new boot from volume options introduced in the Stein release "
+"of Sahara is added."
+msgstr ""
+"Sahara의 Stein 릴리스에 도입된 볼륨 옵션에서 새로운 부팅에 대한 지원이 추가되"
+"었다."
