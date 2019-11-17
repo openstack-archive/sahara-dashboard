@@ -3,7 +3,6 @@
       - check-requirements
       - horizon-non-primary-django-jobs
       - openstack-lower-constraints-jobs
-      - openstack-python-jobs-horizon
       - openstack-python3-ussuri-jobs-horizon
       - release-notes-jobs-python3
     experimental:
@@ -45,6 +44,8 @@
       devstack_services:
         horizon: true
         tls-proxy: false
+      devstack_localrc:
+        USE_PYTHON3: True
     pre-run: playbooks/sahara-dashboard-integration/pre.yaml
     run: playbooks/sahara-dashboard-integration/run.yaml
     irrelevant-files:
