@@ -9,11 +9,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sahara-dashboard VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2019-04-22 11:41+0000\n"
+"POT-Creation-Date: 2019-09-27 11:30+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2019-05-01 11:14+0000\n"
+"PO-Revision-Date: 2019-11-28 03:50+0000\n"
 "Last-Translator: ByungYeol Woo <wby1089@gmail.com>\n"
 "Language-Team: Korean (South Korea)\n"
 "Language: ko_KR\n"
@@ -101,11 +101,32 @@ msgstr "가용 구역"
 msgid "Base Image"
 msgstr "기본 이미지"
 
+msgid "Boot Volume AZ"
+msgstr "부트 볼륨 AZ"
+
+msgid "Boot Volume locality"
+msgstr "로커 볼륨 부트"
+
+msgid "Boot Volume type"
+msgstr "부트 볼륨 유형"
+
 msgid "Boot from Volume"
 msgstr "볼륨으로 부팅"
 
 msgid "Boot storage location"
 msgstr "부트 스토리지 위치"
+
+msgid "Boot volume availability Zone"
+msgstr "가용 구역 볼륨 부트"
+
+msgid "Boot volume availability zone"
+msgstr "부트 볼륨 가용 구역"
+
+msgid "Boot volume local to instance"
+msgstr "인스턴스로 로컬 볼륨 부트"
+
+msgid "Boot volume locality"
+msgstr "로컬 볼륨 부트"
 
 msgid "Boot volume type"
 msgstr "부트 볼륨 유형"
@@ -374,6 +395,9 @@ msgstr "지정된 이름으로 작업 템플릿을 생성하십시오."
 
 msgid "Create a script to be uploaded dynamically"
 msgstr "동적으로 업로드할 스크립트 생성"
+
+msgid "Create boot volume in this availability zone."
+msgstr "이 가용 구역에 부트 볼륨 생성"
 
 msgid "Create security group for this Node Group."
 msgstr "이 노드 그룹의 보안 그룹을 생성하십시오."
@@ -1763,6 +1787,9 @@ msgstr "anti-affinity 프로세스를 채울 수 없습니다."
 msgid "Unable to process plugin tags"
 msgstr "프로세스 플러그인 태그를 사용할 수 없습니다."
 
+msgid "Unable to retrieve Nova availability zones."
+msgstr "Nova 가용 구역을 가져올 수 없습니다."
+
 msgid "Unable to retrieve data processing plugins."
 msgstr "데이터 프로세싱 플러그인을 가져올 수 없습니다."
 
@@ -1814,6 +1841,9 @@ msgstr "플러그인을 가져올 수 없음"
 #, python-format
 msgid "Unable to retrieve security group %(group)s."
 msgstr "%(group)s 보안 그룹을 검색할 수 없습니다."
+
+msgid "Unable to retrieve volumes availability zones."
+msgstr "볼륨 가용 구역을 가져올 수 없습니다."
 
 msgid "Unable to set cluster type"
 msgstr "클러스터 타입을 설정할 수 없음"
