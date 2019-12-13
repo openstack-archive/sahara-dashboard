@@ -27,7 +27,7 @@ flake8==2.5.5
 futurist==1.2.0
 greenlet==0.4.10
 hacking==0.12.0
-horizon==14.0.0.0b2
+horizon==14.0.0
 idna==2.6
 iso8601==0.1.11
 Jinja2==2.10
@@ -50,7 +50,7 @@ openstacksdk==0.11.2
 os-client-config==1.28.0
 os-service-types==1.2.0
 osc-lib==1.8.0
-oslo.concurrency==3.25.0
+oslo.concurrency==3.26.0
 oslo.config==5.2.0
 oslo.context==2.19.2
 oslo.i18n==3.15.3
@@ -61,7 +61,7 @@ oslo.policy==1.30.0
 oslo.serialization==2.18.0
 oslo.service==1.24.0
 oslo.utils==3.33.0
-osprofiler==1.4.0
+osprofiler==2.3.0
 Paste==2.0.2
 PasteDeploy==1.5.0
 pbr==2.0.0
@@ -104,6 +104,7 @@ selenium==2.50.1
 semantic-version==2.3.1
 simplejson==3.5.1
 six==1.10.0
+Sphinx==1.6.5
 statsd==3.2.1
 stevedore==1.20.0
 tenacity==3.2.1
