@@ -12,7 +12,6 @@
 
 from django.urls import reverse
 import mock
-import six
 
 from sahara_dashboard import api
 from sahara_dashboard.test import helpers as test
@@ -51,7 +50,7 @@ class DataProcessingJobBinaryTests(test.TestCase):
         self.assertTemplateUsed(res, 'horizon/common/_detail.html')
         self.assert_mock_multiple_calls_with_same_arguments(
             self.mock_job_binary_get, 2,
-            mock.call(test.IsHttpRequest(), test.IsA(six.text_type)))
+            mock.call(test.IsHttpRequest(), test.IsA(str)))
 
     @test.create_mocks({api.sahara: ('job_binary_list',
                                      'job_binary_get',
@@ -71,7 +70,7 @@ class DataProcessingJobBinaryTests(test.TestCase):
         self.mock_job_binary_list.assert_called_once_with(
             test.IsHttpRequest())
         self.mock_job_binary_get.assert_called_once_with(
-            test.IsHttpRequest(), test.IsA(six.text_type))
+            test.IsHttpRequest(), test.IsA(str))
         self.mock_job_binary_delete.assert_called_once_with(
             test.IsHttpRequest(), jb_list[0].id)
         self.mock_job_binary_internal_delete.assert_called_once_with(
@@ -92,7 +91,7 @@ class DataProcessingJobBinaryTests(test.TestCase):
         self.assertTrue(res.has_header('content-disposition'))
 
         self.mock_job_binary_get.assert_called_once_with(
-            test.IsHttpRequest(), test.IsA(six.text_type))
+            test.IsHttpRequest(), test.IsA(str))
         self.mock_job_binary_get_file.assert_called_once_with(
             test.IsHttpRequest(), jb.id)
 
@@ -113,7 +112,7 @@ class DataProcessingJobBinaryTests(test.TestCase):
             'attachment; filename="%s"' % jb.name
         )
         self.mock_job_binary_get.assert_called_once_with(
-            test.IsHttpRequest(), test.IsA(six.text_type))
+            test.IsHttpRequest(), test.IsA(str))
         self.mock_job_binary_get_file.assert_called_once_with(
             test.IsHttpRequest(), jb.id)
 
@@ -141,7 +140,7 @@ class DataProcessingJobBinaryTests(test.TestCase):
         res = self.client.post(EDIT_URL, form_data)
         self.assertNoFormErrors(res)
         self.mock_job_binary_get.assert_called_once_with(
-            test.IsHttpRequest(), test.IsA(six.text_type))
+            test.IsHttpRequest(), test.IsA(str))
         self.mock_job_binary_update.assert_called_once_with(
             test.IsHttpRequest(), test.IsA(str), test.IsA(dict))
 

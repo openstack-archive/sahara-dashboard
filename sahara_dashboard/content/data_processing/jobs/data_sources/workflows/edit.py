@@ -11,8 +11,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from urllib import parse
+
 from django.utils.translation import ugettext_lazy as _
-import six
 
 from horizon import exceptions
 
@@ -61,14 +62,12 @@ class EditDataSource(create.CreateDataSource):
                     if self.FIELD_MAP[field]:
                         if (field == "data_source_url" and
                                 data_source.type == "manila"):
-                            fields[field].initial = (
-                                six.moves.urllib.parse.urlparse(
-                                    data_source.url).path)
+                            fields[field].initial = parse.urlparse(
+                                data_source.url).path
                         elif (field == "data_source_manila_share"
                               and data_source.type == "manila"):
-                            fields[field].initial = (
-                                six.moves.urllib.parse.urlparse(
-                                    data_source.url).netloc)
+                            fields[field].initial = parse.urlparse(
+                                data_source.url).netloc
                         else:
                             fields[field].initial = (
                                 getattr(data_source,

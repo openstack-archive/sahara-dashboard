@@ -12,7 +12,6 @@
 
 from django.urls import reverse
 import mock
-import six
 
 from sahara_dashboard import api
 from sahara_dashboard.test import helpers as test
@@ -42,7 +41,7 @@ class DataProcessingPluginsTests(test.TestCase):
         res = self.client.get(DETAILS_URL)
         self.assert_mock_multiple_calls_with_same_arguments(
             self.mock_plugin_get, 2, mock.call(test.IsHttpRequest(),
-                                               test.IsA(six.text_type)))
+                                               test.IsA(str)))
         self.assertTemplateUsed(res, 'horizon/common/_detail.html')
         self.assertContains(res, 'vanilla')
         self.assertContains(res, 'plugin')

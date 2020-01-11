@@ -15,8 +15,7 @@
 
 import base64
 import copy
-import six
-from six.moves.urllib import parse
+from urllib import parse
 
 
 def serialize(obj):
@@ -27,8 +26,7 @@ def serialize(obj):
     result = base64.urlsafe_b64encode(obj)
     # this workaround is needed because in case of python 3 the
     # urlsafe_b64encode method returns string of 'bytes' class.
-    if six.PY3:
-        result = result.decode()
+    result = result.decode()
     return result
 
 
@@ -40,8 +38,7 @@ def deserialize(obj):
     result = base64.urlsafe_b64decode(obj)
     # this workaround is needed because in case of python 3 the
     # urlsafe_b64decode method returns string of 'bytes' class
-    if six.PY3:
-        result = result.decode()
+    result = result.decode()
     return result
 
 

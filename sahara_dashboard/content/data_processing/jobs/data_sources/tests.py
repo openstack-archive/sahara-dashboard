@@ -12,7 +12,6 @@
 
 from django.urls import reverse
 import mock
-import six
 
 from sahara_dashboard import api
 from sahara_dashboard.test import helpers as test
@@ -127,9 +126,9 @@ class DataProcessingDataSourceTests(test.TestCase):
         res = self.client.post(EDIT_URL, form_data)
 
         self.mock_data_source_get.assert_called_once_with(
-            IsHttpRequest(), IsA(six.text_type))
+            IsHttpRequest(), IsA(str))
         self.mock_data_source_update.assert_called_once_with(
-            IsHttpRequest(), IsA(six.text_type), api_data)
+            IsHttpRequest(), IsA(str), api_data)
         self.assertNoFormErrors(res)
         self.assertRedirectsNoFollow(res, INDEX_URL)
         self.assertMessageCount(success=1)
@@ -161,9 +160,9 @@ class DataProcessingDataSourceTests(test.TestCase):
             IsHttpRequest(), IsA(str))
         self.mock_data_source_create.assert_called_once_with(
             IsHttpRequest(),
-            IsA(six.text_type),
-            IsA(six.text_type),
-            IsA(six.text_type),
+            IsA(str),
+            IsA(str),
+            IsA(str),
             IsA(str),
             '', '', is_public=False, is_protected=False, s3_credentials=None)
         self.mock_share_list.assert_called_once_with(IsHttpRequest())
@@ -186,11 +185,11 @@ class DataProcessingDataSourceTests(test.TestCase):
         self.mock_data_source_create.return_value = True
         self.mock_data_source_create.assert_called_once_with(
             IsHttpRequest(),
-            IsA(six.text_type),
-            IsA(six.text_type),
-            IsA(six.text_type),
-            IsA(six.text_type),
-            IsA(six.text_type),
-            IsA(six.text_type),
+            IsA(str),
+            IsA(str),
+            IsA(str),
+            IsA(str),
+            IsA(str),
+            IsA(str),
             is_public=False, is_protected=False, s3_credentials=IsA(dict))
         self.assertNoFormErrors(res)

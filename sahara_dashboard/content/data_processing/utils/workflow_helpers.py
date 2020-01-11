@@ -16,7 +16,6 @@ from oslo_log import log as logging
 from django.core.exceptions import ValidationError
 from django.utils import safestring
 from django.utils.translation import ugettext_lazy as _
-import six
 
 from horizon import exceptions
 from horizon import forms
@@ -180,7 +179,7 @@ def parse_configs_from_context(context, defaults):
                 configs_dict[service] = dict()
             if val is None:
                 continue
-            if six.text_type(defaults[service][config]) == six.text_type(val):
+            if str(defaults[service][config]) == str(val):
                 continue
             configs_dict[service][config] = val
     return configs_dict

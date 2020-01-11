@@ -11,6 +11,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from urllib import parse
 import uuid
 
 from django.forms import widgets
@@ -19,7 +20,6 @@ from django.template import defaultfilters
 from django.utils.encoding import force_text
 from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext_lazy as _
-import six
 
 from horizon import exceptions
 from horizon import forms
@@ -245,7 +245,7 @@ class JobBinaryCreateForm(forms.SelfHandlingForm):
                             getattr(jb, self.FIELD_MAP[field], None))
 
     def set_initial_values_by_type(self, url):
-        parsed = six.moves.urllib.parse.urlparse(url)
+        parsed = parse.urlparse(url)
         self.fields["job_binary_type"].initial = parsed.scheme
         if parsed.scheme == "manila":
             self.fields["job_binary_manila_share"].initial = parsed.netloc

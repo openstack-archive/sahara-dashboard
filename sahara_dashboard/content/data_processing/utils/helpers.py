@@ -12,7 +12,6 @@
 # limitations under the License.
 
 from pytz import timezone as ptz
-import six
 
 from django.template import defaultfilters as filters
 from django.utils import timezone
@@ -149,7 +148,7 @@ class Helpers(object):
             end_datetime = timeutils.utcnow(True)
             end_datetime = end_datetime.replace(microsecond=0)
 
-        return six.text_type(end_datetime - start_datetime)
+        return str(end_datetime - start_datetime)
 
     def to_time_zone(self, datetime, tzone=None,
                      input_fmt=None, localize=False):

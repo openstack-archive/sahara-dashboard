@@ -13,7 +13,6 @@
 
 from django.utils.translation import ugettext_lazy as _
 from saharaclient.api import base as api_base
-import six
 
 from horizon import exceptions
 from horizon import forms
@@ -44,8 +43,7 @@ class UpdateLabelsAction(workflows.Action):
         for name, label in labels.items():
             if not label['mutable']:
                 continue
-            res_name_translated = "%s: %s" % (six.text_type(prefix_trans),
-                                              name)
+            res_name_translated = "%s: %s" % (prefix_trans, name)
             res_name = "label_%s%s" % (prefix, name)
             self.fields[res_name] = forms.BooleanField(
                 label=res_name_translated,
