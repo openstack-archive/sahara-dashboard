@@ -3,16 +3,17 @@
 # sunanchen <KF.sunanchen@h3c.com>, 2016. #zanata
 # zzxwill <zzxwill@gmail.com>, 2016. #zanata
 # Bin <liubin@glab.cn>, 2017. #zanata
+# TigerFang <tigerfun@126.com>, 2020. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: sahara-dashboard VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2019-04-22 11:41+0000\n"
+"POT-Creation-Date: 2019-12-12 10:58+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2017-07-24 03:48+0000\n"
-"Last-Translator: Bin <liubin@glab.cn>\n"
+"PO-Revision-Date: 2020-03-29 05:27+0000\n"
+"Last-Translator: TigerFang <tigerfun@126.com>\n"
 "Language-Team: Chinese (China)\n"
 "Language: zh_CN\n"
 "X-Generator: Zanata 4.3.3\n"
@@ -47,6 +48,17 @@ msgstr "%s 进程: "
 msgid "-- not selected --"
 msgstr "-- 未选择 --"
 
+msgid ""
+"<b>Important</b>:  The name that you give your job binary will be the name "
+"used in your job execution. If your binary requires a particular name or "
+"extension (ie: \".jar\"), be sure to include it here."
+msgstr ""
+"<b>重要</b>：你为任务二进制文件设置的名称将被用于任务执行命令。如果你的二进制"
+"文件需要特殊名称或扩展名（如“.jar”），请确保也包含在这里。"
+
+msgid "Access Key"
+msgstr "Access Key"
+
 msgid "Adapt For Oozie"
 msgstr "适应 Oozie"
 
@@ -64,6 +76,9 @@ msgstr "Anti-affinity 已启用在"
 
 msgid "Arguments"
 msgstr "参数"
+
+msgid "Attached storage location"
+msgstr "挂载存储的位置"
 
 msgid "Auto Security Group"
 msgstr "自动安全组"
@@ -84,6 +99,36 @@ msgstr "可用域"
 msgid "Base Image"
 msgstr "基础镜像"
 
+msgid "Boot Volume AZ"
+msgstr "启动卷可用区"
+
+msgid "Boot Volume locality"
+msgstr "启动卷位置"
+
+msgid "Boot Volume type"
+msgstr "启动卷类型"
+
+msgid "Boot from Volume"
+msgstr "从卷启动"
+
+msgid "Boot storage location"
+msgstr "启动存储的位置"
+
+msgid "Boot volume availability Zone"
+msgstr "启动卷可用区"
+
+msgid "Boot volume availability zone"
+msgstr "启动卷可用区"
+
+msgid "Boot volume local to instance"
+msgstr "使用实例本地卷启动"
+
+msgid "Boot volume locality"
+msgstr "启动卷位置"
+
+msgid "Boot volume type"
+msgstr "启动卷类型"
+
 msgid "Cancel"
 msgstr "取消"
 
@@ -95,6 +140,9 @@ msgstr "检查"
 
 msgid "Choose"
 msgstr "选择"
+
+msgid "Choose a boot mode"
+msgstr "选择一个启动模式"
 
 msgid "Choose a main binary"
 msgstr "选择一个主要的二进制文件"
@@ -284,6 +332,9 @@ msgstr "无法创建任务模板"
 msgid "Could not launch job"
 msgstr "无法启动任务"
 
+msgid "Could not parse template"
+msgstr "无法解析模版"
+
 msgid "Could not update cluster shares"
 msgstr "无法更新集群共享"
 
@@ -340,6 +391,9 @@ msgstr "指定一个名字来创建任务模板。"
 
 msgid "Create a script to be uploaded dynamically"
 msgstr "创建一个可以动态上传的脚本"
+
+msgid "Create boot volume in this availability zone."
+msgstr "在这个可用区内创建启动卷。"
 
 msgid "Create security group for this Node Group."
 msgstr "为该节点组创建安全组"
@@ -407,6 +461,14 @@ msgstr "数据源类型"
 msgid "Data Sources"
 msgstr "数据源"
 
+msgid ""
+"Data Sources are what your job uses for input and output.  Depending on the "
+"type of job you will be running, you may need to define one or more data "
+"sources.  You can create multiple data sources by repeating this step."
+msgstr ""
+"数据源是你的任务用于输入和输出的。根据你即将执行的任务类型，你需要指定一个或"
+"者多个数据源。可以重复执行这个步骤来创建多数据源。"
+
 msgid "Data source created"
 msgstr "数据源已创建"
 
@@ -415,6 +477,14 @@ msgstr "数据源已更新"
 
 msgid "Default Value"
 msgstr "默认值"
+
+msgid ""
+"Define your Job Template. This is where you choose the type of job that you "
+"want to run (Pig, Java Action, Spark, etc) and choose or upload the files "
+"necessary to run it.  The inputs and outputs will be defined later."
+msgstr ""
+"定义你的工作模板。这是你选择要运行的作业类型(Pig、Java Action、Spark等)并选择"
+"或上传运行所需的文件的地方。输入和输出将在后面定义。"
 
 msgid "Delete Cluster"
 msgid_plural "Delete Clusters"
@@ -526,11 +596,23 @@ msgctxt "End time"
 msgid "Ended"
 msgstr "已结束"
 
+msgid "Endpoint should be specified without protocol"
+msgstr "终端地址详情中不能包含协议"
+
+msgid "Engine Job ID"
+msgstr "引擎任务ID"
+
 msgid "Enter any custom configuration required for your job's execution."
 msgstr "输入执行您的任务需要的自定义配置。"
 
 msgid "Enter the URL for the file"
 msgstr "输入文件的 URL"
+
+msgid "Enter the access key and secret key required to access that file"
+msgstr "输入用于访问这个文件的access key和secret key"
+
+msgid "Enter the endpoint of the S3 service where the file is stored"
+msgstr "输入这个文件所在的S3服务接入地址"
 
 msgid "Enter the username and password required to access that file"
 msgstr "输入获取文件所需的用户名和密码"
@@ -546,6 +628,9 @@ msgstr "错误详情"
 
 msgid "Event time"
 msgstr "事件时间"
+
+msgid "Export Template"
+msgstr "导出模版"
 
 msgid "Failed"
 msgstr "失败"
@@ -569,6 +654,11 @@ msgstr "更新镜像失败。"
 msgid "Filter"
 msgstr "过滤"
 
+msgid ""
+"First, select which type of job that you want to run.  This choice will "
+"determine which other steps are required"
+msgstr "首先，选择任务运行的种类。这个选项会决定还需要哪些其他步骤。"
+
 msgid "Flavor"
 msgstr "云主机类型"
 
@@ -583,14 +673,32 @@ msgid ""
 msgstr "数据处理的内部二进制文件，你可以选择："
 
 msgid ""
+"For Data Sources in S3 storage, the URL should be specified in the format "
+"s3a://bucket/path. Also, each of the access properties may be optional if "
+"you have configured that property on your cluster manually."
+msgstr ""
+"对于存储在S3中的数据，URL必须是如下形式：s3a://bucket/path。同时，如果你已经"
+"在集群中手动配置了访问属性值，则这些访问属性是可选的。"
+
+msgid ""
 "For Data Sources on a Manila share, choose the share and enter the path "
 "relative to the share (example: /outputdir/myinputfile.txt)"
 msgstr ""
 "对于使用 Manila 共享系统的数据源，请选择共享系统并输入共享的相对路径。（如 /"
 "outputdir/myinputfile.txt）"
 
+msgid ""
+"For MapReduce or Java Action jobs, \"mains\" are not applicable.  You are "
+"required to add one or more \"libs\" for these jobs."
+msgstr ""
+"对于MapReduce或者Java Action任务，“mains”是不适用的。你需要为这些任务增加一个"
+"或多个“libs”。"
+
 msgid "For Object Store job binaries, you must:"
 msgstr "对于对象存储上的任务二进制文件，你必须："
+
+msgid "For S3 job binaries, you must:"
+msgstr "对于S3任务二进制文件，你必须："
 
 msgid ""
 "For Shell Action jobs, any required files beyond the main script may be "
@@ -603,6 +711,14 @@ msgid ""
 msgstr ""
 "对于Storm, Storm Pyleus, Spark and Shell类型的任务，只需要“main”，“libs”是可"
 "选的。"
+
+msgid "Force Delete Cluster"
+msgid_plural "Force Delete Clusters"
+msgstr[0] "强制删除集群"
+
+msgid "Force Deleted Cluster"
+msgid_plural "Force Deleted Clusters"
+msgstr[0] "强制删除集群"
 
 msgid "General Info"
 msgstr "一般信息"
@@ -627,6 +743,9 @@ msgstr "Hive"
 
 msgid "ID"
 msgstr "ID"
+
+msgid "If checked, bucket will be in path instead of host"
+msgstr "如果勾选此项，存储桶将在路径中而不是在主机名中"
 
 #, python-format
 msgid ""
@@ -664,6 +783,18 @@ msgstr "镜像注册是用来为数据处理提供镜像的额外信息。"
 msgid "Image Registry tool:"
 msgstr "镜像注册工具："
 
+msgid "Import"
+msgstr "导入"
+
+msgid "Import Cluster Template"
+msgstr "导入集群模版"
+
+msgid "Import Node Group Template"
+msgstr "导入节点组模版"
+
+msgid "Import Template"
+msgstr "导入模版"
+
 msgid "In progress"
 msgstr "进行中"
 
@@ -675,6 +806,14 @@ msgstr "输入"
 
 msgid "Input Data Source"
 msgstr "输入数据源"
+
+msgid ""
+"Input correct User Name for image. For Ubuntu images input 'ubuntu', "
+"'fedora' for Fedora images, 'cloud-user' for CentOS 6.x images and 'centos' "
+"for CentOS 7.x images."
+msgstr ""
+"为镜像输入正确的用户名。Ubuntu镜像输入“Ubuntu”，fedora镜像输入“fedora”，"
+"CentOS 6.x镜像输入“cloud-user”，centos 7.x镜像输入“centos”。"
 
 msgid "Instance"
 msgstr "实例"
@@ -795,6 +934,11 @@ msgstr "启动一个集群"
 msgid "Launch instances in these security groups."
 msgstr "在这些安全组中启动云主机。"
 
+msgid ""
+"Launch instances in these security groups. Auto security group will be "
+"determined by the value present in the imported template."
+msgstr "在这些安全组中启动实例。导入模版中的值会被用于决定是否启用自动安全组。"
+
 msgid "Launch instances in this availability zone."
 msgstr "在此可用域中启动实例。"
 
@@ -803,6 +947,15 @@ msgstr "启动任务"
 
 msgid "Launch the given job template on a cluster."
 msgstr "在一个集群上启动给定的任务模板。"
+
+msgid ""
+"Launch your job.  When launching, you may need to choose your input and "
+"output data sources.  This is where you would also add any special "
+"configuration values, parameters, or arguments that you need to pass along "
+"to your job."
+msgstr ""
+"启动你的工作。启动时，可能需要选择输入和输出数据源。在这里，你还可以添加需要"
+"传递给作业的任何特殊配置值、参数或参数。"
 
 #, python-format
 msgid "Launched Cluster %s"
@@ -850,6 +1003,11 @@ msgstr "更改配置，使得在运行时通过 HDFS 不再引用 swift 的 URL�
 msgid "Name"
 msgstr "名称"
 
+msgid ""
+"Name must be provided either here or in the template. If provided in both "
+"places, this one will be used."
+msgstr "名称必须在这里或者在模版内提供。如果两处都提供了，会使用这里的。"
+
 #, python-format
 msgid "Name: %(node_group_name)s"
 msgstr "名称：%(node_group_name)s"
@@ -865,6 +1023,18 @@ msgstr "从不"
 
 msgid "Next"
 msgstr "下一步"
+
+msgid ""
+"Next, you need to define the different types of machines in your cluster.  "
+"This is done by defining a Node Group Template for each type of machine.  A "
+"very common case is where you need to have one or more machines running a "
+"\"master\" set of processes while another set of machines need to be running "
+"the \"worker\" processes.  Here, you will define the Node Group Template for "
+"your \"master\" node(s)."
+msgstr ""
+"接下来，你需要定义集群中不同类型的机器。这是通过为每种类型的机器定义一个节点"
+"组模板来实现的。一个非常常见的情况是，你需要让一台或多台机器运行一组“主”进"
+"程，而另一组机器需要运行“辅助”进程。在这里，你将为“主”节点定义节点组模板。"
 
 msgid "No Cluster Template Created"
 msgstr "没有创建集群模板"
@@ -974,6 +1144,17 @@ msgstr "无"
 
 msgid "Not available"
 msgstr "不可用"
+
+msgid ""
+"Now you need to set the layout of your cluster.  By creating a Cluster "
+"Template, you will be choosing the number of instances of each Node Group "
+"Template that will appear in your cluster.  Additionally, you will have a "
+"chance to set any cluster-specific configuration items in the additional "
+"tabs on the create Cluster Template form."
+msgstr ""
+"现在需要设置集群的布局。通过创建一个集群模板，你将选择将出现在你的集群中的每"
+"个节点组模板的实例数量。此外，你将有机会在创建集群模版表单的附加选项卡中设置"
+"任何特定于集群的配置项。"
 
 msgid "Number"
 msgstr "数字"
@@ -1085,6 +1266,11 @@ msgstr "在新的集群上重新启动"
 msgid "Remove"
 msgstr "移除"
 
+msgid ""
+"Repeat the Node Group Template creation process, but this time you are "
+"creating your \"worker\" Node Group Template."
+msgstr "重复创建节点组模版的流程，但这一次你会创建“工作”节点组模版。"
+
 msgid "Required"
 msgstr "必须"
 
@@ -1102,6 +1288,24 @@ msgstr "返回代码"
 
 msgid "Run HBase EDP Jobs with common HBase library on HDFS"
 msgstr "在HDFS上使用HBase库来运行HBase EDP任务"
+
+msgid "S3"
+msgstr "S3"
+
+msgid "S3 Endpoint"
+msgstr "S3终端接入地址"
+
+msgid "S3 access key"
+msgstr "S3 access key"
+
+msgid "S3 accsss key"
+msgstr "S3 access key"
+
+msgid "S3 endpoint"
+msgstr "S3 终端地址"
+
+msgid "S3 secret key"
+msgstr "S3 secret key"
 
 msgid ""
 "Sahara will use instances of this node group to access other cluster "
@@ -1128,6 +1332,9 @@ msgstr "脚本名称"
 
 msgid "Script text"
 msgstr "脚本文本"
+
+msgid "Secret Key"
+msgstr "Secret Key"
 
 msgid "Security"
 msgstr "安全"
@@ -1204,6 +1411,23 @@ msgstr "请选择你的任务类型："
 
 msgid "Select type"
 msgstr "选择类型"
+
+msgid ""
+"Select which plugin and version that you want to use to create your cluster."
+msgstr "请选择你创建集群需要的插件和版本。"
+
+msgid ""
+"Select which type of job that you want to run. This choice will dictate "
+"which steps are required to successfully execute your job."
+msgstr "请选择要以哪种类型运行任务。这个选项会规定执行你的任务需要哪些步骤。"
+
+msgid ""
+"Selected domain name should already exist in the Designate. You can check it "
+"in &quot;DNS&quot; tab on the left menu or by executing &quot;designate "
+"domain-list&quot; on the controller node."
+msgstr ""
+"选定的域名应该已经存在与指定值中。你可以在菜单左侧的&quot;DNS&quot;选项卡或者"
+"在控制节点上执行&quot;designate domain-list&quot;进行查询。"
 
 msgid "Service Configurations"
 msgstr "服务配置"
@@ -1297,8 +1521,22 @@ msgstr "Swift"
 msgid "Tags"
 msgstr "标签"
 
+msgid ""
+"Tags are used for filtering images suitable for each plugin and each Data "
+"Processing version. To add required tags, select a plugin and a Data "
+"Processing version and click the &quot;Add&quot; button."
+msgstr ""
+"标签用于过滤适合每个插件和每个数据处理版本的镜像。要添加所需的标签，选择一个"
+"插件和一个数据处理版本，然后点击&quot;添加&quot; 按钮。"
+
 msgid "Template"
 msgstr "模板"
+
+msgid "Template File"
+msgstr "模版文件"
+
+msgid "Template JSON contained invalid key"
+msgstr "模版JSON文件中包含无效的键值"
 
 msgid "Template Name"
 msgstr "模板名称"
@@ -1307,9 +1545,46 @@ msgid "Template not specified"
 msgstr "没有指定模板"
 
 msgid ""
+"The Cluster Template object may specify a list of processes in anti-affinity "
+"group. That means these processes may not be launched more than once on a "
+"single host."
+msgstr ""
+"群集模板对象可以在反关联组中指定进程列表。这意味着这些进程可能不会在单个主机"
+"上启动超过一次。"
+
+msgid ""
+"The Cluster Template object should specify Node Group Templates that will be "
+"used to build a Cluster. You can add Node Groups using Node Group Templates "
+"on a &quot;Node Groups&quot; tab."
+msgstr ""
+"集群模版对象必须指定节点组模版，节点组模版会被用于创建集群。你可以在&quot;节"
+"点组&quot;页面上用节点组模版新增节点组。"
+
+msgid ""
 "The Cluster object should specify OpenStack Image to boot instances for "
 "Cluster."
 msgstr "集群对象应该指定用于创建集群中实例的 OpenStack 镜像。"
+
+msgid ""
+"The Node Group Template object specifies the processes that will be launched "
+"on each instance. Check one or more processes. When processes are selected, "
+"you may set <b>node</b> scoped configurations on corresponding tabs."
+msgstr ""
+"节点组模板对象指定将在每个实例上启动的进程。检查一个或多个进程。当进程被选中"
+"时，你可以在相应的选项卡上设置<b>节点</b>范围内的配置。"
+
+msgid ""
+"The first step is to determine which type of cluster you want to run.  You "
+"may have several choices available depending on the configuration of your "
+"system. Click on \"choose plugin\" to bring up the list of data processing "
+"plugins.  There you will be able to choose the data processing plugin along "
+"with the version number. Choosing this up front will allow the rest of the "
+"cluster creation steps to focus only on options that are pertinent to your "
+"desired cluster type."
+msgstr ""
+"第一步是确定希望运行哪种类型的集群。根据系统的配置，你可能有几个可用的选择。"
+"点击“选择插件”，弹出数据处理插件列表。在那里你可以选择数据处理插件和版本号。"
+"预先选择此选项将允许其余的集群创建步骤只关注与所需集群类型相关的选项。"
 
 msgid "The value of shares must be a list of values"
 msgstr "共享信息的值必须是列表值"
@@ -1464,6 +1739,9 @@ msgstr "无法给节点组启用 anti-affinity。"
 msgid "Unable to process plugin tags"
 msgstr "无法编辑插件标签"
 
+msgid "Unable to retrieve Nova availability zones."
+msgstr "无法检索Nova的可用区。"
+
 msgid "Unable to retrieve data processing plugins."
 msgstr "无法获取数据处理插件。"
 
@@ -1515,6 +1793,9 @@ msgstr "无法获取插件。"
 #, python-format
 msgid "Unable to retrieve security group %(group)s."
 msgstr "无法获取安全组 %(group)s。"
+
+msgid "Unable to retrieve volumes availability zones."
+msgstr "无法检索卷的可用区。"
 
 msgid "Unable to set cluster type"
 msgstr "无法设置集群类型"
@@ -1597,6 +1878,9 @@ msgstr "使用数据源来代替名称和UUID"
 msgid "Use HBase Common library"
 msgstr "使用 HBase 公共库"
 
+msgid "Use SSL"
+msgstr "使用SSL"
+
 msgid "Use anti-affinity groups for processes"
 msgstr "为节点组使用 anti-affinity 组"
 
@@ -1605,6 +1889,9 @@ msgstr "使用 anti-affinity 组："
 
 msgid "Use auto-configuration"
 msgstr "使用自动配置"
+
+msgid "Use bucket in path"
+msgstr "使用路径中包含的存储桶"
 
 msgid "Use the same topology name as defined in your .yaml file"
 msgstr "使用和你在yaml文件中定义的相同名称的拓扑"
@@ -1632,6 +1919,13 @@ msgstr "版本"
 
 msgid "Version:"
 msgstr "版本："
+
+#, python-format
+msgid ""
+"Version: <b>%(hadoop_version)s</b> of plugin <b>%(plugin_name)s </b> is now "
+"deprecated."
+msgstr ""
+"版本为：<b>%(hadoop_version)s</b>的插件<b>%(plugin_name)s </b>不再使用。"
 
 msgid "Volume local to instance"
 msgstr "实例的本地卷"
@@ -1663,6 +1957,17 @@ msgstr "使用哪个密钥对进行认证？"
 msgid "Worker Node Group Template:"
 msgstr "工作节点组模板："
 
+msgid ""
+"You are now ready to launch your cluster.  When you click on the link below, "
+"you will need to give your cluster a name, choose the Cluster Template to "
+"use and choose which image to use to build your instances.  After you click "
+"on \"Create\", your instances will begin to spawn.  Your cluster should be "
+"operational in a few minutes."
+msgstr ""
+"现在可以启动集群了。当你单击下面的链接时，将需要为你的集群指定一个名称，选择"
+"要使用的集群模板，并选择要使用哪个镜像来构建实例。当你点击“创建”后，你的实例"
+"将开始生成。你的集群应该在几分钟内即可运行。"
+
 msgid "You may also add any custom tag."
 msgstr "你还可以增加任意的自定义标签。"
 
@@ -1685,6 +1990,16 @@ msgid ""
 "You must choose a flavor to determine the size (VCPUs, memory and storage) "
 "of all launched VMs."
 msgstr "您必须对所有的虚拟机的实例类型进行配置（虚拟 CPU 、内存、存储）。"
+
+msgid ""
+"You need to register an image to launch instances of your cluster. Skip this "
+"step if you already have a registered image for your plugin, otherwise click "
+"the link below. In the form you will need to choose the image, input the "
+"username and add tags for the chosen plugin."
+msgstr ""
+"你需要注册一个镜像来启动集群的实例。如果你已经为你的插件注册了一个镜像，跳过"
+"这一步，如果没有请点击下面的链接。在表单中，你需要选择镜像，输入用户名，并为"
+"所选的插件添加标签。"
 
 msgid ""
 "You've chosen a cluster that is in 'Error' state. Appropriate execution of "
