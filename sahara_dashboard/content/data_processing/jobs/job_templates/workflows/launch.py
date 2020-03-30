@@ -289,10 +289,10 @@ class JobConfigAction(workflows.Action):
                     edp_configs[self.EDP_ADAPT_SPARK_SWIFT])
             if (self.EDP_SUBST_DATASOURCE_NAME in edp_configs or
                     self.EDP_SUBST_DATASOURCE_UUID in edp_configs):
-                    self.fields['datasource_substitute'].initial = (
-                        edp_configs.get(self.EDP_SUBST_DATASOURCE_UUID, True)
-                        or
-                        edp_configs.get(self.EDP_SUBST_DATASOURCE_NAME, True))
+                self.fields['datasource_substitute'].initial = (
+                    edp_configs.get(self.EDP_SUBST_DATASOURCE_UUID, True)
+                    or
+                    edp_configs.get(self.EDP_SUBST_DATASOURCE_NAME, True))
 
     def clean(self):
         cleaned_data = super(workflows.Action, self).clean()
