@@ -70,10 +70,10 @@ class GeneralConfigAction(workflows.Action):
     description = forms.CharField(label=_("Description"),
                                   required=False,
                                   widget=forms.Textarea(attrs={'rows': 4}))
-    cluster_template = forms.DynamicChoiceField(label=_("Cluster Template"),
-                                                initial=(None, "None"),
-                                                add_item_link=
-                                                TEMPLATE_UPLOAD_URL)
+    cluster_template = forms.DynamicChoiceField(
+        label=_("Cluster Template"),
+        initial=(None, "None"),
+        add_item_link=TEMPLATE_UPLOAD_URL)
 
     cluster_count = forms.IntegerField(min_value=1,
                                        label=_("Cluster Count"),
