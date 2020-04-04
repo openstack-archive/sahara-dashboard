@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sahara-dashboard\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-30 08:18+0000\n"
+"POT-Creation-Date: 2020-03-31 20:53+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -34,9 +34,6 @@ msgstr "8.0.0"
 
 msgid "9.0.0"
 msgstr "9.0.0"
-
-msgid "9.0.1-4"
-msgstr "9.0.1-4"
 
 msgid "Added integration with Designate for hostname resolution."
 msgstr "Integration mit Designate zur Auflösung von Hostnamen hinzugefügt."
