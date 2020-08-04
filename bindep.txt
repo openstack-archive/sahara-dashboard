@@ -24,7 +24,6 @@ pkgconfig [platform:rpm]
 python-dev [platform:dpkg]
 python-devel [platform:rpm]
 python-lxml
-python-zmq
 python3-all-dev [platform:ubuntu !platform:ubuntu-precise]
 python3-dev [platform:dpkg]
 python3-devel [platform:fedora]
