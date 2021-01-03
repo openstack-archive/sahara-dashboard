@@ -42,8 +42,6 @@ Links:
 
 Sahara project: https://opendev.org/openstack/sahara
 
-Sahara at wiki.openstack.org: https://wiki.openstack.org/wiki/Sahara
-
 Storyboard project: https://storyboard.openstack.org/#!/project/936
 
 Sahara docs site: https://docs.openstack.org/sahara/latest/
