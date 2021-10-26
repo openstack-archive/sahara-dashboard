@@ -3,7 +3,7 @@
       - check-requirements
       - horizon-non-primary-django-jobs
       - openstack-lower-constraints-jobs-horizon
-      - openstack-python3-xena-jobs-horizon
+      - openstack-python3-yoga-jobs-horizon
       - release-notes-jobs-python3
     experimental:
       jobs:
