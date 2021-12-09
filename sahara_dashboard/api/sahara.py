@@ -95,6 +95,7 @@ def safe_call(func, *args, **kwargs):
 def client(request):
     insecure = getattr(settings, 'OPENSTACK_SSL_NO_VERIFY', False)
     cacert = getattr(settings, 'OPENSTACK_SSL_CACERT', None)
+    endpoint_type = getattr(settings, 'OPENSTACK_ENDPOINT_TYPE', 'publicURL')
     auth = identity.Token(auth_url=request.user.endpoint,
                           token=request.user.token.id,
                           project_id=request.user.project_id)
@@ -106,7 +107,8 @@ def client(request):
     sess = session.Session(auth=auth, verify=verify)
     return api_client.Client(VERSIONS.get_active_version()["version"],
                              service_type=SAHARA_SERVICE,
-                             session=sess)
+                             session=sess,
+                             endpoint_type=endpoint_type)
 
 
 def prepare_acl_update_dict(is_public=None, is_protected=None):
