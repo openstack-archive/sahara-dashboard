@@ -11,16 +11,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from django.conf.urls import url
+from django.urls import re_path
 
 from sahara_dashboard.content.data_processing.data_plugins import views
 
 
 urlpatterns = [
-    url(r'^$', views.PluginsView.as_view(), name='index'),
-    url(r'^(?P<plugin_id>[^/]+)$',
-        views.PluginDetailsView.as_view(), name='plugin-details'),
-    url(r'^(?P<plugin_name>[^/]+)/update',
-        views.UpdatePluginView.as_view(),
-        name='update'),
+    re_path(r'^$', views.PluginsView.as_view(), name='index'),
+    re_path(r'^(?P<plugin_id>[^/]+)$',
+            views.PluginDetailsView.as_view(), name='plugin-details'),
+    re_path(r'^(?P<plugin_name>[^/]+)/update',
+            views.UpdatePluginView.as_view(),
+            name='update'),
 ]
