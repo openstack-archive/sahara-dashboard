@@ -15,7 +15,7 @@ from horizon import exceptions
 from horizon import forms
 from horizon import workflows
 
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from saharaclient.api import base as api_base
 
 from openstack_dashboard.api import nova

@@ -13,7 +13,7 @@
 
 from oslo_log import log as logging
 
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from sahara_dashboard.api import sahara as saharaclient
 
 from horizon import exceptions

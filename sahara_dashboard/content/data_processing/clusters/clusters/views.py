@@ -15,7 +15,7 @@ import json
 
 from django.http import HttpResponse
 from django.urls import reverse
-from django.utils.translation import ugettext as _
+from django.utils.translation import gettext as _
 from django.views.generic import base as django_base
 from oslo_utils import timeutils
 from saharaclient.api.base import APIException

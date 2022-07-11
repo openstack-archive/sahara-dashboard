@@ -12,7 +12,7 @@
 # limitations under the License.
 
 from django.template import loader
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 from horizon import tables
 

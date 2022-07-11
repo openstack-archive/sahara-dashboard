@@ -16,7 +16,7 @@ import itertools
 from django.utils import encoding
 from django.utils import html
 from django.utils import safestring
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from oslo_log import log as logging
 from oslo_utils import uuidutils
 from saharaclient.api import base as api_base
