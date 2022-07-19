@@ -13,7 +13,7 @@
 
 from django import template
 from django.template import defaultfilters
-from django.utils.encoding import force_text
+from django.utils.encoding import force_str
 from django.utils.translation import gettext_lazy as _
 
 from horizon import exceptions
@@ -83,7 +83,7 @@ class ChoosePluginForm(forms.SelfHandlingForm):
             tmpl = template.loader.get_template(self.help_text_template)
             text += tmpl.render(extra_context, self.request)
         else:
-            text += defaultfilters.linebreaks(force_text(self.help_text))
+            text += defaultfilters.linebreaks(force_str(self.help_text))
         return defaultfilters.safe(text)
 
     class Meta(object):

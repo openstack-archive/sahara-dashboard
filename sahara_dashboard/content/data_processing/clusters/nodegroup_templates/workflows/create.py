@@ -389,7 +389,7 @@ class CheckboxSelectMultiple(forms.CheckboxSelectMultiple):
         final_attrs = self.build_attrs(attrs, name=name)
         output = []
         initial_service = uuidutils.generate_uuid()
-        str_values = set([encoding.force_text(v) for v in value])
+        str_values = set([encoding.force_str(v) for v in value])
         for i, (option_value, option_label) in enumerate(
                 itertools.chain(self.choices, choices)):
             current_service = option_value.split(':')[0]
@@ -398,10 +398,10 @@ class CheckboxSelectMultiple(forms.CheckboxSelectMultiple):
                     output.append("</ul>")
                 service_description = _("%s processes: ") % current_service
                 service_description = html.conditional_escape(
-                    encoding.force_text(service_description))
+                    encoding.force_str(service_description))
                 output.append("<label>%s</label>" % service_description)
                 initial_service = current_service
-                output.append(encoding.force_text("<ul>"))
+                output.append(encoding.force_str("<ul>"))
             if has_id:
                 final_attrs = dict(final_attrs, id='%s_%s' % (attrs['id'], i))
                 label_for = ' for="%s"' % final_attrs['id']
@@ -410,10 +410,10 @@ class CheckboxSelectMultiple(forms.CheckboxSelectMultiple):
 
             cb = forms.CheckboxInput(
                 final_attrs, check_test=lambda value: value in str_values)
-            option_value = encoding.force_text(option_value)
+            option_value = encoding.force_str(option_value)
             rendered_cb = cb.render(name, option_value)
             option_label = html.conditional_escape(
-                encoding.force_text(option_label))
+                encoding.force_str(option_label))
             output.append(
                 '<li><label%s>%s %s</label></li>' %
                 (label_for, rendered_cb, option_label))
