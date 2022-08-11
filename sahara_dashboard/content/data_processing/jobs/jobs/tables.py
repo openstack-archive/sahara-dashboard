@@ -14,9 +14,9 @@
 from django.http import Http404  # noqa
 from django.urls import reverse
 from django.utils import http
+from django.utils.translation import gettext_lazy as _
+from django.utils.translation import ngettext_lazy
 from django.utils.translation import pgettext_lazy
-from django.utils.translation import ugettext_lazy as _
-from django.utils.translation import ungettext_lazy
 from saharaclient.api import base as api_base
 
 from horizon import messages
@@ -50,7 +50,7 @@ class JobExecutionGuide(tables.LinkAction):
 class DeleteJob(tables.DeleteAction):
     @staticmethod
     def action_present(count):
-        return ungettext_lazy(
+        return ngettext_lazy(
             u"Delete Job",
             u"Delete Jobs",
             count
@@ -58,7 +58,7 @@ class DeleteJob(tables.DeleteAction):
 
     @staticmethod
     def action_past(count):
-        return ungettext_lazy(
+        return ngettext_lazy(
             u"Deleted Job",
             u"Deleted Jobs",
             count
@@ -71,7 +71,7 @@ class DeleteJob(tables.DeleteAction):
 class ReLaunchJobExistingCluster(j_t.ChoosePlugin):
     @staticmethod
     def action_present(count):
-        return ungettext_lazy(
+        return ngettext_lazy(
             u"Launch Job",
             u"Launch Jobs",
             count
@@ -79,7 +79,7 @@ class ReLaunchJobExistingCluster(j_t.ChoosePlugin):
 
     @staticmethod
     def action_past(count):
-        return ungettext_lazy(
+        return ngettext_lazy(
             u"Launched Job",
             u"Launched Jobs",
             count
@@ -104,7 +104,7 @@ class ReLaunchJobExistingCluster(j_t.ChoosePlugin):
 class ReLaunchJobNewCluster(ReLaunchJobExistingCluster):
     @staticmethod
     def action_present(count):
-        return ungettext_lazy(
+        return ngettext_lazy(
             u"Launch Job",
             u"Launch Jobs",
             count
@@ -112,7 +112,7 @@ class ReLaunchJobNewCluster(ReLaunchJobExistingCluster):
 
     @staticmethod
     def action_past(count):
-        return ungettext_lazy(
+        return ngettext_lazy(
             u"Launched Job",
             u"Launched Jobs",
             count

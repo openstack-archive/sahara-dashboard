@@ -13,8 +13,8 @@
 
 from django import urls
 from django.utils import http
-from django.utils.translation import ugettext_lazy as _
-from django.utils.translation import ungettext_lazy
+from django.utils.translation import gettext_lazy as _
+from django.utils.translation import ngettext_lazy
 
 from horizon import tables
 from horizon.tabs import base as tabs_base
@@ -44,7 +44,7 @@ class CreateJob(tables.LinkAction):
 class DeleteJob(tables.DeleteAction):
     @staticmethod
     def action_present(count):
-        return ungettext_lazy(
+        return ngettext_lazy(
             u"Delete Job Template",
             u"Delete Job Templates",
             count
@@ -52,7 +52,7 @@ class DeleteJob(tables.DeleteAction):
 
     @staticmethod
     def action_past(count):
-        return ungettext_lazy(
+        return ngettext_lazy(
             u"Deleted Job Template",
             u"Deleted Jobs Templates",
             count

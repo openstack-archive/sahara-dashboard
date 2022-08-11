@@ -14,8 +14,8 @@
 import abc
 import functools
 
-from django.utils.translation import ugettext_lazy as _
-from django.utils.translation import ungettext_lazy
+from django.utils.translation import gettext_lazy as _
+from django.utils.translation import ngettext_lazy
 
 from horizon import exceptions
 from horizon import forms
@@ -24,38 +24,38 @@ from horizon import tables
 
 MESSAGE_MAPPING_PRESENT = {
     'public': functools.partial(
-        ungettext_lazy,
+        ngettext_lazy,
         u"Make public",
         u"Make public"),
     'private': functools.partial(
-        ungettext_lazy,
+        ngettext_lazy,
         u"Make private",
         u"Make private"),
     'protected': functools.partial(
-        ungettext_lazy,
+        ngettext_lazy,
         u"Make protected",
         u"Make protected"),
     'unprotected': functools.partial(
-        ungettext_lazy,
+        ngettext_lazy,
         u"Make unprotected",
         u"Make unprotected"),
 }
 
 MESSAGE_MAPPING_PAST = {
     'public': functools.partial(
-        ungettext_lazy,
+        ngettext_lazy,
         u"Made public",
         u"Made public"),
     'private': functools.partial(
-        ungettext_lazy,
+        ngettext_lazy,
         u"Made private",
         u"Made private"),
     'protected': functools.partial(
-        ungettext_lazy,
+        ngettext_lazy,
         u"Made protected",
         u"Made protected"),
     'unprotected': functools.partial(
-        ungettext_lazy,
+        ngettext_lazy,
         u"Made unprotected",
         u"Made unprotected"),
 }

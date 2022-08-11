@@ -14,7 +14,7 @@
 import json
 
 from django import urls
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from saharaclient.api import base as api_base
 
 from horizon import exceptions

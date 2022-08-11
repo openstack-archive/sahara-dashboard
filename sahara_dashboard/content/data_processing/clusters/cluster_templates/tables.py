@@ -15,8 +15,8 @@ from django import http as http_response
 from django.template import defaultfilters as filters
 from django import urls
 from django.utils import http
-from django.utils.translation import ugettext_lazy as _
-from django.utils.translation import ungettext_lazy
+from django.utils.translation import gettext_lazy as _
+from django.utils.translation import ngettext_lazy
 
 from horizon import tables
 from horizon.tabs import base as tabs_base
@@ -92,7 +92,7 @@ class EditTemplate(tables.LinkAction):
 class DeleteTemplate(tables.DeleteAction):
     @staticmethod
     def action_present(count):
-        return ungettext_lazy(
+        return ngettext_lazy(
             u"Delete Template",
             u"Delete Templates",
             count
@@ -100,7 +100,7 @@ class DeleteTemplate(tables.DeleteAction):
 
     @staticmethod
     def action_past(count):
-        return ungettext_lazy(
+        return ngettext_lazy(
             u"Deleted Template",
             u"Deleted Templates",
             count

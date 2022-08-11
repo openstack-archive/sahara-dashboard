@@ -13,8 +13,8 @@
 
 from django.http import Http404  # noqa
 from django.template.loader import render_to_string
-from django.utils.translation import ugettext_lazy as _
-from django.utils.translation import ungettext_lazy
+from django.utils.translation import gettext_lazy as _
+from django.utils.translation import ngettext_lazy
 from saharaclient.api import base as api_base
 
 from horizon import messages
@@ -65,7 +65,7 @@ class ScaleCluster(tables.LinkAction):
 class DeleteCluster(tables.DeleteAction):
     @staticmethod
     def action_present(count):
-        return ungettext_lazy(
+        return ngettext_lazy(
             u"Delete Cluster",
             u"Delete Clusters",
             count
@@ -73,7 +73,7 @@ class DeleteCluster(tables.DeleteAction):
 
     @staticmethod
     def action_past(count):
-        return ungettext_lazy(
+        return ngettext_lazy(
             u"Deleted Cluster",
             u"Deleted Clusters",
             count
@@ -88,7 +88,7 @@ class CheckClusterAction(tables.BatchAction):
 
     @staticmethod
     def action_present(count):
-        return ungettext_lazy(
+        return ngettext_lazy(
             u"Start Verification",
             u"Start Verifications",
             count
@@ -96,7 +96,7 @@ class CheckClusterAction(tables.BatchAction):
 
     @staticmethod
     def action_past(count):
-        return ungettext_lazy(
+        return ngettext_lazy(
             u"Started Verification",
             u"Started Verifications",
             count
@@ -111,7 +111,7 @@ class ForceDeleteCluster(tables.DeleteAction):
 
     @staticmethod
     def action_present(count):
-        return ungettext_lazy(
+        return ngettext_lazy(
             u"Force Delete Cluster",
             u"Force Delete Clusters",
             count
@@ -119,7 +119,7 @@ class ForceDeleteCluster(tables.DeleteAction):
 
     @staticmethod
     def action_past(count):
-        return ungettext_lazy(
+        return ngettext_lazy(
             u"Force Deleted Cluster",
             u"Force Deleted Clusters",
             count

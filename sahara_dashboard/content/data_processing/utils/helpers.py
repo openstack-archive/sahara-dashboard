@@ -15,8 +15,8 @@ from pytz import timezone as ptz
 
 from django.template import defaultfilters as filters
 from django.utils import timezone
-from django.utils.translation import ugettext
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext
+from django.utils.translation import gettext_lazy as _
 from oslo_utils import timeutils
 
 import sahara_dashboard.content.data_processing. \
@@ -204,6 +204,6 @@ ALLOWED_STATUSES = {
 # Cluster status and suitable warning message that will be displayed
 # in the Job Launch form
 STATUS_MESSAGE_MAP = {
-    "Error": ugettext("You\'ve chosen a cluster that is in \'Error\' state. "
-                      "Appropriate execution of the job can't be guaranteed."),
+    "Error": gettext("You\'ve chosen a cluster that is in \'Error\' state. "
+                     "Appropriate execution of the job can't be guaranteed."),
 }

@@ -11,8 +11,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from django.utils.translation import ugettext_lazy as _
-from django.utils.translation import ungettext_lazy
+from django.utils.translation import gettext_lazy as _
+from django.utils.translation import ngettext_lazy
 
 from horizon import tables
 from horizon.tabs import base as tabs_base
@@ -35,7 +35,7 @@ class CreateDataSource(tables.LinkAction):
 class DeleteDataSource(tables.DeleteAction):
     @staticmethod
     def action_present(count):
-        return ungettext_lazy(
+        return ngettext_lazy(
             u"Delete Data Source",
             u"Delete Data Sources",
             count
@@ -43,7 +43,7 @@ class DeleteDataSource(tables.DeleteAction):
 
     @staticmethod
     def action_past(count):
-        return ungettext_lazy(
+        return ngettext_lazy(
             u"Deleted Data Source",
             u"Deleted Data Sources",
             count
