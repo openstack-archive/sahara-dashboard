@@ -11,6 +11,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from urllib import parse
+
 from django.http import Http404  # noqa
 from django.urls import reverse
 from django.utils import http
@@ -176,7 +178,7 @@ class JobsTable(sahara_table.SaharaPaginateTabbedTable):
                     job_template_id = job_execution.job_id
                 return reverse("horizon:project:data_processing."
                                "jobs:jt-details",
-                               args=(http.urlquote(job_template_id),))
+                               args=(parse.quote(job_template_id),))
             else:
                 # No link should be generated for a deleted Job.
                 return None
@@ -191,7 +193,7 @@ class JobsTable(sahara_table.SaharaPaginateTabbedTable):
             if job_execution.cluster_name:
                 return reverse(
                     "horizon:project:data_processing.clusters:cluster-details",
-                    args=(http.urlquote(job_execution.cluster_id),))
+                    args=(parse.quote(job_execution.cluster_id),))
             else:
                 # No link should be generated for a deleted Cluster.
                 return None

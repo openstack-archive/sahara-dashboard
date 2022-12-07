@@ -13,7 +13,7 @@
 
 from django import template
 from django.template import defaultfilters
-from django.utils.encoding import force_text
+from django.utils.encoding import force_str
 from django.utils.translation import gettext_lazy as _
 
 from horizon import exceptions
@@ -78,7 +78,7 @@ class ChoosePluginForm(forms.SelfHandlingForm):
             tmpl = template.loader.get_template(self.help_text_template)
             text += tmpl.render(extra_context, self.request)
         else:
-            text += defaultfilters.linebreaks(force_text(self.help_text))
+            text += defaultfilters.linebreaks(force_str(self.help_text))
         return defaultfilters.safe(text)
 
     class Meta(object):
@@ -107,8 +107,8 @@ class ChooseJobTypeForm(forms.SelfHandlingForm):
         try:
             hlps = helpers.Helpers(request)
             job_type = context["guide_job_type"]
-            if force_text(request.session.get("guide_job_type")) != (
-                    force_text(helpers.JOB_TYPE_MAP[job_type][0])):
+            if force_str(request.session.get("guide_job_type")) != (
+                    force_str(helpers.JOB_TYPE_MAP[job_type][0])):
                 hlps.reset_job_guide()
                 request.session["guide_job_type"] = (
                     helpers.JOB_TYPE_MAP[job_type][0])
