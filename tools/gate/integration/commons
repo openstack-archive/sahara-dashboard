@@ -1,7 +1,0 @@
-#!/bin/bash
-
-set -ex
-
-export DEST=${DEST:-$BASE/new}
-export DEVSTACK_DIR=${DEVSTACK_DIR:-$DEST/devstack}
-export SAHARA_DASHBOARD_SCREENSHOTS_DIR=/opt/stack/new/sahara-dashboard/.tox/py27integration/src/horizon/openstack_dashboard/test/integration_tests/integration_tests_screenshots

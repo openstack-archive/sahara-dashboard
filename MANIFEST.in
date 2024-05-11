@@ -1,4 +1,0 @@
-recursive-include sahara_dashboard *.html *.scss *.js
-
-include AUTHORS
-include ChangeLog

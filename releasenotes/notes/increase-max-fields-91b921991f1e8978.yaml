@@ -1,5 +1,0 @@
----
-fixes:
-  - |
-    Increasing DATA_UPLOAD_MAX_NUMBER_FIELDS django configuration to allow creation
-    of CDH node group templates.
